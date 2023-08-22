@@ -1,0 +1,11 @@
+@use "src/styles/colors";
+
+.articleHeading {
+  margin-bottom: 24px;
+  margin-top: 16px;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 60px;
+  color: colors.$text-primary;
+}

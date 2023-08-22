@@ -1,0 +1,49 @@
+@use "src/styles/colors";
+
+.button {
+  padding: 12px 24px;
+  height: 60px;
+  transition-duration: 0.2s;
+  width: 100%;
+  border: 0;
+  font-size: 18px;
+  line-height: 36px;
+  cursor: pointer;
+
+
+
+  &.contained {
+    background: colors.$palette-green;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      opacity: 0;
+      height: 100%;
+      left: 0;
+      bottom: 0;
+    }
+
+    &:hover {
+
+      &:after {
+        opacity: 1;
+      }
+      background-color: colors.$palette-green__hover;
+      //background: linear-gradient(to bottom, #C2FD3F, #8DBE28);
+      //box-shadow: 0px 0px 20px 0px rgba(165, 230, 20, 0.70);
+    }
+  }
+
+  &.outlined {
+    color: colors.$text-primary;
+    border: 1px solid #F7FFE4;
+    background-color: transparent;
+
+    &:hover {
+      color: colors.$palette-green__hover;
+      border-color: colors.$palette-green__hover;
+    }
+  }
+}

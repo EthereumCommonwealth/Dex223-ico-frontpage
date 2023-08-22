@@ -1,0 +1,188 @@
+@use "src/styles/colors";
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 550px;
+  position: relative;
+  > div {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+}
+
+.chartWrapper {
+  position: relative;
+}
+
+.articleInfo {
+  max-width: 646px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes grow-column-1 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 17px;
+  }
+}
+
+@keyframes grow-column-2 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 82.5px;
+  }
+}
+
+@keyframes grow-column-3 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 110px;
+  }
+}
+
+@keyframes grow-column-4 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 110px;
+  }
+}
+
+@keyframes grow-column-5 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 165px;
+  }
+}
+
+@keyframes grow-column-6 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 330px;
+  }
+}
+
+@keyframes grow-column-7 {
+  from {
+    height: 10px;
+  }
+
+  to {
+    height: 550px;
+  }
+}
+
+.chartColumn1 {
+  background-color: #C5B1FF;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-1 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn2 {
+  background-color: #B196FF;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-2 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn3 {
+  background-color: #946FFF;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-3 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn4 {
+  background-color: #8358FF;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-4 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn5 {
+  background-color: #7649F8;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-5 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn6 {
+  background-color: #6532F6;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-6 ease-in-out 1s forwards;
+  }
+}
+
+.chartColumn7 {
+  background-color: #5611EA;
+  height: 10px;
+
+  &.withAnimation {
+    animation: grow-column-7 ease-in-out 1s forwards;
+  }
+}
+
+.labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.columnLabel {
+  display: grid;
+}
+
+.percentage {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid colors.$border-primary;
+  border-top: 1px solid colors.$border-primary;
+}
+
+.totalText {
+  display: flex;
+  flex-direction: column;
+}

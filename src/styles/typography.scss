@@ -1,0 +1,54 @@
+@use "mixins";
+@use "colors";
+
+.font-16 {
+  @include mixins.t-body-16;
+}
+
+.font-20 {
+  @include mixins.t-body-20;
+}
+
+.font-24 {
+  @include mixins.t-body-24;
+}
+
+.font-40 {
+  @include mixins.t-body-40;
+}
+
+.font-primary {
+  color: colors.$text-primary;
+}
+
+.font-secondary {
+  color: colors.$text-secondary;
+}
+
+.font-static-primary {
+  color: #122110;
+}
+
+.font-300 {
+  font-weight: 300;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.font-600 {
+  font-weight: 500;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
