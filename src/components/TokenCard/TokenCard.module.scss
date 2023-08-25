@@ -40,4 +40,8 @@
   &::placeholder {
     color: colors.$text-secondary;
   }
+
+  &.loading {
+    color: colors.$text-primary;
+  }
 }

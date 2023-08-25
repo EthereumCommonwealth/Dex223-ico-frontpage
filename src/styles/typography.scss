@@ -1,6 +1,10 @@
 @use "mixins";
 @use "colors";
 
+.font-14 {
+  @include mixins.t-body-14;
+}
+
 .font-16 {
   @include mixins.t-body-16;
 }

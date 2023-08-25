@@ -1,11 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import clsx from "clsx";
-import {useWeb3Modal} from "@web3modal/react";
-import TokenCard from "../components/TokenCard";
-import {ChangeEvent, useEffect, useMemo, useState} from "react";
-import Image from "next/image";
-import {tokensToPayWith} from "../constants/tokens";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import {useCountdown} from "../hooks/useCountdown";
 import AboutTheProject from "../components/AboutTheProject";
@@ -18,6 +14,7 @@ import PastAchievement from "../components/PastAchievement";
 import FAQ from "../components/FAQ";
 import Spacer from "../components/Spacer";
 import Text from "../components/Text";
+import BuyForm from "../components/BuyForm";
 
 const countDownDate = new Date("Sep 30, 2023 00:00:00").getTime();
 
@@ -28,16 +25,6 @@ export default function Home() {
   }, []);
 
   const [days, hours, minutes, seconds] = useCountdown(countDownDate);
-
-  const {open, close, setDefaultChain} = useWeb3Modal();
-
-  const [amountToPay, setAmountToPay] = useState("");
-
-  const [pickedTokenId, setPickedTokenId] = useState(1);
-
-  const pickedToken = useMemo(() => {
-    return tokensToPayWith.find((token) => token.id === pickedTokenId);
-  }, [pickedTokenId]);
 
   if(!hasMounted) {
     return;
@@ -140,21 +127,7 @@ export default function Home() {
                 <div className={styles.bar} />
               </div>
               <div className={styles.raised}>USDT raised: $1,234,234 / $8,000,000</div>
-              <div className={styles.ratio}>1 DEX223 = 0.023 {pickedToken.symbol}</div>
-
-              <div className={styles.tokenCards}>
-                {tokensToPayWith.map((token) => {
-                  return <button key={token.id} onClick={() => setPickedTokenId(token.id)} className={clsx(styles.tokenPickButton, pickedTokenId === token.id && styles.active)}>
-                    <Image width={24} height={24} src={token.image} alt="" />
-                    {token.symbol}
-                  </button>
-                })}
-              </div>
-              <TokenCard type="pay" tokenName={pickedToken.symbol} tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(e: ChangeEvent<HTMLInputElement>) => setAmountToPay(e.target.value)} />
-              <div className={styles.spacer12} />
-              <TokenCard type="receive" tokenName="DEX223" tokenLogo="/images/tokens/DEX.svg" amount={"10"} handleChange={null} readonly />
-              <div className={styles.spacer20} />
-              <Button onClick={open}>Connect wallet</Button>
+              <BuyForm />
               <div className={styles.spacer12} />
               <Button variant="outlined">How to buy?</Button>
             </div>

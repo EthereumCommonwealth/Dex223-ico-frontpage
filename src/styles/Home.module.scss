@@ -294,70 +294,7 @@
   box-shadow: 2px 0 10px inset rgba(0,0,0,0.2);
 }
 
-.ratio {
-  color: var(--color-white, #F7FFE4);
-  text-align: center;
-  /* 16/Regular */
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 32px;
-  margin-bottom: 24px;
-}
 
-.tokenCards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid colors.$border-primary;
-  border-bottom: 0;
-}
-
-.tokenPickButton {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  align-items: center;
-
-  background: transparent;
-  height: 48px;
-  border: 0;
-  border-right: 1px solid colors.$border-primary;
-
-  transition-duration: 0.2s;
-  outline: 0;
-
-  color: colors.$text-primary;
-  cursor: pointer;
-  /* 18/Regular */
-  font-size: 18px;
-  line-height: 36px;
-
-  &:last-child {
-    border-right: 0;
-  }
-
-  position: relative;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid transparent;
-    transition-duration: 0.2s;
-  }
-
-  &.active {
-    pointer-events: none;
-    background-color: colors.$background-secondary;
-  }
-
-  &:hover {
-    &:after {
-      border-color: colors.$palette-green;
-    }
-  }
-}
 
 .spacer12 {
   height: 12px;
