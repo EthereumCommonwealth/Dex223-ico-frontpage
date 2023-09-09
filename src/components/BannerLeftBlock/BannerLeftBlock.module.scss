@@ -1,0 +1,242 @@
+@use "src/styles/colors";
+@use "src/styles/media";
+@use "src/styles/media-new";
+@use "src/styles/typography";
+
+.purple {
+  color: colors.$palette-purple;
+}
+
+.green {
+  color: colors.$palette-green;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 24px;
+
+  p {
+    color: colors.$text-secondary
+  }
+}
+
+.mainHeader {
+  color: colors.$text-primary;
+  font-size: 29px;
+  line-height: 44px;
+  font-weight: 700;
+
+  margin-bottom: 8px;
+
+  @include media-new.lg {
+    @include typography.t-body-48;
+  }
+
+
+  @include media-new.xxl {
+    font-size: 58px;
+    line-height: 80px;
+  }
+}
+
+.subheading {
+  @include typography.t-body-16;
+
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  position: relative;
+  z-index: 4;
+  margin-top: 8px;
+
+  @include typography.t-body-16;
+
+  @include media.for-laptop {
+    @include typography.t-body-12;
+  }
+}
+
+.whitePaperButtonWrapper {
+  width: 176px;
+  margin-bottom: 24px;
+}
+
+.externalButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.erc223Address {
+  color: colors.$text-primary;
+
+  padding: 14px 0 0 26px;
+  position: relative;
+
+  @include typography.t-body-18;
+}
+
+.howToBuy {
+  padding: 14px 0 0 26px;
+  position: relative;
+}
+
+.additionalInfoHeader {
+  color: var(--color-text-primary, #F7FFE4);
+  font-weight: 700;
+  position: relative;
+  z-index: 4;
+  @include typography.t-body-14;
+}
+
+.bar {
+  width: 50%;
+  height: 100%;
+  background-color: #A789FF;
+  background-image: linear-gradient(-60deg, #946FFF 25%, transparent 25%, transparent 50%, #946FFF 50%, #946FFF 75%, transparent 75%, transparent);
+  background-size: 21px 36px;
+  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+}
+
+$left-length: 16px;
+$right-length: 25px;
+
+
+.diagonal {
+  background: transparent;
+  border-top: 1px solid colors.$border-primary;
+  border-right: 1px solid colors.$border-primary;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 42px;
+  padding: 1px 0 0 1px;
+  position: absolute;
+  top: -41px;
+  left: 0;
+  float: left;
+  transform: scale(1, -1);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: 0;
+    border-top: $left-length solid colors.$border-primary;
+    border-left: $right-length solid transparent;
+    width: 0;
+    z-index: 1;
+  }
+}
+
+.inside3 {
+  background: transparent;
+  color: colors.$border-primary;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    border-top: $left-length solid #000;
+    border-left: $right-length solid transparent;
+    width: 0;
+    z-index: 2;
+  }
+}
+
+
+.diagonal3,
+.diagonal2 {
+  background: transparent;
+  border-top: 1px solid colors.$border-primary;
+  border-left: 1px solid colors.$border-primary;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 42px;
+  padding: 1px 0 0 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: left;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: $left-length solid colors.$border-primary;
+    border-right: $right-length solid transparent;
+    width: 0;
+    z-index: 1;
+  }
+}
+
+.diagonal2 {
+  height: 95px;
+  width: calc(100% - 30px);
+
+  @include media-new.lg {
+    height: 108px;
+  }
+}
+
+.inside,
+.inside2 {
+  background: transparent;
+  color: colors.$border-primary;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border-top: $left-length solid #000;
+    border-right: $right-length solid transparent;
+    width: 0;
+    z-index: 2;
+  }
+}
+
+.subscribe {
+  display: grid;
+  grid-template-columns: 1fr 135px;
+  gap: 10px;
+  margin-top: 8px;
+  z-index: 4;
+  position: relative;
+
+  input {
+    outline: 0;
+    height: 44px;
+    width: 100%;
+    padding-left: 20px;
+    color: colors.$text-primary;
+    background: #363636;
+    border: 1px solid colors.$border-primary;
+    @include typography.t-body-18;
+
+    &::placeholder {
+      color: colors.$text-secondary;
+    }
+
+    &:focus {
+      border-color: colors.$text-primary;
+    }
+
+    @include media-new.lg {
+      height: 60px;
+    }
+  }
+}

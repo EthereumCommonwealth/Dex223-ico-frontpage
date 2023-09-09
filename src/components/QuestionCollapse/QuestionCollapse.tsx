@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import styles from "./QuestionCollapse.module.scss";
-import Text from "../Text";
+import Text from "../atoms/Text";
 import Collapse from "../Collapse";
 import clsx from "clsx";
-import Spacer from "../Spacer";
+import Spacer from "../atoms/Spacer";
 
 interface Props {
   question: string,

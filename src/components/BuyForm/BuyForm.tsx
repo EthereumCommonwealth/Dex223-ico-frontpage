@@ -3,12 +3,11 @@ import styles from "./BuyForm.module.scss";
 import {DEX223, TEST_DEX223, TEST_USDT, testTokensToPayWith} from "../../constants/tokens";
 import clsx from "clsx";
 import Image from "next/image";
-import TokenCard from "../TokenCard";
-import Button from "../Button";
+import TokenCard from "../organisms/TokenCard";
+import Button from "../atoms/Button";
 import {useWeb3Modal} from "@web3modal/react";
-import Spacer from "../Spacer";
+import Spacer from "../atoms/Spacer";
 import {
-  erc20ABI,
   useAccount,
   useBalance,
   useContractRead,
@@ -18,11 +17,34 @@ import {
 } from "wagmi";
 import testICOABI from "../../constants/abis/testICOABI.json";
 import testUSDTABI from "../../constants/abis/testUSDTABI.json";
-import {formatEther, formatUnits, parseEther, parseUnits} from "viem";
+import {formatUnits, parseUnits} from "viem";
 import ERC20ABI from "../../constants/abis/erc20.json";
 
 
 const ICOContract = "0xB3C4B7d7aA5Ceb5116b50Cd8a683C06aad579E46";
+
+function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered}) {
+  const {open, close, setDefaultChain} = useWeb3Modal();
+  const {address, isConnected} = useAccount();
+
+  if(!isConnected) {
+    return <Button onClick={open}>Connect wallet</Button>;
+  }
+
+  if(!isAmountEntered) {
+    return <Button disabled>Enter amount</Button>;
+  }
+
+  if(!isEnoughBalance) {
+    return <Button disabled>Insufficient balance</Button>;
+  }
+
+  if(!isApproved) {
+    return <Button onClick={handleApprove}>Approve</Button>
+  }
+
+  return <Button onClick={handleBuy}>Buy ERC223</Button>
+}
 
 export default function BuyForm() {
   const {open, close, setDefaultChain} = useWeb3Modal();
@@ -36,27 +58,22 @@ export default function BuyForm() {
     return testTokensToPayWith.find((token) => token.id === pickedTokenId);
   }, [pickedTokenId]);
 
-  console.log("PARSED");
-  console.log(parseEther(amountToPay));
-
-  const {data: readData,isLoading} = useContractRead({
+  const {data: readData, isLoading} = useContractRead({
     address: ICOContract,
     abi: testICOABI,
     functionName: "getRewardAmount",
+    chainId: pickedToken.chainId,
     args: [
       pickedToken.id === 11 ? "0x0000000000000000000000000000000000000000" : pickedToken.address,
       parseUnits(amountToPay, pickedToken.decimals)
     ]
   });
 
-  console.log("HOW MANY YOU GET");
-  console.log(readData);
-
   const {data: tokenToPayBalance} = useBalance({
     address,
     token: pickedToken.id !== 11 ? pickedToken.address : undefined,
     watch: true,
-    chainId: 820
+    chainId: pickedToken.chainId
   });
 
   const {data: testToken223Balance} = useBalance({
@@ -65,6 +82,18 @@ export default function BuyForm() {
     watch: true,
     chainId: 820
   });
+
+  const {config: allowanceConfig} = usePrepareContractWrite({
+    address: pickedToken.address,
+    abi: ERC20ABI,
+    functionName: "approve",
+    args: [
+      ICOContract,
+      parseUnits(amountToPay, pickedToken.decimals)
+    ]
+  });
+
+  const {write: writeTokenApprove} = useContractWrite(allowanceConfig);
 
   const { isSuccess, write } = useContractWrite({
     address: TEST_USDT.address,
@@ -84,19 +113,6 @@ export default function BuyForm() {
     watch: true
   });
 
-
-  const {config: allowanceConfig} = usePrepareContractWrite({
-    address: pickedToken.address,
-    abi: ERC20ABI,
-    functionName: "approve",
-    args: [
-      ICOContract,
-      parseUnits(amountToPay, pickedToken.decimals)
-    ]
-  });
-
-  const {write: writeTokenApprove} = useContractWrite(allowanceConfig);
-
   const { write: buyTokens } = useContractWrite({
     address: ICOContract,
     abi: testICOABI,
@@ -110,7 +126,8 @@ export default function BuyForm() {
   const { config } = usePrepareSendTransaction({
     to: ICOContract,
     value: parseUnits(amountToPay, pickedToken.decimals)
-  })
+  });
+
   const { data, sendTransaction } =
     useSendTransaction(config)
 
@@ -133,11 +150,13 @@ export default function BuyForm() {
   }, [amountToPay, readData]);
 
   return <>
-    <div className={styles.ratio}>1 DEX223 = 0.023 {pickedToken.symbol}</div>
+    <div className={styles.ratio}><span>1 DEX223 = 0.023 {pickedToken.symbol}</span></div>
     <div className={styles.tokenCards}>
       {testTokensToPayWith.map((token) => {
         return <button key={token.id} onClick={() => setPickedTokenId(token.id)} className={clsx(styles.tokenPickButton, pickedTokenId === token.id && styles.active)}>
-          <Image width={24} height={24} src={token.image} alt="" />
+          <div className={styles.tokenImage}>
+            <Image layout='fill' objectFit='contain' src={token.image} alt="" />
+          </div>
           {token.symbol}
         </button>
       })}
@@ -146,9 +165,13 @@ export default function BuyForm() {
     <Spacer height={12} />
     <TokenCard balance={testToken223Balance?.formatted} type="receive" tokenName="DEX223 (test)" tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} isLoading={isLoading} readonly />
     <Spacer height={20} />
-    <Button onClick={writeTokenApprove}>Approve</Button>
-    {isConnected ? <Button onClick={processBuyTokens}>Buy ERC223</Button> : <Button onClick={open}>Connect wallet</Button>}
-    <Spacer height={20} />
-    <Button onClick={write}>Get 100 Test USDT</Button>
+    <ActionButton
+      handleApprove={writeTokenApprove}
+      handleBuy={processBuyTokens}
+      isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
+      isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
+      isAmountEntered={Boolean(amountToPay)}
+    />
+    <Spacer height={8} />
   </>;
 }

@@ -1,0 +1,22 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+}
+
+.infoRow {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid colors.$border-primary;
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 24px;
+}

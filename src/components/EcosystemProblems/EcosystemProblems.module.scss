@@ -1,0 +1,106 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.ecosystemProblems {
+  background-color: colors.$background-secondary;
+  border: 1px solid colors.$border-primary;
+}
+
+.sliderContainer {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+}
+
+.slides {
+  padding: 60px;
+}
+
+.indicatorsContainer {
+  border-left: 1px solid colors.$border-primary;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid colors.$palette-green;
+}
+
+.activeIndicator {
+  background-color: colors.$palette-green;
+}
+
+.illustration {
+  width: 589px;
+  height: 696px;
+  border-radius: 20px;
+  border: 1px solid colors.$border-primary;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.slide {
+  display: flex;
+  gap: 60px;
+}
+
+.sliderHeading {
+  @include typography.t-body-40;
+  color: colors.$text-primary;
+
+  margin-bottom: 24px;
+  margin-top: 16px;
+
+}
+
+.slideParagraphs {
+  display: grid;
+  gap: 24px;
+}
+
+.secondaryParagraph {
+  @include typography.t-body-16;
+  color: colors.$text-secondary;
+}
+
+.primaryParagraph {
+  @include typography.t-body-20;
+  color: colors.$text-primary;
+}
+
+.slideTextContent {
+  display: grid;
+  grid-template-rows: 1fr 40px;
+}
+
+.navigation {
+  display: flex;
+  gap: 20px;
+
+  > button {
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid colors.$border-primary;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition-duration: 0.2s;
+    cursor: pointer;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      border-color: colors.$text-primary;
+    }
+  }
+}

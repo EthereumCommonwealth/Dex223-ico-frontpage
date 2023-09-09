@@ -3,7 +3,7 @@ import styles from "./FAQ.module.scss";
 import ArticleTitle from "../ArticleTitle";
 import clsx from "clsx";
 import ArticleHeading from "../ArticleHeading";
-import Text from "../Text";
+import Text from "../atoms/Text";
 import QuestionCollapse from "../QuestionCollapse";
 
 const faq = [

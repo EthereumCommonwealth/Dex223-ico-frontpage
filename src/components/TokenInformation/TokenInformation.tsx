@@ -4,8 +4,8 @@ import ArticleTitle from "../ArticleTitle";
 import clsx from "clsx";
 import Image from "next/image";
 import ArticleHeading from "../ArticleHeading";
-import Text from "../Text";
-import Spacer from "../Spacer";
+import Text from "../atoms/Text";
+import Spacer from "../atoms/Spacer";
 
 export default function TokenInformation() {
   return <div className={clsx(styles.aboutTheProject, "container")}>
@@ -24,26 +24,7 @@ export default function TokenInformation() {
       </Text>
       <Spacer height={24}/>
       <div className={styles.info}>
-        <div className={styles.infoRow}>
-          <Text color="secondary" variant={20}>Token name</Text>
-          <Text variant={20}>DEX223</Text>
-        </div>
-        <div className={styles.infoRow}>
-          <Text color="secondary" variant={20}>Network</Text>
-          <Text variant={20}>Ethereum</Text>
-        </div>
-        <div className={styles.infoRow}>
-          <Text color="secondary" variant={20}>Token Ticker</Text>
-          <Text variant={20}>DEX223</Text>
-        </div>
-        <div className={styles.infoRow}>
-          <Text color="secondary" variant={20}>Max supply</Text>
-          <Text variant={20}>100,000,000 DEX223</Text>
-        </div>
-        <div className={styles.infoRow}>
-          <Text color="secondary" variant={20}>Decimals</Text>
-          <Text variant={20}>18</Text>
-        </div>
+
       </div>
     </div>
   </div>;

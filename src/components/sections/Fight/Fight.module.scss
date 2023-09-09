@@ -1,0 +1,33 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+}
+
+.problemsList {
+  list-style: none;
+  margin-top: 24px;
+}
+
+.problemItem {
+  padding: 14px 0;
+  border-bottom: 1px solid colors.$border-primary;
+  color: colors.$text-secondary;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  gap: 24px;
+
+  @include typography.t-body-20;
+
+  svg {
+    margin-top: 4px;
+  }
+}

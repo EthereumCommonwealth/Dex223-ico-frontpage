@@ -1,14 +1,36 @@
 @use "src/styles/colors";
+@use "src/styles/media-new";
+@use "src/styles/typography";
 
 .ratio {
   color: var(--color-white, #F7FFE4);
   text-align: center;
-  /* 16/Regular */
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background: colors.$border-primary;
+    width: calc(100% + 80px);
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  span {
+    background-color: colors.$background-primary;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+  }
+
+  @include typography.t-body-16;
+
+  @include media-new.lg {
+    margin-bottom: 24px;
+  }
 }
 
 .tokenCards {
@@ -25,7 +47,8 @@
   align-items: center;
 
   background: transparent;
-  height: 48px;
+  height: 38px;
+  @include typography.t-body-12;
   border: 0;
   border-right: 1px solid colors.$border-primary;
 
@@ -34,9 +57,6 @@
 
   color: colors.$text-primary;
   cursor: pointer;
-  /* 18/Regular */
-  font-size: 18px;
-  line-height: 36px;
 
   &:last-child {
     border-right: 0;
@@ -62,6 +82,23 @@
     &:after {
       border-color: colors.$palette-green;
     }
+  }
+
+  @include media-new.lg {
+    height: 48px;
+    @include typography.t-body-16;
+  }
+}
+
+.tokenImage {
+  width: 20px;
+  height: 20px;
+
+  position: relative;
+
+  @include media-new.lg {
+    width: 24px;
+    height: 24px;
   }
 }
 

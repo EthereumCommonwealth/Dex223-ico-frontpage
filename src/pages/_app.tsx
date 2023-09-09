@@ -12,7 +12,10 @@ const projectId = "b426036634aca8d1f9795404b66664b5";
 
 const chains = [mainnet, bsc, callisto];
 
-const { publicClient } = configureChains(chains, [w3mProvider({projectId}), publicProvider()]);
+const { publicClient } = configureChains(chains, [
+  w3mProvider({projectId}),
+  publicProvider()
+]);
 
 const wagmiConfig = createConfig({
   autoConnect: true,

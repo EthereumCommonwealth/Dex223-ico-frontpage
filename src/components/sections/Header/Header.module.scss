@@ -1,0 +1,118 @@
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/media-new";
+
+.headerContent {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  @include media-new.xl {
+    height: 109px;
+  }
+}
+
+.header {
+  position: relative;
+  border-bottom: 1px solid #5B5B5B;
+
+  @include media-new.xl {
+    border: 0;
+    overflow: hidden;
+  }
+}
+
+.buySection {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 120px;
+}
+
+.bottomLine {
+  display: none;
+
+  @include media-new.xl {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(calc(-50% + 330px), 0);
+  }
+}
+
+.logoAndNav {
+  display: flex;
+  gap: 54px;
+  align-items: center;
+  svg {
+    width: 113px;
+
+    @include media-new.xl {
+      width: 185px;
+    }
+  }
+
+  nav {
+    display: none;
+
+    @include media-new.xl {
+      display: block;
+    }
+  }
+}
+
+.navList {
+  display: none;
+  align-items: center;
+  gap: 24px;
+
+  li {
+    color: #FFF;
+    list-style: none;
+    font-weight: 500;
+
+    @include typography.t-body-16;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  @include media-new.xl {
+    display: flex;
+
+  }
+}
+
+.settings {
+  display: flex;
+  gap: 21px;
+  height: 48px;
+  position: absolute;
+  right: 16px;
+  top: 0;
+  align-items: center;
+
+  @include media-new.md {
+    right: 32px;
+  }
+
+  @include media-new.xl {
+    height: 60px;
+  }
+}
+
+.menuButton {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  position: relative;
+  margin-right: -12px;
+
+  @include media-new.xl {
+    display: none;
+  }
+}

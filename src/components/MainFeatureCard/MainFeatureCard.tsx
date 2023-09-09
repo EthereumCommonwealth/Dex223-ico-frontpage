@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./MainFeatureCard.module.scss";
 import Image from "next/image";
-import Text from "../Text";
-import Spacer from "../Spacer";
+import Text from "../atoms/Text";
+import Spacer from "../atoms/Spacer";
 
 interface Props {
   image: string,

@@ -1,24 +1,73 @@
-@use "mixins";
 @use "colors";
 
+@mixin t-body-12 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+@mixin t-body-14 {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin t-body-16 {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+@mixin t-body-18 {
+  font-size: 18px;
+  line-height: 36px;
+}
+
+@mixin t-body-20 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+@mixin t-body-24 {
+  font-size: 24px;
+  line-height: 48px;
+}
+
+@mixin t-body-28 {
+  font-size: 28px;
+  line-height: 44px;
+}
+
+@mixin t-body-30 {
+  font-size: 30px;
+  line-height: 44px;
+}
+
+@mixin t-body-40 {
+  font-size: 40px;
+  line-height: 60px;
+}
+
+@mixin t-body-48 {
+  font-size: 48px;
+  line-height: 64px;
+}
+
 .font-14 {
-  @include mixins.t-body-14;
+  @include t-body-14;
 }
 
 .font-16 {
-  @include mixins.t-body-16;
+  @include t-body-16;
 }
 
 .font-20 {
-  @include mixins.t-body-20;
+  @include t-body-20;
 }
 
 .font-24 {
-  @include mixins.t-body-24;
+  @include t-body-24;
 }
 
 .font-40 {
-  @include mixins.t-body-40;
+  @include t-body-40;
 }
 
 .font-primary {

@@ -1,0 +1,65 @@
+@use "../../../styles/colors";
+
+.footer {
+  border-top: 1px solid colors.$border-primary;
+}
+
+.bottomFooter {
+  border-top: 1px solid colors.$border-primary;
+}
+
+.bottomFooterContent {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerLinks {
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftLinks {
+  display: flex;
+  gap: 160px;
+}
+
+.footerLinkGroupTitle {
+  color: colors.$text-secondary;
+  font-size: 16px;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.footerLink {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  text-transform: uppercase;
+  color: colors.$text-primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.linkColumn {
+  display: grid;
+  gap: 12px;
+}
+
+.rightLinks {
+  text-align: right;
+
+}
+
+.address {
+  font-size: 16px;
+  line-height: 28px;
+  color: colors.$text-primary;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

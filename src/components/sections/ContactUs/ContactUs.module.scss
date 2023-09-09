@@ -1,0 +1,8 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+}

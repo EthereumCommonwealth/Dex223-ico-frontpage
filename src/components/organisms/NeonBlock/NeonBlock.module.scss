@@ -1,0 +1,106 @@
+@use "../../../styles/colors";
+
+.neonBlockContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+
+  &.green {
+    .neonBottomLine {
+      background: linear-gradient(180deg, #3BD171 0%, rgba(59, 209, 113, 0.00) 100%);
+    }
+
+    .neonTopLine {
+      background: linear-gradient(180deg, rgba(59, 209, 113, 0.00) 0%, #3BD171 100%);
+    }
+
+    .neonIcon:before {
+      background: colors.$palette-green;
+    }
+  }
+
+  &.blue {
+    .neonBottomLine {
+      background: linear-gradient(180deg, #22AEFC 0%, rgba(34, 174, 252, 0.00) 100%);
+    }
+
+    .neonTopLine {
+      background: linear-gradient(180deg, rgba(34, 174, 252, 0.00) 0%, #22AEFC 100%);
+    }
+
+    .neonIcon:before {
+      background: colors.$palette-blue;
+    }
+  }
+
+  &.purple {
+    .neonBottomLine {
+      background: linear-gradient(180deg, #9576EC 0%, rgba(149, 118, 236, 0.00) 100%);
+    }
+
+    .neonTopLine {
+      background: linear-gradient(180deg, rgba(149, 118, 236, 0.00) 0%, #9576EC  100%);
+    }
+
+    .neonIcon:before {
+      background: colors.$palette-purple;
+    }
+  }
+}
+
+.leftContent {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  grid-template-rows: minmax(168px, auto) 48px auto;
+}
+
+.neonLineWrapper {
+  width: 48px;
+  margin: 0 40px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.neonBottomLine {
+  width: 4px;
+  height: 100%;
+}
+
+.neonTopLine {
+  width: 4px;
+  height: 100%;
+}
+
+.neonIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 24px 0;
+
+  svg {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    filter: blur(20px);
+  }
+}
+
+.rightContent {
+}
+
+.textContent {
+  color: #FFF;
+}
+
+.overlineTextContainer {
+  display: flex;
+  align-items: center;
+}

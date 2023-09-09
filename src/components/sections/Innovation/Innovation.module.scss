@@ -1,0 +1,71 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+}
+
+.featureBlock {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  padding: 80px 0;
+  border: 1px solid colors.$border-primary;
+  background-color: colors.$background-secondary;
+  position: relative;
+  overflow: hidden;
+  //transition-duration: 0.3s;
+
+  //&:hover {
+  //  transition-duration: 0s;
+  //}
+}
+
+.featureBlock .gradientCursor {
+  --size: 0;
+  content: '';
+  position: absolute;
+
+  pointer-events: none;
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #22AEFC, transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+  filter: blur(20px);
+  opacity: 0.12;
+  z-index: 1;
+}
+
+.featureBlock:hover .gradientCursor {
+  --size: 700px;
+}
+
+.textBlock {
+  padding-left: 108px;
+  position: relative;
+  z-index: 2;
+}
+
+.imageBlock {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+}
+
+.featureCardHeading {
+  @include typography.t-body-24;
+  font-weight: 600;
+  color: colors.$text-primary;
+
+  margin-bottom: 24px;
+}

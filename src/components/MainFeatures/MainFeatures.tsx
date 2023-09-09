@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./MainFeatures.module.scss";
 import ArticleTitle from "../ArticleTitle";
 import ArticleHeading from "../ArticleHeading";
-import Text from "../Text";
+import Text from "../atoms/Text";
 import MainFeatureCard from "../MainFeatureCard";
 import clsx from "clsx";
-import Spacer from "../Spacer";
+import Spacer from "../atoms/Spacer";
 
 const features = [
   {

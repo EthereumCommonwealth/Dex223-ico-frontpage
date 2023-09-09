@@ -1,0 +1,13 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+}
