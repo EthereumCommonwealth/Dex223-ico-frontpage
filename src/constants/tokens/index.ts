@@ -1,9 +1,10 @@
 export type TokenInfo = {
   id: number,
   image: string,
-  address: string,
+  address: `0x${string}`,
   symbol: string,
-  chainId: number
+  chainId: number,
+  decimals: number
 }
 
 export const ETH: TokenInfo = {
@@ -11,7 +12,8 @@ export const ETH: TokenInfo = {
   image: "/images/tokens/ETH.svg",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   symbol: "ETH",
-  chainId: 1
+  chainId: 1,
+  decimals: 18
 }
 
 export const USDT: TokenInfo = {
@@ -19,7 +21,8 @@ export const USDT: TokenInfo = {
   image: "/images/tokens/USDT.svg",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   symbol: "USDT",
-  chainId: 1
+  chainId: 1,
+  decimals: 6
 }
 
 export const DAI: TokenInfo = {
@@ -27,7 +30,8 @@ export const DAI: TokenInfo = {
   image: "/images/tokens/DAI.svg",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   symbol: "DAI",
-  chainId: 1
+  chainId: 1,
+  decimals: 18
 }
 
 export const USDC: TokenInfo = {
@@ -35,18 +39,20 @@ export const USDC: TokenInfo = {
   image: "/images/tokens/USDC.svg",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   symbol: "USDC",
-  chainId: 1
+  chainId: 1,
+  decimals: 18
 }
 
-export const DEX223 = {
+export const DEX223: TokenInfo = {
   id: 5,
   image: "/images/tokens/DEX223.svg",
   address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
   symbol: "DEX223",
-  chainId: 1
+  chainId: 1,
+  decimals: 18
 }
 
-export const CLO = {
+export const CLO: TokenInfo = {
   id: 11,
   image: "/images/tokens/CLO.svg",
   address: "0xF5AD6F6EDeC824C7fD54A66d241a227F6503aD3a",
@@ -55,7 +61,7 @@ export const CLO = {
   chainId: 820
 }
 
-export const TEST_USDT = {
+export const TEST_USDT: TokenInfo = {
   id: 12,
   image: "/images/tokens/USDT.svg",
   address: "0xe3f73915ceC0d1b30724dE01Db04Ee1a1b75019e",
@@ -64,12 +70,13 @@ export const TEST_USDT = {
   chainId: 820
 }
 
-export const TEST_DEX223 = {
+export const TEST_DEX223: TokenInfo = {
   id: 13,
   image: "/images/tokens/DEX.svg",
   address: "0xB7C978aFF8D7d86Ad9c59938A1e368e217BA9392",
   symbol: "DEX223 (test)",
-  chainId: 820
+  chainId: 820,
+  decimals: 18
 }
 
 export const tokensToPayWith = [ETH, USDT, DAI, USDC];

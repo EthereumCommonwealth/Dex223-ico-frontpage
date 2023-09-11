@@ -13,6 +13,7 @@ import Fight from "../components/sections/Fight";
 import MeetTheTeam from "../components/sections/MeetTheTeam";
 import ContactUs from "../components/sections/ContactUs";
 import Spacer from "../components/atoms/Spacer";
+import Footer from "../components/sections/Footer";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -73,7 +74,7 @@ export default function Home() {
       {/*<Spacer height={60} />*/}
       {/*<FAQ />*/}
       {/*<Spacer height={240} />*/}
-      {/*<Footer />*/}
+      <Footer />
     </>
   )
 }

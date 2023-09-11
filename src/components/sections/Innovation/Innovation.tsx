@@ -26,10 +26,15 @@ function FeatureBlock({heading, content, image}) {
         })
       }
 
-      currentNode.addEventListener("mousemove", recalculatePositions);
+      currentNode.addEventListener("mouseenter", () => {
+        currentNode.addEventListener("mousemove", recalculatePositions);
+      });
+      currentNode.addEventListener("mouseleave", () => {
+        currentNode.removeEventListener("mousemove", recalculatePositions);
+      });
 
       return () => {
-        currentNode.removeEventListener('mousemove', recalculatePositions);
+        // currentNode.removeEventListener('mousemove', recalculatePositions);
       };
     }
   }, []);

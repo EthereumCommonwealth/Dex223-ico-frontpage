@@ -1,4 +1,5 @@
 @use "../../../styles/colors";
+@use "../../../styles/typography";
 
 .articleInfo {
   margin: 0 auto;
@@ -7,24 +8,36 @@
 
 .competitorsTable {
   display: grid;
-  grid-template-columns: 340px repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  position: relative;
 }
 
 .cell {
   display: flex;
-  align-items: center;
-  height: 60px;
   border: 1px solid colors.$border-primary;
-  padding-left: 20px;
+  padding: 14px 20px;
+
+  @include typography.t-body-20;
+  color: colors.$text-secondary;
 
   &.centered {
     justify-content: center;
+    align-items: center;
     padding: 0;
   }
 
   &.light {
     background-color: #1D1C1E;
   }
+}
+
+.dexBorder {
+  position: absolute;
+  height: 100%;
+  left: calc(100% / 6 - 1px);
+  width: calc(100% / 6 + 2px);
+  border: 2px solid colors.$palette-blue;
+  box-shadow: 0px 0px 54px 20px rgba(34, 174, 252, 0.30);
 }
 
 .dexColumn {

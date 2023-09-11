@@ -5,6 +5,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 28px;
 
+  &.different {
+    grid-template-columns: 5fr 3fr;
+  }
+
   &.green {
     .neonBottomLine {
       background: linear-gradient(180deg, #3BD171 0%, rgba(59, 209, 113, 0.00) 100%);

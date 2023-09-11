@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {ChangeEvent, useCallback, useMemo, useState} from "react";
 import styles from "./BuyForm.module.scss";
 import {DEX223, TEST_DEX223, TEST_USDT, testTokensToPayWith} from "../../constants/tokens";
@@ -21,7 +22,7 @@ import {formatUnits, parseUnits} from "viem";
 import ERC20ABI from "../../constants/abis/erc20.json";
 
 
-const ICOContract = "0xB3C4B7d7aA5Ceb5116b50Cd8a683C06aad579E46";
+const ICOContract: `0x${string}` = "0xB3C4B7d7aA5Ceb5116b50Cd8a683C06aad579E46";
 
 function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered}) {
   const {open, close, setDefaultChain} = useWeb3Modal();

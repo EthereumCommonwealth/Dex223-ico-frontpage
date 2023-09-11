@@ -1,133 +1,82 @@
 
 type Parameters = {
-  supportsERC223: boolean,
-  supportsERC20: boolean,
-  yieldFarming: boolean,
-  swap: boolean,
-  nativeToken: boolean,
-  supportsEthereum: boolean,
-  requiresKYC: boolean,
-  lowGasFee: boolean,
-  crossChainTrading: boolean,
-  decentralized: boolean,
-  securityAudits: boolean,
-  limitOrders: boolean,
-  rewardsProgram: boolean,
-  ecosystemIntegration: boolean,
-  educationResources: boolean,
-  APIAccess: boolean
+  supportedStandards: string,
+  deploymentChain: string,
+  listingProcess:string,
+  marginTrading: string,
+  markets: string,
 }
 
 export const parametersKeys = [
-  "supportsERC223",
-  "supportsERC20",
-  "yieldFarming",
-  "swap",
-  "nativeToken",
-  "supportsEthereum",
-  "requiresKYC",
-  "lowGasFee",
-  "crossChainTrading",
-  "decentralized",
-  "securityAudits",
-  "limitOrders",
-  "rewardsProgram",
-  "ecosystemIntegration",
-  "educationResources",
-  "APIAccess"
+  "supportedStandards",
+  "deploymentChain",
+  "listingProcess",
+  "marginTrading",
+  "markets"
 ];
 
 export const parametersLabels = {
-  supportsERC223: "Supports ERC-223 Tokens",
-  supportsERC20: "Supports ERC-20 Tokens",
-  yieldFarming: "Offers Yield Farming",
-  swap: "Provides Token Swaps",
-  nativeToken: "Has a Native Token",
-  supportsEthereum: "Supports Ethereum",
-  requiresKYC: "Requires KYC",
-  lowGasFee: "Low Gas Fees",
-  crossChainTrading: "Cross-Chain Trading",
-  decentralized: "Decentralized",
-  securityAudits: "Security Audits",
-  limitOrders: "Limit Orders",
-  rewardsProgram: "Rewards Program",
-  ecosystemIntegration: "Ecosystem Integration",
-  educationResources: "User Education Resources",
-  APIAccess: "API Access"
+  supportedStandards: "Supported standards",
+  deploymentChain: "Deployment chain",
+  listingProcess: "Listing process",
+  marginTrading: "Margin trading",
+  markets: "Markets",
 }
 
 export const Dex223Params: Parameters = {
-  supportsERC223: true,
-  supportsERC20: false,
-  yieldFarming: true,
-  swap: true,
-  nativeToken: true,
-  supportsEthereum: true,
-  requiresKYC: false,
-  lowGasFee: true,
-  crossChainTrading: true,
-  decentralized: true,
-  securityAudits: true,
-  limitOrders: true,
-  rewardsProgram: true,
-  ecosystemIntegration: true,
-  educationResources: true,
-  APIAccess: true
-}
-
-export const oneInchParams: Parameters = {
-  supportsERC223: true,
-  supportsERC20: false,
-  yieldFarming: true,
-  swap: true,
-  nativeToken: true,
-  supportsEthereum: true,
-  requiresKYC: false,
-  lowGasFee: false,
-  crossChainTrading: true,
-  decentralized: true,
-  securityAudits: true,
-  limitOrders: true,
-  rewardsProgram: false,
-  ecosystemIntegration: true,
-  educationResources: true,
-  APIAccess: true
-}
-
-export const pancakeParams: Parameters = {
-  supportsERC223: true,
-  supportsERC20: false,
-  yieldFarming: false,
-  swap: true,
-  nativeToken: true,
-  supportsEthereum: true,
-  requiresKYC: true,
-  lowGasFee: false,
-  crossChainTrading: true,
-  decentralized: true,
-  securityAudits: false,
-  limitOrders: true,
-  rewardsProgram: false,
-  ecosystemIntegration: true,
-  educationResources: true,
-  APIAccess: true
+  supportedStandards: "ERC-20, ERC-223",
+  deploymentChain: "Ethereum, EOS EVM,ETC, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base, BSC",
+  listingProcess: "Smart-contract, tokenlists",
+  marginTrading: "Encapsultatted margin trading",
+  markets: "Unlimited",
 }
 
 export const uniswapParams: Parameters = {
-  supportsERC223: false,
-  supportsERC20: false,
-  yieldFarming: false,
-  swap: true,
-  nativeToken: true,
-  supportsEthereum: true,
-  requiresKYC: true,
-  lowGasFee: false,
-  crossChainTrading: false,
-  decentralized: true,
-  securityAudits: true,
-  limitOrders: true,
-  rewardsProgram: false,
-  ecosystemIntegration: false,
-  educationResources: true,
-  APIAccess: true
+  supportedStandards: "ERC-20",
+  deploymentChain: "Ethereum, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base",
+  listingProcess: "Tokenlists",
+  marginTrading: "No",
+  markets: "Unlimited",
 }
+
+export const dydxParams: Parameters = {
+  supportedStandards: "ERC-20",
+  deploymentChain: "Ethereum, Custom L2 chain",
+  listingProcess: "Centralized",
+  marginTrading: "Leverage up to 20x",
+  markets: "56 pairs",
+}
+
+export const kineParams: Parameters = {
+  supportedStandards: "ERC-20",
+  deploymentChain: "Ethereum, BSC",
+  listingProcess: "Centralized",
+  marginTrading: "Leverage up to 200x",
+  markets: "21 pairs",
+}
+
+export const curveParams: Parameters = {
+  supportedStandards: "ERC-20",
+  deploymentChain: "Ethereum, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base and 4 other",
+  listingProcess: "Centralized",
+  marginTrading: "No",
+  markets: "156 pairs",
+}
+
+export const oneInchParams: Parameters = {
+  supportedStandards: "Supported standards",
+  deploymentChain: "Deployment chain",
+  listingProcess: "Listing process",
+  marginTrading: "Margin trading",
+  markets: "Markets",
+}
+
+export const pancakeParams: Parameters = {
+  supportedStandards: "Supported standards",
+  deploymentChain: "Deployment chain",
+  listingProcess: "Listing process",
+  marginTrading: "Margin trading",
+  markets: "Markets",
+}
+
+

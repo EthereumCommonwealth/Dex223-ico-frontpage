@@ -10,10 +10,7 @@ import Spacer from "../atoms/Spacer";
 export default function TokenInformation() {
   return <div className={clsx(styles.aboutTheProject, "container")}>
     <div className={styles.leftPart}>
-      <div className={styles.imageWrapper}>
-        <img className={styles.tokenInfoImage1} src="/images/token-info/token-info-1.svg" alt=""/>
-        <img className={styles.tokenInfoImage2} src="/images/token-info/token-info-2.svg" alt=""/>
-      </div>
+
     </div>
     <div className={styles.textBlock}>
       <ArticleTitle text="info" />
