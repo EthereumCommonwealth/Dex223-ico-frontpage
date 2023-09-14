@@ -1,4 +1,5 @@
 @use "../../../styles/colors";
+@use "src/styles/media";
 
 .neonBlockContainer {
   display: grid;
@@ -50,12 +51,45 @@
       background: colors.$palette-purple;
     }
   }
+
+  @include media.for-tablet {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    &.different {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include media.for-mobile {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    &.different {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .leftContent {
   display: grid;
   grid-template-columns: 108px 1fr;
-  grid-template-rows: minmax(168px, auto) 48px auto;
+  grid-template-rows: minmax(168px, auto) 96px auto;
+
+  @include media.for-desktop {
+    grid-template-columns: 88px 1fr;
+
+  }
+
+  @include media.for-tablet {
+    grid-template-columns: 32px 1fr;
+    grid-template-rows: minmax(66px, auto) 56px auto;
+  }
+
+  @include media.for-mobile {
+    grid-template-columns: 32px 1fr;
+    grid-template-rows: minmax(66px, auto) 56px auto;
+  }
 }
 
 .neonLineWrapper {
@@ -65,6 +99,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @include media.for-desktop {
+    margin: 0 20px;
+  }
+
+  @include media.for-tablet {
+    width: 24px;
+    margin: 0;
+  }
+
+  @include media.for-mobile {
+    width: 24px;
+    margin: 0;
+  }
 }
 
 .neonBottomLine {
@@ -91,13 +139,43 @@
   &:before {
     content: "";
     position: absolute;
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     filter: blur(20px);
+  }
+
+  @include media.for-tablet {
+    width: 24px;
+    height: 24px;
+    margin: 16px 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @include media.for-mobile {
+    width: 24px;
+    height: 24px;
+    margin: 16px 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
 .rightContent {
+
+  @include media.for-tablet {
+    display: none;
+  }
+
+  @include media.for-mobile {
+    display: none;
+  }
 }
 
 .textContent {
@@ -107,4 +185,12 @@
 .overlineTextContainer {
   display: flex;
   align-items: center;
+}
+
+.mobileTopContent {
+  display: none;
+
+  @include media.for-tablet {
+    display: block;
+  }
 }

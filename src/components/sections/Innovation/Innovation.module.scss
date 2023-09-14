@@ -1,10 +1,23 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
+@use "src/styles/media";
 
 .text {
   color: colors.$text-secondary;
 
   @include typography.t-body-20;
+
+  @include media.for-desktop {
+    @include typography.t-body-18;
+  }
+
+  @include media.for-tablet {
+    @include typography.t-body-16;
+  }
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
 }
 
 .featureBlock {
@@ -19,6 +32,40 @@
 
   &:hover {
     transition-duration: 0.1s;
+  }
+
+  @include media.for-desktop {
+    padding: 60px;
+    grid-template-columns: 1fr 198px;
+    gap: 60px;
+
+    img {
+      width: 198px;
+      height: 198px;
+    }
+  }
+
+  @include media.for-tablet {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 16px;
+    gap: 0;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  @include media.for-mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 16px;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
   }
 }
 
@@ -47,6 +94,18 @@
   padding-left: 108px;
   position: relative;
   z-index: 2;
+
+  @include media.for-desktop {
+    padding-left: 0;
+  }
+
+  @include media.for-tablet {
+    padding-left: 0;
+  }
+
+  @include media.for-mobile {
+    padding-left: 0;
+  }
 }
 
 .imageBlock {
@@ -56,11 +115,36 @@
   justify-content: center;
   position: relative;
   z-index: 2;
+
+  @include media.for-desktop {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  @include media.for-tablet {
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  @include media.for-mobile {
+    justify-content: flex-start;
+    margin-bottom: 24px;
+  }
 }
 
 .paragraphs {
   display: grid;
   gap: 20px;
+
+  @include media.for-tablet {
+    gap: 12px;
+  }
+
+  @include media.for-mobile {
+    gap: 12px;
+  }
 }
 
 .featureCardHeading {
@@ -69,4 +153,17 @@
   color: colors.$text-primary;
 
   margin-bottom: 24px;
+}
+
+.cardWrapper {
+  display: grid;
+  gap: 40px;
+
+  @include media.for-tablet {
+    gap: 16px;
+  }
+
+  @include media.for-mobile {
+    gap: 16px;
+  }
 }

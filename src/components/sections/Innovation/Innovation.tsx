@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import styles from "./Innovation.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
-import ArticleHeading from "../../ArticleHeading";
+import ArticleHeading from "../../atoms/ArticleHeading";
 import Spacer from "../../atoms/Spacer";
 import clsx from "clsx";
 
@@ -80,23 +80,24 @@ export default function Innovation() {
     }
   />
     <div className="container">
-      <FeatureBlock image={<img src="/images/feature-1.png" alt="" />} content={<div className={styles.paragraphs}>
-        <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
-        <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
-        <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
-      </div>} heading="ERC-223 Support" />
-      <Spacer height={40} />
-      <FeatureBlock image={<img src="/images/feature-2.png" alt="" />} content={<div className={styles.paragraphs}>
-        <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
-        <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
-        <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
-      </div>} heading="ERC-223 Support" />
-      <Spacer height={40} />
-      <FeatureBlock image={<img src="/images/feature-3.png" alt="" />} content={<div className={styles.paragraphs}>
-        <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
-        <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
-        <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
-      </div>} heading="ERC-223 Support" />
+      <div className={styles.cardWrapper}>
+        <FeatureBlock image={<img src="/images/feature-1.png" alt="" />} content={<div className={styles.paragraphs}>
+          <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
+          <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
+          <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
+        </div>} heading="ERC-223 Support" />
+        <FeatureBlock image={<img src="/images/feature-2.png" alt="" />} content={<div className={styles.paragraphs}>
+          <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
+          <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
+          <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
+        </div>} heading="ERC-223 Support" />
+        <FeatureBlock image={<img src="/images/feature-3.png" alt="" />} content={<div className={styles.paragraphs}>
+          <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users full control over their funds during the exchange process eliminating the need for approvals. This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the implementation of &quot;encapsulated margin trading&quot; at the platform.</div>
+          <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.</div>
+          <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be merged into one liquidity pool.</div>
+        </div>} heading="ERC-223 Support" />
+      </div>
+
     </div>
   </>;
 }

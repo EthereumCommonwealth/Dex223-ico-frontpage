@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./NeonBlock.module.scss";
-import OverlineText from "../../OverlineText";
+import OverlineText from "../../atoms/OverlineText";
 import clsx from "clsx";
 
 interface Props {
@@ -16,10 +16,14 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
   return <div className="container">
     <div className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different)}>
       <div className={styles.leftContent}>
-        <div style={{marginBottom: 24}} className={styles.neonLineWrapper}>
+        <div className={styles.neonLineWrapper}>
           <div className={styles.neonTopLine} />
         </div>
-        <div />
+        <div>
+          <div className={styles.mobileTopContent}>
+            {rightContent}
+          </div>
+        </div>
         <div className={styles.neonLineWrapper}>
           <div className={styles.neonIcon}>
             {icon}
@@ -28,7 +32,7 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
         <div className={styles.overlineTextContainer}>
           <OverlineText text={overlineText} color={color} />
         </div>
-        <div style={{marginTop: 24}} className={styles.neonLineWrapper}>
+        <div className={styles.neonLineWrapper}>
           <div className={styles.neonBottomLine} />
         </div>
         <div className={styles.textContent}>
@@ -39,6 +43,5 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
         {rightContent}
       </div>
     </div>
-
   </div>;
 }

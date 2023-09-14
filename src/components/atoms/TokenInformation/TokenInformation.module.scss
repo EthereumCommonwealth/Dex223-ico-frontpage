@@ -1,0 +1,59 @@
+@use "../../../styles/colors";
+
+.aboutTheProject {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.imageWrapper {
+  width: 534px;
+  height: 534px;
+  position: relative;
+  flex-shrink: 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 387.665px;
+    height: 387.665px;
+    transform: translate(-50%, -50%);
+    border-radius: 387.665px;
+    opacity: 0.4;
+    background: var(--color-primary, #3BD171);
+    filter: blur(200px);
+  }
+}
+
+.tokenInfoImage1,
+.tokenInfoImage2 {
+  position: absolute;
+  z-index: 1;
+}
+
+.leftPart {
+  display: flex;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+}
+
+.tokenInfoImage1 {
+  top: 64px;
+  right: 61px;
+}
+
+.tokenInfoImage2 {
+  left: 67px;
+  bottom: 43px;
+}
+
+.textBlock {
+  grid-column-start: 7;
+  grid-column-end: 13;
+  color: colors.$text-primary;
+}
+
+

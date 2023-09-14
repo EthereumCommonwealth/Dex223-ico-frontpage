@@ -1,5 +1,6 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
+@use "src/styles/media";
 
 .chart {
   display: grid;
@@ -7,17 +8,34 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 1000px;
   > div {
     display: flex;
     align-items: flex-end;
     position: relative;
   }
+
+  @include media.for-tablet {
+    height: 400px;
+  }
+
+  @include media.for-mobile {
+    height: 200px;
+  }
 }
 
 .chartWrapper {
-  margin-top: 370px;
+  margin-top: 270px;
   height: 10px;
   position: relative;
+
+  @include media.for-tablet {
+    margin-top: 350px;
+  }
+
+  @include media.for-mobile {
+    margin-top: 180px;
+  }
 }
 
 .articleInfo {
@@ -29,51 +47,51 @@
 
 @keyframes grow-column-1 {
   from {
-    height: 10px;
+    height: 1%;
   }
 
   to {
-    height: 40px;
+    height: 3%;
   }
 }
 
 @keyframes grow-column-2 {
   from {
-    height: 10px;
+    height: 1%;
   }
 
   to {
-    height: 95px;
+    height: 9.5%;
   }
 }
 
 @keyframes grow-column-3 {
   from {
-    height: 10px;
+    height: 1%;
   }
 
   to {
-    height: 95px;
+    height: 9.5%;
   }
 }
 
 @keyframes grow-column-4 {
   from {
-    height: 10px;
+    height: 1%;
   }
 
   to {
-    height: 100px;
+    height: 10%;
   }
 }
 
 @keyframes grow-column-5 {
   from {
-    height: 10px;
+    height: 1%;
   }
 
   to {
-    height: 680px;
+    height: 68%;
   }
 }
 
@@ -125,7 +143,7 @@
 
 .labels {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .columnLabel {
@@ -138,13 +156,34 @@
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
+  color: colors.$text-primary;
+  @include typography.t-body-40;
+
+  @include media.for-laptop {
+    top: -40px;
+    @include typography.t-body-20;
+  }
+
+  @include media.for-mobile {
+    top: -30px;
+    @include typography.t-body-16;
+  }
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+
+  @include media.for-tablet {
+    gap: 8px;
+  }
 }
 
 .total {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid colors.$border-primary;
   border-top: 1px solid colors.$border-primary;
 }
@@ -152,10 +191,33 @@
 .totalText {
   display: flex;
   flex-direction: column;
+
+  @include typography.t-body-20;
+
+  @include media.for-tablet {
+    @include typography.t-body-12;
+  }
 }
 
 .text {
   color: colors.$text-secondary;
 
   @include typography.t-body-20;
+
+  @include media.for-desktop {
+    @include typography.t-body-18;
+  }
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
 }
+
+.totalValue {
+  @include typography.t-body-40;
+
+  @include media.for-laptop {
+    @include typography.t-body-24;
+  }
+}
+

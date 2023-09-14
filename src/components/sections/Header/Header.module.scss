@@ -1,26 +1,28 @@
 @use "../../../styles/colors";
 @use "../../../styles/typography";
 @use "../../../styles/media-new";
+@use "src/styles/media";
 
 .headerContent {
-  height: 48px;
+  height: 109px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
 
-  @include media-new.xl {
-    height: 109px;
+  @media screen and (max-width: 1500px){
+    backdrop-filter: blur(10px);
+    height: 48px;
   }
 }
 
 .header {
-  position: relative;
-  border-bottom: 1px solid #5B5B5B;
+  border: 0;
+  overflow: hidden;
 
-  @include media-new.xl {
-    border: 0;
-    overflow: hidden;
+  @media screen and (max-width: 1500px) {
+    position: relative;
+    border-bottom: 1px solid #5B5B5B;
   }
 }
 
@@ -31,14 +33,15 @@
 }
 
 .bottomLine {
-  display: none;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(calc(-50% + 330px), 0);
 
-  @include media-new.xl {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(calc(-50% + 330px), 0);
+  @media screen and (max-width: 1500px){
+    display: none;
+
   }
 }
 
@@ -47,24 +50,24 @@
   gap: 54px;
   align-items: center;
   svg {
-    width: 113px;
 
-    @include media-new.xl {
-      width: 185px;
+    width: 185px;
+    @media screen and (max-width: 1500px){
+      width: 113px;
     }
   }
 
   nav {
-    display: none;
+    display: block;
 
-    @include media-new.xl {
-      display: block;
+    @include media.for-laptop {
+      display: none;
     }
   }
 }
 
 .navList {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 24px;
 
@@ -78,27 +81,23 @@
     cursor: pointer;
   }
 
-  @include media-new.xl {
-    display: flex;
-
+  @include media.for-laptop {
+    display: none;
   }
 }
 
 .settings {
   display: flex;
   gap: 21px;
-  height: 48px;
+  height: 60px;
   position: absolute;
   right: 16px;
-  top: 0;
+  top: -2px;
   align-items: center;
 
-  @include media-new.md {
-    right: 32px;
-  }
-
-  @include media-new.xl {
-    height: 60px;
+  @media screen and (max-width: 1500px){
+    top: 0;
+    height: 48px;
   }
 }
 
@@ -111,8 +110,37 @@
   border: 0;
   position: relative;
   margin-right: -12px;
+  display: none;
 
-  @include media-new.xl {
+  @include media.for-laptop {
+    display: block;
+  }
+}
+
+.addressButton {
+  height: 40px;
+  border: 1px solid #5A5A5A;
+  background: #1D1C1E;
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  align-items: center;
+
+  color: var(--color-text-primary, #F5FFF9);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 175% */
+
+  cursor: pointer;
+  transition-duration: 0.2s;
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+
+  @include media.for-laptop {
     display: none;
   }
 }

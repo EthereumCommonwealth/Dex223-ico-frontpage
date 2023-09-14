@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./InfoSection.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
-import ArticleHeading from "../../ArticleHeading";
+import ArticleHeading from "../../atoms/ArticleHeading";
 import Text from "../../atoms/Text";
 
 const infoFields = [
@@ -53,8 +53,8 @@ export default function InfoSection() {
 
         {infoFields.map((infoField) => {
           return <div key={infoField.label} className={styles.infoRow}>
-            <Text color="secondary" variant={20}>{infoField.label}</Text>
-            <Text variant={20}>{infoField.value}</Text>
+            <span className={styles.infoRowLabel}>{infoField.label}</span>
+            <span className={styles.infoRowValue}>{infoField.value}</span>
           </div>
         })}
       </>

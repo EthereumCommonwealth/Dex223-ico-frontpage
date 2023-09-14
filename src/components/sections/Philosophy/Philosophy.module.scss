@@ -1,13 +1,59 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
+@use "src/styles/media";
 
 .text {
   color: colors.$text-secondary;
 
   @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
 }
 
 .paragraphs {
   display: grid;
   gap: 20px;
+
+  @include media.for-mobile {
+    gap: 8px;
+  }
+}
+
+.rightBlock {
+  padding-top: 200px;
+  padding-left: 71px;
+
+  img {
+    width: 100%;
+  }
+
+  @include media.for-tablet {
+    padding-top: 78px;
+    padding-left: 17px;
+    img {
+      width: 310px;
+    }
+  }
+
+  @include media.for-mobile {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.philosophyBg {
+  //position: fixed;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 150px;
+  height: 900px;
+  z-index: -1;
+  opacity: 0.6;
 }

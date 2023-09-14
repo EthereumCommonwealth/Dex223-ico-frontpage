@@ -1,0 +1,142 @@
+@use "../../../styles/colors";
+@use "../../../styles/media-new";
+@use "../../../styles/typography";
+
+.raised {
+  color: #FFF;
+  text-align: center;
+  margin: 4px 0 18px;
+
+  @include typography.t-body-16;
+}
+
+.progressBar {
+  height: 30px;
+  width: 100%;
+  background-color: colors.$background-primary;
+  overflow: hidden;
+  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+  position: relative;
+  border: 1px solid colors.$border-primary;
+}
+
+.bar {
+  transition-duration: 0.3s;
+  height: 100%;
+  background-color: #A789FF;
+  background-image: linear-gradient(-60deg, #946FFF 25%, transparent 25%, transparent 50%, #946FFF 50%, #946FFF 75%, transparent 75%, transparent);
+  background-size: 21px 36px;
+  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+}
+
+.ratio {
+  color: var(--color-white, #F7FFE4);
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background: colors.$border-primary;
+    width: calc(100% + 80px);
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  span {
+    background-color: colors.$background-primary;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+  }
+
+  @include typography.t-body-16;
+
+  @include media-new.lg {
+    margin-bottom: 24px;
+  }
+}
+
+.tokenCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid colors.$border-primary;
+  border-bottom: 0;
+}
+
+.tokenPickButton {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+
+  background: transparent;
+  height: 38px;
+  @include typography.t-body-12;
+  border: 0;
+  border-right: 1px solid colors.$border-primary;
+
+  transition-duration: 0.2s;
+  outline: 0;
+
+  color: colors.$text-primary;
+  cursor: pointer;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    transition-duration: 0.2s;
+  }
+
+  &.active {
+    pointer-events: none;
+    background-color: colors.$background-secondary;
+  }
+
+  &:hover {
+    &:after {
+      border-color: colors.$palette-green;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @include media-new.lg {
+    height: 48px;
+    @include typography.t-body-16;
+  }
+}
+
+.tokenImage {
+  width: 20px;
+  height: 20px;
+
+  position: relative;
+
+  @include media-new.lg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.waitingContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

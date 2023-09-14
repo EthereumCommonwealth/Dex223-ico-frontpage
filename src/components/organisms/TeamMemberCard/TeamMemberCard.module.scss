@@ -1,4 +1,6 @@
 @use "../../../styles/colors";
+@use "src/styles/media";
+@use "src/styles/typography";
 
 .teamMemberCard {
   border: 1px solid colors.$border-primary;
@@ -7,11 +9,44 @@
 
 .info {
   padding: 20px;
+
+  @include media.for-mobile {
+    padding: 8px;
+  }
 }
 
 .socialLinks {
   display: flex;
   gap: 10px;
+
+  @include media.for-mobile {
+    gap: 10px;
+  }
+}
+
+.position {
+  display: block;
+  margin-bottom: 4px;
+  @include typography.t-body-18;
+  color: colors.$text-secondary;
+
+  @include media.for-mobile {
+    @include typography.t-body-12;
+    margin-bottom: 0;
+  }
+}
+
+
+.name {
+  display: block;
+  margin-bottom: 16px;
+  @include typography.t-body-24;
+  color: colors.$text-primary;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+    margin-bottom: 8px;
+  }
 }
 
 .socialLink {
@@ -21,6 +56,21 @@
   align-items: center;
   border: 1px solid colors.$border-primary;
   flex: 1 0 auto;
+  border-radius: 4px;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include media.for-mobile {
+    height: 32px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }
 
 .imageCover {
@@ -29,6 +79,10 @@
   position: relative;
   background-position: center;
   background-size: cover;
+
+  @include media.for-mobile {
+    height: 156px;
+  }
 
   &:before {
     content: "";

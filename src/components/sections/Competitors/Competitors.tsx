@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Competitors.module.scss";
-import ArticleTitle from "../../ArticleTitle";
-import ArticleHeading from "../../ArticleHeading";
+import ArticleTitle from "../../atoms/ArticleTitle";
+import ArticleHeading from "../../atoms/ArticleHeading";
 import Text from "../../atoms/Text";
 import Spacer from "../../atoms/Spacer";
 import {
@@ -115,7 +115,7 @@ export default function Competitors() {
       </>
     }
   />
-    <div className="container">
+    <div className={clsx("container", styles.competitorsTableWrapper)}>
       <div className={styles.competitorsTable}>
         <div className={styles.cell}>Parameters</div>
         <div className={clsx(styles.cell, styles.centered)}><DEXLogo /></div>

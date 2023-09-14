@@ -1,0 +1,7 @@
+@use "../../../styles/colors";
+
+.externalTextLink {
+  color: colors.$palette-green;
+  text-decoration: underline;
+  cursor: pointer;
+}

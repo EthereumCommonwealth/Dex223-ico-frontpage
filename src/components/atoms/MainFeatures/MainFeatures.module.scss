@@ -1,0 +1,29 @@
+@use "../../../styles/colors";
+
+.textPart {
+  margin: 0 auto;
+  max-width: 870px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.mainFeatures {
+  position: relative;
+}
+
+.blur {
+  position: absolute;
+  width: 872px;
+  height: 872px;
+  bottom: 0;
+  border-radius: 872px;
+  opacity: 0.6;
+  background: colors.$palette-purple;
+  filter: blur(350px);
+  right: 0;
+  transform: translate(50%, 0);
+}

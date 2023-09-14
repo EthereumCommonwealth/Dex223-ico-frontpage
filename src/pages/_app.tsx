@@ -10,7 +10,7 @@ import {callisto} from "../constants/chains/clo";
 
 const projectId = "b426036634aca8d1f9795404b66664b5";
 
-const chains = [mainnet, bsc, callisto];
+const chains = [callisto];
 
 const { publicClient } = configureChains(chains, [
   w3mProvider({projectId}),

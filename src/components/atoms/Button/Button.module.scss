@@ -1,14 +1,13 @@
 @use "../../../styles/colors";
-@use "../../../styles/media-new";
+@use "../../../styles/media";
 @use "../../../styles/typography";
 
 .button {
+  border-radius: 4px;
   padding: 0 24px;
-  height: 44px;
   transition-duration: 0.2s;
   width: 100%;
   border: 0;
-  @include typography.t-body-16;
   cursor: pointer;
 
 
@@ -61,8 +60,11 @@
     }
   }
 
-  @include media-new.lg {
-    @include typography.t-body-18;
-    height: 60px;
+  @include typography.t-body-18;
+  height: 60px;
+
+  @include media.for-tablet {
+    @include typography.t-body-16;
+    height: 44px;
   }
 }

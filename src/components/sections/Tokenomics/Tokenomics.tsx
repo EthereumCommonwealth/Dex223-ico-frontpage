@@ -1,10 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import styles from "./Tokenomics.module.scss";
-import ArticleTitle from "../../ArticleTitle";
 import clsx from "clsx";
 import Text from "../../atoms/Text";
 import Spacer from "../../atoms/Spacer";
-import ArticleHeading from "../../ArticleHeading";
+import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
 
 
@@ -41,23 +40,24 @@ export default function Tokenomics() {
       leftContent={
         <>
           <ArticleHeading text="Tokenomics"/>
-          <p className={styles.text}>The original D223 tokens will be issued in November 2023 on Ethereum mainnet. Once
-            DEX223 is deployed a fee will be charged for any on-platform trade. This fees will be redistributed among
-            D223 token holders in proportion to their share. Unsold tokens will be subtracted from the total supply i.e.
-            if the platform will accumulate revenue before public ICO round then 32% of the existing tokens will get the
-            rights to claim the revenue as if 68% of tokens allocated for public sales didn&apos;t exist.</p>
-          <Spacer height={20}/>
-          <p className={styles.text}>Unsold tokens from pre-ICO sales and public sales will be re-allocated for the next
-            public round until all tokens are sold. The development team adheres to the policy of financial
-            transparency. A full financial report regarding the distribution of any funds collected from ICO or private
-            sales will be published quarterly.</p>
+          <div className={styles.paragraphs}>
+            <p className={styles.text}>The original D223 tokens will be issued in November 2023 on Ethereum mainnet. Once
+              DEX223 is deployed a fee will be charged for any on-platform trade. This fees will be redistributed among
+              D223 token holders in proportion to their share. Unsold tokens will be subtracted from the total supply i.e.
+              if the platform will accumulate revenue before public ICO round then 32% of the existing tokens will get the
+              rights to claim the revenue as if 68% of tokens allocated for public sales didn&apos;t exist.</p>
+            <p className={styles.text}>Unsold tokens from pre-ICO sales and public sales will be re-allocated for the next
+              public round until all tokens are sold. The development team adheres to the policy of financial
+              transparency. A full financial report regarding the distribution of any funds collected from ICO or private
+              sales will be published quarterly.</p>
+          </div>
           <Spacer height={24}/>
           <div className={styles.total}>
             <div className={styles.totalText}>
-              <Text>Total</Text>
-              <Text>100%</Text>
+              <span>Total</span>
+              <span>100%</span>
             </div>
-            <Text variant={40}>$8,000,000</Text>
+            <span className={styles.totalValue}>8,000,000,000 D223</span>
           </div>
         </>
       }
@@ -68,27 +68,27 @@ export default function Tokenomics() {
         <div className={styles.chart}>
           <div>
             <div className={clsx(styles.chartColumn1, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
-              <span className={styles.percentage}><Text variant={40}>3%</Text></span>
+              <span className={styles.percentage}><span>3%</span></span>
             </div>
           </div>
           <div>
             <div className={clsx(styles.chartColumn2, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
-              <span className={styles.percentage}><Text variant={40}>9.5%</Text></span>
+              <span className={styles.percentage}><span>9.5%</span></span>
             </div>
           </div>
           <div>
             <div className={clsx(styles.chartColumn3, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
-              <span className={styles.percentage}><Text variant={40}>9.5%</Text></span>
+              <span className={styles.percentage}><span>9.5%</span></span>
             </div>
           </div>
           <div>
             <div className={clsx(styles.chartColumn4, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
-              <span className={styles.percentage}><Text variant={40}>10%</Text></span>
+              <span className={styles.percentage}><span>10%</span></span>
             </div>
           </div>
           <div>
             <div className={clsx(styles.chartColumn5, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
-              <span className={styles.percentage}><Text variant={40}>68%</Text></span>
+              <span className={styles.percentage}><span>68%</span></span>
             </div>
           </div>
         </div>

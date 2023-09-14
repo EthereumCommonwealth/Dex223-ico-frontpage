@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Fight.module.scss";
-import ArticleHeading from "../../ArticleHeading";
+import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
 
 const problems = [
@@ -58,7 +58,7 @@ export default function Fight() {
       </>
     }
     rightContent={
-      <div style={{paddingTop: 200, display: "flex", justifyContent: "flex-end"}}>
+      <div className={styles.rightContent}>
         <img style={{width: "100%"}} src="/images/fight.png" alt=""/>
       </div>
     }

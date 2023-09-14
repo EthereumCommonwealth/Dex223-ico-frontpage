@@ -25,6 +25,15 @@ export const USDT: TokenInfo = {
   decimals: 6
 }
 
+export const BUSDT: TokenInfo = {
+  id: 100,
+  image: "/images/tokens/BUSDT.svg",
+  address: "0xbf6c50889d3a620eb42C0F188b65aDe90De958c4",
+  symbol: "BUSDT",
+  chainId: 820,
+  decimals: 18
+}
+
 export const DAI: TokenInfo = {
   id: 3,
   image: "/images/tokens/DAI.svg",
@@ -73,8 +82,8 @@ export const TEST_USDT: TokenInfo = {
 export const TEST_DEX223: TokenInfo = {
   id: 13,
   image: "/images/tokens/DEX.svg",
-  address: "0xB7C978aFF8D7d86Ad9c59938A1e368e217BA9392",
-  symbol: "DEX223 (test)",
+  address: "0xf5717D6c1cbAFE00A4c800B227eCe496180244F9",
+  symbol: "DEX223",
   chainId: 820,
   decimals: 18
 }
@@ -82,3 +91,5 @@ export const TEST_DEX223: TokenInfo = {
 export const tokensToPayWith = [ETH, USDT, DAI, USDC];
 
 export const testTokensToPayWith = [CLO, TEST_USDT];
+
+export const tokensToPayWithForPreSale = [BUSDT, CLO];

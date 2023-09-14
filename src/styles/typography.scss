@@ -12,12 +12,22 @@
 
 @mixin t-body-16 {
   font-size: 16px;
-  line-height: 28px;
+  line-height: 24px;
+}
+
+@mixin t-body-17 {
+  font-size: 17px;
+  line-height: 26px;
 }
 
 @mixin t-body-18 {
   font-size: 18px;
-  line-height: 36px;
+  line-height: 28px;
+}
+
+@mixin t-body-19 {
+  font-size: 19px;
+  line-height: 30px;
 }
 
 @mixin t-body-20 {

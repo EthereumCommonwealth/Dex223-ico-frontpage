@@ -1,15 +1,32 @@
 @use "../../../styles/colors";
 @use "../../../styles/typography";
+@use "src/styles/media";
 
 .articleInfo {
   margin: 0 auto;
   max-width: 870px;
 }
 
+.competitorsTableWrapper {
+  width: 100%;
+
+  @include media.for-laptop {
+    padding: 0;
+    overflow-y: scroll;
+  }
+}
+
 .competitorsTable {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   position: relative;
+
+  @include media.for-laptop {
+    display: inline-grid;
+    grid-template-columns: 126px 259px 201px 160px 150px 260px;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
 }
 
 .cell {
@@ -29,6 +46,10 @@
   &.light {
     background-color: #1D1C1E;
   }
+
+  @include media.for-laptop {
+    @include typography.t-body-16;
+  }
 }
 
 .dexBorder {
@@ -38,6 +59,11 @@
   width: calc(100% / 6 + 2px);
   border: 2px solid colors.$palette-blue;
   box-shadow: 0px 0px 54px 20px rgba(34, 174, 252, 0.30);
+
+  @include media.for-laptop {
+    left: 125px;
+    width: 261px;
+  }
 }
 
 .dexColumn {
