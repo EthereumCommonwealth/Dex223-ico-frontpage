@@ -21,7 +21,9 @@ export default function Drawer({
   width = 280
 }: Props) {
   const handlers = useSwipeable({
-    onSwipedLeft: (eventData) => onClose
+    onSwipedLeft: (eventData) => onClose(),
+    onTap: () => onClose(),
+    trackMouse: true
   });
 
   return <Portal className={clsx(
@@ -34,6 +36,6 @@ export default function Drawer({
     )} style={{ width: position === "left" || position === "right" ? width : "100%" }} role="dialog">
       {children}
     </div>
-    <div {...handlers} onClick={onClose} className={styles.backdrop} />
+    <div {...handlers} className={styles.backdrop} />
   </Portal>;
 }
