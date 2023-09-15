@@ -32,12 +32,12 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
   const {address, isConnected} = useAccount();
   const { switchNetwork } = useSwitchNetwork();
 
-  if(!isAmountEntered) {
-    return <Button disabled>Enter amount</Button>;
-  }
-
   if(!isConnected) {
     return <Button onClick={open}>Connect wallet</Button>;
+  }
+
+  if(!isAmountEntered) {
+    return <Button disabled>Enter amount</Button>;
   }
 
   if(!isEnoughBalance) {
