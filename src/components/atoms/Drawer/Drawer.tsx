@@ -17,7 +17,7 @@ export default function Drawer({
   children,
   onClose,
   position = "left",
-  width = 300
+  width = 280
 }: Props) {
   return <Portal className={clsx(
     styles.drawerContainer,

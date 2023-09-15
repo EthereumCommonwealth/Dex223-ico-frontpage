@@ -39,11 +39,21 @@
     flex-direction: column;
   }
 
+  a {
+    display: block;
+    width: 50%;
+    cursor: pointer;
+
+    @include media.for-mobile {
+      width: 100%;
+      max-width: unset;
+    }
+  }
+
   button {
     padding: 0 20px 0 24px;
-    width: 50%;
     height: 60px;
-    max-width: 315px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,12 +61,14 @@
     border: 1px solid var(--color-text-primary, #F5FFF9);
     background: transparent;
     transition-duration: 0.2s;
+    cursor: pointer;
 
     @include typography.t-body-18;
     color: colors.$text-primary;
 
     &:hover {
-      border-color: colors.$text-primary;
+      border-color: colors.$palette-green;
+      color: colors.$palette-green;
     }
 
     @include media.for-laptop {
@@ -69,10 +81,7 @@
 
     }
 
-    @include media.for-mobile {
-      width: 100%;
-      max-width: unset;
-    }
+
   }
 
 }

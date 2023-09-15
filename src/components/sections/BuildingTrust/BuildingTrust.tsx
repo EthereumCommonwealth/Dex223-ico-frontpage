@@ -34,11 +34,11 @@ export default function BuildingTrust() {
       overlineText="BUILDING TRUST"
       leftContent={
         <>
-          <ArticleHeading text={<span>Introducing our Past <br /> Achievement - <a className={styles.soyLink} href="#">Soy.Finance</a></span>} />
+          <ArticleHeading text={<span>Introducing our Past <br /> Achievement - <a className={styles.soyLink} href="https://soy.finance" target="_blank">Soy.Finance</a></span>} />
           <ul className={styles.list}>
             <li className={styles.option}>
               <h4 className={styles.listTitle}>Proven Enterprise Experience</h4>
-              <p className={styles.listText}>Our team&apos;s credibility shines through our collaboration with <a className={styles.soyLink} href="#">Callisto Enterprise</a>,
+              <p className={styles.listText}>Our team&apos;s credibility shines through our collaboration with <a className={styles.soyLink} href="https://www.callistoenterprise.com/">Callisto Enterprise</a>,
                 where we developed a cutting-edge exchange that met their specific needs and standards.</p>
             </li>
             <li className={styles.option}>

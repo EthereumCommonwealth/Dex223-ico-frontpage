@@ -6,27 +6,27 @@ import NeonBlock from "../../organisms/NeonBlock";
 const problems = [
   {
     text: "The problem was first reported in 2017 and there were about $10,000 lost at that moment",
-    href: "#"
+    href: "https://www.reddit.com/r/ethereum/comments/60ql37/attention_be_careful_using_ethereum_tokens/"
   },
   {
     text: "There was a discussion regarding this problem with Ethereum Foundation members, there were $13,000 lost at that moment",
-    href: "#"
+    href: "https://www.reddit.com/r/ethereum/comments/66gr2a/metropolis_and_erc23_request_for/"
   },
   {
     text: "The problem was reported during ERC-20 standard finalization, there were $16,000 lost ethereum/EIPs#610 (comment)",
-    href: "#"
+    href: "https://github.com/ethereum/EIPs/pull/610#issuecomment-296711733"
   },
   {
     text: "By 2018 the amount of lost tokens has grown to $1,000,000",
-    href: "#"
+    href: "https://www.reddit.com/r/ethereum/comments/7mea1c/erc20_anniversary_new_ath_reached_1_000_000_lost/"
   },
   {
     text: "Fabian Vogelsteller, the creator of ERC-20 decided not to use this standard in his new project LUKSO",
-    href: "#"
+    href: "https://twitter.com/feindura/status/1676623784726470658"
   },
   {
     text: "In 2023 the amount of lost tokens has grown to $201,000,000",
-    href: "#"
+    href: "https://gist.github.com/Dexaran/40213a04ce46b394279ac7daa581ce87"
   }
 ]
 
@@ -47,10 +47,12 @@ export default function Fight() {
         <ul className={styles.problemsList}>
           {problems.map((problem) => {
             return <li key={problem.text} className={styles.problemItem}>
-              <span>{problem.text}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M18.2227 14.8799C18.2227 15.1201 18.1406 15.3193 17.9766 15.4775C17.8184 15.6357 17.6338 15.7148 17.4229 15.7148C17.2061 15.7148 17.0186 15.6328 16.8604 15.4688C16.708 15.3047 16.6318 15.1201 16.6318 14.915V11.6631L16.79 7.55859L15.3398 9.20215L6.6123 17.9209C6.4541 18.0791 6.26953 18.1582 6.05859 18.1582C5.91211 18.1582 5.77734 18.1201 5.6543 18.0439C5.53125 17.9678 5.43164 17.8682 5.35547 17.7451C5.2793 17.6162 5.24121 17.4814 5.24121 17.3408C5.24121 17.1357 5.32324 16.9512 5.4873 16.7871L14.1973 8.05957L15.832 6.62695L11.543 6.76758H8.48438C8.2793 6.76758 8.09473 6.69141 7.93066 6.53906C7.77246 6.38086 7.69336 6.19629 7.69336 5.98535C7.69336 5.77441 7.76953 5.58984 7.92188 5.43164C8.07422 5.26758 8.27344 5.18555 8.51953 5.18555H17.3613C17.625 5.18555 17.833 5.26465 17.9854 5.42285C18.1377 5.58105 18.2139 5.78613 18.2139 6.03809L18.2227 14.8799Z" fill="#F5FFF9"/>
-              </svg>
+              <a href={problem.href} className={styles.problemItemLink}>
+                <span>{problem.text}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18.2227 14.8799C18.2227 15.1201 18.1406 15.3193 17.9766 15.4775C17.8184 15.6357 17.6338 15.7148 17.4229 15.7148C17.2061 15.7148 17.0186 15.6328 16.8604 15.4688C16.708 15.3047 16.6318 15.1201 16.6318 14.915V11.6631L16.79 7.55859L15.3398 9.20215L6.6123 17.9209C6.4541 18.0791 6.26953 18.1582 6.05859 18.1582C5.91211 18.1582 5.77734 18.1201 5.6543 18.0439C5.53125 17.9678 5.43164 17.8682 5.35547 17.7451C5.2793 17.6162 5.24121 17.4814 5.24121 17.3408C5.24121 17.1357 5.32324 16.9512 5.4873 16.7871L14.1973 8.05957L15.832 6.62695L11.543 6.76758H8.48438C8.2793 6.76758 8.09473 6.69141 7.93066 6.53906C7.77246 6.38086 7.69336 6.19629 7.69336 5.98535C7.69336 5.77441 7.76953 5.58984 7.92188 5.43164C8.07422 5.26758 8.27344 5.18555 8.51953 5.18555H17.3613C17.625 5.18555 17.833 5.26465 17.9854 5.42285C18.1377 5.58105 18.2139 5.78613 18.2139 6.03809L18.2227 14.8799Z" fill="currentColor"/>
+                </svg>
+              </a>
             </li>
           })}
         </ul>

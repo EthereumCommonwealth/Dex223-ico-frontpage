@@ -38,9 +38,8 @@
   }
 }
 
-.problemItem {
+.problemItemLink {
   padding: 14px 0;
-  border-bottom: 1px solid colors.$border-primary;
   color: colors.$text-secondary;
   display: grid;
   grid-template-columns: 1fr 24px;
@@ -51,10 +50,19 @@
   @include media.for-mobile {
     @include typography.t-body-14;
   }
+  transition-duration: 0.2s;
 
   svg {
     margin-top: 4px;
   }
+
+  &:hover {
+    color: colors.$palette-green;
+  }
+}
+
+.problemItem {
+  border-bottom: 1px solid colors.$border-primary;
 }
 
 .rightContent {

@@ -29,7 +29,7 @@
 .bannerForm {
   grid-area: r;
   //display: flex;
-  padding-top: 40px;
+  padding-top: 20px;
   position: relative;
 }
 
@@ -217,9 +217,14 @@
     background: #363636;
     border: 1px solid colors.$border-primary;
     @include typography.t-body-18;
+    transition-duration: 0.2s;
 
     &::placeholder {
       color: colors.$text-secondary;
+    }
+
+    &:hover {
+      border-color: colors.$text-primary;
     }
 
     &:focus {

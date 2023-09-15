@@ -7,10 +7,10 @@ import {
 } from "../../../constants/tokens";
 import clsx from "clsx";
 import Image from "next/image";
-import TokenCard from "../../organisms/TokenCard";
-import Button from "../Button";
+import TokenCard from "../TokenCard";
+import Button from "../../atoms/Button";
 import {useWeb3Modal} from "@web3modal/react";
-import Spacer from "../Spacer";
+import Spacer from "../../atoms/Spacer";
 import {
   useAccount,
   useBalance,
@@ -22,12 +22,12 @@ import {
 import testICOABI from "../../../constants/abis/testICOABI.json";
 import {formatUnits, parseUnits} from "viem";
 import ERC20ABI from "../../../constants/abis/erc20.json";
-import Preloader from "../Preloader";
+import Preloader from "../../atoms/Preloader";
 
 
 const ICOContract: `0x${string}` = "0xF8e0fa622025BB391d2136f3c52D8dA5611a68ED";
 
-function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving}) {
+function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving, symbol}) {
   const {open, close, setDefaultChain} = useWeb3Modal();
   const {address, isConnected} = useAccount();
 
@@ -53,7 +53,7 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
   }
 
   if(!isApproved) {
-    return <Button onClick={handleApprove}>Approve</Button>
+    return <Button onClick={handleApprove}>Approve {symbol}</Button>
   }
 
   return <Button onClick={handleBuy}>Buy ERC223</Button>
@@ -208,6 +208,7 @@ export default function BuyForm() {
       isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
       isApproving={isApproving}
       isAmountEntered={Boolean(amountToPay)}
+      symbol={pickedToken.symbol}
     />
     <Spacer height={8} />
   </>;

@@ -94,7 +94,6 @@ const slides = [
           </svg>
         } name="Wormhole hack" percentage={70} />
       </div>
-
     </div>
   },
   {
@@ -163,15 +162,15 @@ const slides = [
         ERC-20 swap consumed 257K GAS.
       </p>
       <ul className={styles.slideList}>
-        <li><ExternalTextLink href="#" text="Approval"/> 45K GAS</li>
-        <li><ExternalTextLink href="#" text="Tokens swap"/> 212K GAS</li>
+        <li><ExternalTextLink href="https://explorer.callisto.network/tx/0xa20d2838ea371759f92e7d4ae9700d2de96cf65de738b518dea1753db7180377" text="Approval"/> 45K GAS</li>
+        <li><ExternalTextLink href="https://explorer.callisto.network/tx/0xedf726375e86b2e1df80a614049ab5e1a797174fb762d81471e3379e98497d36" text="Tokens swap"/> 212K GAS</li>
       </ul>
       <p className={styles.secondaryParagraph}>
         ERC-223 swap of the same token consumed 220K GAS
         and doesn&apos;t require an approval transaction at all.
       </p>
       <ul className={styles.slideList}>
-        <li><ExternalTextLink href="#" text="ERC-223 tokens swap"/> 220K GAS</li>
+        <li><ExternalTextLink href="https://explorer.callisto.network/tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b" text="ERC-223 tokens swap"/> 220K GAS</li>
       </ul>
     </div>,
     illustration: <div className={styles.gasOptimisationIllustration}>

@@ -31,7 +31,7 @@ export const SnackbarProvider = ({ children }) => {
     () => {
       const t = setTimeout(
         () => {
-          // setOpen(false);
+          setOpen(false);
         },
         duration
       );
