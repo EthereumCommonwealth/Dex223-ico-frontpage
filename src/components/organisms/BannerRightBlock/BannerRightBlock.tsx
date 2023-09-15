@@ -12,6 +12,7 @@ export default function BannerRightBlock() {
 
   return <div className={styles.formToBuy}>
     <div className={styles.preICOText}>pre-ICO: Round 1</div>
+    <p className={styles.ico}>ICO contract: 0x1F369D3541AA908021399036830BCe70B4E06DAE</p>
     <div className={styles.counter}>
       <span className={styles.counterNumber}>{days}</span>
       <span className={styles.doubleDots}>:</span>

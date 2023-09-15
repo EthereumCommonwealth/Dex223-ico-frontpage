@@ -24,10 +24,9 @@ import {formatUnits, parseUnits} from "viem";
 import ERC20ABI from "../../../constants/abis/erc20.json";
 import Preloader from "../../atoms/Preloader";
 
+const ICOContract: `0x${string}` = "0x1F369D3541AA908021399036830BCe70B4E06DAE";
 
-const ICOContract: `0x${string}` = "0xF8e0fa622025BB391d2136f3c52D8dA5611a68ED";
-
-function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving, symbol, waitingForApprove, chainId}) {
+function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving, symbol, waitingForApprove, chainId, isPurchasing}) {
   const {open, close, setDefaultChain} = useWeb3Modal();
   const {address, isConnected} = useAccount();
   const { switchNetwork } = useSwitchNetwork();
@@ -48,8 +47,17 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
     return <Button onClick={() => switchNetwork(820)}>Switch to Callisto Network</Button>
   }
 
+  if(isPurchasing) {
+    return <Button disabled>
+      <span className={styles.waitingContent}>
+        <span>Purchasing</span>
+        <Preloader type="circular" size={24} />
+      </span>
+    </Button>
+  }
+
   if(isApproving) {
-    return <Button onClick={handleApprove} disabled>
+    return <Button disabled>
       <span className={styles.waitingContent}>
         <span>Approving</span>
         <Preloader type="circular" size={24} />
@@ -79,7 +87,7 @@ export default function BuyForm() {
   const [pickedTokenId, setPickedTokenId] = useState(100);
 
   const contractBalance = useBalance({
-    address: "0xF8e0fa622025BB391d2136f3c52D8dA5611a68ED",
+    address: ICOContract,
     token: "0xf5717D6c1cbAFE00A4c800B227eCe496180244F9",
     chainId: 820,
     watch: true
@@ -141,7 +149,7 @@ export default function BuyForm() {
     watch: true
   });
 
-  const { write: buyTokens, isLoading: waitingForPurchase } = useContractWrite({
+  const { data: purchaseData, write: buyTokens, isLoading: waitingForPurchase } = useContractWrite({
     address: ICOContract,
     abi: testICOABI,
     functionName: 'purchaseTokens',
@@ -149,6 +157,10 @@ export default function BuyForm() {
       pickedToken.address,
       parseUnits(amountToPay, pickedToken.decimals)
     ]
+  });
+
+  const { isLoading: isPurchasing } = useWaitForTransaction({
+    hash: purchaseData?.hash,
   });
 
   const processBuyTokens = useCallback(() => {
@@ -205,6 +217,7 @@ export default function BuyForm() {
       isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
       isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
       isApproving={isApproving}
+      isPurchasing={isPurchasing}
       waitingForApprove={waitingForApprove || waitingForPurchase}
       isAmountEntered={Boolean(+amountToPay)}
       symbol={pickedToken.symbol}
