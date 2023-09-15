@@ -5,6 +5,7 @@ import OverlineText from "../../atoms/OverlineText";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Text from "../../atoms/Text";
 import Image from "next/image";
+import {useSwipeable} from "react-swipeable";
 
 function LostCard({icon, name, lost, percentage, color, active = false}) {
   return <div className={clsx(styles.lostCard, active && styles.active)}>
@@ -366,12 +367,16 @@ export default function EcosystemProblems() {
     );
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => previousSlide,
+    onSwipedRight: () => nextSlide,
+  });
 
   return <div className="container">
     <div className={styles.ecosystemProblems}>
       <div className={styles.sliderContainer}>
         <div className={styles.slides}>
-          <div className={styles.slide}>
+          <div {...handlers} className={styles.slide}>
             <div className={styles.illustration}>
               {slides[activeSlide].illustration}
             </div>
