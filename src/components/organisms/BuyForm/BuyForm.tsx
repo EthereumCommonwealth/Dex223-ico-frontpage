@@ -202,7 +202,7 @@ export default function BuyForm() {
     <div className={styles.progressBar}>
       <div style={{width: `${barPercentage}%`}} className={styles.bar} />
     </div>
-    <div className={styles.raised}>D233 raised: {contractBalance?.data?.formatted ? 80000000 - +contractBalance?.data?.formatted : "—"} / 80000000</div>
+    <div className={styles.raised}>D233 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toFixed(2) : "—"} / 80000000</div>
     <div className={styles.ratio}><span>1 DEX223 = 0.0004 {pickedToken.symbol}</span></div>
     <div className={styles.tokenCards}>
       {tokensToPayWithForPreSale.map((token) => {
