@@ -144,10 +144,59 @@
 .labels {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+
+  @media screen and (max-width: 725px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 24px;
+  }
 }
 
 .columnLabel {
   display: grid;
+  gap: 8px;
+  grid-template-rows: 1fr auto;
+
+  @include media.for-laptop {
+    gap: 4px;
+  }
+
+  @media screen and (max-width: 725px) {
+    gap: 0;
+    background-color: colors.$background-secondary;
+    border-radius: 4px;
+    padding: 8px 16px;
+
+    &:nth-child(1) {
+      border-left: 4px solid #E5DCFF;
+    }
+
+    &:nth-child(2) {
+      border-left: 4px solid #B196FF;
+    }
+
+    &:nth-child(3) {
+      border-left: 4px solid #946FFF;
+    }
+
+    &:nth-child(4) {
+      border-left: 4px solid #8358FF;
+    }
+
+    &:nth-child(5) {
+      border-left: 4px solid #7649F8;
+    }
+  }
+}
+
+.labelPercentage {
+  display: none;
+
+  @media screen and (max-width: 725px) {
+    display: block;
+    @include typography.t-body-16;
+    font-weight: 500;
+  }
 }
 
 .percentage {
@@ -221,3 +270,52 @@
   }
 }
 
+.labelText {
+  @include typography.t-body-18;
+  color: colors.$text-secondary;
+  display: block;
+  padding-right: 10px;
+
+  @include media.for-desktop {
+    @include typography.t-body-16;
+  }
+
+  @include media.for-laptop {
+    @include typography.t-body-14;
+  }
+
+  @include media.for-tablet {
+    @include typography.t-body-12;
+  }
+
+  @media screen and (max-width: 725px) {
+    @include typography.t-body-14;
+    color: colors.$text-primary;
+  }
+}
+
+.labelValue {
+  @include typography.t-body-18;
+  color: colors.$text-primary;
+  font-weight: 700;
+
+  @include media.for-desktop {
+    @include typography.t-body-16;
+  }
+
+  @include media.for-laptop {
+    @include typography.t-body-14;
+  }
+
+  @include media.for-tablet {
+    @include typography.t-body-12;
+  }
+
+  @media screen and (max-width: 725px) {
+    display: flex;
+    justify-content: space-between;
+    @include typography.t-body-14;
+    font-weight: 400;
+    color: colors.$text-secondary;
+  }
+}

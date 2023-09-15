@@ -9,10 +9,11 @@ interface Props {
   overlineText: string,
   leftContent: any,
   rightContent?: any,
-  differentColumns?: boolean
+  differentColumns?: boolean,
+  anchor?: string
 }
 
-export default function NeonBlock({icon, color, overlineText, leftContent, rightContent, differentColumns = false}: Props) {
+export default function NeonBlock({icon, color, overlineText, leftContent, rightContent, differentColumns = false, anchor}: Props) {
   return <div className="container">
     <div className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different)}>
       <div className={styles.leftContent}>
@@ -25,6 +26,7 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
           </div>
         </div>
         <div className={styles.neonLineWrapper}>
+          {anchor && <span className={styles.anchor} id={anchor} />}
           <div className={styles.neonIcon}>
             {icon}
           </div>

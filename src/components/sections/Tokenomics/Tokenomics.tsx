@@ -37,6 +37,7 @@ export default function Tokenomics() {
       color="purple"
       overlineText="Allocation"
       differentColumns
+      anchor="tokenomics"
       leftContent={
         <>
           <ArticleHeading text="Tokenomics"/>
@@ -93,36 +94,30 @@ export default function Tokenomics() {
           </div>
         </div>
         <Spacer height={20}/>
-        {/*<div className={styles.labels}>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Marketing</Text>*/}
-        {/*    <Text weight={500} variant={16}>$160,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Development</Text>*/}
-        {/*    <Text weight={500} variant={16}>$480,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Liquidity</Text>*/}
-        {/*    <Text weight={500} variant={16}>$640,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Team</Text>*/}
-        {/*    <Text weight={500} variant={16}>$640,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Partnership</Text>*/}
-        {/*    <Text weight={500} variant={16}>$960,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Sale</Text>*/}
-        {/*    <Text weight={500} variant={16}>$1,920,000</Text>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.columnLabel}>*/}
-        {/*    <Text variant={20}>Ecosystem</Text>*/}
-        {/*    <Text weight={500} variant={16}>$3,200,000</Text>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+      </div>
+    </div>
+    <div className="container">
+      <div className={styles.labels}>
+        <div className={styles.columnLabel}>
+          <span className={styles.labelText}>Exclusive pre-ICO sales at SOY.Finance</span>
+          <span className={styles.labelValue}>240,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+        </div>
+        <div className={styles.columnLabel}>
+          <span className={styles.labelText}>Core team allocation</span>
+          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+        </div>
+        <div className={styles.columnLabel}>
+          <span className={styles.labelText}>Project development & team incentivization</span>
+          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+        </div>
+        <div className={styles.columnLabel}>
+          <span className={styles.labelText}>Private investment rounds</span>
+          <span className={styles.labelValue}>800,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+        </div>
+        <div className={styles.columnLabel}>
+          <span className={styles.labelText}>Public sales</span>
+          <span className={styles.labelValue}>5,440,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+        </div>
       </div>
     </div>
   </>;

@@ -134,9 +134,25 @@
   }
 }
 
+.anchor {
+  height: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: -85px;
+
+  @include media.for-desktop {
+    bottom: -65px;
+  }
+
+  @include media.for-tablet {
+    bottom: -21px;
+  }
+}
+
 .paragraphs {
   display: grid;
   gap: 20px;
+
 
   @include media.for-tablet {
     gap: 12px;
@@ -165,5 +181,34 @@
 
   @include media.for-mobile {
     gap: 16px;
+  }
+}
+
+.list ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 50px;
+  list-style: none;
+
+  li {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: -24px;
+      background-color: colors.$text-secondary;
+      transform: translateY(-50%);
+
+      @include media.for-mobile {
+        top: 8px;
+        transform: unset;
+      }
+
+      //transform: translateY(40%);
+    }
   }
 }

@@ -79,6 +79,15 @@
     @include typography.t-body-16;
     text-transform: uppercase;
     cursor: pointer;
+
+    a {
+      color: colors.$text-primary;
+      transition-duration: 0.2s;
+
+      &:hover {
+        color: colors.$palette-green;
+      }
+    }
   }
 
   @include media.for-laptop {
@@ -111,6 +120,7 @@
   position: relative;
   margin-right: -12px;
   display: none;
+  cursor: pointer;
 
   @include media.for-laptop {
     display: block;
@@ -142,5 +152,56 @@
 
   @include media.for-laptop {
     display: none;
+  }
+}
+
+.menuWrapper {
+  background-color: colors.$background-secondary;
+  height: 100%;
+}
+
+.menuHeader {
+  padding: 10px 16px 22px;
+  height: 60px;
+}
+
+.menuContent {
+  height: calc(100% - 60px);
+  display: grid;
+  grid-template-rows: 1fr 64px;
+}
+
+.menuListButton {
+  width: 100%;
+  height: 48px;
+  padding-left: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  border: 0;
+  color: colors.$text-primary;
+
+  background-color: transparent;
+
+  @include typography.t-body-16;
+}
+
+.socials {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 16px;
+
+  button {
+    border-radius: 4px;
+    border: 1px solid var(--border-normal, #5A5A5A);
+    background: var(--color-block, #1D1C1E);
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+      border-color: colors.$text-primary;
+    }
   }
 }

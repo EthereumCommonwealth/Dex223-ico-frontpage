@@ -11,6 +11,7 @@ export default function ContactUs() {
     </svg>}
     color="green"
     overlineText="Contact Us"
+    anchor="contact"
     leftContent={
       <>
         <ArticleHeading text="Get in touch" />

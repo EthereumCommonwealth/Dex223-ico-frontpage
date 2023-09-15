@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent, useCallback, useState} from "react";
 import styles from "./NewBanner.module.scss";
 import Button from "../../atoms/Button";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
@@ -6,8 +6,51 @@ import clsx from "clsx";
 import BannerRightBlock from "../../atoms/BannerRightBlock";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../../lottie/banner.json";
+import {useSnackbar} from "../../../providers/SnackbarProvider";
+import Preloader from "../../atoms/Preloader";
 
 export default function NewBanner() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+  const {showMessage} = useSnackbar();
+
+  const handleEmailSubmit = useCallback(async () => {
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("https://mail.dex223.io/email-notification/notification/save-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInput
+        })
+      });
+      const data = await res.json();
+
+      console.log(data);
+      if(data.created) {
+        showMessage("You have successfully subscribed to our newsletter");
+      }
+
+      if(res.status === 400) {
+        if(data.detail) {
+          showMessage(data.detail, "error");
+        }
+      }
+
+      if(res.status === 422) {
+        showMessage("Error: invalid email", "error");
+      }
+
+      setIsSubmitting(false);
+    } catch (e) {
+      console.log(e);
+      showMessage("Unknown error", "error");
+      setIsSubmitting(false);
+    }
+  }, [emailInput, showMessage]);
+
   return <div className="container">
     <div className={styles.gridWrapper}>
       <div className={styles.bannerText}>
@@ -56,8 +99,11 @@ export default function NewBanner() {
           <div className={clsx(styles.content, styles.subscribeContent)}>
             <h2 className={styles.additionalInfoHeader}>Subscribe to our newsletter</h2>
             <div className={styles.subscribe}>
-              <input placeholder="Your email" type="text"/>
-              <Button>Subscribe</Button>
+              <input value={emailInput} onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setEmailInput(e.target.value);
+              }} placeholder="Your email" type="email"/>
+
+              <Button disabled={isSubmitting} onClick={handleEmailSubmit}>{isSubmitting ? <Preloader size={20} /> : "Subscribe"}</Button>
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ export default function Philosophy() {
       </svg>}
       color="green"
       overlineText="Our Goals"
+      anchor="philosophy"
       leftContent={
         <>
           <ArticleHeading text="Philosophy"/>
