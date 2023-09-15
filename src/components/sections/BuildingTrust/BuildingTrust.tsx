@@ -38,7 +38,7 @@ export default function BuildingTrust() {
           <ul className={styles.list}>
             <li className={styles.option}>
               <h4 className={styles.listTitle}>Proven Enterprise Experience</h4>
-              <p className={styles.listText}>Our team&apos;s credibility shines through our collaboration with <a className={styles.soyLink} href="https://www.callistoenterprise.com/">Callisto Enterprise</a>,
+              <p className={styles.listText}>Our team&apos;s credibility shines through our collaboration with <a target="_blank" className={styles.soyLink} href="https://www.callistoenterprise.com/">Callisto Enterprise</a>,
                 where we developed a cutting-edge exchange that met their specific needs and standards.</p>
             </li>
             <li className={styles.option}>
