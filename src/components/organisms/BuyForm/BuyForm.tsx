@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {ChangeEvent, useCallback, useMemo, useState} from "react";
+import React, {ChangeEvent, useCallback, useEffect, useMemo, useState} from "react";
 import styles from "./BuyForm.module.scss";
 import {
   TEST_DEX223,
@@ -23,6 +23,7 @@ import testICOABI from "../../../constants/abis/testICOABI.json";
 import {formatUnits, parseUnits} from "viem";
 import ERC20ABI from "../../../constants/abis/erc20.json";
 import Preloader from "../../atoms/Preloader";
+import {useSnackbar} from "../../../providers/SnackbarProvider";
 
 const ICOContract: `0x${string}` = "0x1F369D3541AA908021399036830BCe70B4E06DAE";
 
@@ -83,6 +84,7 @@ export default function BuyForm() {
   const { chain } = useNetwork();
 
   const [amountToPay, setAmountToPay] = useState("");
+  const {showMessage} = useSnackbar();
 
   const [pickedTokenId, setPickedTokenId] = useState(100);
 
@@ -159,8 +161,11 @@ export default function BuyForm() {
     ]
   });
 
-  const { isLoading: isPurchasing } = useWaitForTransaction({
+  const { isLoading: isPurchasing, isSuccess,  } = useWaitForTransaction({
     hash: purchaseData?.hash,
+    onSuccess(data) {
+      showMessage("Successfully purchased");
+    }
   });
 
   const processBuyTokens = useCallback(() => {
