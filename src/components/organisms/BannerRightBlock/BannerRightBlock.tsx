@@ -11,6 +11,7 @@ export default function BannerRightBlock() {
   // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"]
 
   return <div className={styles.formToBuy}>
+    <div className={styles.preICOText}>pre-ICO: Round 1</div>
     <div className={styles.counter}>
       <span className={styles.counterNumber}>{days}</span>
       <span className={styles.doubleDots}>:</span>

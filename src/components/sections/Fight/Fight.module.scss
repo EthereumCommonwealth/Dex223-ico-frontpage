@@ -94,3 +94,14 @@
     }
   }
 }
+
+.subheading {
+  @include typography.t-body-24;
+  color: colors.$text-primary;
+  margin-bottom: 24px;
+  font-weight: 600;
+
+  @include media.for-tablet {
+    @include typography.t-body-20;
+  }
+}

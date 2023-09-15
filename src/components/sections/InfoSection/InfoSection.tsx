@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./InfoSection.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
 import ArticleHeading from "../../atoms/ArticleHeading";
-import Text from "../../atoms/Text";
+import ExternalTextLink from "../../atoms/ExternalTextLink";
 
 const infoFields = [
   {
@@ -27,7 +27,7 @@ const infoFields = [
   },
   {
     label: "Standard",
-    value: "ERC-223 / Convertable to ERC-20 via EIP-7417"
+    value: <>ERC-223 / Convertable to ERC-20 via <ExternalTextLink text="EIP-7417" href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md" /></>
   },
   {
     label: "Public safe price",

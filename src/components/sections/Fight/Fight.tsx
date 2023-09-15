@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Fight.module.scss";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
+import ExternalTextLink from "../../atoms/ExternalTextLink";
 
 const problems = [
   {
@@ -40,6 +41,9 @@ export default function Fight() {
     leftContent={
       <>
         <ArticleHeading text="ERC-20 vs ERC-223 fight" />
+        <h4 className={styles.subheading}>
+          Unveil the full history of ERC-223 vs ERC-20 fight going since 2017 <ExternalTextLink text="here" href="https://dexaran.github.io/erc223" />
+        </h4>
         <div className={styles.paragraphs}>
           <p className={styles.text}>Tokens and plain ether are deposited differently to &quot;Externally Owner Addresses&quot; (addresses owned by humans) and to smart-contracts. Ether and ERC-223 tokens automatically determine if the recipient of the deposit is a contract or EOA and decide the method of deposit accordingly. ERC-20 tokens however place the burden of determining the transferring method on the user. Even worse, if the ERC-20 token transferring method is chosen incorrectly, this results in the loss of tokens due to the impossibility of error handling with ERC-20 standard.</p>
           <p className={styles.text}>This problem of ERC-20 standard is widely known:</p>
@@ -56,7 +60,6 @@ export default function Fight() {
             </li>
           })}
         </ul>
-
       </>
     }
     rightContent={

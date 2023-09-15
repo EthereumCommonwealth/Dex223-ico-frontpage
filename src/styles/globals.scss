@@ -1,5 +1,6 @@
 @use "typography";
 @use "media-new";
+@use "colors";
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
@@ -57,4 +58,8 @@ body {
 
 .bold {
   font-weight: 700;
+}
+
+.primary-color {
+  color: colors.$text-primary;
 }

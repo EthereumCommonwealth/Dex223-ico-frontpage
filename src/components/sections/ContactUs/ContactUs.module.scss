@@ -78,10 +78,42 @@
     @include media.for-tablet {
       height: 48px;
       padding: 0 20px 0 24px;
-
     }
-
-
   }
+}
 
+.openSrcInfo {
+  border-radius: 4px;
+  background: colors.$background-secondary;
+  padding: 12px 20px;
+  color: colors.$text-primary;
+  display: flex;
+  gap: 10px;
+  text-align: left;
+  border-left: 4px solid colors.$palette-green;
+  margin-top: 20px;
+
+  @include typography.t-body-20;
+
+  @include media.for-tablet {
+    @include typography.t-body-16;
+  }
+}
+
+.srcIcon {
+  display: block;
+  height: 32px;
+  width: 32px;
+  padding-top: 2px;
+  flex-shrink: 0;
+
+  @include media.for-tablet {
+    height: 24px;
+    width: 24px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

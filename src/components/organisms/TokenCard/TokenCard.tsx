@@ -3,6 +3,7 @@ import styles from "./TokenCard.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
 import Spacer from "../../atoms/Spacer";
+import { NumericFormat } from 'react-number-format';
 
 interface Props {
   type: "pay" | "receive",
@@ -19,7 +20,15 @@ export default function TokenCard({type, tokenName, tokenLogo, amount, handleCha
     <div className={styles.tokenCard}>
     <div className={styles.inputWrapper}>
       <h2>{type === "pay" ? <span>Amount in <span className="bold">{tokenName}</span> you pay</span> : <span>Amount in <span className="bold">{tokenName}</span> you receive</span>}</h2>
-      <input placeholder={"0"} className={clsx(styles.input)} type="text" value={amount} onChange={handleChange} readOnly={readonly} />
+      <NumericFormat
+        onValueChange={(values) => handleChange(values.value)}
+        placeholder={"0"}
+        className={clsx(styles.input)}
+        readOnly={readonly}
+        // customInput={<input    />}
+        type="text"
+        value={amount}
+      />
     </div>
     <div className={styles.imageWrapper}><Image layout="fill" objectFit="contain" src={tokenLogo} alt="" /></div>
 

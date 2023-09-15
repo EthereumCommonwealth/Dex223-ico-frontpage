@@ -382,7 +382,7 @@ export default function EcosystemProblems() {
             </div>
             <div className={styles.slideTextContent}>
               <div>
-                <OverlineText text="Problem Of Ecosystem" color="purple"/>
+                <OverlineText text="Problems Of Ecosystem" color="purple"/>
                 {slides.map((slide, index) => {
                   return <div key={index} className={styles.slideTextWrapper}>
                     <EcosystemSlide index={index} slide={slide} activeSlide={activeSlide}/>

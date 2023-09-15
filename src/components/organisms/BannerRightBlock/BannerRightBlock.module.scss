@@ -118,3 +118,15 @@
 .green {
   color: colors.$palette-green;
 }
+
+.preICOText {
+  @include typography.t-body-24;
+  text-align: center;
+  color: colors.$text-primary;
+  margin-bottom: 16px;
+
+  @include media.for-tablet {
+    @include typography.t-body-20;
+    margin-bottom: 12px;
+  }
+}

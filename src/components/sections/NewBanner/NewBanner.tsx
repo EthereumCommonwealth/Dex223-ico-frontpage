@@ -81,10 +81,10 @@ export default function NewBanner() {
             <h2 className={styles.additionalInfoHeader}>Status</h2>
             <p className={styles.paragraph}>
               DEX223 token sale: We have not yet announced the date nor the terms of our
-              upcoming public token sale. We will do so via our social channels and this page. Stay tuned.
+              upcoming <span className="primary-color bold">public token sale</span>. We will do so via our social channels and this page. Stay tuned.
             </p>
             <p className={styles.paragraph}>
-              Currently a private pre-sale of tokens is ongoing, contact <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto: dexaran@ethereumclassic.org" /> for more details regarding the participation.
+              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing, contact <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto: dexaran@ethereumclassic.org" /> for more details regarding the participation. In this round 1% of the total D223 tokens will be sold. Unsold tokens will move to public sale rounds.
             </p>
           </div>
         </div>

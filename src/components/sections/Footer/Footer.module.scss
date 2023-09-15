@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
 
-  @include media.for-mobile {
+  @include media.for-laptop {
     flex-direction: column;
     padding: 24px 0 16px;
     gap: 16px;
@@ -130,7 +130,7 @@
   text-align: right;
   @include typography.t-body-16;
 
-  @include media.for-mobile {
+  @include media.for-laptop {
     text-align: left;
     @include typography.t-body-12;
     br {

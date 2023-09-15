@@ -15,8 +15,8 @@ import {
   useAccount,
   useBalance,
   useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
+  useContractWrite, useNetwork,
+  usePrepareContractWrite, useSwitchNetwork,
   useWaitForTransaction
 } from "wagmi";
 import testICOABI from "../../../constants/abis/testICOABI.json";
@@ -27,20 +27,25 @@ import Preloader from "../../atoms/Preloader";
 
 const ICOContract: `0x${string}` = "0xF8e0fa622025BB391d2136f3c52D8dA5611a68ED";
 
-function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving, symbol}) {
+function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, isAmountEntered, isApproving, symbol, waitingForApprove, chainId}) {
   const {open, close, setDefaultChain} = useWeb3Modal();
   const {address, isConnected} = useAccount();
-
-  if(!isConnected) {
-    return <Button onClick={open}>Connect wallet</Button>;
-  }
+  const { switchNetwork } = useSwitchNetwork();
 
   if(!isAmountEntered) {
     return <Button disabled>Enter amount</Button>;
   }
 
+  if(!isConnected) {
+    return <Button onClick={open}>Connect wallet</Button>;
+  }
+
   if(!isEnoughBalance) {
     return <Button disabled>Insufficient balance</Button>;
+  }
+
+  if(chainId !== 820) {
+    return <Button onClick={() => switchNetwork(820)}>Switch to Callisto Network</Button>
   }
 
   if(isApproving) {
@@ -52,15 +57,22 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
     </Button>
   }
 
+  if(waitingForApprove) {
+    return <Button onClick={handleApprove} disabled>
+        <Preloader type="circular" size={24} />
+    </Button>
+  }
+
   if(!isApproved) {
     return <Button onClick={handleApprove}>Approve {symbol}</Button>
   }
 
-  return <Button onClick={handleBuy}>Buy ERC223</Button>
+  return <Button onClick={handleBuy}>Buy Tokens</Button>
 }
 
 export default function BuyForm() {
   const { address } = useAccount();
+  const { chain } = useNetwork();
 
   const [amountToPay, setAmountToPay] = useState("");
 
@@ -112,7 +124,7 @@ export default function BuyForm() {
     ]
   });
 
-  const {data: approvingData ,write: writeTokenApprove} = useContractWrite(allowanceConfig);
+  const {data: approvingData, write: writeTokenApprove, isLoading: waitingForApprove} = useContractWrite(allowanceConfig);
 
   const { isLoading: isApproving } = useWaitForTransaction({
     hash: approvingData?.hash,
@@ -129,7 +141,7 @@ export default function BuyForm() {
     watch: true
   });
 
-  const { write: buyTokens } = useContractWrite({
+  const { write: buyTokens, isLoading: waitingForPurchase } = useContractWrite({
     address: ICOContract,
     abi: testICOABI,
     functionName: 'purchaseTokens',
@@ -139,21 +151,7 @@ export default function BuyForm() {
     ]
   });
 
-  // const { config } = usePrepareSendTransaction({
-  //   to: ICOContract,
-  //   value: parseUnits(amountToPay, pickedToken.decimals)
-  // });
-
-  // const { data, sendTransaction } =
-  //   useSendTransaction(config)
-
   const processBuyTokens = useCallback(() => {
-    // if(pickedToken.id === 11) {
-    //   //send CLO
-    //   sendTransaction();
-    //   return;
-    // }
-
     buyTokens();
   }, [buyTokens]);
 
@@ -197,7 +195,7 @@ export default function BuyForm() {
         </button>
       })}
     </div>
-    <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol} tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(e: ChangeEvent<HTMLInputElement>) => setAmountToPay(e.target.value)} />
+    <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol} tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)} />
     <Spacer height={12} />
     <TokenCard balance={testToken223Balance?.formatted} type="receive" tokenName="DEX223" tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} isLoading={isLoading} readonly />
     <Spacer height={20} />
@@ -207,8 +205,10 @@ export default function BuyForm() {
       isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
       isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
       isApproving={isApproving}
-      isAmountEntered={Boolean(amountToPay)}
+      waitingForApprove={waitingForApprove || waitingForPurchase}
+      isAmountEntered={Boolean(+amountToPay)}
       symbol={pickedToken.symbol}
+      chainId={chain.id}
     />
     <Spacer height={8} />
   </>;
