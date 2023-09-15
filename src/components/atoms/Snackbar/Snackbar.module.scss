@@ -70,10 +70,9 @@
 
 .info {
   border: 1px solid colors.$palette-blue;
-  box-shadow: 0 4px 0 colors.$palette-blue;
 
   .iconWrapper {
-    background: colors.$palette-blue;
+    color: colors.$palette-blue;
   }
 }
 

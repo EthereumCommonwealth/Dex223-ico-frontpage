@@ -3,7 +3,6 @@ import styles from "./EcosystemProblems.module.scss";
 import clsx from "clsx";
 import OverlineText from "../../atoms/OverlineText";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
-import Text from "../../atoms/Text";
 import Image from "next/image";
 import {useSwipeable} from "react-swipeable";
 
