@@ -174,6 +174,63 @@ const slides = [
         <li><ExternalTextLink href="https://explorer.callisto.network/tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b" text="ERC-223 tokens swap"/> 220K GAS</li>
       </ul>
     </div>,
+    illustration: <div className={styles.secureErc20}>
+      <div className={styles.secureErc20Green1}>
+        {/*<SmallCardHeader isSafe text="Secure ERC-20 Swap" />*/}
+        <img src="/images/sec1.png" alt=""/>
+      </div>
+      <div className={styles.secureErc20Green2}>
+        {/*<SmallCardHeader isSafe text="ERC-223 Swap" />*/}
+        <img src="/images/sec2.png" alt=""/>
+      </div>
+      <div className={styles.secureErc20Red}>
+        {/*<SmallCardHeader isSafe={false} text="Insecure ERC-20 Swap" />*/}
+        <img src="/images/sec3.png" alt=""/>
+      </div>
+    </div>
+  },
+  {
+    heading: "Interface decentralization",
+    content: <div className={styles.slideParagraphs}>
+      <p className={styles.primaryParagraph}>
+        Most DEXes still run one instance of centralized UI.
+      </p>
+      <p className={styles.secondaryParagraph}>
+        The ideology of cryptocurrencies is built upon decentralization. However
+        the benefits of decentralization are lost as soon as a centralized gateway
+        becomes involved. The emergence of DEXes is a big step towards decentralization.
+        Smart-contracts replaced the &quot;backend&quot; of traditional centralized exchanges
+        but interfaces remained as centralized as they were before.
+      </p>
+      <p className={styles.tertiaryParagraph}>
+        DEX223 will have multiple competing versions of the UI allowing for full decentralization.
+      </p>
+    </div>,
+    illustration: <div className={styles.lastSlide}>
+      <img src="/images/last-slide.svg" alt=""/>
+    </div>
+  },
+  {
+    heading: "Centralized token listings governed by exchange teams",
+    content: <div className={styles.slideParagraphs}>
+      <p className={styles.primaryParagraph}>
+        Most &quot;decentralized&quot; exchanges still rely on teams decision to list
+        a new token. This can be a nightmare for both token developers
+        who have to comply with the listing rules and users who may
+        not have some tokens available for trading.
+      </p>
+      <p className={styles.secondaryParagraph}>
+        Uniswap did a big step towards listing decentralization with their tokenlists
+        project but DEX223 goes even further. DEX223 will have an option to import
+        any asset from tokenlists as well as import a list of assets from a contract
+        deployed on Ethereum mainnet which will act as one decentralized tokenlist.
+      </p>
+      <p className={styles.tertiaryParagraph}>
+        Anyone will be able to list a new token on DEX223 without asking a permission
+        from exchange team just by paying an anti-spam listing fee via the
+        autolisting contract.
+      </p>
+    </div>,
     illustration: <div className={styles.gasOptimisationIllustration}>
       <div className={styles.gasOptimisationIllustrationCircle} />
       <svg width="501" height="505" viewBox="0 0 501 505" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -285,63 +342,6 @@ const slides = [
           </linearGradient>
         </defs>
       </svg>
-    </div>
-  },
-  {
-    heading: "Interface decentralization",
-    content: <div className={styles.slideParagraphs}>
-      <p className={styles.primaryParagraph}>
-        Most DEXes still run one instance of centralized UI.
-      </p>
-      <p className={styles.secondaryParagraph}>
-        The ideology of cryptocurrencies is built upon decentralization. However
-        the benefits of decentralization are lost as soon as a centralized gateway
-        becomes involved. The emergence of DEXes is a big step towards decentralization.
-        Smart-contracts replaced the &quot;backend&quot; of traditional centralized exchanges
-        but interfaces remained as centralized as they were before.
-      </p>
-      <p className={styles.tertiaryParagraph}>
-        DEX223 will have multiple competing versions of the UI allowing for full decentralization.
-      </p>
-    </div>,
-    illustration: <div className={styles.secureErc20}>
-      <div className={styles.secureErc20Green1}>
-        {/*<SmallCardHeader isSafe text="Secure ERC-20 Swap" />*/}
-        <img src="/images/sec1.png" alt=""/>
-      </div>
-      <div className={styles.secureErc20Green2}>
-        {/*<SmallCardHeader isSafe text="ERC-223 Swap" />*/}
-        <img src="/images/sec2.png" alt=""/>
-      </div>
-      <div className={styles.secureErc20Red}>
-        {/*<SmallCardHeader isSafe={false} text="Insecure ERC-20 Swap" />*/}
-        <img src="/images/sec3.png" alt=""/>
-      </div>
-    </div>
-  },
-  {
-    heading: "Centralized token listings governed by exchange teams",
-    content: <div className={styles.slideParagraphs}>
-      <p className={styles.primaryParagraph}>
-        Most &quot;decentralized&quot; exchanges still rely on teams decision to list
-        a new token. This can be a nightmare for both token developers
-        who have to comply with the listing rules and users who may
-        not have some tokens available for trading.
-      </p>
-      <p className={styles.secondaryParagraph}>
-        Uniswap did a big step towards listing decentralization with their tokenlists
-        project but DEX223 goes even further. DEX223 will have an option to import
-        any asset from tokenlists as well as import a list of assets from a contract
-        deployed on Ethereum mainnet which will act as one decentralized tokenlist.
-      </p>
-      <p className={styles.tertiaryParagraph}>
-        Anyone will be able to list a new token on DEX223 without asking a permission
-        from exchange team just by paying an anti-spam listing fee via the
-        autolisting contract.
-      </p>
-    </div>,
-    illustration: <div className={styles.lastSlide}>
-      <img src="/images/last-slide.svg" alt=""/>
     </div>
   }
 ];
