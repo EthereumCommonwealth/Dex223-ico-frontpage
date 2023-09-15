@@ -128,7 +128,7 @@ export default function Header() {
 
                 <span>{`${address.slice(0, 6)}...${address.slice(-7)}`}</span>
               </button>}
-              {!isConnected && <button className={styles.addressMenuButton} onClick={async () => {
+              {!isConnected && <button className={styles.connectWalletButton} onClick={async () => {
                 setMenuOpen(false);
                 await open();
               }}>

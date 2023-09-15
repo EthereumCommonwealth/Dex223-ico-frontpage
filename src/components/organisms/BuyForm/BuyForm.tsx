@@ -44,7 +44,7 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
     return <Button disabled>Insufficient balance</Button>;
   }
 
-  if(chainId !== 820) {
+  if(Boolean(chainId) && chainId !== 820) {
     return <Button onClick={() => switchNetwork(820)}>Switch to Callisto Network</Button>
   }
 
@@ -208,7 +208,7 @@ export default function BuyForm() {
       waitingForApprove={waitingForApprove || waitingForPurchase}
       isAmountEntered={Boolean(+amountToPay)}
       symbol={pickedToken.symbol}
-      chainId={chain.id}
+      chainId={chain?.id}
     />
     <Spacer height={8} />
   </>;

@@ -128,7 +128,7 @@
   }
 }
 
-.addressButton, .addressMenuButton {
+.addressButton, .addressMenuButton, .connectWalletButton {
   height: 40px;
   border: 1px solid #5A5A5A;
   background: #1D1C1E;
@@ -154,6 +154,13 @@
 
 .addressMenuButton {
   margin: 16px;
+}
+
+.connectWalletButton {
+  margin: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .addressButton {
