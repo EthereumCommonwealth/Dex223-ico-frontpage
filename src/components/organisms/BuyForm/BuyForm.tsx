@@ -187,12 +187,14 @@ export default function BuyForm() {
     }
 
     const percentage = (80000000 - +contractBalance?.data?.formatted) / 80000000;
+    const multipliedPercentage = percentage * 100;
+    console.log(percentage);
 
-    if(percentage < 0.5) {
+    if(multipliedPercentage < 0.5) {
       return 0.5;
     }
 
-    return percentage;
+    return multipliedPercentage;
   }, [contractBalance?.data?.formatted]);
 
 
