@@ -79,6 +79,8 @@ function ActionButton({isApproved, isEnoughBalance, handleApprove, handleBuy, is
   return <Button onClick={handleBuy}>Buy Tokens</Button>
 }
 
+const total = 80000000;
+
 export default function BuyForm() {
   const { address } = useAccount();
   const { chain } = useNetwork();
@@ -186,7 +188,7 @@ export default function BuyForm() {
       return 0.5;
     }
 
-    const percentage = (80000000 - +contractBalance?.data?.formatted) / 80000000;
+    const percentage = (total - +contractBalance?.data?.formatted) / total;
     const multipliedPercentage = percentage * 100;
     console.log(percentage);
 
@@ -202,7 +204,7 @@ export default function BuyForm() {
     <div className={styles.progressBar}>
       <div style={{width: `${barPercentage}%`}} className={styles.bar} />
     </div>
-    <div className={styles.raised}>D233 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toFixed(2) : "—"} / 80000000</div>
+    <div className={styles.raised}>D233 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}</div>
     <div className={styles.ratio}><span>1 DEX223 = 0.0004 {pickedToken.symbol}</span></div>
     <div className={styles.tokenCards}>
       {tokensToPayWithForPreSale.map((token) => {
