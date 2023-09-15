@@ -204,7 +204,7 @@ export default function BuyForm() {
     <div className={styles.progressBar}>
       <div style={{width: `${barPercentage}%`}} className={styles.bar} />
     </div>
-    <div className={styles.raised}>D233 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}</div>
+    <div className={styles.raised}>D223 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}</div>
     <div className={styles.ratio}><span>1 DEX223 = 0.0004 {pickedToken.symbol}</span></div>
     <div className={styles.tokenCards}>
       {tokensToPayWithForPreSale.map((token) => {
