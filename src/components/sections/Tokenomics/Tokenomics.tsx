@@ -104,19 +104,19 @@ export default function Tokenomics() {
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Core team allocation</span>
-          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>9.5%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Project development & team incentivization</span>
-          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>9.5%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Private investment rounds</span>
-          <span className={styles.labelValue}>800,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+          <span className={styles.labelValue}>800,000,000 D223 <span className={styles.labelPercentage}>10%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Public sales</span>
-          <span className={styles.labelValue}>5,440,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
+          <span className={styles.labelValue}>5,440,000,000 D223 <span className={styles.labelPercentage}>68%</span></span>
         </div>
       </div>
     </div>

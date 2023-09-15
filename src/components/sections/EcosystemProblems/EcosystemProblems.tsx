@@ -368,8 +368,8 @@ export default function EcosystemProblems() {
   };
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => previousSlide(),
-    onSwipedRight: () => nextSlide(),
+    onSwipedLeft: () => nextSlide(),
+    onSwipedRight: () => previousSlide(),
   });
 
   return <div className="container">
