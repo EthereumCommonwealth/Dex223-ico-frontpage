@@ -227,13 +227,14 @@ export default function BuyForm() {
 
 
   return <>
-    <p className={styles.specialOffer}>Don&apos;t miss the last chance to buy with a 60% discount</p>
     <div className={styles.progressBar}>
-      <div style={{width: `${barPercentage}%`}} className={styles.bar}/>
+      <div style={{width: `${0}%`}} className={styles.bar}/>
     </div>
-    <div className={styles.raised}>D223
-      sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}</div>
-    <div className={styles.ratio}><span>1 DEX223 = 0.0004 {pickedToken.symbol}</span></div>
+    <div className={styles.raised}>
+      {/*D223 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}*/}
+      D223 sold: — / —
+    </div>
+    <div className={styles.ratio}><span>1 DEX223 = 0.001 {pickedToken.symbol}</span></div>
     <div className={styles.tokenCards}>
       {tokensToPayWithForPreSale.map((token) => {
         return <button disabled={token.symbol !== "BUSDT"} key={token.id} onClick={() => setPickedTokenId(token.id)}
@@ -245,26 +246,27 @@ export default function BuyForm() {
         </button>
       })}
     </div>
-    <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
+    <TokenCard readonly balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={testToken223Balance?.formatted} type="receive" tokenName="DEX223"
                tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} isLoading={isLoading} readonly/>
     <Spacer height={20}/>
-    <ActionButton
-      handleApprove={writeTokenApprove}
-      handleBuy={processBuyTokens}
-      isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
-      isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
-      isApproving={isApproving}
-      isPurchasing={isPurchasing}
-      waitingForApprove={waitingForApprove || waitingForPurchase}
-      isAmountEntered={Boolean(+amountToPay)}
-      symbol={pickedToken.symbol}
-      chainId={chain?.id}
-      contractBalance={contractBalance?.data?.formatted}
-      output={output}
-    />
+    {/*<ActionButton*/}
+    {/*  handleApprove={writeTokenApprove}*/}
+    {/*  handleBuy={processBuyTokens}*/}
+    {/*  isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}*/}
+    {/*  isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}*/}
+    {/*  isApproving={isApproving}*/}
+    {/*  isPurchasing={isPurchasing}*/}
+    {/*  waitingForApprove={waitingForApprove || waitingForPurchase}*/}
+    {/*  isAmountEntered={Boolean(+amountToPay)}*/}
+    {/*  symbol={pickedToken.symbol}*/}
+    {/*  chainId={chain?.id}*/}
+    {/*  contractBalance={contractBalance?.data?.formatted}*/}
+    {/*  output={output}*/}
+    {/*/>*/}
+    <Button disabled>Wait for the next round</Button>
     <Spacer height={8}/>
   </>;
 }

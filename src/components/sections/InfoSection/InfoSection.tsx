@@ -30,7 +30,7 @@ const infoFields = [
     value: <>ERC-223 / Convertable to ERC-20 via <ExternalTextLink text="EIP-7417" href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md" /></>
   },
   {
-    label: "Public safe price",
+    label: "Public sale price",
     value: "$0.001"
   }
 ]
