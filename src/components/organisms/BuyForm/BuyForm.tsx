@@ -90,8 +90,11 @@ function ActionButton({
     return <Button onClick={handleApprove}>Approve {symbol}</Button>
   }
 
+  console.log(output);
+  console.log(contractBalance);
+
   return <Button onClick={() => {
-    if(output > contractBalance) {
+    if(+output > +contractBalance) {
       showMessage(`There are only ${contractBalance} D223 available at this moment`, "info");
       return;
     }
