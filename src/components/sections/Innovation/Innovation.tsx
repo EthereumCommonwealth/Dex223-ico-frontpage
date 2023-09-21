@@ -140,7 +140,7 @@ export default function Innovation() {
         </div>} heading="Encapsulated Margin Trading"/>
         <FeatureBlock image={<img src="/images/feature-3.png" alt=""/>} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to import any existing tokenlist from{" "}
-             <ExternalTextLink text="http://tokenlist.org/" href="http://tokenlist.org/" /> or import tokens from the auto-listing contract. Auto-listing contract will allow
+             <ExternalTextLink text="https://tokenlists.org" href="https://tokenlists.org/" /> or import tokens from the auto-listing contract. Auto-listing contract will allow
             anyone to list a token on the platform without asking for anyones permission or interacting with the
             exchange team.
           </div>

@@ -18,7 +18,7 @@ export default function BannerRightBlock() {
       <span>First round completed in less than 24 hours!</span>
     </div>
     <p className={styles.stayTuned}>
-      Stay in tune to know about the next round
+      Stay tuned for the next round
     </p>
     <div className={styles.counter}>
       <span className={styles.counterNumber}>{days}</span>
