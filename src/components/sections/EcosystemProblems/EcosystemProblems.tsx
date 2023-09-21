@@ -5,6 +5,7 @@ import OverlineText from "../../atoms/OverlineText";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Image from "next/image";
 import {useSwipeable} from "react-swipeable";
+import Svg from "../../atoms/Svg";
 
 function LostCard({icon, name, lost, percentage, color, active = false}) {
   return <div className={clsx(styles.lostCard, active && styles.active)}>
@@ -390,18 +391,10 @@ export default function EcosystemProblems() {
               </div>
               <div className={styles.navigation}>
                 <button onClick={previousSlide}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M7.36621 11.6543C7.36621 11.874 7.4541 12.0674 7.62109 12.2344L14.582 19.0459C14.7402 19.2041 14.9336 19.2832 15.1621 19.2832C15.6104 19.2832 15.9619 18.9404 15.9619 18.4834C15.9619 18.2549 15.874 18.0615 15.7334 17.9121L9.33496 11.6543L15.7334 5.39648C15.874 5.24707 15.9619 5.04492 15.9619 4.8252C15.9619 4.36816 15.6104 4.02539 15.1621 4.02539C14.9336 4.02539 14.7402 4.10449 14.582 4.25391L7.62109 11.0742C7.4541 11.2324 7.36621 11.4346 7.36621 11.6543Z"
-                      fill="#F5FFF9"/>
-                  </svg>
+                  <Svg iconName="arrow-left" />
                 </button>
                 <button onClick={nextSlide}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M15.9619 11.6543C15.9619 11.874 15.874 12.0674 15.707 12.2344L8.74609 19.0459C8.58789 19.2041 8.39453 19.2832 8.16602 19.2832C7.71777 19.2832 7.36621 18.9404 7.36621 18.4834C7.36621 18.2549 7.4541 18.0615 7.59473 17.9121L13.9932 11.6543L7.59473 5.39648C7.4541 5.24707 7.36621 5.04492 7.36621 4.8252C7.36621 4.36816 7.71777 4.02539 8.16602 4.02539C8.39453 4.02539 8.58789 4.10449 8.74609 4.25391L15.707 11.0742C15.874 11.2324 15.9619 11.4346 15.9619 11.6543Z"
-                      fill="#F5FFF9"/>
-                  </svg>
+                  <Svg iconName="arrow-right" />
                 </button>
               </div>
             </div>

@@ -15,6 +15,7 @@ import {
 } from "./parameters";
 import clsx from "clsx";
 import NeonBlock from "../../organisms/NeonBlock";
+import Svg from "../../atoms/Svg";
 
 interface SignProps {
   option: boolean
@@ -111,10 +112,9 @@ function Sign({option}: SignProps) {
 }
 
 export default function Competitors() {
-  return <><NeonBlock
-    icon={<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <path d="M14 28V40C14 40.5667 13.8083 41.0417 13.425 41.425C13.0417 41.8083 12.5667 42 12 42C11.4333 42 10.9583 41.8083 10.575 41.425C10.1917 41.0417 10 40.5667 10 40V10C10 9.43333 10.1917 8.95833 10.575 8.575C10.9583 8.19167 11.4333 8 12 8H26.35C26.8167 8 27.2333 8.15 27.6 8.45C27.9667 8.75 28.2 9.13333 28.3 9.6L28.8 12H38C38.5667 12 39.0417 12.1917 39.425 12.575C39.8083 12.9583 40 13.4333 40 14V30C40 30.5667 39.8083 31.0417 39.425 31.425C39.0417 31.8083 38.5667 32 38 32H27.65C27.1833 32 26.7667 31.85 26.4 31.55C26.0333 31.25 25.8 30.8667 25.7 30.4L25.2 28H14Z" fill="#F5FFF9"/>
-    </svg>}
+  return <>
+  <NeonBlock
+    icon="flag"
     color="blue"
     overlineText="Competitors"
     leftContent={

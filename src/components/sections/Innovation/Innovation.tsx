@@ -5,6 +5,7 @@ import ArticleHeading from "../../atoms/ArticleHeading";
 import Spacer from "../../atoms/Spacer";
 import clsx from "clsx";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
+import Svg from "../../atoms/Svg";
 
 function FeatureBlock({heading, content, image}) {
   const ref = useRef<HTMLDivElement>();
@@ -69,11 +70,7 @@ function FeatureBlock({heading, content, image}) {
 export default function Innovation() {
   return <>
     <NeonBlock
-      icon={<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <path
-          d="M24 44C23.1333 44 22.35 43.7917 21.65 43.375C20.95 42.9583 20.4 42.4 20 41.7C18.9 41.7 17.9583 41.3083 17.175 40.525C16.3917 39.7417 16 38.8 16 37.7V30.6C14.0333 29.3 12.4583 27.5833 11.275 25.45C10.0917 23.3167 9.5 21 9.5 18.5C9.5 14.4667 10.9083 11.0417 13.725 8.225C16.5417 5.40833 19.9667 4 24 4C28.0333 4 31.4583 5.40833 34.275 8.225C37.0917 11.0417 38.5 14.4667 38.5 18.5C38.5 21.0667 37.9083 23.4 36.725 25.5C35.5417 27.6 33.9667 29.3 32 30.6V37.7C32 38.8 31.6083 39.7417 30.825 40.525C30.0417 41.3083 29.1 41.7 28 41.7C27.6 42.4 27.05 42.9583 26.35 43.375C25.65 43.7917 24.8667 44 24 44ZM20 37.7H28V35.9H20V37.7ZM20 33.9H28V32H20V33.9ZM25.5 28V22.6L28.85 19.25C29.15 18.95 29.3 18.6 29.3 18.2C29.3 17.8 29.15 17.45 28.85 17.15C28.55 16.85 28.2 16.7 27.8 16.7C27.4 16.7 27.05 16.85 26.75 17.15L24 19.9L21.25 17.15C20.95 16.85 20.6 16.7 20.2 16.7C19.8 16.7 19.45 16.85 19.15 17.15C18.85 17.45 18.7 17.8 18.7 18.2C18.7 18.6 18.85 18.95 19.15 19.25L22.5 22.6V28H25.5Z"
-          fill="#F5FFF9"/>
-      </svg>}
+      icon="lamp"
       color="blue"
       overlineText="Innovation"
       leftContent={

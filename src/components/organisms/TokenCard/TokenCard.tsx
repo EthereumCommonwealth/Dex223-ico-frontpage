@@ -25,7 +25,6 @@ export default function TokenCard({type, tokenName, tokenLogo, amount, handleCha
         placeholder={"0"}
         className={clsx(styles.input)}
         readOnly={readonly}
-        // customInput={<input    />}
         type="text"
         value={amount}
       />
