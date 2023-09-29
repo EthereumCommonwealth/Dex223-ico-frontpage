@@ -4,9 +4,11 @@
 
 .soyLink {
   color: colors.$palette-purple;
+  text-decoration: underline;
+  cursor: pointer;
 
   &:hover {
-    text-decoration: underline;
+    text-shadow: 0px 0px 20px rgba(149, 118, 236, 0.50), 0px 0px 20px rgba(149, 118, 236, 0.50);
   }
 }
 
@@ -44,6 +46,16 @@
 
 //713
 
+@keyframes breathing {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
 .rightContent {
   width: 100%;
   padding-top: 126%;
@@ -71,10 +83,14 @@
     @include media.for-mobile {
       filter: blur(60px);
     }
+
+    animation: breathing 4s ease-in-out alternate infinite;
   }
 
   .img1, .img2, .img3, .img4 {
     position: absolute;
+    transition-duration: 1.5s;
+    filter: brightness(40%);
   }
 
   .img2, .img3, .img4 {
@@ -83,31 +99,63 @@
 
   .img1 {
     width: 79.2%;
-    top: 0;
-    left: 4.2%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
   }
 
   .img2 {
     width: 34.6%;
-    top: 28.1%;
-    left: 28%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 3;
   }
 
   .img3 {
     width: 38.2%;
-    top: 23.7%;
-    right: 0;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
     z-index: 4;
   }
 
   .img4 {
     width: 79.5%;
-    right: 8.5%;
-    bottom: 0;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
     z-index: 5;
   }
+
+  &.animated {
+    .img1, .img2, .img3, .img4 {
+      transform: none;
+      filter: brightness(100%);
+    }
+
+    .img1 {
+      top: 0;
+      left: 4.2%;
+    }
+
+    .img2 {
+      top: 28.1%;
+      left: 28%;
+    }
+
+    .img3 {
+      top: 23.7%;
+      right: 0;
+    }
+
+    .img4 {
+      right: 8.5%;
+      bottom: 0;
+    }
+  }
+
 
   @include media.for-tablet {
     width: 410px;
@@ -123,41 +171,6 @@
     padding-top: 126%;
     height: unset;
   }
-
-  //@include media.for-mobile {
-  //  margin-top: 40px;
-  //  height: 374px;
-  //  margin-bottom: 8px;
-  //
-  //  &:after {
-  //    width: 243px;
-  //    height: 243px;
-  //    filter: blur(100px);
-  //  }
-  //
-  //  .img1 {
-  //    width: 234px;
-  //    left: 12px;
-  //  }
-  //
-  //  .img2 {
-  //    width: 102px;
-  //    right: 96px;
-  //    top: 83px;
-  //    left: unset;
-  //  }
-  //
-  //  .img3 {
-  //    width: 113px;
-  //    top: 70px;
-  //  }
-  //
-  //  .img4 {
-  //    width: 235px;
-  //    left: 35px;
-  //  }
-  //
-  //}
 }
 
 .listTitle {
@@ -185,4 +198,23 @@
   transform: translateX(-44%);
   z-index: -1;
   opacity: 0.7;
+
+  @include media.for-tablet {
+    right: 0;
+    transform: translateX(35%);
+    width: 466px;
+    top: 114px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  @include media.for-large-mobile {
+    top: 250px;
+  }
+
+  @include media.for-mobile {
+    top: 410px;
+  }
 }

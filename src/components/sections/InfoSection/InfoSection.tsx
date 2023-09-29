@@ -4,6 +4,7 @@ import NeonBlock from "../../organisms/NeonBlock";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Svg from "../../atoms/Svg";
+import FirstImage from "../../../assets/images/token-info-2.svg";
 
 const infoFields = [
   {
@@ -36,6 +37,8 @@ const infoFields = [
   }
 ]
 
+
+
 export default function InfoSection() {
   return <NeonBlock
     icon="info"
@@ -61,6 +64,7 @@ export default function InfoSection() {
     rightContent={<div className={styles.rightContent}>
       <div className={styles.imageWrapper}>
         <img className={styles.tokenInfoImage1} src="/images/token-info/token-info-1.svg" alt=""/>
+        {/*<FirstImage />*/}
         <img className={styles.tokenInfoImage2} src="/images/token-info/token-info-2.svg" alt=""/>
       </div>
     </div>}

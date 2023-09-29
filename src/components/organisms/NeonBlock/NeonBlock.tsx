@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useRef } from "react";
 import styles from "./NeonBlock.module.scss";
 import OverlineText from "../../atoms/OverlineText";
 import clsx from "clsx";
 import {IconName} from "../../atoms/Svg/svgIconsMap";
 import Svg from "../../atoms/Svg";
+import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
 
 interface Props {
   icon: IconName,
@@ -16,48 +17,29 @@ interface Props {
 }
 
 export default function NeonBlock({icon, color, overlineText, leftContent, rightContent, differentColumns = false, anchor}: Props) {
-  const [isIntersected, setIsIntersected] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
-  const rootRef = useRef<HTMLDivElement | undefined>(undefined);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersected(entry.isIntersecting);
-    }, {root: null, threshold: 1});
-
-    if (ref.current && rootRef.current) {
-      observer.observe(ref.current!);
-    }
-
-    return () => observer.disconnect();
-  }, [isIntersected]);
+  const ref = useRef();
+  const entryTopLine = useIntersectionObserver(ref, {threshold: 0});
+  const entryBottomLine = useIntersectionObserver(ref, {threshold: 0.5});
 
   return <div className="container">
     <div className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different)}>
-      <div className={styles.leftContent}>
-        <div className={styles.neonLineWrapper}>
-          <div className={clsx(styles.neonTopLine, isIntersected && styles.animate)} />
+      <div className={clsx(styles.neonLineWrapper, styles.neonTopLineCell)}>
+        <div className={clsx(styles.neonTopLine, entryTopLine?.isIntersecting && styles.animate)} />
+      </div>
+      <div className={clsx(styles.neonLineWrapper, styles.neonIconCell, entryBottomLine?.isIntersecting && styles.animate)}>
+        {anchor && <span className={styles.anchor} id={anchor} />}
+        <div className={styles.neonIcon}>
+          <Svg iconName={icon} layout="cover" />
         </div>
-        <div>
-          <div className={styles.mobileTopContent}>
-            {rightContent}
-          </div>
-        </div>
-        <div ref={rootRef} className={styles.neonLineWrapper}>
-          {anchor && <span className={styles.anchor} id={anchor} />}
-          <div ref={ref} className={styles.neonIcon}>
-            <Svg iconName={icon} layout="cover" />
-          </div>
-        </div>
-        <div className={styles.overlineTextContainer}>
-          <OverlineText text={overlineText} color={color} />
-        </div>
-        <div className={styles.neonLineWrapper}>
-          <div className={clsx(styles.neonBottomLine, isIntersected && styles.animate)} />
-        </div>
-        <div className={styles.textContent}>
-          {leftContent}
-        </div>
+      </div>
+      <div className={clsx(styles.overlineTextContainer, styles.headingCell)}>
+        <OverlineText text={overlineText} color={color} />
+      </div>
+      <div ref={ref} className={clsx(styles.neonLineWrapper, styles.neonBottomLineCell)}>
+        <div className={clsx(styles.neonBottomLine, entryBottomLine?.isIntersecting && styles.animate)} />
+      </div>
+      <div className={styles.textContent}>
+        {leftContent}
       </div>
       <div className={styles.rightContent}>
         {rightContent}

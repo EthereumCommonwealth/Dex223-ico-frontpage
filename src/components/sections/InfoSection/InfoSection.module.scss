@@ -2,6 +2,16 @@
 @use "src/styles/typography";
 @use "src/styles/media";
 
+@keyframes breathing {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
 .text {
   color: colors.$text-secondary;
 
@@ -73,6 +83,8 @@
     opacity: 0.4;
     background: var(--color-primary, #3BD171);
     filter: blur(100px);
+
+    animation: breathing 4s ease-in-out alternate infinite;
   }
 
   @include media.for-tablet {
@@ -99,6 +111,16 @@
   //}
 }
 
+@keyframes vertical-swing {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10%);
+  }
+}
+
 .tokenInfoImage1,
 .tokenInfoImage2 {
   position: absolute;
@@ -118,11 +140,7 @@
   right: 8%;
   width: 31%;
 
-  //@include media.for-mobile {
-  //  top: 36px;
-  //  right: 33px;
-  //  width: 93px;
-  //}
+  animation: vertical-swing 2.5s infinite alternate;
 }
 
 .tokenInfoImage2 {
@@ -130,11 +148,7 @@
   bottom: 6%;
   width: 59%;
 
-  //@include media.for-mobile {
-  //  left: 37px;
-  //  bottom: 23px;
-  //  width: 175px;
-  //}
+  animation: vertical-swing 3.7s infinite alternate;
 }
 
 .rightContent {

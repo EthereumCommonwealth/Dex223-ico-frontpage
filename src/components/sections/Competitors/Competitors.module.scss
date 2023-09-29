@@ -58,11 +58,19 @@
   left: calc(100% / 6 - 1px);
   width: calc(100% / 6 + 2px);
   border: 2px solid colors.$palette-blue;
-  box-shadow: 0px 0px 54px 20px rgba(34, 174, 252, 0.30);
+  box-shadow: 0;
+  //opacity: 0;
+  transition-duration: 0.4s;
+
 
   @include media.for-laptop {
     left: 125px;
     width: 261px;
+  }
+
+  &.animate {
+    box-shadow: 0px 0px 54px 20px rgba(34, 174, 252, 0.30);
+
   }
 }
 

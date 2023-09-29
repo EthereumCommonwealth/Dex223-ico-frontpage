@@ -1,0 +1,261 @@
+@keyframes appear-with-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100%;
+  }
+}
+
+.philosophy-dex-logo {
+  transform-origin: center;
+  transform-box: fill-box;
+  transition-duration: 0.4s;
+  pointer-events: none;
+}
+
+@keyframes philosophy-attention {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+};
+
+@keyframes philosophy-attention-hover {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+};
+
+.philosophy-icon-container:hover + path {
+  + .philosophy-tether-icon,
+  + .philosophy-dao-icon,
+  + .philosophy-dollar-icon,
+  + .philosophy-dollar-icon + .philosophy-dollar-icon {
+    transform: scale(1.2);
+  }
+
+  + .philosophy-dex-logo,
+  + .philosophy-dex-logo + .philosophy-dex-logo {
+    transform: scale(1.2);
+  }
+
+  + .philosophy-search-icon,
+  + .philosophy-parts-icon,
+  + .philosophy-eth-icon {
+    transform: scale(1.1);
+  }
+
+}
+
+.philosophy-tether-icon,
+.philosophy-search-icon,
+.philosophy-parts-icon,
+.philosophy-dao-icon,
+.philosophy-eth-icon,
+.philosophy-dollar-icon {
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  transition-duration: 0.4s;
+}
+
+.animated {
+  .philosophy-tether-icon,
+  .philosophy-search-icon,
+  .philosophy-parts-icon,
+  .philosophy-dao-icon,
+  .philosophy-eth-icon,
+  .philosophy-dollar-icon {
+    animation: appear-with-opacity 0.5s forwards;
+  }
+
+  .philosophy-eth-icon {
+    animation-delay: 0.2s;
+  }
+
+  .philosophy-search-icon {
+    animation-delay: 0.4s;
+  }
+
+  .philosophy-parts-icon {
+    animation-delay: 0.6s;
+  }
+}
+
+.removeAfterAnimated {
+  .philosophy-dex-logo {
+    animation-iteration-count: 1;
+    animation: philosophy-attention 1s forwards ease-in-out;
+  }
+}
+
+@keyframes innovation-rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes innovation-arrow {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+@keyframes innovation-percents {
+  from {
+    transform: rotate(-15deg);
+  }
+
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes innovation-plus {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-10deg);
+  }
+}
+
+.innovation-gear {
+  transform-origin: center;
+  animation: innovation-rotate 16s infinite linear;
+}
+
+.innovationArrow {
+  transform-origin: center;
+  animation: innovation-arrow 1.5s alternate ease-in-out infinite;
+}
+
+.innovationPercents {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: innovation-percents 1.5s alternate ease-in-out infinite;
+}
+
+.innovationPlus {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: innovation-plus 1.5s alternate ease-in-out infinite;
+}
+
+
+.contact-line {
+  fill: none;
+  stroke-dasharray: 1042;
+  stroke-dashoffset: 1000;
+}
+
+.contact-plane {
+  transform: translate(-220px, 220px);
+  transition-duration: 0.8s;
+  transition-timing-function: ease-out;
+  opacity: 0;
+}
+
+.animated {
+  .contact-line {
+    animation: dash 0.8s ease-out forwards;
+  }
+
+  .contact-plane {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.interface-man-1,
+.interface-man-2,
+.interface-man-3,
+.interface-man-4,
+.interface-man-5,
+.interface-top {
+  opacity: 0;
+  transition-duration: 0.6s;
+}
+
+.animated {
+  .interface-man-1,
+  .interface-man-2,
+  .interface-man-3,
+  .interface-man-4,
+  .interface-man-5,
+  .interface-top {
+    opacity: 1;
+  }
+
+  .interface-man-1 {
+    transition-delay: 0.25s;
+  }
+
+  .interface-man-2 {
+    transition-delay: 0.5s;
+  }
+
+  .interface-man-3 {
+    transition-delay: 0.75s;
+  }
+
+  .interface-man-4 {
+    transition-delay: 1s;
+  }
+
+  .interface-man-5 {
+    transition-delay: 1.25s;
+  }
+}
+
+.listings-first-round,
+.listings-second-round,
+.listings-third-round {
+  opacity: 0;
+  transition-duration: 0.6s;
+}
+
+.animated {
+  .listings-first-round,
+  .listings-second-round,
+  .listings-third-round {
+    opacity: 1;
+  }
+
+  .listings-second-round {
+    transition-delay: 0.4s;
+  }
+
+  .listings-third-round {
+    transition-delay: 0.8s;
+  }
+}

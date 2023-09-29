@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from "./ContactUs.module.scss";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Svg from "../../atoms/Svg";
+import ContactUsImage from "../../../assets/images/tg-contact-us.svg";
+import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
+import clsx from "clsx";
 
 export default function ContactUs() {
+  const ref = useRef();
+  const entry = useIntersectionObserver(ref, {threshold: 0.8, freezeOnceVisible: true})
+
   return <NeonBlock
     icon="contact"
     color="green"
@@ -44,8 +50,8 @@ export default function ContactUs() {
       </>
     }
     rightContent={
-      <div className={styles.rightContent}>
-        <img src="/images/tg-contact-us.svg" alt=""/>
+      <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
+        <ContactUsImage />
       </div>
     }
   />

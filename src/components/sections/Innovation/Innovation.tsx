@@ -5,7 +5,10 @@ import ArticleHeading from "../../atoms/ArticleHeading";
 import Spacer from "../../atoms/Spacer";
 import clsx from "clsx";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
-import Svg from "../../atoms/Svg";
+import FirstCardImage from "../../../assets/images/gear.svg";
+import SecondCardImage from "../../../assets/images/margin.svg";
+import ThirdCardImage from "../../../assets/images/listings.svg";
+
 
 function FeatureBlock({heading, content, image}) {
   const ref = useRef<HTMLDivElement>();
@@ -85,7 +88,7 @@ export default function Innovation() {
     />
     <div className="container">
       <div className={styles.cardWrapper}>
-        <FeatureBlock image={<img src="/images/feature-1.png" alt=""/>} content={
+        <FeatureBlock image={<FirstCardImage />} content={
           <>
             <div className={styles.paragraphs}>
               <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design
@@ -106,7 +109,7 @@ export default function Innovation() {
             <div className={styles.anchor} id="margin"/>
           </>
         } heading="ERC-223 Support"/>
-        <FeatureBlock image={<img src="/images/feature-2.png" alt=""/>} content={<div className={styles.paragraphs}>
+        <FeatureBlock image={<SecondCardImage />} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to create &quot;lending orders&quot; where they
             can place their funds (in any token) and specify
           </div>
@@ -135,7 +138,7 @@ export default function Innovation() {
           </div>
           <div className={styles.text}>This implementation eliminates the problem of price oracles.</div>
         </div>} heading="Encapsulated Margin Trading"/>
-        <FeatureBlock image={<img src="/images/feature-3.png" alt=""/>} content={<div className={styles.paragraphs}>
+        <FeatureBlock image={<ThirdCardImage />} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to import any existing tokenlist from{" "}
              <ExternalTextLink text="http://tokenlist.org/" href="http://tokenlist.org/" /> or import tokens from the auto-listing contract. Auto-listing contract will allow
             anyone to list a token on the platform without asking for anyones permission or interacting with the
