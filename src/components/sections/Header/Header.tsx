@@ -43,6 +43,7 @@ export default function Header() {
             <li><a href="#margin">Margin trading</a></li>
             <li><a href="#tokenomics">Tokenomics</a></li>
             <li><a href="#contact">Contact us</a></li>
+            <li><a href="/development">Development</a></li>
           </ul>
         </nav>
       </div>

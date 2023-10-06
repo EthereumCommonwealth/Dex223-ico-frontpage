@@ -70,18 +70,18 @@
   display: flex;
   justify-content: flex-end;
 
-  img {
+  svg {
     max-width: 100%;
     height: auto;
 
-    transform: scale(1.2);
+    //transform: scale(1.2);
   }
 
   @include media.for-tablet {
     padding-top: 20px;
     justify-content: flex-start;
 
-    img {
+    svg {
       max-width: 410px;
     }
   }

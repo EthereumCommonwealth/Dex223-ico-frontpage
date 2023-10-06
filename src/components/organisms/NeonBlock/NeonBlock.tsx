@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useMemo, useRef} from "react";
 import styles from "./NeonBlock.module.scss";
 import OverlineText from "../../atoms/OverlineText";
 import clsx from "clsx";
@@ -21,6 +21,15 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
   const entryTopLine = useIntersectionObserver(ref, {threshold: 0});
   const entryBottomLine = useIntersectionObserver(ref, {threshold: 0.5});
 
+  const isBottomVisible = useMemo(() => {
+    if(!entryBottomLine) {
+      return false;
+    }
+    const isBottomVisible = entryBottomLine.boundingClientRect.bottom < window.innerHeight && entryBottomLine.boundingClientRect.bottom > 0;
+
+    return isBottomVisible;
+  }, [entryBottomLine]);
+
   return <div className="container">
     <div className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different)}>
       <div className={clsx(styles.neonLineWrapper, styles.neonTopLineCell)}>
@@ -36,7 +45,7 @@ export default function NeonBlock({icon, color, overlineText, leftContent, right
         <OverlineText text={overlineText} color={color} />
       </div>
       <div ref={ref} className={clsx(styles.neonLineWrapper, styles.neonBottomLineCell)}>
-        <div className={clsx(styles.neonBottomLine, entryBottomLine?.isIntersecting && styles.animate)} />
+        <div className={clsx(styles.neonBottomLine, (entryBottomLine?.isIntersecting || isBottomVisible) && styles.animate)} />
       </div>
       <div className={styles.textContent}>
         {leftContent}

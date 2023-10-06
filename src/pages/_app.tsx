@@ -1,7 +1,7 @@
 import '@/styles/globals.scss'
 import type {AppProps} from 'next/app'
 import {golos_text} from "../assets/fonts";
-import {configureChains, createConfig, WagmiConfig} from "wagmi";
+import {configureChains, createConfig, mainnet, WagmiConfig} from "wagmi";
 import {EthereumClient, w3mConnectors, w3mProvider} from "@web3modal/ethereum";
 import {publicProvider} from 'wagmi/providers/public';
 import {Web3Modal} from "@web3modal/react";
@@ -11,6 +11,7 @@ import Head from "next/head";
 
 const projectId = "b426036634aca8d1f9795404b66664b5";
 
+// const chains = [mainnet];
 const chains = [callisto];
 
 const {publicClient} = configureChains(chains, [

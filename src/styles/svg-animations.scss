@@ -259,3 +259,31 @@
     transition-delay: 0.8s;
   }
 }
+
+.fight-erc-223,
+.fight-erc-20 {
+  opacity: 0;
+  transition-duration: 1s;
+}
+
+.fight-vs {
+  opacity: 0;
+  transition-duration: 1s;
+  transform-box: fill-box;
+}
+
+.fight-erc-223 {
+  transition-delay: 0.5s;
+}
+
+.animated {
+  .fight-erc-223,
+  .fight-erc-20 {
+    opacity: 1;
+  }
+
+  .fight-vs {
+    opacity: 1;
+    transition-delay: 1.5s;
+  }
+}

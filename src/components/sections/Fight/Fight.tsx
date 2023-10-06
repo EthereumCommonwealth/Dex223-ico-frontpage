@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from "./Fight.module.scss";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Svg from "../../atoms/Svg";
+import FightImage from "../../../assets/images/fight.svg";
+import clsx from "clsx";
+import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
 
 const problems = [
   {
@@ -33,6 +36,10 @@ const problems = [
 ]
 
 export default function Fight() {
+  const ref = useRef();
+
+  const entry = useIntersectionObserver(ref, {threshold: 0.4, freezeOnceVisible: true});
+
   return <NeonBlock
     icon="fight"
     color="green"
@@ -60,8 +67,9 @@ export default function Fight() {
       </>
     }
     rightContent={
-      <div className={styles.rightContent}>
-        <img style={{width: "100%"}} src="/images/fight.png" alt=""/>
+      <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
+        <FightImage />
+        {/*<img style={{width: "100%"}} src="/images/fight.png" alt=""/>*/}
       </div>
     }
   />
