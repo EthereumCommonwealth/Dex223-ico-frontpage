@@ -83,7 +83,10 @@ export default function NewBanner() {
               upcoming <span className="primary-color bold">public token sale</span>. We will do so via our social channels and this page. Stay tuned.
             </p>
             <p className={styles.paragraph}>
-              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing, contact <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto: dexaran@ethereumclassic.org" /> for more details regarding the participation. In this round 1% of the total D223 tokens will be sold. Unsold tokens will move to public sale rounds. Read <ExternalTextLink text="the announcement" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" />.
+              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing, contact <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto: dexaran@ethereumclassic.org" /> for more details regarding the participation.
+            </p>
+            <p className={styles.paragraph}>
+              The first presale round was completed at 15 Sep 2023 within 24 hours.
             </p>
           </div>
         </div>
