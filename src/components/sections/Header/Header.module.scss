@@ -50,11 +50,14 @@
   display: flex;
   gap: 54px;
   align-items: center;
-  svg {
-
+  .logo {
+    display: block;
+    position: relative;
     width: 185px;
+    height: 46px;
     @media screen and (max-width: 1500px){
       width: 113px;
+      height: 29px;
     }
   }
 

@@ -363,40 +363,6 @@ export default function BuyForm() {
       </div>
       <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)} />
       <button onClick={() => setGasSettingsOpened(true)}>Change</button>
-      {/*<Collapse open={isGasSettingsOpened}>*/}
-      {/*  <div className={styles.fields}>*/}
-      {/*   <div>*/}
-      {/*     <h4 className={styles.gasLabel}>*/}
-      {/*       Gas limit*/}
-      {/*       <Svg iconName="info" />*/}
-      {/*     </h4>*/}
-      {/*     <input*/}
-      {/*       value={finalGasLimit || ""}*/}
-      {/*       onChange={(e) => {*/}
-      {/*         setGasLimit(e.target.value);*/}
-      {/*       }}*/}
-      {/*       placeholder="Gas Limit"*/}
-      {/*       className={styles.gasInput}*/}
-      {/*       type="number"*/}
-      {/*     />*/}
-      {/*   </div>*/}
-      {/*   <div>*/}
-      {/*     <h4 className={styles.gasLabel}>*/}
-      {/*       Gas price*/}
-      {/*       <Svg iconName="info" />*/}
-      {/*     </h4>*/}
-      {/*     <input*/}
-      {/*       value={finalGasPrice || ""}*/}
-      {/*       onChange={(e) => {*/}
-      {/*         setGasPrice(e.target.value);*/}
-      {/*       }}*/}
-      {/*       placeholder="Gas Price"*/}
-      {/*       className={styles.gasInput}*/}
-      {/*       type="number"*/}
-      {/*     />*/}
-      {/*   </div>*/}
-      {/*  </div>*/}
-      {/*</Collapse>*/}
     </div>
     <Spacer height={20} />
     <ActionButton

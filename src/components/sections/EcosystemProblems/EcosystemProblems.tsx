@@ -48,9 +48,7 @@ const slides = [
         <span>Lost</span>
       </div>
       <div className={styles.problemCards}>
-        <LostCard animate={animate} color="#F79290" lost={"$60M"} icon={
-          <Image width={32} height={32} src="/images/curve-logo.png" alt=""/>
-        } name="Curve hack" percentage={20}/>
+        <LostCard animate={animate} color="#F79290" lost={"$60M"} icon={<Image width={32} height={32} src="/images/curve-logo.png" alt=""/>} name="Curve hack" percentage={20}/>
         <LostCard animate={animate} color="#F8827F" lost={"$62M"} icon={<Image src="/images/problem-logos/dao.svg" alt="" width={32} height={32} />} name="DAO hack" percentage={20}/>
         <LostCard animate={animate} color="#F0504D" lost={"$150M"} icon={<Image src="/images/problem-logos/compound.svg" alt="" width={32} height={32} />} name="Compound hack" percentage={40}/>
         <LostCard animate={animate} active color="#FF3333" lost={"$201M"} icon={<Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32} />} name="ERC-20 user errors" percentage={50}/>
