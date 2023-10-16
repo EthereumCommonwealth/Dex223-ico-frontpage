@@ -105,3 +105,11 @@
     @include typography.t-body-20;
   }
 }
+
+.gradient {
+  background: #010101;
+  width: 420px;
+  height: 817px;
+  background: linear-gradient(108deg, #010101 25%, rgba(160,126,255,1) 50%, rgba(59,209,113,1) 50%, #010101 75%);
+  opacity: 0.4;
+}

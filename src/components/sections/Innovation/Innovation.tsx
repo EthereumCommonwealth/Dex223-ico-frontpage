@@ -8,7 +8,7 @@ import ExternalTextLink from "../../atoms/ExternalTextLink";
 import FirstCardImage from "../../../assets/images/gear.svg";
 import SecondCardImage from "../../../assets/images/margin.svg";
 import ThirdCardImage from "../../../assets/images/listings.svg";
-import Pattern1 from "../../../assets/images/blue.svg";
+import Image from "next/image";
 
 function FeatureBlock({heading, content, image}) {
   const ref = useRef<HTMLDivElement>();
@@ -89,10 +89,10 @@ export default function Innovation() {
     />
     <div className="container relative">
       <div className={styles.pattern1}>
-        <Pattern1 />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
       </div>
       <div className={styles.pattern2}>
-        <Pattern1 />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
       </div>
       <div className={styles.cardWrapper}>
         <FeatureBlock image={<FirstCardImage />} content={

@@ -3,9 +3,7 @@ import styles from "./InfoSection.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
-import Svg from "../../atoms/Svg";
-import FirstImage from "../../../assets/images/token-info-2.svg";
-import Pattern1 from "../../../assets/images/green.svg";
+import Image from "next/image";
 
 const infoFields = [
   {
@@ -43,7 +41,7 @@ const infoFields = [
 export default function InfoSection() {
   return <div className={"container relative"}>
     <div className={styles.pattern}>
-      <Pattern1 />
+      <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000} />
     </div>
   <NeonBlock
     icon="info"

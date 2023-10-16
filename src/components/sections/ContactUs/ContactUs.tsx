@@ -5,9 +5,9 @@ import NeonBlock from "../../organisms/NeonBlock";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Svg from "../../atoms/Svg";
 import ContactUsImage from "../../../assets/images/tg-contact-us.svg";
-import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
+import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
 import clsx from "clsx";
-import Pattern1 from "../../../assets/images/green.svg";
+import Image from "next/image";
 
 export default function ContactUs() {
   const ref = useRef();
@@ -15,7 +15,7 @@ export default function ContactUs() {
 
   return <div className="container relative">
     <div className={styles.pattern}>
-      <Pattern1 />
+      <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000} />
     </div>
     <NeonBlock
       icon="contact"

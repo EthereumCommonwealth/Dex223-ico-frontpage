@@ -4,8 +4,7 @@ import clsx from "clsx";
 import Spacer from "../../atoms/Spacer";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
-import Pattern1 from "../../../assets/images/purple.svg";
-
+import Image from "next/image";
 export default function Tokenomics() {
   const [isIntersected, setIsIntersected] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -61,7 +60,7 @@ export default function Tokenomics() {
     <div ref={ref}/>
     <div className="container relative">
       <div className={styles.pattern}>
-        <Pattern1 />
+        <Image alt="" src="/images/patterns/purple.svg" width={883} height={890} />
       </div>
       <div className={styles.chartWrapper}>
         <div className={styles.chart}>

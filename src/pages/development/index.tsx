@@ -9,7 +9,7 @@ import clsx from "clsx";
 import DevelopmentReports from "../../components/sections/DevelopmentReports";
 import References from "../../components/sections/References";
 import Spacer from "../../components/atoms/Spacer";
-import Structure from "../../../Structure";
+import Structure from "../../components/sections/Structure";
 import { throttle } from 'throttle-debounce';
 
 export default function Home() {
@@ -62,6 +62,7 @@ export default function Home() {
 
   useEffect(() => {
     setHasMounted(true);
+    document.getElementById("__next").className = "";
   }, []);
 
   if (!hasMounted) {
@@ -72,17 +73,16 @@ export default function Home() {
     <>
       <Header/>
       <h1 className={styles.pageHeading}>Development progress</h1>
-      <p className={styles.pageSubheading}>Lorem ipsum dolor sit amet consectetur. Dictum curabitur amet rhoncus
-        in cursus pharetra orci ornare. Sagittis aliquet elit eget adipiscing
-        vestibulum. Scelerisque ultricies ut imperdiet pharetra dolor.
-        Diam tortor pretium placerat tristique ipsum.
-      </p>
+      <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange and related services.</p>
 
       <div className={styles.tabButtonsContainer}>
         <div className={styles.tabButtons}>
           <a href="#structure"><button className={clsx(styles.tabButton, activeTab === 0 && styles.active)}>Structure</button></a>
           <a href="#references"><button className={clsx(styles.tabButton, activeTab === 1 && styles.active)}>References</button></a>
-          <a href="#reports"><button className={clsx(styles.tabButton, activeTab === 2 && styles.active)}>Development reports</button></a>
+          <a href="#reports"><button className={clsx(styles.tabButton, activeTab === 2 && styles.active)}>
+            <span className={styles.desktop}>Development reports</span>
+            <span className={styles.mobile}>Reports</span>
+          </button></a>
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import styles from "./Philosophy.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import PhilosophyImage from "../../../assets/images/ph.svg";
-import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
+import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
 import clsx from "clsx";
 import ShieldImage from "../../../assets/images/Shield.svg";
 

@@ -38,21 +38,17 @@
 .pattern2 {
   left: -462px;
   top: 37px;
-  opacity: 0.5;
   transform: scale(-1, -1);
   animation: breathing-pattern 6s infinite linear alternate;
-
-  svg {
-    width: 595px;
-  }
+  opacity: 0.2;
 }
 
 .pattern1 {
   right: -626px;
   bottom: -509px;
-  opacity: 0.1;
   transform: scale(-1, -1);
   animation: breathing-pattern 6s 2s infinite linear alternate;
+  opacity: 0.2;
 }
 
 .slides {

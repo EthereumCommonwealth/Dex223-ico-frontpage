@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useEffect, useState } from "react";
 import NewBanner from "../components/sections/NewBanner";
 import Header from "../components/sections/Header";
@@ -14,11 +13,11 @@ import ContactUs from "../components/sections/ContactUs";
 import Spacer from "../components/atoms/Spacer";
 import Footer from "../components/sections/Footer";
 import ScrollToTopButton from "../components/organisms/ScrollToTopButton";
-
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
     setHasMounted(true);
+    document.getElementById("__next").className = "overflow-hidden";
   }, []);
 
   if(!hasMounted) {

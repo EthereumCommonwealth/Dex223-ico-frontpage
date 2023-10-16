@@ -216,16 +216,14 @@
   position: absolute;
   right: -615px;
   top: -247px;
-  opacity: 0.5;
   animation: breathing-pattern 6s 2s infinite linear alternate;
-
+  opacity: 0.2;
 }
 
 .pattern2 {
   position: absolute;
   left: -616px;
   bottom: -111px;
-  opacity: 0.1;
   animation: breathing-pattern 6s infinite linear alternate;
-
+  opacity: 0.2;
 }

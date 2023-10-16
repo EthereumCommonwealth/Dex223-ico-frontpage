@@ -123,11 +123,7 @@
   position: absolute;
   top: 67px;
   right: -1000px;
-  opacity: 0.1;
   z-index: -1;
-  svg {
-    width: 1000px;
-  }
-
   animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
 }

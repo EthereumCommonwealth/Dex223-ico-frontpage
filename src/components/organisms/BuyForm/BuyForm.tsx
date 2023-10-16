@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useMemo, useState} from "react";
 import styles from "./BuyForm.module.scss";
 import {
   getDEXToken, getTokensToPayWith, getICOContractAddress, getChainId, TokenInfo
-} from "../../../constants/tokens";
+} from "@/constants/tokens";
 import clsx from "clsx";
 import Image from "next/image";
 import TokenCard from "../TokenCard";
@@ -22,7 +22,7 @@ import testICOABI from "../../../constants/abis/testICOABI.json";
 import {formatGwei, formatUnits, parseGwei, parseUnits} from "viem";
 import ERC20ABI from "../../../constants/abis/erc20.json";
 import Preloader from "../../atoms/Preloader";
-import {useSnackbar} from "../../../providers/SnackbarProvider";
+import {useSnackbar} from "@/providers/SnackbarProvider";
 import Collapse from "../../atoms/Collapse";
 import Svg from "../../atoms/Svg";
 import DrawerDialog from "../../atoms/DrawerDialog";

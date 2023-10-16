@@ -1,4 +1,3 @@
-
 type Parameters = {
   supportedStandards: string,
   deploymentChain: string,
@@ -7,15 +6,7 @@ type Parameters = {
   markets: string,
 }
 
-export const parametersKeys = [
-  "supportedStandards",
-  "deploymentChain",
-  "listingProcess",
-  "marginTrading",
-  "markets"
-];
-
-export const parametersLabels = {
+const parametersLabels: Parameters = {
   supportedStandards: "Supported standards",
   deploymentChain: "Deployment chain",
   listingProcess: "Listing process",
@@ -23,7 +14,7 @@ export const parametersLabels = {
   markets: "Markets",
 }
 
-export const Dex223Params: Parameters = {
+const Dex223Params: Parameters = {
   supportedStandards: "ERC-20, ERC-223",
   deploymentChain: "Ethereum, EOS EVM,ETC, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base, BSC",
   listingProcess: "Smart-contract, tokenlists",
@@ -31,7 +22,7 @@ export const Dex223Params: Parameters = {
   markets: "Unlimited",
 }
 
-export const uniswapParams: Parameters = {
+const uniswapParams: Parameters = {
   supportedStandards: "ERC-20",
   deploymentChain: "Ethereum, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base",
   listingProcess: "Tokenlists",
@@ -39,7 +30,7 @@ export const uniswapParams: Parameters = {
   markets: "Unlimited",
 }
 
-export const dydxParams: Parameters = {
+const dydxParams: Parameters = {
   supportedStandards: "ERC-20",
   deploymentChain: "Ethereum, Custom L2 chain",
   listingProcess: "Centralized",
@@ -47,7 +38,7 @@ export const dydxParams: Parameters = {
   markets: "56 pairs",
 }
 
-export const kineParams: Parameters = {
+const kineParams: Parameters = {
   supportedStandards: "ERC-20",
   deploymentChain: "Ethereum, BSC",
   listingProcess: "Centralized",
@@ -55,7 +46,7 @@ export const kineParams: Parameters = {
   markets: "21 pairs",
 }
 
-export const curveParams: Parameters = {
+const curveParams: Parameters = {
   supportedStandards: "ERC-20",
   deploymentChain: "Ethereum, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base and 4 other",
   listingProcess: "Centralized",
@@ -63,20 +54,55 @@ export const curveParams: Parameters = {
   markets: "156 pairs",
 }
 
-export const oneInchParams: Parameters = {
-  supportedStandards: "Supported standards",
-  deploymentChain: "Deployment chain",
-  listingProcess: "Listing process",
-  marginTrading: "Margin trading",
-  markets: "Markets",
-}
+const standardsRow: string[] = [
+  parametersLabels.supportedStandards,
+  Dex223Params.supportedStandards,
+  uniswapParams.supportedStandards,
+  dydxParams.supportedStandards,
+  kineParams.supportedStandards,
+  curveParams.supportedStandards
+];
 
-export const pancakeParams: Parameters = {
-  supportedStandards: "Supported standards",
-  deploymentChain: "Deployment chain",
-  listingProcess: "Listing process",
-  marginTrading: "Margin trading",
-  markets: "Markets",
-}
+const chainsRow: string[] = [
+  parametersLabels.deploymentChain,
+  Dex223Params.deploymentChain,
+  uniswapParams.deploymentChain,
+  dydxParams.deploymentChain,
+  kineParams.deploymentChain,
+  curveParams.deploymentChain
+];
 
+const listingProcessRow: string[] = [
+  parametersLabels.listingProcess,
+  Dex223Params.listingProcess,
+  uniswapParams.listingProcess,
+  dydxParams.listingProcess,
+  kineParams.listingProcess,
+  curveParams.listingProcess
+];
 
+const marginTradingRow: string[] = [
+  parametersLabels.marginTrading,
+  Dex223Params.marginTrading,
+  uniswapParams.marginTrading,
+  dydxParams.marginTrading,
+  kineParams.marginTrading,
+  curveParams.marginTrading
+];
+
+const marketsRow: string[] = [
+  parametersLabels.markets,
+  Dex223Params.markets,
+  uniswapParams.markets,
+  dydxParams.markets,
+  kineParams.markets,
+  curveParams.markets
+];
+
+export const comparativeTableData = [
+  standardsRow,
+  chainsRow,
+  listingProcessRow,
+  marginTradingRow,
+  marketsRow
+]
