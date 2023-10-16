@@ -193,3 +193,31 @@
     color: colors.$text-primary;
   }
 }
+
+.list ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 50px;
+  list-style: none;
+
+  li {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: -24px;
+      background-color: colors.$text-secondary;
+
+      @include media.for-mobile {
+        top: 8px;
+        transform: unset;
+      }
+
+      //transform: translateY(40%);
+    }
+  }
+}
