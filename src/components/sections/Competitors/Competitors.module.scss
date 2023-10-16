@@ -98,10 +98,6 @@
   z-index: -1;
   position: absolute;
   top: -146px;
-  opacity: 0.1;
   animation: breathing-pattern 6s infinite linear alternate;
-
-  svg {
-    width: 1000px;
-  }
+  opacity: 0.2;
 }

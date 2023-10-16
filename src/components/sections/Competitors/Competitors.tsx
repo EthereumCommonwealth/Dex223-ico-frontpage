@@ -10,8 +10,8 @@ import {
 } from "./parameters";
 import clsx from "clsx";
 import NeonBlock from "../../organisms/NeonBlock";
-import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
-import Pattern1 from "../../../assets/images/blue.svg";
+import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import Image from "next/image";
 
 interface SignProps {
   option: boolean
@@ -125,7 +125,7 @@ export default function Competitors() {
   />
     <div className={clsx("container", styles.competitorsTableWrapper)}>
       <div className={styles.pattern}>
-        <Pattern1 />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
       </div>
       <div className={styles.competitorsTable}>
         <div className={styles.cell}>Parameters</div>

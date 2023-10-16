@@ -69,7 +69,6 @@ export default function Fight() {
     rightContent={
       <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
         <FightImage />
-        {/*<img style={{width: "100%"}} src="/images/fight.png" alt=""/>*/}
       </div>
     }
   />

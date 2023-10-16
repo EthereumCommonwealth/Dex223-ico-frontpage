@@ -327,11 +327,6 @@
   bottom: 105px;
   z-index: -1;
   transform: scale(-1, -1);
-  opacity: 0.1;
-
   animation: breathing-pattern 6s infinite linear alternate;
-
-  svg {
-    width: 883px;
-  }
+  opacity: 0.2;
 }
