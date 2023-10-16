@@ -15,6 +15,10 @@
     grid-template-columns: 108px 5fr 3fr;
   }
 
+  &.onlyBottom {
+    //grid-template-rows: minmax(100px, auto) 48px auto;
+  }
+
   &.green {
     .neonBottomLine {
       background: linear-gradient(180deg, #3BD171 0%, rgba(59, 209, 113, 0.00) 100%);
@@ -67,6 +71,10 @@
 
     &.different {
       grid-template-columns: 1fr;
+    }
+
+    &.onlyBottom {
+      grid-template-rows: auto 56px auto;
     }
   }
 
@@ -129,6 +137,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
 
   @include media.for-desktop {
     margin: 0 20px;
@@ -249,4 +258,6 @@
 
 .anchor {
   visibility: hidden;
+  position: absolute;
+  bottom: 40px;
 }

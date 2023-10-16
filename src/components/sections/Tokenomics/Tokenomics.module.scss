@@ -1,6 +1,7 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
 @use "src/styles/media";
+@use "src/styles/mixins";
 
 .chart {
   display: grid;
@@ -317,5 +318,20 @@
     @include typography.t-body-14;
     font-weight: 400;
     color: colors.$text-secondary;
+  }
+}
+
+.pattern {
+  position: absolute;
+  right: -819px;
+  bottom: 105px;
+  z-index: -1;
+  transform: scale(-1, -1);
+  opacity: 0.1;
+
+  animation: breathing-pattern 6s infinite linear alternate;
+
+  svg {
+    width: 883px;
   }
 }

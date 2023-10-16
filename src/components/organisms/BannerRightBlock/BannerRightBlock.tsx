@@ -35,6 +35,5 @@ export default function BannerRightBlock() {
       <div className={styles.counterTimeLabel}>Seconds</div>
     </div>
     <BuyForm />
-    {/*<Button variant="outlined">How to buy?</Button>*/}
   </div>
 }

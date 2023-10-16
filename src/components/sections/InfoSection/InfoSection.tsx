@@ -5,6 +5,7 @@ import ArticleHeading from "../../atoms/ArticleHeading";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import Svg from "../../atoms/Svg";
 import FirstImage from "../../../assets/images/token-info-2.svg";
+import Pattern1 from "../../../assets/images/green.svg";
 
 const infoFields = [
   {
@@ -40,7 +41,11 @@ const infoFields = [
 
 
 export default function InfoSection() {
-  return <NeonBlock
+  return <div className={"container relative"}>
+    <div className={styles.pattern}>
+      <Pattern1 />
+    </div>
+  <NeonBlock
     icon="info"
     color="green"
     overlineText="Info"
@@ -68,5 +73,6 @@ export default function InfoSection() {
         <img className={styles.tokenInfoImage2} src="/images/token-info/token-info-2.svg" alt=""/>
       </div>
     </div>}
-  />;
+  />
+  </div>
 }

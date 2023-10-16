@@ -1,12 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
 import styles from "./Tokenomics.module.scss";
 import clsx from "clsx";
-import Text from "../../atoms/Text";
 import Spacer from "../../atoms/Spacer";
 import ArticleHeading from "../../atoms/ArticleHeading";
 import NeonBlock from "../../organisms/NeonBlock";
-import Svg from "../../atoms/Svg";
-
+import Pattern1 from "../../../assets/images/purple.svg";
 
 export default function Tokenomics() {
   const [isIntersected, setIsIntersected] = useState(false);
@@ -61,7 +59,10 @@ export default function Tokenomics() {
       }
     />
     <div ref={ref}/>
-    <div className="container">
+    <div className="container relative">
+      <div className={styles.pattern}>
+        <Pattern1 />
+      </div>
       <div className={styles.chartWrapper}>
         <div className={styles.chart}>
           <div>

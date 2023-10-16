@@ -8,7 +8,7 @@ import ExternalTextLink from "../../atoms/ExternalTextLink";
 import FirstCardImage from "../../../assets/images/gear.svg";
 import SecondCardImage from "../../../assets/images/margin.svg";
 import ThirdCardImage from "../../../assets/images/listings.svg";
-
+import Pattern1 from "../../../assets/images/blue.svg";
 
 function FeatureBlock({heading, content, image}) {
   const ref = useRef<HTMLDivElement>();
@@ -72,6 +72,7 @@ function FeatureBlock({heading, content, image}) {
 
 export default function Innovation() {
   return <>
+
     <NeonBlock
       icon="lamp"
       color="blue"
@@ -86,7 +87,13 @@ export default function Innovation() {
         </>
       }
     />
-    <div className="container">
+    <div className="container relative">
+      <div className={styles.pattern1}>
+        <Pattern1 />
+      </div>
+      <div className={styles.pattern2}>
+        <Pattern1 />
+      </div>
       <div className={styles.cardWrapper}>
         <FeatureBlock image={<FirstCardImage />} content={
           <>

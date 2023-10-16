@@ -13,39 +13,52 @@ interface Props {
   leftContent: any,
   rightContent?: any,
   differentColumns?: boolean,
-  anchor?: string
+  anchor?: string,
+  onlyBottom?: boolean,
+  noAnimation?: boolean
 }
 
-export default function NeonBlock({icon, color, overlineText, leftContent, rightContent, differentColumns = false, anchor}: Props) {
+export default function NeonBlock({
+                                    icon,
+                                    color,
+                                    overlineText,
+                                    leftContent,
+                                    rightContent,
+                                    differentColumns = false,
+                                    anchor,
+                                    onlyBottom = false,
+                                    noAnimation = false
+                                  }: Props) {
   const ref = useRef();
   const entryTopLine = useIntersectionObserver(ref, {threshold: 0});
   const entryBottomLine = useIntersectionObserver(ref, {threshold: 0.5});
 
   const isBottomVisible = useMemo(() => {
-    if(!entryBottomLine) {
+    if (!entryBottomLine) {
       return false;
     }
-    const isBottomVisible = entryBottomLine.boundingClientRect.bottom < window.innerHeight && entryBottomLine.boundingClientRect.bottom > 0;
-
-    return isBottomVisible;
+    return entryBottomLine.boundingClientRect.bottom < window.innerHeight && entryBottomLine.boundingClientRect.bottom > 0;
   }, [entryBottomLine]);
 
   return <div className="container">
-    <div className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different)}>
+    <div
+      className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different, onlyBottom && styles.onlyBottom)}>
       <div className={clsx(styles.neonLineWrapper, styles.neonTopLineCell)}>
-        <div className={clsx(styles.neonTopLine, entryTopLine?.isIntersecting && styles.animate)} />
+        <div className={clsx(styles.neonTopLine, (entryTopLine?.isIntersecting || noAnimation) && styles.animate)}/>
+        {anchor && <span className={styles.anchor} id={anchor}/>}
       </div>
-      <div className={clsx(styles.neonLineWrapper, styles.neonIconCell, entryBottomLine?.isIntersecting && styles.animate)}>
-        {anchor && <span className={styles.anchor} id={anchor} />}
+      <div
+        className={clsx(styles.neonLineWrapper, styles.neonIconCell, (entryBottomLine?.isIntersecting || isBottomVisible || noAnimation) && styles.animate)}>
         <div className={styles.neonIcon}>
-          <Svg iconName={icon} layout="cover" />
+          <Svg iconName={icon} layout="cover"/>
         </div>
       </div>
       <div className={clsx(styles.overlineTextContainer, styles.headingCell)}>
-        <OverlineText text={overlineText} color={color} />
+        <OverlineText text={overlineText} color={color}/>
       </div>
       <div ref={ref} className={clsx(styles.neonLineWrapper, styles.neonBottomLineCell)}>
-        <div className={clsx(styles.neonBottomLine, (entryBottomLine?.isIntersecting || isBottomVisible) && styles.animate)} />
+        <div
+          className={clsx(styles.neonBottomLine, (entryBottomLine?.isIntersecting || isBottomVisible || noAnimation) && styles.animate)}/>
       </div>
       <div className={styles.textContent}>
         {leftContent}

@@ -43,7 +43,7 @@ const unlockKeystore = async (file, password) => {
 };
 
 export default function KeystoreConnect({handleClose}) {
-  const fileInput = useRef();
+  const fileInput = useRef<HTMLInputElement>();
   const [selectedFile, setSelectedFile] = useState(null);
   const [keystore, setKeystore] = useState(null);
   const [isUnlockingKeystore, setIsUnlockingKeystore] = useState(false);
@@ -126,7 +126,11 @@ export default function KeystoreConnect({handleClose}) {
       />
       <div className={styles.fileInput}>
         <div className={styles.buttonWrapper}>
-          <Button variant="outlined" onClick={() => fileInput.current?.click()}>
+          <Button variant="outlined" onClick={() => {
+            if(fileInput.current && fileInput.current) {
+              fileInput.current.click()
+            }
+          }}>
             Browse...
           </Button>
         </div>
@@ -154,7 +158,7 @@ export default function KeystoreConnect({handleClose}) {
               className={clsx(styles.amountInput, error && styles.error)}
             />
             <button className={styles.showPasswordButton}>
-              <Svg iconName="show-password"/>
+              {/*<Svg iconName="show-password"/>*/}
             </button>
           </div>
           <div className={styles.helperText}>

@@ -79,6 +79,10 @@
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid colors.$border-primary;
   border-bottom: 0;
+
+  &.dev {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .tokenPickButton {
@@ -233,4 +237,12 @@
   }
 }
 
+.devMode {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: colors.$text-primary;
+  margin-bottom: 20px;
+  align-items: center;
+}
 

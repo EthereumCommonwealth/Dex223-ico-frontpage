@@ -1,0 +1,186 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+@use "src/styles/media";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+
+  @include media.for-desktop {
+    gap: 12px;
+  }
+
+  @include media.for-mobile {
+    gap: 8px;
+  }
+}
+
+.problemsList {
+  list-style: none;
+  margin-top: 24px;
+
+  @include media.for-mobile {
+    margin-top: 20px;
+  }
+}
+
+.problemItemLink {
+  padding: 14px 0;
+  color: colors.$text-secondary;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  gap: 24px;
+
+  @include typography.t-body-16;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+  }
+  transition-duration: 0.2s;
+
+  svg {
+    margin-top: 4px;
+  }
+
+  &:hover {
+    color: colors.$palette-green;
+  }
+}
+
+.problemItem {
+  border-bottom: 1px solid colors.$border-primary;
+}
+
+.rightContent {
+  padding-top: 200px;
+  display: flex;
+  justify-content: flex-end;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+
+    //transform: scale(1.2);
+  }
+
+  @include media.for-tablet {
+    padding-top: 20px;
+    justify-content: flex-start;
+
+    svg {
+      max-width: 410px;
+    }
+  }
+
+  @include media.for-mobile {
+    padding-top: 40px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.subheading {
+  @include typography.t-body-24;
+  color: colors.$text-primary;
+  margin-bottom: 24px;
+  font-weight: 600;
+
+  @include media.for-tablet {
+    @include typography.t-body-20;
+  }
+}
+
+.pageHeading {
+  text-align: center;
+  font-size: 58px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 80px;
+  margin-bottom: 12px;
+  margin-top: 60px;
+  color: colors.$text-primary;
+}
+
+.pageSubheading {
+  @include typography.t-body-18;
+  color: colors.$text-secondary;
+  text-align: center;
+  max-width: 822px;
+  margin: 0 auto 20px;
+}
+
+.tabButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px auto;
+  max-width: 822px;
+  position: sticky;
+  top: 20px;
+  backdrop-filter: blur(10px);
+  z-index: 5;
+  box-shadow: 0px 0px 64px 16px rgba(0, 0, 0, 0.80);
+
+  a {
+    display: inline-block;
+
+    &:nth-last-child(1) {
+      button {
+        border-right: 1px solid colors.$border-primary;
+      }
+    }
+  }
+}
+
+.tabButton {
+  width: 100%;
+  height: 48px;
+  border: 1px solid colors.$border-primary;
+  color: colors.$text-secondary;
+  background: transparent;
+  border-right: 0;
+
+
+
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.3s;
+
+  @include typography.t-body-18;
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    border: 1px solid transparent;
+    transition-duration: 0.3s;
+  }
+
+  &:hover {
+    color: colors.$text-primary;
+    &:before {
+      border-color: colors.$text-primary;
+      z-index: 4;
+    }
+  }
+
+  &.active {
+    background-color: colors.$background-secondary;
+    pointer-events: none;
+    color: colors.$text-primary;
+  }
+}

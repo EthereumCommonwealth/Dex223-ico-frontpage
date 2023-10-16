@@ -25,15 +25,6 @@ export const USDT: TokenInfo = {
   decimals: 6
 }
 
-export const BUSDT: TokenInfo = {
-  id: 100,
-  image: "/images/tokens/BUSDT.svg",
-  address: "0xbf6c50889d3a620eb42C0F188b65aDe90De958c4",
-  symbol: "BUSDT",
-  chainId: 820,
-  decimals: 18
-}
-
 export const DAI: TokenInfo = {
   id: 3,
   image: "/images/tokens/DAI.svg",
@@ -54,8 +45,8 @@ export const USDC: TokenInfo = {
 
 export const DEX223: TokenInfo = {
   id: 5,
-  image: "/images/tokens/DEX223.svg",
-  address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+  image: "/images/tokens/DEX.svg",
+  address: "0xf5717D6c1cbAFE00A4c800B227eCe496180244F9",
   symbol: "DEX223",
   chainId: 1,
   decimals: 18
@@ -66,31 +57,46 @@ export const CLO: TokenInfo = {
   image: "/images/tokens/CLO.svg",
   address: "0xF5AD6F6EDeC824C7fD54A66d241a227F6503aD3a",
   symbol: "CLO",
-  decimals: 18,
-  chainId: 820
+  chainId: 820,
+  decimals: 18
 }
 
-export const TEST_USDT: TokenInfo = {
+export const BUSDT: TokenInfo = {
   id: 12,
-  image: "/images/tokens/USDT.svg",
-  address: "0xe3f73915ceC0d1b30724dE01Db04Ee1a1b75019e",
-  symbol: "USDT (test)",
-  decimals: 6,
-  chainId: 820
+  image: "/images/tokens/BUSDT.svg",
+  address: "0xbf6c50889d3a620eb42C0F188b65aDe90De958c4",
+  symbol: "BUSDT",
+  chainId: 820,
+  decimals: 18
 }
 
 export const TEST_DEX223: TokenInfo = {
   id: 13,
   image: "/images/tokens/DEX.svg",
-  address: "0xf5717D6c1cbAFE00A4c800B227eCe496180244F9",
-  symbol: "DEX223",
+  address: "0x9f519E60Fe7d9B4078AD77d3C2831A055C87A79B",
+  symbol: "DEX223 (test)",
   chainId: 820,
   decimals: 18
 }
 
-// export const tokensToPayWith = [ETH, USDT, DAI, USDC];
-export const tokensToPayWith = [BUSDT, CLO, CLO, CLO];
+const ICOContract: `0x${string}` = "0x1F369D3541AA908021399036830BCe70B4E06DAE";
+const testICOContract: `0x${string}` = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
 
-export const testTokensToPayWith = [CLO, TEST_USDT];
+export const tokensToPayWith = [ETH, USDT, DAI, USDC];
+export const testTokensToPayWith = [CLO, BUSDT];
 
-export const tokensToPayWithForPreSale = [BUSDT, CLO];
+export function getTokensToPayWith(isDev: boolean): TokenInfo[] {
+  return isDev ? testTokensToPayWith : tokensToPayWith;
+}
+
+export function getDEXToken(isDev: boolean): TokenInfo {
+  return isDev ? TEST_DEX223 : DEX223;
+}
+
+export function getICOContractAddress(isDev: boolean):`0x${string}` {
+ return isDev ? testICOContract : ICOContract;
+}
+
+export function getChainId(isDev: boolean) {
+  return isDev ? 820 : 1;
+}

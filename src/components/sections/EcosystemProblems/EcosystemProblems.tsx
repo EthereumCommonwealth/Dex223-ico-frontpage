@@ -9,6 +9,7 @@ import Svg from "../../atoms/Svg";
 import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
 import InterfaceDecentralizationImage from "../../../assets/images/last-slide.svg";
 import ListingsImage from "../../../assets/images/slider-listings.svg";
+import Pattern1 from "../../../assets/images/purple.svg";
 
 function LostCard({icon, name, lost, percentage, color, active = false, animate = false}) {
   return <div className={clsx(styles.lostCard, active && styles.active)}>
@@ -319,6 +320,13 @@ export default function EcosystemProblems() {
 
   return <div className="container">
     <div className={styles.ecosystemProblems}>
+      <div className={styles.pattern1}>
+        <Pattern1 />
+
+      </div>
+      <div className={styles.pattern2}>
+        <Pattern1 />
+      </div>
       <div className={styles.sliderContainer}>
         <div ref={ref} className={styles.slides}>
           <div {...handlers} className={styles.slide}>

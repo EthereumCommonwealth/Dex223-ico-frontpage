@@ -5,6 +5,7 @@
 .footer {
   margin-top: 240px;
   border-top: 1px solid colors.$border-primary;
+  background-color: colors.$background-primary;
 
   @include media.for-mobile {
     margin-top: 120px;

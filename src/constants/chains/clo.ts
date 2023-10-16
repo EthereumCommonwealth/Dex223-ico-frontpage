@@ -1,4 +1,5 @@
-import { Chain } from 'wagmi'
+import { Chain } from 'wagmi';
+import {mainnet} from "wagmi";
 
 export const callisto: Chain = {
   id: 820,
@@ -22,3 +23,5 @@ export const callisto: Chain = {
     },
   },
 } as const;
+
+export const ethereum: Chain = mainnet;

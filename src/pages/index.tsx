@@ -13,6 +13,7 @@ import Fight from "../components/sections/Fight";
 import ContactUs from "../components/sections/ContactUs";
 import Spacer from "../components/atoms/Spacer";
 import Footer from "../components/sections/Footer";
+import ScrollToTopButton from "../components/organisms/ScrollToTopButton";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -51,6 +52,8 @@ export default function Home() {
       <Fight />
       <Spacer height={40} />
       <ContactUs />
+
+      <ScrollToTopButton />
       <Footer />
     </>
   )

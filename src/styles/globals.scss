@@ -55,7 +55,7 @@ body {
 }
 
 #__next {
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .bold {
@@ -64,4 +64,20 @@ body {
 
 .primary-color {
   color: colors.$text-primary;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.relative {
+  position: relative;
 }

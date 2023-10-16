@@ -1,10 +1,12 @@
 @use "../../../styles/colors";
 @use "../../../styles/typography";
 @use "src/styles/media";
+@use "src/styles/mixins";
 
 .ecosystemProblems {
   background-color: colors.$background-secondary;
   border: 1px solid colors.$border-primary;
+  position: relative;
 
   @include media.for-laptop {
     margin-top: 120px;
@@ -26,6 +28,31 @@
   @include media.for-laptop {
     grid-template-columns: 1fr;
   }
+}
+
+.pattern1, .pattern2 {
+  position: absolute;
+  z-index: -1;
+}
+
+.pattern2 {
+  left: -462px;
+  top: 37px;
+  opacity: 0.5;
+  transform: scale(-1, -1);
+  animation: breathing-pattern 6s infinite linear alternate;
+
+  svg {
+    width: 595px;
+  }
+}
+
+.pattern1 {
+  right: -626px;
+  bottom: -509px;
+  opacity: 0.1;
+  transform: scale(-1, -1);
+  animation: breathing-pattern 6s 2s infinite linear alternate;
 }
 
 .slides {

@@ -1,6 +1,7 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
 @use "src/styles/media";
+@use "src/styles/mixins";
 
 .text {
   color: colors.$text-secondary;
@@ -116,4 +117,17 @@
       height: 100%;
     }
   }
+}
+
+.pattern {
+  position: absolute;
+  top: 67px;
+  right: -1000px;
+  opacity: 0.1;
+  z-index: -1;
+  svg {
+    width: 1000px;
+  }
+
+  animation: breathing-pattern 6s infinite linear alternate;
 }

@@ -1,6 +1,7 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
 @use "src/styles/media";
+@use "src/styles/mixins";
 
 @keyframes breathing {
   from {
@@ -167,5 +168,17 @@
 
   @include media.for-mobile {
     margin-bottom: 0;
+  }
+}
+
+.pattern {
+  position: absolute;
+  left: -1000px;
+  top: 219px;
+  opacity: 0.1;
+  animation: breathing-pattern 6s infinite linear alternate;
+
+  svg {
+    width: 1000px;
   }
 }

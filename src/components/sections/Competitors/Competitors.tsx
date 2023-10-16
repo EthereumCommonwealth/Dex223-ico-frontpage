@@ -11,6 +11,7 @@ import {
 import clsx from "clsx";
 import NeonBlock from "../../organisms/NeonBlock";
 import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
+import Pattern1 from "../../../assets/images/blue.svg";
 
 interface SignProps {
   option: boolean
@@ -123,6 +124,9 @@ export default function Competitors() {
     }
   />
     <div className={clsx("container", styles.competitorsTableWrapper)}>
+      <div className={styles.pattern}>
+        <Pattern1 />
+      </div>
       <div className={styles.competitorsTable}>
         <div className={styles.cell}>Parameters</div>
         <div className={clsx(styles.cell, styles.centered)}><DEXLogo /></div>

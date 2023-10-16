@@ -1,6 +1,7 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
 @use "src/styles/media";
+@use "src/styles/mixins";
 
 .text {
   color: colors.$text-secondary;
@@ -209,4 +210,22 @@
       //transform: translateY(40%);
     }
   }
+}
+
+.pattern1 {
+  position: absolute;
+  right: -615px;
+  top: -247px;
+  opacity: 0.5;
+  animation: breathing-pattern 6s 2s infinite linear alternate;
+
+}
+
+.pattern2 {
+  position: absolute;
+  left: -616px;
+  bottom: -111px;
+  opacity: 0.1;
+  animation: breathing-pattern 6s infinite linear alternate;
+
 }

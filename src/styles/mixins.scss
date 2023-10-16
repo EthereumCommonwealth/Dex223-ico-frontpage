@@ -2,4 +2,13 @@
   @return rgba($color, $opacity);
 }
 
+@keyframes breathing-pattern {
+  from {
+    opacity: 0.1;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
 
