@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useRef } from "react";
 import styles from "./Structure.module.scss";
 import NeonBlock from "../../organisms/NeonBlock";
 import ArticleHeading from "../../atoms/ArticleHeading";
@@ -12,7 +12,7 @@ export default function Structure({refEl}) {
     <NeonBlock differentColumns anchor="structure" noAnimation onlyBottom icon="architecture" color="purple" overlineText="Structure"
                leftContent={
                  <>
-                   <ArticleHeading text="Exploring the Components of Dex223" />
+                   {/*<ArticleHeading text="Exploring the Components of Dex223" />*/}
                    <div className={styles.paragraphs}>
                      <p className={styles.text}>Dex223 will consists of multiple components:</p>
                      <div className={styles.list}>
