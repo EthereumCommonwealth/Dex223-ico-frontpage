@@ -331,13 +331,13 @@ export default function BuyForm() {
     </div>
     <div className={styles.ratio}><span>1 DEX223 = 0.001 {pickedToken.symbol}</span></div>
 
-    <div className={styles.devMode}>
-      <span>Dev mode</span>
-      <Switch checked={devMode} setChecked={() => setDevMode(!devMode)} />
-    </div>
+    {/*<div className={styles.devMode}>*/}
+    {/*  <span>Dev mode</span>*/}
+    {/*  <Switch checked={devMode} setChecked={() => setDevMode(!devMode)} />*/}
+    {/*</div>*/}
     <div className={clsx(styles.tokenCards, devMode && styles.dev)}>
       {getTokensToPayWith(devMode).map((token) => {
-        return <button key={token.id} onClick={() => setPickedTokenId(token.id)}
+        return <button key={token.id} disabled={token.symbol === "CLO"} onClick={() => setPickedTokenId(token.id)}
                        className={clsx(styles.tokenPickButton, pickedTokenId === token.id && styles.active)}>
           <div className={styles.tokenImage}>
             <Image layout='fill' objectFit='contain' src={token.image} alt=""/>
@@ -346,79 +346,79 @@ export default function BuyForm() {
         </button>
       })}
     </div>
-    <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
+    <TokenCard readonly balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={testToken223Balance?.formatted} type="receive" tokenName={getDEXToken(devMode).symbol}
                tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} isLoading={isLoading} readonly/>
     <Spacer height={20}/>
-    <div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>
-      <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>
-        <span className={styles.gasTitle}>Network fee</span>
-        <div className={styles.gasExpand}>
-          {type}
-          <span>~{" "}{formatUnits(networkFee, 18)} {getChainId(devMode) === 820 ? "CLO" : "ETH"}</span>
-          <Svg iconName="arrow-right" />
-        </div>
-      </div>
-      <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)} />
-      <button onClick={() => setGasSettingsOpened(true)}>Change</button>
-      {/*<Collapse open={isGasSettingsOpened}>*/}
-      {/*  <div className={styles.fields}>*/}
-      {/*   <div>*/}
-      {/*     <h4 className={styles.gasLabel}>*/}
-      {/*       Gas limit*/}
-      {/*       <Svg iconName="info" />*/}
-      {/*     </h4>*/}
-      {/*     <input*/}
-      {/*       value={finalGasLimit || ""}*/}
-      {/*       onChange={(e) => {*/}
-      {/*         setGasLimit(e.target.value);*/}
-      {/*       }}*/}
-      {/*       placeholder="Gas Limit"*/}
-      {/*       className={styles.gasInput}*/}
-      {/*       type="number"*/}
-      {/*     />*/}
-      {/*   </div>*/}
-      {/*   <div>*/}
-      {/*     <h4 className={styles.gasLabel}>*/}
-      {/*       Gas price*/}
-      {/*       <Svg iconName="info" />*/}
-      {/*     </h4>*/}
-      {/*     <input*/}
-      {/*       value={finalGasPrice || ""}*/}
-      {/*       onChange={(e) => {*/}
-      {/*         setGasPrice(e.target.value);*/}
-      {/*       }}*/}
-      {/*       placeholder="Gas Price"*/}
-      {/*       className={styles.gasInput}*/}
-      {/*       type="number"*/}
-      {/*     />*/}
-      {/*   </div>*/}
-      {/*  </div>*/}
-      {/*</Collapse>*/}
-    </div>
-    <Spacer height={20} />
-    <ActionButton
-      handleApprove={writeTokenApprove}
-      handleBuy={processBuyTokens}
-      isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
-      isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
-      isApproving={isApproving}
-      isPurchasing={isPurchasing}
-      waitingForApprove={waitingForApprove || waitingForPurchase}
-      isAmountEntered={Boolean(+amountToPay)}
-      symbol={pickedToken.symbol}
-      chainId={chain?.id}
-      contractBalance={contractBalance?.data?.formatted}
-      output={output}
-      openKeystore={() => setDialogOpened(true)}
-    />
+    {/*<div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>*/}
+    {/*  <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>*/}
+    {/*    <span className={styles.gasTitle}>Network fee</span>*/}
+    {/*    <div className={styles.gasExpand}>*/}
+    {/*      {type}*/}
+    {/*      <span>~{" "}{formatUnits(networkFee, 18)} {getChainId(devMode) === 820 ? "CLO" : "ETH"}</span>*/}
+    {/*      <Svg iconName="arrow-right" />*/}
+    {/*    </div>*/}
+    {/*  </div>*/}
+    {/*  <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)} />*/}
+    {/*  <button onClick={() => setGasSettingsOpened(true)}>Change</button>*/}
+    {/*  /!*<Collapse open={isGasSettingsOpened}>*!/*/}
+    {/*  /!*  <div className={styles.fields}>*!/*/}
+    {/*  /!*   <div>*!/*/}
+    {/*  /!*     <h4 className={styles.gasLabel}>*!/*/}
+    {/*  /!*       Gas limit*!/*/}
+    {/*  /!*       <Svg iconName="info" />*!/*/}
+    {/*  /!*     </h4>*!/*/}
+    {/*  /!*     <input*!/*/}
+    {/*  /!*       value={finalGasLimit || ""}*!/*/}
+    {/*  /!*       onChange={(e) => {*!/*/}
+    {/*  /!*         setGasLimit(e.target.value);*!/*/}
+    {/*  /!*       }}*!/*/}
+    {/*  /!*       placeholder="Gas Limit"*!/*/}
+    {/*  /!*       className={styles.gasInput}*!/*/}
+    {/*  /!*       type="number"*!/*/}
+    {/*  /!*     />*!/*/}
+    {/*  /!*   </div>*!/*/}
+    {/*  /!*   <div>*!/*/}
+    {/*  /!*     <h4 className={styles.gasLabel}>*!/*/}
+    {/*  /!*       Gas price*!/*/}
+    {/*  /!*       <Svg iconName="info" />*!/*/}
+    {/*  /!*     </h4>*!/*/}
+    {/*  /!*     <input*!/*/}
+    {/*  /!*       value={finalGasPrice || ""}*!/*/}
+    {/*  /!*       onChange={(e) => {*!/*/}
+    {/*  /!*         setGasPrice(e.target.value);*!/*/}
+    {/*  /!*       }}*!/*/}
+    {/*  /!*       placeholder="Gas Price"*!/*/}
+    {/*  /!*       className={styles.gasInput}*!/*/}
+    {/*  /!*       type="number"*!/*/}
+    {/*  /!*     />*!/*/}
+    {/*  /!*   </div>*!/*/}
+    {/*  /!*  </div>*!/*/}
+    {/*  /!*</Collapse>*!/*/}
+    {/*</div>*/}
+    {/*<Spacer height={20} />*/}
+    {/*<ActionButton*/}
+    {/*  handleApprove={writeTokenApprove}*/}
+    {/*  handleBuy={processBuyTokens}*/}
+    {/*  isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}*/}
+    {/*  isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}*/}
+    {/*  isApproving={isApproving}*/}
+    {/*  isPurchasing={isPurchasing}*/}
+    {/*  waitingForApprove={waitingForApprove || waitingForPurchase}*/}
+    {/*  isAmountEntered={Boolean(+amountToPay)}*/}
+    {/*  symbol={pickedToken.symbol}*/}
+    {/*  chainId={chain?.id}*/}
+    {/*  contractBalance={contractBalance?.data?.formatted}*/}
+    {/*  output={output}*/}
+    {/*  openKeystore={() => setDialogOpened(true)}*/}
+    {/*/>*/}
 
-    <DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>
-      <KeystoreConnect handleClose={() => setDialogOpened(false)} />
-    </DrawerDialog>
-    {/*<Button disabled>Wait for the next round</Button>*/}
+    {/*<DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>*/}
+    {/*  <KeystoreConnect handleClose={() => setDialogOpened(false)} />*/}
+    {/*</DrawerDialog>*/}
+    <Button disabled>Wait for the next round</Button>
     <Spacer height={8}/>
   </>;
 }
