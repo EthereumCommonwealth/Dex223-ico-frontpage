@@ -77,15 +77,6 @@
       grid-template-rows: auto 56px auto;
     }
   }
-
-  @include media.for-mobile {
-    grid-template-columns: 1fr;
-    gap: 0;
-
-    &.different {
-      grid-template-columns: 1fr;
-    }
-  }
 }
 
 .neonTopLineCell {

@@ -4,8 +4,8 @@ import Button from "../../atoms/Button";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import clsx from "clsx";
 import BannerRightBlock from "../../organisms/BannerRightBlock";
-// import Lottie from "lottie-react";
-// import groovyWalkAnimation from "../../../lottie/banner.json";
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../../../lottie/banner.json";
 import {useSnackbar} from "@/providers/SnackbarProvider";
 import Preloader from "../../atoms/Preloader";
 import Spacer from "../../atoms/Spacer";
@@ -100,9 +100,9 @@ export default function NewBanner() {
         </div>
       </div>
       <div className={styles.bannerForm}>
-        {/*<div className={styles.video}>*/}
-        {/*  <Lottie animationData={groovyWalkAnimation} loop={true} />*/}
-        {/*</div>*/}
+        <div className={styles.video}>
+          <Lottie animationData={groovyWalkAnimation} loop={true} />
+        </div>
         <BannerRightBlock />
       </div>
     </div>

@@ -9,41 +9,50 @@ import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
 
 const references = [
   {
-    text: "DEX223 github repository",
-    href: "#"
+    text: "ICO page source codes",
+    href: "https://github.com/Dexaran/Dex223-ICO-page"
   },
   {
-    text: "DEX223 smart contracts",
-    href: "#"
+    text: "ICO smart-contracts",
+    href: "https://github.com/Dexaran/D223ICO"
   },
   {
-    text: "Announcement repository",
-    href: "#"
+    text: "Auto-listings smart-contract source code (beta)",
+    href: "https://github.com/Dexaran/Dex223-exchange/blob/main/auto-listing.sol"
   },
   {
-    text: "Research and development",
-    href: "#"
+    text: "ERC-223 hub page",
+    href: "https://dexaran.github.io/erc223/"
   },
   {
-    text: "Community Resources",
-    href: "#"
+    text: "ERC-223 page source codes",
+    href: "https://github.com/Dexaran/dexaran.github.io/tree/master/erc223-page-sources"
   },
   {
-    text: "Whitepaper",
-    href: "#"
+    text: "Token Converter UI (work-in-progress / test version)",
+    href: "https://dexaran.github.io/token-converter"
+  },
+  {
+    text: "Token Converter UI source code",
+    href: "https://github.com/Dexaran/dexaran.github.io/tree/master/token-converter-sources"
+  },
+  {
+    text: "Token standard converter smart-contract source code (work-in-progress / test version)",
+    href: "https://github.com/Dexaran/TokenStandardConverter"
+  },
+  {
+    text: "ERC-20 losses calculator script",
+    href: "https://github.com/Dexaran/lost_tokens_react/tree/master"
+  },
+  {
+    text: "ERC-20 losses old version (deprecated)",
+    href: "https://dexaran.github.io/erc20_losses/"
   }
 ];
 
 export default function References({refEl}) {
   const referencesEntryRef = useRef();
   const referencesEntry = useIntersectionObserver(referencesEntryRef, {threshold: 0.6, freezeOnceVisible: true});
-  // const referencesScrollEntry = useIntersectionObserver(referencesEntryRef, {threshold: 0.6});
-
-  // useEffect(() => {
-  //   if(referencesScrollEntry?.isIntersecting) {
-  //     setActiveTab();
-  //   }
-  // }, [referencesScrollEntry?.isIntersecting, setActiveTab]);
 
   return <div>
     <div ref={refEl} />
@@ -54,15 +63,8 @@ export default function References({refEl}) {
       anchor="references"
       leftContent={
         <>
-          <ArticleHeading text="Lorem ipsum dolor sit amet"/>
-
           <div className={styles.paragraphs}>
-            <p className={styles.text}>Lorem ipsum dolor sit amet
-              Lorem ipsum dolor sit amet consectetur. Dolor pretium maecenas congue urna ultrices. Consectetur
-              vivamus arcu enim quis integer consequat ultricies. Ipsum quam nulla quam vitae
-              accumsan vulputate arcu urna vulputate. Egestas molestie posuere gravida aliquam
-              nunc arcu non adipiscing. Fermentum faucibus enim nibh malesuada a. Lacus neque
-              cursus sit auctor blandit velit ullamcorper integer malesuada.
+            <p className={styles.text}>Here you can track the progress:
             </p>
           </div>
           <ul className={styles.problemsList}>

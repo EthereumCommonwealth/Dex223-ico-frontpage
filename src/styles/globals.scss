@@ -54,10 +54,6 @@ body {
   background-color: #000;
 }
 
-#__next {
-  //overflow: hidden;
-}
-
 .bold {
   font-weight: 700;
 }
@@ -80,4 +76,8 @@ input[type=number] {
 
 .relative {
   position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }

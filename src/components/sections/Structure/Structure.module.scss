@@ -1,6 +1,6 @@
-@use "src/styles/colors";
-@use "src/styles/typography";
-@use "src/styles/media";
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/media";
 
 .text {
   color: colors.$text-secondary;
@@ -9,6 +9,10 @@
 
   @include media.for-mobile {
     @include typography.t-body-16;
+  }
+
+  b {
+    color: colors.$text-primary;
   }
 }
 
@@ -22,6 +26,11 @@
 
   @include media.for-mobile {
     gap: 8px;
+  }
+
+  ul {
+    display: grid;
+    gap: 4px;
   }
 }
 
@@ -85,7 +94,7 @@
   @include media.for-mobile {
     padding-top: 40px;
 
-    img {
+    svg {
       width: 100%;
     }
   }
