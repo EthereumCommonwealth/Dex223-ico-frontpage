@@ -63,7 +63,7 @@ export default function References({refEl}) {
       leftContent={
         <>
           <div className={styles.paragraphs}>
-            <p className={styles.text}>Here you can track the progress:
+            <p className={styles.biggerText}>Here you can track the progress:
             </p>
           </div>
           <ul className={styles.problemsList}>

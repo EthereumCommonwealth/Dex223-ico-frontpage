@@ -32,7 +32,7 @@ const description = "Next generation decentralized exchange for ERC-223 & ERC-20
 export default function App({Component, pageProps}: AppProps) {
   return <>
     <Head>
-      <title>Dex223: token presale</title>
+      <title>DEX223</title>
       <meta name="description"
             content={description}/>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -40,19 +40,19 @@ export default function App({Component, pageProps}: AppProps) {
 
       <meta property="og:type" content="website"/>
 
-      <meta property="og:site_name" content="Dex223"/>
-      <meta property="og:title" content="Dex223: token presale"/>
+      <meta property="og:site_name" content="DEX223"/>
+      <meta property="og:title" content="DEX223: token presale"/>
       <meta property="og:url" content="https://www.dex223.io"/>
       <meta property="og:description"
             content={description}/>
       <meta property="og:image" content="https://www.dex223.io/social-link.png"/>
 
-      <meta name="twitter:site" content="Dex223"/>
-      <meta property="twitter:title" content="Dex223: token presale"/>
+      <meta name="twitter:site" content="DEX223"/>
+      <meta property="twitter:title" content="DEX223: token presale"/>
       <meta property="twitter:description"
             content={description}/>
       <meta name="twitter:image" content="https://www.dex223.io/social-link.png"/>
-      <meta name="twitter:image:alt" content="Dex223"/>
+      <meta name="twitter:image:alt" content="DEX223"/>
       <meta name="twitter:card" content="summary_large_image"/>
     </Head>
     <SnackbarProvider>

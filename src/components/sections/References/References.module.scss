@@ -12,6 +12,16 @@
   }
 }
 
+.biggerText {
+  @include typography.t-body-24;
+  font-weight: 600;
+  color: colors.$text-primary;
+
+  @include media.for-desktop {
+    @include typography.t-body-18;
+  }
+}
+
 .paragraphs {
   display: grid;
   gap: 20px;
@@ -41,7 +51,7 @@
   grid-template-columns: 1fr 24px;
   gap: 24px;
 
-  @include typography.t-body-16;
+  @include typography.t-body-18;
 
   @include media.for-mobile {
     @include typography.t-body-14;

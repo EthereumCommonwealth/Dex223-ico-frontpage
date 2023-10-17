@@ -4,22 +4,11 @@ import NeonBlock from "../../organisms/NeonBlock";
 import clsx from "clsx";
 import DevSourcesBlueImage from "../../../assets/images/dev-sources-blue.svg";
 import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import Svg from "@/components/atoms/Svg";
 
 const reports = [
   {
     text: "November 2023",
-    href: "#"
-  },
-  {
-    text: "October 2023",
-    href: "#"
-  },
-  {
-    text: "September 2023",
-    href: "#"
-  },
-  {
-    text: "August 2023",
     href: "#"
   }
 ]
@@ -38,10 +27,23 @@ export default function DevelopmentReports({refEl}) {
       leftContent={
         <>
           <div className={styles.paragraphs}>
-            <p className={styles.text}>Summaries will be published here monthly. We will publish our first
+            <p className={styles.biggerText}>Summaries will be published here monthly. We will publish our first
               development report in early November. Stay tuned.
             </p>
           </div>
+          <ul className={styles.problemsList}>
+            {reports.map((report) => {
+              return <li key={report.text} className={styles.problemItem}>
+                <a target="_blank" href={report.href} className={styles.problemItemLink}>
+                  <span>{report.text}</span>
+                  <div className={styles.linkRightContent}>
+                    <span>Coming soon</span>
+                    <Svg iconName="forward"/>
+                  </div>
+                </a>
+              </li>
+            })}
+          </ul>
         </>
       }
       rightContent={

@@ -73,7 +73,7 @@ export default function Home() {
     <>
       <Header/>
       <h1 className={styles.pageHeading}>Development progress</h1>
-      <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange and related services.</p>
+      <p className={styles.pageSubheading}>Here you can track the development progress of DEX223 decentralized exchange and related services.</p>
 
       <div className={styles.tabButtonsContainer}>
         <div className={styles.tabButtons}>

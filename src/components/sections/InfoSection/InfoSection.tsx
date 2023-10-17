@@ -34,9 +34,7 @@ const infoFields = [
     label: "Public sale price",
     value: "$0.001"
   }
-]
-
-
+];
 
 export default function InfoSection() {
   return <div className={"container relative"}>
