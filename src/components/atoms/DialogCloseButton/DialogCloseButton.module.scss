@@ -11,6 +11,15 @@
   align-items: center;
   justify-content: center;
   color: colors.$text-secondary;
+  transition-duration: 0.2s;
+  background: transparent;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+
+  &:hover {
+    color: colors.$text-primary;
+  }
 
   @include media.for-mobile {
     right: 2px;

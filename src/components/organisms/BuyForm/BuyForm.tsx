@@ -19,7 +19,7 @@ import {
   useWaitForTransaction, useWalletClient
 } from "wagmi";
 import testICOABI from "../../../constants/abis/testICOABI.json";
-import {formatGwei, formatUnits, parseGwei, parseUnits} from "viem";
+import {formatEther, formatGwei, formatUnits, parseGwei, parseUnits} from "viem";
 import ERC20ABI from "../../../constants/abis/erc20.json";
 import Preloader from "../../atoms/Preloader";
 import {useSnackbar} from "../../../providers/SnackbarProvider";
@@ -30,7 +30,7 @@ import KeystoreConnect from "../KeystoreConnect";
 import {publicClient as createPublicClient} from "../../../pages/_app";
 import Switch from "../../atoms/Switch";
 import GasSettingsDialog from "@/components/organisms/GasSettingsDialog";
-import {useTransactionTypeStore} from "@/stores/useGasSettings";
+import {useTransactionGasLimit, useTransactionTypeStore} from "@/stores/useGasSettings";
 
 function ActionButton({
                         isApproved,
@@ -100,9 +100,6 @@ function ActionButton({
     return <Button onClick={handleApprove}>Approve {symbol}</Button>
   }
 
-  console.log(output);
-  console.log(contractBalance);
-
   return <Button onClick={() => {
     if(+output > +contractBalance) {
       showMessage(`There are only ${contractBalance} D223 available at this moment`, "info");
@@ -130,11 +127,32 @@ export default function BuyForm() {
 
   const [pickedTokenId, setPickedTokenId] = useState(getTokensToPayWith(devMode)[0].id);
 
-  const [gasPrice, setGasPrice] = useState(null);
-  const [gasLimit, setGasLimit] = useState(null);
-  const { data: feeData } = useFeeData();
+  const { data: feeData } = useFeeData({
+    chainId: chain?.id || 820,
+    watch: true
+  });
+  const {gasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas, setGasPrice, maxPriorityFeePerGas, maxFeePerGas, type} = useTransactionTypeStore();
 
+  console.log("FEE DATA");
   console.log(feeData);
+
+  const {gasLimit, setGasLimit, setUnsavedGasLimit} = useTransactionGasLimit();
+
+  useEffect(() => {
+
+    if(feeData.formatted.gasPrice) {
+      setGasPrice(feeData.formatted.gasPrice);
+    }
+
+    if(feeData.lastBaseFeePerGas) {
+      setMaxFeePerGas((+formatGwei(feeData.lastBaseFeePerGas) * 1.2).toString());
+    }
+
+    if(feeData.formatted.maxPriorityFeePerGas) {
+      setMaxPriorityFeePerGas((+feeData.formatted.maxPriorityFeePerGas + 0.5).toString());
+    }
+  }, [feeData, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas]);
+
 
   const contractBalance = useBalance({
     address: getICOContractAddress(devMode),
@@ -211,18 +229,11 @@ export default function BuyForm() {
     watch: true
   });
 
-  const defaultGasPrice = feeData?.gasPrice ? formatGwei(feeData.gasPrice) : "0";
-
-  const [defaultGasLimit, setDefaultGasLimit] = useState(null as null | string);
-
   const { data: walletClient }: any = useWalletClient();
 
   useEffect(() => {
     (async () => {
       try {
-        console.log("Trying to get gas");
-
-        console.log(publicClient);
         if (publicClient?.estimateContractGas) {
           const gas = await publicClient.estimateContractGas({
             account: address,
@@ -234,32 +245,36 @@ export default function BuyForm() {
               parseUnits(amountToPay, pickedToken.decimals)
             ]
           });
-          console.log(gas);
-          setDefaultGasLimit(formatUnits(gas, 0));
+          setGasLimit(formatUnits(gas, 0));
+          setUnsavedGasLimit(formatUnits(gas, 0));
+          // setDefaultGasLimit(formatUnits(gas, 0));
         }
       } catch (error) {
         console.log("🚀 ~ error:", error);
         // setDefaultGasLimit(null);
       }
     })();
-  }, [address, walletClient, pickedToken?.address, pickedToken?.decimals, amountToPay, devMode, publicClient]);
+  }, [address, walletClient, pickedToken.address, pickedToken.decimals, amountToPay, devMode, publicClient, setGasLimit, setUnsavedGasLimit]);
 
-  const finalGasPrice = gasPrice === null ? defaultGasPrice : gasPrice;
-  const finalGasLimit = gasLimit === null ? defaultGasLimit : gasLimit;
+  const gasSettings = useMemo(() => {
+    if(type === "legacy") {
+      return {gasPrice}
+    } else {
+      return {maxPriorityFeePerGas: parseGwei(maxPriorityFeePerGas), maxFeePerGas: parseGwei(maxFeePerGas)}
+    }
+  }, [gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
 
   const {config: purchaseConfig} = usePrepareContractWrite({
     address: getICOContractAddress(devMode),
     abi: testICOABI,
     functionName: 'purchaseTokens',
-    // gas: gasPrice ? parseUnits(gasPrice, 0) : undefined,
-    // gasPrice: gasLimit ? parseGwei(gasLimit) : undefined,
+    gas: gasLimit,
+    ...gasSettings,
     args: [
       pickedToken.address,
       parseUnits(amountToPay, pickedToken.decimals)
     ]
-  })
-
-  console.log(purchaseConfig);
+  });
 
   const {data: purchaseData, write: buyTokens, isLoading: waitingForPurchase} = useContractWrite(purchaseConfig);
 
@@ -274,8 +289,8 @@ export default function BuyForm() {
     useSendTransaction({
       to: getICOContractAddress(devMode),
       value: parseUnits(amountToPay, pickedToken.decimals),
-      gas: gasLimit ? parseGwei(gasLimit) : undefined,
-      gasPrice: gasPrice ? parseUnits(gasPrice, 0) : undefined,
+      gas: gasLimit,
+      ...gasSettings,
     })
 
   const processBuyTokens = useCallback(() => {
@@ -311,15 +326,12 @@ export default function BuyForm() {
     return multipliedPercentage;
   }, [contractBalance?.data?.formatted]);
 
-  const networkFee = parseGwei(finalGasPrice) * parseUnits(finalGasLimit || "0", 0);
+  const networkFee = useMemo(() => {
+    return (+formatEther(parseGwei((+maxPriorityFeePerGas + +maxFeePerGas).toString()) * BigInt(gasLimit))).toFixed(3);
+  }, [gasLimit, maxFeePerGas, maxPriorityFeePerGas]);
 
-  // const [isGasSettingsOpened, setGasSettingsOpened] = useState(false);
   const [dialogOpened, setDialogOpened] = useState(false);
-
   const [gasSettingsOpened, setGasSettingsOpened] = useState(false);
-
-  const type = useTransactionTypeStore(state => state.type);
-
 
   return <>
     <div className={styles.progressBar}>
@@ -354,15 +366,14 @@ export default function BuyForm() {
     <Spacer height={20}/>
     <div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>
       <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>
-        <span className={styles.gasTitle}>Network fee</span>
+        <span className={styles.gasTitle}>Max fee</span>
         <div className={styles.gasExpand}>
-          {type}
-          <span>~{" "}{formatUnits(networkFee, 18)} {getChainId(devMode) === 820 ? "CLO" : "ETH"}</span>
-          <Svg iconName="arrow-right" />
+          <Svg iconName="gas" />
+          ~ {networkFee} CLO
+          <button className={styles.editGasButton} onClick={() => setGasSettingsOpened(true)}>EDIT</button>
         </div>
       </div>
       <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)} />
-      <button onClick={() => setGasSettingsOpened(true)}>Change</button>
     </div>
     <Spacer height={20} />
     <ActionButton

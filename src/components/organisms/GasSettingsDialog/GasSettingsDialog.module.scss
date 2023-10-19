@@ -1,17 +1,10 @@
 @use "src/styles/colors";
+@use "src/styles/typography";
 
 .dialog {
   color: colors.$text-primary;
   display: grid;
-  padding: 20px;
-  gap: 10px;
   width: 460px;
-
-
-  input {
-    height: 40px;
-    padding-left: 16px;
-  }
 }
 
 .typeTabs {
@@ -20,6 +13,7 @@
 }
 
 .inputs {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -28,4 +22,216 @@
 .labelInputWrapper {
   display: grid;
   gap: 4px;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.tabButtons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  width: 100%;
+  height: 48px;
+  border: 1px solid colors.$border-primary;
+  color: colors.$text-secondary;
+  background: colors.$background-primary;
+  border-right: 0;
+
+  cursor: pointer;
+  position: relative;
+  //transition-duration: 0.3s;
+
+  @include typography.t-body-18;
+
+  &:nth-last-child(1) {
+    border-right: 1px solid colors.$border-primary;
+  }
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    border: 1px solid transparent;
+    //transition-duration: 0.3s;
+  }
+
+  &:hover {
+    color: colors.$text-primary;
+
+    &:before {
+      border-color: colors.$text-primary;
+      z-index: 4;
+    }
+  }
+
+  &.active {
+    background-color: colors.$background-secondary;
+    pointer-events: none;
+    color: colors.$text-primary;
+
+    &:before {
+      border-color: colors.$text-primary;
+      z-index: 4;
+    }
+  }
+}
+
+.dialogHeader {
+  padding: 16px 40px;
+  border-bottom: 1px solid colors.$border-primary;
+}
+
+.priceSettingContainer {
+  padding: 40px 40px 36px;
+  border-bottom: 1px solid colors.$border-primary;
+}
+
+.gasLimitSettings {
+  padding: 36px 40px 40px;
+}
+
+.textButton {
+  background-color: transparent;
+  font-size: inherit;
+  display: inline;
+  color: colors.$palette-green;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.helperText {
+  @include typography.t-body-12;
+}
+
+.paragraphText {
+  margin-top: 8px;
+  @include typography.t-body-16;
+  color: colors.$text-secondary;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputRightContent {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: colors.$text-secondary;
+  @include typography.t-body-16;
+  height: 24px;
+  min-width: 24px;
+  pointer-events: none;
+}
+
+.editButton {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 20px);
+  transform: translate(-50%, -50%);
+  color: inherit;
+  background-color: transparent;
+  transition-duration: 0.2s;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  pointer-events: all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: colors.$text-primary;
+  }
+}
+
+.saveCancelButtons {
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+  padding-right: 10px;
+}
+
+.saveButton,
+.cancelButton {
+  @include typography.t-body-16;
+  color: colors.$text-secondary;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  padding: 0 8px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 48px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.saveButton {
+  color: colors.$palette-green;
+}
+
+.cancelButton {
+
+}
+
+.gasLimitInput {
+  border-radius: 4px;
+  border: 1px solid colors.$border-primary;
+  background: colors.$background-primary;
+  font-size: 16px;
+  color: colors.$text-primary;
+  height: 48px;
+  padding-left: 16px;
+  width: 100%;
+  padding-right: 142px;
+
+  &:hover {
+    border-color: colors.$palette-green;
+  }
+
+  &:focus {
+    border-color: colors.$palette-green;
+    outline: 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.inputRightButtons {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: colors.$text-secondary;
+  @include typography.t-body-16;
+  height: 24px;
+  min-width: 24px;
+  pointer-events: none;
 }

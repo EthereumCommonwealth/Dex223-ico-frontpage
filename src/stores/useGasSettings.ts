@@ -31,3 +31,49 @@ export const useTransactionTypeStore = create<TransactionTypeState>()((set, get)
   setMaxFeePerGas: (price) => set((state) => ({...state, maxFeePerGas: price})),
   setMaxPriorityFeePerGas: (price) => set((state) => ({...state, maxPriorityFeePerGas: price})),
 }));
+
+interface GasLimit {
+  gasLimit: number,
+  unsavedGasLimit: number,
+  isEditing: boolean,
+  onCancel: () => void,
+  onSave: () => void,
+  setEditing: (isEditing: boolean) => void,
+  setUnsavedGasLimit: (value: string) => void,
+  setGasLimit: (value: string) => void
+}
+
+export const useTransactionGasLimit = create<GasLimit>((set) => ({
+  gasLimit: 0,
+  unsavedGasLimit: 0,
+  isEditing: false,
+
+  setEditing: (isEditing: boolean) => set(() => {
+    return {
+      isEditing
+    }
+  }),
+
+  setUnsavedGasLimit: (gasLimit: string) => set(() => {
+    return {
+      unsavedGasLimit: +gasLimit
+    }
+  }),
+
+  setGasLimit: (gasLimit: string) => set(() => {
+    return {
+      gasLimit: +gasLimit
+    }
+  }),
+
+  onSave: () => set((state) => {
+    return {
+      isEditing: false,
+      gasLimit: state.unsavedGasLimit
+    }
+  }),
+
+  onCancel: () => set(() => {
+    return {isEditing: false}
+  })
+}))

@@ -185,7 +185,7 @@
     transition-duration: 0.3s;
     color: colors.$text-secondary;
     transform-origin: center;
-    transform: rotate(90deg);
+    //transform: rotate(90deg);
   }
 }
 
@@ -227,16 +227,6 @@
   align-items: center;
 }
 
-.gasSettingsOpened {
-  padding-bottom: 20px;
-
-  .gasExpand {
-    svg {
-      transform: rotate(-90deg);
-    }
-  }
-}
-
 .devMode {
   display: flex;
   justify-content: flex-end;
@@ -246,3 +236,14 @@
   align-items: center;
 }
 
+.editGasButton {
+  background: transparent;
+  color: colors.$palette-green;
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  margin-left: 4px;
+
+  @include typography.t-body-16;
+}
