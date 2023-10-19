@@ -140,15 +140,15 @@ export default function BuyForm() {
 
   useEffect(() => {
 
-    if(feeData.formatted.gasPrice) {
+    if(feeData?.formatted?.gasPrice) {
       setGasPrice(feeData.formatted.gasPrice);
     }
 
-    if(feeData.lastBaseFeePerGas) {
+    if(feeData?.lastBaseFeePerGas) {
       setMaxFeePerGas((+formatGwei(feeData.lastBaseFeePerGas) * 1.2).toString());
     }
 
-    if(feeData.formatted.maxPriorityFeePerGas) {
+    if(feeData?.formatted?.maxPriorityFeePerGas) {
       setMaxPriorityFeePerGas((+feeData.formatted.maxPriorityFeePerGas + 0.5).toString());
     }
   }, [feeData, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas]);
