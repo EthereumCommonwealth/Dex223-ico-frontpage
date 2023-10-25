@@ -298,6 +298,9 @@ export default function BuyForm() {
     hash: purchaseData?.hash,
     onSuccess(data) {
       showMessage("Successfully purchased");
+    },
+    onError(data) {
+      showMessage(data.message, "error");
     }
   });
 
