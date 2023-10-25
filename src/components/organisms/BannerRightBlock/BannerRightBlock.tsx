@@ -12,10 +12,6 @@ export default function BannerRightBlock() {
   const [days, hours, minutes, seconds] = ["——", "——", "——", "——"]
 
   return <div className={styles.formToBuy}>
-    <div className={styles.completed}>
-      <Svg iconName="check" />
-      <span>First round completed in less than 24 hours!</span>
-    </div>
     <p className={styles.stayTuned}>
       Stay tuned for the next round
     </p>

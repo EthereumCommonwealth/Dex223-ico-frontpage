@@ -109,6 +109,11 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+
+  &[disabled] {
+    color: #B2B2B2;
+    pointer-events: none;
+  }
 }
 
 .helperText {
@@ -189,6 +194,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .saveButton {
@@ -222,6 +232,38 @@
   &.disabled {
     pointer-events: none;
   }
+
+  &.warning {
+    border-color: colors.$palette-orange;
+  }
+}
+
+.feeError {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--corner-small, 4px);
+  border: 1px solid var(--color-main-red, #D13B3B);
+  background: var(--color-fill-red-bcg, #1A0D0A);
+  margin-top: 16px;
+  svg {
+    color: colors.$palette-red;
+  }
+}
+
+.feeWarning {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid colors.$palette-orange;
+  background: var(--orange-bcg, #1F170A);
+  margin-top: 16px;
+  svg {
+    color: colors.$palette-orange;
+  }
 }
 
 .inputRightButtons {
@@ -234,4 +276,11 @@
   height: 24px;
   min-width: 24px;
   pointer-events: none;
+}
+
+.gasLimitError {
+  color: colors.$palette-orange;
+  @include typography.t-body-12;
+  height: 16px;
+  margin-top: -2px;
 }

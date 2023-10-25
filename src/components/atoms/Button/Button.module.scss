@@ -60,6 +60,12 @@
     }
   }
 
+  &.error {
+    color: colors.$text-primary;
+    background-color: colors.$palette-red;
+    pointer-events: none;
+  }
+
   @include typography.t-body-18;
   height: 60px;
 

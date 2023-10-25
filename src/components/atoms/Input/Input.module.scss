@@ -18,4 +18,12 @@
     border-color: colors.$palette-green;
     outline: 0;
   }
+
+  &.error {
+    border-color: colors.$palette-red;
+  }
+
+  &.warning {
+    border-color: colors.$palette-orange;
+  }
 }

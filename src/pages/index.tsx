@@ -13,6 +13,7 @@ import ContactUs from "../components/sections/ContactUs";
 import Spacer from "../components/atoms/Spacer";
 import Footer from "../components/sections/Footer";
 import ScrollToTopButton from "../components/organisms/ScrollToTopButton";
+import MeetTheTeam from "@/components/sections/MeetTheTeam";
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
@@ -26,9 +27,6 @@ export default function Home() {
 
   return (
     <>
-      {/*<MeetTheTeam />*/}
-      {/*<Spacer height={40} />*/}
-
       {/* ADAPTED */}
 
       <Header />
@@ -49,6 +47,8 @@ export default function Home() {
       <BuildingTrust />
       <Spacer height={40} />
       <Fight />
+      <Spacer height={40} />
+      <MeetTheTeam />
       <Spacer height={40} />
       <ContactUs />
 

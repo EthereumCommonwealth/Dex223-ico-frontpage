@@ -22,7 +22,9 @@ const socialIcons = {
   linkedin: "/images/socials/linkedin.svg",
   reddit: "/images/socials/reddit.svg",
   telegram: "/images/socials/telegram.svg",
-  github: "/images/socials/github.svg"
+  github: "/images/socials/github.svg",
+  twitter: "/images/socials/twitter.svg",
+  email: "/images/socials/email.svg"
 }
 
 
@@ -32,12 +34,15 @@ export default function TeamMemberCard({image, position, socials, name}: Props) 
 
     <div className={styles.info}>
       <span className={styles.position}>{position}</span>
-      <span className={styles.name}>{name}</span>
-      <div className={styles.socialLinks}>
-        {Object.keys(socials).map((key) => {
-          return <a className={styles.socialLink} key={key} href={socials[key]}><img alt="" src={socialIcons[key]} /></a>
-        })}
+      <div className={styles.nameAndSocials}>
+        <span className={styles.name}>{name}</span>
+        <div className={styles.socialLinks}>
+          {Object.keys(socials).map((key) => {
+            return <a target="_blank" className={styles.socialLink} key={key} href={socials[key]}><img alt="" src={socialIcons[key]} /></a>
+          })}
+        </div>
       </div>
+
     </div>
   </div>;
 }
