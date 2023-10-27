@@ -1,0 +1,46 @@
+@use "src/styles/colors";
+
+.transactionRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.transactionIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    color: colors.$text-primary;
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: relative;
+    transition: color 0.3s;
+
+    &:before {
+      content: "";
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+    }
+
+    &:hover {
+      color: colors.$palette-green;
+    }
+  }
+
+  span {
+    width: 24px;
+    height: 24px;
+    color: colors.$palette-green;
+
+    &.error {
+      color: colors.$palette-red;
+    }
+  }
+}

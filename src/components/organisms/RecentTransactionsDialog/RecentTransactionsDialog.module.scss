@@ -1,6 +1,47 @@
 @use "src/styles/colors";
+@use "src/styles/typography";
 
 .dialog {
+  width: 500px;
+}
+
+.dialogContent {
   padding: 40px;
   color: colors.$text-primary;
+  min-height: 344px;
+
+  &.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.noTransactions {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+
+  color: colors.$text-secondary;
+  @include typography.t-body-16;
+}
+
+.dialogHeader {
+  border-bottom: 1px solid colors.$border-primary;
+  height: 60px;
+  padding-left: 40px;
+
+  @include typography.t-body-20;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  color: colors.$text-primary;
+}
+
+.transactionsList {
+  display: grid;
+  gap: 16px;
 }

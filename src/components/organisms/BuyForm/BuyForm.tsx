@@ -39,7 +39,7 @@ import {
   useTransactionTypeStore
 } from "@/stores/useGasSettings";
 import RecentTransactionsDialog from "@/components/organisms/RecentTransactionsDialog";
-import {ResentTransactionStatus, useRecentTransactions} from "@/stores/useRecentTransactions";
+import {useRecentTransactions} from "@/stores/useRecentTransactions";
 import useZustandStore from "@/stores/useZustandStore";
 
 function ActionButton({
@@ -52,7 +52,6 @@ function ActionButton({
                         symbol,
                         waitingForApprove,
                         chainId,
-                        isPurchasing,
                         contractBalance,
                         output,
   openKeystore
@@ -82,15 +81,6 @@ function ActionButton({
 
   if (Boolean(chainId) && chainId !== 820) {
     return <Button onClick={() => switchNetwork(820)}>Switch to Callisto Network</Button>
-  }
-
-  if (isPurchasing) {
-    return <Button disabled>
-      <span className={styles.waitingContent}>
-        <span>Purchasing</span>
-        <Preloader size={24}/>
-      </span>
-    </Button>
   }
 
   if (isApproving) {
@@ -152,7 +142,7 @@ export default function BuyForm() {
 
   console.log(actions);
 
-  const {addTransaction, updateTransactionStatus, initializeTransactions} = actions;
+  const {addTransaction} = actions;
 
   const { type} = useTransactionTypeStore();
 
@@ -307,23 +297,13 @@ export default function BuyForm() {
     isLoading: waitingForPurchase,
     error: purchaseError,
   } = useContractWrite({...purchaseConfig, onSettled(data) {
+      showMessage("Transaction submitted!");
       addTransaction({
         hash: data.hash,
-        chainId: chain.id
+        chainId: chain.id,
+        title: `Purchase ${output} DEX223 for ${amountToPay} ${pickedToken.symbol}`
       })
     }});
-
-
-  const {isLoading: isPurchasing, isSuccess, isIdle } = useWaitForTransaction({
-    hash: purchaseData?.hash,
-    onSuccess: (data) => {
-      updateTransactionStatus(data.transactionHash, ResentTransactionStatus.SUCCESS)
-    }
-  });
-
-  useEffect(() => {
-    initializeTransactions();
-  }, [initializeTransactions]);
 
   const { data, sendTransaction } =
     useSendTransaction({
@@ -334,22 +314,11 @@ export default function BuyForm() {
       onSettled: (data) => {
         addTransaction({
           hash: data.hash,
-          chainId: chain.id
+          chainId: chain.id,
+          title: `Purchase ${output} DEX223 for ${amountToPay} ${pickedToken.symbol}`
         })
       }
     })
-
-  const waiting = useWaitForTransaction({
-    hash: data?.hash,
-    onSettled(settledData, error) {
-      if(error) {
-         updateTransactionStatus(data?.hash, ResentTransactionStatus.ERROR);
-          return;
-      }
-
-      updateTransactionStatus(data?.hash, ResentTransactionStatus.SUCCESS)
-    },
-  });
 
   const processBuyTokens = useCallback(() => {
     if(pickedToken.id === 11 || pickedToken.id === 1) {
@@ -415,7 +384,6 @@ export default function BuyForm() {
       <span>Dev mode</span>
       <Switch checked={devMode} setChecked={() => setDevMode(!devMode)} />
     </div>
-    <button onClick={() => setRecentTransactionsOpened(true)}>Open recent transactions</button>
     <div className={clsx(styles.tokenCards, devMode && styles.dev)}>
       {getTokensToPayWith(devMode).map((token) => {
         return <button key={token.id} onClick={() => setPickedTokenId(token.id)}
@@ -451,7 +419,6 @@ export default function BuyForm() {
       isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
       isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}
       isApproving={isApproving}
-      isPurchasing={isPurchasing}
       waitingForApprove={waitingForApprove || waitingForPurchase}
       isAmountEntered={Boolean(+amountToPay)}
       symbol={pickedToken.symbol}
@@ -460,6 +427,14 @@ export default function BuyForm() {
       output={output}
       openKeystore={() => setDialogOpened(true)}
     />
+
+    <div className={styles.recentTransactionsField}>
+      <div>
+        <Svg iconName="recent-transactions" />
+        Recent transactions
+      </div>
+      <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>See all activity</button>
+    </div>
 
     <DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>
       <KeystoreConnect handleClose={() => setDialogOpened(false)} />

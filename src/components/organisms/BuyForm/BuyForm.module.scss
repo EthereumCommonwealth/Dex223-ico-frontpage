@@ -247,3 +247,29 @@
 
   @include typography.t-body-16;
 }
+
+.recentTransactionsField {
+  color: colors.$text-secondary;
+  @include typography.t-body-16;
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  margin-top: 20px;
+  padding: 0 20px;
+  background-color: colors.$background-secondary;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.textButton {
+  background-color: transparent;
+  font-size: inherit;
+  border: 0;
+  outline: 0;
+  color: colors.$palette-green;
+  cursor: pointer;
+}

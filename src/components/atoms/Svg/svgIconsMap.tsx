@@ -29,7 +29,9 @@ export const svgIconsNames = [
   "close",
   "warning",
   "edit",
-  "team"
+  "team",
+  "recent-transactions",
+  "error-fill"
 ] as const;
 
 export type IconName = typeof svgIconsNames[number];

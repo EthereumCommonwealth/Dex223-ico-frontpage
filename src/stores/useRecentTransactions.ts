@@ -2,47 +2,29 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 
 const localStorageKey = "recent-transactions";
-export enum ResentTransactionStatus {
+export enum RecentTransactionStatus {
   PENDING,
   SUCCESS,
   ERROR,
 }
-interface RecentTransaction {
-  status: ResentTransactionStatus
-  hash: string,
-  chainId: number
+export interface RecentTransaction {
+  status: RecentTransactionStatus
+  hash: `0x${string}`,
+  chainId: number,
+  title: string
 }
 
 interface RecentTransactions {
   transactions: Array<RecentTransaction>,
-  isInitialized: boolean,
-  initializeTransactions: () => void,
-  addTransaction: (transaction: Pick<RecentTransaction, "hash" | "chainId">) => void,
-  updateTransactionStatus: (hash: string, status: ResentTransactionStatus) => void,
+  addTransaction: (transaction: Pick<RecentTransaction, "hash" | "chainId" | "title">) => void,
+  updateTransactionStatus: (hash: string, status: RecentTransactionStatus) => void,
   clearTransactions: () => void
 }
 
 export const useRecentTransactions = create<RecentTransactions>()(persist((set) => ({
   transactions: [],
-  isInitialized: true,
-  initializeTransactions: () => set((state) => {
-    const initializedState = {
-      isInitialized: true
-    }
-    // if(localStorage) {
-    //   const savedTransactions = localStorage.getItem(localStorageKey);
-    //
-    //
-    //   if(savedTransactions) {
-    //     return {...initializedState, transactions: JSON.parse(savedTransactions)};
-    //   }
-    // }
-
-    return initializedState;
-  }),
   addTransaction: (transaction) => set((state) => {
-    const updatedTransactions = [{...transaction, status: ResentTransactionStatus.PENDING}, ...state.transactions];
-    // localStorage.setItem(localStorageKey, JSON.stringify(updatedTransactions));
+    const updatedTransactions = [{...transaction, status: RecentTransactionStatus.PENDING}, ...state.transactions];
 
     return {transactions: updatedTransactions};
   }),
@@ -58,9 +40,6 @@ export const useRecentTransactions = create<RecentTransactions>()(persist((set) 
       const updatedTransaction = {...state.transactions[transactionIndex], status};
       const updatedTransactions = [...state.transactions];
       updatedTransactions[transactionIndex] = updatedTransaction;
-      console.log(updatedTransactions);
-
-      // localStorage.setItem(localStorageKey, JSON.stringify(updatedTransactions));
 
       return {transactions: updatedTransactions}
     }
@@ -68,10 +47,7 @@ export const useRecentTransactions = create<RecentTransactions>()(persist((set) 
     return {};
   }),
   clearTransactions: () => set(() => {
-    const updatedState = {transactions: []};
-    // localStorage.setItem(localStorageKey, JSON.stringify(updatedState.transactions));
-
-    return updatedState;
+    return {transactions: []};
   })
 }), {
   name: 'recent-transactions', // name of the item in the storage (must be unique)
