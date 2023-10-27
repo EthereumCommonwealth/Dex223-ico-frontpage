@@ -16,20 +16,22 @@ const team = [
     }
   },
   {
-    image: "/images/team/team-1.jpg",
+    image: "/images/team/YuriyKharytoshyn.jpg",
     position: "Adviser, Security Auditor",
-    name: "Yuriy",
+    name: "Yuriy Kharytoshyn",
     socials: {
       github: "https://github.com/yuriy77k",
-      linkedin: "https://www.linkedin.com/in/yuriy-kharytoshyn-b6b89517b/"
+      linkedin: "https://www.linkedin.com/in/yuriy-kharytoshyn-b6b89517b/",
+      email: "mailto:yuri@callisto.network"
     }
   },
   {
-    image: "/images/team/team-1.jpg",
-    position: "?",
-    name: "Tio",
+    image: "/images/team/TioToi.jpg",
+    position: "Product manager",
+    name: "Tio Toi",
     socials: {
-
+      github: "https://github.com/tiotoi",
+      linkedin: "https://www.linkedin.com/in/tio-toi-192279165/"
     }
   },
   {
@@ -52,7 +54,7 @@ const team = [
     }
   },
   {
-    image: "/images/team/team-1.jpg",
+    image: "/images/team/OlegGorbatiuk.jpg",
     position: "Web Developer",
     name: "Oleg Gorbatiuk",
     socials: {

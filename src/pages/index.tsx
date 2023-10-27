@@ -14,6 +14,7 @@ import Spacer from "../components/atoms/Spacer";
 import Footer from "../components/sections/Footer";
 import ScrollToTopButton from "../components/organisms/ScrollToTopButton";
 import MeetTheTeam from "@/components/sections/MeetTheTeam";
+import {useRecentTransactions} from "@/stores/useRecentTransactions";
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {

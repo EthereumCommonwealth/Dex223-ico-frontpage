@@ -1,0 +1,6 @@
+@use "src/styles/colors";
+
+.dialog {
+  padding: 40px;
+  color: colors.$text-primary;
+}

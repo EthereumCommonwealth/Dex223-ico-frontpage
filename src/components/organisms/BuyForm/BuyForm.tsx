@@ -1,8 +1,6 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 import styles from "./BuyForm.module.scss";
-import {
-  getDEXToken, getTokensToPayWith, getICOContractAddress, getChainId, TokenInfo
-} from "@/constants/tokens";
+import {getChainId, getDEXToken, getICOContractAddress, getTokensToPayWith, TokenInfo} from "@/constants/tokens";
 import clsx from "clsx";
 import Image from "next/image";
 import TokenCard from "../TokenCard";
@@ -13,9 +11,15 @@ import {
   useAccount,
   useBalance,
   useContractRead,
-  useContractWrite, useFeeData, useNetwork,
-  usePrepareContractWrite, usePublicClient, useSendTransaction, useSwitchNetwork,
-  useWaitForTransaction, useWalletClient
+  useContractWrite,
+  useFeeData,
+  useNetwork,
+  usePrepareContractWrite,
+  usePublicClient,
+  useSendTransaction,
+  useSwitchNetwork,
+  useWaitForTransaction,
+  useWalletClient
 } from "wagmi";
 import testICOABI from "../../../constants/abis/testICOABI.json";
 import {formatEther, formatGwei, formatUnits, parseGwei, parseUnits} from "viem";
@@ -30,9 +34,13 @@ import GasSettingsDialog from "@/components/organisms/GasSettingsDialog";
 import {
   useTransactionGasFee,
   useTransactionGasLimit,
-  useTransactionGasPrice, useTransactionPriorityFee,
+  useTransactionGasPrice,
+  useTransactionPriorityFee,
   useTransactionTypeStore
 } from "@/stores/useGasSettings";
+import RecentTransactionsDialog from "@/components/organisms/RecentTransactionsDialog";
+import {ResentTransactionStatus, useRecentTransactions} from "@/stores/useRecentTransactions";
+import useZustandStore from "@/stores/useZustandStore";
 
 function ActionButton({
                         isApproved,
@@ -140,11 +148,13 @@ export default function BuyForm() {
     watch: true
   });
 
-  console.log(feeData);
+  const actions = useRecentTransactions();
 
-  const {
-    type,
-  } = useTransactionTypeStore();
+  console.log(actions);
+
+  const {addTransaction, updateTransactionStatus, initializeTransactions} = actions;
+
+  const { type} = useTransactionTypeStore();
 
   const {baseFee, setBaseFee, setMaxFeePerGas, maxFeePerGas} = useTransactionGasFee();
   const {gasPrice, setGasPrice, setBaseGasPrice} = useTransactionGasPrice();
@@ -169,7 +179,6 @@ export default function BuyForm() {
       setBasePriority(feeData.formatted.maxPriorityFeePerGas);
     }
   }, [feeData, setBaseGasPrice, setBaseFee, setBasePriority, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas]);
-
 
   const contractBalance = useBalance({
     address: getICOContractAddress(devMode),
@@ -292,17 +301,29 @@ export default function BuyForm() {
     ]
   });
 
-  const {data: purchaseData, write: buyTokens, isLoading: waitingForPurchase} = useContractWrite(purchaseConfig);
+  const {
+    data: purchaseData,
+    write: buyTokens,
+    isLoading: waitingForPurchase,
+    error: purchaseError,
+  } = useContractWrite({...purchaseConfig, onSettled(data) {
+      addTransaction({
+        hash: data.hash,
+        chainId: chain.id
+      })
+    }});
 
-  const {isLoading: isPurchasing, isSuccess} = useWaitForTransaction({
+
+  const {isLoading: isPurchasing, isSuccess, isIdle } = useWaitForTransaction({
     hash: purchaseData?.hash,
-    onSuccess(data) {
-      showMessage("Successfully purchased");
-    },
-    onError(data) {
-      showMessage(data.message, "error");
+    onSuccess: (data) => {
+      updateTransactionStatus(data.transactionHash, ResentTransactionStatus.SUCCESS)
     }
   });
+
+  useEffect(() => {
+    initializeTransactions();
+  }, [initializeTransactions]);
 
   const { data, sendTransaction } =
     useSendTransaction({
@@ -310,7 +331,25 @@ export default function BuyForm() {
       value: parseUnits(amountToPay, pickedToken.decimals),
       gas: gasLimit,
       ...gasSettings,
+      onSettled: (data) => {
+        addTransaction({
+          hash: data.hash,
+          chainId: chain.id
+        })
+      }
     })
+
+  const waiting = useWaitForTransaction({
+    hash: data?.hash,
+    onSettled(settledData, error) {
+      if(error) {
+         updateTransactionStatus(data?.hash, ResentTransactionStatus.ERROR);
+          return;
+      }
+
+      updateTransactionStatus(data?.hash, ResentTransactionStatus.SUCCESS)
+    },
+  });
 
   const processBuyTokens = useCallback(() => {
     if(pickedToken.id === 11 || pickedToken.id === 1) {
@@ -360,6 +399,8 @@ export default function BuyForm() {
   const [dialogOpened, setDialogOpened] = useState(false);
   const [gasSettingsOpened, setGasSettingsOpened] = useState(false);
 
+  const [isRecentTransactionsOpened, setRecentTransactionsOpened] = useState(false);
+
   return <>
     <div className={styles.progressBar}>
       <div style={{width: `${0}%`}} className={styles.bar}/>
@@ -374,6 +415,7 @@ export default function BuyForm() {
       <span>Dev mode</span>
       <Switch checked={devMode} setChecked={() => setDevMode(!devMode)} />
     </div>
+    <button onClick={() => setRecentTransactionsOpened(true)}>Open recent transactions</button>
     <div className={clsx(styles.tokenCards, devMode && styles.dev)}>
       {getTokensToPayWith(devMode).map((token) => {
         return <button key={token.id} onClick={() => setPickedTokenId(token.id)}
@@ -422,6 +464,11 @@ export default function BuyForm() {
     <DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>
       <KeystoreConnect handleClose={() => setDialogOpened(false)} />
     </DrawerDialog>
+
+    <RecentTransactionsDialog isOpen={isRecentTransactionsOpened} handleClose={() => {
+      setRecentTransactionsOpened(false);
+    }} />
+
     {/*<Button disabled>Wait for the next round</Button>*/}
     <Spacer height={8}/>
   </>;
