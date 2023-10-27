@@ -36,9 +36,9 @@ export default function Competitors() {
     }
   />
     <div className={clsx("container", styles.competitorsTableWrapper)}>
-      <div className={styles.pattern}>
-        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
-      </div>
+      {/*<div className={styles.pattern}>*/}
+      {/*  <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />*/}
+      {/*</div>*/}
       <div className={styles.competitorsTable}>
         {imagesRow.map((image, index) => {
           return <div key={index} className={clsx(styles.cell, index !== 0 && styles.centered)}>

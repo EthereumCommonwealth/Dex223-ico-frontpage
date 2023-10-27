@@ -337,7 +337,7 @@ export default function BuyForm() {
     {/*</div>*/}
     <div className={clsx(styles.tokenCards, devMode && styles.dev)}>
       {getTokensToPayWith(devMode).map((token) => {
-        return <button key={token.id} disabled={token.symbol === "CLO"} onClick={() => setPickedTokenId(token.id)}
+        return <button key={token.id} disabled={token.symbol === "ETH"} onClick={() => setPickedTokenId(token.id)}
                        className={clsx(styles.tokenPickButton, pickedTokenId === token.id && styles.active)}>
           <div className={styles.tokenImage}>
             <Image layout='fill' objectFit='contain' src={token.image} alt=""/>
