@@ -83,7 +83,7 @@ const ICOContract: `0x${string}` = "0x1F369D3541AA908021399036830BCe70B4E06DAE";
 const testICOContract: `0x${string}` = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
 
 export const tokensToPayWith = [ETH, USDT, DAI, USDC];
-export const testTokensToPayWith = [BUSDT, CLO];
+export const testTokensToPayWith = [ETH, USDT];
 
 export function getTokensToPayWith(isDev: boolean): TokenInfo[] {
   return isDev ? testTokensToPayWith : tokensToPayWith;
