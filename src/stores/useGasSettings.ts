@@ -91,7 +91,8 @@ interface GasLimit {
   setEditing: (isEditing: boolean) => void,
   setUnsavedGasLimit: (value: string) => void,
   setGasLimit: (value: string) => void,
-  setEstimatedGasLimit: (value: string) => void,
+  resetUnsaved: () => void,
+  setEstimatedGasLimit: (value: string) => void
 }
 
 export const useTransactionGasLimit = create<GasLimit>((set) => ({
@@ -129,6 +130,13 @@ export const useTransactionGasLimit = create<GasLimit>((set) => ({
 
   setEstimatedGasLimit: (gasLimit: string) => set({estimatedGasLimit: +gasLimit}),
 
+  resetUnsaved: () => set((state) => {
+    return {
+      unsavedGasLimit: state.estimatedGasLimit,
+      gasLimitWarning: null
+    }
+  }),
+
   setGasLimit: (gasLimit: string) => set(() => {
     return {
       gasLimit: +gasLimit,
@@ -137,7 +145,7 @@ export const useTransactionGasLimit = create<GasLimit>((set) => ({
   }),
 
   onSave: () => set((state) => {
-    if (+state.gasLimit < state.estimatedGasLimit) {
+    if (+state.unsavedGasLimit < state.estimatedGasLimit) {
       return {
         isEditing: false,
         gasLimitWarning: "Gas limit is lower than estimated",
@@ -146,7 +154,7 @@ export const useTransactionGasLimit = create<GasLimit>((set) => ({
       }
     }
 
-    if (+state.gasLimit > state.estimatedGasLimit * 3) {
+    if (+state.unsavedGasLimit > state.estimatedGasLimit * 3) {
       return {
         isEditing: false,
         gasLimitWarning: "Gas limit is unnecessarily too high",

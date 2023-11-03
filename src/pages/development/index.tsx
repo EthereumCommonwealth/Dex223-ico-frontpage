@@ -1,9 +1,6 @@
 import Header from "../../components/sections/Header";
 import Footer from "../../components/sections/Footer";
-import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import NeonBlock from "../../components/organisms/NeonBlock";
-import CubeImage from "../../assets/images/cube.svg";
-import ArticleHeading from "../../components/atoms/ArticleHeading";
+import React, {useEffect, useRef, useState} from "react";
 import styles from "../../styles/Development.module.scss";
 import clsx from "clsx";
 import DevelopmentReports from "../../components/sections/DevelopmentReports";

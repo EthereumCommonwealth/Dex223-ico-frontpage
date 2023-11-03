@@ -273,3 +273,20 @@
   color: colors.$palette-green;
   cursor: pointer;
 }
+
+.newIndicator {
+  position: absolute;
+  border: 1px solid colors.$background-secondary;
+  background: colors.$palette-red;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  top: 2px;
+  right: 1px;
+}
+
+.recentTransactionsIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}

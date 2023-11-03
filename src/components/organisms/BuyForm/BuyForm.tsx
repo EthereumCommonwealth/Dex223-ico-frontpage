@@ -9,7 +9,7 @@ import {useWeb3Modal} from "@web3modal/react";
 import Spacer from "../../atoms/Spacer";
 import {
   useAccount,
-  useBalance,
+  useBalance, useBlockNumber,
   useContractRead,
   useContractWrite,
   useFeeData,
@@ -121,6 +121,14 @@ function isNativeToken(token: TokenInfo) {
   return token.id === 1 || token.id === 11;
 }
 
+function stringifyObject(object: { [key: string]: any }) {
+  return JSON.parse(JSON.stringify(object, (key, value) =>
+    typeof value === 'bigint'
+      ? value.toString()
+      : value // return everything else unchanged
+  ));
+}
+
 export default function BuyForm() {
   const {address} = useAccount();
   const {chain} = useNetwork();
@@ -142,7 +150,7 @@ export default function BuyForm() {
 
   console.log(actions);
 
-  const {addTransaction} = actions;
+  const {addTransaction, isViewed} = actions;
 
   const { type} = useTransactionTypeStore();
 
@@ -296,12 +304,30 @@ export default function BuyForm() {
     write: buyTokens,
     isLoading: waitingForPurchase,
     error: purchaseError,
-  } = useContractWrite({...purchaseConfig, onSettled(data) {
+  } = useContractWrite({...purchaseConfig, onSettled: async (data) => {
+      console.log(data);
       showMessage("Transaction submitted!");
+      const _nonce = await publicClient.getTransactionCount({
+        address,
+        blockTag: "pending"
+      });
+
       addTransaction({
         hash: data.hash,
         chainId: chain.id,
-        title: `Purchase ${output} DEX223 for ${amountToPay} ${pickedToken.symbol}`
+        title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
+        details: {
+          nonce: _nonce - 1,
+          address: getICOContractAddress(devMode),
+          abi: "ICO_ABI",
+          functionName: 'purchaseTokens',
+          gas: gasLimit,
+          ...stringifyObject(gasSettings),
+          args: [
+            pickedToken.address,
+            parseUnits(amountToPay, pickedToken.decimals).toString()
+          ]
+        }
       })
     }});
 
@@ -311,11 +337,25 @@ export default function BuyForm() {
       value: parseUnits(amountToPay, pickedToken.decimals),
       gas: gasLimit,
       ...gasSettings,
-      onSettled: (data) => {
+      onSettled: async (data) => {
+        const _nonce = await publicClient.getTransactionCount({
+          address,
+          blockTag: "pending"
+        });
+
+
+
         addTransaction({
           hash: data.hash,
           chainId: chain.id,
-          title: `Purchase ${output} DEX223 for ${amountToPay} ${pickedToken.symbol}`
+          title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
+          details: {
+            nonce: _nonce - 1,
+            to: getICOContractAddress(devMode),
+            value: parseUnits(amountToPay, pickedToken.decimals).toString(),
+            gas: gasLimit,
+            ...stringifyObject(gasSettings)
+          }
         })
       }
     })
@@ -429,8 +469,11 @@ export default function BuyForm() {
     />
 
     <div className={styles.recentTransactionsField}>
-      <div>
-        <Svg iconName="recent-transactions" />
+      <div className="relative">
+        <span className={styles.recentTransactionsIcon}>
+          <Svg iconName="recent-transactions" />
+          {!isViewed && <span className={styles.newIndicator} />}
+        </span>
         Recent transactions
       </div>
       <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>See all activity</button>

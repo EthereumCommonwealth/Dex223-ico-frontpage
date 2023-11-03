@@ -8,30 +8,45 @@ export enum RecentTransactionStatus {
   ERROR,
 }
 export interface RecentTransaction {
-  status: RecentTransactionStatus
+  status: RecentTransactionStatus,
   hash: `0x${string}`,
   chainId: number,
-  title: string
+  title: string,
+  details?: {
+    nonce: number,
+    to?: `0x${string}`,
+    address?: `0x${string}`,
+    abi?: "ICO_ABI" | "ERC20_ABI",
+    functionName?: "purchaseTokens" | "approve",
+    value?: string,
+    gas?: number,
+    gasPrice?: string,
+    maxPriorityFeePerGas?: string,
+    maxFeePerGas?: string,
+    args?: Array<string>
+  }
 }
 
 interface RecentTransactions {
   transactions: Array<RecentTransaction>,
-  addTransaction: (transaction: Pick<RecentTransaction, "hash" | "chainId" | "title">) => void,
+  isViewed: boolean,
+  setIsViewed: (isViewed: boolean) => void
+  addTransaction: (transaction: Omit<RecentTransaction, "status">) => void,
   updateTransactionStatus: (hash: string, status: RecentTransactionStatus) => void,
   clearTransactions: () => void
 }
 
 export const useRecentTransactions = create<RecentTransactions>()(persist((set) => ({
   transactions: [],
+  isViewed: true,
+  setIsViewed: ((isViewed) => set({isViewed})),
   addTransaction: (transaction) => set((state) => {
     const updatedTransactions = [{...transaction, status: RecentTransactionStatus.PENDING}, ...state.transactions];
 
-    return {transactions: updatedTransactions};
+    return {transactions: updatedTransactions, isViewed: false};
   }),
   updateTransactionStatus: (hash, status) => set((state) => {
     const transactionIndex = state.transactions.findIndex((_transaction) => {
-      console.log(_transaction.hash);
-      console.log(hash);
       return _transaction.hash === hash;
     });
 
@@ -50,5 +65,5 @@ export const useRecentTransactions = create<RecentTransactions>()(persist((set) 
     return {transactions: []};
   })
 }), {
-  name: 'recent-transactions', // name of the item in the storage (must be unique)
+  name: localStorageKey, // name of the item in the storage (must be unique)
 }))

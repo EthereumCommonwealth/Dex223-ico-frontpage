@@ -41,7 +41,7 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
     setUnsavedGasLimit,
     onSave,
     onCancel,
-    setGasLimit
+    resetUnsaved
   } = useTransactionGasLimit();
 
   const gasLimitRef = useRef<HTMLInputElement | null>(null);
@@ -175,7 +175,7 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
           </div>
           <div className={styles.helperText}>
             <button onClick={() => {
-              setGasLimit(estimatedGasLimit.toString());
+              resetUnsaved();
             }} disabled={!isEditing} className={styles.textButton}>Estimated:
             </button>
             {" "}

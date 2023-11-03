@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./RecentTransactionsDialog.module.scss";
 import {useRecentTransactions} from "@/stores/useRecentTransactions";
 import Dialog from "@/components/atoms/Dialog";
@@ -6,10 +6,17 @@ import useZustandStore from "@/stores/useZustandStore";
 import RecentTransaction from "@/components/organisms/RecentTransaction";
 import DialogCloseButton from "@/components/atoms/DialogCloseButton";
 import clsx from "clsx";
+import Svg from "@/components/atoms/Svg";
 
 export default function RecentTransactionsDialog({isOpen, handleClose}) {
   const transactions = useZustandStore(useRecentTransactions, state => state.transactions);
-  const {clearTransactions} = useRecentTransactions();
+  const {clearTransactions, setIsViewed} = useRecentTransactions();
+
+  useEffect(() => {
+    if(isOpen) {
+      setIsViewed(true);
+    }
+  }, [isOpen, setIsViewed]);
 
   return <Dialog isOpen={isOpen} onClose={handleClose}>
     <div className={styles.dialog}>
@@ -24,7 +31,6 @@ export default function RecentTransactionsDialog({isOpen, handleClose}) {
                 return <RecentTransaction key={transaction.hash} transaction={transaction} />
               })}
             </div>
-              <button onClick={clearTransactions}>Clear</button>
             </>
             : <div className={styles.noTransactions}>
               <div>
@@ -46,6 +52,13 @@ export default function RecentTransactionsDialog({isOpen, handleClose}) {
               All transaction will be displayed here.
             </div>}
         </div>
+      <div className={styles.dialogFooter}>
+        <span>Total transactions: {transactions?.length || 0}</span>
+        <button disabled={!transactions?.length} onClick={clearTransactions} className={styles.clearButton}>
+          <span>Clear all</span>
+          <Svg iconName="delete" />
+        </button>
+      </div>
     </div>
   </Dialog>;
 }
