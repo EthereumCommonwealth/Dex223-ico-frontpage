@@ -46,9 +46,8 @@
 
 .problemItemLink {
   padding: 14px 0;
-  //color: colors.$text-secondary;
-  color: #7F7F7F;
-  pointer-events: none;
+  color: colors.$text-secondary;
+  //color: #7F7F7F;
   display: flex;
   justify-content: space-between;
   gap: 24px;

@@ -9,7 +9,7 @@ import Svg from "@/components/atoms/Svg";
 const reports = [
   {
     text: "November 2023",
-    href: "#"
+    href: "https://dexaran820.medium.com/dex223-development-report-11-2-2023-e0d51552ba5f"
   }
 ]
 
@@ -27,8 +27,7 @@ export default function DevelopmentReports({refEl}) {
       leftContent={
         <>
           <div className={styles.paragraphs}>
-            <p className={styles.biggerText}>Summaries will be published here monthly. We will publish our first
-              development report in early November. Stay tuned.
+            <p className={styles.biggerText}>Summaries will be published here monthly.
             </p>
           </div>
           <ul className={styles.problemsList}>
@@ -37,7 +36,6 @@ export default function DevelopmentReports({refEl}) {
                 <a target="_blank" href={report.href} className={styles.problemItemLink}>
                   <span>{report.text}</span>
                   <div className={styles.linkRightContent}>
-                    <span>Coming soon</span>
                     <Svg iconName="forward"/>
                   </div>
                 </a>
