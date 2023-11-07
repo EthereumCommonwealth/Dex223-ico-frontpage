@@ -41,7 +41,6 @@ export const SnackbarProvider = ({ children }) => {
       };
     },
 
-
     [open, duration]
   );
 

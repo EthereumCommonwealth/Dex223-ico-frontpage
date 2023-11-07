@@ -12,6 +12,7 @@ export interface RecentTransaction {
   hash: `0x${string}`,
   chainId: number,
   title: string,
+  type: 0 | 2,
   details?: {
     nonce: number,
     to?: `0x${string}`,
@@ -66,4 +67,21 @@ export const useRecentTransactions = create<RecentTransactions>()(persist((set) 
   })
 }), {
   name: localStorageKey, // name of the item in the storage (must be unique)
-}))
+}));
+
+export type TransactionSpeedUpType =  "autoIncrease" | "market" | "aggressive" | "custom";
+
+interface ITransactionToSpeedUp {
+  transactionToSpeedUp: RecentTransaction | null,
+  setTransactionToSpeedUp: (transaction: RecentTransaction | null) => void,
+  speedUpType: TransactionSpeedUpType,
+  setType: (type: TransactionSpeedUpType) => void
+}
+
+export const useTransactionSpeedUp = create<ITransactionToSpeedUp>((set) => ({
+  transactionToSpeedUp: null,
+  speedUpType: "market",
+
+  setTransactionToSpeedUp: (transaction) => set({transactionToSpeedUp: transaction}),
+  setType: (type) => set({speedUpType: type})
+}));

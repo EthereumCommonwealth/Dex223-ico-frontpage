@@ -2,7 +2,8 @@
 @use "src/styles/typography";
 
 .dialog {
-  width: 500px;
+  min-width: 500px;
+  color: colors.$text-primary;
 }
 
 .dialogContent {

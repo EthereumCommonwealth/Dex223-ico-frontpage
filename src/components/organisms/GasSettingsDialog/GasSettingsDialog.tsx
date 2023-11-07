@@ -11,6 +11,7 @@ import clsx from "clsx";
 import DialogCloseButton from "@/components/atoms/DialogCloseButton";
 import Input from "@/components/atoms/Input";
 import Svg from "@/components/atoms/Svg";
+import DialogHeader from "@/components/atoms/DialogHeader";
 
 interface Props {
   isOpen: boolean,
@@ -48,14 +49,16 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
 
   return <Dialog isOpen={isOpen} onClose={onClose}>
     <div className={styles.dialog}>
-      <div className={styles.dialogHeader}>
-        <DialogCloseButton handleClose={onClose}/>
-        <h2 className={styles.heading}>Network fee</h2>
-        <p className={styles.paragraphText}>
-          Lorem ipsum dolor sit amet consectetur. Et pretium ullamcorper et massa amet amet.
-          Lorem ipsum dolor sit amet consectetur. Et pretium ullamcorper et massa amet amet.
-        </p>
-      </div>
+      <DialogHeader
+        title="Network fee"
+        onClose={onClose}
+        paragraph="Network fee is paid when you submit a transaction. We recommend changing Priority
+        Fee only in order to make transaction cheaper or speed it up at a cost of paying higher fee.
+        There are two types of transactions in Ethereum: EIP-1559 and Legacy. Network Fee = gasLimit *
+         (Base Fee + Priority Fee) for EIP-1559 transactions. Network Fee = gasLimit * gasPrice for
+         Legacy transactions. We recommend using EIP-1559 transactions on any chain except BSC.
+          BSC does not support EIP-1559 transactions so use Legacy there."
+      />
       <div className={styles.priceSettingContainer}>
         <div className={styles.tabButtonsContainer}>
           <div className={styles.tabButtons}>
@@ -89,11 +92,12 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
         </>}
         {type === "default" && <div className={styles.inputs}>
           <div className={styles.labelInputWrapper}>
-            <label>Max base fee</label>
+            <label>Base fee</label>
             <div className={styles.inputWrapper}>
-              <Input error={Boolean(feeError)} warning={Boolean(feeWarning)} style={{paddingRight: 68}} onChange={(e) => {
-                setMaxFeePerGas(e.target.value);
-              }} value={maxFeePerGas} id="maxFeePerGas" type="text" placeholder="Base fee"/>
+              <Input error={Boolean(feeError)} warning={Boolean(feeWarning)} style={{paddingRight: 68}}
+                     onChange={(e) => {
+                       setMaxFeePerGas(e.target.value);
+                     }} value={maxFeePerGas} id="maxFeePerGas" type="text" placeholder="Base fee"/>
               <span className={styles.inputRightContent}>Gwei</span>
             </div>
             <div className={styles.helperText}>

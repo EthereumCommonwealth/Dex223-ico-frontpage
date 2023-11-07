@@ -1,0 +1,99 @@
+@use "../../../../styles/colors";
+@use "../../../../styles/typography";
+@use "../../../../styles/media";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+
+  @include media.for-mobile {
+    gap: 8px;
+  }
+}
+
+.rightBlock {
+  padding-top: 200px;
+  padding-left: 71px;
+
+  svg {
+    width: 100%;
+  }
+
+  @include media.for-tablet {
+    padding-top: 78px;
+    padding-left: 17px;
+    svg {
+      width: 310px;
+      height: auto;
+    }
+  }
+
+  @include media.for-mobile {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 0;
+
+    svg {
+      width: 100%;
+    }
+  }
+}
+
+.philosophyBg {
+  //position: fixed;
+  position: absolute;
+  transform: translateX(-50%);
+  top: 150px;
+  height: 900px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.soyBg {
+  position: absolute;
+  top: -210px;
+  transform: translateX(-47%);
+  z-index: -1;
+  opacity: 0.8;
+
+  @include media.for-desktop {
+    width: 800px;
+
+  }
+
+  svg {
+    width: 100%;
+  }
+
+  @include media.for-tablet {
+    right: 0;
+    transform: translateX(37%);
+    width: 597px;
+    top: -197px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  @include media.for-large-mobile {
+    top: -88px;
+  }
+
+  @include media.for-mobile {
+    top: 35px;
+    left: 0;
+    transform: translateX(-47%);
+    width: 350px;
+  }
+}

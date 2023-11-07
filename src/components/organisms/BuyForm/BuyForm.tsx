@@ -316,6 +316,7 @@ export default function BuyForm() {
         hash: data.hash,
         chainId: chain.id,
         title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
+        type: type === "default" ? 2 : 0,
         details: {
           nonce: _nonce - 1,
           address: getICOContractAddress(devMode),
@@ -343,12 +344,11 @@ export default function BuyForm() {
           blockTag: "pending"
         });
 
-
-
         addTransaction({
           hash: data.hash,
           chainId: chain.id,
           title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
+          type: type === "default" ? 2 : 0,
           details: {
             nonce: _nonce - 1,
             to: getICOContractAddress(devMode),

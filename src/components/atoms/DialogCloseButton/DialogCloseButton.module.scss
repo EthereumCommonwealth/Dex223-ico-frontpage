@@ -2,9 +2,6 @@
 @use "src/styles/media";
 
 .closeButton {
-  position: absolute;
-  top: 12px;
-  right: 12px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -19,10 +16,5 @@
 
   &:hover {
     color: colors.$text-primary;
-  }
-
-  @include media.for-mobile {
-    right: 2px;
-    top: 2px;
   }
 }

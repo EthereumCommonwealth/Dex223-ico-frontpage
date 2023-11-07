@@ -11,6 +11,8 @@
   background-color: transparent;
   border-radius: 50%;
   cursor: pointer;
+  outline: 0;
+  border: 0;
 
   &.menu {
     border-radius: 8px;
@@ -42,10 +44,10 @@
   }
 
   &.default {
-    color: colors.$palette-green;
+    color: colors.$text-primary;
 
     &:hover {
-      background-color: transparent;
+      color: colors.$palette-green;
     }
   }
 

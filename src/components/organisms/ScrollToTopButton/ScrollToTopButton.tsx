@@ -26,6 +26,8 @@ export default function ScrollToTopButton() {
     }
   }, []);
 
+  console.log("RERENDER");
+
   return <button onClick={() => {
     window.scrollTo(0, 0);
   }} ref={ref} className={clsx(styles.button, visible && styles.visible)}>
