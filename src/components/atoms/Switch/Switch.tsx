@@ -15,10 +15,10 @@ export default function Switch({ checked, setChecked, small = false, disabled = 
     small && styles.small,
     disabled && styles.disabled
   )}>
-    <input disabled={disabled} checked={checked} onChange={setChecked} type="checkbox" />
+    <input disabled={disabled} checked={checked} onChange={setChecked} type="checkbox"/>
     <span className={clsx(
       styles.slider,
       styles.round
-    )} />
+    )}/>
   </label>;
 }

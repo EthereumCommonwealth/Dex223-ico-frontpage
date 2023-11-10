@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./BannerRightBlock.module.scss";
 import BuyForm from "../BuyForm";
 import Button from "../../atoms/Button";
-import {useCountdown} from "../../../hooks/useCountdown";
+import { useCountdown } from "../../../hooks/useCountdown";
 import Svg from "../../atoms/Svg";
 
 const countDownDate = new Date("Oct 16, 2023 00:00:00").getTime();
@@ -30,6 +30,6 @@ export default function BannerRightBlock() {
       <div className={styles.counterTimeLabel}>Minutes</div>
       <div className={styles.counterTimeLabel}>Seconds</div>
     </div>
-    <BuyForm />
+    <BuyForm/>
   </div>
 }

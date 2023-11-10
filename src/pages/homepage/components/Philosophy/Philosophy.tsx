@@ -1,20 +1,20 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Philosophy.module.scss";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import PhilosophyImage from "../../../../assets/images/ph.svg";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import clsx from "clsx";
 import ShieldImage from "../../../../assets/images/Shield.svg";
 
 export default function Philosophy() {
   const ref = useRef();
-  const entry = useIntersectionObserver(ref, {freezeOnceVisible: true, threshold: 0.85});
+  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true, threshold: 0.85 });
 
   const [addAnimation, setAddAnimation] = useState(false);
 
   useEffect(() => {
-    if(entry?.isIntersecting) {
+    if (entry?.isIntersecting) {
       setAddAnimation(true);
       setTimeout(() => {
         setAddAnimation(false);
@@ -25,9 +25,9 @@ export default function Philosophy() {
   console.log(entry);
 
   return <>
-    <div className="container" style={{position: "relative"}}>
+    <div className="container" style={{ position: "relative" }}>
       <div className={styles.soyBg}>
-        <ShieldImage />
+        <ShieldImage/>
       </div>
     </div>
     <NeonBlock
@@ -51,8 +51,9 @@ export default function Philosophy() {
         </>
       }
       rightContent={
-        <div ref={ref} className={clsx(styles.rightBlock, entry?.isIntersecting && "animated", addAnimation && "removeAfterAnimated")}>
-          <PhilosophyImage />
+        <div ref={ref}
+             className={clsx(styles.rightBlock, entry?.isIntersecting && "animated", addAnimation && "removeAfterAnimated")}>
+          <PhilosophyImage/>
         </div>
       }
     />

@@ -54,7 +54,7 @@
 .slides {
   padding: 60px;
 
-  @media screen and (max-width: 1395px){
+  @media screen and (max-width: 1395px) {
     padding: 35px;
   }
 
@@ -120,7 +120,7 @@
   gap: 60px;
   grid-template-columns: 589px 1fr;
 
-  @media screen and (max-width: 1395px){
+  @media screen and (max-width: 1395px) {
     //grid-template-columns: 530px 1fr;
     gap: 35px;
   }
@@ -142,11 +142,11 @@
   margin-bottom: 24px;
   margin-top: 16px;
 
-  @media screen and (max-width: 1650px){
+  @media screen and (max-width: 1650px) {
     @include typography.t-body-28;
   }
 
-  @media screen and (max-width: 1395px){
+  @media screen and (max-width: 1395px) {
     margin-bottom: 12px;
     margin-top: 8px;
   }
@@ -156,7 +156,7 @@
   display: grid;
   gap: 24px;
 
-  @media screen and (max-width: 1395px){
+  @media screen and (max-width: 1395px) {
     gap: 14px;
   }
 }
@@ -165,19 +165,19 @@
   @include typography.t-body-20;
   color: colors.$text-secondary;
 
-  @media screen and (max-width: 1650px){
+  @media screen and (max-width: 1650px) {
     @include typography.t-body-19;
   }
 
-  @media screen and (max-width: 1525px){
+  @media screen and (max-width: 1525px) {
     @include typography.t-body-18;
   }
 
-  @media screen and (max-width: 1280px){
+  @media screen and (max-width: 1280px) {
     @include typography.t-body-16;
   }
 
-  @media screen and (max-width: 1240px){
+  @media screen and (max-width: 1240px) {
     @include typography.t-body-14;
   }
 
@@ -190,16 +190,16 @@
   @include typography.t-body-24;
   color: colors.$text-primary;
 
-  @media screen and (max-width: 1650px){
+  @media screen and (max-width: 1650px) {
     @include typography.t-body-20;
   }
 
-  @media screen and (max-width: 1525px){
+  @media screen and (max-width: 1525px) {
     font-size: 19px;
     line-height: 28px;
   }
 
-  @media screen and (max-width: 1240px){
+  @media screen and (max-width: 1240px) {
     @include typography.t-body-17;
   }
 
@@ -279,6 +279,7 @@
 
   color: colors.$text-secondary;
   @include typography.t-body-20;
+
   li {
     position: relative;
 
@@ -302,16 +303,16 @@
   border-left: 4px solid colors.$palette-green;
   padding-left: 20px;
 
-  @media screen and (max-width: 1650px){
+  @media screen and (max-width: 1650px) {
     font-size: 19px;
     line-height: 28px;
   }
 
-  @media screen and (max-width: 1525px){
+  @media screen and (max-width: 1525px) {
     @include typography.t-body-18;
   }
 
-  @media screen and (max-width: 1280px){
+  @media screen and (max-width: 1280px) {
     @include typography.t-body-16;
   }
 
@@ -416,6 +417,7 @@
 .lostProgress {
   height: 32px;
   margin-top: 18px;
+
   > div {
     height: 100%;
     width: 1%;
@@ -651,7 +653,7 @@
   height: 100%;
 
   @include media.for-laptop {
-    padding: 30px 0 0 ;
+    padding: 30px 0 0;
     svg {
       height: 100%;
     }

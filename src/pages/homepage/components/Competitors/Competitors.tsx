@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import styles from "./Competitors.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import Spacer from "../../../../components/atoms/Spacer";
@@ -7,7 +7,7 @@ import {
 } from "./parameters";
 import clsx from "clsx";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
 
 const imagesRow: (string | React.JSX.Element)[] = [
@@ -21,23 +21,23 @@ const imagesRow: (string | React.JSX.Element)[] = [
 
 export default function Competitors() {
   const ref = useRef();
-  const entry = useIntersectionObserver(ref, {threshold: 1, freezeOnceVisible: true})
+  const entry = useIntersectionObserver(ref, { threshold: 1, freezeOnceVisible: true })
 
   return <>
-  <NeonBlock
-    icon="flag"
-    color="blue"
-    overlineText="Competitors"
-    leftContent={
-      <>
-        <ArticleHeading text="Comparative analysis" />
-        <Spacer height={36} />
-      </>
-    }
-  />
+    <NeonBlock
+      icon="flag"
+      color="blue"
+      overlineText="Competitors"
+      leftContent={
+        <>
+          <ArticleHeading text="Comparative analysis"/>
+          <Spacer height={36}/>
+        </>
+      }
+    />
     <div className={clsx("container", styles.competitorsTableWrapper)}>
       <div className={styles.pattern}>
-        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000}/>
       </div>
       <div className={styles.competitorsTable}>
         {imagesRow.map((image, index) => {
@@ -47,12 +47,12 @@ export default function Competitors() {
         })}
 
         {comparativeTableData.map((row, rowIndex) => {
-            return row.map((value, index) => (
-              <div key={index} className={clsx(styles.cell, rowIndex % 2 === 0 && styles.light)}>{value}</div>
-            ))
+          return row.map((value, index) => (
+            <div key={index} className={clsx(styles.cell, rowIndex % 2 === 0 && styles.light)}>{value}</div>
+          ))
         })}
 
-        <div className={clsx(styles.dexBorder, entry?.isIntersecting && styles.animate)} ref={ref} />
+        <div className={clsx(styles.dexBorder, entry?.isIntersecting && styles.animate)} ref={ref}/>
       </div>
     </div>
   </>;

@@ -10,7 +10,7 @@
   justify-content: space-between;
   position: relative;
 
-  @media screen and (max-width: 1500px){
+  @media screen and (max-width: 1500px) {
     backdrop-filter: blur(10px);
     height: 48px;
   }
@@ -40,7 +40,7 @@
   transform: translate(calc(-50% + 330px), 0);
   pointer-events: none;
 
-  @media screen and (max-width: 1500px){
+  @media screen and (max-width: 1500px) {
     display: none;
 
   }
@@ -50,12 +50,13 @@
   display: flex;
   gap: 54px;
   align-items: center;
+
   .logo {
     display: block;
     position: relative;
     width: 185px;
     height: 46px;
-    @media screen and (max-width: 1500px){
+    @media screen and (max-width: 1500px) {
       width: 113px;
       height: 29px;
     }
@@ -108,7 +109,7 @@
   top: -2px;
   align-items: center;
 
-  @media screen and (max-width: 1500px){
+  @media screen and (max-width: 1500px) {
     top: 0;
     height: 48px;
   }

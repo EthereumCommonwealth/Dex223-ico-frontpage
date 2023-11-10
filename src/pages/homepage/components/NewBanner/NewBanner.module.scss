@@ -270,6 +270,10 @@
   transform: translateX(-24px) scale(1.4);
   transform-origin: center;
 
+  video {
+    width: 100%;
+  }
+
   //@include media.for-large-desktop {
   //  transform: scale(1.4);
   //  top: 0;
@@ -281,6 +285,16 @@
 
   @include media.for-mobile {
     transform: translateX(-2%) scale(1.1);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 200px;
+    background-color: colors.$background-primary;
+    right: -1px;
+    bottom: 0;
   }
 
   &:after {

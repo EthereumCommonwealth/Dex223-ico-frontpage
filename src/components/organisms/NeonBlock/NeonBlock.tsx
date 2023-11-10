@@ -1,10 +1,10 @@
-import React, {useMemo, useRef} from "react";
+import React, { useMemo, useRef } from "react";
 import styles from "./NeonBlock.module.scss";
 import OverlineText from "../../atoms/OverlineText";
 import clsx from "clsx";
-import {IconName} from "../../atoms/Svg/svgIconsMap";
+import { IconName } from "../../atoms/Svg/svgIconsMap";
 import Svg from "../../atoms/Svg";
-import {useIntersectionObserver} from "../../../hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 
 interface Props {
   icon: IconName,
@@ -30,8 +30,8 @@ export default function NeonBlock({
                                     noAnimation = false
                                   }: Props) {
   const ref = useRef();
-  const entryTopLine = useIntersectionObserver(ref, {threshold: 0});
-  const entryBottomLine = useIntersectionObserver(ref, {threshold: 0.5});
+  const entryTopLine = useIntersectionObserver(ref, { threshold: 0 });
+  const entryBottomLine = useIntersectionObserver(ref, { threshold: 0.5 });
 
   const isBottomVisible = useMemo(() => {
     if (!entryBottomLine) {

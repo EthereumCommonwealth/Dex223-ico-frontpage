@@ -11,11 +11,12 @@ interface Props {
   paragraph?: string,
   onBack?: () => void
 }
-export default function DialogHeader({onClose, title, paragraph, onBack}: Props) {
+
+export default function DialogHeader({ onClose, title, paragraph, onBack }: Props) {
   return <div className={clsx(styles.dialogHeader, onBack && styles.withBack)}>
     <div className={styles.topContent}>
       {onBack && <IconButton variant="default" onClick={onBack}>
-        <Svg iconName="back" />
+        <Svg iconName="back"/>
       </IconButton>}
       <h2 className={styles.title}>{title}</h2>
       <DialogCloseButton handleClose={onClose}/>

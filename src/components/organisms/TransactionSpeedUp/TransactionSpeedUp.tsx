@@ -1,27 +1,28 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./TransactionSpeedUp.module.scss";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import Spacer from "@/components/atoms/Spacer";
-import {TransactionSpeedUpType, useTransactionSpeedUp} from "@/stores/useRecentTransactions";
+import { TransactionSpeedUpType, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import clsx from "clsx";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
 import Svg from "@/components/atoms/Svg";
 import RecentTransaction from "@/components/organisms/RecentTransaction";
-import {formatEther, parseEther, parseGwei} from "viem";
-import {useAccount, useContractWrite, useFeeData, usePrepareContractWrite} from "wagmi";
+import { formatEther, parseEther } from "viem";
+import { useAccount, useContractWrite, useFeeData, usePrepareContractWrite } from "wagmi";
 import testICOABI from "../../../constants/abis/testICOABI.json";
-import {useWeb3Modal} from "@web3modal/react";
-import {useSnackbar} from "@/providers/SnackbarProvider";
+import { useSnackbar } from "@/providers/SnackbarProvider";
+import { addBigIntPercent } from "@/functions/addBigIntPercent";
+import Image from "next/image";
+import ExternalTextLink from "@/components/atoms/ExternalTextLink";
+import { NumericFormat } from "react-number-format";
+import Tooltip from "@/components/atoms/Tooltip";
 
-function addBigIntPercent(value: bigint, percentage: number) {
-  return value * (BigInt(percentage) + BigInt(100)) / BigInt(100);
-}
-function useGasEstimation({maxBaseFee, maxPriorityFee}: {
+function useGasEstimation({ maxBaseFee, maxPriorityFee }: {
   maxBaseFee: bigint,
   maxPriorityFee: bigint,
 }) {
-  const {transactionToSpeedUp} = useTransactionSpeedUp();
+  const { transactionToSpeedUp } = useTransactionSpeedUp();
 
   const estimatedGasFee = useMemo(() => {
     return (+formatEther((maxBaseFee + maxPriorityFee) *
@@ -50,7 +51,7 @@ const iconsMap = {
   custom: <Svg iconName="custom-increase"/>
 }
 
-function SpeedUpVariant({id, handleCheck, isActive, calculatedValue, helperText}: {
+function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText }: {
   id: TransactionSpeedUpType
   isActive: boolean,
   calculatedValue: string,
@@ -68,26 +69,43 @@ function SpeedUpVariant({id, handleCheck, isActive, calculatedValue, helperText}
 
       <div className={styles.speedUpValue}>
         {calculatedValue}
-        <Svg iconName="info"/>
+        <Tooltip text={helperText} />
       </div>
 
     </label>
   </div>
 }
-export default function TransactionSpeedUp({handleClose}) {
-  const {connector} = useAccount();
+
+export default function TransactionSpeedUp({ handleClose }) {
+  const { connector } = useAccount();
 
   const isMetamask = useMemo(() => {
     return connector.name === "MetaMask";
   }, [connector?.name]);
 
-  const {transactionToSpeedUp, speedUpType, setType, setTransactionToSpeedUp} = useTransactionSpeedUp();
-  const {data} = useFeeData({
+  const { transactionToSpeedUp, speedUpType, setType, setTransactionToSpeedUp } = useTransactionSpeedUp();
+  const { data } = useFeeData({
     chainId: 820
   });
 
-  const [customBaseFee, setCustomBaseFee] = useState(formatEther(BigInt(+transactionToSpeedUp.details.maxFeePerGas * 1.1), "gwei"));
-  const [customPriorityFee, setCustomPriorityFee] = useState(formatEther(BigInt(+transactionToSpeedUp.details.maxPriorityFeePerGas * 1.1), "gwei"));
+  const [customBaseFee, setCustomBaseFee] = useState(addBigIntPercent(BigInt(transactionToSpeedUp.details.maxFeePerGas), 10));
+  const [customPriorityFee, setCustomPriorityFee] = useState(addBigIntPercent(BigInt(transactionToSpeedUp.details.maxPriorityFeePerGas), 10));
+
+  const computedBaseFee = useMemo(() => {
+    return formatEther(customBaseFee, "gwei")
+  }, [customBaseFee]);
+
+  const computedPriorityFee = useMemo(() => {
+    return formatEther(customPriorityFee, "gwei")
+  }, [customPriorityFee]);
+
+  const customBaseFeeError = useMemo(() => {
+    if(customBaseFee < addBigIntPercent(BigInt(transactionToSpeedUp.details.maxFeePerGas), 10)) {
+      return "You have to set at least +10% value to apply transaction speed up."
+    }
+
+    return "";
+  }, [customBaseFee, transactionToSpeedUp.details.maxFeePerGas]);
 
   const autoIncreaseData = useGasEstimation({
     maxBaseFee: addBigIntPercent(BigInt(transactionToSpeedUp.details.maxFeePerGas), 10) - addBigIntPercent(BigInt(transactionToSpeedUp.details.maxPriorityFeePerGas), 10),
@@ -105,8 +123,8 @@ export default function TransactionSpeedUp({handleClose}) {
   });
 
   const customData = useGasEstimation({
-    maxBaseFee: parseEther(customBaseFee, "gwei"),
-    maxPriorityFee: parseEther(customPriorityFee, "gwei"),
+    maxBaseFee: customBaseFee,
+    maxPriorityFee: customPriorityFee,
   });
 
   const currentData = useMemo(() => {
@@ -122,7 +140,7 @@ export default function TransactionSpeedUp({handleClose}) {
     }
   }, [aggressiveData, autoIncreaseData, customData, marketData, speedUpType]);
 
-  const {config: purchaseConfig} = usePrepareContractWrite({
+  const { config: purchaseConfig } = usePrepareContractWrite({
     address: transactionToSpeedUp?.details.address,
     abi: testICOABI,
     functionName: transactionToSpeedUp?.details.functionName,
@@ -135,7 +153,7 @@ export default function TransactionSpeedUp({handleClose}) {
     maxPriorityFeePerGas: currentData.priorityFee,
   });
 
-  const {showMessage} = useSnackbar();
+  const { showMessage } = useSnackbar();
 
   const {
     write: handleSpeedUp,
@@ -146,16 +164,11 @@ export default function TransactionSpeedUp({handleClose}) {
         return;
       }
 
-      setTransactionToSpeedUp({...transactionToSpeedUp, hash: data.hash});
+      setTransactionToSpeedUp({ ...transactionToSpeedUp, hash: data.hash });
 
       showMessage("New gas settings are applied");
-      console.log("Rewrite settled");
-      console.log(data);
     }
   });
-
-  console.log("TRANSACTION TO SPEED UP");
-  console.log(transactionToSpeedUp);
 
   return <>
     <DialogHeader
@@ -168,70 +181,99 @@ export default function TransactionSpeedUp({handleClose}) {
       onBack={() => setTransactionToSpeedUp(null)}
       title="Speed up"
     />
-    {isMetamask ? <div>
-      We have noticed that you are using MetaMask wallet. Unfortunately it does not support Speed Up
-      through dApps. As an alternative you could use built-in speed up option inside metamask extension.
-        Here is more <a target="_blank" href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction">details</a>
+    {isMetamask ? <div className={styles.metamaskMessageContainer}>
+      <Image src="/images/wallets/metamask.svg" alt="" width={80} height={75} />
+        <h3>Try the solution built into Metamask</h3>
+      <p>
+        We have noticed that you are using MetaMask wallet. Unfortunately it does not support Speed Up through dApps.
+        As an alternative you could use built-in speed up option inside Metamask extension.
+        Here is <ExternalTextLink text="more details" href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction" />
+      </p>
       </div> :
-    <div className={styles.speedUpContent}>
-      <RecentTransaction noSpeedUp transaction={transactionToSpeedUp} />
-      <Spacer height={20} />
-      <div className={styles.speedUpTableHeader}>
-        <span>Gas option</span>
-        <span className={styles.maxFeeLabel}>Max fee, CLO</span>
-      </div>
-      {([{
-        id: "autoIncrease",
-        value: autoIncreaseData.estimated,
-        helperText: "aaa"
-      },
-        {
-          id: "market",
-          value: marketData.estimated,
+      <div className={styles.speedUpContent}>
+        <RecentTransaction noSpeedUp transaction={transactionToSpeedUp}/>
+        <Spacer height={20}/>
+        <div className={styles.speedUpTableHeader}>
+          <span>Gas option</span>
+          <span className={styles.maxFeeLabel}>Max fee, CLO</span>
+        </div>
+        {([{
+          id: "autoIncrease",
+          value: autoIncreaseData.estimated,
           helperText: "aaa"
         },
-        {
-          id: "aggressive",
-          value: aggressiveData.estimated,
-          helperText: "aaa"
-        },
-        {
-          id: "custom",
-          value: customData.estimated,
-          helperText: "aaa"
-        }] as { id: TransactionSpeedUpType, value: string, helperText: string }[]).map((variant) => {
-        return <SpeedUpVariant id={variant.id} handleCheck={() => setType(variant.id)} key={variant.id}
-                               isActive={speedUpType === variant.id} calculatedValue={variant.value}
-                               helperText={variant.helperText}/>
-      })}
-      <div className={clsx(styles.customSpeedUpSettings, speedUpType !== "custom" && styles.disabled)}>
-        <div className={styles.labelInputWrapper}>
-          <label>Base fee</label>
-          <div className={styles.inputWrapper}>
-            <Input error={false} warning={false} style={{paddingRight: 68}} onChange={(e) => {
-              setCustomBaseFee(e.target.value);
-            }} value={+customBaseFee} id="maxFeePerGas" type="text" placeholder="Base fee"/>
-            <span className={styles.inputRightContent}>Gwei</span>
+          {
+            id: "market",
+            value: marketData.estimated,
+            helperText: "aaa"
+          },
+          {
+            id: "aggressive",
+            value: aggressiveData.estimated,
+            helperText: "aaa"
+          },
+          {
+            id: "custom",
+            value: customData.estimated,
+            helperText: "aaa"
+          }] as { id: TransactionSpeedUpType, value: string, helperText: string }[]).map((variant) => {
+          return <SpeedUpVariant id={variant.id} handleCheck={() => setType(variant.id)} key={variant.id}
+                                 isActive={speedUpType === variant.id} calculatedValue={variant.value}
+                                 helperText={variant.helperText}/>
+        })}
+        <div className={clsx(styles.customSpeedUpSettingsWrapper, speedUpType !== "custom" && styles.disabled)}>
+          <div className={clsx(styles.customSpeedUpSettings)}>
+            <div className={styles.labelInputWrapper}>
+              <label>
+                Base fee
+                <Tooltip text="Tooltip for base fee" />
+              </label>
+              <div className={styles.inputWrapper}>
+                <NumericFormat
+                  style={{ paddingRight: 68 }}
+                  onValueChange={values => setCustomBaseFee(parseEther(values.value, "gwei"))}
+                  value={computedBaseFee}
+                  id="maxFeePerGas"
+                  type="text"
+                  placeholder="Base fee"
+                  customInput={Input}
+                />
+                <span className={styles.inputRightContent}>Gwei</span>
+              </div>
+              <div className={styles.helperText}>
+                Current transaction {formatEther(BigInt(+transactionToSpeedUp.details.maxFeePerGas), "gwei")} Gwei
+              </div>
+            </div>
+            <div className={styles.labelInputWrapper}>
+              <label>
+                Priority fee
+                <Tooltip text="Tooltip for proirity fee" />
+              </label>
+              <div className={styles.inputWrapper}>
+                <NumericFormat
+                  style={{ paddingRight: 68 }}
+                  onValueChange={values => setCustomPriorityFee(parseEther(values.value, "gwei"))}
+                  value={computedPriorityFee}
+                  id="minerFee"
+                  type="text"
+                  placeholder="Miner fee"
+                  customInput={Input}
+                />
+                <span className={styles.inputRightContent}>Gwei</span>
+              </div>
+              <div className={styles.helperText}>
+                Current {formatEther(BigInt(+transactionToSpeedUp.details.maxPriorityFeePerGas), "gwei")} Gwei
+              </div>
+            </div>
           </div>
-          <div className={styles.helperText}>
-            Current transaction {formatEther(BigInt(+transactionToSpeedUp.details.maxFeePerGas), "gwei")} Gwei
-          </div>
+          {customBaseFeeError && speedUpType === "custom" && <div className={styles.feeError}>
+            <Svg iconName="error"/>
+            {customBaseFeeError}
+          </div>}
         </div>
-        <div className={styles.labelInputWrapper}>
-          <label>Priority fee</label>
-          <div className={styles.inputWrapper}>
-            <Input error={false} style={{paddingRight: 68}} onChange={(e) => {
-              setCustomPriorityFee(e.target.value);
-            }} value={customPriorityFee} id="minerFee" type="text" placeholder="Miner fee"/>
-            <span className={styles.inputRightContent}>Gwei</span>
-          </div>
-          <div className={styles.helperText}>
-            Current {formatEther(BigInt(+transactionToSpeedUp.details.maxPriorityFeePerGas), "gwei")} Gwei
-          </div>
-        </div>
-      </div>
-      <Spacer height={20} />
-      <Button onClick={handleSpeedUp}>Apply</Button>
-    </div>}
+
+        <Spacer height={20}/>
+        <Button disabled={Boolean(customBaseFeeError) && speedUpType === "custom"} onClick={handleSpeedUp}>Apply</Button>
+      </div>}
   </>;
 }

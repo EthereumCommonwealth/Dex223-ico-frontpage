@@ -89,13 +89,13 @@ export default function MeetTheTeam() {
       overlineText="Team"
       leftContent={
         <>
-          <ArticleHeading text="Meet the Team" />
+          <ArticleHeading text="Meet the Team"/>
         </>
       }
     />
     <div className={"container"}>
       <div className={styles.memberCards}>
-        {team.map(({image, position, name, socials}) => {
+        {team.map(({ image, position, name, socials }) => {
           return <TeamMemberCard
             key={name}
             image={image}

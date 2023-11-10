@@ -2,7 +2,7 @@
 @use "src/styles/typography";
 
 .dialog {
-  min-width: 500px;
+  width: 600px;
   color: colors.$text-primary;
 }
 
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: space-between;
 
-  >span {
+  > span {
     @include typography.t-body-16;
     color: colors.$text-secondary;
   }

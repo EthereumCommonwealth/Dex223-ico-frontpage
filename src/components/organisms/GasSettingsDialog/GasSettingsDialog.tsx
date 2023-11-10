@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useCallback, useRef } from "react";
 import styles from "./GasSettingsDialog.module.scss";
 import Dialog from "@/components/atoms/Dialog";
 import {
@@ -12,40 +12,93 @@ import DialogCloseButton from "@/components/atoms/DialogCloseButton";
 import Input from "@/components/atoms/Input";
 import Svg from "@/components/atoms/Svg";
 import DialogHeader from "@/components/atoms/DialogHeader";
+import { parseEther } from "viem";
+import { NumericFormat } from "react-number-format";
+import Tooltip from "@/components/atoms/Tooltip";
+import Button from "@/components/atoms/Button";
+import { useSnackbar } from "@/providers/SnackbarProvider";
+import { addBigIntPercent } from "@/functions/addBigIntPercent";
 
 interface Props {
   isOpen: boolean,
   onClose: any
 }
 
-export default function GasSettingsDialog({isOpen, onClose}: Props) {
+export default function GasSettingsDialog({ isOpen, onClose }: Props) {
   const {
     type,
     setDefaultType,
     setLegacyType
   } = useTransactionTypeStore();
 
-  const {baseFee, feeError, maxFeePerGas, setMaxFeePerGas, feeWarning} = useTransactionGasFee()
+  const {
+    baseFee,
+    setMaxFeePerGas,
+    validation: gasFeeValidation,
+    computed: computedBaseFee
+  } = useTransactionGasFee();
 
-  const {priority, priorityError, maxPriorityFeePerGas, setMaxPriorityFeePerGas} = useTransactionPriorityFee()
+  const {
+    basePriority,
+    setMaxPriorityFeePerGas,
+    validation: priorityFeeValidation,
+    computed: computedPriority
+  } = useTransactionPriorityFee();
 
-  const {baseGasPrice, gasPrice, setGasPrice} = useTransactionGasPrice();
+  const {
+    baseGasPrice,
+    setGasPrice,
+    validation: gasPriceValidation,
+    computed: computedGasPrice
+  } = useTransactionGasPrice();
 
   const {
     gasLimit,
     unsavedGasLimit,
-    gasLimitWarning,
     isEditing,
     estimatedGasLimit,
 
     setEditing,
+    setGasLimit,
     setUnsavedGasLimit,
     onSave,
     onCancel,
-    resetUnsaved
+    resetUnsaved,
+    validation: gasLimitValidation,
   } = useTransactionGasLimit();
 
   const gasLimitRef = useRef<HTMLInputElement | null>(null);
+
+  const { showMessage } = useSnackbar();
+
+  const handleReset = useCallback(() => {
+    if (type === "default") {
+      setMaxFeePerGas(addBigIntPercent(baseFee, 20));
+      setMaxPriorityFeePerGas(addBigIntPercent(basePriority, 50));
+    }
+    if (type === "legacy") {
+      setGasPrice(addBigIntPercent(baseGasPrice, 20));
+    }
+
+    setGasLimit(addBigIntPercent(estimatedGasLimit, 20));
+    setUnsavedGasLimit(addBigIntPercent(estimatedGasLimit, 20));
+    setEditing(false);
+
+    showMessage("Gas settings have been configured!");
+  }, [
+    baseFee,
+    baseGasPrice,
+    basePriority,
+    estimatedGasLimit,
+    setEditing,
+    setGasLimit,
+    setGasPrice,
+    setMaxFeePerGas,
+    setMaxPriorityFeePerGas,
+    setUnsavedGasLimit,
+    showMessage,
+    type
+  ]);
 
   return <Dialog isOpen={isOpen} onClose={onClose}>
     <div className={styles.dialog}>
@@ -73,11 +126,22 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
         </div>
         {type === "legacy" && <>
           <div className={styles.labelInputWrapper}>
-            <label>Gas price</label>
+            <label>
+              Gas price
+              <Tooltip text="Tesxt for gas price"/>
+            </label>
             <div className={styles.inputWrapper}>
-              <Input style={{paddingRight: 68}} onChange={(e) => {
-                setGasPrice(e.target.value);
-              }} value={gasPrice} id="gasPrice" type="text" placeholder="Gas price"/>
+              <NumericFormat
+                style={{ paddingRight: 68 }}
+                onValueChange={values => setGasPrice(parseEther(values.value, "gwei"))}
+                value={computedGasPrice.gasPrice}
+                id="gasPrice"
+                type="text"
+                placeholder="Gas price"
+                customInput={Input}
+                error={Boolean(gasPriceValidation.error)}
+                warning={Boolean(gasPriceValidation.warning)}
+              />
               <span className={styles.inputRightContent}>Gwei</span>
             </div>
             <div className={styles.helperText}>
@@ -86,76 +150,106 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
               }} className={styles.textButton}>Current
               </button>
               {" "}
-              {baseGasPrice} Gwei
+              {computedGasPrice.baseGasPrice} Gwei
             </div>
           </div>
         </>}
-        {type === "default" && <div className={styles.inputs}>
-          <div className={styles.labelInputWrapper}>
-            <label>Base fee</label>
-            <div className={styles.inputWrapper}>
-              <Input error={Boolean(feeError)} warning={Boolean(feeWarning)} style={{paddingRight: 68}}
-                     onChange={(e) => {
-                       setMaxFeePerGas(e.target.value);
-                     }} value={maxFeePerGas} id="maxFeePerGas" type="text" placeholder="Base fee"/>
-              <span className={styles.inputRightContent}>Gwei</span>
+        {type === "default" &&
+          <>
+            <div className={styles.inputs}>
+              <div className={styles.labelInputWrapper}>
+                <label>
+                  Base fee
+                  <Tooltip text="Tesxt for base fee"/>
+                </label>
+                <div className={styles.inputWrapper}>
+                  <NumericFormat
+                    style={{ paddingRight: 68 }}
+                    onValueChange={values => setMaxFeePerGas(parseEther(values.value, "gwei"))}
+                    value={computedBaseFee.maxFeePerGas}
+                    id="maxFeePerGas"
+                    type="text"
+                    placeholder="Base fee"
+                    customInput={Input}
+                    error={Boolean(gasFeeValidation.error)}
+                    warning={Boolean(gasFeeValidation.warning)}
+                  />
+                  <span className={styles.inputRightContent}>Gwei</span>
+                </div>
+                <div className={styles.helperText}>
+                  <button onClick={() => {
+                    setMaxFeePerGas(baseFee);
+                  }} className={styles.textButton}>Current
+                  </button>
+                  {" "}
+                  {computedBaseFee.baseFee} Gwei
+                </div>
+              </div>
+              <div className={styles.labelInputWrapper}>
+                <label>
+                  Priority fee
+                  <Tooltip text="Tesxt for priority"/>
+                </label>
+                <div className={styles.inputWrapper}>
+                  <NumericFormat
+                    style={{ paddingRight: 68 }}
+                    onValueChange={values => setMaxPriorityFeePerGas(parseEther(values.value, "gwei"))}
+                    value={computedPriority.maxPriorityFeePerGas}
+                    id="minerFee"
+                    type="text"
+                    placeholder="Miner fee"
+                    customInput={Input}
+                    warning={Boolean(priorityFeeValidation.warning)}
+                  />
+                  <span className={styles.inputRightContent}>Gwei</span>
+                </div>
+                <div className={styles.helperText}>
+                  <button onClick={() => {
+                    setMaxPriorityFeePerGas(basePriority);
+                  }} className={styles.textButton}>Current
+                  </button>
+                  {" "}
+                  {computedPriority.basePriority} Gwei
+                </div>
+              </div>
             </div>
-            <div className={styles.helperText}>
-              <button onClick={() => {
-                setMaxFeePerGas(baseFee);
-              }} className={styles.textButton}>Current
-              </button>
-              {" "}
-              {baseFee} Gwei
-            </div>
-          </div>
-          <div className={styles.labelInputWrapper}>
-            <label>Priority fee</label>
-            <div className={styles.inputWrapper}>
-              <Input error={Boolean(priorityError)} style={{paddingRight: 68}} onChange={(e) => {
-                setMaxPriorityFeePerGas(e.target.value);
-              }} value={maxPriorityFeePerGas} id="minerFee" type="text" placeholder="Miner fee"/>
-              <span className={styles.inputRightContent}>Gwei</span>
-            </div>
-            <div className={styles.helperText}>
-              <button onClick={() => {
-                setMaxPriorityFeePerGas(priority);
-              }} className={styles.textButton}>Current
-              </button>
-              {" "}
-              {priority} Gwei
-            </div>
-          </div>
-        </div>}
-        {feeError && <div className={styles.feeError}>
-          <Svg iconName="error"/>
-          {feeError}
-        </div>}
-        {feeWarning && <div className={styles.feeWarning}>
-          <Svg iconName="warning"/>
-          {feeWarning}
-        </div>}
-        {priorityError && <div className={styles.feeError}>
-          <Svg iconName="error"/>
-          {priorityError}
-        </div>}
+            {gasFeeValidation.error && <div className={styles.feeError}>
+              <Svg iconName="error"/>
+              {gasFeeValidation.error}
+            </div>}
+            {[gasFeeValidation.warning, priorityFeeValidation.warning].map((warning) => {
+              if (warning) {
+                return <div key={warning} className={styles.feeWarning}>
+                  <Svg iconName="warning"/>
+                  {warning}
+                </div>
+              }
+            })}
+          </>}
+        <button onClick={handleReset} className={styles.configureButton}>
+          Configure Automatically
+          <Svg iconName="auto-config"/>
+        </button>
       </div>
       <div className={styles.gasLimitSettings}>
         <div className={styles.labelInputWrapper}>
-          <label>Gas Limit</label>
+          <label>
+            Gas Limit
+            <Tooltip text="Tesxt for gas limit"/>
+          </label>
           <div className={styles.inputWrapper}>
-            <input
-              className={clsx(styles.gasLimitInput, !isEditing && styles.disabled, gasLimitWarning && styles.warning)}
-              id="gasLimit"
-              type="text"
+            <NumericFormat
+              className={clsx(styles.gasLimitInput, !isEditing && styles.disabled, gasLimitValidation.warning && styles.warning, gasLimitValidation.error && styles.error)}
               placeholder="Gas limit"
+              // readOnly={readonly}
+              onValueChange={(values) => setUnsavedGasLimit(BigInt(values.value))}
+              type="text"
               value={isEditing
-                ? unsavedGasLimit
-                : gasLimit
+                ? unsavedGasLimit.toString()
+                : gasLimit.toString()
               }
               onFocus={() => setEditing(true)}
-              onChange={(e) => setUnsavedGasLimit(e.target.value)}
-              ref={gasLimitRef}
+              getInputRef={gasLimitRef}
             />
             <div className={styles.inputRightButtons}>
               {!isEditing
@@ -183,11 +277,15 @@ export default function GasSettingsDialog({isOpen, onClose}: Props) {
             }} disabled={!isEditing} className={styles.textButton}>Estimated:
             </button>
             {" "}
-            {estimatedGasLimit}
+            {estimatedGasLimit.toString()}
           </div>
-          {gasLimitWarning && <div className={styles.feeWarning}>
+          {gasLimitValidation.warning && <div className={styles.feeWarning}>
             <Svg iconName="warning"/>
-            {gasLimitWarning}
+            {gasLimitValidation.warning}
+          </div>}
+          {gasLimitValidation.error && <div className={styles.feeWarning}>
+            <Svg iconName="error"/>
+            {gasLimitValidation.error}
           </div>}
         </div>
       </div>

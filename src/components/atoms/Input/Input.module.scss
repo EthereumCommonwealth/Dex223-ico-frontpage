@@ -9,6 +9,7 @@
   height: 48px;
   padding-left: 16px;
   width: 100%;
+  transition-duration: 0.2s;
 
   &:hover {
     border-color: colors.$palette-green;

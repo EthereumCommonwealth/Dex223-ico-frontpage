@@ -37,7 +37,8 @@ export const svgIconsNames = [
   "aggressive",
   "auto-increase",
   "custom-increase",
-  "back"
+  "back",
+  "auto-config"
 ] as const;
 
 export type IconName = typeof svgIconsNames[number];

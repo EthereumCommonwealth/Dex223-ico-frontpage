@@ -19,12 +19,12 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@floating-ui/react": "^0.26.2",
     "@svgr/webpack": "^8.1.0",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
     "clsx": "^2.0.0",
     "ethereumjs-wallet": "^1.0.2",
-    "lottie-react": "^2.4.0",
     "next": "13.4.16",
     "react": "18.2.0",
     "react-awesome-reveal": "^4.2.5",

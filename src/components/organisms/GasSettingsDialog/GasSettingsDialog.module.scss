@@ -4,7 +4,7 @@
 .dialog {
   color: colors.$text-primary;
   display: grid;
-  width: 460px;
+  width: 640px;
 }
 
 .typeTabs {
@@ -22,6 +22,13 @@
 .labelInputWrapper {
   display: grid;
   gap: 4px;
+
+  label {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 }
 
 .tabButtons {
@@ -80,7 +87,6 @@
     }
   }
 }
-
 
 
 .priceSettingContainer {
@@ -221,6 +227,10 @@
   &.warning {
     border-color: colors.$palette-orange;
   }
+
+  &.error {
+    border-color: colors.$palette-red;
+  }
 }
 
 .feeError {
@@ -232,6 +242,7 @@
   border: 1px solid var(--color-main-red, #D13B3B);
   background: var(--color-fill-red-bcg, #1A0D0A);
   margin-top: 16px;
+
   svg {
     color: colors.$palette-red;
   }
@@ -246,6 +257,7 @@
   border: 1px solid colors.$palette-orange;
   background: var(--orange-bcg, #1F170A);
   margin-top: 16px;
+
   svg {
     color: colors.$palette-orange;
   }
@@ -268,4 +280,26 @@
   @include typography.t-body-12;
   height: 16px;
   margin-top: -2px;
+}
+
+.configureButton {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid colors.$palette-green;
+  border-radius: 4px;
+  height: 48px;
+  width: 100%;
+  background: transparent;
+  color: colors.$text-primary;
+
+  @include typography.t-body-16;
+  transition-duration: 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    color: colors.$palette-green;
+  }
 }

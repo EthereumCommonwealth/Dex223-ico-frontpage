@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from "./RecentTransactionsDialog.module.scss";
-import {useRecentTransactions, useTransactionSpeedUp} from "@/stores/useRecentTransactions";
+import { useRecentTransactions, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import Dialog from "@/components/atoms/Dialog";
 import useZustandStore from "@/stores/useZustandStore";
 import RecentTransaction from "@/components/organisms/RecentTransaction";
@@ -9,11 +9,14 @@ import Svg from "@/components/atoms/Svg";
 import Image from "next/image";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import TransactionSpeedUp from "@/components/organisms/TransactionSpeedUp";
+import LegacyTransactionSpeedUp from "@/components/organisms/LegacyTransactionSpeedUp";
+import { useAccount } from "wagmi";
 
-export default function RecentTransactionsDialog({isOpen, handleClose}) {
-  const transactions = useZustandStore(useRecentTransactions, state => state.transactions);
-  const {clearTransactions, setIsViewed} = useRecentTransactions();
-  const {transactionToSpeedUp} = useTransactionSpeedUp();
+export default function RecentTransactionsDialog({ isOpen, handleClose }) {
+  const {address} = useAccount();
+  const transactions = useZustandStore(useRecentTransactions, state => state.transactions[address]);
+  const { clearTransactions, setIsViewed } = useRecentTransactions();
+  const { transactionToSpeedUp } = useTransactionSpeedUp();
 
   useEffect(() => {
     if (isOpen) {
@@ -51,7 +54,12 @@ export default function RecentTransactionsDialog({isOpen, handleClose}) {
             <Svg iconName="delete"/>
           </button>
         </div>
-      </> : <TransactionSpeedUp handleClose={handleClose} />}
+      </> : <>
+        {transactionToSpeedUp.type === 0
+          ? <LegacyTransactionSpeedUp handleClose={handleClose}/>
+          : <TransactionSpeedUp handleClose={handleClose}/>
+        }
+      </>}
     </div>
   </Dialog>;
 }

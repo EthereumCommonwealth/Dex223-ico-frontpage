@@ -93,8 +93,8 @@ export function getDEXToken(isDev: boolean): TokenInfo {
   return isDev ? TEST_DEX223 : DEX223;
 }
 
-export function getICOContractAddress(isDev: boolean):`0x${string}` {
- return isDev ? testICOContract : ICOContract;
+export function getICOContractAddress(isDev: boolean): `0x${string}` {
+  return isDev ? testICOContract : ICOContract;
 }
 
 export function getChainId(isDev: boolean) {

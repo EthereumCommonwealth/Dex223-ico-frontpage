@@ -81,3 +81,17 @@
 
   @include typography.t-body-16;
 }
+
+.queued {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--corner-large, 20px);
+  background: var(--color-bcg-green, #1F170A);
+
+  border: 1px solid transparent;
+  color: colors.$palette-orange;
+  padding: 0 8px;
+  height: 28px;
+  @include typography.t-body-16;
+}

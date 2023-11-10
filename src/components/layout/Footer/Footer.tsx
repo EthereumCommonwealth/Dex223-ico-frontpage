@@ -9,15 +9,19 @@ export default function Footer() {
         <div className={styles.leftLinks}>
           <div className={styles.linkColumn}>
             <div className={styles.footerLinkGroupTitle}>Useful links</div>
-            <div><a target="_blank" href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md" className={styles.footerLink}>ERC20 & ERC223 Token Converter</a></div>
-            <div><a target="_blank" href="https://dexaran.github.io/erc223" className={styles.footerLink}>ERC223 Front Page</a></div>
-            <div><a target="_blank" href="https://github.com/Dexaran/Dex223-ICO-page/tree/main" className={styles.footerLink}>Page source codes</a></div>
+            <div><a target="_blank" href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md"
+                    className={styles.footerLink}>ERC20 & ERC223 Token Converter</a></div>
+            <div><a target="_blank" href="https://dexaran.github.io/erc223" className={styles.footerLink}>ERC223 Front
+              Page</a></div>
+            <div><a target="_blank" href="https://github.com/Dexaran/Dex223-ICO-page/tree/main"
+                    className={styles.footerLink}>Page source codes</a></div>
           </div>
           <div className={styles.linkColumn}>
             <div className={styles.footerLinkGroupTitle}>Social media</div>
             <div><a target="_blank" href="https://t.me/Dexaran" className={styles.footerLink}>Telegram</a></div>
             <div><a target="_blank" href="https://twitter.com/Dexaran" className={styles.footerLink}>Twitter</a></div>
-            <div><a target="_blank" href="https://twitter.com/CallistoSupport" className={styles.footerLink}>Callisto Network</a></div>
+            <div><a target="_blank" href="https://twitter.com/CallistoSupport" className={styles.footerLink}>Callisto
+              Network</a></div>
           </div>
         </div>
         <div className={styles.rightLinks}>
@@ -37,10 +41,10 @@ export default function Footer() {
     <div className={styles.bottomFooter}>
       <div className="container">
         <div className={styles.bottomFooterContent}>
-          <div style={{maxWidth: 872}}><Text variant={16} color="secondary">Disclaimer: Cryptocurrency may be
+          <div style={{ maxWidth: 872 }}><Text variant={16} color="secondary">Disclaimer: Cryptocurrency may be
             unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be
             subject to capital gains or other taxes applicable in your jurisdiction.</Text></div>
-          <span className={styles.cpr}>Copyright © 2023 DEX223 <br /> All Rights Reserved</span>
+          <span className={styles.cpr}>Copyright © 2023 DEX223 <br/> All Rights Reserved</span>
         </div>
       </div>
     </div>

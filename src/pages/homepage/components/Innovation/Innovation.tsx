@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Innovation.module.scss";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
@@ -10,7 +10,7 @@ import SecondCardImage from "../../../../assets/images/margin.svg";
 import ThirdCardImage from "../../../../assets/images/listings.svg";
 import Image from "next/image";
 
-function FeatureBlock({heading, content, image}) {
+function FeatureBlock({ heading, content, image }) {
   const ref = useRef<HTMLDivElement>();
   const [positions, setPositions] = useState({
     left: 0, top: 0, width: 0, height: 0
@@ -44,21 +44,21 @@ function FeatureBlock({heading, content, image}) {
     }
   }, []);
 
-  const [rotations, setRotations] = useState({x: 0, y: 0});
+  const [rotations, setRotations] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const xRotation = ((positions.top / positions.height) - 0.5) * -2;
     const yRotation = ((positions.left / positions.width) - 0.5) * -2;
 
-    setRotations({x: xRotation, y: yRotation})
+    setRotations({ x: xRotation, y: yRotation })
   }, [positions.height, positions.left, positions.top, positions.width]);
 
   return <div ref={ref} onMouseLeave={() => {
-    setRotations({x: 0, y: 0})
+    setRotations({ x: 0, y: 0 })
   }
-  } style={{transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)`}}
+  } style={{ transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)` }}
               className={clsx(styles.featureBlock)}>
-    <div style={{left: positions.left, top: positions.top}} className={styles.gradientCursor}/>
+    <div style={{ left: positions.left, top: positions.top }} className={styles.gradientCursor}/>
 
     <div className={styles.textBlock}>
       <h4 className={styles.featureCardHeading}>{heading}</h4>
@@ -89,13 +89,13 @@ export default function Innovation() {
     />
     <div className="container relative">
       <div className={styles.pattern1}>
-        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000}/>
       </div>
       <div className={styles.pattern2}>
-        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />
+        <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000}/>
       </div>
       <div className={styles.cardWrapper}>
-        <FeatureBlock image={<FirstCardImage />} content={
+        <FeatureBlock image={<FirstCardImage/>} content={
           <>
             <div className={styles.paragraphs}>
               <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design
@@ -116,7 +116,7 @@ export default function Innovation() {
             <div className={styles.anchor} id="margin"/>
           </>
         } heading="ERC-223 Support"/>
-        <FeatureBlock image={<SecondCardImage />} content={<div className={styles.paragraphs}>
+        <FeatureBlock image={<SecondCardImage/>} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to create &quot;lending orders&quot; where they
             can place their funds (in any token) and specify
           </div>
@@ -139,15 +139,17 @@ export default function Innovation() {
             positions must be 18 ETH at 30th day or 16.5 ETH at 15th day. For each moment it is possible to calculate
             the expected balance and actual balance that the borrower would have if he sold all the tokens immediately
             accounting for liquidity. If the actual balance does not match the expected balance then anyone would be
-            allowed to execute the &quot;liquidation&quot; of the borrower in exchange for a small reward specified by the lender
+            allowed to execute the &quot;liquidation&quot; of the borrower in exchange for a small reward specified by
+            the lender
             at the time of order creation. Liquidation will trigger the market sell of all the active borrowers
             positions.
           </div>
           <div className={styles.text}>This implementation eliminates the problem of price oracles.</div>
         </div>} heading="Encapsulated Margin Trading"/>
-        <FeatureBlock image={<ThirdCardImage />} content={<div className={styles.paragraphs}>
+        <FeatureBlock image={<ThirdCardImage/>} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to import any existing tokenlist from{" "}
-             <ExternalTextLink text="https://tokenlists.org" href="https://tokenlists.org/" /> or import tokens from the auto-listing contract. Auto-listing contract will allow
+            <ExternalTextLink text="https://tokenlists.org" href="https://tokenlists.org/"/> or import tokens from the
+            auto-listing contract. Auto-listing contract will allow
             anyone to list a token on the platform without asking for anyones permission or interacting with the
             exchange team.
           </div>

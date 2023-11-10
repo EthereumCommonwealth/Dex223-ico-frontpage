@@ -1,6 +1,6 @@
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../styles/Development.module.scss";
 import clsx from "clsx";
 import DevelopmentReports from "./components/DevelopmentReports";
@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => {
     function logPositions() {
       console.log("Fired");
-      if(firstRef.current && secondRef.current && thirdRef.current) {
+      if (firstRef.current && secondRef.current && thirdRef.current) {
 
         // @ts-ignore
         const firstTop = firstRef.current.getBoundingClientRect().top;
@@ -30,19 +30,19 @@ export default function Home() {
         // @ts-ignore
         const thirdTop = thirdRef.current.getBoundingClientRect().top;
 
-        if(firstTop > 0) {
+        if (firstTop > 0) {
           setActiveTab(-1);
         }
 
-        if(firstTop < 0 && secondTop > 0) {
+        if (firstTop < 0 && secondTop > 0) {
           setActiveTab(0);
         }
 
-        if(secondTop < 0 && thirdTop > 0) {
+        if (secondTop < 0 && thirdTop > 0) {
           setActiveTab(1);
         }
 
-        if(thirdTop < 0) {
+        if (thirdTop < 0) {
           setActiveTab(2);
         }
       }
@@ -70,24 +70,31 @@ export default function Home() {
     <>
       <Header/>
       <h1 className={styles.pageHeading}>Development progress</h1>
-      <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange and related services.</p>
+      <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange
+        and related services.</p>
 
       <div className={styles.tabButtonsContainer}>
         <div className={styles.tabButtons}>
-          <a href="#structure"><button className={clsx(styles.tabButton, activeTab === 0 && styles.active)}>Structure</button></a>
-          <a href="#references"><button className={clsx(styles.tabButton, activeTab === 1 && styles.active)}>References</button></a>
-          <a href="#reports"><button className={clsx(styles.tabButton, activeTab === 2 && styles.active)}>
-            <span className={styles.desktop}>Development reports</span>
-            <span className={styles.mobile}>Reports</span>
-          </button></a>
+          <a href="#structure">
+            <button className={clsx(styles.tabButton, activeTab === 0 && styles.active)}>Structure</button>
+          </a>
+          <a href="#references">
+            <button className={clsx(styles.tabButton, activeTab === 1 && styles.active)}>References</button>
+          </a>
+          <a href="#reports">
+            <button className={clsx(styles.tabButton, activeTab === 2 && styles.active)}>
+              <span className={styles.desktop}>Development reports</span>
+              <span className={styles.mobile}>Reports</span>
+            </button>
+          </a>
         </div>
       </div>
 
 
-      <Spacer height={20} />
-      <Structure refEl={firstRef} />
-      <References refEl={secondRef}  />
-      <DevelopmentReports refEl={thirdRef} />
+      <Spacer height={20}/>
+      <Structure refEl={firstRef}/>
+      <References refEl={secondRef}/>
+      <DevelopmentReports refEl={thirdRef}/>
       <Footer/>
     </>
   )

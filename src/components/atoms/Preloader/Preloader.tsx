@@ -12,7 +12,8 @@ export default function Preloader({ size = 25, color = "#3BD171" }: Props) {
     height: size
   }}>
     <svg viewBox="22 22 44 44">
-      <circle className={styles.MuiCircularProgressCircleIndeterminate} cx="44" cy="44" r="20.2" fill="none" stroke={color}
+      <circle className={styles.MuiCircularProgressCircleIndeterminate} cx="44" cy="44" r="20.2" fill="none"
+              stroke={color}
               strokeWidth="3.6"/>
     </svg>
   </div>;

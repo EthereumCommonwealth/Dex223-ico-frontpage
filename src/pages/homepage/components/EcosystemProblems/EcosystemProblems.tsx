@@ -1,23 +1,28 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./EcosystemProblems.module.scss";
 import clsx from "clsx";
 import OverlineText from "../../../../components/atoms/OverlineText";
 import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
 import Image from "next/image";
-import {useSwipeable} from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 import Svg from "../../../../components/atoms/Svg";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import InterfaceDecentralizationImage from "../../../../assets/images/last-slide.svg";
 import ListingsImage from "../../../../assets/images/slider-listings.svg";
 
-function LostCard({icon, name, lost, percentage, color, active = false, animate = false}) {
+function LostCard({ icon, name, lost, percentage, color, active = false, animate = false }) {
   return <div className={clsx(styles.lostCard, active && styles.active)}>
     <div className={styles.lostCardHeader}>
       <div className={styles.lostCardName}>{icon} {name}</div>
       <span className={styles.lostValue}>{lost}</span>
     </div>
     <div className={styles.lostProgress}>
-      <div style={{width: animate ? `${percentage}%` : "1%", backgroundColor: color, transitionDuration: "1s", transitionTimingFunction: "ease-in-out"}}/>
+      <div style={{
+        width: animate ? `${percentage}%` : "1%",
+        backgroundColor: color,
+        transitionDuration: "1s",
+        transitionTimingFunction: "ease-in-out"
+      }}/>
     </div>
   </div>
 }
@@ -42,17 +47,27 @@ const slides = [
         that prevents user mistakes and losses of funds will thrive.
       </p>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={styles.slide1IllustrationWrapper}>
+    illustration: ({ animate, key }) => <div key={key} className={styles.slide1IllustrationWrapper}>
       <div className={styles.slide1IllustrationHeader}>
         <span>Problem</span>
         <span>Lost</span>
       </div>
       <div className={styles.problemCards}>
-        <LostCard animate={animate} color="#F79290" lost={"$60M"} icon={<Image width={32} height={32} src="/images/curve-logo.png" alt=""/>} name="Curve hack" percentage={20}/>
-        <LostCard animate={animate} color="#F8827F" lost={"$62M"} icon={<Image src="/images/problem-logos/dao.svg" alt="" width={32} height={32} />} name="DAO hack" percentage={20}/>
-        <LostCard animate={animate} color="#F0504D" lost={"$150M"} icon={<Image src="/images/problem-logos/compound.svg" alt="" width={32} height={32} />} name="Compound hack" percentage={40}/>
-        <LostCard animate={animate} active color="#FF3333" lost={"$201M"} icon={<Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32} />} name="ERC-20 user errors" percentage={50}/>
-        <LostCard animate={animate} color="#790003" lost={"$326M"} icon={<Image src="/images/problem-logos/wormhole.svg" alt="" width={32} height={32} />} name="Wormhole hack" percentage={70}/>
+        <LostCard animate={animate} color="#F79290" lost={"$60M"}
+                  icon={<Image width={32} height={32} src="/images/curve-logo.png" alt=""/>} name="Curve hack"
+                  percentage={20}/>
+        <LostCard animate={animate} color="#F8827F" lost={"$62M"}
+                  icon={<Image src="/images/problem-logos/dao.svg" alt="" width={32} height={32}/>} name="DAO hack"
+                  percentage={20}/>
+        <LostCard animate={animate} color="#F0504D" lost={"$150M"}
+                  icon={<Image src="/images/problem-logos/compound.svg" alt="" width={32} height={32}/>}
+                  name="Compound hack" percentage={40}/>
+        <LostCard animate={animate} active color="#FF3333" lost={"$201M"}
+                  icon={<Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32}/>}
+                  name="ERC-20 user errors" percentage={50}/>
+        <LostCard animate={animate} color="#790003" lost={"$326M"}
+                  icon={<Image src="/images/problem-logos/wormhole.svg" alt="" width={32} height={32}/>}
+                  name="Wormhole hack" percentage={70}/>
       </div>
     </div>
   },
@@ -78,8 +93,8 @@ const slides = [
         moment and no third party is authorized to make transfers on users behalf.
       </p>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={styles.approveProblemsWrapper}>
-      <div className={clsx(styles.attentionMark, animate && styles.animate)} />
+    illustration: ({ animate, key }) => <div key={key} className={styles.approveProblemsWrapper}>
+      <div className={clsx(styles.attentionMark, animate && styles.animate)}/>
       <div className={styles.approveProblemsFooter}>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <path
@@ -102,7 +117,7 @@ const slides = [
         access to users funds even after the user stopped using it.
       </p>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={styles.erc20Problems}>
+    illustration: ({ animate, key }) => <div key={key} className={styles.erc20Problems}>
       <div className={styles.erc20ProblemsLeftColumn}>
         <div className={clsx(styles.erc20ProblemsGreen1, animate && styles.animate)}>
           <img src="images/prob1.png"/>
@@ -149,21 +164,21 @@ const slides = [
         </li>
       </ul>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={styles.secureErc20}>
-        <div>
-          <div className={clsx(styles.secureErc20Green1, animate && styles.animated)}>
-            <img src="/images/sec1.png" alt=""/>
-          </div>
-        </div>
-        <div className={styles.erc20ProblemsLeftColumn}>
-          <div className={clsx(styles.secureErc20Green2, animate && styles.animated)}>
-            <img src="/images/sec2.png" alt=""/>
-          </div>
-          <div className={clsx(styles.secureErc20Red, animate && styles.animated)}>
-            <img src="/images/sec3.png" alt=""/>
-          </div>
+    illustration: ({ animate, key }) => <div key={key} className={styles.secureErc20}>
+      <div>
+        <div className={clsx(styles.secureErc20Green1, animate && styles.animated)}>
+          <img src="/images/sec1.png" alt=""/>
         </div>
       </div>
+      <div className={styles.erc20ProblemsLeftColumn}>
+        <div className={clsx(styles.secureErc20Green2, animate && styles.animated)}>
+          <img src="/images/sec2.png" alt=""/>
+        </div>
+        <div className={clsx(styles.secureErc20Red, animate && styles.animated)}>
+          <img src="/images/sec3.png" alt=""/>
+        </div>
+      </div>
+    </div>
   },
   {
     heading: "Interface decentralization",
@@ -182,8 +197,8 @@ const slides = [
         DEX223 will have multiple competing versions of the UI allowing for full decentralization.
       </p>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={clsx(styles.lastSlide, animate && "animated")}>
-      <InterfaceDecentralizationImage />
+    illustration: ({ animate, key }) => <div key={key} className={clsx(styles.lastSlide, animate && "animated")}>
+      <InterfaceDecentralizationImage/>
     </div>
   },
   {
@@ -207,14 +222,15 @@ const slides = [
         autolisting contract.
       </p>
     </div>,
-    illustration: ({animate, key}) => <div key={key} className={clsx(styles.gasOptimisationIllustration, animate && "animated")}>
+    illustration: ({ animate, key }) => <div key={key}
+                                             className={clsx(styles.gasOptimisationIllustration, animate && "animated")}>
       <div className={styles.gasOptimisationIllustrationCircle}/>
-      <ListingsImage />
+      <ListingsImage/>
     </div>
   }
 ];
 
-function EcosystemSlide({index, activeSlide, slide}) {
+function EcosystemSlide({ index, activeSlide, slide }) {
 
   return <div className={clsx(styles.slideTest, index === activeSlide && styles.active)}>
     <h2 className={styles.sliderHeading}>{slide.heading}</h2>
@@ -236,7 +252,7 @@ export default function EcosystemProblems() {
     setAnimationPlayed([...animationPlayed, activeSlide]);
   }, [activeSlide, animationPlayed]);
 
-  const entry = useIntersectionObserver(ref, {threshold: 0.5, freezeOnceVisible: true});
+  const entry = useIntersectionObserver(ref, { threshold: 0.5, freezeOnceVisible: true });
 
   const nextSlide = () => {
     setActiveSlide((prevIndex) => (prevIndex + 1) % slides.length);
@@ -257,16 +273,19 @@ export default function EcosystemProblems() {
   return <div className="container">
     <div className={styles.ecosystemProblems}>
       <div className={styles.pattern1}>
-        <Image alt="" src="/images/patterns/purple.svg" width={1067} height={1075} />
+        <Image alt="" src="/images/patterns/purple.svg" width={1067} height={1075}/>
       </div>
       <div className={styles.pattern2}>
-        <Image alt="" src="/images/patterns/purple.svg" width={599} height={604} />
+        <Image alt="" src="/images/patterns/purple.svg" width={599} height={604}/>
       </div>
       <div className={styles.sliderContainer}>
         <div ref={ref} className={styles.slides}>
           <div {...handlers} className={styles.slide}>
             <div className={clsx(styles.illustration)}>
-              {slides[activeSlide].illustration({animate: entry?.isIntersecting && animationPlayed.includes(activeSlide), key: activeSlide})}
+              {slides[activeSlide].illustration({
+                animate: entry?.isIntersecting && animationPlayed.includes(activeSlide),
+                key: activeSlide
+              })}
             </div>
             <div className={styles.slideTextContent}>
               <div>

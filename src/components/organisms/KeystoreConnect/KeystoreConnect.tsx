@@ -1,12 +1,12 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import styles from "./KeystoreConnect.module.scss";
 import Button from "../../atoms/Button";
-import {mainnet, useConnect} from "wagmi";
-import {MockConnector} from "@wagmi/connectors/mock";
-import {createWalletClient, http, publicActions} from "viem";
-import {privateKeyToAccount} from "viem/accounts";
-import Wallet, {thirdparty} from "ethereumjs-wallet";
-import {callisto} from "../../../constants/chains/clo";
+import { mainnet, useConnect } from "wagmi";
+import { MockConnector } from "@wagmi/connectors/mock";
+import { createWalletClient, http, publicActions } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import Wallet, { thirdparty } from "ethereumjs-wallet";
+import { callisto } from "../../../constants/chains/clo";
 import IconButton from "../../atoms/IconButton";
 import Svg from "../../atoms/Svg";
 import Collapse from "../../atoms/Collapse";
@@ -42,7 +42,7 @@ const unlockKeystore = async (file, password) => {
   return getWalletFromPrivKeyFile(newFile, password);
 };
 
-export default function KeystoreConnect({handleClose}) {
+export default function KeystoreConnect({ handleClose }) {
   const fileInput = useRef<HTMLInputElement>();
   const [selectedFile, setSelectedFile] = useState(null);
   const [keystore, setKeystore] = useState(null);
@@ -75,7 +75,7 @@ export default function KeystoreConnect({handleClose}) {
     }
   };
 
-  const {connect, connectors, isLoading, pendingConnector} = useConnect();
+  const { connect, connectors, isLoading, pendingConnector } = useConnect();
 
   const importKeystoreFileHandler = async () => {
     setIsUnlockingKeystore(true);
@@ -98,7 +98,7 @@ export default function KeystoreConnect({handleClose}) {
             walletClient: walletClient,
           },
         });
-        connect({chainId: 820, connector});
+        connect({ chainId: 820, connector });
       }
       setIsUnlockingKeystore(false);
       handleClose();
@@ -121,13 +121,13 @@ export default function KeystoreConnect({handleClose}) {
       <input
         type="file"
         onChange={handleFileChange}
-        style={{display: "none"}}
+        style={{ display: "none" }}
         ref={fileInput}
       />
       <div className={styles.fileInput}>
         <div className={styles.buttonWrapper}>
           <Button variant="outlined" onClick={() => {
-            if(fileInput.current && fileInput.current) {
+            if (fileInput.current && fileInput.current) {
               fileInput.current.click()
             }
           }}>

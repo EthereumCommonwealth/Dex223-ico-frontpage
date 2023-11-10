@@ -161,7 +161,6 @@
   border-right: 0;
 
 
-
   cursor: pointer;
   position: relative;
   transition-duration: 0.3s;
@@ -181,6 +180,7 @@
 
   &:hover {
     color: colors.$text-primary;
+
     &:before {
       border-color: colors.$text-primary;
       z-index: 4;

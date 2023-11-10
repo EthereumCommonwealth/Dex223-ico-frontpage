@@ -1,6 +1,6 @@
-import React, {CSSProperties} from "react";
+import React, { CSSProperties } from "react";
 import clsx from "clsx";
-import {Property} from "csstype";
+import { Property } from "csstype";
 import TextAlign = Property.TextAlign;
 
 interface Props {
@@ -12,12 +12,19 @@ interface Props {
   children,
 }
 
-export default function Text({tag = "span", variant = 16, weight = 400, color = "primary", align = "left", children}: Props) {
+export default function Text({
+                               tag = "span",
+                               variant = 16,
+                               weight = 400,
+                               color = "primary",
+                               align = "left",
+                               children
+                             }: Props) {
   const Tag = tag as keyof JSX.IntrinsicElements;
 
   return <Tag className={clsx(
     `font-${variant}`,
     `font-${color}`,
     `font-${weight}`
-  )} style={{textAlign: align} as any}>{children}</Tag>;
+  )} style={{ textAlign: align } as any}>{children}</Tag>;
 }

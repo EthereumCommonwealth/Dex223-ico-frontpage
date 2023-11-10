@@ -1,11 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./References.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import Svg from "../../../../components/atoms/Svg";
 import clsx from "clsx";
 import DevSourcesImage from "../../../../assets/images/dev-src-2.svg";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
-import {useIntersectionObserver} from "../../../../hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "../../../../hooks/useIntersectionObserver";
 
 const references = [
   {
@@ -50,12 +50,12 @@ const references = [
   }
 ];
 
-export default function References({refEl}) {
+export default function References({ refEl }) {
   const referencesEntryRef = useRef();
-  const referencesEntry = useIntersectionObserver(referencesEntryRef, {threshold: 0.6, freezeOnceVisible: true});
+  const referencesEntry = useIntersectionObserver(referencesEntryRef, { threshold: 0.6, freezeOnceVisible: true });
 
   return <div>
-    <div ref={refEl} />
+    <div ref={refEl}/>
     <NeonBlock
       icon="references"
       color="green"
@@ -80,8 +80,9 @@ export default function References({refEl}) {
         </>
       }
       rightContent={
-        <div ref={referencesEntryRef} className={clsx(styles.rightContent, referencesEntry?.isIntersecting && "animated")}>
-          <DevSourcesImage />
+        <div ref={referencesEntryRef}
+             className={clsx(styles.rightContent, referencesEntry?.isIntersecting && "animated")}>
+          <DevSourcesImage/>
         </div>
       }
     />

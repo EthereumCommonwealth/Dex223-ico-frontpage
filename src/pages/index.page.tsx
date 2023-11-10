@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import NewBanner from "./homepage/components/NewBanner";
 import EcosystemProblems from "./homepage/components/EcosystemProblems";
 import Philosophy from "./homepage/components/Philosophy";

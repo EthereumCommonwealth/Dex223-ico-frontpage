@@ -1,10 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Tokenomics.module.scss";
 import clsx from "clsx";
 import Spacer from "../../../../components/atoms/Spacer";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
 import Image from "next/image";
+
 export default function Tokenomics() {
   const [isIntersected, setIsIntersected] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -36,14 +37,19 @@ export default function Tokenomics() {
         <>
           <ArticleHeading text="Tokenomics"/>
           <div className={styles.paragraphs}>
-            <p className={styles.text}>The original D223 tokens will be issued in November 2023 on Ethereum mainnet. Once
+            <p className={styles.text}>The original D223 tokens will be issued in November 2023 on Ethereum mainnet.
+              Once
               DEX223 is deployed a fee will be charged for any on-platform trade. This fees will be redistributed among
-              D223 token holders in proportion to their share. Unsold tokens will be subtracted from the total supply i.e.
-              if the platform will accumulate revenue before public ICO round then 32% of the existing tokens will get the
+              D223 token holders in proportion to their share. Unsold tokens will be subtracted from the total supply
+              i.e.
+              if the platform will accumulate revenue before public ICO round then 32% of the existing tokens will get
+              the
               rights to claim the revenue as if 68% of tokens allocated for public sales didn&apos;t exist.</p>
-            <p className={styles.text}>Unsold tokens from pre-ICO sales and public sales will be re-allocated for the next
+            <p className={styles.text}>Unsold tokens from pre-ICO sales and public sales will be re-allocated for the
+              next
               public round until all tokens are sold. The development team adheres to the policy of financial
-              transparency. A full financial report regarding the distribution of any funds collected from ICO or private
+              transparency. A full financial report regarding the distribution of any funds collected from ICO or
+              private
               sales will be published quarterly.</p>
           </div>
           <Spacer height={24}/>
@@ -60,32 +66,32 @@ export default function Tokenomics() {
     <div ref={ref}/>
     <div className="container relative">
       <div className={styles.pattern}>
-        <Image alt="" src="/images/patterns/purple.svg" width={883} height={890} />
+        <Image alt="" src="/images/patterns/purple.svg" width={883} height={890}/>
       </div>
       <div className={styles.chartWrapper}>
         <div className={styles.chart}>
           <div>
-            <div className={clsx(styles.chartColumn1, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
+            <div className={clsx(styles.chartColumn1, isIntersected && styles.withAnimation)} style={{ width: "100%" }}>
               <span className={styles.percentage}><span>3%</span></span>
             </div>
           </div>
           <div>
-            <div className={clsx(styles.chartColumn2, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
+            <div className={clsx(styles.chartColumn2, isIntersected && styles.withAnimation)} style={{ width: "100%" }}>
               <span className={styles.percentage}><span>9.5%</span></span>
             </div>
           </div>
           <div>
-            <div className={clsx(styles.chartColumn3, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
+            <div className={clsx(styles.chartColumn3, isIntersected && styles.withAnimation)} style={{ width: "100%" }}>
               <span className={styles.percentage}><span>9.5%</span></span>
             </div>
           </div>
           <div>
-            <div className={clsx(styles.chartColumn4, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
+            <div className={clsx(styles.chartColumn4, isIntersected && styles.withAnimation)} style={{ width: "100%" }}>
               <span className={styles.percentage}><span>10%</span></span>
             </div>
           </div>
           <div>
-            <div className={clsx(styles.chartColumn5, isIntersected && styles.withAnimation)} style={{width: "100%"}}>
+            <div className={clsx(styles.chartColumn5, isIntersected && styles.withAnimation)} style={{ width: "100%" }}>
               <span className={styles.percentage}><span>68%</span></span>
             </div>
           </div>
@@ -101,19 +107,23 @@ export default function Tokenomics() {
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Core team allocation</span>
-          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>9.5%</span></span>
+          <span className={styles.labelValue}>760,000,000 D223 <span
+            className={styles.labelPercentage}>9.5%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Project development & team incentivization</span>
-          <span className={styles.labelValue}>760,000,000 D223 <span className={styles.labelPercentage}>9.5%</span></span>
+          <span className={styles.labelValue}>760,000,000 D223 <span
+            className={styles.labelPercentage}>9.5%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Private investment rounds</span>
-          <span className={styles.labelValue}>800,000,000 D223 <span className={styles.labelPercentage}>10%</span></span>
+          <span className={styles.labelValue}>800,000,000 D223 <span
+            className={styles.labelPercentage}>10%</span></span>
         </div>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Public sales</span>
-          <span className={styles.labelValue}>5,440,000,000 D223 <span className={styles.labelPercentage}>68%</span></span>
+          <span className={styles.labelValue}>5,440,000,000 D223 <span
+            className={styles.labelPercentage}>68%</span></span>
         </div>
       </div>
     </div>

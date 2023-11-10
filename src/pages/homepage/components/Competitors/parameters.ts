@@ -1,7 +1,7 @@
 type Parameters = {
   supportedStandards: string,
   deploymentChain: string,
-  listingProcess:string,
+  listingProcess: string,
   marginTrading: string,
   markets: string,
 }

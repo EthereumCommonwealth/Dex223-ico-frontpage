@@ -3,39 +3,11 @@
 @use "../../../styles/media";
 @use "../../../styles/typography";
 
-.raised {
-  color: #FFF;
-  text-align: center;
-  margin: 4px 0 18px;
-
-  @include typography.t-body-16;
-}
-
 .specialOffer {
   @include typography.t-body-16;
   color: colors.$palette-purple;
   margin-bottom: 4px;
   text-align: center;
-}
-
-.progressBar {
-  height: 30px;
-  width: 100%;
-  background-color: colors.$background-primary;
-  overflow: hidden;
-  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
-  position: relative;
-  border: 1px solid colors.$border-primary;
-
-}
-
-.bar {
-  transition-duration: 0.3s;
-  height: 100%;
-  background-color: #A789FF;
-  background-image: linear-gradient(-60deg, #946FFF 25%, transparent 25%, transparent 50%, #946FFF 50%, #946FFF 75%, transparent 75%, transparent);
-  background-size: 21px 36px;
-  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
 }
 
 .ratio {
@@ -74,84 +46,6 @@
   }
 }
 
-.tokenCards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid colors.$border-primary;
-  border-bottom: 0;
-
-  &.dev {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.tokenPickButton {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  align-items: center;
-
-  background: transparent;
-  height: 38px;
-  @include typography.t-body-12;
-  border: 0;
-  border-right: 1px solid colors.$border-primary;
-
-  transition-duration: 0.2s;
-  outline: 0;
-
-  color: colors.$text-primary;
-  cursor: pointer;
-
-  &:last-child {
-    border-right: 0;
-  }
-
-  position: relative;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid transparent;
-    transition-duration: 0.2s;
-  }
-
-  &.active {
-    pointer-events: none;
-    background-color: colors.$background-secondary;
-  }
-
-  &:hover {
-    &:after {
-      border-color: colors.$palette-green;
-    }
-  }
-
-  &[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  @include media-new.lg {
-    height: 48px;
-    @include typography.t-body-16;
-  }
-}
-
-.tokenImage {
-  width: 20px;
-  height: 20px;
-
-  position: relative;
-
-  @include media-new.lg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
 .waitingContent {
   display: flex;
   align-items: center;
@@ -173,6 +67,8 @@
 
 .gasTitle {
   color: colors.$text-secondary;
+  display: flex;
+  align-items: center;
 }
 
 .gasExpand {
@@ -289,4 +185,18 @@
   position: relative;
   width: 24px;
   height: 24px;
+}
+
+.customTag {
+  padding: 0 8px;
+  border: 1px solid colors.$palette-blue;
+  color: colors.$palette-blue;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  margin-left: 12px;
+
+  @include typography.t-body-16;
 }

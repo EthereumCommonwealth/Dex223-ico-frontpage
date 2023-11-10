@@ -1,12 +1,15 @@
-import {create} from "zustand";
-import {persist} from "zustand/middleware";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 const localStorageKey = "recent-transactions";
+
 export enum RecentTransactionStatus {
   PENDING,
   SUCCESS,
   ERROR,
+  QUEUED
 }
+
 export interface RecentTransaction {
   status: RecentTransactionStatus,
   hash: `0x${string}`,
@@ -29,47 +32,75 @@ export interface RecentTransaction {
 }
 
 interface RecentTransactions {
-  transactions: Array<RecentTransaction>,
+  transactions: { [key: string]: Array<RecentTransaction> },
   isViewed: boolean,
   setIsViewed: (isViewed: boolean) => void
-  addTransaction: (transaction: Omit<RecentTransaction, "status">) => void,
-  updateTransactionStatus: (hash: string, status: RecentTransactionStatus) => void,
+  addTransaction: (transaction: Omit<RecentTransaction, "status">, account: string) => void,
+  updateTransactionStatus: (hash: string, status: RecentTransactionStatus, account: string) => void,
   clearTransactions: () => void
 }
 
 export const useRecentTransactions = create<RecentTransactions>()(persist((set) => ({
-  transactions: [],
+  transactions: {},
   isViewed: true,
-  setIsViewed: ((isViewed) => set({isViewed})),
-  addTransaction: (transaction) => set((state) => {
-    const updatedTransactions = [{...transaction, status: RecentTransactionStatus.PENDING}, ...state.transactions];
+  setIsViewed: ((isViewed) => set({ isViewed })),
+  addTransaction: (transaction, account) => set((state) => {
+    const pendingTransactions = state.transactions[account]?.find((t) => t.status === RecentTransactionStatus.PENDING);
+    const updatedTransactions = {...state.transactions};
 
-    return {transactions: updatedTransactions, isViewed: false};
+    const currentAccountTransactions = updatedTransactions[account];
+
+    if(!currentAccountTransactions) {
+      updatedTransactions[account] = [];
+    }
+
+    if (!pendingTransactions) {
+      updatedTransactions[account] = [{ ...transaction, status: RecentTransactionStatus.PENDING }, ...updatedTransactions[account]];
+      return { transactions: updatedTransactions, isViewed: false };
+    } else {
+      updatedTransactions[account] = [{ ...transaction, status: RecentTransactionStatus.QUEUED }, ...updatedTransactions[account]];
+      return { transactions: updatedTransactions, isViewed: false };
+    }
   }),
-  updateTransactionStatus: (hash, status) => set((state) => {
-    const transactionIndex = state.transactions.findIndex((_transaction) => {
+  updateTransactionStatus: (hash, status, account) => set((state) => {
+    const transactionIndex = state.transactions[account].findIndex((_transaction) => {
       return _transaction.hash === hash;
     });
 
-    console.log("Found transaction: " + transactionIndex);
-    if(transactionIndex !== -1) {
-      const updatedTransaction = {...state.transactions[transactionIndex], status};
-      const updatedTransactions = [...state.transactions];
-      updatedTransactions[transactionIndex] = updatedTransaction;
 
-      return {transactions: updatedTransactions}
+    if (transactionIndex !== -1) {
+      const updatedTransactions = {...state.transactions};
+      const queuedTransactions = state.transactions[account].filter((t) => {
+        return t.status === RecentTransactionStatus.QUEUED
+      });
+
+      if (queuedTransactions.length) {
+        const nextQueuedTransaction = queuedTransactions.reduce((prev, curr) => {
+          return prev.details.nonce < curr.details.nonce ? prev : curr;
+        });
+        const nextQueuedTransactionIndex = updatedTransactions[account].findIndex(t => t.hash === nextQueuedTransaction.hash);
+
+        updatedTransactions[account][nextQueuedTransactionIndex] = {
+          ...state.transactions[account][nextQueuedTransactionIndex],
+          status: RecentTransactionStatus.PENDING
+        };
+      }
+
+      updatedTransactions[account][transactionIndex] = { ...state.transactions[account][transactionIndex], status };
+
+      return { transactions: updatedTransactions }
     }
 
     return {};
   }),
   clearTransactions: () => set(() => {
-    return {transactions: []};
+    return { transactions: {} };
   })
 }), {
   name: localStorageKey, // name of the item in the storage (must be unique)
 }));
 
-export type TransactionSpeedUpType =  "autoIncrease" | "market" | "aggressive" | "custom";
+export type TransactionSpeedUpType = "autoIncrease" | "market" | "aggressive" | "custom";
 
 interface ITransactionToSpeedUp {
   transactionToSpeedUp: RecentTransaction | null,
@@ -82,6 +113,6 @@ export const useTransactionSpeedUp = create<ITransactionToSpeedUp>((set) => ({
   transactionToSpeedUp: null,
   speedUpType: "market",
 
-  setTransactionToSpeedUp: (transaction) => set({transactionToSpeedUp: transaction}),
-  setType: (type) => set({speedUpType: type})
+  setTransactionToSpeedUp: (transaction) => set({ transactionToSpeedUp: transaction }),
+  setType: (type) => set({ speedUpType: type })
 }));

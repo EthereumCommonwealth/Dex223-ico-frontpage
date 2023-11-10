@@ -1,9 +1,9 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import styles from "./DevelopmentReports.module.scss";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
 import clsx from "clsx";
 import DevSourcesBlueImage from "../../../../assets/images/dev-sources-blue.svg";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const reports = [
   {
@@ -24,12 +24,12 @@ const reports = [
   }
 ]
 
-export default function DevelopmentReports({refEl}) {
+export default function DevelopmentReports({ refEl }) {
   const reportsEntryRef = useRef();
-  const reportsEntry = useIntersectionObserver(reportsEntryRef, {threshold: 0.6, freezeOnceVisible: true});
+  const reportsEntry = useIntersectionObserver(reportsEntryRef, { threshold: 0.6, freezeOnceVisible: true });
 
   return <div>
-    <div ref={refEl} />
+    <div ref={refEl}/>
     <NeonBlock
       icon="reports"
       color="blue"
@@ -46,7 +46,7 @@ export default function DevelopmentReports({refEl}) {
       }
       rightContent={
         <div ref={reportsEntryRef} className={clsx(styles.rightContent, reportsEntry?.isIntersecting && "animated")}>
-          <DevSourcesBlueImage />
+          <DevSourcesBlueImage/>
         </div>
       }
     />

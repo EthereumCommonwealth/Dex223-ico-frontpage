@@ -11,7 +11,6 @@
   cursor: pointer;
 
 
-
   &.contained {
     background: colors.$palette-green;
     position: relative;
@@ -31,6 +30,7 @@
       &:after {
         opacity: 1;
       }
+
       background-color: colors.$palette-green__hover;
       //background: linear-gradient(to bottom, #C2FD3F, #8DBE28);
       //box-shadow: 0px 0px 20px 0px rgba(165, 230, 20, 0.70);

@@ -8,6 +8,6 @@ interface Props {
 
 export default function DialogCloseButton({ handleClose }: Props) {
   return <button className={styles.closeButton} onClick={handleClose}>
-   <Svg iconName="close" />
+    <Svg iconName="close"/>
   </button>;
 }

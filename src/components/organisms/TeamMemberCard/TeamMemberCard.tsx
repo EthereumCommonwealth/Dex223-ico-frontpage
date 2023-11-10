@@ -28,9 +28,9 @@ const socialIcons = {
 }
 
 
-export default function TeamMemberCard({image, position, socials, name}: Props) {
+export default function TeamMemberCard({ image, position, socials, name }: Props) {
   return <div className={styles.teamMemberCard}>
-    <div style={{backgroundImage: `url(${image})`}} className={styles.imageCover} />
+    <div style={{ backgroundImage: `url(${image})` }} className={styles.imageCover}/>
 
     <div className={styles.info}>
       <span className={styles.position}>{position}</span>
@@ -38,7 +38,8 @@ export default function TeamMemberCard({image, position, socials, name}: Props) 
         <span className={styles.name}>{name}</span>
         <div className={styles.socialLinks}>
           {Object.keys(socials).map((key) => {
-            return <a target="_blank" className={styles.socialLink} key={key} href={socials[key]}><img alt="" src={socialIcons[key]} /></a>
+            return <a target="_blank" className={styles.socialLink} key={key} href={socials[key]}><img alt=""
+                                                                                                       src={socialIcons[key]}/></a>
           })}
         </div>
       </div>

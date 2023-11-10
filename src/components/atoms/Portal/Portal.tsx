@@ -1,10 +1,10 @@
 import React, { createRef } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
-import {golos_text} from "../../../assets/fonts";
+import { golos_text } from "../../../assets/fonts";
 import useMountTransition from "../../../hooks/useMountTransition";
-import {useScrollBlockingOnOpen} from "../../../hooks/useScrollBlockingOnOpen";
-import {useCloseWithEscape} from "../../../hooks/useCloseWithEscape";
+import { useScrollBlockingOnOpen } from "../../../hooks/useScrollBlockingOnOpen";
+import { useCloseWithEscape } from "../../../hooks/useCloseWithEscape";
 
 interface Props {
   root: string,
@@ -16,7 +16,15 @@ interface Props {
   isTransitioningClassName?: string
 }
 
-export default function Portal({ root, isOpen, children, onClose, removeWhenClosed = true, className = null, isTransitioningClassName }: Props) {
+export default function Portal({
+                                 root,
+                                 isOpen,
+                                 children,
+                                 onClose,
+                                 removeWhenClosed = true,
+                                 className = null,
+                                 isTransitioningClassName
+                               }: Props) {
   const ref = createRef<HTMLDivElement>();
   const isTransitioning = useMountTransition(
     isOpen,
@@ -36,14 +44,14 @@ export default function Portal({ root, isOpen, children, onClose, removeWhenClos
 
   return createPortal(
     <div ref={ref}
-      aria-hidden={isOpen
-        ? "false"
-        : "true"}
-      className={clsx(
-        className,
-        isTransitioning && isTransitioningClassName,
-        golos_text.className
-      )}
+         aria-hidden={isOpen
+           ? "false"
+           : "true"}
+         className={clsx(
+           className,
+           isTransitioning && isTransitioningClassName,
+           golos_text.className
+         )}
     >
       {children}
     </div>,
