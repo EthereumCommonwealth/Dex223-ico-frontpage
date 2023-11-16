@@ -10,7 +10,7 @@ import { getICOContractAddress, getTokensToPayWith } from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { useCallback, useEffect, useMemo } from "react";
 import testICOABI from "@/constants/abis/testICOABI.json";
-import { useRecentTransactions } from "@/stores/useRecentTransactions";
+import { useRecentTransactionsStore } from "@/stores/useRecentTransactions";
 import {
   useTransactionGasFee, useTransactionGasLimit,
   useTransactionGasPrice,
@@ -40,7 +40,7 @@ export function usePurchaseTokens({ devMode }) {
     pickedToken: state.computed.pickedToken
   }));
 
-  const { addTransaction, isViewed } = useRecentTransactions();
+  const { addTransaction, isViewed } = useRecentTransactionsStore();
   const { address } = useAccount();
 
   const { chain } = useNetwork();

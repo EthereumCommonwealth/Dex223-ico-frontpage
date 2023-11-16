@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import styles from "./RecentTransactionsDialog.module.scss";
-import { useRecentTransactions, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
+import { useRecentTransactionsStore, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import Dialog from "@/components/atoms/Dialog";
 import useZustandStore from "@/stores/useZustandStore";
 import RecentTransaction from "@/components/organisms/RecentTransaction";
@@ -14,19 +14,19 @@ import { useAccount } from "wagmi";
 
 export default function RecentTransactionsDialog({ isOpen, handleClose }) {
   const {address} = useAccount();
-  const transactions = useZustandStore(useRecentTransactions, state => state.transactions[address]);
-  const { clearTransactions, setIsViewed } = useRecentTransactions();
-  const { transactionToSpeedUp } = useTransactionSpeedUp();
+  const transactions = useZustandStore(useRecentTransactionsStore, state => state.transactions[address]);
+  const { clearTransactions, setIsViewed } = useRecentTransactionsStore();
+  const { transactionToSpeedUpId } = useTransactionSpeedUp();
 
-  useEffect(() => {
-    if (isOpen) {
-      setIsViewed(true);
-    }
-  }, [isOpen, setIsViewed]);
+  const transactionToSpeedUp = useMemo(() => {
+    return transactions?.find((t) => {
+      return t.id === transactionToSpeedUpId;
+    })
+  }, [transactionToSpeedUpId, transactions]);
 
   return <Dialog isOpen={isOpen} onClose={handleClose}>
     <div className={styles.dialog}>
-      {!transactionToSpeedUp ? <>
+      {!transactionToSpeedUpId ? <>
         <DialogHeader
           onClose={handleClose}
           title="Recent transactions"

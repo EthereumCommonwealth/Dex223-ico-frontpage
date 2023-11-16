@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "./TransactionSpeedUp.module.scss";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import Spacer from "@/components/atoms/Spacer";
-import { TransactionSpeedUpType, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
+import { TransactionSpeedUpType, useRecentTransactionsStore, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import clsx from "clsx";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
@@ -22,7 +22,15 @@ function useGasEstimation({ maxBaseFee, maxPriorityFee }: {
   maxBaseFee: bigint,
   maxPriorityFee: bigint,
 }) {
-  const { transactionToSpeedUp } = useTransactionSpeedUp();
+  const { transactionToSpeedUpId } = useTransactionSpeedUp();
+  const { transactions } = useRecentTransactionsStore();
+  const { address } = useAccount();
+
+  const transactionToSpeedUp = useMemo(() => {
+    return transactions[address].find((t) => {
+      return t.id === transactionToSpeedUpId;
+    })
+  }, [address, transactionToSpeedUpId, transactions]);
 
   const estimatedGasFee = useMemo(() => {
     return (+formatEther((maxBaseFee + maxPriorityFee) *
@@ -77,13 +85,22 @@ function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText
 }
 
 export default function TransactionSpeedUp({ handleClose }) {
-  const { connector } = useAccount();
+  const { connector, address } = useAccount();
+
+  const { transactions, updateTransactionHash} = useRecentTransactionsStore();
 
   const isMetamask = useMemo(() => {
     return connector.name === "MetaMask";
   }, [connector?.name]);
 
-  const { transactionToSpeedUp, speedUpType, setType, setTransactionToSpeedUp } = useTransactionSpeedUp();
+  const { transactionToSpeedUpId, speedUpType, setType, setTransactionToSpeedUp } = useTransactionSpeedUp();
+
+  const transactionToSpeedUp = useMemo(() => {
+    return transactions[address].find((t) => {
+      return t.id === transactionToSpeedUpId;
+    })
+  }, [address, transactionToSpeedUpId, transactions]);
+
   const { data } = useFeeData({
     chainId: 820
   });
@@ -145,7 +162,7 @@ export default function TransactionSpeedUp({ handleClose }) {
     abi: testICOABI,
     functionName: transactionToSpeedUp?.details.functionName,
     args: transactionToSpeedUp?.details.args,
-    gas: currentData.gas,
+    gas: BigInt(currentData.gas) + BigInt(10000),
     //set nonce from transactionSpeedUp to rewrite transaction
     nonce: transactionToSpeedUp?.details.nonce,
     //set new gas settings to speed up transaction
@@ -164,7 +181,7 @@ export default function TransactionSpeedUp({ handleClose }) {
         return;
       }
 
-      setTransactionToSpeedUp({ ...transactionToSpeedUp, hash: data.hash });
+      updateTransactionHash(transactionToSpeedUpId, data.hash, address);
 
       showMessage("New gas settings are applied");
     }
@@ -191,7 +208,9 @@ export default function TransactionSpeedUp({ handleClose }) {
       </p>
       </div> :
       <div className={styles.speedUpContent}>
-        <RecentTransaction noSpeedUp transaction={transactionToSpeedUp}/>
+        <RecentTransaction noSpeedUp transaction={transactions[address].find((t) => {
+          return t.hash === transactionToSpeedUp.hash;
+        })}/>
         <Spacer height={20}/>
         <div className={styles.speedUpTableHeader}>
           <span>Gas option</span>
@@ -273,7 +292,9 @@ export default function TransactionSpeedUp({ handleClose }) {
         </div>
 
         <Spacer height={20}/>
-        <Button disabled={Boolean(customBaseFeeError) && speedUpType === "custom"} onClick={handleSpeedUp}>Apply</Button>
+        <Button disabled={Boolean(customBaseFeeError) && speedUpType === "custom"} onClick={handleSpeedUp}>
+          Apply
+        </Button>
       </div>}
   </>;
 }

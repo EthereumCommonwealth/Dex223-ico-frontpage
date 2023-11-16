@@ -168,6 +168,8 @@
   outline: 0;
   color: colors.$palette-green;
   cursor: pointer;
+  display: inline;
+  padding: 0;
 }
 
 .newIndicator {
@@ -199,4 +201,17 @@
   margin-left: 12px;
 
   @include typography.t-body-16;
+}
+
+.unreadCounter {
+  color: colors.$text-primary;
+  background: colors.$palette-red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  @include typography.t-body-16;
+  border-radius: 4px;
 }

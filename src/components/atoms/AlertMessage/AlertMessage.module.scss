@@ -1,0 +1,53 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.message {
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--corner-small, 4px);
+  margin-top: 16px;
+  @include typography.t-body-16;
+  color: colors.$text-primary;
+
+  &.noIcon {
+    grid-template-columns: 1fr;
+  }
+
+  &.success {
+    border: 1px solid colors.$palette-green;
+    background: #0F1E15;
+
+    svg {
+      color: colors.$palette-green;
+    }
+  }
+
+  &.error {
+    border: 1px solid var(--color-main-red, #D13B3B);
+    background: var(--color-fill-red-bcg, #1A0D0A);
+
+    svg {
+      color: colors.$palette-red;
+    }
+  }
+
+  &.warning {
+    border: 1px solid colors.$palette-orange;
+    background: var(--orange-bcg, #1F170A);
+
+    svg {
+      color: colors.$palette-orange;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 24px;
+}

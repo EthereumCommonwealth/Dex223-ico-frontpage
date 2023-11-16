@@ -25,7 +25,7 @@ import {
   useTransactionPriorityFee, useTransactionTypeStore,
 } from "@/stores/useGasSettings";
 import RecentTransactionsDialog from "@/components/organisms/RecentTransactionsDialog";
-import { useRecentTransactions } from "@/stores/useRecentTransactions";
+import { useRecentTransactionsStore } from "@/stores/useRecentTransactions";
 import { useICOContractBalance } from "@/components/organisms/BuyForm/hooks/useICOContractBalance";
 import { useReward } from "@/components/organisms/BuyForm/hooks/useReward";
 import { useNetworkFee } from "@/components/organisms/BuyForm/hooks/useNetworkFee";
@@ -36,7 +36,8 @@ import PurchaseActionButton from "@/components/organisms/PurchaseActionButton";
 import ICOProgressBar from "@/components/organisms/ICOProgressBar";
 import { isNativeToken } from "@/functions/isNativeToken";
 import MessageInteractive from "@/components/organisms/MessageInteractive";
-
+import { useRecentTransactionTracking } from "@/components/organisms/BuyForm/hooks/useRecentTransactionTracking";
+import AlertMessage from "@/components/atoms/AlertMessage";
 
 export default function BuyForm() {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
@@ -58,13 +59,26 @@ export default function BuyForm() {
     watch: true
   });
 
-  const { isViewed } = useRecentTransactions();
+  // const { isViewed } = useRecentTransactionsStore();
+
+  const {
+    isUnViewed,
+    pending,
+    failed,
+    success ,
+    totalUnViewed
+  } = useRecentTransactionTracking();
 
   const { type } = useTransactionTypeStore();
   const { setBaseFee, setMaxFeePerGas, computed: baseFeeComputed } = useTransactionGasFee();
   const { setBasePriority, setMaxPriorityFeePerGas, computed: priorityComputed } = useTransactionPriorityFee();
   const { setGasPrice, setBaseGasPrice, computed: gasPriceComputed } = useTransactionGasPrice();
-  const { setGasLimit, setUnsavedGasLimit, setEstimatedGasLimit, computed: gasLimitComputed } = useTransactionGasLimit();
+  const {
+    setGasLimit,
+    setUnsavedGasLimit,
+    setEstimatedGasLimit,
+    computed: gasLimitComputed
+  } = useTransactionGasLimit();
 
   useEffect(() => {
     if (feeData?.formatted?.gasPrice) {
@@ -129,6 +143,9 @@ export default function BuyForm() {
 
   const networkFee = useNetworkFee();
 
+  console.log("UNV");
+  console.log(isUnViewed);
+
   return <>
     <ICOProgressBar/>
     <div className={styles.ratio}><span>1 DEX223 = 0.001 {pickedToken.symbol}</span></div>
@@ -148,8 +165,8 @@ export default function BuyForm() {
             gasPrice was changed for type-0 tranasctions
           */}
           {(gasLimitComputed.customized
-            || (type === "default" && (baseFeeComputed.customized || priorityComputed.customized))
-            || (type === "legacy" && gasPriceComputed.customized))
+              || (type === "default" && (baseFeeComputed.customized || priorityComputed.customized))
+              || (type === "legacy" && gasPriceComputed.customized))
             && <span className={styles.customTag}>Custom</span>}
         </span>
         <div className={styles.gasExpand}>
@@ -161,8 +178,8 @@ export default function BuyForm() {
       <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)}/>
     </div>
     <Spacer height={20}/>
-    <MessageInteractive />
-    <Spacer height={20} />
+    <MessageInteractive/>
+    <Spacer height={20}/>
     <PurchaseActionButton
       isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
       isAmountEntered={Boolean(+amountToPay)}
@@ -171,13 +188,41 @@ export default function BuyForm() {
       devMode={devMode}
     />
 
+    {isUnViewed && <>
+      {Boolean(failed.length) && <AlertMessage
+        text={<div>Your recent transaction(s) have been failed. Click <button
+          className={styles.textButton}>here</button> for more details.</div>}
+        severity="error"/>
+      }
+      {Boolean(pending.length) && <AlertMessage
+        text={<div>
+          We have noticed that you have pending transaction, you could track it or speed up below
+          <span style={{
+            marginLeft: 6,
+            top: 6,
+            position: "relative",
+
+          }}><Svg iconName="check-below" /></span>
+        </div>}
+        severity="success"
+        noIcon
+      />}
+      {Boolean(success.length) && Boolean(!pending.length) && Boolean(!failed.length) &&
+        <AlertMessage text="Your recent transaction(s) was successful" severity="success"/>
+      }
+    </>}
+
     <div className={styles.recentTransactionsField}>
       <div className="relative">
         <span className={styles.recentTransactionsIcon}>
           <Svg iconName="recent-transactions"/>
-          {!isViewed && <span className={styles.newIndicator}/>}
+          {Boolean(isUnViewed) && <span className={styles.newIndicator}/>}
         </span>
         Recent transactions
+
+        {Boolean(isUnViewed) && <span className={styles.unreadCounter}>
+          {totalUnViewed}
+        </span>}
       </div>
       <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>See all activity</button>
     </div>

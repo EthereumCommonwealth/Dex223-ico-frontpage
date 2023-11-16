@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import styles from "./LegacyTransactionSpeedUp.module.scss";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import Spacer from "@/components/atoms/Spacer";
-import { TransactionSpeedUpType, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
+import { TransactionSpeedUpType, useRecentTransactionsStore, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import clsx from "clsx";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
@@ -21,7 +21,15 @@ import Tooltip from "@/components/atoms/Tooltip";
 function useGasEstimation({ gasPrice }: {
   gasPrice: bigint
 }) {
-  const { transactionToSpeedUp } = useTransactionSpeedUp();
+  const { transactionToSpeedUpId } = useTransactionSpeedUp();
+  const { transactions } = useRecentTransactionsStore();
+  const { address } = useAccount();
+
+  const transactionToSpeedUp = useMemo(() => {
+    return transactions[address].find((t) => {
+      return t.id === transactionToSpeedUpId;
+    })
+  }, [address, transactionToSpeedUpId, transactions]);
 
   const estimatedGasFee = useMemo(() => {
     return (+formatEther(gasPrice *
@@ -75,13 +83,22 @@ function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText
 }
 
 export default function LegacyTransactionSpeedUp({ handleClose }) {
-  const { connector } = useAccount();
+  const { connector, address } = useAccount();
+  const { transactions, updateTransactionHash } = useRecentTransactionsStore();
+
 
   const isMetamask = useMemo(() => {
     return connector.name === "MetaMask";
   }, [connector?.name]);
 
-  const { transactionToSpeedUp, speedUpType, setType, setTransactionToSpeedUp } = useTransactionSpeedUp();
+  const { transactionToSpeedUpId, speedUpType, setType, setTransactionToSpeedUp } = useTransactionSpeedUp();
+
+  const transactionToSpeedUp = useMemo(() => {
+    return transactions[address].find((t) => {
+      return t.id === transactionToSpeedUpId;
+    })
+  }, [address, transactionToSpeedUpId, transactions]);
+
   const { data } = useFeeData({
     chainId: 820
   });
@@ -152,7 +169,7 @@ export default function LegacyTransactionSpeedUp({ handleClose }) {
         return;
       }
 
-      setTransactionToSpeedUp({ ...transactionToSpeedUp, hash: data.hash });
+      updateTransactionHash(transactionToSpeedUp.id, data.hash, address);
 
       showMessage("New gas settings are applied");
     }
