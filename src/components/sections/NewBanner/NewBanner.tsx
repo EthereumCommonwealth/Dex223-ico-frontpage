@@ -4,8 +4,6 @@ import Button from "../../atoms/Button";
 import ExternalTextLink from "../../atoms/ExternalTextLink";
 import clsx from "clsx";
 import BannerRightBlock from "../../organisms/BannerRightBlock";
-import Lottie from "lottie-react";
-import groovyWalkAnimation from "../../../lottie/banner.json";
 import {useSnackbar} from "@/providers/SnackbarProvider";
 import Preloader from "../../atoms/Preloader";
 import Spacer from "../../atoms/Spacer";
@@ -69,14 +67,15 @@ export default function NewBanner() {
           <div className={styles.content}>
             <h2 className={styles.additionalInfoHeader}>Status</h2>
             <p className={styles.paragraph}>
-              DEX223 token sale: We have not yet announced the date nor the terms of our
-              upcoming <span className="primary-color bold">public token sale</span>. We will do so via our social channels and this page. Stay tuned.
-            </p>
-            <p className={styles.paragraph}>
-              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing, contact <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto: dexaran@ethereumclassic.org" /> for more details regarding the participation.
-            </p>
-            <p className={styles.paragraph}>
               The first presale round was completed at 15 Sep 2023 within 24 hours.
+            </p>
+            <p className={styles.paragraph}>
+              The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be sold at 45% discount compared to the main ICO round.
+            </p>
+            <p className={styles.paragraph}>
+              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing,
+              contact <ExternalTextLink text="dexaran@ethereumclassic.org"
+                                        href="mailto: dexaran@ethereumclassic.org"/> for more details regarding participation.
             </p>
           </div>
         </div>
@@ -101,7 +100,7 @@ export default function NewBanner() {
       </div>
       <div className={styles.bannerForm}>
         <div className={styles.video}>
-          <Lottie animationData={groovyWalkAnimation} loop={true} />
+          {/*<Lottie animationData={groovyWalkAnimation} loop={true} />*/}
         </div>
         <BannerRightBlock />
       </div>
