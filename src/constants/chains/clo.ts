@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi';
-import {mainnet} from "wagmi";
+import { mainnet } from "wagmi";
 
 export const callisto: Chain = {
   id: 820,

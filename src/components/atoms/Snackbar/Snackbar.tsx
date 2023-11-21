@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { snackbarIcons } from "./snackbarIcons";
 import Svg from "../../atoms/Svg/Svg";
 import IconButton from "../../atoms/IconButton";
-import {golos_text} from "../../../assets/fonts";
+import { golos_text } from "../../../assets/fonts";
 
 type SnackbarSeverity = "error" | "success" | "info" | "warning";
 
@@ -36,7 +36,7 @@ export default function Snackbar({ severity, message, handleClose }: Props) {
           variant="system"
           onClick={handleClose}
         >
-          <Svg iconName="close" />
+          <Svg iconName="close"/>
         </IconButton>
       </div>
     </div>

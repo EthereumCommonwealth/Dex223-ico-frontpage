@@ -1,228 +1,124 @@
-// @ts-nocheck
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./BuyForm.module.scss";
-import {
-  getDEXToken, getTokensToPayWith, getICOContractAddress, getChainId, TokenInfo
-} from "@/constants/tokens";
-import clsx from "clsx";
-import Image from "next/image";
+import { getDEXToken, getICOContractAddress } from "@/constants/tokens";
 import TokenCard from "../TokenCard";
-import Button from "../../atoms/Button";
-import {useWeb3Modal} from "@web3modal/react";
 import Spacer from "../../atoms/Spacer";
 import {
   useAccount,
   useBalance,
-  useContractRead,
-  useContractWrite, useFeeData, useNetwork,
-  usePrepareContractWrite, usePrepareSendTransaction, usePublicClient, useSendTransaction, useSwitchNetwork,
-  useWaitForTransaction, useWalletClient
+  useFeeData,
+  useNetwork,
+  usePublicClient,
+  useWalletClient
 } from "wagmi";
 import testICOABI from "../../../constants/abis/testICOABI.json";
-import {formatGwei, formatUnits, parseGwei, parseUnits} from "viem";
-import ERC20ABI from "../../../constants/abis/erc20.json";
-import Preloader from "../../atoms/Preloader";
-import {useSnackbar} from "@/providers/SnackbarProvider";
-import Collapse from "../../atoms/Collapse";
-import Svg from "../../atoms/Svg";
-import DrawerDialog from "../../atoms/DrawerDialog";
-import KeystoreConnect from "../KeystoreConnect";
-import {publicClient as createPublicClient} from "../../../pages/_app";
-import Switch from "../../atoms/Switch";
+import { parseUnits } from "viem";
+import {
+  useTransactionGasFee,
+  useTransactionGasLimit,
+  useTransactionGasPrice,
+  useTransactionPriorityFee, useTransactionTypeStore,
+} from "@/stores/useGasSettings";
+import { useICOContractBalance } from "@/components/organisms/BuyForm/hooks/useICOContractBalance";
+import { useReward } from "@/components/organisms/BuyForm/hooks/useReward";
+import { useNetworkFee } from "@/components/organisms/BuyForm/hooks/useNetworkFee";
+import { addBigIntPercent } from "@/functions/addBigIntPercent";
+import { usePurchaseData } from "@/stores/usePurchaseData";
+
+import ICOProgressBar from "@/components/organisms/ICOProgressBar";
+import { isNativeToken } from "@/functions/isNativeToken";
+import { useRecentTransactionTracking } from "@/components/organisms/BuyForm/hooks/useRecentTransactionTracking";
+import TokenPicker from "@/components/organisms/TokenPicker";
+import Button from "@/components/atoms/Button";
+import Svg from "@/components/atoms/Svg";
 import GasSettingsDialog from "@/components/organisms/GasSettingsDialog";
-import {useTransactionTypeStore} from "@/stores/useGasSettings";
-
-function ActionButton({
-                        isApproved,
-                        isEnoughBalance,
-                        handleApprove,
-                        handleBuy,
-                        isAmountEntered,
-                        isApproving,
-                        symbol,
-                        waitingForApprove,
-                        chainId,
-                        isPurchasing,
-                        contractBalance,
-                        output,
-  openKeystore
-                      }) {
-  const {open} = useWeb3Modal();
-  const {isConnected} = useAccount();
-  const {switchNetwork} = useSwitchNetwork();
-  const {showMessage} = useSnackbar();
-
-  if (!isConnected) {
-    return <>
-      <Button onClick={open}>Connect wallet</Button>
-      <Spacer height={20} />
-      <Button onClick={openKeystore} variant="outlined">Import keystore file</Button>
-      </>;
-  }
-
-  if (!isAmountEntered) {
-    return <Button disabled>Enter amount</Button>;
-  }
-
-  if (!isEnoughBalance) {
-    return <Button disabled>Insufficient balance</Button>;
-  }
-
-  if (Boolean(chainId) && chainId !== 820) {
-    return <Button onClick={() => switchNetwork(820)}>Switch to Callisto Network</Button>
-  }
-
-  if (isPurchasing) {
-    return <Button disabled>
-      <span className={styles.waitingContent}>
-        <span>Purchasing</span>
-        <Preloader type="circular" size={24}/>
-      </span>
-    </Button>
-  }
-
-  if (isApproving) {
-    return <Button disabled>
-      <span className={styles.waitingContent}>
-        <span>Approving</span>
-        <Preloader type="circular" size={24}/>
-      </span>
-    </Button>
-  }
-
-  if (waitingForApprove) {
-    return <Button onClick={handleApprove} disabled>
-      <Preloader type="circular" size={24}/>
-    </Button>
-  }
-
-  if (!isApproved) {
-    return <Button onClick={handleApprove}>Approve {symbol}</Button>
-  }
-
-  console.log(output);
-  console.log(contractBalance);
-
-  return <Button onClick={() => {
-    if(+output > +contractBalance) {
-      showMessage(`There are only ${contractBalance} D223 available at this moment`, "info");
-      return;
-    }
-    handleBuy();
-  }}>Buy Tokens</Button>
-}
-
-const total = 80000000;
-
-function isNativeToken(token: TokenInfo) {
-  return token.id === 1 || token.id === 11;
-}
+import MessageInteractive from "@/components/organisms/MessageInteractive";
+import PurchaseActionButton from "@/components/organisms/PurchaseActionButton";
+import AlertMessage from "@/components/atoms/AlertMessage";
+import DrawerDialog from "@/components/atoms/DrawerDialog";
+import KeystoreConnect from "@/components/organisms/KeystoreConnect";
+import RecentTransactionsDialog from "@/components/organisms/RecentTransactionsDialog";
+import Countdown from "@/components/atoms/Countdown/Countdown";
 
 export default function BuyForm() {
-  const {address} = useAccount();
-  const {chain} = useNetwork();
-  const publicClient = usePublicClient({chainId: chain?.id});
-
+  const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
+    pickedToken: state.computed.pickedToken,
+    setAmountToPay: state.setAmountToPay,
+    amountToPay: state.amountToPay
+  }));
+  const [dialogOpened, setDialogOpened] = useState(false);
+  const [gasSettingsOpened, setGasSettingsOpened] = useState(false);
+  const [isRecentTransactionsOpened, setRecentTransactionsOpened] = useState(false);
   const [devMode, setDevMode] = useState(true);
 
-  const [amountToPay, setAmountToPay] = useState("");
-  const {showMessage} = useSnackbar();
+  const { address } = useAccount();
+  const { chain } = useNetwork();
+  const publicClient = usePublicClient({ chainId: chain?.id });
 
-  const [pickedTokenId, setPickedTokenId] = useState(getTokensToPayWith(devMode)[0].id);
-
-  const [gasPrice, setGasPrice] = useState(null);
-  const [gasLimit, setGasLimit] = useState(null);
-  const { data: feeData } = useFeeData();
-
-  console.log(feeData);
-
-  const contractBalance = useBalance({
-    address: getICOContractAddress(devMode),
-    token: getDEXToken(devMode).address,
-    chainId: getChainId(devMode),
+  const { data: feeData } = useFeeData({
+    chainId: chain?.id || 820,
     watch: true
   });
 
+  // const { isViewed } = useRecentTransactionsStore();
+
+  const {
+    isUnViewed,
+    pending,
+    failed,
+    success ,
+    totalUnViewed
+  } = useRecentTransactionTracking();
+
+  const { type } = useTransactionTypeStore();
+  const { setBaseFee, setMaxFeePerGas, computed: baseFeeComputed } = useTransactionGasFee();
+  const { setBasePriority, setMaxPriorityFeePerGas, computed: priorityComputed } = useTransactionPriorityFee();
+  const { setGasPrice, setBaseGasPrice, computed: gasPriceComputed } = useTransactionGasPrice();
+  const {
+    setGasLimit,
+    setUnsavedGasLimit,
+    setEstimatedGasLimit,
+    computed: gasLimitComputed
+  } = useTransactionGasLimit();
+
   useEffect(() => {
-    setPickedTokenId(getTokensToPayWith(devMode)[0].id);
-  }, [devMode]);
-
-  const pickedToken = useMemo(() => {
-    const pt = getTokensToPayWith(devMode).find((token) => token.id === pickedTokenId);
-    if(!pt) {
-      return getTokensToPayWith(devMode)[0];
+    if (feeData?.formatted?.gasPrice) {
+      setGasPrice(addBigIntPercent(feeData.gasPrice, 20));
+      setBaseGasPrice(feeData.gasPrice);
     }
-    return pt;
-  }, [devMode, pickedTokenId]);
 
-  const {data: readData, isLoading} = useContractRead({
-    address: getICOContractAddress(devMode),
-    abi: testICOABI,
-    functionName: "getRewardAmount",
-    chainId: pickedToken.chainId,
-    args: [
-      isNativeToken(pickedToken) ? "0x0000000000000000000000000000000000000000" : pickedToken.address,
-      parseUnits(amountToPay, pickedToken.decimals)
-    ]
-  });
+    if (feeData?.lastBaseFeePerGas) {
+      setMaxFeePerGas(addBigIntPercent(feeData.lastBaseFeePerGas, 20));
+      setBaseFee(feeData.lastBaseFeePerGas);
+    }
 
-  const {data: tokenToPayBalance} = useBalance({
+    if (feeData?.formatted?.maxPriorityFeePerGas) {
+      setMaxPriorityFeePerGas(addBigIntPercent(feeData.maxPriorityFeePerGas, 50));
+      setBasePriority(feeData.maxPriorityFeePerGas);
+    }
+  }, [feeData, setBaseGasPrice, setBaseFee, setBasePriority, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas]);
+
+  const contractBalance = useICOContractBalance({ devMode });
+
+  const { data: tokenToPayBalance } = useBalance({
     address,
     token: isNativeToken(pickedToken) ? undefined : pickedToken.address,
     watch: true,
     chainId: pickedToken.chainId
   });
 
-  const {data: testToken223Balance} = useBalance({
+  const { data: testToken223Balance } = useBalance({
     address,
     token: getDEXToken(devMode).address,
     watch: true,
     chainId: getDEXToken(devMode).chainId
   });
 
-  const {config: allowanceConfig} = usePrepareContractWrite({
-    address: pickedToken.address,
-    abi: ERC20ABI,
-    functionName: "approve",
-    args: [
-      getICOContractAddress(devMode),
-      parseUnits(amountToPay, pickedToken.decimals)
-    ]
-  });
-
-  const {
-    data: approvingData,
-    write: writeTokenApprove,
-    isLoading: waitingForApprove
-  } = useContractWrite(allowanceConfig);
-
-  const {isLoading: isApproving} = useWaitForTransaction({
-    hash: approvingData?.hash,
-  });
-
-  const {data: allowanceData} = useContractRead({
-    address: pickedToken.address,
-    abi: ERC20ABI,
-    functionName: "allowance",
-    args: [
-      address,
-      getICOContractAddress(devMode)
-    ],
-    watch: true
-  });
-
-  const defaultGasPrice = feeData?.gasPrice ? formatGwei(feeData.gasPrice) : "0";
-
-  const [defaultGasLimit, setDefaultGasLimit] = useState(null as null | string);
-
   const { data: walletClient }: any = useWalletClient();
 
   useEffect(() => {
     (async () => {
       try {
-        console.log("Trying to get gas");
-
-        console.log(publicClient);
         if (publicClient?.estimateContractGas) {
           const gas = await publicClient.estimateContractGas({
             account: address,
@@ -234,191 +130,121 @@ export default function BuyForm() {
               parseUnits(amountToPay, pickedToken.decimals)
             ]
           });
-          console.log(gas);
-          setDefaultGasLimit(formatUnits(gas, 0));
+          setGasLimit(addBigIntPercent(gas, 20));
+          setUnsavedGasLimit(addBigIntPercent(gas, 20));
+          setEstimatedGasLimit(gas);
         }
       } catch (error) {
         console.log("🚀 ~ error:", error);
-        // setDefaultGasLimit(null);
       }
     })();
-  }, [address, walletClient, pickedToken?.address, pickedToken?.decimals, amountToPay, devMode, publicClient]);
+  }, [address, walletClient, pickedToken.address, pickedToken.decimals, amountToPay, devMode, publicClient, setGasLimit, setUnsavedGasLimit, setEstimatedGasLimit]);
 
-  const finalGasPrice = gasPrice === null ? defaultGasPrice : gasPrice;
-  const finalGasLimit = gasLimit === null ? defaultGasLimit : gasLimit;
+  const { output } = useReward({ devMode, pickedToken, amountToPay });
 
-  const {config: purchaseConfig} = usePrepareContractWrite({
-    address: getICOContractAddress(devMode),
-    abi: testICOABI,
-    functionName: 'purchaseTokens',
-    // gas: gasPrice ? parseUnits(gasPrice, 0) : undefined,
-    // gasPrice: gasLimit ? parseGwei(gasLimit) : undefined,
-    args: [
-      pickedToken.address,
-      parseUnits(amountToPay, pickedToken.decimals)
-    ]
-  })
+  const networkFee = useNetworkFee();
 
-  console.log(purchaseConfig);
+  console.log("UNV");
+  console.log(isUnViewed);
 
-  const {data: purchaseData, write: buyTokens, isLoading: waitingForPurchase} = useContractWrite(purchaseConfig);
-
-  const {isLoading: isPurchasing, isSuccess} = useWaitForTransaction({
-    hash: purchaseData?.hash,
-    onSuccess(data) {
-      showMessage("Successfully purchased");
-    }
-  });
-
-  const { data, sendTransaction } =
-    useSendTransaction({
-      to: getICOContractAddress(devMode),
-      value: parseUnits(amountToPay, pickedToken.decimals),
-      gas: gasLimit ? parseGwei(gasLimit) : undefined,
-      gasPrice: gasPrice ? parseUnits(gasPrice, 0) : undefined,
-    })
-
-  const processBuyTokens = useCallback(() => {
-    if(pickedToken.id === 11 || pickedToken.id === 1) {
-      //send CLO
-      sendTransaction();
-      return;
-    }
-
-    buyTokens();
-  }, [buyTokens, pickedToken.id, sendTransaction]);
-
-  const output = useMemo(() => {
-    if (!amountToPay || !readData) {
-      return ""
-    }
-
-    return formatUnits(readData.toString(), 18);
-  }, [amountToPay, readData]);
-
-  const barPercentage = useMemo(() => {
-    if (!contractBalance?.data?.formatted) {
-      return 0.5;
-    }
-
-    const percentage = (total - +contractBalance?.data?.formatted) / total;
-    const multipliedPercentage = percentage * 100;
-
-    if (multipliedPercentage < 0.5) {
-      return 0.5;
-    }
-
-    return multipliedPercentage;
-  }, [contractBalance?.data?.formatted]);
-
-  const networkFee = parseGwei(finalGasPrice) * parseUnits(finalGasLimit || "0", 0);
-
-  // const [isGasSettingsOpened, setGasSettingsOpened] = useState(false);
-  const [dialogOpened, setDialogOpened] = useState(false);
-
-  const [gasSettingsOpened, setGasSettingsOpened] = useState(false);
-
-  const type = useTransactionTypeStore(state => state.type);
-
-
-  return <>
-    <div className={styles.progressBar}>
-      <div style={{width: `${0}%`}} className={styles.bar}/>
-    </div>
-    <div className={styles.raised}>
-      {/*D223 sold: {contractBalance?.data?.formatted ? (80000000 - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}*/}
-      D223 sold: — / —
-    </div>
+  return <div className={styles.formToBuy}>
+    <p className={styles.stayTuned}>
+      Next round in
+    </p>
+    <Countdown />
+    <ICOProgressBar/>
     <div className={styles.ratio}><span>1 DEX223 = 0.001 {pickedToken.symbol}</span></div>
 
-    {/*<div className={styles.devMode}>*/}
-    {/*  <span>Dev mode</span>*/}
-    {/*  <Switch checked={devMode} setChecked={() => setDevMode(!devMode)} />*/}
-    {/*</div>*/}
-    <div className={clsx(styles.tokenCards, devMode && styles.dev)}>
-      {getTokensToPayWith(devMode).map((token) => {
-        return <button key={token.id} disabled={token.symbol === "ETH"} onClick={() => setPickedTokenId(token.id)}
-                       className={clsx(styles.tokenPickButton, pickedTokenId === token.id && styles.active)}>
-          <div className={styles.tokenImage}>
-            <Image layout='fill' objectFit='contain' src={token.image} alt=""/>
-          </div>
-          {token.symbol}
-        </button>
-      })}
-    </div>
+    <TokenPicker devMode={devMode}/>
     <TokenCard readonly balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={testToken223Balance?.formatted} type="receive" tokenName={getDEXToken(devMode).symbol}
-               tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} isLoading={isLoading} readonly/>
+               tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} readonly/>
     <Spacer height={20}/>
+
+    <Button disabled>Wait for the next round</Button>
+
     {/*<div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>*/}
     {/*  <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>*/}
-    {/*    <span className={styles.gasTitle}>Network fee</span>*/}
+    {/*    <span className={styles.gasTitle}>*/}
+    {/*      Network fee*/}
+    {/*      /!*Show custom label if gasLimit was changed OR*/}
+    {/*        fee or priority was changes for type-2 transactions OR*/}
+    {/*        gasPrice was changed for type-0 tranasctions*/}
+    {/*      *!/*/}
+    {/*      {(gasLimitComputed.customized*/}
+    {/*          || (type === "default" && (baseFeeComputed.customized || priorityComputed.customized))*/}
+    {/*          || (type === "legacy" && gasPriceComputed.customized))*/}
+    {/*        && <span className={styles.customTag}>Custom</span>}*/}
+    {/*    </span>*/}
     {/*    <div className={styles.gasExpand}>*/}
-    {/*      {type}*/}
-    {/*      <span>~{" "}{formatUnits(networkFee, 18)} {getChainId(devMode) === 820 ? "CLO" : "ETH"}</span>*/}
-    {/*      <Svg iconName="arrow-right" />*/}
+    {/*      <Svg iconName="gas"/>*/}
+    {/*      ~ {networkFee} CLO*/}
+    {/*      <button className={styles.editGasButton} onClick={() => setGasSettingsOpened(true)}>EDIT</button>*/}
     {/*    </div>*/}
     {/*  </div>*/}
-    {/*  <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)} />*/}
-    {/*  <button onClick={() => setGasSettingsOpened(true)}>Change</button>*/}
-    {/*  /!*<Collapse open={isGasSettingsOpened}>*!/*/}
-    {/*  /!*  <div className={styles.fields}>*!/*/}
-    {/*  /!*   <div>*!/*/}
-    {/*  /!*     <h4 className={styles.gasLabel}>*!/*/}
-    {/*  /!*       Gas limit*!/*/}
-    {/*  /!*       <Svg iconName="info" />*!/*/}
-    {/*  /!*     </h4>*!/*/}
-    {/*  /!*     <input*!/*/}
-    {/*  /!*       value={finalGasLimit || ""}*!/*/}
-    {/*  /!*       onChange={(e) => {*!/*/}
-    {/*  /!*         setGasLimit(e.target.value);*!/*/}
-    {/*  /!*       }}*!/*/}
-    {/*  /!*       placeholder="Gas Limit"*!/*/}
-    {/*  /!*       className={styles.gasInput}*!/*/}
-    {/*  /!*       type="number"*!/*/}
-    {/*  /!*     />*!/*/}
-    {/*  /!*   </div>*!/*/}
-    {/*  /!*   <div>*!/*/}
-    {/*  /!*     <h4 className={styles.gasLabel}>*!/*/}
-    {/*  /!*       Gas price*!/*/}
-    {/*  /!*       <Svg iconName="info" />*!/*/}
-    {/*  /!*     </h4>*!/*/}
-    {/*  /!*     <input*!/*/}
-    {/*  /!*       value={finalGasPrice || ""}*!/*/}
-    {/*  /!*       onChange={(e) => {*!/*/}
-    {/*  /!*         setGasPrice(e.target.value);*!/*/}
-    {/*  /!*       }}*!/*/}
-    {/*  /!*       placeholder="Gas Price"*!/*/}
-    {/*  /!*       className={styles.gasInput}*!/*/}
-    {/*  /!*       type="number"*!/*/}
-    {/*  /!*     />*!/*/}
-    {/*  /!*   </div>*!/*/}
-    {/*  /!*  </div>*!/*/}
-    {/*  /!*</Collapse>*!/*/}
+    {/*  <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)}/>*/}
     {/*</div>*/}
-    {/*<Spacer height={20} />*/}
-    {/*<ActionButton*/}
-    {/*  handleApprove={writeTokenApprove}*/}
-    {/*  handleBuy={processBuyTokens}*/}
+    {/*<Spacer height={20}/>*/}
+    {/*<MessageInteractive/>*/}
+    {/*<Spacer height={20}/>*/}
+    {/*<PurchaseActionButton*/}
     {/*  isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}*/}
-    {/*  isApproved={allowanceData >= parseUnits(amountToPay, pickedToken.decimals) || pickedToken.id === 11}*/}
-    {/*  isApproving={isApproving}*/}
-    {/*  isPurchasing={isPurchasing}*/}
-    {/*  waitingForApprove={waitingForApprove || waitingForPurchase}*/}
     {/*  isAmountEntered={Boolean(+amountToPay)}*/}
-    {/*  symbol={pickedToken.symbol}*/}
-    {/*  chainId={chain?.id}*/}
     {/*  contractBalance={contractBalance?.data?.formatted}*/}
-    {/*  output={output}*/}
     {/*  openKeystore={() => setDialogOpened(true)}*/}
+    {/*  devMode={devMode}*/}
     {/*/>*/}
 
+    {/*{isUnViewed && <>*/}
+    {/*  {Boolean(failed.length) && <AlertMessage*/}
+    {/*    text={<div>Your recent transaction(s) have been failed. Click <button*/}
+    {/*      className={styles.textButton}>here</button> for more details.</div>}*/}
+    {/*    severity="error"/>*/}
+    {/*  }*/}
+    {/*  {Boolean(pending.length) && <AlertMessage*/}
+    {/*    text={<div>*/}
+    {/*      We have noticed that you have pending transaction, you could track it or speed up below*/}
+    {/*      <span style={{*/}
+    {/*        marginLeft: 6,*/}
+    {/*        top: 6,*/}
+    {/*        position: "relative",*/}
+
+    {/*      }}><Svg iconName="check-below" /></span>*/}
+    {/*    </div>}*/}
+    {/*    severity="success"*/}
+    {/*    noIcon*/}
+    {/*  />}*/}
+    {/*  {Boolean(success.length) && Boolean(!pending.length) && Boolean(!failed.length) &&*/}
+    {/*    <AlertMessage text="Your recent transaction(s) was successful" severity="success"/>*/}
+    {/*  }*/}
+    {/*</>}*/}
+
+    {/*<div className={styles.recentTransactionsField}>*/}
+    {/*  <div className="relative">*/}
+    {/*    <span className={styles.recentTransactionsIcon}>*/}
+    {/*      <Svg iconName="recent-transactions"/>*/}
+    {/*      {Boolean(isUnViewed) && <span className={styles.newIndicator}/>}*/}
+    {/*    </span>*/}
+    {/*    Recent transactions*/}
+
+    {/*    {Boolean(isUnViewed) && <span className={styles.unreadCounter}>*/}
+    {/*      {totalUnViewed}*/}
+    {/*    </span>}*/}
+    {/*  </div>*/}
+    {/*  <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>See all activity</button>*/}
+    {/*</div>*/}
+
     {/*<DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>*/}
-    {/*  <KeystoreConnect handleClose={() => setDialogOpened(false)} />*/}
+    {/*  <KeystoreConnect handleClose={() => setDialogOpened(false)}/>*/}
     {/*</DrawerDialog>*/}
-    <Button disabled>Wait for the next round</Button>
-    <Spacer height={8}/>
-  </>;
-}
+
+    {/*<RecentTransactionsDialog isOpen={isRecentTransactionsOpened} handleClose={() => {*/}
+    {/*  setRecentTransactionsOpened(false);*/}
+    {/*}}/>*/}
+    {/*/!*<Button disabled>Wait for the next round</Button>*!/*/}
+    {/*<Spacer height={8}/>*/}
+
+  </div>;
+}//460

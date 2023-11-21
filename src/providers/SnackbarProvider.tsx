@@ -11,7 +11,8 @@ export const SnackbarProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [duration, setDuration] = useState(4000);
-  const [severity, setSeverity] = useState<"success" | "error" | "info" | "warning">("success"); /** error | warning | info */
+  const [severity, setSeverity] = useState<"success" | "error" | "info" | "warning">("success");
+  /** error | warning | info */
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -41,7 +42,6 @@ export const SnackbarProvider = ({ children }) => {
       };
     },
 
-
     [open, duration]
   );
 
@@ -49,7 +49,7 @@ export const SnackbarProvider = ({ children }) => {
     showMessage
   }}>
     {children}
-    {open && <Snackbar message={message} severity={severity} handleClose={handleClose} />}
+    {open && <Snackbar message={message} severity={severity} handleClose={handleClose}/>}
   </SnackbarContext.Provider>;
 };
 

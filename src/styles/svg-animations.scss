@@ -27,7 +27,9 @@
   100% {
     transform: scale(1);
   }
-};
+}
+
+;
 
 @keyframes philosophy-attention-hover {
   0% {
@@ -37,7 +39,9 @@
   100% {
     transform: scale(1.2);
   }
-};
+}
+
+;
 
 .philosophy-icon-container:hover + path {
   + .philosophy-tether-icon,

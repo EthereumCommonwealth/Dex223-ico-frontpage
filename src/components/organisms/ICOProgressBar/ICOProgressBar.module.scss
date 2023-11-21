@@ -1,0 +1,30 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+
+.progressBar {
+  height: 30px;
+  width: 100%;
+  background-color: colors.$background-primary;
+  overflow: hidden;
+  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+  position: relative;
+  border: 1px solid colors.$border-primary;
+
+}
+
+.bar {
+  transition-duration: 0.3s;
+  height: 100%;
+  background-color: #A789FF;
+  background-image: linear-gradient(-60deg, #946FFF 25%, transparent 25%, transparent 50%, #946FFF 50%, #946FFF 75%, transparent 75%, transparent);
+  background-size: 21px 36px;
+  box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+}
+
+.raised {
+  color: #FFF;
+  text-align: center;
+  margin: 4px 0 18px;
+
+  @include typography.t-body-16;
+}

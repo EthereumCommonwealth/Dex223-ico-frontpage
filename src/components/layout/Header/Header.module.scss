@@ -1,0 +1,225 @@
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/media-new";
+@use "../../../styles/media";
+
+.headerContent {
+  height: 109px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  @media screen and (max-width: 1500px) {
+    backdrop-filter: blur(10px);
+    height: 48px;
+  }
+}
+
+.header {
+  border: 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 1500px) {
+    position: relative;
+    border-bottom: 1px solid #5B5B5B;
+  }
+}
+
+.buySection {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 120px;
+}
+
+.bottomLine {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(calc(-50% + 330px), 0);
+  pointer-events: none;
+
+  @media screen and (max-width: 1500px) {
+    display: none;
+
+  }
+}
+
+.logoAndNav {
+  display: flex;
+  gap: 54px;
+  align-items: center;
+
+  .logo {
+    display: block;
+    position: relative;
+    width: 185px;
+    height: 46px;
+    @media screen and (max-width: 1500px) {
+      width: 113px;
+      height: 29px;
+    }
+  }
+
+  nav {
+    display: block;
+
+    @include media.for-laptop {
+      display: none;
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  li {
+    color: #FFF;
+    list-style: none;
+    font-weight: 500;
+
+    @include typography.t-body-16;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    a {
+      color: colors.$text-primary;
+      transition-duration: 0.2s;
+
+      &:hover {
+        color: colors.$palette-green;
+      }
+    }
+  }
+
+  @include media.for-laptop {
+    display: none;
+  }
+}
+
+.settings {
+  display: flex;
+  gap: 21px;
+  height: 60px;
+  position: absolute;
+  right: 16px;
+  top: -2px;
+  align-items: center;
+
+  @media screen and (max-width: 1500px) {
+    top: 0;
+    height: 48px;
+  }
+}
+
+.menuButton {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  position: relative;
+  margin-right: -12px;
+  display: none;
+  cursor: pointer;
+
+  @include media.for-laptop {
+    display: block;
+  }
+}
+
+.addressButton, .addressMenuButton, .connectWalletButton {
+  height: 40px;
+  border: 1px solid #5A5A5A;
+  background: #1D1C1E;
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  align-items: center;
+
+  color: var(--color-text-primary, #F5FFF9);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 175% */
+
+  cursor: pointer;
+  transition-duration: 0.2s;
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+}
+
+.addressMenuButton {
+  margin: 16px;
+}
+
+.connectWalletButton {
+  margin: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.addressButton {
+  @include media.for-laptop {
+    display: none;
+  }
+}
+
+.menuWrapper {
+  background-color: colors.$background-secondary;
+  height: 100%;
+}
+
+.menuHeader {
+  padding: 10px 16px 22px;
+  height: 60px;
+}
+
+.menuContent {
+  height: calc(100% - 60px);
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+a.menuListButton {
+  width: 100%;
+  height: 48px;
+  padding-left: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  border: 0;
+  color: colors.$text-primary;
+
+  background-color: transparent;
+
+  @include typography.t-body-16;
+}
+
+.socials {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 16px;
+
+  button {
+    border-radius: 4px;
+    border: 1px solid var(--border-normal, #5A5A5A);
+    background: var(--color-block, #1D1C1E);
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+      border-color: colors.$text-primary;
+    }
+  }
+}

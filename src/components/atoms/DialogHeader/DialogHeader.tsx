@@ -1,0 +1,29 @@
+import React from "react";
+import styles from "./DialogHeader.module.scss";
+import DialogCloseButton from "@/components/atoms/DialogCloseButton";
+import IconButton from "@/components/atoms/IconButton";
+import Svg from "@/components/atoms/Svg";
+import clsx from "clsx";
+
+interface Props {
+  onClose: () => void,
+  title: string,
+  paragraph?: string,
+  onBack?: () => void
+}
+
+export default function DialogHeader({ onClose, title, paragraph, onBack }: Props) {
+  return <div className={clsx(styles.dialogHeader, onBack && styles.withBack)}>
+    <div className={styles.topContent}>
+      {onBack && <IconButton variant="default" onClick={onBack}>
+        <Svg iconName="back"/>
+      </IconButton>}
+      <h2 className={styles.title}>{title}</h2>
+      <DialogCloseButton handleClose={onClose}/>
+    </div>
+
+    {paragraph && <p className={styles.paragraphText}>
+      {paragraph}
+    </p>}
+  </div>;
+}

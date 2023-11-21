@@ -129,9 +129,8 @@
 }
 
 .tabButtonsContainer {
-  background: rgb(2,0,36);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 100%);
-  //backdrop-filter: blur(3px);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
   position: sticky;
   padding: 20px 0;
   top: 0;
@@ -185,6 +184,7 @@
 
   &:hover {
     color: colors.$text-primary;
+
     &:before {
       border-color: colors.$text-primary;
       z-index: 4;
@@ -195,6 +195,7 @@
     background-color: colors.$background-secondary;
     pointer-events: none;
     color: colors.$text-primary;
+
     &:before {
       border-color: colors.$text-primary;
       z-index: 4;

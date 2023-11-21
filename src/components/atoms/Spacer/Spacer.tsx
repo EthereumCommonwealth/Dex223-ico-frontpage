@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 
 interface Props {
   height: string | number
@@ -7,5 +7,5 @@ interface Props {
 export default function Spacer({ height }: Props) {
   return <div style={typeof height === "number"
     ? { height: `${height}px` }
-    : { height }} />;
+    : { height }}/>;
 }

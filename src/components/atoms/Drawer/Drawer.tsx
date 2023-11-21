@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./Drawer.module.scss";
 import Portal from "../Portal";
-import {useSwipeable} from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 
 interface Props {
   isOpen: boolean,
@@ -14,12 +14,12 @@ interface Props {
 }
 
 export default function Drawer({
-  isOpen,
-  children,
-  onClose,
-  position = "left",
-  width = 280
-}: Props) {
+                                 isOpen,
+                                 children,
+                                 onClose,
+                                 position = "left",
+                                 width = 280
+                               }: Props) {
   const handlers = useSwipeable({
     onSwipedLeft: (eventData) => onClose(),
     onTap: () => onClose(),
@@ -36,6 +36,6 @@ export default function Drawer({
     )} style={{ width: position === "left" || position === "right" ? width : "100%" }} role="dialog">
       {children}
     </div>
-    <div {...handlers} className={styles.backdrop} />
+    <div {...handlers} className={styles.backdrop}/>
   </Portal>;
 }

@@ -1,7 +1,7 @@
 import React, { SVGProps } from "react";
 import { IconName } from "./svgIconsMap";
 
-interface Props extends SVGProps<SVGSVGElement>{
+interface Props extends SVGProps<SVGSVGElement> {
   iconName: IconName,
   sprite?: "sprite" | "social",
   size?: number,

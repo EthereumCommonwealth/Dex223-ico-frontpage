@@ -7,6 +7,6 @@ interface Props {
   color: "purple" | "green" | "blue"
 }
 
-export default function OverlineText({text, color}: Props) {
+export default function OverlineText({ text, color }: Props) {
   return <h3 className={clsx(styles.overline, styles[color])}>{text}</h3>;
 }
