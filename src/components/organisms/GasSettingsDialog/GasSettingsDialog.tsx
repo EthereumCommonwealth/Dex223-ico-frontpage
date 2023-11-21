@@ -8,16 +8,15 @@ import {
   useTransactionTypeStore
 } from "@/stores/useGasSettings";
 import clsx from "clsx";
-import DialogCloseButton from "@/components/atoms/DialogCloseButton";
 import Input from "@/components/atoms/Input";
 import Svg from "@/components/atoms/Svg";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import { parseEther } from "viem";
 import { NumericFormat } from "react-number-format";
 import Tooltip from "@/components/atoms/Tooltip";
-import Button from "@/components/atoms/Button";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
+import AlertMessage from "@/components/atoms/AlertMessage";
 
 interface Props {
   isOpen: boolean,
@@ -128,7 +127,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
           <div className={styles.labelInputWrapper}>
             <label>
               Gas price
-              <Tooltip text="Tesxt for gas price"/>
+              <Tooltip text="gasPrice is used to calculate the transaction fee. Increasing the value of gasPrice will result in higher transaction cost but will get your transaction submit faster. Reducing gasPrice will decrease the cost of your transaction but it may take longer to submit. Setting gasPrice to a very low value may make your transaction never submit."/>
             </label>
             <div className={styles.inputWrapper}>
               <NumericFormat
@@ -160,7 +159,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
               <div className={styles.labelInputWrapper}>
                 <label>
                   Base fee
-                  <Tooltip text="Tesxt for base fee"/>
+                  <Tooltip text="Base Fee is fixed and depends on the load of the network. We don't recommend changing this unless you absolutely know what you're doing" />
                 </label>
                 <div className={styles.inputWrapper}>
                   <NumericFormat
@@ -188,7 +187,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
               <div className={styles.labelInputWrapper}>
                 <label>
                   Priority fee
-                  <Tooltip text="Tesxt for priority"/>
+                  <Tooltip text="Priority Fee is paid to the node that will include your transaction in the next block. Increasing the value of Priority Fee will result in higher transaction cost but will get your transaction submit faster. Reducing Priority Fee will decrease the cost of your transaction but it may take longer to submit."/>
                 </label>
                 <div className={styles.inputWrapper}>
                   <NumericFormat
@@ -213,16 +212,10 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
                 </div>
               </div>
             </div>
-            {gasFeeValidation.error && <div className={styles.feeError}>
-              <Svg iconName="error"/>
-              {gasFeeValidation.error}
-            </div>}
+            {gasFeeValidation.error && <AlertMessage text={gasFeeValidation.error} severity="error" />}
             {[gasFeeValidation.warning, priorityFeeValidation.warning].map((warning) => {
               if (warning) {
-                return <div key={warning} className={styles.feeWarning}>
-                  <Svg iconName="warning"/>
-                  {warning}
-                </div>
+                return <AlertMessage key={warning} text={warning} severity="warning" />
               }
             })}
           </>}
@@ -235,13 +228,12 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
         <div className={styles.labelInputWrapper}>
           <label>
             Gas Limit
-            <Tooltip text="Tesxt for gas limit"/>
+            <Tooltip text="gasLimit is a measure of actions that a contract can perform in your transaction. Setting gasLimit to a low value may result in your transaction not being able to perform the necessary actions (i.e. purchase tokens) and fail. We don't recommend changing this unless you absolutely know what you're doing."/>
           </label>
           <div className={styles.inputWrapper}>
             <NumericFormat
               className={clsx(styles.gasLimitInput, !isEditing && styles.disabled, gasLimitValidation.warning && styles.warning, gasLimitValidation.error && styles.error)}
               placeholder="Gas limit"
-              // readOnly={readonly}
               onValueChange={(values) => setUnsavedGasLimit(BigInt(values.value))}
               type="text"
               value={isEditing
@@ -279,14 +271,8 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
             {" "}
             {estimatedGasLimit.toString()}
           </div>
-          {gasLimitValidation.warning && <div className={styles.feeWarning}>
-            <Svg iconName="warning"/>
-            {gasLimitValidation.warning}
-          </div>}
-          {gasLimitValidation.error && <div className={styles.feeWarning}>
-            <Svg iconName="error"/>
-            {gasLimitValidation.error}
-          </div>}
+          {gasLimitValidation.warning && <AlertMessage text={gasLimitValidation.warning} severity="warning" />}
+          {gasLimitValidation.error && <AlertMessage text={gasLimitValidation.error} severity="error" />}
         </div>
       </div>
     </div>

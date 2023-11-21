@@ -1,14 +1,22 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
+@use "src/styles/media";
 
 .tooltip {
-  padding: 8px 16px;
+  padding: 12px 20px;
   background-color: colors.$background-secondary;
   color: colors.$text-primary;
-  @include typography.t-body-12;
+  @include typography.t-body-14;
   z-index: 1000;
   border: 1px solid #787b78;
   border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0px 0px 32px 24px rgba(20, 19, 22, 0.50);
+
+  @include media.for-mobile {
+    padding: 8px 16px;
+    @include typography.t-body-12;
+  }
 }
 
 .tooltipIcon {

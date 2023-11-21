@@ -56,8 +56,8 @@ export default function NewBanner() {
       <div className={styles.bannerText}>
         <h1 className={styles.mainHeader}><span className={styles.green}>Dex223</span>: Decentralized exchange for <span
           className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
-        <p className={styles.subheading}>Safe, gas-efficient, next generation fully decentralized exchange built with
-          Ethereum smart-contracts.</p>
+        <p className={styles.subheading}>Secure, gas-efficient, KYC-free next generation fully decentralized exchange
+          built with Ethereum smart-contracts.</p>
         <Spacer height={40}/>
         <div className={styles.blockWithNeonWrapper}>
           <div className={styles.neonContainer}>
@@ -69,18 +69,15 @@ export default function NewBanner() {
           <div className={styles.content}>
             <h2 className={styles.additionalInfoHeader}>Status</h2>
             <p className={styles.paragraph}>
-              DEX223 token sale: We have not yet announced the date nor the terms of our
-              upcoming <span className="primary-color bold">public token sale</span>. We will do so via our social
-              channels and this page. Stay tuned.
+              The first presale round was completed at 15 Sep 2023 within 24 hours.
+            </p>
+            <p className={styles.paragraph}>
+              The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be sold at 45% discount compared to the main ICO round.
             </p>
             <p className={styles.paragraph}>
               Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing,
               contact <ExternalTextLink text="dexaran@ethereumclassic.org"
-                                        href="mailto: dexaran@ethereumclassic.org"/> for more details regarding the
-              participation.
-            </p>
-            <p className={styles.paragraph}>
-              The first presale round was completed at 15 Sep 2023 within 24 hours.
+                                        href="mailto: dexaran@ethereumclassic.org"/> for more details regarding participation.
             </p>
           </div>
         </div>

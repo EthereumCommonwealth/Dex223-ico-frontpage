@@ -198,7 +198,7 @@ export default function TransactionSpeedUp({ handleClose }) {
       onBack={() => setTransactionToSpeedUp(null)}
       title="Speed up"
     />
-    {isMetamask ? <div className={styles.metamaskMessageContainer}>
+    {!isMetamask ? <div className={styles.metamaskMessageContainer}>
       <Image src="/images/wallets/metamask.svg" alt="" width={80} height={75} />
         <h3>Try the solution built into Metamask</h3>
       <p>

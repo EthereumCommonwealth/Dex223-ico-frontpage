@@ -10,6 +10,9 @@
   padding: 40px;
   color: colors.$text-primary;
   min-height: 344px;
+  max-height: 344px;
+  height: 344px;
+  overflow: scroll;
 
   &.empty {
     display: flex;
