@@ -85,7 +85,8 @@ export function usePurchaseTokens() {
     write: purchaseWithTokens,
     isLoading: waitingForPurchaseWithTokens
   } = useContractWrite({
-    ...purchaseConfig, onSettled: async (data, error) => {
+    ...purchaseConfig,
+    onSettled: async (data, error) => {
       if (error) {
         return showMessage("Something went wrong", "error");
       }

@@ -220,22 +220,22 @@ export default function TransactionSpeedUp({ handleClose }) {
         {([{
           id: "autoIncrease",
           value: autoIncreaseData.estimated,
-          helperText: "aaa"
+          helperText: "Sets the transaction fee to 10% higher than the original value. The minimum acceptable option for speeding up a transaction."
         },
           {
             id: "market",
             value: marketData.estimated,
-            helperText: "aaa"
+            helperText: "Configures transaction values according to the current state of the network."
           },
           {
             id: "aggressive",
             value: aggressiveData.estimated,
-            helperText: "aaa"
+            helperText: "Sets transaction fee values based on the values from the last block with an additional increase, which guarantees that the transaction will be included in the next block but may result in higher fee."
           },
           {
             id: "custom",
             value: customData.estimated,
-            helperText: "aaa"
+            helperText: "This option allows you to set the transaction fee values manually. Keep in mind that the fee must exceed the original values by at least 10% in order for a transaction to be accepted on the network."
           }] as { id: TransactionSpeedUpType, value: string, helperText: string }[]).map((variant) => {
           return <SpeedUpVariant id={variant.id} handleCheck={() => setType(variant.id)} key={variant.id}
                                  isActive={speedUpType === variant.id} calculatedValue={variant.value}

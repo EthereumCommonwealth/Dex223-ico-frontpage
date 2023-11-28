@@ -19,6 +19,7 @@ import { usePurchaseTokens } from "@/components/organisms/purchase-components/Bu
 import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
 import { chainToConnect } from "@/constants/tokens";
 import { isNativeToken } from "@/functions/isNativeToken";
+import usePreloaderTimeout from "@/hooks/usePreloaderTimeout";
 
 export default function PurchaseActionButton({
                                                isEnoughBalance,
@@ -37,7 +38,10 @@ export default function PurchaseActionButton({
     purchaseWithTokens
   } = usePurchaseTokens();
 
-  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove, writeWithoutPrepare } = useAllowance();
+  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove } = useAllowance();
+
+  const approveLoading = usePreloaderTimeout({isLoading: isApproving, timeout: 2000});
+
   const { pickedToken, amountToPay } = usePurchaseData((state) => ({
     pickedToken: state.computed.pickedToken,
     amountToPay: state.amountToPay
@@ -80,7 +84,7 @@ export default function PurchaseActionButton({
     return <Button disabled>Insufficient balance</Button>;
   }
 
-  if (isApproving) {
+  if (approveLoading) {
     return <Button disabled>
       <span className={styles.waitingContent}>
         <span>Approving</span>
@@ -91,7 +95,9 @@ export default function PurchaseActionButton({
 
   if (waitingForApprove || isLoading) {
     return <Button disabled>
-      <Preloader size={24}/>
+      <span className={styles.waitingContent}>
+        <Preloader size={24}/>
+      </span>
     </Button>
   }
 
@@ -113,9 +119,13 @@ export default function PurchaseActionButton({
       return;
     }
     if(isNativeToken(pickedToken)) {
-      purchaseWithCoins();
+      if(purchaseWithCoins) {
+        purchaseWithCoins();
+      }
     } else {
-      purchaseWithTokens();
+      if(purchaseWithTokens) {
+        purchaseWithTokens();
+      }
     }
 
   }}>Buy Tokens</Button>

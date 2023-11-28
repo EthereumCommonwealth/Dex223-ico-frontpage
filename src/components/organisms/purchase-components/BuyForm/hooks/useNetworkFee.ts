@@ -19,13 +19,13 @@ export function useNetworkFee() {
 
   return useMemo(() => {
     if (type === "default") {
-      const maxFee = (+formatEther((maxPriorityFeePerGas + maxFeePerGas) * gasLimit)).toFixed(3);
-      const _baseFee = (+formatEther((maxPriorityFeePerGas + baseFee) * gasLimit)).toFixed(3);
+      const maxFee = (+formatEther((maxPriorityFeePerGas + maxFeePerGas) * gasLimit)).toFixed(4);
+      const _baseFee = (+formatEther((maxPriorityFeePerGas + baseFee) * gasLimit)).toFixed(4);
 
       return `${_baseFee} - ${maxFee}`;
     }
 
-    return (+formatEther(gasLimit * gasPrice)).toFixed(3);
+    return (+formatEther(gasLimit * gasPrice)).toFixed(4);
 
   }, [baseFee, gasLimit, gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
 }

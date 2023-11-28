@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BuyForm.module.scss";
-import { chainToConnect, DEX223, ICOContractAddressETH, ZERO_ADDRESS } from "@/constants/tokens";
+import { DEX223, ICOContractAddressETH } from "@/constants/tokens";
 import clsx from "clsx";
 import TokenCard from "../../buy-form/TokenCard";
 import Spacer from "../../../atoms/Spacer";
 import {
   useAccount,
   useBalance,
-  useFeeData,
   useNetwork,
   usePublicClient,
   useWalletClient
@@ -34,11 +33,14 @@ import PurchaseActionButton from "../PurchaseActionButton";
 import ICOProgressBar from "../../buy-form/ICOProgressBar";
 import { isNativeToken } from "@/functions/isNativeToken";
 import MessageInteractive from "../../buy-form/MessageInteractive";
-import { useRecentTransactionTracking } from "@/components/organisms/purchase-components/BuyForm/hooks/useRecentTransactionTracking";
+import {
+  useRecentTransactionTracking
+} from "@/components/organisms/purchase-components/BuyForm/hooks/useRecentTransactionTracking";
 import AlertMessage from "@/components/atoms/AlertMessage";
 import addBigInt from "@/functions/addBigInt";
 import { defaultGasLimit } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
+import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
 
 export default function BuyForm() {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
@@ -58,7 +60,7 @@ export default function BuyForm() {
     isUnViewed,
     pending,
     failed,
-    success ,
+    success,
     totalUnViewed
   } = useRecentTransactionTracking();
 
@@ -92,19 +94,22 @@ export default function BuyForm() {
   });
 
   const { data: walletClient }: any = useWalletClient();
+  const { allowanceData } = useAllowance();
+
+  const [isGasEstimating, setIsGasEstimating] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
-        if(!amountToPay) {
+        if (!+amountToPay) {
           return;
         }
+        setIsGasEstimating(true);
 
         if (publicClient?.estimateContractGas) {
-          console.log("Trying to get gas");
           let gas: bigint;
 
-          if(isNativeToken(pickedToken)) {
+          if (isNativeToken(pickedToken)) {
             gas = await publicClient.estimateGas({
               account: address,
               to: ICOContractAddressETH,
@@ -123,13 +128,11 @@ export default function BuyForm() {
             });
           }
 
-          console.log(gas, address, pickedToken.symbol, amountToPay);
-
-          if(!gas || gasLimitComputed.customized) {
+          if (!gas || gasLimitComputed.customized) {
             return;
           }
 
-          if(addBigInt(gas, 7000) > defaultGasLimit) {
+          if (addBigInt(gas, 7000) > defaultGasLimit) {
             const _limit = addBigInt(gas, 7000);
             setGasLimit(_limit);
             setUnsavedGasLimit(_limit);
@@ -141,15 +144,29 @@ export default function BuyForm() {
           }
         }
       } catch (error) {
-        if(!gasLimitComputed.customized) {
+        if (!gasLimitComputed.customized) {
           setGasLimit(defaultGasLimit);
           setUnsavedGasLimit(defaultGasLimit);
           setEstimatedGasLimit(defaultGasLimit);
         }
         console.log("🚀 ~ gas estimation error:", error);
+      } finally {
+        setIsGasEstimating(false);
       }
     })();
-  }, [address, walletClient, pickedToken.decimals, amountToPay, publicClient, setGasLimit, setUnsavedGasLimit, setEstimatedGasLimit, pickedToken, gasLimitComputed.customized]);
+  }, [
+    allowanceData,
+    address,
+    walletClient,
+    pickedToken.decimals,
+    amountToPay,
+    publicClient,
+    setGasLimit,
+    setUnsavedGasLimit,
+    setEstimatedGasLimit,
+    pickedToken,
+    gasLimitComputed.customized
+  ]);
 
   const { output } = useReward({ pickedToken, amountToPay });
 
@@ -158,7 +175,7 @@ export default function BuyForm() {
   return <>
     <ICOProgressBar/>
     <div className={styles.ratio}><span>1 D223 = $0.00065</span></div>
-    <TokenPicker />
+    <TokenPicker/>
     <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
@@ -210,7 +227,7 @@ export default function BuyForm() {
             top: 6,
             position: "relative",
 
-          }}><Svg iconName="check-below" /></span>
+          }}><Svg iconName="check-below"/></span>
         </div>}
         severity="success"
         noIcon
