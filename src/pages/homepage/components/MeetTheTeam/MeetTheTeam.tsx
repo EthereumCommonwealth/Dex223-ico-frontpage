@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./MeetTheTeam.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import TeamMemberCard from "../../../../components/organisms/TeamMemberCard";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import TeamMemberCard from "../../../../components/organisms/others/TeamMemberCard";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 
 const team = [
   {

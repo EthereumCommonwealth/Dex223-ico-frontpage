@@ -23,13 +23,11 @@ export default function Header() {
 
   useEffect(() => {
     if (window.location.hash) {
-      console.log(window.location.hash);
       const hash = window.location.hash.replace("#", "");
       const element = document.getElementById(hash);
 
       if (element) {
         const top = element.getBoundingClientRect();
-        console.log(top);
         if (top.y > 1) {
           window.scrollTo({
             top: top.y,

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./InfoSection.module.scss";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
 import Image from "next/image";

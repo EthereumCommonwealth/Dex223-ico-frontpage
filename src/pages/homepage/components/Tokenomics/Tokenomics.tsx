@@ -3,7 +3,7 @@ import styles from "./Tokenomics.module.scss";
 import clsx from "clsx";
 import Spacer from "../../../../components/atoms/Spacer";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import Image from "next/image";
 
 export default function Tokenomics() {

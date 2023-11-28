@@ -3,7 +3,7 @@ import styles from "./NewBanner.module.scss";
 import Button from "../../../../components/atoms/Button";
 import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
 import clsx from "clsx";
-import BannerRightBlock from "../../../../components/organisms/BannerRightBlock";
+import BannerRightBlock from "../../../../components/organisms/others/BannerRightBlock";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import Preloader from "../../../../components/atoms/Preloader";
 import Spacer from "../../../../components/atoms/Spacer";
@@ -28,7 +28,6 @@ export default function NewBanner() {
       });
       const data = await res.json();
 
-      console.log(data);
       if (data.created) {
         showMessage("You have successfully subscribed to our newsletter");
       }
@@ -45,7 +44,6 @@ export default function NewBanner() {
 
       setIsSubmitting(false);
     } catch (e) {
-      console.log(e);
       showMessage("Unknown error", "error");
       setIsSubmitting(false);
     }

@@ -6,7 +6,7 @@ import {
   comparativeTableData
 } from "./parameters";
 import clsx from "clsx";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import Image from "next/image";
 

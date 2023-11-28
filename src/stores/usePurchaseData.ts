@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { testTokensToPayWith, TokenInfo } from "@/constants/tokens";
+import { TokenInfo, tokensToPayWith } from "@/constants/tokens";
 
 interface IPurchaseData {
   pickedTokenId: number,
@@ -12,16 +12,16 @@ interface IPurchaseData {
 }
 
 export const usePurchaseData = create<IPurchaseData>((set, get) => ({
-  pickedTokenId: testTokensToPayWith[0].id,
+  pickedTokenId: tokensToPayWith[0].id,
   amountToPay: "",
 
   setPickedTokenId: (id) => set({ pickedTokenId: id }),
   setAmountToPay: (amount) => set({ amountToPay: amount }),
   computed: {
     get pickedToken() {
-      const pt = testTokensToPayWith.find((token) => token.id === get().pickedTokenId);
+      const pt = tokensToPayWith.find((token) => token.id === get().pickedTokenId);
       if (!pt) {
-        return testTokensToPayWith[0];
+        return tokensToPayWith[0];
       }
       return pt;
     }

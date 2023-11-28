@@ -20,7 +20,6 @@ export default function Home() {
 
   useEffect(() => {
     function logPositions() {
-      console.log("Fired");
       if (firstRef.current && secondRef.current && thirdRef.current) {
 
         // @ts-ignore

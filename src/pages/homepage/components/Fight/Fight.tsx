@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./Fight.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
 import Svg from "../../../../components/atoms/Svg";
 import FightImage from "../../../../assets/images/fight.svg";

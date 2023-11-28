@@ -1,0 +1,121 @@
+@use "../../../../styles/colors";
+@use "../../../../styles/media";
+@use "../../../../styles/typography";
+
+.teamMemberCard {
+  border: 1px solid colors.$border-primary;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  padding: 20px;
+  height: calc(100% - 440px);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  @include media.for-mobile {
+    padding: 8px;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 10px;
+
+  @include media.for-mobile {
+    gap: 10px;
+  }
+}
+
+.position {
+  display: block;
+  margin-bottom: 4px;
+  @include typography.t-body-18;
+  color: colors.$text-secondary;
+
+  @include media.for-mobile {
+    @include typography.t-body-12;
+    margin-bottom: 0;
+  }
+}
+
+
+.name {
+  display: block;
+  margin-bottom: 16px;
+  @include typography.t-body-24;
+  color: colors.$text-primary;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+    margin-bottom: 8px;
+  }
+}
+
+.socialLink {
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid colors.$border-primary;
+  flex: 1 0 auto;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+
+  &:hover {
+    border-color: colors.$palette-green;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include media.for-mobile {
+    height: 32px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.imageCover {
+  height: 440px;
+  width: 100%;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+
+  @include media.for-large-mobile {
+    height: 380px;
+  }
+
+  @include media.for-mobile {
+    height: 284px;
+  }
+
+  @include media.for-small-mobile {
+    height: 204px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: colors.$palette-blue;
+    opacity: 0.1;
+  }
+}
+
+.nameAndSocials {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
