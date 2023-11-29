@@ -69,6 +69,7 @@ export default function Home() {
     <>
       <Header/>
       <h1 className={styles.pageHeading}>Development progress</h1>
+
       <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange
         and related services.</p>
 

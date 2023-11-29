@@ -5,9 +5,9 @@
 .text {
   color: colors.$text-secondary;
 
-  @include typography.t-body-20;
+  @include typography.t-body-18;
 
-  @include media.for-mobile {
+  @include media.for-desktop {
     @include typography.t-body-16;
   }
 
@@ -191,5 +191,43 @@
     background-color: colors.$background-secondary;
     pointer-events: none;
     color: colors.$text-primary;
+  }
+}
+
+.biggerText {
+  @include typography.t-body-24;
+  font-weight: 700;
+  color: colors.$text-primary;
+
+  @include media.for-desktop {
+    @include typography.t-body-18;
+  }
+}
+
+.list ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 50px;
+  list-style: none;
+
+  li {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      left: -24px;
+      background-color: colors.$text-secondary;
+
+      @include media.for-mobile {
+        top: 8px;
+        transform: unset;
+      }
+
+      //transform: translateY(40%);
+    }
   }
 }

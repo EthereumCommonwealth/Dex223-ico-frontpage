@@ -39,7 +39,7 @@ const infoFields = [
 
 
 export default function InfoSection() {
-  return <div className={"container relative"}>
+  return <div className={"relative"}>
     <div className={styles.pattern}>
       <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000}/>
     </div>

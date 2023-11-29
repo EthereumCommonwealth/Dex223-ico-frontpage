@@ -3,11 +3,11 @@ import styles from "./NewBanner.module.scss";
 import Button from "../../../../components/atoms/Button";
 import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
 import clsx from "clsx";
-import BannerRightBlock from "../../../../components/organisms/others/BannerRightBlock";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import Preloader from "../../../../components/atoms/Preloader";
 import Spacer from "../../../../components/atoms/Spacer";
 import Svg from "../../../../components/atoms/Svg";
+import BuyForm from "@/components/organisms/purchase-components/BuyForm";
 
 export default function NewBanner() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,7 +54,7 @@ export default function NewBanner() {
       <div className={styles.bannerText}>
         <h1 className={styles.mainHeader}><span className={styles.green}>Dex223</span>: Decentralized exchange for <span
           className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
-        <p className={styles.subheading}>Secure, gas-efficient, KYC-free next generation fully decentralized exchange
+        <p className={styles.subheading}>Secure, gas-efficient, KYC-free and fully decentralized exchange
           built with Ethereum smart-contracts.</p>
         <Spacer height={40}/>
         <div className={styles.blockWithNeonWrapper}>
@@ -73,7 +73,7 @@ export default function NewBanner() {
               The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be sold at 45% discount compared to the main ICO round.
             </p>
             <p className={styles.paragraph}>
-              Currently a <span className="primary-color bold">private pre-sale</span> of tokens is ongoing,
+              Currently a private pre-sale of tokens is ongoing,
               contact <ExternalTextLink text="dexaran@ethereumclassic.org"
                                         href="mailto: dexaran@ethereumclassic.org"/> for more details regarding participation.
             </p>
@@ -103,7 +103,7 @@ export default function NewBanner() {
         <div className={styles.video}>
           <video autoPlay muted loop src="/banner_398d494b.webm"></video>
         </div>
-        <BannerRightBlock/>
+        <BuyForm />
       </div>
     </div>
   </div>;

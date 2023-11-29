@@ -70,7 +70,7 @@
     grid-template-rows: minmax(66px, auto) 56px auto;
 
     &.different {
-      grid-template-columns: 1fr;
+      grid-template-columns: 32px 1fr;
     }
 
     &.onlyBottom {
@@ -250,5 +250,5 @@
 .anchor {
   visibility: hidden;
   position: absolute;
-  bottom: 40px;
+  bottom: 140px;
 }

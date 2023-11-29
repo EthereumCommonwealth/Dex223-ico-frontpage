@@ -11,6 +11,7 @@ export default function TokenPicker() {
     setPickedTokenId: state.setPickedTokenId
   }));
 
+
   return <div className={clsx(styles.tokenCards)}>
     {tokensToPayWith.map((token) => {
       return <button key={token.id} onClick={() => setPickedTokenId(token.id)}

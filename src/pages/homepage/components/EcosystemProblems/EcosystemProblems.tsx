@@ -27,19 +27,35 @@ function LostCard({ icon, name, lost, percentage, color, active = false, animate
   </div>
 }
 
+const ERCLosses = "$183,94M";
+const ERCLossesInt = "$184M";
+
 const slides = [
   {
     heading: "Security problems of ERC-20 standard",
     content: <div className={styles.slideParagraphs}>
       <p className={styles.primaryParagraph}>
         ERC-20 standard violates common secure software design principles
-        which resulted in a loss of $201M worth of tokens for the users.
+        which resulted in a loss of ${ERCLossesInt} worth of tokens.
       </p>
+      <div className={styles.calculatorLinkWrapper}>
+        <p>Watch ERC-20 Live Losses Calculator <ExternalTextLink text="here" href="https://dexaran.github.io/erc20-losses" /></p>
+        <div className={styles.losses}>
+          <div className={styles.lossesLabel}>
+            <Svg iconName="warning" />
+            <span>Total amount of lost ERC-20 tokens</span>
+          </div>
+          <span className={styles.lossesAmount}>
+            <span>{ERCLosses}</span>
+          </span>
+        </div>
+      </div>
+
       <p className={styles.secondaryParagraph}>
         ERC-20 was designed in 2015. At that time there was a bug in EthereumVM.
         In order to make tokens not affected by this bug ERC-20 was designed in a clunky
         way which does not allow for error handling. As the result of impossibility
-        of handling user mistakes $201M worth of ERC-20 tokens were lost.
+        of handling user mistakes {ERCLossesInt} worth of ERC-20 tokens were lost.
       </p>
       <p className={styles.secondaryParagraph}>
         ERC-223 is designed with security in mind. ERC-223 would allow to prevent
@@ -62,9 +78,9 @@ const slides = [
         <LostCard animate={animate} color="#F0504D" lost={"$150M"}
                   icon={<Image src="/images/problem-logos/compound.svg" alt="" width={32} height={32}/>}
                   name="Compound hack" percentage={40}/>
-        <LostCard animate={animate} active color="#FF3333" lost={"$201M"}
+        <LostCard animate={animate} active color="#FF3333" lost={ERCLossesInt}
                   icon={<Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32}/>}
-                  name="ERC-20 user errors" percentage={50}/>
+                  name="ERC-20 user errors" percentage={47}/>
         <LostCard animate={animate} color="#790003" lost={"$326M"}
                   icon={<Image src="/images/problem-logos/wormhole.svg" alt="" width={32} height={32}/>}
                   name="Wormhole hack" percentage={70}/>

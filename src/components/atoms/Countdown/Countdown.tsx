@@ -1,20 +1,13 @@
+import styles from "./Countdown.module.scss";
 import React from "react";
-import styles from "./BannerRightBlock.module.scss";
-import BuyForm from "../../purchase-components/BuyForm";
-import Button from "../../../atoms/Button";
-import { useCountdown } from "../../../../hooks/useCountdown";
-import Svg from "../../../atoms/Svg";
+import { useCountdown } from "@/hooks/useCountdown";
+const countDownDate = new Date("Jan 11, 2024 00:00:00").getTime();
 
-const countDownDate = new Date("Oct 16, 2023 00:00:00").getTime();
+export default function Countdown() {
+  // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
+  const [days, hours, minutes, seconds] = useCountdown(countDownDate);
 
-export default function BannerRightBlock() {
-  // const [days, hours, minutes, seconds] = useCountdown(countDownDate);
-  const [days, hours, minutes, seconds] = ["——", "——", "——", "——"]
-
-  return <div className={styles.formToBuy}>
-    <p className={styles.stayTuned}>
-      Stay tuned for the next round
-    </p>
+  return (<>
     <div className={styles.counter}>
       <span className={styles.counterNumber}>{days}</span>
       <span className={styles.doubleDots}>:</span>
@@ -30,6 +23,5 @@ export default function BannerRightBlock() {
       <div className={styles.counterTimeLabel}>Minutes</div>
       <div className={styles.counterTimeLabel}>Seconds</div>
     </div>
-    <BuyForm/>
-  </div>
+  </>)
 }

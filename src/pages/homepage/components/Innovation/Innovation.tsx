@@ -98,16 +98,16 @@ export default function Innovation() {
         <FeatureBlock image={<FirstCardImage/>} content={
           <>
             <div className={styles.paragraphs}>
-              <div className={styles.text}>The support of ERC-223 token standard will solve the problem of ERC-20 design
-                that caused a loss of $201,690,000 worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to
+              <div className={styles.text}>The support of ERC-223 token standard will <span className="bold primary-color">solve the problem of ERC-20 design
+                that caused a loss of $201,690,000</span> worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to
                 give users full control over their funds during the exchange process eliminating the need for approvals.
-                This can optimize the GAS usage by approximately 15% in some cases and also lay the foundation for the
+                This can <span className="bold primary-color">optimize the GAS usage by approximately 15%</span> in some cases and also lay the foundation for the
                 implementation of &quot;encapsulated margin trading&quot; at the platform.
               </div>
               <div className={styles.text}>It will still be possible to fallback to ERC-20 for the users of our platform
                 however should it be necessary. The exchange will fully support the ERC-20 standard alongside ERC-223.
               </div>
-              <div className={styles.text}>EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable so that it will
+              <div className={styles.text}><span className="bold primary-color">EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable</span> so that it will
                 be possible to create a ERC-223 wrapper for any existing ERC-20 tokens in order to enhance the security
                 of token holders funds. ERC-223 versions of existing ERC-20 tokens created via EIP-7417 and their ERC-20
                 origins will be merged into one liquidity pool.
@@ -149,9 +149,9 @@ export default function Innovation() {
         <FeatureBlock image={<ThirdCardImage/>} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to import any existing tokenlist from{" "}
             <ExternalTextLink text="https://tokenlists.org" href="https://tokenlists.org/"/> or import tokens from the
-            auto-listing contract. Auto-listing contract will allow
+            auto-listing contract. <span className="bold primary-color">Auto-listing contract will allow
             anyone to list a token on the platform without asking for anyones permission or interacting with the
-            exchange team.
+              exchange team.</span>
           </div>
           <div className={styles.text}>Auto-listings contract will serve as a more decentralized version of tokenlists.
             The collected listing fees will be redistributed between DEX223 token holders as revenue. Listing fees will

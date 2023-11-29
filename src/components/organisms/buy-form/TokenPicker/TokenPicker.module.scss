@@ -7,10 +7,6 @@
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid colors.$border-primary;
   border-bottom: 0;
-
-  &.dev {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 .tokenPickButton {
@@ -22,8 +18,11 @@
   background: transparent;
   height: 38px;
   @include typography.t-body-12;
-  border: 0;
+
+  border-left: 1px solid colors.$border-primary;
   border-right: 1px solid colors.$border-primary;
+  border-top: 0;
+  border-bottom: 0;
 
   transition-duration: 0.2s;
   outline: 0;
@@ -60,6 +59,7 @@
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;
+    z-index: 0;
   }
 
   @include media-new.lg {

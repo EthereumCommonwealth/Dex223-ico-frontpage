@@ -1,0 +1,63 @@
+@use "src/styles/typography";
+@use "src/styles/media-new";
+@use "src/styles/colors";
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.doubleDots {
+  width: var(--counter-gap);
+  color: #FFF;
+  text-align: center;
+  font-weight: 700;
+
+  @include typography.t-body-28;
+
+  @include media-new.lg {
+    @include typography.t-body-40;
+  }
+}
+
+.counterNumber {
+  color: #FFF;
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 52px;
+  display: flex;
+  justify-content: center;
+  width: calc((100% - var(--counter-gap) * 3) / 4);
+
+  @include typography.t-body-28;
+
+  @include media-new.lg {
+    @include typography.t-body-40;
+  }
+}
+
+.counterLabels {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  margin-top: -8px;
+}
+
+.counterTimeLabel {
+  min-width: calc((100% - var(--counter-gap) * 3) / 4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: colors.$text-primary;
+
+  @include media-new.lg {
+    @include typography.t-body-16;
+  }
+}

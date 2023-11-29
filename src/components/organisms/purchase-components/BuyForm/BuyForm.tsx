@@ -41,6 +41,8 @@ import addBigInt from "@/functions/addBigInt";
 import { defaultGasLimit } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
+import Countdown from "@/components/atoms/Countdown/Countdown";
+
 
 export default function BuyForm() {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
@@ -172,9 +174,16 @@ export default function BuyForm() {
 
   const networkFee = useNetworkFee();
 
-  return <>
+  return <div className={styles.formToBuy}>
+    <p className={styles.stayTuned}>
+      Next round in
+    </p>
+    <Countdown />
     <ICOProgressBar/>
-    <div className={styles.ratio}><span>1 D223 = $0.00065</span></div>
+    <div className={styles.ratio}>
+      <span>1 D223 = $0.00065</span>
+    </div>
+
     <TokenPicker/>
     <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
@@ -260,5 +269,5 @@ export default function BuyForm() {
       setRecentTransactionsOpened(false);
     }}/>
     <Spacer height={8}/>
-  </>;
+  </div>;
 }//460

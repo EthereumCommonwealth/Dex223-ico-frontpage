@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./Structure.module.scss";
 import NeonBlock from "../../../../components/organisms/others/NeonBlock";
-import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import clsx from "clsx";
 import CubeImage from "../../../../assets/images/cube.svg";
 

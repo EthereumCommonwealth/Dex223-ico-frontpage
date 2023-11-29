@@ -34,17 +34,28 @@
   }
 }
 
+.biggerText {
+  @include typography.t-body-24;
+  font-weight: 600;
+  color: colors.$text-primary;
+
+  @include media.for-desktop {
+    @include typography.t-body-18;
+  }
+}
+
 .problemItemLink {
   padding: 14px 0;
   color: colors.$text-secondary;
-  display: grid;
-  grid-template-columns: 1fr 24px;
+  //color: #7F7F7F;
+  display: flex;
+  justify-content: space-between;
   gap: 24px;
 
-  @include typography.t-body-16;
+  @include typography.t-body-18;
 
   @include media.for-mobile {
-    @include typography.t-body-14;
+    @include typography.t-body-16;
   }
   transition-duration: 0.2s;
 
@@ -62,7 +73,7 @@
 }
 
 .rightContent {
-  padding-top: 200px;
+  padding-top: 100px;
   display: flex;
   justify-content: flex-end;
 
@@ -178,4 +189,10 @@
     pointer-events: none;
     color: colors.$text-primary;
   }
+}
+
+.linkRightContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

@@ -219,6 +219,10 @@
   top: -247px;
   animation: breathing-pattern 6s 2s infinite linear alternate;
   opacity: 0.2;
+
+  @include media.for-tablet {
+    display: none;
+  }
 }
 
 .pattern2 {

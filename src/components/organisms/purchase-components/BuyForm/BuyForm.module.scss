@@ -201,3 +201,71 @@
   @include typography.t-body-16;
   border-radius: 4px;
 }
+
+.formToBuy {
+  //background: var(--card, rgba(0, 0, 0, 0.50));
+  //box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  padding: 28px 40px 40px;
+
+  width: 100%;
+  border: 1px solid colors.$border-primary;
+  position: relative;
+
+  --counter-gap: 20px;
+
+  @include media.for-laptop {
+    padding: 16px;
+  }
+}
+
+.stayTuned {
+  @include typography.t-body-24;
+  text-align: center;
+  color: colors.$text-primary;
+  margin-bottom: 16px;
+  font-weight: 600;
+
+  @include media.for-tablet {
+    @include typography.t-body-20;
+    margin-bottom: 12px;
+  }
+}
+
+.completedLabel {
+  color: colors.$text-primary;
+  @include typography.t-body-18;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  //height: 56px;
+  gap: 10px;
+
+
+  border: 1px solid var(--color-purple, #9576EC);
+  background: #12082E;
+
+  @include media.for-desktop {
+    @include typography.t-body-16;
+    height: 46px;
+
+    svg {
+      width: 24px;
+    }
+  }
+
+  @include media.for-desktop {
+    @include typography.t-body-14;
+    height: 42px;
+
+    svg {
+      width: 24px;
+    }
+  }
+
+  @include media.for-small-mobile {
+    @include typography.t-body-12;
+  }
+}
