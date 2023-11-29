@@ -224,7 +224,7 @@
   text-align: center;
   color: colors.$text-primary;
   margin-bottom: 16px;
-  font-weight: 600;
+  //font-weight: 600;
 
   @include media.for-tablet {
     @include typography.t-body-20;
@@ -267,5 +267,36 @@
 
   @include media.for-small-mobile {
     @include typography.t-body-12;
+  }
+}
+
+.ico {
+  color: colors.$text-primary;
+  @include typography.t-body-16;
+  margin-bottom: 24px;
+
+  text-align: center;
+
+  @include media.for-laptop {
+    @include typography.t-body-12;
+  }
+
+  @include media.for-large-mobile {
+    @include typography.t-body-14;
+  }
+
+  @include media.for-small-mobile {
+    @include typography.t-body-12;
+  }
+}
+
+.preICOText {
+  @include typography.t-body-24;
+  text-align: center;
+  color: colors.$text-primary;
+  margin-bottom: 16px;
+  @include media.for-tablet {
+    @include typography.t-body-20;
+    margin-bottom: 12px;
   }
 }

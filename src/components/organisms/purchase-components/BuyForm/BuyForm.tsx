@@ -175,8 +175,9 @@ export default function BuyForm() {
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
-    <p className={styles.stayTuned}>
-      Next round in
+    <div className={styles.preICOText}>pre-ICO: Round 2</div>
+    <p className={styles.ico}>
+      ICO contract: {ICOContractAddressETH}
     </p>
     <Countdown />
     <ICOProgressBar/>
