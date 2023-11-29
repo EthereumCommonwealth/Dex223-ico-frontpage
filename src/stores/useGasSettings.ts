@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
 import { defaultGasLimit } from "@/constants/config";
+import addBigInt from "@/functions/addBigInt";
 
 interface TransactionTypeState {
   type: "legacy" | "default",
@@ -70,7 +71,8 @@ export const useTransactionGasPrice = create<GasPrice>((set, get) => ({
       return formatEther(get().baseGasPrice, "gwei")
     },
     get customized() {
-      return get().baseGasPrice !== get().gasPrice;
+      const withGwei = parseEther("2", "gwei") + get().baseGasPrice;
+      return Boolean(get().baseGasPrice) && withGwei !== get().gasPrice;
     }
   }
 }))

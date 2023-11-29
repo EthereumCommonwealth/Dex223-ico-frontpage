@@ -7,6 +7,8 @@ import {
 } from "@/stores/useGasSettings";
 import { useFeeData } from "wagmi";
 import { chainToConnect } from "@/constants/tokens";
+import addBigInt from "@/functions/addBigInt";
+import { parseEther } from "viem";
 
 export default function useTrackFeeData() {
   const { setBaseFee, setMaxFeePerGas, computed: baseFeeComputed, focused: gasFeeFocused } = useTransactionGasFee();
@@ -20,7 +22,7 @@ export default function useTrackFeeData() {
   useEffect(() => {
     if (feeData?.formatted?.gasPrice) {
       if(!gasPriceFocused && !gasPriceComputed.customized) {
-        setGasPrice(feeData.gasPrice);
+        setGasPrice(feeData.gasPrice + parseEther("2", "gwei"));
       }
       setBaseGasPrice(feeData.gasPrice);
     }

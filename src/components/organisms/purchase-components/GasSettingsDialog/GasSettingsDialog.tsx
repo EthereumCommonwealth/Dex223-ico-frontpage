@@ -36,7 +36,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
     setMaxFeePerGas,
     validation: gasFeeValidation,
     computed: computedBaseFee,
-    setFocused
+    setFocused: setFeeFocused
   } = useTransactionGasFee();
 
   const {
@@ -50,7 +50,8 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
     baseGasPrice,
     setGasPrice,
     validation: gasPriceValidation,
-    computed: computedGasPrice
+    computed: computedGasPrice,
+    setFocused: setPriceFocused
   } = useTransactionGasPrice();
 
   const {
@@ -78,7 +79,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
       setMaxPriorityFeePerGas(basePriority);
     }
     if (type === "legacy") {
-      setGasPrice(baseGasPrice);
+      setGasPrice(baseGasPrice + parseEther("2", "gwei"));
     }
 
     setGasLimit(estimatedGasLimit);
@@ -129,6 +130,8 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
                 customInput={Input}
                 error={Boolean(gasPriceValidation.error)}
                 warning={Boolean(gasPriceValidation.warning)}
+                onFocus={() => setPriceFocused(true)}
+                onBlur={() => setPriceFocused(false)}
               />
               <span className={styles.inputRightContent}>Gwei</span>
             </div>
@@ -161,8 +164,8 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
                     customInput={Input}
                     error={Boolean(gasFeeValidation.error)}
                     warning={Boolean(gasFeeValidation.warning)}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
+                    onFocus={() => setFeeFocused(true)}
+                    onBlur={() => setFeeFocused(false)}
                   />
                   <span className={styles.inputRightContent}>Gwei</span>
                 </div>

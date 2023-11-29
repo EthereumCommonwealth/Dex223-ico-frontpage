@@ -41,7 +41,7 @@ import addBigInt from "@/functions/addBigInt";
 import { defaultGasLimit } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
-import Countdown from "@/components/atoms/Countdown/Countdown";
+import Countdown from "@/components/atoms/Countdown";
 
 
 export default function BuyForm() {

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MultichainRollout.module.scss";
-import NeonBlock from "@/components/organisms/NeonBlock";
 import ArticleHeading from "@/components/atoms/ArticleHeading";
+import NeonBlock from "@/components/organisms/others/NeonBlock";
 
 export default function MultichainRollout() {
   return <NeonBlock
