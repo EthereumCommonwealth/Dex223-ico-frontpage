@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styles from "./DialogHeader.module.scss";
 import DialogCloseButton from "@/components/atoms/DialogCloseButton";
 import IconButton from "@/components/atoms/IconButton";
@@ -8,7 +8,7 @@ import clsx from "clsx";
 interface Props {
   onClose: () => void,
   title: string,
-  paragraph?: string,
+  paragraph?: string | ReactNode,
   onBack?: () => void
 }
 

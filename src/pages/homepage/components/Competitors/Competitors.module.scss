@@ -14,7 +14,8 @@
 
   @include media.for-laptop {
     padding: 0;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
   }
 }
 

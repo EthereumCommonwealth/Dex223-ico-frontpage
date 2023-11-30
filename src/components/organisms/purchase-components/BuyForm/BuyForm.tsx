@@ -195,7 +195,8 @@ export default function BuyForm() {
     <div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>
       <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>
         <span className={styles.gasTitle}>
-          Network fee
+          <span className="desktop">Network fee</span>
+          <span className="mobile">Fee</span>
           {/*Show custom label if gasLimit was changed OR
             fee or priority was changes for type-2 transactions OR
             gasPrice was changed for type-0 tranasctions
@@ -207,7 +208,7 @@ export default function BuyForm() {
         </span>
         <div className={styles.gasExpand}>
           <Svg iconName="gas"/>
-          ~ {networkFee} ETH
+          ~ {networkFee}
           <button className={styles.editGasButton} onClick={() => setGasSettingsOpened(true)}>EDIT</button>
         </div>
       </div>
@@ -259,7 +260,9 @@ export default function BuyForm() {
           {totalUnViewed}
         </span>}
       </div>
-      <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>See all activity</button>
+      <button onClick={() => setRecentTransactionsOpened(true)} className={styles.textButton}>
+        See all <span className="desktop">{" "} activity</span>
+      </button>
     </div>
 
     <DrawerDialog onClose={() => setDialogOpened(false)} isOpen={dialogOpened}>

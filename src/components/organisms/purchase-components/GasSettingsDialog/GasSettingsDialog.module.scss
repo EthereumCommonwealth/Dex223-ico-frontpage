@@ -1,10 +1,15 @@
 @use "../../../../styles/colors";
 @use "../../../../styles/typography";
+@use "../../../../styles/media";
 
 .dialog {
   color: colors.$text-primary;
   display: grid;
-  width: 640px;
+  width: 600px;
+
+  @include media.for-mobile {
+    width: 100%;
+  }
 }
 
 .typeTabs {
@@ -92,10 +97,18 @@
 .priceSettingContainer {
   padding: 40px 40px 36px;
   border-bottom: 1px solid colors.$border-primary;
+
+  @include media.for-mobile {
+    padding: 16px;
+  }
 }
 
 .gasLimitSettings {
   padding: 36px 40px 40px;
+
+  @include media.for-mobile {
+    padding: 16px;
+  }
 }
 
 .textButton {

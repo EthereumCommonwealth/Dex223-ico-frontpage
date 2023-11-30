@@ -1,5 +1,6 @@
-@use "../../../../styles/colors";
-@use "../../../../styles/typography";
+@use "src/styles/colors";
+@use "src/styles/typography";
+@use "src/styles/media";
 
 .speedUpTableHeader {
   background: colors.$background-secondary;
@@ -84,6 +85,10 @@
       }
     }
   }
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+  }
 }
 
 .speedUpLabelWrapper {
@@ -112,6 +117,10 @@
   border-bottom: 1px solid var(--color-border-border-disabled, #393939);
   border-left: 1px solid var(--color-border-border-disabled, #393939);
   background: var(--color-fill-block, #141316);
+
+  @include media.for-mobile {
+    padding: 16px;
+  }
 }
 
 .customSpeedUpSettingsWrapper {

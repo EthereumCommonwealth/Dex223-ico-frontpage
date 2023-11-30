@@ -18,6 +18,7 @@ import { useSnackbar } from "@/providers/SnackbarProvider";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
 import AlertMessage from "@/components/atoms/AlertMessage";;
 import { defaultGasLimit } from "@/constants/config";
+import DrawerDialog from "@/components/atoms/DrawerDialog";
 
 interface Props {
   isOpen: boolean,
@@ -89,17 +90,17 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
     showMessage("Gas settings have been configured!");
   }, [baseFee, baseGasPrice, basePriority, estimatedGasLimit, setEditing, setGasLimit, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas, setUnsavedGasLimit, showMessage, type]);
 
-  return <Dialog isOpen={isOpen} onClose={onClose}>
+  return <DrawerDialog isOpen={isOpen} onClose={onClose}>
     <div className={styles.dialog}>
       <DialogHeader
         title="Network fee"
         onClose={onClose}
-        paragraph="Network fee is paid when you submit a transaction. We recommend changing Priority
+        paragraph={<span>Network fee is paid when you submit a transaction. We recommend changing Priority
         Fee only in order to make transaction cheaper or speed it up at a cost of paying higher fee.
         There are two types of transactions in Ethereum: EIP-1559 and Legacy. Network Fee = gasLimit *
          (Base Fee + Priority Fee) for EIP-1559 transactions. Network Fee = gasLimit * gasPrice for
-         Legacy transactions. We recommend using EIP-1559 transactions on any chain except BSC.
-          BSC does not support EIP-1559 transactions so use Legacy there."
+         Legacy transactions. <span className="desktop">We recommend using EIP-1559 transactions on any chain except BSC.
+          BSC does not support EIP-1559 transactions so use Legacy there.</span></span>}
       />
       <div className={styles.priceSettingContainer}>
         <div className={styles.tabButtonsContainer}>
@@ -270,5 +271,5 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
         </div>
       </div>
     </div>
-  </Dialog>;
+  </DrawerDialog>;
 }

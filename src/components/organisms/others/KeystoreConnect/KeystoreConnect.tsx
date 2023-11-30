@@ -11,6 +11,7 @@ import Collapse from "../../../atoms/Collapse";
 import Preloader from "../../../atoms/Preloader";
 import clsx from "clsx";
 import { chainsToConnect, chainToConnect } from "@/constants/tokens";
+import DialogHeader from "@/components/atoms/DialogHeader";
 
 const fromMyEtherWalletV2 = json => {
   if (json.privKey.length !== 64) {
@@ -105,12 +106,7 @@ export default function KeystoreConnect({ handleClose }) {
   };
 
   return <div className={styles.dialog}>
-    <div className={styles.dialogHeader}>
-      <span>Import wallet with JSON file</span>
-      <button onClick={handleClose}>
-        <Svg iconName="close"/>
-      </button>
-    </div>
+    <DialogHeader title="Import wallet with JSON file" onClose={handleClose} />
 
     <div className={styles.dialogContent}>
       <input

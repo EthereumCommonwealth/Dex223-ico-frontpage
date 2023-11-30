@@ -73,10 +73,14 @@
 }
 
 .subheading {
-  @include typography.t-body-16;
+  @include typography.t-body-20;
 
   color: colors.$text-secondary;
   margin-bottom: 16px;
+
+  @include media.for-laptop {
+    @include typography.t-body-12;
+  }
 }
 
 .paragraph {

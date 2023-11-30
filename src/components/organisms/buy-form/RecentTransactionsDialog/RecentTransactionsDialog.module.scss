@@ -1,9 +1,14 @@
 @use "../../../../styles/colors";
 @use "../../../../styles/typography";
+@use "../../../../styles/media";
 
 .dialog {
   width: 600px;
   color: colors.$text-primary;
+
+  @include media.for-mobile {
+    width: 100%;
+  }
 }
 
 .dialogContent {
@@ -13,6 +18,10 @@
   max-height: 344px;
   height: 344px;
   overflow: scroll;
+
+  @include media.for-mobile {
+    padding: 16px;
+  }
 
   &.empty {
     display: flex;
@@ -37,6 +46,10 @@
   border-bottom: 1px solid colors.$border-primary;
   height: 60px;
   padding-left: 40px;
+
+  @include media.for-mobile {
+    padding-left: 16px;
+  }
 
   @include typography.t-body-20;
   font-weight: 700;

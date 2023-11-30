@@ -1,8 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./TransactionSpeedUp.module.scss";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import Spacer from "@/components/atoms/Spacer";
-import { TransactionSpeedUpType, useRecentTransactionsStore, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
+import {
+  RecentTransactionStatus,
+  TransactionSpeedUpType,
+  useRecentTransactionsStore,
+  useTransactionSpeedUp
+} from "@/stores/useRecentTransactions";
 import clsx from "clsx";
 import Input from "@/components/atoms/Input";
 import Button from "@/components/atoms/Button";
@@ -72,13 +77,13 @@ function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText
       <div className={styles.speedUpLabelText}>
         <input onChange={handleCheck} checked={isActive} name="speedUpVariant" type="radio"/>
         <span className={styles.indicator}/>
-        {iconsMap[id]}
+        <span className="desktop">{iconsMap[id]}</span>
         {labelsMap[id]}
       </div>
 
       <div className={styles.speedUpValue}>
         {calculatedValue}
-        <Tooltip text={helperText} />
+        <Tooltip text={helperText}/>
       </div>
 
     </label>
@@ -88,7 +93,7 @@ function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText
 export default function TransactionSpeedUp({ handleClose }) {
   const { connector, address } = useAccount();
 
-  const { transactions, updateTransactionHash} = useRecentTransactionsStore();
+  const { transactions, updateTransactionHash } = useRecentTransactionsStore();
 
   const isMetamask = useMemo(() => {
     return connector.name === "MetaMask";
@@ -118,7 +123,7 @@ export default function TransactionSpeedUp({ handleClose }) {
   }, [customPriorityFee]);
 
   const customBaseFeeError = useMemo(() => {
-    if(customBaseFee < addBigIntPercent(BigInt(transactionToSpeedUp.details.maxFeePerGas), 10)) {
+    if (customBaseFee < addBigIntPercent(BigInt(transactionToSpeedUp.details.maxFeePerGas), 10)) {
       return "You have to set at least +10% value to apply transaction speed up."
     }
 
@@ -200,13 +205,14 @@ export default function TransactionSpeedUp({ handleClose }) {
       title="Speed up"
     />
     {!isMetamask ? <div className={styles.metamaskMessageContainer}>
-      <Image src="/images/wallets/metamask.svg" alt="" width={80} height={75} />
+        <Image src="/images/wallets/metamask.svg" alt="" width={80} height={75}/>
         <h3>Try the solution built into Metamask</h3>
-      <p>
-        We have noticed that you are using MetaMask wallet. Unfortunately it does not support Speed Up through dApps.
-        As an alternative you could use built-in speed up option inside Metamask extension.
-        Here is <ExternalTextLink text="more details" href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction" />
-      </p>
+        <p>
+          We have noticed that you are using MetaMask wallet. Unfortunately it does not support Speed Up through dApps.
+          As an alternative you could use built-in speed up option inside Metamask extension.
+          Here is <ExternalTextLink text="more details"
+                                    href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"/>
+        </p>
       </div> :
       <div className={styles.speedUpContent}>
         <RecentTransaction noSpeedUp transaction={transactions[address].find((t) => {
@@ -215,7 +221,7 @@ export default function TransactionSpeedUp({ handleClose }) {
         <Spacer height={20}/>
         <div className={styles.speedUpTableHeader}>
           <span>Gas option</span>
-          <span className={styles.maxFeeLabel}>Max fee, CLO</span>
+          <span className={styles.maxFeeLabel}>Max fee, ETH</span>
         </div>
         {([{
           id: "autoIncrease",
@@ -246,7 +252,7 @@ export default function TransactionSpeedUp({ handleClose }) {
             <div className={styles.labelInputWrapper}>
               <label>
                 Base fee
-                <Tooltip text="Tooltip for base fee" />
+                <Tooltip text="Tooltip for base fee"/>
               </label>
               <div className={styles.inputWrapper}>
                 <NumericFormat
@@ -261,13 +267,14 @@ export default function TransactionSpeedUp({ handleClose }) {
                 <span className={styles.inputRightContent}>Gwei</span>
               </div>
               <div className={styles.helperText}>
-                Current transaction {formatEther(BigInt(+transactionToSpeedUp.details.maxFeePerGas), "gwei")} Gwei
+                Current <span
+                className="desktop">transaction</span> {formatEther(BigInt(+transactionToSpeedUp.details.maxFeePerGas), "gwei")} Gwei
               </div>
             </div>
             <div className={styles.labelInputWrapper}>
               <label>
                 Priority fee
-                <Tooltip text="Tooltip for proirity fee" />
+                <Tooltip text="Tooltip for proirity fee"/>
               </label>
               <div className={styles.inputWrapper}>
                 <NumericFormat
@@ -293,8 +300,10 @@ export default function TransactionSpeedUp({ handleClose }) {
         </div>
 
         <Spacer height={20}/>
-        <Button disabled={Boolean(customBaseFeeError) && speedUpType === "custom"} onClick={handleSpeedUp}>
-          Apply
+        <Button
+          disabled={(Boolean(customBaseFeeError) && speedUpType === "custom") || (transactionToSpeedUp.status !== RecentTransactionStatus.PENDING)}
+          onClick={handleSpeedUp}>
+          {transactionToSpeedUp.status === RecentTransactionStatus.PENDING ? "Apply" : "Transaction have been settled"}
         </Button>
       </div>}
   </>;

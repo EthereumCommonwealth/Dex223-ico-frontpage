@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import styles from "./RecentTransactionsDialog.module.scss";
 import { useRecentTransactionsStore, useTransactionSpeedUp } from "@/stores/useRecentTransactions";
 import Dialog from "@/components/atoms/Dialog";
@@ -11,9 +11,10 @@ import DialogHeader from "@/components/atoms/DialogHeader";
 import TransactionSpeedUp from "../TransactionSpeedUp";
 import LegacyTransactionSpeedUp from "../../purchase-components/LegacyTransactionSpeedUp";
 import { useAccount } from "wagmi";
+import DrawerDialog from "@/components/atoms/DrawerDialog";
 
 export default function RecentTransactionsDialog({ isOpen, handleClose }) {
-  const {address} = useAccount();
+  const { address } = useAccount();
   const transactions = useZustandStore(useRecentTransactionsStore, state => state.transactions[address]);
   const { clearTransactions, setIsViewed } = useRecentTransactionsStore();
   const { transactionToSpeedUpId } = useTransactionSpeedUp();
@@ -24,7 +25,7 @@ export default function RecentTransactionsDialog({ isOpen, handleClose }) {
     })
   }, [transactionToSpeedUpId, transactions]);
 
-  return <Dialog isOpen={isOpen} onClose={handleClose}>
+  return <DrawerDialog isOpen={isOpen} onClose={handleClose}>
     <div className={styles.dialog}>
       {!transactionToSpeedUpId ? <>
         <DialogHeader
@@ -61,5 +62,5 @@ export default function RecentTransactionsDialog({ isOpen, handleClose }) {
         }
       </>}
     </div>
-  </Dialog>;
+  </DrawerDialog>;
 }

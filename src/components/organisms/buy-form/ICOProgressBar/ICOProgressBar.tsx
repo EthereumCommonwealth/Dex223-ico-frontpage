@@ -7,7 +7,8 @@ function millions(amount: number) {
   return amount * million;
 }
 
-const total = millions(160);
+// const total = millions(160);
+const total = 15380;
 export default function ICOProgressBar() {
   const contractBalance = useICOContractBalance();
 

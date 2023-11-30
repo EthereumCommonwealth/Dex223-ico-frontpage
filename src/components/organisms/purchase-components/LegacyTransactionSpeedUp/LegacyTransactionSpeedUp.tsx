@@ -70,7 +70,7 @@ function SpeedUpVariant({ id, handleCheck, isActive, calculatedValue, helperText
       <div className={styles.speedUpLabelText}>
         <input onChange={handleCheck} checked={isActive} name="speedUpVariant" type="radio"/>
         <span className={styles.indicator}/>
-        {iconsMap[id]}
+        <span className="desktop">{iconsMap[id]}</span>
         {labelsMap[id]}
       </div>
 
@@ -248,7 +248,7 @@ export default function LegacyTransactionSpeedUp({ handleClose }) {
                 <span className={styles.inputRightContent}>Gwei</span>
               </div>
               <div className={styles.helperText}>
-                Current transaction {formatEther(BigInt(+transactionToSpeedUp.details.gasPrice), "gwei")} Gwei
+                Current <span className="desktop">transaction</span> {formatEther(BigInt(+transactionToSpeedUp.details.gasPrice), "gwei")} Gwei
               </div>
             </div>
           </div>
