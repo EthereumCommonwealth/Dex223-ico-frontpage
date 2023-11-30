@@ -256,7 +256,7 @@ export default function TransactionSpeedUp({ handleClose }) {
               </label>
               <div className={styles.inputWrapper}>
                 <NumericFormat
-                  inputMode="numeric"
+                  inputMode="decimal"
                   style={{ paddingRight: 68 }}
                   onValueChange={values => setCustomBaseFee(parseEther(values.value, "gwei"))}
                   value={computedBaseFee}
@@ -279,7 +279,7 @@ export default function TransactionSpeedUp({ handleClose }) {
               </label>
               <div className={styles.inputWrapper}>
                 <NumericFormat
-                  inputMode="numeric"
+                  inputMode="decimal"
                   style={{ paddingRight: 68 }}
                   onValueChange={values => setCustomPriorityFee(parseEther(values.value, "gwei"))}
                   value={computedPriorityFee}

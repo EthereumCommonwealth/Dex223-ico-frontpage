@@ -120,7 +120,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
             </label>
             <div className={styles.inputWrapper}>
               <NumericFormat
-                inputMode="numeric"
+                inputMode="decimal"
                 style={{ paddingRight: 68 }}
                 onValueChange={values => setGasPrice(parseEther(values.value, "gwei"))}
                 value={computedGasPrice.gasPrice}
@@ -155,7 +155,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
                 </label>
                 <div className={styles.inputWrapper}>
                   <NumericFormat
-                    inputMode="numeric"
+                    inputMode="decimal"
                     style={{ paddingRight: 68 }}
                     onValueChange={values => setMaxFeePerGas(parseEther(values.value, "gwei"))}
                     value={computedBaseFee.maxFeePerGas}
@@ -186,7 +186,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
                 </label>
                 <div className={styles.inputWrapper}>
                   <NumericFormat
-                    inputMode="numeric"
+                    inputMode="decimal"
                     style={{ paddingRight: 68 }}
                     onValueChange={values => setMaxPriorityFeePerGas(parseEther(values.value, "gwei"))}
                     value={computedPriority.maxPriorityFeePerGas}
@@ -228,7 +228,7 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
           </label>
           <div className={styles.inputWrapper}>
             <NumericFormat
-              inputMode="numeric"
+              inputMode="decimal"
               className={clsx(styles.gasLimitInput, !isEditing && styles.disabled, gasLimitValidation.warning && styles.warning, gasLimitValidation.error && styles.error)}
               placeholder="Gas limit"
               onValueChange={(values) => setUnsavedGasLimit(BigInt(values.value))}
