@@ -1,8 +1,5 @@
 import React from "react";
 import styles from "./TeamMemberCard.module.scss";
-import Image from "next/image";
-import Text from "../../../atoms/Text";
-import Spacer from "../../../atoms/Spacer";
 
 interface Props {
   image: string,
@@ -13,7 +10,8 @@ interface Props {
     telegram?: string,
     linkedin?: string,
     reddit?: string,
-    github?: string
+    github?: string,
+    behance?: string
   }
 }
 
@@ -24,7 +22,8 @@ const socialIcons = {
   telegram: "/images/socials/telegram.svg",
   github: "/images/socials/github.svg",
   twitter: "/images/socials/twitter.svg",
-  email: "/images/socials/email.svg"
+  email: "/images/socials/email.svg",
+  behance: "/images/socials/behance.svg"
 }
 
 

@@ -13,7 +13,7 @@ export default function ContactUs() {
   const ref = useRef();
   const entry = useIntersectionObserver(ref, { threshold: 0.8, freezeOnceVisible: true })
 
-  return <div className="container relative">
+  return <div className="relative">
     <div className={styles.pattern}>
       <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000}/>
     </div>

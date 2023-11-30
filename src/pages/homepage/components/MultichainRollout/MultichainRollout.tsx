@@ -14,7 +14,7 @@ export default function MultichainRollout() {
 
       <div className={styles.paragraphs}>
         <p className={styles.text}>
-          D223 tokens will be sold on Ethereum mainnet. Dex223 exchange will be deployed
+          D223 tokens will be sold on Ethereum mainnet. DEX223 exchange will be deployed
           on multiple chains. Token holders who had their D223 tokens on Ethereum will get an equal
           amount of D223 tokens on every chain at the moment of the DEX deployment on that chain.
         </p>

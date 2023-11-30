@@ -76,7 +76,8 @@ const team = [
     position: "UI / UX Developer",
     name: "Nadiia Udovychenko",
     socials: {
-      linkedin: "https://www.linkedin.com/in/naud"
+      linkedin: "https://www.linkedin.com/in/naud",
+      behance: "https://www.behance.net/Na_Ud"
     }
   }
 ]

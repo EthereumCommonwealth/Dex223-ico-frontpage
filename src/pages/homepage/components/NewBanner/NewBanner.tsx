@@ -52,7 +52,7 @@ export default function NewBanner() {
   return <div className="container">
     <div className={styles.gridWrapper}>
       <div className={styles.bannerText}>
-        <h1 className={styles.mainHeader}><span className={styles.green}>Dex223</span>: Decentralized exchange for <span
+        <h1 className={styles.mainHeader}><span className={styles.green}>DEX223</span>: Decentralized exchange for <span
           className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
         <p className={styles.subheading}>Secure, gas-efficient, KYC-free and fully decentralized exchange
           built with Ethereum smart-contracts.</p>

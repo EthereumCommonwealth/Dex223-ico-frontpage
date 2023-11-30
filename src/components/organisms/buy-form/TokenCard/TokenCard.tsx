@@ -30,6 +30,7 @@ export default function TokenCard({
         <h2>{type === "pay" ? <span>Amount in <span className="bold">{tokenName}</span> you pay</span> :
           <span>Amount in <span className="bold">{tokenName}</span> you receive</span>}</h2>
         <NumericFormat
+          inputMode="numeric"
           onValueChange={(values) => handleChange(values.value)}
           placeholder={"0"}
           className={clsx(styles.input)}

@@ -237,6 +237,7 @@ export default function LegacyTransactionSpeedUp({ handleClose }) {
               </label>
               <div className={styles.inputWrapper}>
                 <NumericFormat
+                  inputMode="numeric"
                   style={{ paddingRight: 68 }}
                   onValueChange={values => setCustomGasPrice(parseEther(values.value, "gwei"))}
                   value={computedGasPrice}
