@@ -70,7 +70,22 @@
   display: flex;
   justify-content: flex-end;
 
+  img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   svg {
+    z-index: 1;
+    position: relative;
+  }
+
+  svg, img {
     max-width: 100%;
     height: auto;
 
@@ -81,7 +96,7 @@
     padding-top: 20px;
     justify-content: flex-start;
 
-    svg {
+    svg, img {
       max-width: 410px;
     }
   }
@@ -89,7 +104,7 @@
   @include media.for-mobile {
     padding-top: 40px;
 
-    svg {
+    svg, img {
       width: 100%;
     }
   }

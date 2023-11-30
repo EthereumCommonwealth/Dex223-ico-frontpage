@@ -7,6 +7,7 @@ import Svg from "../../../../components/atoms/Svg";
 import FightImage from "../../../../assets/images/fight.svg";
 import clsx from "clsx";
 import { useIntersectionObserver } from "../../../../hooks/useIntersectionObserver";
+import Image from "next/image";
 
 const problems = [
   {
@@ -74,7 +75,10 @@ export default function Fight() {
     }
     rightContent={
       <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
-        <FightImage/>
+        <div className="relative">
+          <FightImage />
+          <Image src="/images/fight-bg.png" alt="ERC-20 vs ERC223 Fight" layout="fill" />
+        </div>
       </div>
     }
   />

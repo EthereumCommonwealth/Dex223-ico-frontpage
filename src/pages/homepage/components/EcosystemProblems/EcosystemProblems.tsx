@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./EcosystemProblems.module.scss";
 import clsx from "clsx";
 import OverlineText from "../../../../components/atoms/OverlineText";
@@ -304,6 +304,14 @@ export default function EcosystemProblems() {
               })}
             </div>
             <div className={styles.slideTextContent}>
+              <div className={styles.navigationMobile}>
+                <button onClick={previousSlide}>
+                  <Svg iconName="arrow-left"/>
+                </button>
+                <button onClick={nextSlide}>
+                  <Svg iconName="arrow-right"/>
+                </button>
+              </div>
               <div>
                 <OverlineText text="Problems Of The Ecosystem" color="purple"/>
                 {slides.map((slide, index) => {

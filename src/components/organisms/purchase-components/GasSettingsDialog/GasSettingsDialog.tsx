@@ -1,6 +1,5 @@
 import React, { useCallback, useRef } from "react";
 import styles from "./GasSettingsDialog.module.scss";
-import Dialog from "@/components/atoms/Dialog";
 import {
   useTransactionGasFee,
   useTransactionGasLimit, useTransactionGasPrice,
@@ -17,7 +16,6 @@ import Tooltip from "@/components/atoms/Tooltip";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
 import AlertMessage from "@/components/atoms/AlertMessage";;
-import { defaultGasLimit } from "@/constants/config";
 import DrawerDialog from "@/components/atoms/DrawerDialog";
 
 interface Props {
