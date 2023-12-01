@@ -10,7 +10,7 @@ import Svg from "@/components/atoms/Svg";
 import RecentTransaction from "../../buy-form/RecentTransaction";
 import { formatEther, parseEther } from "viem";
 import { useAccount, useContractWrite, useFeeData, usePrepareContractWrite } from "wagmi";
-import testICOABI from "../../../../constants/abis/testICOABI.json";
+import testICOABI from "../../../../constants/abis/icoABI.json";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
 import Image from "next/image";

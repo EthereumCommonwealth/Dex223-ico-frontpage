@@ -51,7 +51,7 @@ export const USDC: TokenInfo = {
 export const PROD_DEX223: TokenInfo = {
   id: 5,
   image: "/images/tokens/DEX.svg",
-  address: "0x7008D42622a8B4eF73e946833EA90E608de9e96B",
+  address: "0xcCe968120e6Ded56F32fbfe5A2Ec06CBF1e7c8ED",
   symbol: "D223",
   chainId: 1,
   decimals: 18
@@ -89,7 +89,7 @@ const devMode = false;
 const PRODUCTION_TOKENS = [ETH, USDT, DAI, USDC];
 const TEST_TOKENS = [CLO, BUSDT];
 
-const PRODUCTION_ICO_ADDRESS = "0x98A32581c569DDb12Ae3532ee3f7B03796e4b59b";
+const PRODUCTION_ICO_ADDRESS = "0x9eb11e62bA74366C5AAAA7eEc850FC31E7a3aCf1";
 const TEST_ICO_ADDRESS = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
 // TEST DATA
 

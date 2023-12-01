@@ -11,8 +11,6 @@ import {
   usePublicClient,
   useWalletClient
 } from "wagmi";
-import testICOABI from "../../../../constants/abis/testICOABI.json";
-import { parseUnits } from "viem";
 import Svg from "../../../atoms/Svg";
 import DrawerDialog from "../../../atoms/DrawerDialog";
 import KeystoreConnect from "../../others/KeystoreConnect";
@@ -37,8 +35,7 @@ import {
   useRecentTransactionTracking
 } from "@/components/organisms/purchase-components/BuyForm/hooks/useRecentTransactionTracking";
 import AlertMessage from "@/components/atoms/AlertMessage";
-import addBigInt from "@/functions/addBigInt";
-import { defaultGasLimit } from "@/constants/config";
+import { defaultGasLimitForETH, defaultGasLimitForTokens } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
 import Countdown from "@/components/atoms/Countdown";
@@ -55,8 +52,6 @@ export default function BuyForm() {
   const [isRecentTransactionsOpened, setRecentTransactionsOpened] = useState(false);
 
   const { address } = useAccount();
-  const { chain } = useNetwork();
-  const publicClient = usePublicClient({ chainId: chain?.id });
 
   const {
     isUnViewed,
@@ -98,77 +93,20 @@ export default function BuyForm() {
   const { data: walletClient }: any = useWalletClient();
   const { allowanceData } = useAllowance();
 
-  const [isGasEstimating, setIsGasEstimating] = useState(false);
-
   useEffect(() => {
-    (async () => {
-      try {
-        if (!+amountToPay) {
-          return;
-        }
-        setIsGasEstimating(true);
-
-        if (publicClient?.estimateContractGas) {
-          let gas: bigint;
-
-          if (isNativeToken(pickedToken)) {
-            gas = await publicClient.estimateGas({
-              account: address,
-              to: ICOContractAddressETH,
-              value: parseUnits(amountToPay, pickedToken.decimals)
-            });
-          } else {
-            gas = await publicClient.estimateContractGas({
-              account: address,
-              address: ICOContractAddressETH,
-              abi: testICOABI,
-              functionName: 'purchaseTokens',
-              args: [
-                pickedToken.address,
-                parseUnits(amountToPay, pickedToken.decimals)
-              ]
-            });
-          }
-
-          if (!gas || gasLimitComputed.customized) {
-            return;
-          }
-
-          if (addBigInt(gas, 7000) > defaultGasLimit) {
-            const _limit = addBigInt(gas, 7000);
-            setGasLimit(_limit);
-            setUnsavedGasLimit(_limit);
-            setEstimatedGasLimit(_limit);
-          } else {
-            setGasLimit(defaultGasLimit);
-            setUnsavedGasLimit(defaultGasLimit);
-            setEstimatedGasLimit(defaultGasLimit);
-          }
-        }
-      } catch (error) {
-        if (!gasLimitComputed.customized) {
-          setGasLimit(defaultGasLimit);
-          setUnsavedGasLimit(defaultGasLimit);
-          setEstimatedGasLimit(defaultGasLimit);
-        }
-        console.log("🚀 ~ gas estimation error:", error);
-      } finally {
-        setIsGasEstimating(false);
+    if(!gasLimitComputed.customized) {
+      if(pickedToken.id === 1) {
+        setGasLimit(defaultGasLimitForETH);
+        setUnsavedGasLimit(defaultGasLimitForETH);
+        setEstimatedGasLimit(defaultGasLimitForETH);
+      } else {
+        setGasLimit(defaultGasLimitForTokens);
+        setUnsavedGasLimit(defaultGasLimitForTokens);
+        setEstimatedGasLimit(defaultGasLimitForTokens);
       }
-    })();
-  }, [
-    allowanceData,
-    address,
-    walletClient,
-    pickedToken.decimals,
-    amountToPay,
-    publicClient,
-    setGasLimit,
-    setUnsavedGasLimit,
-    setEstimatedGasLimit,
-    pickedToken,
-    gasLimitComputed.customized
-  ]);
+    }
+
+  }, [gasLimitComputed.customized, pickedToken.id, setEstimatedGasLimit, setGasLimit, setUnsavedGasLimit]);
 
   const { output } = useReward({ pickedToken, amountToPay });
 
@@ -226,7 +164,7 @@ export default function BuyForm() {
 
     {isUnViewed && <>
       {Boolean(failed.length) && <AlertMessage
-        text={<div>Your recent transaction(s) have been failed. Click <button
+        text={<div>Your recent transaction(s) failed. Click <button onClick={() => setRecentTransactionsOpened(true)}
           className={styles.textButton}>here</button> for more details.</div>}
         severity="error"/>
       }

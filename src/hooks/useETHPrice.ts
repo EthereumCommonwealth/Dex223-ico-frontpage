@@ -6,12 +6,8 @@ const API_URL = "https://api-data.absolutewallet.com/api/v1/currencies/minimal/e
 export default function useETHPrice() {
   const { price, setPrice } = useETHPriceStore();
 
-  console.log("ETH PRICE");
-  console.log(price);
-
   useEffect(() => {
     async function updatePrice() {
-      console.log("Updating ETH price...");
       try {
         const res = await fetch(API_URL);
         const data = await res.json();

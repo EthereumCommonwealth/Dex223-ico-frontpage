@@ -9,7 +9,7 @@ import {
 import { ICOContractAddressETH, tokensToPayWith } from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { useEffect, useMemo } from "react";
-import testICOABI from "@/constants/abis/testICOABI.json";
+import testICOABI from "@/constants/abis/icoABI.json";
 import { useRecentTransactionsStore } from "@/stores/useRecentTransactions";
 import {
   useTransactionGasFee, useTransactionGasLimit,

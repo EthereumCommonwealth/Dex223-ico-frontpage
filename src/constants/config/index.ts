@@ -1,1 +1,2 @@
-export const defaultGasLimit = BigInt(50000);
+export const defaultGasLimitForETH = BigInt(80000);
+export const defaultGasLimitForTokens = BigInt(220000);

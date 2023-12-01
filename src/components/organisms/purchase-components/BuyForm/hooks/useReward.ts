@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { formatUnits, parseUnits } from "viem";
 import { useContractRead } from "wagmi";
 import { ICOContractAddressETH, ZERO_ADDRESS } from "@/constants/tokens";
-import testICOABI from "@/constants/abis/testICOABI.json";
+import testICOABI from "@/constants/abis/icoABI.json";
 import { isNativeToken } from "@/functions/isNativeToken";
 
 export function useReward({ amountToPay, pickedToken }) {

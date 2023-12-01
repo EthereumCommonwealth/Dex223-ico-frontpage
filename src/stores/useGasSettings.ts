@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { formatEther, parseEther } from "viem";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
-import { defaultGasLimit } from "@/constants/config";
-import addBigInt from "@/functions/addBigInt";
+import { defaultGasLimitForETH } from "@/constants/config";
+
 
 interface TransactionTypeState {
   type: "legacy" | "default",
@@ -206,9 +206,9 @@ interface GasLimit {
 
 
 export const useTransactionGasLimit = create<GasLimit>((set, get) => ({
-  estimatedGasLimit: defaultGasLimit,
-  gasLimit: defaultGasLimit,
-  unsavedGasLimit: defaultGasLimit,
+  estimatedGasLimit: defaultGasLimitForETH,
+  gasLimit: defaultGasLimitForETH,
+  unsavedGasLimit: defaultGasLimitForETH,
   isEditing: false,
   setEditing: (isEditing: boolean) => set(() => {
     return {
