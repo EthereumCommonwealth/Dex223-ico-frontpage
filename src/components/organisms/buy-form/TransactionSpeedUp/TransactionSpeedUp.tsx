@@ -174,6 +174,7 @@ export default function TransactionSpeedUp({ handleClose }) {
     //set new gas settings to speed up transaction
     maxFeePerGas: currentData.baseFee,
     maxPriorityFeePerGas: currentData.priorityFee,
+    cacheTime: 0
   });
 
   const { showMessage } = useSnackbar();

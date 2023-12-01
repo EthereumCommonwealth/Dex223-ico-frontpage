@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 import { useContractRead } from "wagmi";
 import { ICOContractAddressETH, ZERO_ADDRESS } from "@/constants/tokens";
@@ -14,16 +14,19 @@ export function useReward({ amountToPay, pickedToken }) {
     args: [
       isNativeToken(pickedToken) ? ZERO_ADDRESS : pickedToken.address,
       parseUnits(amountToPay, pickedToken.decimals)
-    ]
+    ],
+    cacheTime: 60000 * 5
   });
 
-  const output = useMemo(() => {
-    if (!amountToPay || !readData) {
-      return ""
-    }
+  const [output, setOutput] = useState("");
 
-    return formatUnits(<bigint>readData, 18);
-  }, [amountToPay, readData]);
+  useEffect(() => {
+    if (typeof readData !== "undefined") {
+      if (typeof readData === "bigint") {
+        setOutput(formatUnits(<bigint>readData, 18))
+      }
+    }
+  }, [readData]);
 
   return { output, readData };
 }

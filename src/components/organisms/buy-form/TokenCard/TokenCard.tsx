@@ -4,6 +4,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import Spacer from "../../../atoms/Spacer";
 import { NumericFormat } from 'react-number-format';
+import TokenPicker from "@/components/organisms/buy-form/TokenPicker";
 
 interface Props {
   type: "pay" | "receive",
@@ -12,7 +13,8 @@ interface Props {
   amount: string,
   handleChange: any,
   readonly?: boolean
-  balance: string
+  balance: string,
+  withPicker?: boolean
 }
 
 export default function TokenCard({
@@ -22,10 +24,12 @@ export default function TokenCard({
                                     amount,
                                     handleChange,
                                     readonly = false,
-                                    balance = ""
+                                    balance = "",
+  withPicker = false
                                   }: Props) {
   return <>
-    <div className={styles.tokenCard}>
+    {withPicker && <TokenPicker/>}
+    <div className={clsx(styles.tokenCard, withPicker && styles.withPicker)}>
       <div className={styles.inputWrapper}>
         <h2>{type === "pay" ? <span>Amount in <span className="bold">{tokenName}</span> you pay</span> :
           <span>Amount in <span className="bold">{tokenName}</span> you receive</span>}</h2>

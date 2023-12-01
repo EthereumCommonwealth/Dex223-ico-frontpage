@@ -156,7 +156,8 @@ export default function LegacyTransactionSpeedUp({ handleClose }) {
     //set nonce from transactionSpeedUp to rewrite transaction
     nonce: transactionToSpeedUp?.details.nonce,
     //set new gas settings to speed up transaction
-    gasPrice: currentData.gasPrice
+    gasPrice: currentData.gasPrice,
+    cacheTime: 0
   });
 
   const { showMessage } = useSnackbar();

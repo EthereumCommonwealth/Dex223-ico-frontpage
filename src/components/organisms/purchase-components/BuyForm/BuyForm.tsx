@@ -7,8 +7,6 @@ import Spacer from "../../../atoms/Spacer";
 import {
   useAccount,
   useBalance,
-  useNetwork,
-  usePublicClient,
   useWalletClient
 } from "wagmi";
 import Svg from "../../../atoms/Svg";
@@ -80,14 +78,16 @@ export default function BuyForm() {
     address,
     token: isNativeToken(pickedToken) ? undefined : pickedToken.address,
     watch: true,
-    chainId: pickedToken.chainId
+    chainId: pickedToken.chainId,
+    cacheTime: 60000 * 60
   });
 
   const { data: D223Balance } = useBalance({
     address,
     token: DEX223.address,
     watch: true,
-    chainId: DEX223.chainId
+    chainId: DEX223.chainId,
+    cacheTime: 0
   });
 
   const { data: walletClient }: any = useWalletClient();
@@ -123,8 +123,8 @@ export default function BuyForm() {
       <span>1 D223 = $0.00065</span>
     </div>
 
-    <TokenPicker/>
-    <TokenCard balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
+
+    <TokenCard withPicker balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={D223Balance?.formatted} type="receive" tokenName={DEX223.symbol}
@@ -170,7 +170,7 @@ export default function BuyForm() {
       }
       {Boolean(pending.length) && <AlertMessage
         text={<div>
-          We have noticed that you have pending transaction, you could track it or speed up below
+          We have noticed that you have a pending transaction, you can track or speed it up below
           <span style={{
             marginLeft: 6,
             top: 6,

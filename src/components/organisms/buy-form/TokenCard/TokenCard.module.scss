@@ -9,6 +9,11 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid colors.$border-primary;
+  border-radius: 4px;
+
+  &.withPicker {
+    border-radius: 0 0 4px 4px;
+  }
 
   @include media-new.lg {
     padding: 12px 20px 10px;
@@ -76,5 +81,5 @@
 }
 
 .balancePlaceholder {
-  height: 20px;
+  height: 16px;
 }

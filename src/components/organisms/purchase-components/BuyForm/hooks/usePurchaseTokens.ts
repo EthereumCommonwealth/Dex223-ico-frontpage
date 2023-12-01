@@ -4,7 +4,7 @@ import {
   useNetwork,
   usePrepareContractWrite,
   usePublicClient,
-  useSendTransaction, useWalletClient
+  useSendTransaction
 } from "wagmi";
 import { ICOContractAddressETH, tokensToPayWith } from "@/constants/tokens";
 import { parseUnits } from "viem";
@@ -20,6 +20,7 @@ import {
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import { usePurchaseData } from "@/stores/usePurchaseData";
 import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
+import { isNativeToken } from "@/functions/isNativeToken";
 
 function stringifyObject(object: { [key: string]: any }) {
   return JSON.parse(JSON.stringify(object, (key, value) =>
@@ -78,7 +79,9 @@ export function usePurchaseTokens() {
     args: [
       pickedToken.address,
       parseUnits(amountToPay, pickedToken.decimals)
-    ]
+    ],
+    cacheTime: 0,
+    enabled: !isNativeToken(pickedToken)
   });
 
   const {

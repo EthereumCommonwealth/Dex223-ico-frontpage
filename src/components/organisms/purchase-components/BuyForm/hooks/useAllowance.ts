@@ -9,6 +9,7 @@ import ERC20ABI from "@/constants/abis/erc20.json";
 import { ICOContractAddressETH } from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { usePurchaseData } from "@/stores/usePurchaseData";
+import { isNativeToken } from "@/functions/isNativeToken";
 
 export function useAllowance() {
   const { address } = useAccount();
@@ -24,7 +25,8 @@ export function useAllowance() {
     args: [
       ICOContractAddressETH,
       parseUnits(amountToPay, pickedToken.decimals)
-    ]
+    ],
+    cacheTime: 0
   });
 
   const {
@@ -35,6 +37,7 @@ export function useAllowance() {
 
   const { data: allowanceFromAwait ,isLoading: isApproving } = useWaitForTransaction({
     hash: approvingData?.hash,
+    cacheTime: 0
   });
 
   const { data: allowanceData }: { data: bigint } = useContractRead({
@@ -45,7 +48,9 @@ export function useAllowance() {
       address,
       ICOContractAddressETH
     ],
-    watch: true
+    cacheTime: 0,
+    watch: true,
+    enabled: !isNativeToken(pickedToken)
   });
 
   return {

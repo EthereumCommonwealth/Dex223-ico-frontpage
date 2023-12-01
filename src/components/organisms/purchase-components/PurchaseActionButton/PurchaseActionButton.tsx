@@ -115,7 +115,7 @@ export default function PurchaseActionButton({
 
   return <Button onClick={() => {
     if (+output > +contractBalance) {
-      showMessage(`There are only ${contractBalance} D223 available at this moment`, "info");
+      showMessage(`There are not enough tokens for sale. Just wait for the next round.`, "info");
       return;
     }
     if(isNativeToken(pickedToken)) {
