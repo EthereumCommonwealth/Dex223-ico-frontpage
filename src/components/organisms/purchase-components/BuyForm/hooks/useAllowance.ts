@@ -9,8 +9,6 @@ import ERC20ABI from "@/constants/abis/erc20.json";
 import { ICOContractAddressETH } from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { usePurchaseData } from "@/stores/usePurchaseData";
-import { useCallback } from "react";
-import { config } from "rxjs";
 
 export function useAllowance() {
   const { address } = useAccount();
@@ -23,7 +21,6 @@ export function useAllowance() {
     address: pickedToken.address,
     abi: ERC20ABI,
     functionName: "approve",
-    gas: BigInt(60000),
     args: [
       ICOContractAddressETH,
       parseUnits(amountToPay, pickedToken.decimals)
@@ -32,17 +29,9 @@ export function useAllowance() {
 
   const {
     data: approvingData,
-    write: _writeTokenApprove,
+    write: writeTokenApprove,
     isLoading: waitingForApprove
   } = useContractWrite(allowanceConfig);
-
-  const writeTokenApprove = useCallback(() => {
-    try {
-      _writeTokenApprove();
-    } catch (e) {
-      console.log(e);
-    }
-  }, [_writeTokenApprove]);
 
   const { data: allowanceFromAwait ,isLoading: isApproving } = useWaitForTransaction({
     hash: approvingData?.hash,
