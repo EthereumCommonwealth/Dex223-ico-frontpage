@@ -8,12 +8,12 @@ import Svg from "@/components/atoms/Svg";
 
 const reports = [
   {
-    text: "November 2023",
-    href: "https://dexaran820.medium.com/dex223-development-report-11-2-2023-e0d51552ba5f"
-  },
-  {
     text: "December 2023",
     href: "https://dexaran820.medium.com/dex223-development-report-12-2-2023-4c16487fb7ed"
+  },
+  {
+    text: "November 2023",
+    href: "https://dexaran820.medium.com/dex223-development-report-11-2-2023-e0d51552ba5f"
   }
 ]
 
