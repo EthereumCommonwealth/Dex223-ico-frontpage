@@ -7,8 +7,8 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   error?: boolean
 }
 
-export default function Button({ variant = "contained", error = false, children, ...props }: Props) {
-  return <button className={clsx(styles.button, styles[variant], error && styles.error)} {...props}>
+export default function Button({ variant = "contained", error = false, children, className, ...props }: Props) {
+  return <button className={clsx(styles.button, styles[variant], error && styles.error, className)} {...props}>
     {children}
   </button>;
 }
