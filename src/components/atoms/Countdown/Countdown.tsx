@@ -1,11 +1,13 @@
 import styles from "./Countdown.module.scss";
 import React from "react";
 import { useCountdown } from "@/hooks/useCountdown";
-const countDownDate = new Date("Dec 4, 2023 18:00:00").getTime();
+
+const countDownDate = new Date("Dec 4, 2023 21:00:00");
+const countDownTimestamp = countDownDate.getTime() - (countDownDate.getTimezoneOffset() * 60 * 1000);
 
 export default function Countdown() {
   // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
-  const [days, hours, minutes, seconds] = useCountdown(countDownDate);
+  const [days, hours, minutes, seconds] = useCountdown(countDownTimestamp);
 
   return (<>
     <div className={styles.counter}>
