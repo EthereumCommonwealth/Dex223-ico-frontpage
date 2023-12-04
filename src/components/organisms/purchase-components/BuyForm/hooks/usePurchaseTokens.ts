@@ -65,7 +65,7 @@ export function usePurchaseTokens() {
   }, [gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
 
   useEffect(() => {
-    setPickedTokenId(tokensToPayWith[1].id);
+    setPickedTokenId(tokensToPayWith[0].id);
   }, [setPickedTokenId, chain]);
 
   const { output } = useReward({ pickedToken, amountToPay });

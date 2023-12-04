@@ -90,9 +90,6 @@ export default function BuyForm() {
     cacheTime: 0
   });
 
-  const { data: walletClient }: any = useWalletClient();
-  const { allowanceData } = useAllowance();
-
   useEffect(() => {
     if(!gasLimitComputed.customized) {
       if(pickedToken.id === 1) {
