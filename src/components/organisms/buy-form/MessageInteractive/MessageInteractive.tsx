@@ -59,7 +59,7 @@ export default function MessageInteractive() {
 
   return <div className={styles.interactiveContainer}>
     <span className={styles.logo}>
-      <Image width={48} height={48} src="/dex.svg" alt=""/>
+      <Image width={50} height={50} src="/dex.svg" alt=""/>
     </span>
     <div className={styles.text}>
       <span>Dexaran</span>
