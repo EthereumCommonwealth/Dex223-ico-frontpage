@@ -77,11 +77,12 @@ export default function NewBanner() {
             </p>
             <p className={styles.paragraph}>
               The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be
-              sold at 45% discount compared to the main ICO round. <button onClick={() => {
+              sold at 45% discount compared to the main ICO round. <span className={styles.buttonWrapper}>
+            <button onClick={() => {
                 setInfoOpened(true)
             }} className={styles.openInfoBtn}>
               <Svg iconName="open-new-window" />
-            </button>
+            </button></span>
             </p>
             <DrawerDialog isOpen={infoOpened} onClose={() => setInfoOpened(false)}>
               <DialogHeader onClose={() => setInfoOpened(false)} title="Anticipating price trends" />

@@ -337,14 +337,40 @@
   border: 0;
   outline: 0;
   transition-duration: 0.2s;
-  height: 24px;
+  height: 1rem;
   padding: 0;
-  width: 24px;
-  position: relative;
-  top: 0.25rem;
+  width: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &:hover {
     color: colors.$palette-green;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include media.for-mobile {
+    svg {
+      width: 20px!important;
+      height: 20px!important;
+    }
   }
 }
 
@@ -365,4 +391,9 @@
     @include typography.t-body-14;
     padding: 16px;
   }
+}
+
+.buttonWrapper {
+  position: relative;
+  padding-left: 1rem;
 }
