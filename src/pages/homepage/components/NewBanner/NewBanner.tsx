@@ -94,12 +94,12 @@ export default function NewBanner() {
               </div>
             </DrawerDialog>
             <p className={styles.paragraph}>
-              Read <ExternalTextLink text="D223 Token FAQ & Wallets support." href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb" />
-            </p>
-            <p className={styles.paragraph}>
               Currently a private pre-sale of tokens is ongoing,
               contact <ExternalTextLink text={dexEmail}
                                         href={dexEmailLink}/> for more details regarding participation.
+            </p>
+            <p className={styles.paragraph}>
+              Read <ExternalTextLink text="D223 Token FAQ & Wallets support." href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb" />
             </p>
           </div>
         </div>
