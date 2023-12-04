@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./DevelopmentReports.module.scss";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import clsx from "clsx";
 import DevSourcesBlueImage from "../../../../assets/images/dev-sources-blue.svg";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";

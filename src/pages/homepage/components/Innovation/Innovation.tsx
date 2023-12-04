@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Innovation.module.scss";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import Spacer from "../../../../components/atoms/Spacer";
 import clsx from "clsx";

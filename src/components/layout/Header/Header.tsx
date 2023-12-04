@@ -9,7 +9,7 @@ import Svg from "../../atoms/Svg";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Header() {
+export default function Header({ blur }: { blur?: boolean }) {
   const { address, isConnected } = useAccount();
   const { open, close, setDefaultChain } = useWeb3Modal();
 
@@ -23,13 +23,11 @@ export default function Header() {
 
   useEffect(() => {
     if (window.location.hash) {
-      console.log(window.location.hash);
       const hash = window.location.hash.replace("#", "");
       const element = document.getElementById(hash);
 
       if (element) {
         const top = element.getBoundingClientRect();
-        console.log(top);
         if (top.y > 1) {
           window.scrollTo({
             top: top.y,
@@ -42,7 +40,7 @@ export default function Header() {
   }, []);
 
   return <header className={styles.header}>
-    <div className={clsx("container", styles.headerContent)}>
+    <div className={clsx("container", styles.headerContent, blur && styles.blur)}>
       <div className={styles.bottomLine}>
         <svg width="3840" height="51" viewBox="0 0 3840 51" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3840 1H1979L1796.5 50H0" stroke="#5A5A5A"/>

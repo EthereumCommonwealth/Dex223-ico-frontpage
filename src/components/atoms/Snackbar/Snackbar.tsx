@@ -21,23 +21,21 @@ export default function Snackbar({ severity, message, handleClose }: Props) {
     golos_text.className
   )}>
     <div className={styles.snackbarContainer}>
-      <div className={styles.snackbarBlock}>
-        <div className={styles.iconWrapper}>
-          {snackbarIcons[severity]}
-        </div>
-        <p>
+      <div className={styles.iconWrapper}>
+        {snackbarIcons[severity]}
+      </div>
+      <p>
           <span className={styles.text}>
             {message}
           </span>
-        </p>
-      </div>
+      </p>
       <div className={styles.buttonWrapper}>
-        <IconButton
-          variant="system"
+        <button
+          className={styles.closeButton}
           onClick={handleClose}
         >
           <Svg iconName="close"/>
-        </IconButton>
+        </button>
       </div>
     </div>
   </div>;

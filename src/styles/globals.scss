@@ -1,5 +1,6 @@
 @use "typography";
 @use "media-new";
+@use "media";
 @use "colors";
 
 @use "svg-animations";
@@ -80,4 +81,17 @@ input[type=number] {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.desktop {
+  @include media.for-mobile {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+  @include media.for-mobile {
+    display: inline;
+  }
 }

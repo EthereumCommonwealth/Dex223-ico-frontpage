@@ -31,6 +31,35 @@
   ul {
     display: grid;
     gap: 4px;
+    padding-left: 24px;
+    list-style: none;
+
+    @include media.for-mobile {
+      padding-left: 16px;
+    }
+
+    li {
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0.7rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        left: -24px;
+        background-color: colors.$text-secondary;
+
+        @include media.for-mobile {
+          width: 6px;
+          height: 6px;
+          transform: unset;
+          left: -18px;
+        }
+
+        //transform: translateY(40%);
+      }
+    }
   }
 }
 
@@ -103,7 +132,7 @@
 .subheading {
   @include typography.t-body-24;
   color: colors.$text-primary;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   font-weight: 600;
 
   @include media.for-tablet {

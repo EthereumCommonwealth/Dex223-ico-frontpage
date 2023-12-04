@@ -3,8 +3,9 @@ import styles from "./Tokenomics.module.scss";
 import clsx from "clsx";
 import Spacer from "../../../../components/atoms/Spacer";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import Image from "next/image";
+import ExternalTextLink from "@/components/atoms/ExternalTextLink";
 
 export default function Tokenomics() {
   const [isIntersected, setIsIntersected] = useState(false);
@@ -36,6 +37,7 @@ export default function Tokenomics() {
       leftContent={
         <>
           <ArticleHeading text="Tokenomics"/>
+          <p className={styles.subheading}>DEX223 tokenomics is based on the <ExternalTextLink text="launch model of the Ethereum platform" href="https://web.archive.org/web/20140824160811/https://www.ethereum.org/" />, one of the most successful crypto projects out there.</p>
           <div className={styles.paragraphs}>
             <p className={styles.text}>The original D223 tokens will be issued in November 2023 on Ethereum mainnet.
               Once
@@ -102,7 +104,7 @@ export default function Tokenomics() {
     <div className="container">
       <div className={styles.labels}>
         <div className={styles.columnLabel}>
-          <span className={styles.labelText}>Exclusive pre-ICO sales at SOY.Finance</span>
+          <span className={styles.labelText}>Discounted pre-ICO sales</span>
           <span className={styles.labelValue}>240,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
         </div>
         <div className={styles.columnLabel}>

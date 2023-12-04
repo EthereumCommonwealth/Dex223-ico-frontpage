@@ -1,0 +1,96 @@
+@use "../../../../styles/colors";
+@use "../../../../styles/typography";
+@use "../../../../styles/media";
+
+.dialog {
+  width: 600px;
+  color: colors.$text-primary;
+
+  @include media.for-mobile {
+    width: 100%;
+  }
+}
+
+.dialogContent {
+  padding: 40px;
+  color: colors.$text-primary;
+  min-height: 344px;
+  max-height: 344px;
+  height: 344px;
+  overflow: scroll;
+
+  @include media.for-mobile {
+    padding: 16px;
+  }
+
+  &.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.noTransactions {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+
+  color: colors.$text-secondary;
+  @include typography.t-body-16;
+}
+
+.dialogHeader {
+  border-bottom: 1px solid colors.$border-primary;
+  height: 60px;
+  padding-left: 40px;
+
+  @include media.for-mobile {
+    padding-left: 16px;
+  }
+
+  @include typography.t-body-20;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  color: colors.$text-primary;
+}
+
+.transactionsList {
+  display: grid;
+  gap: 16px;
+}
+
+.dialogFooter {
+  height: 60px;
+  border-top: 1px solid colors.$border-primary;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > span {
+    @include typography.t-body-16;
+    color: colors.$text-secondary;
+  }
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: colors.$palette-red;
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  cursor: pointer;
+
+  @include typography.t-body-16;
+
+  &[disabled] {
+    color: colors.$placeholder;
+  }
+}

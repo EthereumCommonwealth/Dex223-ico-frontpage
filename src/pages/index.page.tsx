@@ -10,7 +10,7 @@ import BuildingTrust from "./homepage/components/BuildingTrust";
 import Fight from "./homepage/components/Fight";
 import ContactUs from "./homepage/components/ContactUs";
 import Spacer from "../components/atoms/Spacer";
-import ScrollToTopButton from "../components/organisms/ScrollToTopButton";
+import ScrollToTopButton from "../components/organisms/others/ScrollToTopButton";
 import MeetTheTeam from "./homepage/components/MeetTheTeam";
 import Layout from "@/components/layout/Layout";
 import MultichainRollout from "@/pages/homepage/components/MultichainRollout";

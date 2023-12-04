@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Philosophy.module.scss";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import PhilosophyImage from "../../../../assets/images/ph.svg";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
@@ -21,8 +21,6 @@ export default function Philosophy() {
       }, 1000);
     }
   }, [entry?.isIntersecting])
-
-  console.log(entry);
 
   return <>
     <div className="container" style={{ position: "relative" }}>

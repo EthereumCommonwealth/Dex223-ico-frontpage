@@ -2,11 +2,12 @@ import styles from "./Countdown.module.scss";
 import React from "react";
 import { useCountdown } from "@/hooks/useCountdown";
 
-const countDownTimestamp = new Date(Date.UTC(2023, 11, 4, 21, 0, 0));
+
+const countDownDate = new Date(Date.UTC(2024, 0, 11, 0,0,0,0));
 
 export default function Countdown() {
   // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
-  const [days, hours, minutes, seconds] = useCountdown(countDownTimestamp);
+  const [days, hours, minutes, seconds] = useCountdown(countDownDate);
 
   return (<>
     <div className={styles.counter}>

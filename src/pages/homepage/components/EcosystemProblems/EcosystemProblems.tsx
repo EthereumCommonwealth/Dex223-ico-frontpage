@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./EcosystemProblems.module.scss";
 import clsx from "clsx";
 import OverlineText from "../../../../components/atoms/OverlineText";
@@ -36,7 +36,7 @@ const slides = [
     content: <div className={styles.slideParagraphs}>
       <p className={styles.primaryParagraph}>
         ERC-20 standard violates common secure software design principles
-        which resulted in a loss of ${ERCLossesInt} worth of tokens.
+        which resulted in a loss of {ERCLossesInt} worth of tokens.
       </p>
       <div className={styles.calculatorLinkWrapper}>
         <p>Watch ERC-20 Live Losses Calculator <ExternalTextLink text="here" href="https://dexaran.github.io/erc20-losses" /></p>
@@ -304,6 +304,14 @@ export default function EcosystemProblems() {
               })}
             </div>
             <div className={styles.slideTextContent}>
+              <div className={styles.navigationMobile}>
+                <button onClick={previousSlide}>
+                  <Svg iconName="arrow-left"/>
+                </button>
+                <button onClick={nextSlide}>
+                  <Svg iconName="arrow-right"/>
+                </button>
+              </div>
               <div>
                 <OverlineText text="Problems Of The Ecosystem" color="purple"/>
                 {slides.map((slide, index) => {

@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./MeetTheTeam.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import TeamMemberCard from "../../../../components/organisms/TeamMemberCard";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import TeamMemberCard from "../../../../components/organisms/others/TeamMemberCard";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
+import { dexEmailLink } from "@/constants/email";
 
 const team = [
   {
@@ -12,7 +13,7 @@ const team = [
     socials: {
       github: "https://github.com/Dexaran",
       twitter: "http://twitter.com/Dexaran",
-      email: "mailto:dexaran@ethereumclassic.org"
+      email: dexEmailLink
     }
   },
   {
@@ -76,7 +77,8 @@ const team = [
     position: "UI / UX Developer",
     name: "Nadiia Udovychenko",
     socials: {
-      linkedin: "https://www.linkedin.com/in/naud"
+      linkedin: "https://www.linkedin.com/in/naud",
+      behance: "https://www.behance.net/Na_Ud"
     }
   }
 ]

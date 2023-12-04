@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./BuildingTrust.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import clsx from "clsx";
 import { useIntersectionObserver } from "../../../../hooks/useIntersectionObserver";
 

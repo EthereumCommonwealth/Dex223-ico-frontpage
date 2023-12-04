@@ -8,6 +8,7 @@ import References from "./components/References";
 import Spacer from "../../components/atoms/Spacer";
 import Structure from "./components/Structure";
 import { throttle } from 'throttle-debounce';
+import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -20,7 +21,6 @@ export default function Home() {
 
   useEffect(() => {
     function logPositions() {
-      console.log("Fired");
       if (firstRef.current && secondRef.current && thirdRef.current) {
 
         // @ts-ignore
@@ -71,7 +71,7 @@ export default function Home() {
       <Header/>
       <h1 className={styles.pageHeading}>Development progress</h1>
 
-      <p className={styles.pageSubheading}>Here you can track the development progress of Dex223 decentralized exchange
+      <p className={styles.pageSubheading}>Here you can track the development progress of DEX223 decentralized exchange
         and related services.</p>
 
       <div className={styles.tabButtonsContainer}>
@@ -96,6 +96,8 @@ export default function Home() {
       <Structure refEl={firstRef}/>
       <References refEl={secondRef}/>
       <DevelopmentReports refEl={thirdRef}/>
+
+      <ScrollToTopButton />
       <Footer/>
     </>
   )

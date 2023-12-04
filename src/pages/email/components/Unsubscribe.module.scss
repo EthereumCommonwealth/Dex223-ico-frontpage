@@ -1,0 +1,69 @@
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/media";
+@use "../../../styles/mixins";
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 50vh;
+  padding: 60px 16px 0;
+  position: relative;
+  @include media.for-mobile {
+    padding-top: 36px;
+  }
+}
+
+.pageHeading {
+  text-align: center;
+  color: colors.$text-primary;
+  margin-top: 24px;
+
+  @include typography.t-body-30;
+
+  @include media.for-mobile {
+    @include typography.t-body-20;
+  }
+}
+
+.pageSubheading {
+  text-align: center;
+  color: colors.$text-secondary;
+  margin-top: 12px;
+  margin-bottom: 40px;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
+}
+
+.resubscribeButton {
+  width: max-content !important;
+}
+
+.pattern1 {
+  position: absolute;
+  top: -288px;
+  z-index: -1;
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+  transform: scale(-1, 1);
+  left: -500px;
+}
+
+.pattern2 {
+  position: absolute;
+  bottom: -234px;
+  right: -500px;
+  z-index: -1;
+  transform: scale(1, -1);
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+}

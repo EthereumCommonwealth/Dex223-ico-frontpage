@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./References.module.scss";
 import Svg from "../../../../components/atoms/Svg";
 import clsx from "clsx";
 import DevSourcesImage from "../../../../assets/images/dev-src-2.svg";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-
 
 const references = [
   {

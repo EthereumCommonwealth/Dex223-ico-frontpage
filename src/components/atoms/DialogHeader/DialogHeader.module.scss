@@ -1,12 +1,22 @@
 @use "src/styles/colors";
 @use "src/styles/typography";
+@use "src/styles/media";
 
 .dialogHeader {
   padding: 16px 24px 16px 40px;
   border-bottom: 1px solid colors.$border-primary;
+  color: colors.$text-primary;
 
   &.withBack {
     padding: 16px 24px;
+  }
+
+  @include media.for-mobile {
+    padding: 16px;
+
+    &.withBack {
+      padding: 6px 10px;
+    }
   }
 }
 
@@ -26,4 +36,8 @@
   margin-top: 8px;
   @include typography.t-body-16;
   color: colors.$text-secondary;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+  }
 }

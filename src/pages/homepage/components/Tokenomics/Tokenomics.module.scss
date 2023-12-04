@@ -30,6 +30,7 @@
   margin-top: 270px;
   height: 10px;
   position: relative;
+  pointer-events: none;
 
   @include media.for-tablet {
     margin-top: 350px;
@@ -330,4 +331,15 @@
   transform: scale(-1, -1);
   animation: breathing-pattern 6s infinite linear alternate;
   opacity: 0.2;
+}
+
+.subheading {
+  @include typography.t-body-24;
+  color: colors.$text-primary;
+  margin-bottom: 24px;
+  font-weight: 500;
+
+  @include media.for-tablet {
+    @include typography.t-body-20;
+  }
 }

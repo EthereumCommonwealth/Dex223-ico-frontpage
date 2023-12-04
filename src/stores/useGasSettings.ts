@@ -1,6 +1,8 @@
 import { create } from "zustand";
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
+import { defaultGasLimitForETH } from "@/constants/config";
+
 
 interface TransactionTypeState {
   type: "legacy" | "default",
@@ -19,8 +21,10 @@ export const useTransactionTypeStore = create<TransactionTypeState>()((set, get)
 interface GasPrice {
   gasPrice: bigint,
   baseGasPrice: bigint,
+  focused: boolean,
   setGasPrice: (price: bigint) => void
   setBaseGasPrice: (price: bigint) => void,
+  setFocused: (focused: boolean) => void,
   validation: {
     error: string,
     warning: string
@@ -35,8 +39,10 @@ interface GasPrice {
 export const useTransactionGasPrice = create<GasPrice>((set, get) => ({
   gasPrice: BigInt(0),
   baseGasPrice: BigInt(0),
+  focused: false,
   setGasPrice: (price) => set({ gasPrice: price }),
   setBaseGasPrice: (price) => set({ baseGasPrice: price }),
+  setFocused: (focused) => set({focused}),
   validation: {
     get warning() {
       const { gasPrice, baseGasPrice } = get();
@@ -65,7 +71,8 @@ export const useTransactionGasPrice = create<GasPrice>((set, get) => ({
       return formatEther(get().baseGasPrice, "gwei")
     },
     get customized() {
-      return addBigIntPercent(get().baseGasPrice, 20) !== get().gasPrice;
+      const withGwei = parseEther("2", "gwei") + get().baseGasPrice;
+      return Boolean(get().baseGasPrice) && withGwei !== get().gasPrice;
     }
   }
 }))
@@ -73,8 +80,10 @@ export const useTransactionGasPrice = create<GasPrice>((set, get) => ({
 interface GasFee {
   baseFee: bigint,
   maxFeePerGas: bigint,
+  focused: boolean,
   setMaxFeePerGas: (price: bigint) => void
   setBaseFee: (price: bigint) => void,
+  setFocused: (focused: boolean) => void,
   validation: {
     error: string,
     warning: string
@@ -89,8 +98,10 @@ interface GasFee {
 export const useTransactionGasFee = create<GasFee>((set, get) => ({
   maxFeePerGas: BigInt(0),
   baseFee: BigInt(0),
+  focused: false,
   setMaxFeePerGas: (price) => set({ maxFeePerGas: price }),
   setBaseFee: (price) => set({ baseFee: price }),
+  setFocused: (focused) => set({focused}),
   validation: {
     get warning() {
       const { baseFee, maxFeePerGas } = get();
@@ -119,7 +130,7 @@ export const useTransactionGasFee = create<GasFee>((set, get) => ({
       return formatEther(get().maxFeePerGas, "gwei")
     },
     get customized() {
-      return get().maxFeePerGas !== addBigIntPercent(get().baseFee, 20);
+      return get().maxFeePerGas !== addBigIntPercent(get().baseFee, 10);
     }
   }
 }));
@@ -167,7 +178,7 @@ export const useTransactionPriorityFee = create<PriorityFee>((set, get) => ({
       return formatEther(get().basePriority, "gwei")
     },
     get customized() {
-      return get().maxPriorityFeePerGas !== addBigIntPercent(get().basePriority, 50);
+      return get().maxPriorityFeePerGas !== get().basePriority;
     }
   }
 }))
@@ -193,10 +204,11 @@ interface GasLimit {
   }
 }
 
+
 export const useTransactionGasLimit = create<GasLimit>((set, get) => ({
-  estimatedGasLimit: BigInt(0),
-  gasLimit: BigInt(0),
-  unsavedGasLimit: BigInt(0),
+  estimatedGasLimit: defaultGasLimitForETH,
+  gasLimit: defaultGasLimitForETH,
+  unsavedGasLimit: defaultGasLimitForETH,
   isEditing: false,
   setEditing: (isEditing: boolean) => set(() => {
     return {
@@ -254,7 +266,7 @@ export const useTransactionGasLimit = create<GasLimit>((set, get) => ({
       const { estimatedGasLimit, gasLimit } = get();
 
       if (Boolean(estimatedGasLimit) && gasLimit < estimatedGasLimit) {
-        return "Gas limit is lower than estimated"
+        return "Gas limit is lower than recommended"
       }
 
       return ""
@@ -262,7 +274,7 @@ export const useTransactionGasLimit = create<GasLimit>((set, get) => ({
   },
   computed: {
     get customized() {
-      return get().gasLimit !== addBigIntPercent(get().estimatedGasLimit, 20);
+      return get().gasLimit !== get().estimatedGasLimit;
     }
   }
 }))

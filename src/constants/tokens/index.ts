@@ -1,3 +1,8 @@
+import { callisto } from "@/constants/chains/callisto";
+import { mainnet } from "wagmi";
+
+export const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
+
 export type TokenInfo = {
   id: number,
   image: string,
@@ -43,11 +48,20 @@ export const USDC: TokenInfo = {
   decimals: 6
 }
 
-export const DEX223: TokenInfo = {
+export const PROD_DEX223: TokenInfo = {
   id: 5,
   image: "/images/tokens/DEX.svg",
-  address: "0xf5717D6c1cbAFE00A4c800B227eCe496180244F9",
-  symbol: "DEX223",
+  address: "0xcCe968120e6Ded56F32fbfe5A2Ec06CBF1e7c8ED",
+  symbol: "D223",
+  chainId: 1,
+  decimals: 18
+}
+
+export const TEST_DEX223: TokenInfo = {
+  id: 5,
+  image: "/images/tokens/DEX.svg",
+  address: "0x9f519E60Fe7d9B4078AD77d3C2831A055C87A79B",
+  symbol: "D223",
   chainId: 1,
   decimals: 18
 }
@@ -70,33 +84,18 @@ export const BUSDT: TokenInfo = {
   decimals: 18
 }
 
-export const TEST_DEX223: TokenInfo = {
-  id: 13,
-  image: "/images/tokens/DEX.svg",
-  address: "0x9f519E60Fe7d9B4078AD77d3C2831A055C87A79B",
-  symbol: "DEX223",
-  chainId: 820,
-  decimals: 18
-}
+const devMode = false;
 
-const ICOContract: `0x${string}` = "0x1F369D3541AA908021399036830BCe70B4E06DAE";
-const testICOContract: `0x${string}` = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
+const PRODUCTION_TOKENS = [ETH, USDT, DAI, USDC];
+const TEST_TOKENS = [CLO, BUSDT];
 
-export const tokensToPayWith = [ETH, USDT, DAI, USDC];
-export const testTokensToPayWith = [ETH, USDT, DAI, USDC];
+const PRODUCTION_ICO_ADDRESS = "0x9eb11e62bA74366C5AAAA7eEc850FC31E7a3aCf1";
+const TEST_ICO_ADDRESS = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
+// TEST DATA
 
-export function getTokensToPayWith(isDev: boolean): TokenInfo[] {
-  return isDev ? testTokensToPayWith : tokensToPayWith;
-}
+export const tokensToPayWith = devMode ? TEST_TOKENS : PRODUCTION_TOKENS;
+export const ICOContractAddressETH: `0x${string}` = devMode ? TEST_ICO_ADDRESS : PRODUCTION_ICO_ADDRESS;
 
-export function getDEXToken(isDev: boolean): TokenInfo {
-  return isDev ? TEST_DEX223 : DEX223;
-}
-
-export function getICOContractAddress(isDev: boolean): `0x${string}` {
-  return isDev ? testICOContract : ICOContract;
-}
-
-export function getChainId(isDev: boolean) {
-  return isDev ? 820 : 1;
-}
+export const DEX223 = devMode ? TEST_DEX223 : PROD_DEX223;
+export const chainToConnect = devMode ? callisto : mainnet;
+export const chainsToConnect = [chainToConnect];
