@@ -102,6 +102,9 @@ export default function NewBanner() {
             <p className={styles.paragraph}>
               Read <ExternalTextLink text="D223 Token FAQ & Wallets support." href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb" />
             </p>
+            <p className={styles.paragraph}>
+              Have a question? Write a comment <ExternalTextLink text="here" href="https://www.reddit.com/r/CallistoCrypto/comments/18ajzj1/dex223_presale_round_2_announcement/" />
+            </p>
           </div>
         </div>
 
