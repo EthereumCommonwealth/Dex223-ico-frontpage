@@ -2,8 +2,7 @@ import styles from "./Countdown.module.scss";
 import React from "react";
 import { useCountdown } from "@/hooks/useCountdown";
 
-const countDownDate = new Date("Dec 4, 2023 21:00:00");
-const countDownTimestamp = countDownDate.getTime() - (countDownDate.getTimezoneOffset() * 60 * 1000);
+const countDownTimestamp = new Date(Date.UTC(2023, 11, 4, 21, 0, 0));
 
 export default function Countdown() {
   // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
