@@ -12,7 +12,7 @@ interface IPurchaseData {
 }
 
 export const usePurchaseData = create<IPurchaseData>((set, get) => ({
-  pickedTokenId: tokensToPayWith[0].id,
+  pickedTokenId: tokensToPayWith[1].id,
   amountToPay: "",
 
   setPickedTokenId: (id) => set({ pickedTokenId: id }),
