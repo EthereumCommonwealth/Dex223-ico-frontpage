@@ -8,6 +8,7 @@ import Preloader from "../../../../components/atoms/Preloader";
 import Spacer from "../../../../components/atoms/Spacer";
 import Svg from "../../../../components/atoms/Svg";
 import BuyForm from "@/components/organisms/purchase-components/BuyForm";
+import { dexEmail, dexEmailLink } from "@/constants/email";
 
 export default function NewBanner() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,8 +75,8 @@ export default function NewBanner() {
             </p>
             <p className={styles.paragraph}>
               Currently a private pre-sale of tokens is ongoing,
-              contact <ExternalTextLink text="dexaran@ethereumclassic.org"
-                                        href="mailto: dexaran@ethereumclassic.org"/> for more details regarding participation.
+              contact <ExternalTextLink text={dexEmail}
+                                        href={dexEmailLink}/> for more details regarding participation.
             </p>
           </div>
         </div>

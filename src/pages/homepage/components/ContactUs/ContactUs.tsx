@@ -8,6 +8,7 @@ import ContactUsImage from "../../../../assets/images/tg-contact-us.svg";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import clsx from "clsx";
 import Image from "next/image";
+import { dexEmail, dexEmailLink } from "@/constants/email";
 
 export default function ContactUs() {
   const ref = useRef();
@@ -27,20 +28,20 @@ export default function ContactUs() {
           <ArticleHeading text="Get in touch"/>
           <p className={styles.text}>
             To contact us please fill out the form below which sends letters to
-            email <ExternalTextLink text="dexaran@ethereumclassic.org" href="mailto:dexaran@ethereumclassic.org"/> or
+            email <ExternalTextLink text={dexEmail} href={dexEmailLink}/> or
             Telegram <ExternalTextLink text="@Dexaran" href="https://t.me/Dexaran"/>.
           </p>
           <div className={styles.buttonsWrapper}>
-            <a href="mailto:dexaran@ethereumclassic.org">
+            <a href={dexEmailLink}>
               <button>
-                <span>Write to email</span>
+                <span>Contact by email</span>
                 <Svg iconName="email"/>
               </button>
             </a>
             <a href="https://t.me/Dexaran">
               <button>
             <span>
-              Write to Telegram
+              Telegram
             </span>
                 <Svg iconName="telegram"/>
               </button>

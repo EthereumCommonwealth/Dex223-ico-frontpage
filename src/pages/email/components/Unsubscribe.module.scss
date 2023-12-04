@@ -1,6 +1,7 @@
 @use "../../../styles/colors";
 @use "../../../styles/typography";
 @use "../../../styles/media";
+@use "../../../styles/mixins";
 
 
 .container {
@@ -11,8 +12,8 @@
   max-width: 800px;
   margin: 0 auto;
   min-height: 50vh;
-  padding: 0px 16px;
-  padding-top: 60px;
+  padding: 60px 16px 0;
+  position: relative;
   @include media.for-mobile {
     padding-top: 36px;
   }
@@ -32,7 +33,7 @@
 
 .pageSubheading {
   text-align: center;
-  color: colors.$text-primary;
+  color: colors.$text-secondary;
   margin-top: 12px;
   margin-bottom: 40px;
 
@@ -45,4 +46,24 @@
 
 .resubscribeButton {
   width: max-content !important;
+}
+
+.pattern1 {
+  position: absolute;
+  top: -288px;
+  z-index: -1;
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+  transform: scale(-1, 1);
+  left: -500px;
+}
+
+.pattern2 {
+  position: absolute;
+  bottom: -234px;
+  right: -500px;
+  z-index: -1;
+  transform: scale(1, -1);
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
 }

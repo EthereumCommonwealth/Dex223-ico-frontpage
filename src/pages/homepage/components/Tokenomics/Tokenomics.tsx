@@ -104,7 +104,7 @@ export default function Tokenomics() {
     <div className="container">
       <div className={styles.labels}>
         <div className={styles.columnLabel}>
-          <span className={styles.labelText}>Exclusive pre-ICO sales at SOY.Finance</span>
+          <span className={styles.labelText}>Discounted pre-ICO sales</span>
           <span className={styles.labelValue}>240,000,000 D223 <span className={styles.labelPercentage}>3%</span></span>
         </div>
         <div className={styles.columnLabel}>

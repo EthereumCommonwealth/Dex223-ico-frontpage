@@ -3,6 +3,7 @@ import styles from "./MeetTheTeam.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import TeamMemberCard from "../../../../components/organisms/others/TeamMemberCard";
 import NeonBlock from "../../../../components/organisms/others/NeonBlock";
+import { dexEmailLink } from "@/constants/email";
 
 const team = [
   {
@@ -12,7 +13,7 @@ const team = [
     socials: {
       github: "https://github.com/Dexaran",
       twitter: "http://twitter.com/Dexaran",
-      email: "mailto:dexaran@ethereumclassic.org"
+      email: dexEmailLink
     }
   },
   {

@@ -10,6 +10,10 @@
   justify-content: space-between;
   position: relative;
 
+  &.blur {
+    backdrop-filter: blur(10px);
+  }
+
   @media screen and (max-width: 1500px) {
     backdrop-filter: blur(10px);
     height: 48px;
