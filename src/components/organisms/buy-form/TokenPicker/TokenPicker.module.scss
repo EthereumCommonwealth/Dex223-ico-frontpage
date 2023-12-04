@@ -74,10 +74,34 @@
     }
   }
 
+  .broken {
+    display: none;
+  }
+
   &[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
+    //opacity: 0.5;
     z-index: 0;
+    position: relative;
+    &:after {
+      border-color: colors.$border-primary;
+    }
+
+    .tokenImage, span {
+      opacity: 0.5;
+    }
+
+    &:hover {
+      .broken {
+        display: block;
+        position: absolute;
+        background: colors.$background-secondary;
+        padding: 16px;
+        border: 1px solid colors.$border-primary;
+        color: colors.$text-primary;
+        width: 200px;
+        bottom: 55px;
+      }
+    }
   }
 
   @include media-new.lg {

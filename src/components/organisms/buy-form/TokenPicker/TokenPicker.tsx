@@ -19,7 +19,10 @@ export default function TokenPicker() {
         <div className={styles.tokenImage}>
           <Image layout='fill' objectFit='contain' src={token.image} alt=""/>
         </div>
-        {token.symbol}
+        <span>{token.symbol}</span>
+        <div className={styles.broken}>
+          We detected a problem with a price oracle
+        </div>
       </button>
     })}
   </div>;
