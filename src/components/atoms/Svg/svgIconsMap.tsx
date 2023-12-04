@@ -1,6 +1,7 @@
 import React from "react";
 
 export const svgIconsNames = [
+  "open-new-window",
   "error",
   "done",
   "info",

@@ -79,7 +79,11 @@
   margin-bottom: 16px;
 
   @include media.for-laptop {
-    @include typography.t-body-12;
+    @include typography.t-body-16;
+  }
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
   }
 }
 
@@ -92,7 +96,11 @@
   @include typography.t-body-20;
 
   @include media.for-laptop {
-    @include typography.t-body-12;
+    @include typography.t-body-16;
+  }
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
   }
 }
 
@@ -319,5 +327,42 @@
       top: 0px;
       height: 300px;
     }
+  }
+}
+
+.openInfoBtn {
+  background: transparent;
+  cursor: pointer;
+  color: colors.$text-primary;
+  border: 0;
+  outline: 0;
+  transition-duration: 0.2s;
+  height: 24px;
+  padding: 0;
+  width: 24px;
+  position: relative;
+  top: 0.25rem;
+
+  &:hover {
+    color: colors.$palette-green;
+  }
+}
+
+.infoDialog {
+  padding: 40px;
+  display: grid;
+  gap: 12px;
+  @include typography.t-body-18;
+  color: colors.$text-primary;
+  max-width: 600px;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+    padding: 16px;
   }
 }

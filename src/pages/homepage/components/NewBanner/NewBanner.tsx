@@ -9,11 +9,16 @@ import Spacer from "../../../../components/atoms/Spacer";
 import Svg from "../../../../components/atoms/Svg";
 import BuyForm from "@/components/organisms/purchase-components/BuyForm";
 import { dexEmail, dexEmailLink } from "@/constants/email";
+import Dialog from "@/components/atoms/Dialog";
+import DialogHeader from "@/components/atoms/DialogHeader";
+import DrawerDialog from "@/components/atoms/DrawerDialog";
 
 export default function NewBanner() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const { showMessage } = useSnackbar();
+
+  const [infoOpened, setInfoOpened] = useState(false);
 
   const handleEmailSubmit = useCallback(async () => {
     setIsSubmitting(true);
@@ -71,7 +76,25 @@ export default function NewBanner() {
               The first presale round was completed at 15 Sep 2023 within 24 hours.
             </p>
             <p className={styles.paragraph}>
-              The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be sold at 45% discount compared to the main ICO round.
+              The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be
+              sold at 45% discount compared to the main ICO round. <button onClick={() => {
+                setInfoOpened(true)
+            }} className={styles.openInfoBtn}>
+              <Svg iconName="open-new-window" />
+            </button>
+            </p>
+            <DrawerDialog isOpen={infoOpened} onClose={() => setInfoOpened(false)}>
+              <DialogHeader onClose={() => setInfoOpened(false)} title="Anticipating price trends" />
+              <div className={styles.infoDialog}>
+                <img src="/images/stonks.png" alt="" />
+                <p>Main phase of the ICO consists of Public round 1, Public round 2 and Auction.</p>
+                <p>It is difficult to predict the auction price precisely but based on our estimations of EOS, SOY.Finance IDO that followed the same auction model the average price at an auction is approximately 140% of the price at the moment of the auction opening.</p>
+                <p>Assuming the price of the last public ICO round 2 ($0.001 per token) to be the opening auction price we expect D223 tokens to have an average price of $0.001164</p>
+                <p>The most accurate token information is available <ExternalTextLink text="here" href="https://github.com/EthereumCommonwealth/Roadmap/issues/71" />.</p>
+              </div>
+            </DrawerDialog>
+            <p className={styles.paragraph}>
+              Read <ExternalTextLink text="D223 Token FAQ & Wallets support." href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb" />
             </p>
             <p className={styles.paragraph}>
               Currently a private pre-sale of tokens is ongoing,

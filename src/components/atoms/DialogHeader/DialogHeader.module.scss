@@ -5,6 +5,7 @@
 .dialogHeader {
   padding: 16px 24px 16px 40px;
   border-bottom: 1px solid colors.$border-primary;
+  color: colors.$text-primary;
 
   &.withBack {
     padding: 16px 24px;

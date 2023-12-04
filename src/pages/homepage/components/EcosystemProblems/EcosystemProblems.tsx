@@ -36,7 +36,7 @@ const slides = [
     content: <div className={styles.slideParagraphs}>
       <p className={styles.primaryParagraph}>
         ERC-20 standard violates common secure software design principles
-        which resulted in a loss of ${ERCLossesInt} worth of tokens.
+        which resulted in a loss of {ERCLossesInt} worth of tokens.
       </p>
       <div className={styles.calculatorLinkWrapper}>
         <p>Watch ERC-20 Live Losses Calculator <ExternalTextLink text="here" href="https://dexaran.github.io/erc20-losses" /></p>
