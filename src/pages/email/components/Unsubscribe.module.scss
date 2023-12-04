@@ -1,0 +1,48 @@
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/media";
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 50vh;
+  padding: 0px 16px;
+  padding-top: 60px;
+  @include media.for-mobile {
+    padding-top: 36px;
+  }
+}
+
+.pageHeading {
+  text-align: center;
+  color: colors.$text-primary;
+  margin-top: 24px;
+
+  @include typography.t-body-30;
+
+  @include media.for-mobile {
+    @include typography.t-body-20;
+  }
+}
+
+.pageSubheading {
+  text-align: center;
+  color: colors.$text-primary;
+  margin-top: 12px;
+  margin-bottom: 40px;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
+}
+
+.resubscribeButton {
+  width: max-content !important;
+}
