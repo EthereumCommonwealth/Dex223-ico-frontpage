@@ -112,7 +112,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
-    {!presale ?? <div className={styles.preICOText}>pre-ICO: Round 2</div>}
+    {!presale && <div className={styles.preICOText}>pre-ICO: Round 2</div>}
     <p className={styles.ico}>
       ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
     </p>
