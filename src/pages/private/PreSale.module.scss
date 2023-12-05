@@ -1,6 +1,10 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+@use "src/styles/media";
+
 .formWrapper {
   max-width: 600px;
-  margin: 100px auto;
+  margin: 60px auto 0;
   position: relative;
 }
 
@@ -22,5 +26,27 @@
   transform: scale(1, -1);
   animation: breathing-pattern 6s infinite linear alternate;
   opacity: 0.2;
+}
+
+.heading {
+  margin: 0 auto 8px;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+  color: colors.$text-primary;
+  text-align: center;
+}
+
+.anyQuestion {
+  color: colors.$text-secondary;
+  margin-bottom: 40px;
+  text-align: center;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+  }
 }
 

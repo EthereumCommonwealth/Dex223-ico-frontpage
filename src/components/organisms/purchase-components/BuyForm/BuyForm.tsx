@@ -37,6 +37,8 @@ import { defaultGasLimitForETH, defaultGasLimitForTokens } from "@/constants/con
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
 import Countdown from "@/components/atoms/Countdown";
+import ExternalTextLink from "@/components/atoms/ExternalTextLink";
+import { dexEmail, dexEmailLink } from "@/constants/email";
 
 
 export default function BuyForm({ presale = false }: { presale?: boolean }) {
@@ -110,12 +112,12 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
-    <div className={styles.preICOText}>{presale ? "Private sale" : "pre-ICO: Round 2"}</div>
+    {!presale ?? <div className={styles.preICOText}>pre-ICO: Round 2</div>}
     <p className={styles.ico}>
       ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
     </p>
     {!presale && <Countdown/>}
-    <ICOProgressBar presale={presale} />
+    {!presale && <ICOProgressBar presale={presale} />}
     <div className={styles.ratio}>
       <span>1 D223 = {presale ? "$0.0005" : "$0.00065"}</span>
     </div>
