@@ -6,6 +6,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-bottom: 0;
+
+  &.presale {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .tokenPickButton {

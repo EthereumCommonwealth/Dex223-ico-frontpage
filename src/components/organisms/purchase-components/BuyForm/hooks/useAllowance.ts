@@ -6,12 +6,12 @@ import {
   useWaitForTransaction
 } from "wagmi";
 import ERC20ABI from "@/constants/abis/erc20.json";
-import { ICOContractAddressETH } from "@/constants/tokens";
+import { ICOContractAddressETH, ICOContractAddressETHPreSale } from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { usePurchaseData } from "@/stores/usePurchaseData";
 import { isNativeToken } from "@/functions/isNativeToken";
 
-export function useAllowance() {
+export function useAllowance({presale}) {
   const { address } = useAccount();
   const { amountToPay, pickedToken } = usePurchaseData(({ amountToPay, computed }) => ({
     amountToPay,
@@ -23,7 +23,7 @@ export function useAllowance() {
     abi: ERC20ABI,
     functionName: "approve",
     args: [
-      ICOContractAddressETH,
+      presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
       parseUnits(amountToPay, pickedToken.decimals)
     ],
     cacheTime: 0
@@ -46,7 +46,7 @@ export function useAllowance() {
     functionName: "allowance",
     args: [
       address,
-      ICOContractAddressETH
+      presale ? ICOContractAddressETHPreSale : ICOContractAddressETH
     ],
     cacheTime: 0,
     watch: true,

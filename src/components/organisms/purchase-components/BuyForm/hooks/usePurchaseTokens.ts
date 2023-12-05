@@ -6,7 +6,12 @@ import {
   usePublicClient,
   useSendTransaction
 } from "wagmi";
-import { ICOContractAddressETH, tokensToPayWith } from "@/constants/tokens";
+import {
+  ICOContractAddressETH,
+  ICOContractAddressETHPreSale,
+  tokensToPayWith,
+  tokensToPayWithPreSale
+} from "@/constants/tokens";
 import { parseUnits } from "viem";
 import { useEffect, useMemo } from "react";
 import testICOABI from "@/constants/abis/icoABI.json";
@@ -30,7 +35,7 @@ function stringifyObject(object: { [key: string]: any }) {
   ));
 }
 
-export function usePurchaseTokens() {
+export function usePurchaseTokens({presale}) {
   const {
     setPickedTokenId,
     amountToPay,
@@ -65,13 +70,13 @@ export function usePurchaseTokens() {
   }, [gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
 
   useEffect(() => {
-    setPickedTokenId(tokensToPayWith[0].id);
-  }, [setPickedTokenId, chain]);
+    setPickedTokenId(presale ? tokensToPayWithPreSale[0].id : tokensToPayWith[0].id);
+  }, [setPickedTokenId, chain, presale]);
 
-  const { output } = useReward({ pickedToken, amountToPay });
+  const { output } = useReward({ pickedToken, amountToPay, presale });
 
   const { config: purchaseConfig, error } = usePrepareContractWrite({
-    address: ICOContractAddressETH,
+    address: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
     abi: testICOABI,
     functionName: 'purchaseTokens',
     gas: gasLimit,
@@ -107,7 +112,7 @@ export function usePurchaseTokens() {
           type: type === "default" ? 2 : 0,
           details: {
             nonce: _nonce - 1,
-            address: ICOContractAddressETH,
+            address: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
             abi: "ICO_ABI",
             functionName: 'purchaseTokens',
             gas: gasLimit.toString(),
@@ -125,7 +130,7 @@ export function usePurchaseTokens() {
 
   const { data, sendTransaction: purchaseWithCoins, isLoading: waitingForPurchaseWithCoins } =
     useSendTransaction({
-      to: ICOContractAddressETH,
+      to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
       value: parseUnits(amountToPay, pickedToken.decimals),
       gas: gasLimit,
       ...gasSettings,
@@ -142,7 +147,7 @@ export function usePurchaseTokens() {
             type: type === "default" ? 2 : 0,
             details: {
               nonce: _nonce - 1,
-              to: ICOContractAddressETH,
+              to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
               value: parseUnits(amountToPay, pickedToken.decimals).toString(),
               gas: gasLimit.toString(),
               ...stringifyObject(gasSettings)

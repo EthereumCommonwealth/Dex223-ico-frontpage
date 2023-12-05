@@ -9,8 +9,8 @@ function millions(amount: number) {
 
 const total = millions(160);
 // const total = 15380;
-export default function ICOProgressBar() {
-  const contractBalance = useICOContractBalance();
+export default function ICOProgressBar({presale}) {
+  const contractBalance = useICOContractBalance({presale});
 
   const barPercentage = useMemo(() => {
     if (!contractBalance?.data?.formatted) {

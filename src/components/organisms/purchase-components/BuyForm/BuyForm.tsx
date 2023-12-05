@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BuyForm.module.scss";
-import { DEX223, ICOContractAddressETH } from "@/constants/tokens";
+import { DEX223, ICOContractAddressETH, ICOContractAddressETHPreSale } from "@/constants/tokens";
 import clsx from "clsx";
 import TokenCard from "../../buy-form/TokenCard";
 import Spacer from "../../../atoms/Spacer";
@@ -39,7 +39,7 @@ import { useAllowance } from "@/components/organisms/purchase-components/BuyForm
 import Countdown from "@/components/atoms/Countdown";
 
 
-export default function BuyForm() {
+export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
     pickedToken: state.computed.pickedToken,
     setAmountToPay: state.setAmountToPay,
@@ -72,7 +72,7 @@ export default function BuyForm() {
 
   useTrackFeeData();
 
-  const contractBalance = useICOContractBalance();
+  const contractBalance = useICOContractBalance({presale});
 
   const { data: tokenToPayBalance } = useBalance({
     address,
@@ -91,8 +91,8 @@ export default function BuyForm() {
   });
 
   useEffect(() => {
-    if(!gasLimitComputed.customized) {
-      if(pickedToken.id === 1) {
+    if (!gasLimitComputed.customized) {
+      if (pickedToken.id === 1) {
         setGasLimit(defaultGasLimitForETH);
         setUnsavedGasLimit(defaultGasLimitForETH);
         setEstimatedGasLimit(defaultGasLimitForETH);
@@ -105,23 +105,23 @@ export default function BuyForm() {
 
   }, [gasLimitComputed.customized, pickedToken.id, setEstimatedGasLimit, setGasLimit, setUnsavedGasLimit]);
 
-  const { output } = useReward({ pickedToken, amountToPay });
+  const { output } = useReward({ pickedToken, amountToPay, presale });
 
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
-    <div className={styles.preICOText}>pre-ICO: Round 2</div>
+    <div className={styles.preICOText}>{presale ? "Private sale" : "pre-ICO: Round 2"}</div>
     <p className={styles.ico}>
-      ICO contract: {ICOContractAddressETH}
+      ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
     </p>
-    <Countdown />
-    <ICOProgressBar/>
+    {!presale && <Countdown/>}
+    <ICOProgressBar presale={presale} />
     <div className={styles.ratio}>
-      <span>1 D223 = $0.00065</span>
+      <span>1 D223 = {presale ? "$0.0005" : "$0.00065"}</span>
     </div>
 
 
-    <TokenCard withPicker balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
+    <TokenCard withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={D223Balance?.formatted} type="receive" tokenName={DEX223.symbol}
@@ -150,19 +150,21 @@ export default function BuyForm() {
       <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)}/>
     </div>
     <Spacer height={20}/>
-    <MessageInteractive/>
+    <MessageInteractive presale={presale} />
     <Spacer height={20}/>
     <PurchaseActionButton
       isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
       isAmountEntered={Boolean(+amountToPay)}
       contractBalance={contractBalance?.data?.formatted}
       openKeystore={() => setDialogOpened(true)}
+      presale={presale}
     />
 
     {isUnViewed && <>
       {Boolean(failed.length) && <AlertMessage
         text={<div>Your recent transaction(s) failed. Click <button onClick={() => setRecentTransactionsOpened(true)}
-          className={styles.textButton}>here</button> for more details.</div>}
+                                                                    className={styles.textButton}>here</button> for more
+          details.</div>}
         severity="error"/>
       }
       {Boolean(pending.length) && <AlertMessage

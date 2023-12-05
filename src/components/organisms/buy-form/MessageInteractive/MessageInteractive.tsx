@@ -6,9 +6,9 @@ import { useReward } from "@/components/organisms/purchase-components/BuyForm/ho
 import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
-export default function MessageInteractive() {
+export default function MessageInteractive({presale}) {
   const { amountToPay, computed } = usePurchaseData();
-  const { readData } = useReward({ amountToPay, pickedToken: computed.pickedToken });
+  const { readData } = useReward({ amountToPay, pickedToken: computed.pickedToken, presale });
   const [message, setMessage] = useState("...");
   const {isConnected} = useAccount();
 

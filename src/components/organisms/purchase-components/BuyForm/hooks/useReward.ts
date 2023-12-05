@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { formatUnits, parseUnits } from "viem";
 import { useContractRead } from "wagmi";
-import { ICOContractAddressETH, ZERO_ADDRESS } from "@/constants/tokens";
+import { ICOContractAddressETH, ICOContractAddressETHPreSale, ZERO_ADDRESS } from "@/constants/tokens";
 import testICOABI from "@/constants/abis/icoABI.json";
 import { isNativeToken } from "@/functions/isNativeToken";
 
-export function useReward({ amountToPay, pickedToken }) {
+export function useReward({ amountToPay, pickedToken, presale }) {
   const { data: readData, isLoading, status } = useContractRead({
-    address: ICOContractAddressETH,
+    address: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
     abi: testICOABI,
     functionName: "getRewardAmount",
     chainId: pickedToken.chainId,

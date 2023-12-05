@@ -87,15 +87,18 @@ export const BUSDT: TokenInfo = {
 const devMode = false;
 
 const PRODUCTION_TOKENS = [ETH, USDT, DAI, USDC];
+const PRE_SALE_TOKENS = [USDT, USDC];
 const TEST_TOKENS = [CLO, BUSDT];
 
 const PRODUCTION_ICO_ADDRESS = "0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879";
+const PRODUCTION_ICO_ADDRESS_PRE_SALE = "0x9eb11e62bA74366C5AAAA7eEc850FC31E7a3aCf1";
 const TEST_ICO_ADDRESS = "0x2909348851A89beD89508fBd4f87CA82A42780d0";
 // TEST DATA
 
 export const tokensToPayWith = devMode ? TEST_TOKENS : PRODUCTION_TOKENS;
+export const tokensToPayWithPreSale = PRE_SALE_TOKENS;
 export const ICOContractAddressETH: `0x${string}` = devMode ? TEST_ICO_ADDRESS : PRODUCTION_ICO_ADDRESS;
-
+export const ICOContractAddressETHPreSale = PRODUCTION_ICO_ADDRESS_PRE_SALE;
 export const DEX223 = devMode ? TEST_DEX223 : PROD_DEX223;
 export const chainToConnect = devMode ? callisto : mainnet;
 export const chainsToConnect = [chainToConnect];

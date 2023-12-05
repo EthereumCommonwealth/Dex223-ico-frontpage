@@ -25,7 +25,8 @@ export default function PurchaseActionButton({
                                                isEnoughBalance,
                                                isAmountEntered,
                                                contractBalance,
-                                               openKeystore
+                                               openKeystore,
+  presale
                                              }) {
   const { open } = useWeb3Modal();
   const { isConnected } = useAccount();
@@ -36,9 +37,9 @@ export default function PurchaseActionButton({
     isLoading,
     purchaseWithCoins,
     purchaseWithTokens
-  } = usePurchaseTokens();
+  } = usePurchaseTokens({presale});
 
-  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove } = useAllowance();
+  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove } = useAllowance({presale});
 
   const approveLoading = usePreloaderTimeout({isLoading: isApproving, timeout: 2000});
 
@@ -47,7 +48,7 @@ export default function PurchaseActionButton({
     amountToPay: state.amountToPay
   }));
 
-  const { output } = useReward({ pickedToken, amountToPay });
+  const { output } = useReward({ pickedToken, amountToPay, presale });
 
   const {type} = useTransactionTypeStore();
 

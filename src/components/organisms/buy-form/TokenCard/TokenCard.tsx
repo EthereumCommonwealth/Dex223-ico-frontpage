@@ -15,6 +15,7 @@ interface Props {
   readonly?: boolean
   balance: string,
   withPicker?: boolean
+  presale?: boolean
 }
 
 export default function TokenCard({
@@ -25,10 +26,11 @@ export default function TokenCard({
                                     handleChange,
                                     readonly = false,
                                     balance = "",
-  withPicker = false
+                                    presale = false,
+                                    withPicker = false
                                   }: Props) {
   return <>
-    {withPicker && <TokenPicker/>}
+    {withPicker && <TokenPicker presale={presale}/>}
     <div className={clsx(styles.tokenCard, withPicker && styles.withPicker)}>
       <div className={styles.inputWrapper}>
         <h2>{type === "pay" ? <span>Amount in <span className="bold">{tokenName}</span> you pay</span> :
