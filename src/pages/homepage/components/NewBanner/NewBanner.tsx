@@ -76,8 +76,8 @@ export default function NewBanner() {
               The first presale round was completed at 15 Sep 2023 within 24 hours.
             </p>
             <p className={styles.paragraph}>
-              The second presale round will start on 4 December 2023. 160,000,000 D223 tokens (2%) would be
-              sold at 45% discount compared to the main ICO round. <span className={styles.buttonWrapper}>
+              The second presale round is ongoing. 160,000,000 D223 tokens (2%) would be
+              sold at 45% discount compared to the main ICO phase. <span className={styles.buttonWrapper}>
             <button onClick={() => {
                 setInfoOpened(true)
             }} className={styles.openInfoBtn}>
@@ -123,6 +123,33 @@ export default function NewBanner() {
               }} placeholder="Your email" type="email"/>
               <Button disabled={isSubmitting || !emailInput} onClick={handleEmailSubmit}>{isSubmitting ?
                 <Preloader size={20}/> : "Subscribe"}</Button>
+            </div>
+            <div className={styles.keyPointsWrapper}>
+              <h2>Key Points</h2>
+              <div className={styles.cardsWrapper}>
+                <div className={styles.keyPointCard}>
+                  <Svg iconName="security" />
+                  <div>
+                    <h3>Addressing a <u>real problem</u></h3>
+                    <p>Millions of dollars are lost due to errors with ERC-20 tokens every year. By supporting ERC-223 standard we are making the first step towards solving the problem. We believe that in the long run the standard that prevents funds losses will thrive.</p>
+                  </div>
+                </div>
+                <div className={styles.keyPointCard}>
+                  <Svg iconName="multichain-rollout" />
+                  <div>
+                    <h3>Maximizing chains support</h3>
+                    <p>DEX223 will be deployed on <span className={styles.importantPhrase}>every EVM-compatible chain</span> including Ethereum, EOS EVM, Arbitrum, Optimism, BASE and many more. It will become the exchange that supports the largest number of networks in the industry.</p>
+                  </div>
+                </div>
+                <div className={styles.keyPointCard}>
+                  <Svg iconName="token" />
+                  <div>
+                    <h3>Non-discrimination philosophy</h3>
+                    <p>We let <span className={styles.importantPhrase}>any token</span> to be listed on the platform. Meme coins are a sizeable market now. Listing them on an exchange is a challenge but we <span className={styles.importantPhrase}>provide a solution for it out of the box.</span></p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

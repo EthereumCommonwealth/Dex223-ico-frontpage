@@ -397,3 +397,84 @@
   position: relative;
   padding-left: 1rem;
 }
+
+.keyPointsWrapper {
+  h2 {
+    @include typography.t-body-20;
+    color: colors.$text-primary;
+    margin-top: 40px;
+    margin-bottom: 16px;
+
+    @include media.for-laptop {
+      @include typography.t-body-16;
+    }
+  }
+}
+
+.cardsWrapper {
+  display: grid;
+  gap: 12px;
+}
+
+.keyPointCard {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 8px;
+  border-radius: var(--corner-zero, 0px);
+  border-top: 1px solid var(--color-border-border-disabled, #393939);
+  border-right: 1px solid var(--color-border-border-disabled, #393939);
+  border-bottom: 1px solid var(--color-border-border-disabled, #393939);
+  background: var(--color-fill-block, #141316);
+  position: relative;
+
+  @include media.for-laptop {
+    padding: 16px;
+    grid-template-columns: 24px 1fr;
+  }
+
+  svg {
+    color: colors.$text-primary;
+    width: 32px!important;
+    height: 32px!important;
+
+    @include media.for-laptop {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background: var(--gree-purple, linear-gradient(0deg, #3BD171 0%, #9576EC 100%));
+    left: 0;
+    top: 0;
+  }
+
+  h3 {
+    color: colors.$text-primary;
+    margin-bottom: 12px;
+    @include typography.t-body-20;
+
+    @include media.for-laptop {
+      @include typography.t-body-16;
+    }
+  }
+
+  p {
+    color: colors.$text-secondary;
+    @include typography.t-body-16;
+
+    @include media.for-laptop {
+      @include typography.t-body-14;
+    }
+  }
+}
+
+.importantPhrase {
+  color: colors.$text-primary;
+  font-weight: 500;
+}
