@@ -89,6 +89,7 @@ export default function MeetTheTeam() {
       icon="team"
       color="blue"
       overlineText="Team"
+      anchor="team"
       leftContent={
         <>
           <ArticleHeading text="Meet the Team"/>
