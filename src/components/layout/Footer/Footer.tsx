@@ -18,8 +18,8 @@ export default function Footer() {
           </div>
           <div className={styles.linkColumn}>
             <div className={styles.footerLinkGroupTitle}>Social media</div>
-            <div><a target="_blank" href="https://t.me/Dexaran" className={styles.footerLink}>Telegram</a></div>
-            <div><a target="_blank" href="https://twitter.com/Dexaran" className={styles.footerLink}>Twitter</a></div>
+            <div><a target="_blank" href="https://t.me/dex_223" className={styles.footerLink}>Telegram</a></div>
+            <div><a target="_blank" href="https://twitter.com/Dex_223" className={styles.footerLink}>Twitter</a></div>
             <div><a target="_blank" href="https://twitter.com/CallistoSupport" className={styles.footerLink}>Callisto
               Network</a></div>
           </div>
