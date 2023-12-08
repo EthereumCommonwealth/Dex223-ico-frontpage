@@ -80,7 +80,7 @@ const slides = [
                   name="Compound hack" percentage={40}/>
         <LostCard animate={animate} active color="#FF3333" lost={ERCLossesInt}
                   icon={<Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32}/>}
-                  name="ERC-20 user errors" percentage={47}/>
+                  name="ERC-20 transacting errors" percentage={47}/>
         <LostCard animate={animate} color="#790003" lost={"$326M"}
                   icon={<Image src="/images/problem-logos/wormhole.svg" alt="" width={32} height={32}/>}
                   name="Wormhole hack" percentage={70}/>
