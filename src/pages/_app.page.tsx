@@ -14,7 +14,6 @@ import { useEffect } from 'react';
 import { trackPageview } from '@/functions/mixpanel';
 
 const isProd = process.env.NODE_ENV === "production";
-console.log("🚀 ~ isProd:", isProd)
 const projectId = "b426036634aca8d1f9795404b66664b5";
 
 export const { publicClient } = configureChains(chainsToConnect, [
