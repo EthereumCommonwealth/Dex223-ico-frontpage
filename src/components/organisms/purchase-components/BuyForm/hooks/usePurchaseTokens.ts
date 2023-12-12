@@ -26,6 +26,7 @@ import { useSnackbar } from "@/providers/SnackbarProvider";
 import { usePurchaseData } from "@/stores/usePurchaseData";
 import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
 import { isNativeToken } from "@/functions/isNativeToken";
+import { trackEvent } from "@/functions/mixpanel";
 
 function stringifyObject(object: { [key: string]: any }) {
   return JSON.parse(JSON.stringify(object, (key, value) =>
@@ -96,6 +97,10 @@ export function usePurchaseTokens({presale}) {
     ...purchaseConfig,
     onSettled: async (data, error) => {
       if (error) {
+        trackEvent("error", {
+          message: "Something went wrong",
+          errorFunction: "purchaseWithTokens"
+        })  
         return showMessage("Something went wrong", "error");
       }
 
@@ -125,6 +130,15 @@ export function usePurchaseTokens({presale}) {
         },
         address
       );
+
+      // Track token purchase
+      trackEvent("purchaseTokens", {
+        txHash: data.hash,
+        purchaseType: "tokens",
+        dex223Amount: output || 0,
+        amountToPay,
+        amountSymbol: pickedToken.symbol,
+      })
     }
   });
 
@@ -134,7 +148,14 @@ export function usePurchaseTokens({presale}) {
       value: parseUnits(amountToPay, pickedToken.decimals),
       gas: gasLimit,
       ...gasSettings,
-      onSettled: async (data) => {
+      onSettled: async (data, error) => {
+        if (error) {
+          trackEvent("error", {
+            message: "Something went wrong",
+            errorFunction: "purchaseWithCoins"
+          })  
+        }
+
         const _nonce = await publicClient.getTransactionCount({
           address,
           blockTag: "pending"
@@ -153,7 +174,16 @@ export function usePurchaseTokens({presale}) {
               ...stringifyObject(gasSettings)
             },
           }, address
-        )
+        );
+
+        // Track token purchase
+        trackEvent("purchaseTokens", {
+          txHash: data.hash,
+          purchaseType: "coins",
+          dex223Amount: output || 0,
+          amountToPay,
+          amountSymbol: pickedToken.symbol,
+        })
       }
     })
 
