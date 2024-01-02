@@ -158,6 +158,9 @@ export default function NewBanner() {
         <div className={styles.video}>
           <video autoPlay muted loop src="/banner_398d494b.webm"></video>
         </div>
+        <div style={{position: "relative"}}>
+          <div className={styles.buyAnchor} id="buy" />
+        </div>
         <BuyForm />
       </div>
     </div>

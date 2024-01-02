@@ -88,6 +88,9 @@ export default function GasSettingsDialog({ isOpen, onClose }: Props) {
     showMessage("Gas settings have been configured!");
   }, [baseFee, baseGasPrice, basePriority, estimatedGasLimit, setEditing, setGasLimit, setGasPrice, setMaxFeePerGas, setMaxPriorityFeePerGas, setUnsavedGasLimit, showMessage, type]);
 
+  console.log("MAX FEE");
+  console.log(computedBaseFee.maxFeePerGas);
+
   return <DrawerDialog isOpen={isOpen} onClose={onClose}>
     <div className={styles.dialog}>
       <DialogHeader
