@@ -2,16 +2,29 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
 import { useAccount } from "wagmi";
-import { useWeb3Modal } from "@web3modal/react";
+import { useWeb3Modal, useWeb3ModalEvents } from "@web3modal/react";
 import Drawer from "../../atoms/Drawer/Drawer";
 import { useSwipeable } from "react-swipeable";
 import Svg from "../../atoms/Svg";
 import Link from "next/link";
 import Image from "next/image";
+import { mixpanelIdentify, mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
 
 export default function Header({ blur }: { blur?: boolean }) {
   const { address, isConnected } = useAccount();
   const { open, close, setDefaultChain } = useWeb3Modal();
+
+  // Track wallect connect
+  useWeb3ModalEvents(event => {
+    if (event.name === "ACCOUNT_CONNECTED") {
+      trackEvent("connectWallet", { address });
+      if (address) {
+        mixpanelIdentify(address);
+        mixpanelSetProfileProp("$name", address);
+        mixpanelSetProfileProp("address", address);
+      }
+    }
+  })
 
   const [menuOpen, setMenuOpen] = useState(false);
 

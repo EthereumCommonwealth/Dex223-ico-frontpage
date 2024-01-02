@@ -12,6 +12,7 @@ import { dexEmail, dexEmailLink } from "@/constants/email";
 import Dialog from "@/components/atoms/Dialog";
 import DialogHeader from "@/components/atoms/DialogHeader";
 import DrawerDialog from "@/components/atoms/DrawerDialog";
+import { mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
 
 export default function NewBanner() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,6 +23,9 @@ export default function NewBanner() {
 
   const handleEmailSubmit = useCallback(async () => {
     setIsSubmitting(true);
+    trackEvent("subscribe", { email: emailInput });
+    mixpanelSetProfileProp("$email", emailInput);
+
     try {
       const res = await fetch("https://mail.dex223.io/email-notification/notification/save-email", {
         method: "POST",
