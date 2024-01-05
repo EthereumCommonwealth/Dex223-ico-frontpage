@@ -18,7 +18,7 @@ const Dex223Params: Parameters = {
   supportedStandards: "ERC-20, ERC-223",
   deploymentChain: "Ethereum, EOS EVM,ETC, Polygon, Arbitrum, Optimism, Avalanche, Celo, Base, BSC",
   listingProcess: "Smart-contract, tokenlists",
-  marginTrading: "Encapsultatted margin trading",
+  marginTrading: "Encapsulated margin trading",
   markets: "Unlimited",
 }
 
