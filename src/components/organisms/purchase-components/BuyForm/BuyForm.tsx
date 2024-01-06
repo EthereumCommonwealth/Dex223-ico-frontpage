@@ -75,7 +75,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
   useTrackFeeData();
 
-  const contractBalance = useICOContractBalance({presale});
+  const contractBalance = useICOContractBalance({ presale });
 
   const { data: tokenToPayBalance } = useBalance({
     address,
@@ -114,26 +114,32 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
   return <div className={styles.formToBuy}>
     {/*{!presale && <div className={styles.preICOText}>pre-ICO: Round 2</div>}*/}
-    {/*<p className={styles.ico}>*/}
-    {/*  ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}*/}
-    {/*</p>*/}
-    <div className={styles.completed}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-        <path d="M13.1004 20.9332L25.2004 8.8332C25.4019 8.6332 25.6412 8.5332 25.9182 8.5332C26.1952 8.5332 26.4338 8.63379 26.6338 8.83497C26.8338 9.03612 26.9338 9.27501 26.9338 9.55164C26.9338 9.82824 26.8338 10.0665 26.6338 10.2665L13.8004 23.0999C13.6004 23.2999 13.3671 23.3999 13.1004 23.3999C12.8338 23.3999 12.6004 23.2999 12.4004 23.0999L6.33377 17.0332C6.13377 16.8317 6.03933 16.5925 6.05044 16.3154C6.06155 16.0384 6.16769 15.7999 6.36887 15.5999C6.57003 15.3999 6.80892 15.2999 7.08554 15.2999C7.36214 15.2999 7.60044 15.3999 7.80044 15.5999L13.1004 20.9332Z" fill="#F5FFF9"/>
-      </svg>
-      <span>Second pre-sale round completed!</span>
-    </div>
-    <p className={styles.stayTuned}>
-      Stay tuned for the next round
-    </p>
+    {presale && <p className={styles.ico}>
+      ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
+    </p>}
+    {!presale && <>
+      <div className={styles.completed}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+          <path
+            d="M13.1004 20.9332L25.2004 8.8332C25.4019 8.6332 25.6412 8.5332 25.9182 8.5332C26.1952 8.5332 26.4338 8.63379 26.6338 8.83497C26.8338 9.03612 26.9338 9.27501 26.9338 9.55164C26.9338 9.82824 26.8338 10.0665 26.6338 10.2665L13.8004 23.0999C13.6004 23.2999 13.3671 23.3999 13.1004 23.3999C12.8338 23.3999 12.6004 23.2999 12.4004 23.0999L6.33377 17.0332C6.13377 16.8317 6.03933 16.5925 6.05044 16.3154C6.06155 16.0384 6.16769 15.7999 6.36887 15.5999C6.57003 15.3999 6.80892 15.2999 7.08554 15.2999C7.36214 15.2999 7.60044 15.3999 7.80044 15.5999L13.1004 20.9332Z"
+            fill="#F5FFF9"/>
+        </svg>
+        <span>Second pre-sale round completed!</span>
+      </div>
+      <p className={styles.stayTuned}>
+        Stay tuned for the next round
+      </p>
+    </>
+    }
     {!presale && <Countdown/>}
-    {!presale && <ICOProgressBar presale={presale} />}
+    {!presale && <ICOProgressBar presale={presale}/>}
     <div className={styles.ratio}>
       <span>1 D223 = {presale ? "$0.0005" : "$0.00065"}</span>
     </div>
 
 
-    <TokenCard readonly withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay" tokenName={pickedToken.symbol}
+    <TokenCard readonly={!presale} withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
+               tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={D223Balance?.formatted} type="receive" tokenName={DEX223.symbol}
@@ -162,16 +168,15 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
       <GasSettingsDialog isOpen={gasSettingsOpened} onClose={() => setGasSettingsOpened(false)}/>
     </div>
     <Spacer height={20}/>
-    <MessageInteractive presale={presale} />
+    <MessageInteractive presale={presale}/>
     <Spacer height={20}/>
-    {/*<PurchaseActionButton*/}
-    {/*  isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}*/}
-    {/*  isAmountEntered={Boolean(+amountToPay)}*/}
-    {/*  contractBalance={contractBalance?.data?.formatted}*/}
-    {/*  openKeystore={() => setDialogOpened(true)}*/}
-    {/*  presale={presale}*/}
-    {/*/>*/}
-    <Button disabled>Wait for the next round</Button>
+    <PurchaseActionButton
+      isEnoughBalance={+tokenToPayBalance?.formatted > +amountToPay}
+      isAmountEntered={Boolean(+amountToPay)}
+      contractBalance={contractBalance?.data?.formatted}
+      openKeystore={() => setDialogOpened(true)}
+      presale={presale}
+    />
     {isUnViewed && <>
       {Boolean(failed.length) && <AlertMessage
         text={<div>Your recent transaction(s) failed. Click <button onClick={() => setRecentTransactionsOpened(true)}
