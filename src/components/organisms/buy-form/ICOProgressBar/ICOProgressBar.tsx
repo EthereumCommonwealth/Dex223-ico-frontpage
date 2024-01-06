@@ -29,11 +29,12 @@ export default function ICOProgressBar({presale}) {
 
   return <>
     <div className={styles.progressBar}>
-      <div style={{ width: `${barPercentage}%` }} className={styles.bar}/>
+      {/*<div style={{ width: `${barPercentage}%` }} className={styles.bar}/>*/}
+      <div style={{ width: `${0}%` }} className={styles.bar}/>
     </div>
     <div className={styles.raised}>
-      D223 sold: {contractBalance?.data?.formatted ? (total - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}
-      {/*D223 sold: — / —*/}
+      {/*D223 sold: {contractBalance?.data?.formatted ? (total - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}*/}
+      D223 sold: — / —
     </div>
   </>;
 }

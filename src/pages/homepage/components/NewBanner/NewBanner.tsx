@@ -80,8 +80,8 @@ export default function NewBanner() {
               The first presale round was completed at 15 Sep 2023 within 24 hours.
             </p>
             <p className={styles.paragraph}>
-              The second presale round is ongoing. 160,000,000 D223 tokens (2%) would be
-              sold at 45% discount compared to the main ICO phase. <span className={styles.buttonWrapper}>
+              The second presale round was completed at 06 Jan 2024. 160,000,000 D223 tokens (2%) have been
+              sold with 45% discount compared to the main ICO phase. <span className={styles.buttonWrapper}>
             <button onClick={() => {
                 setInfoOpened(true)
             }} className={styles.openInfoBtn}>

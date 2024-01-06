@@ -6,8 +6,8 @@ import { useCountdown } from "@/hooks/useCountdown";
 const countDownDate = new Date(Date.UTC(2024, 0, 11, 0,0,0,0));
 
 export default function Countdown() {
-  // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
-  const [days, hours, minutes, seconds] = useCountdown(countDownDate);
+  const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];
+  // const [days, hours, minutes, seconds] = useCountdown(countDownDate);
 
   return (<>
     <div className={styles.counter}>
