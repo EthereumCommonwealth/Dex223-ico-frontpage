@@ -138,7 +138,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
     </div>
 
 
-    <TokenCard readonly={!presale} withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
+    <TokenCard readonly withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
                tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>

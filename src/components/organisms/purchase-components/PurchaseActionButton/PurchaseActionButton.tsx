@@ -69,7 +69,7 @@ export default function PurchaseActionButton({
   }
 
   if(presale) {
-    return <Button disabled>Currently inactive</Button>
+    return <Button disabled>Private sale is currently closed</Button>
   }
 
   if (!isConnected) {
