@@ -68,6 +68,10 @@ export default function PurchaseActionButton({
     return <Button disabled>Wait for the next round</Button>;
   }
 
+  if(presale) {
+    return <Button disabled>Currently inactive</Button>
+  }
+
   if (!isConnected) {
     return <>
       <Button onClick={open}>Connect wallet</Button>
