@@ -68,10 +68,6 @@ export default function PurchaseActionButton({
     return <Button disabled>Wait for the next round</Button>;
   }
 
-  if(presale) {
-    return <Button disabled>Private sale is currently closed</Button>
-  }
-
   if (!isConnected) {
     return <>
       <Button onClick={open}>Connect wallet</Button>
@@ -90,6 +86,10 @@ export default function PurchaseActionButton({
 
   if (!isEnoughBalance) {
     return <Button disabled>Insufficient balance</Button>;
+  }
+
+  if(presale && +amountToPay < 5000) {
+    return <Button disabled>Minimum deposit is $5000</Button>
   }
 
   if (approveLoading) {

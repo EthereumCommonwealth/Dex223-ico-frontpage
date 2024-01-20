@@ -134,11 +134,11 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
     {!presale && <Countdown/>}
     {!presale && <ICOProgressBar presale={presale}/>}
     <div className={styles.ratio}>
-      <span>1 D223 = {presale ? "$0.0005" : "$0.00065"}</span>
+      <span>1 D223 = {presale ? "$0.0008" : "$0.00065"}</span>
     </div>
 
 
-    <TokenCard readonly withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
+    <TokenCard readonly={!presale} withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
                tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
