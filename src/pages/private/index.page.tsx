@@ -30,7 +30,7 @@ export default function Home() {
       </div>
       <h1 className={styles.heading}>Private sale</h1>
       <p className={styles.anyQuestion}>
-        If you have any questions regarding the private sale feel free to mail <ExternalTextLink text={dexEmail} href={dexEmailLink} />
+        If you have any questions regarding the private sale or problems purchasing tokens feel free to mail <ExternalTextLink text={dexEmail} href={dexEmailLink} />
       </p>
       <BuyForm presale/>
     </div>

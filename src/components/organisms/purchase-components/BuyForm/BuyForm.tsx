@@ -137,6 +137,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
       <span>1 D223 = {presale ? "$0.0008" : "$0.00065"}</span>
     </div>
 
+    {presale && <div className={styles.min}>Min. purchase amount is $5000 in the private sale</div>}
 
     <TokenCard readonly={!presale} withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
                tokenName={pickedToken.symbol}
