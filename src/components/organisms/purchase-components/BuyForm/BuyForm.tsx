@@ -7,7 +7,6 @@ import Spacer from "../../../atoms/Spacer";
 import {
   useAccount,
   useBalance,
-  useWalletClient
 } from "wagmi";
 import Svg from "../../../atoms/Svg";
 import DrawerDialog from "../../../atoms/DrawerDialog";
@@ -24,7 +23,6 @@ import { useICOContractBalance } from "@/components/organisms/purchase-component
 import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
 import { useNetworkFee } from "@/components/organisms/purchase-components/BuyForm/hooks/useNetworkFee";
 import { usePurchaseData } from "@/stores/usePurchaseData";
-import TokenPicker from "../../buy-form/TokenPicker";
 import PurchaseActionButton from "../PurchaseActionButton";
 import ICOProgressBar from "../../buy-form/ICOProgressBar";
 import { isNativeToken } from "@/functions/isNativeToken";
@@ -35,11 +33,7 @@ import {
 import AlertMessage from "@/components/atoms/AlertMessage";
 import { defaultGasLimitForETH, defaultGasLimitForTokens } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
-import { useAllowance } from "@/components/organisms/purchase-components/BuyForm/hooks/useAllowance";
 import Countdown from "@/components/atoms/Countdown";
-import ExternalTextLink from "@/components/atoms/ExternalTextLink";
-import { dexEmail, dexEmailLink } from "@/constants/email";
-import Button from "@/components/atoms/Button";
 
 
 export default function BuyForm({ presale = false }: { presale?: boolean }) {
