@@ -24,7 +24,7 @@ const reports = [
     href: "https://dexaran820.medium.com/dex223-development-report-11-2-2023-e0d51552ba5f"
   },
   {
-    text: "Pre-sale round 1",
+    text: "Pre-sale round 1 (15.09.2023 - 16.09.2023)",
     href: "https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/"
   }
 ]
