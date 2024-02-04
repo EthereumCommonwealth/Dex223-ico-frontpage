@@ -9,7 +9,7 @@ export default function Footer() {
         <div className={styles.leftLinks}>
           <div className={styles.linkColumn}>
             <div className={styles.footerLinkGroupTitle}>Useful links</div>
-            <div><a target="_blank" href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md"
+            <div><a target="_blank" href="https://dexaran.github.io/token-converter/"
                     className={styles.footerLink}>ERC20 & ERC223 Token Converter</a></div>
             <div><a target="_blank" href="https://dexaran.github.io/erc223" className={styles.footerLink}>ERC223 Front
               Page</a></div>
