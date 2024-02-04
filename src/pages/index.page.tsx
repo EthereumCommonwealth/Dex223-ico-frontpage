@@ -14,6 +14,7 @@ import ScrollToTopButton from "../components/organisms/others/ScrollToTopButton"
 import MeetTheTeam from "./homepage/components/MeetTheTeam";
 import Layout from "@/components/layout/Layout";
 import MultichainRollout from "@/pages/homepage/components/MultichainRollout";
+import Roadmap from "@/pages/homepage/components/Roadmap";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -48,6 +49,8 @@ export default function Home() {
         <BuildingTrust/>
         <Spacer height={40}/>
         <Fight/>
+        <Spacer height={40}/>
+        <Roadmap/>
         <Spacer height={40}/>
         <MeetTheTeam/>
         <Spacer height={40}/>

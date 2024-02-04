@@ -1,0 +1,87 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+@use "src/styles/media";
+
+.text {
+  color: colors.$text-secondary;
+
+  @include typography.t-body-18;
+
+  @include media.for-mobile {
+    @include typography.t-body-16;
+  }
+}
+
+.paragraphs {
+  display: grid;
+  gap: 20px;
+
+  @include media.for-mobile {
+    gap: 8px;
+  }
+}
+
+.roadmapSchemeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-left: 108px;
+  padding-right: 20px;
+  margin-top: 60px;
+}
+
+.schemeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.roadmapArrow {
+  position: relative;
+  width: 100%;
+  color: colors.$palette-purple;
+  margin-right: -15px;
+
+  &.reversed {
+    transform: rotate(180deg);
+  }
+}
+
+.lastRowRoadmapArrow {
+  color: colors.$palette-purple;
+  height: calc(100% + 40.5px);
+  border: 1px solid colors.$palette-purple;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-left: 0;
+  position: absolute;
+  left: 68px;
+  width: calc(100% - 68px);
+  top: 24px;
+}
+
+.lastRowArrowPoint {
+  position: absolute;
+  bottom: -3.5px;
+  transform: rotate(-180deg) translateX(1px);
+  transform-origin: center;
+}
+
+.arrowLine {
+  height: 1px;
+  background: colors.$palette-purple;
+}
+
+.point {
+  position: absolute;
+  right: 0;
+  top:50%;
+  transform: translate(100%, -50%);
+}
+
+.imageWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
