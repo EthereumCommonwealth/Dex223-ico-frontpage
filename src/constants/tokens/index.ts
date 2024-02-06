@@ -50,7 +50,7 @@ export const USDC: TokenInfo = {
 
 export const PROD_DEX223: TokenInfo = {
   id: 5,
-  image: "/images/tokens/DEX.svg",
+  image: "/images/tokens/D223.svg",
   address: "0xcCe968120e6Ded56F32fbfe5A2Ec06CBF1e7c8ED",
   symbol: "D223",
   chainId: 1,
@@ -59,7 +59,7 @@ export const PROD_DEX223: TokenInfo = {
 
 export const TEST_DEX223: TokenInfo = {
   id: 5,
-  image: "/images/tokens/DEX.svg",
+  image: "/images/tokens/D223.svg",
   address: "0x9f519E60Fe7d9B4078AD77d3C2831A055C87A79B",
   symbol: "D223",
   chainId: 1,

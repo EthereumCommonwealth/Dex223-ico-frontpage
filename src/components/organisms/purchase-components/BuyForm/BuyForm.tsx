@@ -138,7 +138,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
     <TokenCard balance={D223Balance?.formatted} type="receive" tokenName={DEX223.symbol}
-               tokenLogo="/images/tokens/DEX.svg" amount={output} handleChange={null} readonly/>
+               tokenLogo="/images/tokens/D223.svg" amount={output} handleChange={null} readonly/>
     <Spacer height={20}/>
     <div className={clsx(styles.gasSettings, gasSettingsOpened && styles.gasSettingsOpened)}>
       <div className={styles.gasHeader} role="button" onClick={() => setGasSettingsOpened(!gasSettingsOpened)}>

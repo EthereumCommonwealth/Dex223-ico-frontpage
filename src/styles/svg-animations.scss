@@ -52,7 +52,8 @@
   }
 
   + .philosophy-dex-logo,
-  + .philosophy-dex-logo + .philosophy-dex-logo {
+  + .philosophy-dex-logo + .philosophy-dex-logo,
+  + .philosophy-dex-logo + .philosophy-dex-logo + .philosophy-dex-logo {
     transform: scale(1.2);
   }
 

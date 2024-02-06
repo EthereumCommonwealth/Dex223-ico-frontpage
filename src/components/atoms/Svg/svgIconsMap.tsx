@@ -44,7 +44,13 @@ export const svgIconsNames = [
   "multichain-rollout",
   "token",
   "security",
-  "roadmap"
+  "roadmap",
+  "eth",
+  "margin-trading",
+  "auto-listing",
+  "eos",
+  "test",
+  "bug"
 ] as const;
 
 export type IconName = typeof svgIconsNames[number];

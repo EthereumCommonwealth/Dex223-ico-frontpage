@@ -22,12 +22,51 @@
 }
 
 .roadmapSchemeContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 40px;
-  padding-left: 108px;
+  padding-left: 88px;
   padding-right: 20px;
   margin-top: 60px;
+
+  @include media.for-tablet {
+    padding-left: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @include media.for-mobile {
+    padding-left: 34px;
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftRoadmapArrow {
+  display: none;
+  position: absolute;
+  content: "";
+  width: 18px;
+  border: 1px solid #848484;
+  border-right: 0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  top: 24px;
+  left: -34px;
+  height: calc(100% + 40.5px);
+  color: #848484;
+
+  @include media.for-tablet {
+    height: calc(100% + 24.5px);
+  }
+}
+
+.leftRowArrowPoint {
+  position: absolute;
+  bottom: -3.5px;
+  right: 0;
+  transform: translateX(1px);
+  transform-origin: center;
 }
 
 .schemeItem {
@@ -35,23 +74,217 @@
   flex-direction: column;
   gap: 16px;
   position: relative;
+  padding-right: 15px;
+
+  width: calc(25% - 30px);
+
+  &:nth-child(1) {
+    order: 1;
+  }
+
+  &:nth-child(2) {
+    order: 2;
+  }
+
+  &:nth-child(3) {
+    order: 3;
+  }
+
+  &:nth-child(4) {
+    order: 4;
+  }
+
+  &:nth-child(5) {
+    order: 8;
+  }
+
+  &:nth-child(6) {
+    order: 7;
+  }
+
+  &:nth-child(7) {
+    order: 6;
+  }
+
+  &:nth-child(4) {
+    .lastRowRoadmapArrow {
+      display: block;
+    }
+  }
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    .roadmapArrow {
+      display: none;
+    }
+  }
+
+  &:nth-child(5),
+  &:nth-child(6),
+  &:nth-child(7) {
+    .roadmapArrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include media.for-tablet {
+    &:nth-child(1) {
+      order: 1;
+    }
+
+    &:nth-child(2) {
+      order: 2;
+    }
+
+    &:nth-child(3) {
+      order: 4;
+    }
+
+    &:nth-child(4) {
+      order: 3;
+    }
+
+    &:nth-child(5) {
+      order: 5;
+    }
+
+    &:nth-child(6) {
+      order: 6;
+    }
+
+    &:nth-child(7) {
+      order: 7;
+    }
+
+    &:nth-child(4) {
+      .leftRoadmapArrow {
+        display: block;
+      }
+    }
+
+    width: calc(50% - 20px);
+
+
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(6),
+    &:nth-child(7) {
+      .roadmapArrow {
+        display: none;
+      }
+    }
+
+    &:nth-child(5) {
+      .roadmapArrow {
+        transform: rotate(0deg);
+      }
+    }
+
+    &:nth-child(4) {
+      .roadmapArrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:nth-child(4),
+    &:nth-child(5) {
+      .roadmapArrow {
+        display: block;
+      }
+    }
+    //
+    &:nth-child(2),
+    &:nth-child(6) {
+      .lastRowRoadmapArrow {
+        display: block;
+      }
+    }
+    //
+    &:nth-child(4) {
+      .lastRowRoadmapArrow {
+        display: none;
+      }
+    }
+  }
+
+  @include media.for-mobile {
+    &:nth-child(1) {
+      order: 1;
+    }
+
+    &:nth-child(2) {
+      order: 2;
+    }
+
+    &:nth-child(3) {
+      order: 3;
+    }
+
+    &:nth-child(4) {
+      order: 4;
+    }
+
+    &:nth-child(5) {
+      order: 5;
+    }
+
+    &:nth-child(6) {
+      order: 6;
+    }
+
+    &:nth-child(7) {
+      order: 7;
+    }
+
+
+    &:nth-child(n) {
+      .roadmapArrow {
+        display: none;
+      }
+    }
+
+    &:nth-child(2),
+    &:nth-child(6) {
+      .leftRoadmapArrow {
+        display: block;
+      }
+    }
+
+    width: 100%;
+
+    &:nth-child(4),
+    &:nth-child(2),
+    &:nth-child(6) {
+      .lastRowRoadmapArrow {
+        display: none;
+      }
+    }
+
+    &:nth-child(1),
+    &:nth-child(3),
+    &:nth-child(5) {
+      .lastRowRoadmapArrow {
+        display: block;
+      }
+    }
+  }
 }
 
 .roadmapArrow {
   position: relative;
   width: 100%;
-  color: colors.$palette-purple;
-  margin-right: -15px;
+  color: #848484;
+  margin-right: -30px;
 
-  &.reversed {
-    transform: rotate(180deg);
+  @include media.for-tablet {
+    margin-right: -14px;
   }
 }
 
 .lastRowRoadmapArrow {
-  color: colors.$palette-purple;
+  color: #848484;
   height: calc(100% + 40.5px);
-  border: 1px solid colors.$palette-purple;
+  border: 1px solid #848484;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
   border-left: 0;
@@ -59,6 +292,10 @@
   left: 68px;
   width: calc(100% - 68px);
   top: 24px;
+  display: none;
+  @include media.for-tablet {
+    height: calc(100% + 24.5px);
+  }
 }
 
 .lastRowArrowPoint {
@@ -70,13 +307,13 @@
 
 .arrowLine {
   height: 1px;
-  background: colors.$palette-purple;
+  background: #848484;
 }
 
 .point {
   position: absolute;
   right: 0;
-  top:50%;
+  top: 50%;
   transform: translate(100%, -50%);
 }
 
@@ -84,4 +321,20 @@
   display: flex;
   gap: 20px;
   align-items: center;
+
+  .svgWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #848484;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: colors.$palette-white;
+  }
+
+  @include media.for-tablet {
+    gap: 16px;
+  }
 }
