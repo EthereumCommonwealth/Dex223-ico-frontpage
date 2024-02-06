@@ -29,7 +29,7 @@ const infoFields = [
   {
     label: "Standard",
     value: <>ERC-223 / Convertable to ERC-20 via <ExternalTextLink text="EIP-7417"
-                                                                   href="https://github.com/Dexaran/EIPs/blob/patch-7/EIPS/eip-7417.md"/></>
+                                                                   href="https://eips.ethereum.org/EIPS/eip-7417"/></>
   },
   {
     label: "Public sale price",
