@@ -227,7 +227,7 @@ export default function NewBanner() {
             <h3>Financial transparency</h3>
           </div>
           <p>We adhere to the policy of financial transparency. The usage of ICO founds is publicly commented and
-            accessible for everyone <ExternalTextLink href="here on github" text="here on github"/>.</p>
+            accessible for everyone <ExternalTextLink href="https://github.com/EthereumCommonwealth/Roadmap/issues/70" text="here on github"/>.</p>
         </div>
       </div>
     </div>
