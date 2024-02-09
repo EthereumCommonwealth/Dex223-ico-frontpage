@@ -98,7 +98,7 @@ export default function Footer() {
           <div style={{ maxWidth: 872 }}><Text variant={16} color="secondary">Disclaimer: Cryptocurrency may be
             unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be
             subject to capital gains or other taxes applicable in your jurisdiction.</Text></div>
-          <span className={styles.cpr}>Copyright © 2023 DEX223 <br/> All Rights Reserved</span>
+          <span className={styles.cpr}>Copyright © {new Date(Date.now()).getFullYear()} DEX223 <br/> All Rights Reserved</span>
         </div>
       </div>
     </div>
