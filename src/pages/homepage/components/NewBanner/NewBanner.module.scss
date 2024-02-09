@@ -378,8 +378,8 @@
 
   @include media.for-mobile {
     svg {
-      width: 20px!important;
-      height: 20px!important;
+      width: 20px !important;
+      height: 20px !important;
     }
   }
 }
@@ -445,8 +445,8 @@
 
   svg {
     color: colors.$text-primary;
-    width: 32px!important;
-    height: 32px!important;
+    width: 32px !important;
+    height: 32px !important;
 
     @include media.for-laptop {
       width: 24px !important;
@@ -466,7 +466,7 @@
 
   h3 {
     color: colors.$text-primary;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     @include typography.t-body-20;
 
     @include media.for-laptop {
@@ -507,6 +507,15 @@
     margin-bottom: 8px;
     color: colors.$text-primary;
     @include typography.t-body-20;
+
+    h3 {
+      color: colors.$text-primary;
+      @include typography.t-body-20;
+
+      @include media.for-laptop {
+        @include typography.t-body-16;
+      }
+    }
   }
 
   p {
