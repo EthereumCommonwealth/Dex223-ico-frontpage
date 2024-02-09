@@ -17,6 +17,15 @@ const team = [
     }
   },
   {
+    image: "/images/team/TioToi.jpg",
+    position: "Product manager",
+    name: "Tio Toi",
+    socials: {
+      github: "https://github.com/tiotoi",
+      linkedin: "https://www.linkedin.com/in/tio-toi-192279165/"
+    }
+  },
+  {
     image: "/images/team/YuriyKharytoshyn.jpg",
     position: "Adviser, Security Auditor",
     name: "Yuriy Kharytoshyn",
@@ -27,12 +36,13 @@ const team = [
     }
   },
   {
-    image: "/images/team/TioToi.jpg",
-    position: "Product manager",
-    name: "Tio Toi",
+    image: "/images/team/RandallRoland.jpg",
+    position: "Advisor",
+    name: "Randall Roland",
     socials: {
-      github: "https://github.com/tiotoi",
-      linkedin: "https://www.linkedin.com/in/tio-toi-192279165/"
+      twitter: "https://twitter.com/docranroland",
+      linkedin: "https://www.linkedin.com/in/randall-k-roland-5b53b7142",
+      email: "mailto:ranroland@eossupport.io"
     }
   },
   {
@@ -55,21 +65,21 @@ const team = [
     }
   },
   {
-    image: "/images/team/OlegGorbatiuk.jpg",
-    position: "Web Developer",
-    name: "Oleg Gorbatiuk",
-    socials: {
-      github: "https://github.com/gorbatiukcom",
-      linkedin: "https://www.linkedin.com/in/gorbatiuk/"
-    }
-  },
-  {
     image: "/images/team/ViktorPeredera.jpg",
     position: "Web Developer",
     name: "Viktor Peredera",
     socials: {
       github: "https://github.com/Dalcor",
       linkedin: "https://www.linkedin.com/in/viktor-peredera/"
+    }
+  },
+  {
+    image: "/images/team/OlegGorbatiuk.jpg",
+    position: "Web Developer",
+    name: "Oleg Gorbatiuk",
+    socials: {
+      github: "https://github.com/gorbatiukcom",
+      linkedin: "https://www.linkedin.com/in/gorbatiuk/"
     }
   },
   {

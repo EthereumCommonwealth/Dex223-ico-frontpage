@@ -50,7 +50,8 @@ export const svgIconsNames = [
   "auto-listing",
   "eos",
   "test",
-  "bug"
+  "bug",
+  "copy"
 ] as const;
 
 export type IconName = typeof svgIconsNames[number];

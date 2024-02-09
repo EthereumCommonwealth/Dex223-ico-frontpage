@@ -90,8 +90,18 @@
 .paragraph {
   position: relative;
   z-index: 4;
-  margin-top: 8px;
+  margin-top: 12px;
   color: colors.$text-secondary;
+
+  a {
+    color: colors.$palette-green;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      text-shadow: 0px 0px 20px rgba(53, 188, 102, 0.50), 0px 0px 20px rgba(59, 209, 113, 0.50);
+    }
+  }
 
   @include typography.t-body-20;
 
@@ -482,4 +492,26 @@
 .buyAnchor {
   position: absolute;
   top: -20px;
+}
+
+.transparency {
+  margin-top: 20px;
+  background-image: linear-gradient(93.88deg, rgba(8, 58, 86, 0.5) 1.77%, rgba(45, 35, 88, 0.5) 100%);
+  border-image: linear-gradient(93.81deg, #22AEFC 0%, #A789FF 100%) 30% / 4px;
+  padding: 20px;
+
+  .transparencyHeader {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    color: colors.$text-primary;
+    @include typography.t-body-20;
+  }
+
+  p {
+    @include typography.t-body-16;
+    color: colors.$text-secondary;
+    padding-left: 40px;
+  }
 }
