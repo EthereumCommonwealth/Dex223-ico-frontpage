@@ -8,10 +8,6 @@ import Preloader from "../../../../components/atoms/Preloader";
 import Spacer from "../../../../components/atoms/Spacer";
 import Svg from "../../../../components/atoms/Svg";
 import BuyForm from "@/components/organisms/purchase-components/BuyForm";
-import { dexEmail, dexEmailLink } from "@/constants/email";
-import Dialog from "@/components/atoms/Dialog";
-import DialogHeader from "@/components/atoms/DialogHeader";
-import DrawerDialog from "@/components/atoms/DrawerDialog";
 import { mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
 import Link from "next/link";
 
@@ -19,12 +15,33 @@ export async function copyToClipboard(text: string) {
   await navigator.clipboard.writeText(text);
 }
 
+function Heading() {
+  return <>
+    <h1 className={styles.mainHeader}><span className={styles.green}>DEX223</span>: Decentralized exchange for <span
+      className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
+    <p className={styles.subheading}>Secure, gas-efficient, KYC-free and fully decentralized exchange
+      built with Ethereum smart-contracts.</p>
+  </>
+}
+
+function MobileHeading() {
+  return <div className={styles.mobileHeading}>
+    <Heading />
+  </div>
+}
+
+function DesktopHeading() {
+  return <div className={styles.desktopHeading}>
+    <Heading />
+    <Spacer height={40}/>
+  </div>
+}
 export default function NewBanner() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailInput, setEmailInput] = useState("");
   const { showMessage } = useSnackbar();
 
-  const [infoOpened, setInfoOpened] = useState(false);
+  // const [infoOpened, setInfoOpened] = useState(false);
 
   const handleEmailSubmit = useCallback(async () => {
     setIsSubmitting(true);
@@ -66,12 +83,9 @@ export default function NewBanner() {
 
   return <div className="container">
     <div className={styles.gridWrapper}>
+      <MobileHeading />
       <div className={styles.bannerText}>
-        <h1 className={styles.mainHeader}><span className={styles.green}>DEX223</span>: Decentralized exchange for <span
-          className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
-        <p className={styles.subheading}>Secure, gas-efficient, KYC-free and fully decentralized exchange
-          built with Ethereum smart-contracts.</p>
-        <Spacer height={40}/>
+        <DesktopHeading />
         <div className={styles.blockWithNeonWrapper}>
           <div className={styles.neonContainer}>
             <div className={styles.neonImage}>
@@ -85,23 +99,19 @@ export default function NewBanner() {
               Pre-sale round 1 and pre-sale round 2 are completed. Public ICO round will be announced shortly.
             </p>
             {/*<p className={styles.paragraph}>*/}
-            {/*  The second presale round was completed at 06 Jan 2024. 160,000,000 D223 tokens (2%) have been*/}
-            {/*  sold with 45% discount compared to the main ICO phase. <span className={styles.buttonWrapper}>*/}
-            {/*<button onClick={() => {*/}
-            {/*    setInfoOpened(true)*/}
-            {/*}} className={styles.openInfoBtn}>*/}
-            {/*  <Svg iconName="open-new-window" />*/}
-            {/*</button></span>*/}
+            {/*  <ExternalTextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <ExternalTextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.*/}
             {/*</p>*/}
             <p className={styles.paragraph}>
-              Currently a private sale is ongoing, anyone can purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223
-              = $0.0008 rate following this <Link href="/private">link</Link>.
+              Currently a <Link href="/private">private sale</Link> is ongoing, anyone can purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate.
             </p>
+            {/*<p className={styles.paragraph}>*/}
+            {/*  Currently the public ICO round is ongoing. You can also purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate within <Link href="/private">private sale</Link>.*/}
+            {/*</p>*/}
+
             <p className={styles.paragraph}>
-              It is possible to purchase D223 tokens during the ICO with ETH, USDT, USDC or DAI on Ethereum mainnet. You
-              will need to connect your Web3 wallet, input the amount of tokens and press the buy button. You can also
-              purchase tokens without connecting your wallet to the web page by sending ETH to the ICO smart-contract
-              address: 0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879 <span className={styles.buttonWrapper}>
+              D223 tokens can be purchased during the ICO with ETH, USDT, USDC or DAI on Ethereum mainnet.
+              You can purchase tokens with ETH (Ethereum) by simply sending it to the address of the smart-contract: <span style={{whiteSpace: "nowrap"}}><ExternalTextLink text="0x66bbb...a68879"
+                                                                                                                                                                            href="https://etherscan.io/address/0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879"/> <span className={styles.buttonWrapper}>
               <button onClick={async () => {
                 try {
                   await copyToClipboard("0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879");
@@ -113,36 +123,19 @@ export default function NewBanner() {
               }} className={styles.openInfoBtn}>
                 <Svg iconName="copy"/>
               </button></span>
+              </span>
             </p>
             <p className={styles.paragraph}>
-              Do not send USDT, USDC or DAI to the smart-contract, if you want to purchase the tokens with a stablecoin
-              then connecting wallet to this web page is the only option.
+              You can also purchase tokens by connecting your Web3 wallet and filling out the purchase details in the token sale form. This method allows you to use stablecoins as payment.
             </p>
 
-            {/*<DrawerDialog isOpen={infoOpened} onClose={() => setInfoOpened(false)}>*/}
-            {/*  <DialogHeader onClose={() => setInfoOpened(false)} title="Anticipating price trends" />*/}
-            {/*  <div className={styles.infoDialog}>*/}
-            {/*    <img src="/images/stonks.png" alt="" />*/}
-            {/*    <p>Main phase of the ICO consists of Public round 1, Public round 2 and Auction.</p>*/}
-            {/*    <p>It is difficult to predict the auction price precisely but based on our estimations of EOS, SOY.Finance IDO that followed the same auction model the average price at an auction is approximately 140% of the price at the moment of the auction opening.</p>*/}
-            {/*    <p>Assuming the price of the last public ICO round 2 ($0.001 per token) to be the opening auction price we expect D223 tokens to have an average price of $0.001164</p>*/}
-            {/*    <p>The most accurate token information is available <ExternalTextLink text="here" href="https://github.com/EthereumCommonwealth/Roadmap/issues/71" />.</p>*/}
-            {/*  </div>*/}
-            {/*</DrawerDialog>*/}
-
-            {/*<p className={styles.paragraph}>*/}
-            {/*  Currently a private pre-sale of tokens is ongoing,*/}
-            {/*  contact <ExternalTextLink text={dexEmail}*/}
-            {/*                            href={dexEmailLink}/> for more details regarding participation.*/}
-            {/*</p>*/}
-
             <p className={styles.paragraph}>
-              Read <ExternalTextLink text="D223 Token FAQ & Wallets support"
+              Read <ExternalTextLink text="D223 Token FAQ & Wallet support (medium article)"
                                      href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb"/>.
             </p>
 
             <p className={styles.paragraph}>
-              Have a question? Write a comment <ExternalTextLink text="here"
+              Have a question? Write a comment on <ExternalTextLink text="our reddit thread"
                                                                  href="https://www.reddit.com/r/CallistoCrypto/comments/18ajzj1/dex223_presale_round_2_announcement/"/>.
             </p>
           </div>
@@ -153,9 +146,9 @@ export default function NewBanner() {
             <div className={styles.neonImage}>
               <Svg layout="cover" iconName="email"/>
             </div>
-            <div className={styles.neonLine2}/>
+            <div className={styles.neonLine}/>
           </div>
-          <div className={clsx(styles.content, styles.subscribeContent)}>
+          <div className={clsx(styles.content)}>
             <h2 className={styles.additionalInfoHeader}>Subscribe to our newsletter</h2>
             <div className={styles.subscribe}>
               <input value={emailInput} onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -163,41 +156,6 @@ export default function NewBanner() {
               }} placeholder="Your email" type="email"/>
               <Button disabled={isSubmitting || !emailInput} onClick={handleEmailSubmit}>{isSubmitting ?
                 <Preloader size={20}/> : "Subscribe"}</Button>
-            </div>
-            <div className={styles.keyPointsWrapper}>
-              <h2>Key Points</h2>
-              <div className={styles.cardsWrapper}>
-                <div className={styles.keyPointCard}>
-                  <Svg iconName="security"/>
-                  <div>
-                    <h3>Addressing a <u>real problem</u></h3>
-                    <p><span className={styles.importantPhrase}>Millions of dollars are lost</span> due to errors with
-                      ERC-20 tokens every year. By supporting ERC-223 standard we are making the first step towards
-                      solving the problem. We believe that in the long run the standard that prevents funds losses will
-                      thrive.</p>
-                  </div>
-                </div>
-                <div className={styles.keyPointCard}>
-                  <Svg iconName="multichain-rollout"/>
-                  <div>
-                    <h3>Maximizing chains support</h3>
-                    <p>DEX223 will be deployed on <span
-                      className={styles.importantPhrase}>every EVM-compatible chain</span> including Ethereum, EOS EVM,
-                      Arbitrum, Optimism, BASE and many more. It will become the exchange that supports the largest
-                      number of networks in the industry.</p>
-                  </div>
-                </div>
-                <div className={styles.keyPointCard}>
-                  <Svg iconName="token"/>
-                  <div>
-                    <h3>Non-discrimination philosophy</h3>
-                    <p>We let <span className={styles.importantPhrase}>any token</span> to be listed on the platform.
-                      Meme coins are a sizeable market now. Listing them on an exchange is a challenge but we <span
-                        className={styles.importantPhrase}>provide a solution for it out of the box.</span></p>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
@@ -210,24 +168,71 @@ export default function NewBanner() {
           <div className={styles.buyAnchor} id="buy"/>
         </div>
         <BuyForm/>
-        <div className={styles.transparency}>
-          <div className={styles.transparencyHeader}>
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_3096_105290)">
-                <path fillRule="evenodd" clipRule="evenodd"
-                      d="M4.93335 31.5924L8.00002 28.5257H26.6667C27.4 28.5257 28.0278 28.2646 28.55 27.7424C29.0722 27.2202 29.3334 26.5924 29.3334 25.859V9.85905C29.3334 9.12572 29.0722 8.49794 28.55 7.97572C28.0278 7.45349 27.4 7.19238 26.6667 7.19238H5.33335C4.60002 7.19238 3.97224 7.45349 3.45002 7.97572C2.9278 8.49794 2.66669 9.12572 2.66669 9.85905V30.6257C2.66669 31.2257 2.93891 31.6424 3.48335 31.8757C4.0278 32.109 4.51113 32.0146 4.93335 31.5924ZM15.3348 24.8021C15.4908 24.9581 15.6842 25.0361 15.9148 25.0361C16.1455 25.0361 16.3389 24.9581 16.4949 24.8021C16.6509 24.646 16.729 24.4527 16.729 24.222V23.3265C17.5702 23.2043 18.2758 22.8923 18.8457 22.3902C19.4156 21.8882 19.7005 21.1555 19.7005 20.1921C19.7005 19.4187 19.4597 18.7368 18.978 18.1466C18.4963 17.5563 17.7873 17.1255 16.8511 16.8542C15.847 16.5692 15.1414 16.2978 14.7343 16.04C14.3273 15.7822 14.1237 15.4294 14.1237 14.9817C14.1237 14.5882 14.2798 14.2591 14.5919 13.9945C14.904 13.7299 15.3585 13.5976 15.9555 13.5976C16.3083 13.5976 16.6034 13.6485 16.8409 13.7503C17.0784 13.8521 17.2853 13.9979 17.4617 14.1879C17.6381 14.3778 17.828 14.5101 18.0316 14.5848C18.2351 14.6594 18.4318 14.656 18.6218 14.5746C18.8525 14.4796 19.0051 14.3236 19.0798 14.1065C19.1544 13.8894 19.1306 13.6926 19.0085 13.5162C18.7643 13.1499 18.4522 12.8412 18.0723 12.5902C17.6923 12.3391 17.2446 12.1729 16.729 12.0915V11.196C16.729 10.9653 16.6509 10.7719 16.4949 10.6159C16.3389 10.4599 16.1455 10.3818 15.9148 10.3818C15.6842 10.3818 15.4908 10.4599 15.3348 10.6159C15.1787 10.7719 15.1007 10.9653 15.1007 11.196V12.0915C14.5037 12.1593 13.9202 12.4375 13.3503 12.926C12.7804 13.4145 12.4955 14.0997 12.4955 14.9817C12.4955 15.7144 12.7126 16.3351 13.1468 16.844C13.581 17.3528 14.3816 17.7904 15.5485 18.1568C16.634 18.5095 17.326 18.825 17.6245 19.1032C17.923 19.3813 18.0723 19.7579 18.0723 20.2328C18.0723 20.762 17.8789 21.1521 17.4922 21.4031C17.1055 21.6541 16.634 21.7796 16.0777 21.7796C15.562 21.7796 15.1278 21.6745 14.7751 21.4641C14.4223 21.2538 14.1305 20.9451 13.8999 20.5381C13.7913 20.3345 13.6353 20.1887 13.4317 20.1005C13.2282 20.0123 13.0315 20.0089 12.8415 20.0903C12.6108 20.1853 12.4514 20.3379 12.3632 20.5483C12.275 20.7586 12.2784 20.9587 12.3734 21.1487C12.6583 21.7593 13.0315 22.2342 13.4928 22.5734C13.9541 22.9126 14.4901 23.1501 15.1007 23.2858V24.222C15.1007 24.4527 15.1787 24.646 15.3348 24.8021Z"
-                      fill="#F5FFF9"/>
-              </g>
-              <defs>
-                <clipPath id="clip0_3096_105290">
-                  <rect width="32" height="32" fill="white"/>
-                </clipPath>
-              </defs>
-            </svg>
-            <h3>Financial transparency</h3>
+      </div>
+    </div>
+    <div className={styles.blockWithNeonWrapper}>
+      <div className={styles.neonContainer}>
+        <div className={styles.neonImage}>
+          <Svg layout="cover" iconName="thumb-up"/>
+        </div>
+        <div className={styles.neonLine2}/>
+      </div>
+      <div className={clsx(styles.content, styles.subscribeContent)}>
+        <div className={styles.keyPointsWrapper}>
+          <h2>Key Points</h2>
+          <div className={styles.cardsWrapper}>
+            <div className={styles.keyPointCard}>
+              <Svg size={48} iconName="security"/>
+              <div>
+                <h3>Addressing a <u>real problem</u></h3>
+                <p><span className={styles.importantPhrase}>Millions of dollars are lost</span> due to errors with
+                  ERC-20 tokens every year. By supporting ERC-223 standard we are making the first step towards
+                  solving the problem. We believe that in the long run the standard that prevents funds losses will
+                  thrive.</p>
+              </div>
+            </div>
+            <div className={styles.keyPointCard}>
+              <Svg size={48} iconName="multichain-rollout"/>
+              <div>
+                <h3>Maximizing chains support</h3>
+                <p>DEX223 will be deployed on <span
+                  className={styles.importantPhrase}>every EVM-compatible chain</span> including Ethereum, EOS EVM,
+                  Arbitrum, Optimism, BASE and many more. It will become the exchange that supports the largest
+                  number of networks in the industry.</p>
+              </div>
+            </div>
+            <div className={styles.keyPointCard}>
+              <Svg size={48} iconName="token"/>
+              <div>
+                <h3>Non-discrimination philosophy</h3>
+                <p>We let <span className={styles.importantPhrase}>any token</span> to be listed on the platform.
+                  Meme coins are a sizeable market now. Listing them on an exchange is a challenge but we <span
+                    className={styles.importantPhrase}>provide a solution for it out of the box.</span></p>
+              </div>
+            </div>
+            <div className={clsx(styles.keyPointCard, styles.transparencyCard)}>
+              <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_3133_99205)">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.90073 47.3881L12.5007 42.7881H40.5007C41.6007 42.7881 42.5424 42.3964 43.3257 41.6131C44.1091 40.8297 44.5007 39.8881 44.5007 38.7881V14.7881C44.5007 13.6881 44.1091 12.7464 43.3257 11.9631C42.5424 11.1798 41.6007 10.7881 40.5007 10.7881H8.50073C7.40073 10.7881 6.45907 11.1798 5.67573 11.9631C4.8924 12.7464 4.50073 13.6881 4.50073 14.7881V45.9381C4.50073 46.8381 4.90907 47.4631 5.72573 47.8131C6.5424 48.1631 7.2674 48.0214 7.90073 47.3881ZM23.5028 37.2026C23.7369 37.4367 24.0269 37.5537 24.3729 37.5537C24.7189 37.5537 25.009 37.4367 25.243 37.2026C25.4771 36.9686 25.5941 36.6785 25.5941 36.3325V34.9892C26.856 34.806 27.9144 34.3379 28.7692 33.5848C29.6241 32.8318 30.0515 31.7327 30.0515 30.2876C30.0515 29.1275 29.6902 28.1047 28.9677 27.2194C28.2451 26.334 27.1817 25.6878 25.7773 25.2807C24.2712 24.8533 23.2128 24.4463 22.6022 24.0595C21.9916 23.6728 21.6863 23.1437 21.6863 22.472C21.6863 21.8818 21.9204 21.3882 22.3885 20.9913C22.8566 20.5944 23.5385 20.396 24.434 20.396C24.9632 20.396 25.4059 20.4723 25.7621 20.6249C26.1182 20.7776 26.4286 20.9964 26.6932 21.2813C26.9578 21.5663 27.2427 21.7647 27.548 21.8767C27.8533 21.9886 28.1485 21.9835 28.4334 21.8614C28.7794 21.7189 29.0084 21.4849 29.1203 21.1592C29.2323 20.8336 29.1967 20.5384 29.0135 20.2739C28.6471 19.7243 28.179 19.2613 27.6091 18.8847C27.0392 18.5082 26.3676 18.2589 25.5941 18.1368V16.7935C25.5941 16.4475 25.4771 16.1574 25.243 15.9234C25.009 15.6893 24.7189 15.5723 24.3729 15.5723C24.0269 15.5723 23.7369 15.6893 23.5028 15.9234C23.2688 16.1574 23.1518 16.4475 23.1518 16.7935V18.1368C22.2562 18.2385 21.381 18.6558 20.5262 19.3885C19.6714 20.1212 19.2439 21.149 19.2439 22.472C19.2439 23.5711 19.5696 24.5022 20.2209 25.2655C20.8722 26.0287 22.073 26.6851 23.8234 27.2346C25.4517 27.7638 26.4897 28.237 26.9374 28.6543C27.3852 29.0715 27.6091 29.6363 27.6091 30.3487C27.6091 31.1425 27.3191 31.7276 26.739 32.1041C26.1589 32.4807 25.4517 32.6689 24.6172 32.6689C23.8438 32.6689 23.1925 32.5112 22.6633 32.1957C22.1341 31.8803 21.6965 31.4172 21.3505 30.8066C21.1877 30.5013 20.9536 30.2825 20.6483 30.1502C20.343 30.0179 20.0479 30.0129 19.7629 30.135C19.4169 30.2774 19.1778 30.5064 19.0455 30.8219C18.9132 31.1374 18.9183 31.4376 19.0608 31.7225C19.4882 32.6384 20.0479 33.3508 20.7399 33.8596C21.4319 34.3684 22.2359 34.7246 23.1518 34.9281V36.3325C23.1518 36.6785 23.2688 36.9686 23.5028 37.2026Z" fill="url(#paint0_linear_3133_99205)"/>
+                </g>
+                <defs>
+                  <linearGradient id="paint0_linear_3133_99205" x1="44.0827" y1="25.2742" x2="-14.4809" y2="3.84012" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9576EC"/>
+                    <stop offset="1" stop-color="#22AEFC"/>
+                  </linearGradient>
+                  <clipPath id="clip0_3133_99205">
+                    <rect width="48" height="48" fill="white" transform="translate(0.5)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+              <div>
+                <h3>Financial transparency</h3>
+                <p>We adhere to the policy of financial transparency. The usage of ICO founds is publicly commented and
+                  accessible for everyone <ExternalTextLink href="https://github.com/EthereumCommonwealth/Roadmap/issues/70" text="here on github"/>.</p>
+              </div>
+            </div>
           </div>
-          <p>We adhere to the policy of financial transparency. The usage of ICO founds is publicly commented and
-            accessible for everyone <ExternalTextLink href="https://github.com/EthereumCommonwealth/Roadmap/issues/70" text="here on github"/>.</p>
+
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ const team = [
   },
   {
     image: "/images/team/YuriyKharytoshyn.jpg",
-    position: "Adviser, Security Auditor",
+    position: "Advisor, Security Auditor",
     name: "Yuriy Kharytoshyn",
     socials: {
       github: "https://github.com/yuriy77k",

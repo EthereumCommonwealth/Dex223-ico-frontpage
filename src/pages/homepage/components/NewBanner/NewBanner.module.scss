@@ -15,15 +15,32 @@
   }
 
   @include media.for-large-mobile {
-    grid-template-areas: "l" "r";
+    grid-template-areas: "h" "r" "l";
     grid-template-columns: 1fr;
     padding-top: 40px;
     gap: 24px;
   }
 }
 
+.mobileHeading {
+  display: none;
+
+  @include media.for-large-mobile {
+    display: block;
+    grid-area: h;
+  }
+}
+
+.desktopHeading {
+  @include media.for-large-mobile {
+    display: none;
+  }
+}
+
 .bannerText {
   grid-area: l;
+  display: flex;
+  flex-direction: column;
 }
 
 .bannerForm {
@@ -31,7 +48,12 @@
   //display: flex;
   padding-top: 20px;
   position: relative;
-  margin-bottom: 60px;
+  //margin-bottom: 60px;
+
+  @include media.for-large-mobile {
+    margin-bottom: 24px;
+    padding-top: 0;
+  }
 }
 
 .purple {
@@ -127,23 +149,25 @@
 }
 
 .blockWithNeonWrapper {
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: 108px 1fr;
+  grid-template-columns: 88px 1fr;
 
-  @include media.for-tablet {
+  @include media.for-laptop {
     grid-template-columns: 32px 1fr;
+    gap: 8px;
   }
 }
 
 .neonContainer {
-  margin: 0 40px 0 20px;
+  margin: 0 20px 0 20px;
   position: relative;
   width: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  @include media.for-tablet {
+  @include media.for-laptop {
     margin: 0 8px 0 0;
     width: 32px;
   }
@@ -169,7 +193,7 @@
     filter: blur(10px);
   }
 
-  @include media.for-tablet {
+  @include media.for-laptop {
     width: 24px;
     height: 24px;
 
@@ -264,10 +288,11 @@
 }
 
 .content {
-  padding-bottom: 40px;
+  padding-bottom: 60px;
 
   @include media.for-mobile {
     padding-left: 8px;
+    padding-bottom: 40px;
   }
 }
 
@@ -412,7 +437,6 @@
   h2 {
     @include typography.t-body-20;
     color: colors.$text-primary;
-    margin-top: 40px;
     margin-bottom: 16px;
 
     @include media.for-laptop {
@@ -423,13 +447,23 @@
 
 .cardsWrapper {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+
+  @include media.for-large-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media.for-mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .keyPointCard {
   padding: 20px;
-  display: grid;
-  grid-template-columns: 32px 1fr;
+  display: flex;
+  flex-direction: column;
+  //grid-template-columns: 32px 1fr;
   gap: 8px;
   border-radius: var(--corner-zero, 0px);
   border-top: 1px solid var(--color-border-border-disabled, #393939);
@@ -440,29 +474,36 @@
 
   @include media.for-laptop {
     padding: 16px;
-    grid-template-columns: 24px 1fr;
+    //grid-template-columns: 24px 1fr;
   }
 
   svg {
     color: colors.$text-primary;
-    width: 32px !important;
-    height: 32px !important;
+    width: 48px !important;
+    height: 48px !important;
 
     @include media.for-laptop {
-      width: 24px !important;
-      height: 24px !important;
+      width: 32px !important;
+      height: 32px !important;
+    }
+  }
+
+  &.transparencyCard {
+    &:before {
+      background: linear-gradient(90deg, #A789FF 0%, #22A7F3 100.79%);
     }
   }
 
   &:before {
     content: "";
     position: absolute;
-    height: 100%;
-    width: 4px;
-    background: var(--gree-purple, linear-gradient(0deg, #3BD171 0%, #9576EC 100%));
+    width: 100%;
+    height: 4px;
+    background: var(--gree-purple, linear-gradient(270deg, #22AEFC 16.09%, #3BD171 100%));
     left: 0;
     top: 0;
   }
+
 
   h3 {
     color: colors.$text-primary;

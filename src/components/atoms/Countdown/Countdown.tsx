@@ -3,7 +3,9 @@ import React from "react";
 import { useCountdown } from "@/hooks/useCountdown";
 
 
+{/*TODO: change to open ICO*/}
 const countDownDate = new Date(Date.UTC(2024, 1, 15, 12,0,0,0));
+// const countDownDate = new Date(Date.UTC(2024, 8, 25, 12,0,0,0));
 
 export default function Countdown() {
   // const [days, hours, minutes, seconds] = ["——", "——", "——", "——"];

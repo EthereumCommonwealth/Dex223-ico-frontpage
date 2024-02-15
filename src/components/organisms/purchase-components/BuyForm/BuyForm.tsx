@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./BuyForm.module.scss";
-import { DEX223, ICOContractAddressETH, ICOContractAddressETHPreSale } from "@/constants/tokens";
+import { DEX223, ICOContractAddressETH, ICOContractAddressETHPreSale, USDT } from "@/constants/tokens";
 import clsx from "clsx";
 import TokenCard from "../../buy-form/TokenCard";
 import Spacer from "../../../atoms/Spacer";
@@ -34,7 +34,6 @@ import AlertMessage from "@/components/atoms/AlertMessage";
 import { defaultGasLimitForETH, defaultGasLimitForTokens } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import Countdown from "@/components/atoms/Countdown";
-
 
 export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
@@ -104,13 +103,20 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
   const { output } = useReward({ pickedToken, amountToPay, presale });
 
+  const {output: D223Price} = useReward({pickedToken: USDT, amountToPay: "1", presale});
+
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
+    {/*TODO: change to open ICO*/}
     {/*{!presale && <div className={styles.preICOText}>pre-ICO: Round 2</div>}*/}
     {presale && <p className={styles.ico}>
       ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
     </p>}
+    {/*{!presale && <div className={styles.preICOText}>ICO: Main Round</div>}*/}
+    {/*<p className={styles.ico}>*/}
+    {/*  ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}*/}
+    {/*</p>*/}
     {!presale && <>
       {/*<div className={styles.completed}>*/}
       {/*  <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">*/}
@@ -128,7 +134,9 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
     {!presale && <Countdown/>}
     {!presale && <ICOProgressBar presale={presale}/>}
     <div className={styles.ratio}>
-      <span>1 D223 = {presale ? "$0.0008" : "$0.001"}</span>
+      <span>1 D223 = ${(1 / +D223Price).toLocaleString("en-US", {
+        maximumSignificantDigits: 2
+      })}</span>
     </div>
 
     {presale && <div className={styles.min}>Min. purchase amount is $5000 in the private sale</div>}
@@ -223,4 +231,4 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
     }}/>
     <Spacer height={8}/>
   </div>;
-}//460
+}

@@ -49,8 +49,8 @@ export default function Fight() {
       <>
         <ArticleHeading text="ERC-20 vs ERC-223 fight"/>
         <h4 className={styles.subheading}>
-          Unveil the full history of ERC-223 vs ERC-20 fight going since 2017 <ExternalTextLink text="here"
-                                                                                                href="https://dexaran.github.io/erc223"/>
+          Unveil the full history of ERC-223 vs ERC-20 fight going since 2017 at <ExternalTextLink text="erc-223 frontpage"
+                                                                                                   href="https://dexaran.github.io/erc223"/>
         </h4>
         <div className={styles.paragraphs}>
           <p className={styles.text}>Tokens and plain ether are deposited differently to &quot;Externally Owner
