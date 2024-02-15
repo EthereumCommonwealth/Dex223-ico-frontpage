@@ -108,8 +108,6 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const networkFee = useNetworkFee();
 
   return <div className={styles.formToBuy}>
-    {/*TODO: change to open ICO*/}
-
     {!presale && <div className={styles.preICOText}>ICO: Public Sale</div>}
     <p className={styles.ico}>
       ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
@@ -129,7 +127,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
     {/*</>*/}
     {/*}*/}
     {!presale && <Countdown/>}
-    {!presale && <ICOProgressBar presale={presale}/>}
+    {!presale && <ICOProgressBar presale={presale} withDividers />}
     <div className={styles.ratio}>
       <span>1 D223 = ${(1 / +D223Price).toLocaleString("en-US", {
         maximumSignificantDigits: 2

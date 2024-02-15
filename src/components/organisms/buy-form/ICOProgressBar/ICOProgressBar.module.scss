@@ -9,7 +9,7 @@
   box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
   position: relative;
   border: 1px solid colors.$border-primary;
-
+  border-radius: 4px;
 }
 
 .bar {
@@ -19,6 +19,7 @@
   background-image: linear-gradient(-60deg, #946FFF 25%, transparent 25%, transparent 50%, #946FFF 50%, #946FFF 75%, transparent 75%, transparent);
   background-size: 21px 36px;
   box-shadow: 2px 0 10px inset rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
 .raised {
@@ -27,4 +28,121 @@
   margin: 4px 0 18px;
 
   @include typography.t-body-16;
+}
+
+.firstDivider,
+.secondDivider,
+.thirdDivider,
+.forthDivider {
+  position: absolute;
+  width: 1px;
+  height: 30px;
+  top: 0;
+  z-index: 1;
+  background: colors.$border-primary;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    width: 40px;
+    height: 100%;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &:hover {
+    .tooltip {
+      opacity: 1;
+    }
+  }
+}
+
+
+.firstDivider {
+  left: 30%;
+
+  .tooltip {
+    transform: translate(-40px, -100%);
+    left: 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      left: 38px;
+      bottom: -11px;
+      background: colors.$background-secondary;
+      border-bottom: 1px solid colors.$border-primary;
+      border-right: 1px solid colors.$border-primary;
+      transform: rotate(45deg) translateX(-50%);
+    }
+  }
+}
+
+.secondDivider {
+  left: 50%;
+}
+
+.thirdDivider {
+  left: 70%;
+
+  .tooltip {
+    transform: translate(40px, -100%);
+    right: 0;
+
+    &:before {
+      right: 29px;
+      left: unset;
+    }
+  }
+}
+
+.forthDivider {
+  left: 90%;
+
+  .tooltip {
+    transform: translate(40px, -100%);
+    right: 0;
+
+    &:before {
+      right: 29px;
+      left: unset;
+    }
+  }
+}
+
+.progressBarDividersContainer {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  padding: 16px;
+  background: colors.$background-secondary;
+  border-radius: 4px;
+  border: 1px solid colors.$border-primary;
+  opacity: 0;
+  transition-duration: 0.4s;
+  color: colors.$text-primary;
+  transform: translate(-50%, -100%);
+  top: -12px;
+  width: 250px;
+  text-align: center;
+  pointer-events: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    left: 50%;
+    bottom: -11px;
+    background: colors.$background-secondary;
+    border-bottom: 1px solid colors.$border-primary;
+    border-right: 1px solid colors.$border-primary;
+    transform: rotate(45deg) translateX(-50%);
+  }
 }
