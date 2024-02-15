@@ -96,18 +96,11 @@ export default function NewBanner() {
           <div className={styles.content}>
             <h2 className={styles.additionalInfoHeader}>Status</h2>
             <p className={styles.paragraph}>
-              Pre-sale round 1 and pre-sale round 2 are completed. Public ICO round will be announced shortly.
+              <ExternalTextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <ExternalTextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.
             </p>
-            {/*<p className={styles.paragraph}>*/}
-            {/*  <ExternalTextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <ExternalTextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.*/}
-            {/*</p>*/}
             <p className={styles.paragraph}>
-              Currently a <Link href="/private">private sale</Link> is ongoing, anyone can purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate.
+              Currently the public ICO round is ongoing. You can also purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate within <Link href="/private">private sale</Link>.
             </p>
-            {/*<p className={styles.paragraph}>*/}
-            {/*  Currently the public ICO round is ongoing. You can also purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate within <Link href="/private">private sale</Link>.*/}
-            {/*</p>*/}
-
             <p className={styles.paragraph}>
               D223 tokens can be purchased during the ICO with ETH, USDT, USDC or DAI on Ethereum mainnet.
               You can purchase tokens with ETH (Ethereum) by simply sending it to the address of the smart-contract: <span style={{whiteSpace: "nowrap"}}><ExternalTextLink text="0x66bbb...a68879"

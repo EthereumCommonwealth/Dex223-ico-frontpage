@@ -8,6 +8,8 @@ function millions(amount: number) {
 }
 
 const total = millions(3200);
+
+const balancer = 0.000486820290615211;
 // const total = 15380;
 export default function ICOProgressBar({presale}) {
   const contractBalance = useICOContractBalance({presale});
@@ -29,14 +31,15 @@ export default function ICOProgressBar({presale}) {
     return multipliedPercentage;
   }, [contractBalance?.data?.formatted]);
 
+  console.log(contractBalance.data?.formatted);
   return <>
     <div className={styles.progressBar}>
-      {/*<div style={{ width: `${barPercentage}%` }} className={styles.bar}/>*/}
-      <div style={{ width: `${100}%` }} className={styles.bar}/>
+      <div style={{ width: `${barPercentage}%` }} className={styles.bar}/>
+      {/*<div style={{ width: `${100}%` }} className={styles.bar}/>*/}
     </div>
     <div className={styles.raised}>
-      {/*D223 sold: {contractBalance?.data?.formatted ? (total - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}*/}
-      D223 sold: 160,000,000 / 160,000,000
+      D223 sold: {contractBalance?.data?.formatted ? (total + balancer - +contractBalance?.data?.formatted).toLocaleString("en-US", {maximumFractionDigits: 2}) : "—"} / {total.toLocaleString("en-US")}
+      {/*D223 sold: 160,000,000 / 160,000,000*/}
     </div>
   </>;
 }

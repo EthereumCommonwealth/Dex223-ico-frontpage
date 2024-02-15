@@ -141,7 +141,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
     {presale && <div className={styles.min}>Min. purchase amount is $5000 in the private sale</div>}
 
-    <TokenCard readonly={!presale} withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
+    <TokenCard withPicker presale={presale} balance={tokenToPayBalance?.formatted} type="pay"
                tokenName={pickedToken.symbol}
                tokenLogo={pickedToken.image} amount={amountToPay} handleChange={(v) => setAmountToPay(v)}/>
     <Spacer height={12}/>
@@ -193,8 +193,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
           <span style={{
             marginLeft: 6,
             top: 6,
-            position: "relative",
-
+            position: "relative"
           }}><Svg iconName="check-below"/></span>
         </div>}
         severity="success"
