@@ -10,6 +10,10 @@ const useCountdown = (targetDate) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCountDown(countDownDate - new Date().getTime());
+
+      if(Date.now() - countDownDate > 0) {
+        clearInterval(interval);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
