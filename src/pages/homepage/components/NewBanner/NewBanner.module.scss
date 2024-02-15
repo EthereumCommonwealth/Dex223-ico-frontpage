@@ -134,6 +134,37 @@
   @include media.for-mobile {
     @include typography.t-body-14;
   }
+
+  ul {
+    padding-left: 24px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+
+    li {
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: colors.$text-secondary;
+        position: absolute;
+        left: -16px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    li.active {
+
+
+      color: colors.$text-primary;
+    }
+  }
 }
 
 .whitePaperButtonWrapper {

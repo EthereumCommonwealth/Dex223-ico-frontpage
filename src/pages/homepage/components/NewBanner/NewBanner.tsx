@@ -122,6 +122,18 @@ export default function NewBanner() {
               You can also purchase tokens by connecting your Web3 wallet and filling out the purchase details in the token sale form. This method allows you to use stablecoins as payment.
             </p>
 
+
+            <p className={styles.paragraph}>
+              ICO tokens will be sold at the following rates:
+              <ul>
+                <li className={styles.active}>30% at $0.0009 (current price)</li>
+                <li>20% at $0.001</li>
+                <li>20% at $0.0011</li>
+                <li>20% at $0.0012</li>
+                <li>10% at $0.0013</li>
+              </ul>
+            </p>
+
             <p className={styles.paragraph}>
               Read <ExternalTextLink text="D223 Token FAQ & Wallet support (medium article)"
                                      href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb"/>.
