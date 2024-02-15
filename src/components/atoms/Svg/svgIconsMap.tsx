@@ -52,7 +52,8 @@ export const svgIconsNames = [
   "test",
   "bug",
   "copy",
-  "thumb-up"
+  "thumb-up",
+  "double-usd"
 ] as const;
 
 export type IconName = typeof svgIconsNames[number];
