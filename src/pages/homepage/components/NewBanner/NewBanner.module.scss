@@ -222,6 +222,7 @@
     height: 48px;
     background: colors.$palette-purple;
     filter: blur(10px);
+    border-radius: 50%;
   }
 
   @include media.for-laptop {
@@ -497,7 +498,7 @@
   //grid-template-columns: 32px 1fr;
   gap: 8px;
   border-radius: var(--corner-zero, 0px);
-  border-top: 1px solid var(--color-border-border-disabled, #393939);
+  border-left: 1px solid var(--color-border-border-disabled, #393939);
   border-right: 1px solid var(--color-border-border-disabled, #393939);
   border-bottom: 1px solid var(--color-border-border-disabled, #393939);
   background: var(--color-fill-block, #141316);
@@ -521,7 +522,7 @@
 
   &.transparencyCard {
     &:before {
-      background: linear-gradient(90deg, #A789FF 0%, #22A7F3 100.79%);
+      background: linear-gradient(90deg, #3BD171 0.14%, #0B341A 100%);
     }
   }
 
@@ -530,7 +531,7 @@
     position: absolute;
     width: 100%;
     height: 4px;
-    background: var(--gree-purple, linear-gradient(270deg, #22AEFC 16.09%, #3BD171 100%));
+    background: linear-gradient(90deg, #9576EC 0%, #2F1C64 100.14%);
     left: 0;
     top: 0;
   }
@@ -595,4 +596,34 @@
     color: colors.$text-secondary;
     padding-left: 40px;
   }
+}
+
+.transparencyCardIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+  @include media.for-laptop {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  svg {
+    position: absolute;
+  }
+}
+
+.transparencySvgGradient {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  @include media.for-laptop {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  background: #3BD171;
+  filter: blur(10px);
 }
