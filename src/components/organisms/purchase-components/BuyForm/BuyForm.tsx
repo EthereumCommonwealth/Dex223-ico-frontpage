@@ -109,14 +109,11 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
   return <div className={styles.formToBuy}>
     {/*TODO: change to open ICO*/}
-    {/*{!presale && <div className={styles.preICOText}>pre-ICO: Round 2</div>}*/}
-    {presale && <p className={styles.ico}>
+
+    {!presale && <div className={styles.preICOText}>ICO: Public Sale</div>}
+    <p className={styles.ico}>
       ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}
-    </p>}
-    {/*{!presale && <div className={styles.preICOText}>ICO: Main Round</div>}*/}
-    {/*<p className={styles.ico}>*/}
-    {/*  ICO contract: {presale ? ICOContractAddressETHPreSale : ICOContractAddressETH}*/}
-    {/*</p>*/}
+    </p>
     {!presale && <>
       {/*<div className={styles.completed}>*/}
       {/*  <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">*/}
