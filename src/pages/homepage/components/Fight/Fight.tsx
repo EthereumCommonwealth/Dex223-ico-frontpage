@@ -43,7 +43,7 @@ export default function Fight() {
 
   return <NeonBlock
     icon="fight"
-    color="green"
+    color="purple"
     overlineText="Fight"
     leftContent={
       <>

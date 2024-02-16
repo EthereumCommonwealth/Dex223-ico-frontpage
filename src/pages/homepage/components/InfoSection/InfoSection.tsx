@@ -20,7 +20,7 @@ const infoFields = [
   },
   {
     label: "Address",
-    value: <span>0xc&shy;Ce968120e&shy;6Ded56F32f&shy;bfe5A2Ec0&shy;6CBF1e7&shy;c8ED</span>
+    value: <a target="_blank" href="https://etherscan.io/address/0xcce968120e6ded56f32fbfe5a2ec06cbf1e7c8ed">0xc&shy;Ce968120e&shy;6Ded56F32f&shy;bfe5A2Ec0&shy;6CBF1e7&shy;c8ED</a>
   },
   {
     label: "Max supply",

@@ -43,7 +43,7 @@ function SchemeItem({text, date, icon}: {text: string, date: string, icon: IconN
 export default function Roadmap() {
   return <><NeonBlock
     icon="roadmap"
-    color="purple"
+    color="green"
     overlineText="Development timeline"
     anchor="roadmap"
     leftContent={

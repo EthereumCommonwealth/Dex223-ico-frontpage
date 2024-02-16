@@ -46,8 +46,8 @@ export default function Home() {
         <Spacer height={40}/>
         <Competitors/>
         <Spacer height={40}/>
-        <BuildingTrust/>
-        <Spacer height={40}/>
+        {/*<BuildingTrust/>*/}
+        {/*<Spacer height={40}/>*/}
         <Fight/>
         <Spacer height={40}/>
         <Roadmap/>
