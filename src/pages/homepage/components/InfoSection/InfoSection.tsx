@@ -19,6 +19,10 @@ const infoFields = [
     value: "D223"
   },
   {
+    label: "Address",
+    value: <span>0xc&shy;Ce968120e&shy;6Ded56F32f&shy;bfe5A2Ec0&shy;6CBF1e7&shy;c8ED</span>
+  },
+  {
     label: "Max supply",
     value: "8,000,000,000 D223"
   },
