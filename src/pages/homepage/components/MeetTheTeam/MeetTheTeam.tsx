@@ -25,16 +25,16 @@ const team = [
       linkedin: "https://www.linkedin.com/in/tio-toi-192279165/"
     }
   },
-  {
-    image: "/images/team/YuriyKharytoshyn.jpg",
-    position: "Advisor, Security Auditor",
-    name: "Yuriy Kharytoshyn",
-    socials: {
-      github: "https://github.com/yuriy77k",
-      linkedin: "https://www.linkedin.com/in/yuriy-kharytoshyn-b6b89517b/",
-      email: "mailto:yuri@callisto.network"
-    }
-  },
+  // {
+  //   image: "/images/team/YuriyKharytoshyn.jpg",
+  //   position: "Advisor, Security Auditor",
+  //   name: "Yuriy Kharytoshyn",
+  //   socials: {
+  //     github: "https://github.com/yuriy77k",
+  //     linkedin: "https://www.linkedin.com/in/yuriy-kharytoshyn-b6b89517b/",
+  //     email: "mailto:yuri@callisto.network"
+  //   }
+  // },
   {
     image: "/images/team/RandallRoland.jpg",
     position: "Advisor",
