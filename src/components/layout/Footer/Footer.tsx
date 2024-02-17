@@ -22,10 +22,6 @@ const socialLinks = [
   {
     text: "Dexaran's twitter",
     href: "https://twitter.com/Dexaran"
-  },
-  {
-    text: "Callisto Network",
-    href: "https://t.me/CallistoNet"
   }
 ];
 
