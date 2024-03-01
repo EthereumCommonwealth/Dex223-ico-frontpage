@@ -49,7 +49,7 @@ export default function NewBanner() {
     mixpanelSetProfileProp("$email", emailInput);
 
     try {
-      const res = await fetch("https://mail.dex223.io/email-notification/notification/save-email", {
+      const res = await fetch("https://api.dex223.io/emails/notification/save-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
