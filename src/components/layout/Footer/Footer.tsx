@@ -12,7 +12,7 @@ const socialLinks = [
     href: "https://t.me/Dex_223"
   },
   {
-    text: "Dex223 twitter",
+    text: "Dex223 X account",
     href: "https://twitter.com/Dex_223"
   },
   {
@@ -20,7 +20,7 @@ const socialLinks = [
     href: "https://discord.gg/t5bdeGC5Jk"
   },
   {
-    text: "Dexaran's twitter",
+    text: "Dexaran's X account",
     href: "https://twitter.com/Dexaran"
   }
 ];

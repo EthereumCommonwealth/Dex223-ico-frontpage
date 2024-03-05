@@ -37,7 +37,7 @@ const team = [
   // },
   {
     image: "/images/team/RandallRoland.jpg",
-    position: "Advisor",
+    position: "Co-Founder",
     name: "Randall Roland",
     socials: {
       twitter: "https://twitter.com/docranroland",
