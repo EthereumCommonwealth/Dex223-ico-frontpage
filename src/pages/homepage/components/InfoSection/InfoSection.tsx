@@ -58,7 +58,7 @@ export default function InfoSection() {
             <p className={styles.text}>Uniswap V3 daily trading volume is $883M at 29/08/2023. Assuming that all D223
               tokens would be sold, if DEX223 will reach 5% of the Uniswap&apos;s trading volume with 0.2% taker fee the
               revenue of D223 holders will be $2,649,000 per month.</p>
-            <p className={styles.text}>With this numbers the ROI for the D223 tokens purchased at a public sales price
+            <p className={styles.text}>With these numbers the ROI for the D223 tokens purchased at a public sales price
               will be 397% with just claiming trading fees revenues for 1 year.</p>
 
           </div>
