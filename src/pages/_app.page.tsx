@@ -1,3 +1,4 @@
+import '@/styles/globals.css'
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { golos_text } from "@/assets/fonts";

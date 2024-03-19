@@ -20,13 +20,16 @@ import { useReward } from "@/components/organisms/purchase-components/BuyForm/ho
 import { chainToConnect } from "@/constants/tokens";
 import { isNativeToken } from "@/functions/isNativeToken";
 import usePreloaderTimeout from "@/hooks/usePreloaderTimeout";
+import Dialog from "@/components/atoms/Dialog";
+import { useConfirmInWalletDialogStore } from "@/stores/useConfirmInWalletDialogStore";
+import Svg from "@/components/atoms/Svg";
 
 export default function PurchaseActionButton({
                                                isEnoughBalance,
                                                isAmountEntered,
                                                contractBalance,
                                                openKeystore,
-  presale
+                                               presale
                                              }) {
   const { open } = useWeb3Modal();
   const { isConnected } = useAccount();
@@ -37,20 +40,26 @@ export default function PurchaseActionButton({
     isLoading,
     purchaseWithCoins,
     purchaseWithTokens
-  } = usePurchaseTokens({presale});
+  } = usePurchaseTokens({ presale });
 
-  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove } = useAllowance({presale});
+  const { allowanceData, waitingForApprove, isApproving, writeTokenApprove } = useAllowance({ presale });
 
-  const approveLoading = usePreloaderTimeout({isLoading: isApproving, timeout: 2000});
+  const approveLoading = usePreloaderTimeout({ isLoading: isApproving, timeout: 2000 });
 
   const { pickedToken, amountToPay } = usePurchaseData((state) => ({
     pickedToken: state.computed.pickedToken,
     amountToPay: state.amountToPay
   }));
 
+  const {
+    isOpened: confirmInWalletDialogOpened,
+    setIsOpened: setConfirmInWalletDialogOpened
+  } = useConfirmInWalletDialogStore();
+
+
   const { output } = useReward({ pickedToken, amountToPay, presale });
 
-  const {type} = useTransactionTypeStore();
+  const { type } = useTransactionTypeStore();
 
   const {
     validation: feeValidation
@@ -88,29 +97,45 @@ export default function PurchaseActionButton({
     return <Button disabled>Insufficient balance</Button>;
   }
 
-  if(presale && +amountToPay < 5000) {
+  if (presale && +amountToPay < 5000) {
     return <Button disabled>Minimum deposit is $5000</Button>
   }
 
   if (approveLoading) {
-    return <Button disabled>
+    return <>
+      <Button disabled>
       <span className={styles.waitingContent}>
         <span>Approving</span>
         <Preloader size={24}/>
       </span>
-    </Button>
+      </Button>
+    </>
   }
 
   if (waitingForApprove || isLoading) {
-    return <Button disabled>
+    return <><Button disabled>
       <span className={styles.waitingContent}>
+        <span>Waiting for confirmation</span>
         <Preloader size={24}/>
       </span>
     </Button>
+      <Dialog isOpen={confirmInWalletDialogOpened} onClose={() => setConfirmInWalletDialogOpened(false)}>
+        <div className="flex flex-col items-center justify-center p-10 relative">
+          <button onClick={() => setConfirmInWalletDialogOpened(false)} className="absolute right-2 top-2 text-secondary-text hover:text-primary-text">
+            <Svg iconName="close" />
+          </button>
+          <Preloader size={48}/>
+          <p className="text-primary-text mt-5">Confirm operation in your wallet</p>
+        </div>
+      </Dialog>
+    </>
   }
 
   if (allowanceData < parseUnits(amountToPay, pickedToken.decimals) && !isNativeToken(pickedToken)) {
-    return <Button onClick={writeTokenApprove}>Approve {pickedToken.symbol}</Button>
+    return <Button onClick={() => {
+      writeTokenApprove();
+      setConfirmInWalletDialogOpened(true);
+    }}>Approve {pickedToken.symbol}</Button>
   }
 
   if (
@@ -126,13 +151,15 @@ export default function PurchaseActionButton({
       showMessage(`There are not enough tokens for sale. Just wait for the next round.`, "info");
       return;
     }
-    if(isNativeToken(pickedToken)) {
-      if(purchaseWithCoins) {
+    if (isNativeToken(pickedToken)) {
+      if (purchaseWithCoins) {
         purchaseWithCoins();
+        setConfirmInWalletDialogOpened(true);
       }
     } else {
-      if(purchaseWithTokens) {
+      if (purchaseWithTokens) {
         purchaseWithTokens();
+        setConfirmInWalletDialogOpened(true);
       }
     }
 

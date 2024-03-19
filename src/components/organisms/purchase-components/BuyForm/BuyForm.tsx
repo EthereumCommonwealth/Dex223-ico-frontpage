@@ -34,6 +34,8 @@ import AlertMessage from "@/components/atoms/AlertMessage";
 import { defaultGasLimitForETH, defaultGasLimitForTokens } from "@/constants/config";
 import useTrackFeeData from "@/components/organisms/purchase-components/BuyForm/hooks/useTrackFeeData";
 import Countdown from "@/components/atoms/Countdown";
+import Dialog from "@/components/atoms/Dialog";
+import { useConfirmInWalletDialogStore } from "@/stores/useConfirmInWalletDialogStore";
 
 export default function BuyForm({ presale = false }: { presale?: boolean }) {
   const { pickedToken, setAmountToPay, amountToPay } = usePurchaseData((state) => ({
@@ -107,6 +109,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
 
   const networkFee = useNetworkFee();
 
+
   return <div className={styles.formToBuy}>
     {!presale && <div className={styles.preICOText}>ICO: Public Sale</div>}
     <p className={styles.ico}>
@@ -175,6 +178,7 @@ export default function BuyForm({ presale = false }: { presale?: boolean }) {
       openKeystore={() => setDialogOpened(true)}
       presale={presale}
     />
+
     {isUnViewed && <>
       {Boolean(failed.length) && <AlertMessage
         text={<div>Your recent transaction(s) failed. Click <button onClick={() => setRecentTransactionsOpened(true)}
