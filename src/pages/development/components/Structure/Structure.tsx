@@ -25,7 +25,7 @@ export default function Structure({ refEl }) {
                          three &quot;default&quot; auto-listing smart-contracts with different fee settings. DEX223 UI
                          can automatically pull tokens from the auto-listing contracts when a user decides to enable it.
                          This means that after paying a specified fee any token can be listed and will become available
-                         for trading instantly. A user can turn off &qout;auto-listing contracts&qout; at any moment
+                         for trading instantly. A user can turn off &quot;auto-listing contracts&quot; at any moment
                          which will remove the auto-listed tokens from the UI. It is not possible to delist a token from
                          the auto-listing contract however.
                        </li>
@@ -39,7 +39,7 @@ export default function Structure({ refEl }) {
                        <li className={styles.text}><b>Auto-liquidation bots.</b> Liquidation must be manually triggered
                          by lenders in DEX223. However, the lender can specify a % fee to be paid to anyone who calls
                          the liquidation function, which allows third-party liquidation bots to run and monitor
-                         positions susceptible to liquidated. An example of such script will be developed and provided
+                         positions susceptible to liquidation. An example of such script will be developed and provided
                          by the exchange team.
                        </li>
                      </ul>
