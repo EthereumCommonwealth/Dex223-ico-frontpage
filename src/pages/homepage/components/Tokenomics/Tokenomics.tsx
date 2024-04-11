@@ -118,7 +118,7 @@ export default function Tokenomics() {
             className={styles.labelPercentage}>9.5%</span></span>
         </div>
         <div className={styles.columnLabel}>
-          <span className={styles.labelText}>Private investment rounds</span>
+          <span className={styles.labelText}>Private purchase rounds</span>
           <span className={styles.labelValue}>800,000,000 D223 <span
             className={styles.labelPercentage}>10%</span></span>
         </div>

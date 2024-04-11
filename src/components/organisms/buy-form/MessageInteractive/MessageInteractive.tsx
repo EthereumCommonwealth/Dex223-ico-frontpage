@@ -38,12 +38,12 @@ export default function MessageInteractive({presale}) {
         }
 
         if (+formatted >= 15380) {
-          setMessage("Your investments are gaining momentum. Great to see you onboard!");
+          setMessage("Your purchases are gaining momentum. Great to see you onboard!");
           return;
         }
 
         if (+formatted >= 1) {
-          setMessage("Congratulations on taking the first step! Your investment journey has begun.");
+          setMessage("Congratulations on taking the first step! I'm confident it will lead to great things!");
           return;
         }
 
