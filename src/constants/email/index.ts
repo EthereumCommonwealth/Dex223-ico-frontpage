@@ -1,4 +1,4 @@
-export const dexEmail = "invest@dex223.io";
+export const dexEmail = "purchase@dex223.io";
 export const mediaEmail = "media@dex223.io";
 
 function getEmailLink(email: string) {
