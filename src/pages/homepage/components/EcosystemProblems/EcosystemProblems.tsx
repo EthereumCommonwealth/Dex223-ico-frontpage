@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./EcosystemProblems.module.scss";
 import clsx from "clsx";
 import OverlineText from "../../../../components/atoms/OverlineText";
-import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
+import TextLink from "../../../../components/atoms/ExternalTextLink";
 import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import Svg from "../../../../components/atoms/Svg";
@@ -39,7 +39,7 @@ const slides = [
         which resulted in a loss of {ERCLossesInt} worth of tokens.
       </p>
       <div className={styles.calculatorLinkWrapper}>
-        <p>Watch ERC-20 Live Losses Calculator <ExternalTextLink text="here" href="https://dexaran.github.io/erc20-losses" /></p>
+        <p>Watch ERC-20 Live Losses Calculator <TextLink text="here" href="https://dexaran.github.io/erc20-losses" /></p>
         <div className={styles.losses}>
           <div className={styles.lossesLabel}>
             <Svg iconName="warning" />
@@ -160,11 +160,11 @@ const slides = [
         ERC-20 swap consumed 257K GAS.
       </p>
       <ul className={styles.slideList}>
-        <li><ExternalTextLink
+        <li><TextLink
           href="https://explorer.callisto.network/tx/0xa20d2838ea371759f92e7d4ae9700d2de96cf65de738b518dea1753db7180377"
           text="Approval"/> 45K GAS
         </li>
-        <li><ExternalTextLink
+        <li><TextLink
           href="https://explorer.callisto.network/tx/0xedf726375e86b2e1df80a614049ab5e1a797174fb762d81471e3379e98497d36"
           text="Tokens swap"/> 212K GAS
         </li>
@@ -174,7 +174,7 @@ const slides = [
         and doesn&apos;t require an approval transaction at all.
       </p>
       <ul className={styles.slideList}>
-        <li><ExternalTextLink
+        <li><TextLink
           href="https://explorer.callisto.network/tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b"
           text="ERC-223 tokens swap"/> 220K GAS
         </li>

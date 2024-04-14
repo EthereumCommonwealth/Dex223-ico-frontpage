@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from "react";
 import styles from "./NewBanner.module.scss";
 import Button from "../../../../components/atoms/Button";
-import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
+import TextLink from "../../../../components/atoms/ExternalTextLink";
 import clsx from "clsx";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import Preloader from "../../../../components/atoms/Preloader";
@@ -96,15 +96,15 @@ export default function NewBanner() {
           <div className={styles.content}>
             <h2 className={styles.additionalInfoHeader}>Status</h2>
             <p className={styles.paragraph}>
-              <ExternalTextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <ExternalTextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.
+              <TextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <TextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.
             </p>
             <p className={styles.paragraph}>
               Currently the public ICO round is ongoing. You can also purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate within <Link href="/private">private sale</Link>.
             </p>
             <p className={styles.paragraph}>
               D223 tokens can be purchased during the ICO with ETH, USDT, USDC or DAI on Ethereum mainnet.
-              You can purchase tokens with ETH (Ethereum) by simply sending it to the address of the smart-contract: <span style={{whiteSpace: "nowrap"}}><ExternalTextLink text="0x66bbb...a68879"
-                                                                                                                                                                            href="https://etherscan.io/address/0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879"/> <span className={styles.buttonWrapper}>
+              You can purchase tokens with ETH (Ethereum) by simply sending it to the address of the smart-contract: <span style={{whiteSpace: "nowrap"}}><TextLink text="0x66bbb...a68879"
+                                                                                                                                                                    href="https://etherscan.io/address/0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879"/> <span className={styles.buttonWrapper}>
               <button onClick={async () => {
                 try {
                   await copyToClipboard("0x66bbbc0698fd3ac3c1f8bf6e2a550d3775a68879");
@@ -135,13 +135,13 @@ export default function NewBanner() {
             </p>
 
             <p className={styles.paragraph}>
-              Read <ExternalTextLink text="D223 Token FAQ & Wallet support (medium article)"
-                                     href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb"/>.
+              Read <TextLink text="D223 Token FAQ & Wallet support (medium article)"
+                             href="https://dexaran820.medium.com/d223-token-faq-bbc39b155aeb"/>.
             </p>
 
             <p className={styles.paragraph}>
-              Have a question? Write a comment on <ExternalTextLink text="our reddit thread"
-                                                                 href="https://www.reddit.com/r/CallistoCrypto/comments/18ajzj1/dex223_presale_round_2_announcement/"/>.
+              Have a question? Write a comment on <TextLink text="our reddit thread"
+                                                            href="https://www.reddit.com/r/CallistoCrypto/comments/18ajzj1/dex223_presale_round_2_announcement/"/>.
             </p>
           </div>
         </div>
@@ -224,7 +224,7 @@ export default function NewBanner() {
               <div>
                 <h3>Financial transparency</h3>
                 <p>We adhere to the policy of financial transparency. The usage of ICO funds is publicly commented and
-                  accessible for everyone <ExternalTextLink href="https://github.com/EthereumCommonwealth/Roadmap/issues/70" text="here on github"/>.</p>
+                  accessible for everyone <TextLink href="https://github.com/EthereumCommonwealth/Roadmap/issues/70" text="here on github"/>.</p>
               </div>
             </div>
           </div>

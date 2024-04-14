@@ -41,10 +41,10 @@ Phone: (877) 773-0888" />
           <StaticNeonBlock title="Governance Structure" iconName="structure" text="The governance and operational management of DEX223 DAO LLC are conducted by its members, with significant decisions facilitated through a transparent, smart contract-guided voting process. In line with W.S. 17-31-104(e), this agreement specifies that the extent of management conducted algorithmically is determined by the coded protocols within our smart contracts, which are designed to automate operations, decision-making processes, and the execution of agreed-upon initiatives, reflecting the decentralized ethos of DEX223 DAO LLC." />
           <StaticNeonBlock title="Roles and Responsibilities" iconName="team" text={<Paragraphs paragraphs={[
             <UnorderedList key={0} listItems={[
-              "Founder: Spearheads the development of the DAO LLC protocol, ensures security, distributes treasury funds, and provides monthly progress reports.",
-              "Co-founder: Initiates the DAO LLC, assembles the Freedom Development Team, oversees marketing strategies, and provides strategic oversight.",
-              "Project Manager: Manages project development, ensuring timely progress and goal adherence.",
-              "The Freedom Development Team: Independent contracted developers building and maintaining the DEX223 protocol."
+              <span key="1"><b className="text-primary-text">Founder:</b> Spearheads the development of the DAO LLC protocol, ensures security, distributes treasury funds, and provides monthly progress reports.</span>,
+              <span key="2"><b className="text-primary-text">Co-founder:</b> Initiates the DAO LLC, assembles the Freedom Development Team, oversees marketing strategies, and provides strategic oversight.</span>,
+              <span key="3"><b className="text-primary-text">Project Manager:</b> Manages project development, ensuring timely progress and goal adherence.</span>,
+              <span key="4"><b className="text-primary-text">The Freedom Development Team:</b> Independent contracted developers building and maintaining the DEX223 protocol.</span>,
             ]} />,
             "The Freedom Development Team is entrusted with building, maintaining, and upgrading the protocol and managing DAO LLC’s intellectual property."
           ]} />} />
@@ -62,9 +62,9 @@ Phone: (877) 773-0888" />
           <StaticNeonBlock title="Smart Contract Information" iconName="smart-contract" text={<Paragraphs paragraphs={[
             "Details regarding ICO, public sales, and token contracts are explicitly documented, providing a clear framework for financial and operational activities within the DAO LLC.",
             <UnorderedList listItems={[
-              <span key="1">Private sale contract address:<br /> 0x9eb&shy;11e62b&shy;A74366&shy;C5AAA&shy;A7eEc8&shy;50FC31E&shy;7a3aCf1</span>,
-              <span key="2">Public sale smart contract address:<br /> 0x66&shy;bbbc069&shy;8fd3ac3&shy;c1f8bf6e&shy;2a550&shy;d3775&shy;a68879</span>,
-              <span key="3">Token contract address:<br />0xcce&shy;968120e&shy;6ded5&shy;6f32fb&shy;fe5a2ec&shy;06cbf1&shy;e7c8ed</span>,
+              <span key="1"><b className="text-primary-text">Private sale contract address:</b> <br /> 0x9eb&shy;11e62b&shy;A74366&shy;C5AAA&shy;A7eEc8&shy;50FC31E&shy;7a3aCf1</span>,
+              <span key="2"><b className="text-primary-text">Public sale smart contract address:</b> <br /> 0x66&shy;bbbc069&shy;8fd3ac3&shy;c1f8bf6e&shy;2a550&shy;d3775&shy;a68879</span>,
+              <span key="3"><b className="text-primary-text">Token contract address:</b> <br />0xcce&shy;968120e&shy;6ded5&shy;6f32fb&shy;fe5a2ec&shy;06cbf1&shy;e7c8ed</span>,
              ]} key="list-1" />,
             "These contracts are publicly available and directly used to manage, facilitate, or operate DEX223 DAO LLC, as required by W.S. 17-31-106(b)."
           ]} />} />

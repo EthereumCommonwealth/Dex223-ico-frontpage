@@ -1,1 +1,1 @@
-export { default } from "./ExternalTextLink";
+export { default } from "./TextLink";

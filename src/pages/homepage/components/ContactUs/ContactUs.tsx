@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styles from "./ContactUs.module.scss";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import NeonBlock from "../../../../components/organisms/others/NeonBlock";
-import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
+import TextLink from "../../../../components/atoms/ExternalTextLink";
 import Svg from "../../../../components/atoms/Svg";
 import ContactUsImage from "../../../../assets/images/tg-contact-us.svg";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
@@ -27,9 +27,9 @@ export default function ContactUs() {
         <>
           <ArticleHeading text="Get in touch"/>
           <div className={styles.texts}>
-            <p className={styles.text}>Questions regarding the private sales or large-scale purchase proposals: <ExternalTextLink text={dexEmail} href={dexEmailLink} /> </p>
-            <p className={styles.text}>Marketing and general inquiries: <ExternalTextLink text={mediaEmail} href={mediaEmailLink} /></p>
-            <p className={styles.text}>You can ask your questions in our telegram group where admins will help you to connect with the right person: <ExternalTextLink href="https://t.me/Dex223_defi" text="https://t.me/Dex223_defi" /></p>
+            <p className={styles.text}>Questions regarding the private sales or large-scale purchase proposals: <TextLink text={dexEmail} href={dexEmailLink} /> </p>
+            <p className={styles.text}>Marketing and general inquiries: <TextLink text={mediaEmail} href={mediaEmailLink} /></p>
+            <p className={styles.text}>You can ask your questions in our telegram group where admins will help you to connect with the right person: <TextLink href="https://t.me/Dex223_defi" text="https://t.me/Dex223_defi" /></p>
           </div>
           <div className={styles.buttonsWrapper}>
             <a href={dexEmailLink}>

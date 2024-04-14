@@ -8,6 +8,7 @@ import StaticNeonBlock from "@/components/static-pages-components/StaticNeonBloc
 import HeadingWithSubheading from "@/components/static-pages-components/HeadingWithSubheading";
 import DownloadScanButton from "@/components/static-pages-components/DownloadScanButton";
 export default function DeFiAgreementPage() {
+
   return (
     <>
       <Header/>

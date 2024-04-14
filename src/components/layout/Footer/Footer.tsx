@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import Text from "../../atoms/Text";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const socialLinks = [
   {
@@ -72,6 +74,8 @@ const companyLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return <footer className={styles.footer}>
     <div className="container_internal">
       <div className={styles.footerLinks}>
@@ -101,7 +105,7 @@ export default function Footer() {
             <div className={styles.footerLinkGroupTitle}>Company</div>
             {companyLinks.map((link) => {
               return <div key={link.text}><Link href={link.href}
-                                             className={styles.footerLink}>{link.text}</Link></div>
+                                             className={clsx("text-16 font-medium uppercase duration-200 hover:text-green", pathname.includes(link.href) ? "text-green pointer-events-none" : "text-primary-text")}>{link.text}</Link></div>
             })}
           </div>
         </div>

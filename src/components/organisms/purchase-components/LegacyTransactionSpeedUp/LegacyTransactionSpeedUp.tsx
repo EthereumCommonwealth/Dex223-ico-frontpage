@@ -14,7 +14,7 @@ import testICOABI from "../../../../constants/abis/icoABI.json";
 import { useSnackbar } from "@/providers/SnackbarProvider";
 import { addBigIntPercent } from "@/functions/addBigIntPercent";
 import Image from "next/image";
-import ExternalTextLink from "@/components/atoms/ExternalTextLink";
+import TextLink from "@/components/atoms/ExternalTextLink";
 import { NumericFormat } from "react-number-format";
 import Tooltip from "@/components/atoms/Tooltip";
 import { chainToConnect } from "@/constants/tokens";
@@ -194,8 +194,8 @@ export default function LegacyTransactionSpeedUp({ handleClose }) {
         <p>
           We have noticed that you are using MetaMask wallet. Unfortunately it does not support Speed Up through dApps.
           As an alternative you could use built-in speed up option inside Metamask extension.
-          Here is <ExternalTextLink text="more details"
-                                    href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"/>
+          Here is <TextLink text="more details"
+                            href="https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction"/>
         </p>
       </div> :
       <div className={styles.speedUpContent}>

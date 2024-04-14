@@ -9,6 +9,8 @@ import Paragraphs from "@/components/static-pages-components/Paragraphs";
 import UnorderedList from "@/components/static-pages-components/UnorderedList";
 import HeadingWithSubheading from "@/components/static-pages-components/HeadingWithSubheading";
 import DownloadScanButton from "@/components/static-pages-components/DownloadScanButton";
+import TextLink from "@/components/atoms/ExternalTextLink";
+import { dexEmail, privacyEmail, privacyEmailLink } from "@/constants/email";
 export default function DeFiAgreementPage() {
   return (
     <>
@@ -18,7 +20,8 @@ export default function DeFiAgreementPage() {
         <DownloadScanButton href={encodeURIComponent("/docs/PRIVACY POLICY OF DEX223.pdf")} />
 
         <div className="flex flex-col gap-6">
-          <StaticNeonBlock title="Introduction" iconName="introduction" text="DEX223 DAO LLC, a United States-based incorporated entity, herein details its practices regarding the collection, use, and sharing of information through its web app (dex223.io), official website (www.dex223.io), and other associated products and services, collectively referred to as the “Services.” The utilization of the Services implies acceptance of both this Privacy Policy and our Terms of Service." />
+          <StaticNeonBlock title="Introduction" iconName="introduction" text={
+            <span>DEX223 DAO LLC, a United States-based incorporated entity, herein details its practices regarding the collection, use, and sharing of information through its web app (<TextLink isExternal={false} text="dex223.io" href="/" />), official website (<TextLink isExternal={false} text="www.dex223.io" href="/" />), and other associated products and services, collectively referred to as the “Services.” The utilization of the Services implies acceptance of both this Privacy Policy and our Terms of Service.</span>} />
           <StaticNeonBlock title="Executive Overview" iconName="overview" text={<Paragraphs paragraphs={[
             "DEX223 DAO LLC operates under full compliance with United States laws and regulations. Our offerings include the DEX223 Protocol, a suite of censorship-resistant smart contracts available across multiple blockchain layers, which DEX223 DAO LLC does not directly control.",
             "In our operations, we prioritize the non-collection of personal data (e.g., names, addresses, birthdates, email, and IP addresses) related to your interaction with our Services. Instead, we focus on aggregating non-personal data, such as on-chain activities and generic device information, to enhance our offerings without compromising user privacy.",
@@ -55,7 +58,8 @@ export default function DeFiAgreementPage() {
 
           <StaticNeonBlock title="Revisions to This Policy" iconName="revisions" text="Material changes to this Privacy Policy will be communicated through the Services, with continued use after such updates constituting acceptance of the new terms." />
 
-          <StaticNeonBlock title="Contact Information" iconName="email" text="For inquiries or concerns regarding this Privacy Policy, please reach out to us at privacy@dex223.io." />
+          <StaticNeonBlock title="Contact Information" iconName="email" text={
+            <span>For inquiries or concerns regarding this Privacy Policy, please reach out to us at <TextLink text={privacyEmail} href={privacyEmailLink} />.</span>} />
         </div>
       </div>
 

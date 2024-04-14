@@ -2,7 +2,7 @@ import styles from "./Roadmap.module.scss";
 import NeonBlock from "@/components/organisms/others/NeonBlock";
 import ArticleHeading from "@/components/atoms/ArticleHeading";
 import React from "react";
-import ExternalTextLink from "@/components/atoms/ExternalTextLink";
+import TextLink from "@/components/atoms/ExternalTextLink";
 import Text from "@/components/atoms/Text";
 import Spacer from "@/components/atoms/Spacer";
 import clsx from "clsx";
@@ -51,8 +51,8 @@ export default function Roadmap() {
         <ArticleHeading text="Roadmap"/>
         <div className={styles.paragraphs}>
           <p className={styles.text}>The deployment schedule of the DEX223 platform on other chains will be released
-            after the deployment on BSC. You can follow the Roadmap on our <ExternalTextLink text="Github"
-                                                                                                href="https://github.com/EthereumCommonwealth/Roadmap/issues/72"/>.
+            after the deployment on BSC. You can follow the Roadmap on our <TextLink text="Github"
+                                                                                     href="https://github.com/EthereumCommonwealth/Roadmap/issues/72"/>.
           </p>
         </div>
       </>

@@ -4,7 +4,7 @@ import NeonBlock from "../../../../components/organisms/others/NeonBlock";
 import ArticleHeading from "../../../../components/atoms/ArticleHeading";
 import Spacer from "../../../../components/atoms/Spacer";
 import clsx from "clsx";
-import ExternalTextLink from "../../../../components/atoms/ExternalTextLink";
+import TextLink from "../../../../components/atoms/ExternalTextLink";
 import FirstCardImage from "../../../../assets/images/gear.svg";
 import SecondCardImage from "../../../../assets/images/margin.svg";
 import ThirdCardImage from "../../../../assets/images/listings.svg";
@@ -148,7 +148,7 @@ export default function Innovation() {
         </div>} heading="Encapsulated Margin Trading"/>
         <FeatureBlock image={<ThirdCardImage/>} content={<div className={styles.paragraphs}>
           <div className={styles.text}>On DEX223 users will be allowed to import any existing tokenlist from{" "}
-            <ExternalTextLink text="https://tokenlists.org" href="https://tokenlists.org/"/> or import tokens from the
+            <TextLink text="https://tokenlists.org" href="https://tokenlists.org/"/> or import tokens from the
             auto-listing contract. <span className="bold primary-color">Auto-listing contract will allow
             anyone to list a token on the platform without asking for anyones permission or interacting with the
               exchange team.</span>

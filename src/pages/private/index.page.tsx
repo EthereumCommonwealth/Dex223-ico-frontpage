@@ -4,7 +4,7 @@ import BuyForm from "@/components/organisms/purchase-components/BuyForm";
 import React, { useEffect, useState } from "react";
 import styles from "./PreSale.module.scss";
 import Image from "next/image";
-import ExternalTextLink from "@/components/atoms/ExternalTextLink";
+import TextLink from "@/components/atoms/ExternalTextLink";
 import { dexEmail, dexEmailLink } from "@/constants/email";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
       </div>
       <h1 className={styles.heading}>Private sale</h1>
       <p className={styles.anyQuestion}>
-        If you have any questions regarding the private sale or problems purchasing tokens feel free to mail <ExternalTextLink text={dexEmail} href={dexEmailLink} />
+        If you have any questions regarding the private sale or problems purchasing tokens feel free to mail <TextLink text={dexEmail} href={dexEmailLink} />
       </p>
       <BuyForm presale/>
     </div>

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 
-export default function StaticNeonBlock({title, text, iconName}: {title: string, text: ReactNode, iconName: IconName}) {
+export default function StaticNeonBlock({title, text, iconName}: {title: ReactNode, text: ReactNode, iconName: IconName}) {
   return <div className="grid grid-cols-[24px_1fr] md:grid-cols-[48px_1fr] gap-x-2 md:gap-x-5 px-4 md:px-8">
     <div className="flex flex-col gap-6">
       <div className="w-6 h-6 md:w-12 md:h-12 relative">

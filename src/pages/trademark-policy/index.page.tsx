@@ -8,6 +8,8 @@ import Paragraphs from "@/components/static-pages-components/Paragraphs";
 import UnorderedList from "@/components/static-pages-components/UnorderedList";
 import HeadingWithSubheading from "@/components/static-pages-components/HeadingWithSubheading";
 import DownloadScanButton from "@/components/static-pages-components/DownloadScanButton";
+import TextLink from "@/components/atoms/ExternalTextLink";
+import { legalEmail, legalEmailLink } from "@/constants/email";
 export default function DeFiAgreementPage() {
   return (
     <>
@@ -20,7 +22,9 @@ export default function DeFiAgreementPage() {
           <StaticNeonBlock title="DEX223 DAO LLC Trademark Guidelines" iconName="TM" text="DEX223 DAO LLC proudly presents the DEX223 protocol as well as a suite of additional software solutions, under the framework of open-source and source-available licenses. It is important to clarify that these licenses do not extend to the use of our trademarks. The correct application of our trademarks is critical for denoting DEX223 DAO LLC’s endorsement or association with any given product or service. Therefore, adherence to the DEX223 DAO LLC Trademark Guidelines is mandatory for anyone wishing to use our trademarks, reflecting our commitment, akin to other open-source projects, to safeguarding our trademarks to protect our user base." />
           <StaticNeonBlock title="Scope of Policy" iconName="scope-of-policy" text="This guideline covers all trademarks and service marks owned by DEX223 DAO LLC, irrespective of their registration status. This includes:
 Trademarks and service marks: DEX223®, DEX™, and DEX223 DAO LLC™ (“DEX223 wordmarks”)." />
-          <StaticNeonBlock title="DEX223 logos" iconName="reports" text="For reports of any misuse of DEX223 DAO LLC trademarks, please contact us at legal@dex223.io." />
+          <StaticNeonBlock title="DEX223 logos" iconName="reports" text={
+            <span>For reports of any misuse of DEX223 DAO LLC trademarks, please contact us at <TextLink text={legalEmail} href={legalEmailLink} />.</span>
+          } />
           <StaticNeonBlock title="Authorized Uses" iconName="thumb-up" text={<Paragraphs paragraphs={[
             "DEX223 DAO LLC allows the use of its trademarks without explicit permission for specific purposes:",
             <UnorderedList key="list-1" listItems={[
@@ -40,7 +44,7 @@ Trademarks and service marks: DEX223®, DEX™, and DEX223 DAO LLC™ (“DEX223
               "DEX223 wordmarks are to be employed solely as adjectives, not as nouns, verbs, or in plural or possessive forms, and should be followed by a generic descriptor for the product or service, e.g., “DEX223 protocol” or “DEX223 interface.”",
               "Usage of a DEX223 DAO LLC trademark in any other manner requires our prior written consent."
             ]} />,
-            "For more details, contact legal@dex223.io."
+            <span key="0">For more details, contact <TextLink text={legalEmail} href={legalEmailLink} />.</span>
           ]} />} />
           <StaticNeonBlock title="Restrictions" iconName="restrictions" text={<Paragraphs paragraphs={[
             "Users should refrain from:",
