@@ -286,7 +286,7 @@ export default function EcosystemProblems() {
   });
 
 
-  return <div className="container">
+  return <div className="container_internal">
     <div className={styles.ecosystemProblems}>
       <div className={styles.pattern1}>
         <Image alt="" src="/images/patterns/purple.svg" width={1067} height={1075}/>

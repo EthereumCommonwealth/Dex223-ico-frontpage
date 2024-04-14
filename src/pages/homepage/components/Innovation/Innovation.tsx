@@ -87,7 +87,7 @@ export default function Innovation() {
         </>
       }
     />
-    <div className="container relative">
+    <div className="container_internal relative">
       <div className={styles.pattern1}>
         <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000}/>
       </div>

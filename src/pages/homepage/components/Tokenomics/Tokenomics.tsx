@@ -66,7 +66,7 @@ export default function Tokenomics() {
       }
     />
     <div ref={ref}/>
-    <div className="container relative">
+    <div className="container_internal relative">
       <div className={styles.pattern}>
         <Image alt="" src="/images/patterns/purple.svg" width={883} height={890}/>
       </div>
@@ -101,7 +101,7 @@ export default function Tokenomics() {
         <Spacer height={20}/>
       </div>
     </div>
-    <div className="container">
+    <div className="container_internal">
       <div className={styles.labels}>
         <div className={styles.columnLabel}>
           <span className={styles.labelText}>Discounted pre-ICO sales</span>

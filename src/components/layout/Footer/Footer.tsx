@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.scss";
 import Text from "../../atoms/Text";
+import Link from "next/link";
 
 const socialLinks = [
   {
@@ -47,9 +48,32 @@ const partners = [
   }
 ];
 
+const companyLinks = [
+  {
+    text: "Operating agreement",
+    href: "/operating-agreement"
+  },
+  {
+    text: "Token Description",
+    href: "/token-description"
+  },
+  {
+    text: "Privacy policy",
+    href: "/privacy-policy"
+  },
+  {
+    text: "DeFi agreement",
+    href: "/defi-agreement"
+  },
+  {
+    text: "Trademark policy",
+    href: "/trademark-policy"
+  }
+];
+
 export default function Footer() {
   return <footer className={styles.footer}>
-    <div className="container">
+    <div className="container_internal">
       <div className={styles.footerLinks}>
         <div className={styles.leftLinks}>
           <div className={styles.linkColumn}>
@@ -73,6 +97,13 @@ export default function Footer() {
                                              className={styles.footerLink}>{link.text}</a></div>
             })}
           </div>
+          <div className={styles.linkColumn}>
+            <div className={styles.footerLinkGroupTitle}>Company</div>
+            {companyLinks.map((link) => {
+              return <div key={link.text}><Link href={link.href}
+                                             className={styles.footerLink}>{link.text}</Link></div>
+            })}
+          </div>
         </div>
         <div className={styles.rightLinks}>
           {/*<div className={styles.dedicatedMediaInfo}>*/}
@@ -89,7 +120,7 @@ export default function Footer() {
       </div>
     </div>
     <div className={styles.bottomFooter}>
-      <div className="container">
+      <div className="container_internal">
         <div className={styles.bottomFooterContent}>
           <div style={{ maxWidth: 872 }}><Text variant={16} color="secondary">Disclaimer: Cryptocurrency may be
             unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be

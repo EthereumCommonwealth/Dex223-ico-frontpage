@@ -81,7 +81,7 @@ export default function NewBanner() {
     }
   }, [emailInput, showMessage]);
 
-  return <div className="container">
+  return <div className="container_internal">
     <div className={styles.gridWrapper}>
       <MobileHeading />
       <div className={styles.bannerText}>

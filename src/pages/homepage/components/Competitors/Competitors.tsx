@@ -35,7 +35,7 @@ export default function Competitors() {
         </>
       }
     />
-    <div className={clsx("container", styles.competitorsTableWrapper)}>
+    <div className={clsx("container_internal", styles.competitorsTableWrapper)}>
       <div className={styles.pattern}>
         <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000}/>
       </div>

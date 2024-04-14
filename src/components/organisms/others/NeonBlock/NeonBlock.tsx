@@ -40,7 +40,7 @@ export default function NeonBlock({
     return entryBottomLine.boundingClientRect.bottom < window.innerHeight && entryBottomLine.boundingClientRect.bottom > 0;
   }, [entryBottomLine]);
 
-  return <div className="container">
+  return <div className="container_internal">
     <div
       className={clsx(styles.neonBlockContainer, styles[color], differentColumns && styles.different, onlyBottom && styles.onlyBottom)}>
       <div className={clsx(styles.neonLineWrapper, styles.neonTopLineCell)}>

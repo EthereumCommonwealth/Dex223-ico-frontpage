@@ -10,7 +10,7 @@ export default function BuildingTrust() {
   const entry = useIntersectionObserver(ref, { threshold: 0.85, freezeOnceVisible: true })
 
   return <div>
-    <div className="container" style={{ position: "relative" }}>
+    <div className="container_internal" style={{ position: "relative" }}>
       <div className={styles.soyBg}>
         <img src="/images/soy-bg.svg" alt=""/>
       </div>

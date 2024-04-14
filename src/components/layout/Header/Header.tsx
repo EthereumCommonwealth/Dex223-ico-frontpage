@@ -53,7 +53,7 @@ export default function Header({ blur }: { blur?: boolean }) {
   }, []);
 
   return <header className={styles.header}>
-    <div className={clsx("container", styles.headerContent, blur && styles.blur)}>
+    <div className={clsx("container_internal", styles.headerContent, blur && styles.blur)}>
       <div className={styles.bottomLine}>
         <svg width="3840" height="51" viewBox="0 0 3840 51" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3840 1H1979L1796.5 50H0" stroke="#5A5A5A"/>

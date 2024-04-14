@@ -106,7 +106,7 @@ export default function MeetTheTeam() {
         </>
       }
     />
-    <div className={"container"}>
+    <div className={"container_internal"}>
       <div className={styles.memberCards}>
         {team.map(({ image, position, name, socials }) => {
           return <TeamMemberCard

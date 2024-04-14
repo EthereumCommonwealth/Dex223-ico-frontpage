@@ -58,7 +58,7 @@ export default function Roadmap() {
       </>
     }
   />
-    <div className={"container"}>
+    <div className={"container_internal"}>
       <div className={styles.roadmapSchemeContainer}>
         <SchemeItem icon="aggressive" date={"May 2024"} text="DEX223 platform prototype release (DEX223 exchange, margin trading disabled, auto-listing contracts supported)."/>
         <SchemeItem icon="auto-listing" date={"May 2024"} text="Auto-listing contracts deployment." />

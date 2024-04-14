@@ -23,7 +23,7 @@ export default function Philosophy() {
   }, [entry?.isIntersecting])
 
   return <>
-    <div className="container" style={{ position: "relative" }}>
+    <div className="container_internal" style={{ position: "relative" }}>
       <div className={styles.soyBg}>
         <ShieldImage/>
       </div>
