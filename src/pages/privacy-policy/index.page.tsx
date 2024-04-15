@@ -17,7 +17,7 @@ export default function DeFiAgreementPage() {
       <Header/>
       <div className="py-[60px] text-primary-text max-w-[822px] mx-auto">
         <HeadingWithSubheading heading="Privacy Policy" subheading="Effective Date: March 17, 2024" />
-        <DownloadScanButton href={encodeURIComponent("/docs/PRIVACY POLICY OF DEX223.pdf")} />
+        <DownloadScanButton fileName="Privacy Policy.pdf" href={encodeURIComponent("/docs/Privacy Policy.pdf")} />
 
         <div className="flex flex-col gap-6">
           <StaticNeonBlock title="Introduction" iconName="introduction" text={

@@ -14,7 +14,7 @@ export default function DeFiAgreementPage() {
       <Header/>
       <div className="py-[60px] text-primary-text max-w-[822px] mx-auto">
         <HeadingWithSubheading heading="DeFi Agreement" subheading="DEX223 DeFI Protocol Terms of Service" />
-        <DownloadScanButton href={encodeURIComponent("/docs/PRIVACY POLICY OF DEX223.pdf")} />
+        <DownloadScanButton fileName="DeFi Agreement.pdf" href={encodeURIComponent("/docs/DeFi Agreement.pdf")} />
 
         <div className="flex flex-col gap-6">
           <StaticNeonBlock title="DeFi Protocol User Agreement" iconName="introduction" text="Welcome to the DeFi Protocol User Agreement (“User Agreement”). This document forms a legally binding contract between you (“User” or “you”) and DEX223 DAO LLC (“we,” “us,” or “our”) regarding your use of the Dex233 DeFi Protocol (“Protocol”). By accessing or utilizing the Protocol, you consent to comply with the terms and conditions outlined herein." />

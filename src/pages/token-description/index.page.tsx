@@ -15,7 +15,7 @@ export default function DeFiAgreementPage() {
       <Header/>
       <div className="py-[60px] text-primary-text max-w-[822px] mx-auto">
         <HeadingWithSubheading heading="Token Description" subheading="Empowering Decentralized Finance: Unveiling the D223 Utility and Governance Token" />
-        <DownloadScanButton href={encodeURIComponent("/docs/PRIVACY POLICY OF DEX223.pdf")} />
+        <DownloadScanButton fileName="DEX223 DAO LLC Token Description.pdf" href={encodeURIComponent("/docs/DEX223 DAO LLC Token Description.pdf")} />
 
         <div className="flex flex-col gap-6">
           <StaticNeonBlock title="DEX223 DAO LLC Token Description" iconName="token" text={

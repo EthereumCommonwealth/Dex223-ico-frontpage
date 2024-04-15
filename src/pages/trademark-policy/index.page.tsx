@@ -16,7 +16,7 @@ export default function DeFiAgreementPage() {
       <Header/>
       <div className="py-[60px] text-primary-text max-w-[822px] mx-auto">
         <HeadingWithSubheading heading="Trademark Policy" subheading="Ensuring Proper Usage: DEX223 DAO LLC Trademark Guidelines." />
-        <DownloadScanButton href={encodeURIComponent("/docs/PRIVACY POLICY OF DEX223.pdf")} />
+        <DownloadScanButton fileName="Trademark Policy.pdf" href={encodeURIComponent("/docs/Trademark Policy.pdf")} />
 
         <div className="flex flex-col gap-6">
           <StaticNeonBlock title="DEX223 DAO LLC Trademark Guidelines" iconName="TM" text="DEX223 DAO LLC proudly presents the DEX223 protocol as well as a suite of additional software solutions, under the framework of open-source and source-available licenses. It is important to clarify that these licenses do not extend to the use of our trademarks. The correct application of our trademarks is critical for denoting DEX223 DAO LLC’s endorsement or association with any given product or service. Therefore, adherence to the DEX223 DAO LLC Trademark Guidelines is mandatory for anyone wishing to use our trademarks, reflecting our commitment, akin to other open-source projects, to safeguarding our trademarks to protect our user base." />
