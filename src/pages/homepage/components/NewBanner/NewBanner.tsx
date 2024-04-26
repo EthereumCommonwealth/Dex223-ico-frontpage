@@ -19,8 +19,7 @@ function Heading() {
   return <>
     <h1 className={styles.mainHeader}><span className={styles.green}>DEX223</span>: Decentralized exchange for <span
       className={styles.green}>ERC-223</span> & <span className={styles.purple}>ERC-20</span> tokens!</h1>
-    <p className={styles.subheading}>Secure, gas-efficient, KYC-free and fully decentralized exchange
-      built with Ethereum smart-contracts. No account suspensions.</p>
+    <p className={styles.subheading}>Secure, gas-efficient, fully decentralized exchange built with Ethereum smart-contracts.</p>
   </>
 }
 
