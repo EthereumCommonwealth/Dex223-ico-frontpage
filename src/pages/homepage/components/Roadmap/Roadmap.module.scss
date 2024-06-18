@@ -56,6 +56,11 @@
   height: calc(100% + 40.5px);
   color: #848484;
 
+  &.passed {
+    border-color: colors.$palette-purple;
+    color: colors.$palette-purple;
+  }
+
   @include media.for-tablet {
     height: calc(100% + 24.5px);
   }
@@ -276,6 +281,11 @@
   color: #848484;
   margin-right: -30px;
 
+  &.passed {
+    border-color: colors.$palette-purple;
+    color: colors.$palette-purple;
+  }
+
   @include media.for-tablet {
     margin-right: -14px;
   }
@@ -293,6 +303,12 @@
   width: calc(100% - 68px);
   top: 24px;
   display: none;
+
+  &.passed {
+    border-color: colors.$palette-purple;
+    color: colors.$palette-purple;
+  }
+
   @include media.for-tablet {
     height: calc(100% + 24.5px);
   }
@@ -308,6 +324,10 @@
 .arrowLine {
   height: 1px;
   background: #848484;
+
+  &.passed {
+    background: colors.$palette-purple;
+  }
 }
 
 .point {
@@ -332,6 +352,16 @@
     justify-content: center;
     align-items: center;
     color: colors.$palette-white;
+
+    &.passed {
+      border-color: colors.$palette-purple;
+    }
+
+    &.active {
+      background: colors.$palette-purple;
+      border-color: colors.$palette-purple;
+      color: #000;
+    }
   }
 
   @include media.for-tablet {

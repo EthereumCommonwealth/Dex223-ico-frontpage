@@ -5,27 +5,27 @@ import React from "react";
 import TextLink from "@/components/atoms/ExternalTextLink";
 import Text from "@/components/atoms/Text";
 import Spacer from "@/components/atoms/Spacer";
-import clsx from "clsx";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import Svg from "@/components/atoms/Svg";
-function SchemeItem({text, date, icon}: {text: string, date: string, icon: IconName}) {
+import clsx from "clsx";
+function SchemeItem({text, date, icon, isPassed = false, isActive = false}: {text: string, date: string, icon: IconName, isPassed?: boolean, isActive?: boolean}) {
   return <div className={styles.schemeItem}>
     <div className={styles.imageWrapper}>
-      <div className={styles.svgWrapper}>
+      <div className={clsx(styles.svgWrapper, isPassed && styles.passed, isActive && styles.active)}>
         <Svg iconName={icon} />
       </div>
-      <div className={styles.roadmapArrow}>
-        <div className={styles.arrowLine} />
+      <div className={clsx(styles.roadmapArrow, isPassed && styles.passed)}>
+        <div className={clsx(styles.arrowLine, isPassed && styles.passed)} />
         <svg className={styles.point} width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z" fill="currentColor"/>
         </svg>
       </div>
-      <div className={styles.lastRowRoadmapArrow}>
+      <div className={clsx(styles.lastRowRoadmapArrow, isPassed && styles.passed)}>
         <svg className={styles.lastRowArrowPoint} width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z" fill="currentColor"/>
         </svg>
       </div>
-      <div className={styles.leftRoadmapArrow}>
+      <div className={clsx(styles.leftRoadmapArrow, isPassed && styles.passed)}>
         <svg className={styles.leftRowArrowPoint} width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z" fill="currentColor"/>
         </svg>
@@ -60,10 +60,10 @@ export default function Roadmap() {
   />
     <div className={"container_internal"}>
       <div className={styles.roadmapSchemeContainer}>
-        <SchemeItem icon="aggressive" date={"May 2024"} text="DEX223 platform prototype release (DEX223 exchange, margin trading disabled, auto-listing contracts supported)."/>
-        <SchemeItem icon="auto-listing" date={"May 2024"} text="Auto-listing contracts deployment." />
-        <SchemeItem icon="test" date={"June 2024"} text="DEX223 deployment on testnet. Public testing stage & bug bounties launch." />
-        <SchemeItem icon="margin-trading" date={"June - July 2024"} text="Margin trading module release & testnet deployment." />
+        <SchemeItem isPassed icon="aggressive" date={"May 2024"} text="DEX223 platform prototype release (DEX223 exchange, margin trading disabled, auto-listing contracts supported)."/>
+        <SchemeItem isPassed icon="auto-listing" date={"May 2024"} text="Auto-listing contracts deployment." />
+        <SchemeItem isPassed icon="test" date={"June 2024"} text="DEX223 deployment on testnet. Public testing stage & bug bounties launch." />
+        <SchemeItem isActive icon="margin-trading" date={"June - July 2024"} text="Margin trading module release & testnet deployment." />
         <SchemeItem icon="bug" date={"July 2024"} text="Public testing stage of the margin trading features, security audits & bug bounties." />
         <SchemeItem icon="eth" date={"August - September 2024"} text="DEX223 initial deployment on Ethereum mainnet." />
         <SchemeItem icon="eos" date={"October 2024"} text="DEX223 deployment on EOS EVM & BSC."/>
