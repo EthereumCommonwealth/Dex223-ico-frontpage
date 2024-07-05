@@ -8,6 +8,10 @@ import Svg from "@/components/atoms/Svg";
 
 const reports = [
   {
+    text: "July 2024",
+    href: "https://gist.github.com/Dexaran/8abaa6fd3a38faca4b9792cceda450e8"
+  },
+  {
     text: "June 2024",
     href: "https://gist.github.com/Dexaran/c671c41dde06856ca20493126f3bb56f"
   },
