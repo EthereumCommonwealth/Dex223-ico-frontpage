@@ -1,0 +1,79 @@
+{
+  "producer_account_name": "bp4dex223dao",
+  "org": {
+    "candidate_name": "Dex223 DAO",
+    "website": "https://www.dex223.io/",
+    "code_of_conduct":"https://www.dex223.io/operating-agreement",
+    "ownership_disclosure":"https://www.dex223.io/privacy-policy",
+    "email":"media@dex223.io",
+    "github_user":"Dexaran",
+    "chain_resources": "",
+    "other_resources": [],
+    "branding":{
+      "logo_256":"https://www.dex223.io/images/favicon_256x256.png",
+      "logo_1024":"https://www.dex223.io/images/favicon_1024x1024.png",
+      "logo_svg":"https://www.dex223.io/images/favicon_1024x1024.svg"
+    },
+    "location": {
+      "name": "United States",
+      "country": "US",
+      "latitude": 36.85111,
+      "longitude":  -76.28556
+    },
+    "social": {
+      "keybase": "",
+      "telegram": "https://t.me/dex_223",
+      "twitter": "https://x.com/dex_223",
+      "github":"https://github.com/Dexaran/Dex223-exchange",
+      "youtube": "https://www.youtube.com/@erc223",
+      "facebook": "",
+      "hive": "",
+      "reddit": "https://www.reddit.com/r/Dex223/",
+      "wechat":""
+    }
+  },
+  "nodes": [
+    {
+      "location": {
+        "name": "United States",
+        "country": "US",
+        "latitude": 36.85111,
+        "longitude": -76.28556
+      },
+      "full": true,
+      "node_type": "producer",
+      "p2p_endpoint": "",
+      "api_endpoint": "",
+      "ssl_endpoint": ""
+    },
+    {
+      "location": {
+        "name": "United States",
+        "country": "US",
+        "latitude": 36.85111,
+        "longitude": -76.28556
+      },
+      "full": true,
+      "node_type":"seed",
+      "p2p_endpoint": "p2p.dex223.io:9876",
+      "api_endpoint": "",
+      "ssl_endpoint": ""
+    },
+    {
+      "location": {
+        "name": "United States",
+        "country": "US",
+        "latitude": 36.85111,
+        "longitude": -76.28556
+      },
+      "full": true,
+      "node_type":"query",
+      "p2p_endpoint": "",
+      "api_endpoint": "http://rpc.dex223.io",
+      "ssl_endpoint": "https://rpc.dex223.io",
+      "features": [
+        "chain_api"
+      ]
+    }
+  ]
+}
