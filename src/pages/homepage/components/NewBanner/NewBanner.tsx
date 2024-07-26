@@ -97,9 +97,9 @@ export default function NewBanner() {
             <p className={styles.paragraph}>
               <TextLink text="Pre-sale round 1" href="https://www.reddit.com/r/CallistoCrypto/comments/16jgvfx/dex223_presale_round_announcement/" /> and <TextLink text="pre-sale round 2" href="https://dexaran820.medium.com/dex223-pre-sale-round-2-completion-report-14f09ab079cc" /> are completed.
             </p>
-            {/*<p className={styles.paragraph}>*/}
-            {/*  Currently the public ICO round is ongoing. You can also purchase D223 tokens with USDT or USDC (ERC-20) at 1 D223 = $0.0008 rate within <Link href="/private">private sale</Link>.*/}
-            {/*</p>*/}
+            <p className={styles.paragraph}>
+              Currently the public ICO round is ongoing.
+            </p>
             <p className={styles.paragraph}>
               D223 tokens can be purchased during the ICO with ETH, USDT, USDC or DAI on Ethereum mainnet.
               You can purchase tokens with ETH (Ethereum) by simply sending it to the address of the smart-contract: <span style={{whiteSpace: "nowrap"}}><TextLink text="0x66bbb...a68879"
