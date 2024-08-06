@@ -6,9 +6,12 @@
   border-radius: 4px;
   padding: 0 24px;
   transition-duration: 0.2s;
-  width: 100%;
   border: 0;
   cursor: pointer;
+
+  &.fullWidth {
+    width: 100%;
+  }
 
 
   &.contained {
