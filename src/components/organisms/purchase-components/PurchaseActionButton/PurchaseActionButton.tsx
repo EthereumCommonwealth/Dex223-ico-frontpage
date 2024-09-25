@@ -74,7 +74,7 @@ export default function PurchaseActionButton({
   } = useTransactionGasLimit();
 
   // if(!presale) {
-  //   return <Button disabled>Wait for the next round</Button>;
+    return <Button disabled>Wait for the next round</Button>;
   // }
 
   if (!isConnected) {
