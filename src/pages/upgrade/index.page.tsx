@@ -35,7 +35,7 @@ export default function UpgradePage() {
     cacheTime: 0,
   });
 
-  const [status, setStatus] = useState<"initial" | "error" | "success">("error");
+  const [status, setStatus] = useState<"initial" | "error" | "success">("initial");
 
   const {
     data,
