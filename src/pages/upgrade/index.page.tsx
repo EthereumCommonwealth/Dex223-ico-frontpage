@@ -95,35 +95,35 @@ export default function UpgradePage() {
 
               {isConnected ? (
                 <>
-                  {/*{!!D223Balance?.value && (*/}
-                  <div className="flex justify-center mt-6">
-                    <Button
-                      disabled={isLoading}
-                      onClick={async () => {
-                        try {
-                          await upgradeTokens();
-                          setStatus("success");
-                        } catch (e) {
-                          console.log(e);
+                  {!!D223Balance?.value && (
+                    <div className="flex justify-center mt-6">
+                      <Button
+                        disabled={isLoading}
+                        onClick={async () => {
+                          try {
+                            await upgradeTokens();
+                            setStatus("success");
+                          } catch (e) {
+                            console.log(e);
 
-                          if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
-                            setStatus("error");
+                            if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
+                              setStatus("error");
+                            }
                           }
-                        }
-                      }}
-                      fullWidth={isMobile}
-                    >
-                      {isLoading ? (
-                        <span className="flex items-center gap-2">
-                          Upgrading tokens
-                          <Preloader size={24} color="#000000" />
-                        </span>
-                      ) : (
-                        "Upgrade tokens now"
-                      )}
-                    </Button>
-                  </div>
-                  {/*)}*/}
+                        }}
+                        fullWidth={isMobile}
+                      >
+                        {isLoading ? (
+                          <span className="flex items-center gap-2">
+                            Upgrading tokens
+                            <Preloader size={24} color="#000000" />
+                          </span>
+                        ) : (
+                          "Upgrade tokens now"
+                        )}
+                      </Button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="mt-6 flex items-center flex-col sm:flex-row justify-center gap-3">
