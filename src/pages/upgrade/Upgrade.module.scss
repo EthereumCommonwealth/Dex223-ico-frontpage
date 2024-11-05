@@ -29,13 +29,17 @@
 }
 
 .heading {
-  margin: 0 auto 24px;
+  margin: 0 auto;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: 64px;
   color: colors.$text-primary;
   text-align: center;
+  @include media.for-mobile {
+    font-size: 30px;
+    line-height: 44px;
+  }
 }
 
 .anyQuestion {

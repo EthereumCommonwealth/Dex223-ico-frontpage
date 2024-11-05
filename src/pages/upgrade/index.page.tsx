@@ -13,11 +13,15 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import KeystoreConnect from "@/components/organisms/others/KeystoreConnect";
 import { DEX223, DEX223_UPGRADED, upgradeD223Contract } from "@/constants/tokens";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 import styles from "./Upgrade.module.scss";
 
 export default function UpgradePage() {
   const [hasMounted, setHasMounted] = useState(false);
+
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
   useEffect(() => {
     setHasMounted(true);
     document.getElementById("__next").className = "overflow-hidden";
@@ -57,7 +61,7 @@ export default function UpgradePage() {
       <Header />
 
       <div className="max-w-[600px] mx-auto h-[calc(100vh-48px)] flex items-center justify-center relative">
-        <div>
+        <div className="w-full px-4">
           <div className={styles.pattern1}>
             <Image alt="" src="/images/patterns/purple.svg" width={600} height={600} />
           </div>
@@ -68,62 +72,70 @@ export default function UpgradePage() {
             <>
               <h1 className={styles.heading}>Upgrade your tokens</h1>
               {!isConnected && (
-                <p className="text-20 text-secondary-text text-center">
+                <p className="text-16 md:text-20 text-secondary-text text-center mt-2">
                   Connect your wallet to see your balance
                 </p>
               )}
 
-              <div className="flex justify-between border border-primary-border rounded-1 bg-tertiary-bg items-center px-5 py-3">
-                <span className="text-secondary-text">You have</span>
+              {isConnected && (
+                <div className="mt-6 max-sm:flex-col max-sm:gap-1 flex justify-between border border-primary-border rounded-1 bg-tertiary-bg items-center px-5 py-3">
+                  <span className="text-secondary-text">You have</span>
 
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-20 text-primary-text">
-                    {D223Balance?.formatted}
-                  </span>
-                  <div className="bg-secondary-bg rounded-1 border border-disabled-border flex items-center pr-3 py-1 pl-1 gap-1">
-                    <Image src={DEX223_UPGRADED.image} width={24} height={24} alt="DEX223" />
-                    <span className="text-secondary-text">D223</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-16 md:text-20 text-primary-text">
+                      {D223Balance?.formatted}
+                    </span>
+                    <div className="bg-secondary-bg rounded-1 border border-disabled-border flex items-center pr-3 py-1 pl-1 gap-1">
+                      <Image src={DEX223_UPGRADED.image} width={24} height={24} alt="DEX223" />
+                      <span className="text-secondary-text">D223</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               {isConnected ? (
                 <>
-                  {!!D223Balance.value && (
-                    <div className="flex justify-center mt-6">
-                      <Button
-                        disabled={isLoading}
-                        onClick={async () => {
-                          try {
-                            await upgradeTokens();
-                            setStatus("success");
-                          } catch (e) {
-                            console.log(e);
+                  {/*{!!D223Balance?.value && (*/}
+                  <div className="flex justify-center mt-6">
+                    <Button
+                      disabled={isLoading}
+                      onClick={async () => {
+                        try {
+                          await upgradeTokens();
+                          setStatus("success");
+                        } catch (e) {
+                          console.log(e);
 
-                            if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
-                              setStatus("error");
-                            }
+                          if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
+                            setStatus("error");
                           }
-                        }}
-                        fullWidth={false}
-                      >
-                        {isLoading ? (
-                          <span className="flex items-center gap-2">
-                            Upgrading tokens
-                            <Preloader size={24} color="#000000" />
-                          </span>
-                        ) : (
-                          "Upgrade tokens now"
-                        )}
-                      </Button>
-                    </div>
-                  )}
+                        }
+                      }}
+                      fullWidth={isMobile}
+                    >
+                      {isLoading ? (
+                        <span className="flex items-center gap-2">
+                          Upgrading tokens
+                          <Preloader size={24} color="#000000" />
+                        </span>
+                      ) : (
+                        "Upgrade tokens now"
+                      )}
+                    </Button>
+                  </div>
+                  {/*)}*/}
                 </>
               ) : (
-                <div className="mt-6">
-                  <Button onClick={open}>Connect wallet</Button>
-                  <Spacer height={20} />
-                  <Button onClick={() => setDialogOpened(true)} variant="outlined">
+                <div className="mt-6 flex items-center flex-col sm:flex-row justify-center gap-3">
+                  <Button fullWidth={isMobile} onClick={open}>
+                    Connect wallet
+                  </Button>
+                  <p className="text-secondary-text">OR</p>
+                  <Button
+                    fullWidth={isMobile}
+                    onClick={() => setDialogOpened(true)}
+                    variant="outlined"
+                  >
                     Import keystore file
                   </Button>
                 </div>
@@ -140,7 +152,7 @@ export default function UpgradePage() {
               <p className="text-center text-secondary-text mb-6 max-w-[420px] mx-auto">
                 There was an error during the token upgrade process. Please try again
               </p>
-              <Button fullWidth={false} onClick={() => setStatus("initial")}>
+              <Button fullWidth={isMobile} onClick={() => setStatus("initial")}>
                 Try again
               </Button>
             </div>
