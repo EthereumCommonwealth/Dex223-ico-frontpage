@@ -1,23 +1,25 @@
-import React, { useRef, useState } from "react";
-import styles from "./KeystoreConnect.module.scss";
-import Button from "../../../atoms/Button";
-import { mainnet, useConnect } from "wagmi";
 import { MockConnector } from "@wagmi/connectors/mock";
+import clsx from "clsx";
+import Wallet, { thirdparty } from "ethereumjs-wallet";
+import React, { useRef, useState } from "react";
 import { createWalletClient, http, publicActions } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import Wallet, { thirdparty } from "ethereumjs-wallet";
-import Svg from "../../../atoms/Svg";
+import { mainnet, useConnect } from "wagmi";
+
+import DialogHeader from "@/components/atoms/DialogHeader";
+import { chainsToConnect, chainToConnect } from "@/constants/tokens";
+
+import Button from "../../../atoms/Button";
 import Collapse from "../../../atoms/Collapse";
 import Preloader from "../../../atoms/Preloader";
-import clsx from "clsx";
-import { chainsToConnect, chainToConnect } from "@/constants/tokens";
-import DialogHeader from "@/components/atoms/DialogHeader";
+import Svg from "../../../atoms/Svg";
+import styles from "./KeystoreConnect.module.scss";
 
-const fromMyEtherWalletV2 = json => {
+const fromMyEtherWalletV2 = (json) => {
   if (json.privKey.length !== 64) {
-    throw new Error('Invalid private key length');
+    throw new Error("Invalid private key length");
   }
-  const privKey = new Buffer(json.privKey, 'hex');
+  const privKey = new Buffer(json.privKey, "hex");
   return new Wallet(privKey);
 };
 
@@ -25,17 +27,15 @@ const getWalletFromPrivKeyFile = (jsonfile, password) => {
   if (jsonfile.encseed != null) return Wallet.fromEthSale(jsonfile, password);
   else if (jsonfile.Crypto != null || jsonfile.crypto != null)
     return Wallet.fromV3(jsonfile, password, true);
-  else if (jsonfile.hash != null)
-    return thirdparty.fromEtherWallet(jsonfile, password);
-  else if (jsonfile.publisher == 'MyEtherWallet')
-    return fromMyEtherWalletV2(jsonfile);
-  throw new Error('Invalid Wallet file');
+  else if (jsonfile.hash != null) return thirdparty.fromEtherWallet(jsonfile, password);
+  else if (jsonfile.publisher == "MyEtherWallet") return fromMyEtherWalletV2(jsonfile);
+  throw new Error("Invalid Wallet file");
 };
 
 const unlockKeystore = async (file, password) => {
   const newFile = {};
   // Small hack because non strict wasn't working..
-  Object.keys(file).forEach(key => {
+  Object.keys(file).forEach((key) => {
     newFile[key.toLowerCase()] = file[key];
   });
 
@@ -69,7 +69,6 @@ export default function KeystoreConnect({ handleClose }) {
         }
       };
       reader.readAsText(file);
-
     } else {
       setKeystore(null);
     }
@@ -105,61 +104,65 @@ export default function KeystoreConnect({ handleClose }) {
     }
   };
 
-  return <div className={styles.dialog}>
-    <DialogHeader title="Import wallet with JSON file" onClose={handleClose} />
+  return (
+    <div className={styles.dialog}>
+      <DialogHeader title="Import wallet with JSON file" onClose={handleClose} />
 
-    <div className={styles.dialogContent}>
-      <input
-        type="file"
-        onChange={handleFileChange}
-        style={{ display: "none" }}
-        ref={fileInput}
-      />
-      <div className={styles.fileInput}>
-        <div className={styles.buttonWrapper}>
-          <Button variant="outlined" onClick={() => {
-            if (fileInput.current && fileInput.current) {
-              fileInput.current.click()
-            }
-          }}>
-            Browse...
-          </Button>
-        </div>
-        <p className={styles.selectedFile}>{selectedFile?.name ? `${selectedFile?.name}` :
-          <span className={styles.placeholderText}>Select keystore file</span>}</p>
-      </div>
-      <div className={styles.helperText}>
-        {fileError && fileError}
-      </div>
-      <Collapse open={Boolean(keystore) && !Boolean(fileError)}>
-        <div className={styles.hiddenPart}>
-          <div className={styles.keystoreInputLabel}>
-            Key store password
-          </div>
-          <div className={styles.amountInputWrapper}>
-            <input
-              value={password}
-              type="password"
-              required
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setError(null);
+      <div className={styles.dialogContent}>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+          ref={fileInput}
+        />
+        <div className={styles.fileInput}>
+          <div className={styles.buttonWrapper}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                if (fileInput.current && fileInput.current) {
+                  fileInput.current.click();
+                }
               }}
-              placeholder="Key store password"
-              className={clsx(styles.amountInput, error && styles.error)}
-            />
-            <button className={styles.showPasswordButton}>
-              {/*<Svg iconName="show-password"/>*/}
-            </button>
+            >
+              Browse...
+            </Button>
           </div>
-          <div className={styles.helperText}>
-            {error && error}
-          </div>
-          <Button onClick={importKeystoreFileHandler}>
-            {!isUnlockingKeystore ? "Unlock" : <Preloader size={30}/>}
-          </Button>
+          <p className={styles.selectedFile}>
+            {selectedFile?.name ? (
+              `${selectedFile?.name}`
+            ) : (
+              <span className={styles.placeholderText}>Select keystore file</span>
+            )}
+          </p>
         </div>
-      </Collapse>
+        <div className={styles.helperText}>{fileError && fileError}</div>
+        <Collapse open={Boolean(keystore) && !Boolean(fileError)}>
+          <div className={styles.hiddenPart}>
+            <div className={styles.keystoreInputLabel}>Key store password</div>
+            <div className={styles.amountInputWrapper}>
+              <input
+                value={password}
+                type="password"
+                required
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError(null);
+                }}
+                placeholder="Key store password"
+                className={clsx(styles.amountInput, error && styles.error)}
+              />
+              <button className={styles.showPasswordButton}>
+                {/*<Svg iconName="show-password"/>*/}
+              </button>
+            </div>
+            <div className={styles.helperText}>{error && error}</div>
+            <Button onClick={importKeystoreFileHandler}>
+              {!isUnlockingKeystore ? "Unlock" : <Preloader size={30} />}
+            </Button>
+          </div>
+        </Collapse>
+      </div>
     </div>
-  </div>;
+  );
 }

@@ -1,8 +1,13 @@
-import React, { useContext, useState, createContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
 import Snackbar from "../components/atoms/Snackbar";
 
 interface SnackbarContextInterface {
-  showMessage: (message: string, severity?: "success" | "error" | "info" | "warning", duration?: number) => void
+  showMessage: (
+    message: string,
+    severity?: "success" | "error" | "info" | "warning",
+    duration?: number,
+  ) => void;
 }
 
 const SnackbarContext = createContext<SnackbarContextInterface | null>(null);
@@ -21,36 +26,37 @@ export const SnackbarProvider = ({ children }) => {
     setOpen(false);
   };
 
-  const showMessage = (message, severity: "success" | "error" | "info" | "warning" = "success", duration = 4000) => {
+  const showMessage = (
+    message,
+    severity: "success" | "error" | "info" | "warning" = "success",
+    duration = 4000,
+  ) => {
     setMessage(message);
     setSeverity(severity);
     setDuration(duration);
     setOpen(true);
   };
 
-  useEffect(
-    () => {
-      const t = setTimeout(
-        () => {
-          setOpen(false);
-        },
-        duration
-      );
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setOpen(false);
+    }, duration);
 
-      return () => {
-        clearTimeout(t);
-      };
-    },
+    return () => {
+      clearTimeout(t);
+    };
+  }, [open, duration]);
 
-    [open, duration]
+  return (
+    <SnackbarContext.Provider
+      value={{
+        showMessage,
+      }}
+    >
+      {children}
+      {open && <Snackbar message={message} severity={severity} handleClose={handleClose} />}
+    </SnackbarContext.Provider>
   );
-
-  return <SnackbarContext.Provider value={{
-    showMessage
-  }}>
-    {children}
-    {open && <Snackbar message={message} severity={severity} handleClose={handleClose}/>}
-  </SnackbarContext.Provider>;
 };
 
 export const useSnackbar = () => {

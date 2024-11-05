@@ -1,22 +1,26 @@
-import React, { useState } from "react";
 import {
   autoUpdate,
+  flip,
   FloatingPortal,
   offset,
-  useDismiss, useFloating,
+  shift,
+  useDismiss,
+  useFloating,
   useFocus,
   useHover,
   useInteractions,
   useRole,
-  flip,
-  shift, useTransitionStyles
+  useTransitionStyles,
 } from "@floating-ui/react";
-import Svg from "@/components/atoms/Svg";
-import styles from "./Tooltip.module.scss";
 import clsx from "clsx";
-import { golos_text } from "@/assets/fonts";
+import React, { useState } from "react";
 
-export default function Tooltip({text}) {
+import { golos_text } from "@/assets/fonts";
+import Svg from "@/components/atoms/Svg";
+
+import styles from "./Tooltip.module.scss";
+
+export default function Tooltip({ text }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
@@ -28,16 +32,16 @@ export default function Tooltip({text}) {
     middleware: [
       offset(5),
       flip({
-        fallbackAxisSideDirection: "start"
+        fallbackAxisSideDirection: "start",
       }),
-      shift()
-    ]
+      shift(),
+    ],
   });
 
-  const {isMounted, styles: transitionStyles} = useTransitionStyles(context, {
+  const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
     duration: {
       open: 200,
-      close: 200
+      close: 200,
     },
   });
 
@@ -49,12 +53,7 @@ export default function Tooltip({text}) {
   const role = useRole(context, { role: "tooltip" });
 
   // Merge all the interactions into prop getters
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    hover,
-    focus,
-    dismiss,
-    role
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
 
   return (
     <>
@@ -64,7 +63,7 @@ export default function Tooltip({text}) {
       <FloatingPortal>
         {isMounted && (
           <div
-            className={clsx(styles.tooltip, golos_text.className, )}
+            className={clsx(styles.tooltip, golos_text.className)}
             ref={refs.setFloating}
             style={{ ...floatingStyles, ...transitionStyles }}
             {...getFloatingProps()}

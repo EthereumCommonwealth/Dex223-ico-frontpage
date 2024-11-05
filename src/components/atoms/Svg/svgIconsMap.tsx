@@ -86,7 +86,7 @@ export const svgIconsNames = [
   "legal-requirements",
   "amendment",
   "distribution",
-  "download"
+  "download",
 ] as const;
 
-export type IconName = typeof svgIconsNames[number];
+export type IconName = (typeof svgIconsNames)[number];

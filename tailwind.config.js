@@ -19,7 +19,8 @@ module.exports = {
 
         green_hover: "#2DBF61",
 
-        "border-primary": "#5A5A5A",
+        "primary-border": "#5A5A5A",
+        "disabled-border": "#393939",
 
         "primary-text": "#F7FFE4",
         "secondary-text": "#B2B2B2",

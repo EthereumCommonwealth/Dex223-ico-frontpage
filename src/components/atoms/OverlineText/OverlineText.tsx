@@ -1,10 +1,11 @@
-import React from "react";
-import styles from "./OverlineText.module.scss";
 import clsx from "clsx";
+import React from "react";
+
+import styles from "./OverlineText.module.scss";
 
 interface Props {
-  text: string,
-  color: "purple" | "green" | "blue"
+  text: string;
+  color: "purple" | "green" | "blue";
 }
 
 export default function OverlineText({ text, color }: Props) {

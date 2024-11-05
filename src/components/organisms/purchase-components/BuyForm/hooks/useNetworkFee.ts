@@ -1,13 +1,14 @@
 import { useMemo } from "react";
 import { formatEther } from "viem";
+
+import useETHPrice from "@/hooks/useETHPrice";
 import {
   useTransactionGasFee,
   useTransactionGasLimit,
   useTransactionGasPrice,
   useTransactionPriorityFee,
-  useTransactionTypeStore
+  useTransactionTypeStore,
 } from "@/stores/useGasSettings";
-import useETHPrice from "@/hooks/useETHPrice";
 
 export function useNetworkFee() {
   const { type } = useTransactionTypeStore();
@@ -33,6 +34,5 @@ export function useNetworkFee() {
 
     const networkFee = (+formatEther(gasLimit * gasPrice)).toFixed(4);
     return `$${getPriceForETH(+networkFee)}`;
-
   }, [baseFee, gasLimit, gasPrice, getPriceForETH, maxFeePerGas, maxPriorityFeePerGas, type]);
 }

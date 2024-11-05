@@ -1,16 +1,18 @@
-import React, { useEffect, useMemo, useState } from "react";
-import styles from "./MessageInteractive.module.scss";
-import { usePurchaseData } from "@/stores/usePurchaseData";
 import Image from "next/image";
-import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
+import React, { useEffect, useMemo, useState } from "react";
 import { formatUnits } from "viem";
 import { useAccount } from "wagmi";
 
-export default function MessageInteractive({presale}) {
+import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
+import { usePurchaseData } from "@/stores/usePurchaseData";
+
+import styles from "./MessageInteractive.module.scss";
+
+export default function MessageInteractive({ presale }) {
   const { amountToPay, computed } = usePurchaseData();
   const { readData } = useReward({ amountToPay, pickedToken: computed.pickedToken, presale });
   const [message, setMessage] = useState("...");
-  const {isConnected} = useAccount();
+  const { isConnected } = useAccount();
 
   useEffect(() => {
     if (typeof readData !== "undefined") {
@@ -28,12 +30,16 @@ export default function MessageInteractive({presale}) {
         }
 
         if (+formatted >= 1538000) {
-          setMessage("What a significant contribution to the development of the ecosystem. Descendants will make up legends about us.");
+          setMessage(
+            "What a significant contribution to the development of the ecosystem. Descendants will make up legends about us.",
+          );
           return;
         }
 
         if (+formatted >= 153800) {
-          setMessage("Each token is a building block of the future financial system that we are building today.");
+          setMessage(
+            "Each token is a building block of the future financial system that we are building today.",
+          );
           return;
         }
 
@@ -43,11 +49,13 @@ export default function MessageInteractive({presale}) {
         }
 
         if (+formatted >= 1) {
-          setMessage("Congratulations on taking the first step! I'm confident it will lead to great things!");
+          setMessage(
+            "Congratulations on taking the first step! I'm confident it will lead to great things!",
+          );
           return;
         }
 
-        if(isConnected) {
+        if (isConnected) {
           setMessage("Wallet connected! You are one step closer to financial freedom.");
           return;
         }
@@ -57,15 +65,17 @@ export default function MessageInteractive({presale}) {
     }
   }, [isConnected, readData]);
 
-  return <div className={styles.interactiveContainer}>
-    <span className={styles.logo}>
-      <Image width={50} height={50} src="/dex.svg" alt=""/>
-    </span>
-    <div className={styles.text}>
-      <span>Dexaran</span>
-      <div className={styles.messageContainer}>
-        <span className={styles.message}>{message}</span>
+  return (
+    <div className={styles.interactiveContainer}>
+      <span className={styles.logo}>
+        <Image width={50} height={50} src="/dex.svg" alt="" />
+      </span>
+      <div className={styles.text}>
+        <span>Dexaran</span>
+        <div className={styles.messageContainer}>
+          <span className={styles.message}>{message}</span>
+        </div>
       </div>
     </div>
-  </div>;
+  );
 }

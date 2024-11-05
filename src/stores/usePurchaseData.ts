@@ -1,14 +1,15 @@
 import { create } from "zustand";
+
 import { TokenInfo, tokensToPayWith } from "@/constants/tokens";
 
 interface IPurchaseData {
-  pickedTokenId: number,
-  setPickedTokenId: (id: number) => void,
-  amountToPay: string,
-  setAmountToPay: (amount: string) => void,
+  pickedTokenId: number;
+  setPickedTokenId: (id: number) => void;
+  amountToPay: string;
+  setAmountToPay: (amount: string) => void;
   computed: {
-    pickedToken: TokenInfo
-  }
+    pickedToken: TokenInfo;
+  };
 }
 
 export const usePurchaseData = create<IPurchaseData>((set, get) => ({
@@ -24,6 +25,6 @@ export const usePurchaseData = create<IPurchaseData>((set, get) => ({
         return tokensToPayWith[0];
       }
       return pt;
-    }
-  }
+    },
+  },
 }));

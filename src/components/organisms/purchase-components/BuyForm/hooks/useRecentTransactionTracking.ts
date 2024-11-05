@@ -1,18 +1,18 @@
-import { RecentTransactionStatus, useRecentTransactionsStore } from "@/stores/useRecentTransactions";
 import { useCallback, useEffect, useMemo } from "react";
 import { useAccount, usePublicClient } from "wagmi";
 
+import {
+  RecentTransactionStatus,
+  useRecentTransactionsStore,
+} from "@/stores/useRecentTransactions";
+
 export function useRecentTransactionTracking() {
-  const {
-    transactions,
-    updateTransactionStatus,
-    setIsViewed
-  } = useRecentTransactionsStore();
+  const { transactions, updateTransactionStatus, setIsViewed } = useRecentTransactionsStore();
   const { address } = useAccount();
   const publicClient = usePublicClient();
 
   const transactionsForAddress = useMemo(() => {
-    return transactions[address] || []
+    return transactions[address] || [];
   }, [address, transactions]);
 
   const isUnViewedTransactions = useMemo(() => {
@@ -30,7 +30,7 @@ export function useRecentTransactionTracking() {
         return t.status === RecentTransactionStatus.ERROR;
       });
 
-      const success  = unViewed.filter((t) => {
+      const success = unViewed.filter((t) => {
         return t.status === RecentTransactionStatus.SUCCESS;
       });
 
@@ -39,28 +39,28 @@ export function useRecentTransactionTracking() {
         pending,
         failed,
         success,
-        totalUnViewed: unViewed.length
+        totalUnViewed: unViewed.length,
       };
     }
 
     return { isUnViewed: false };
   }, [address, transactions]);
 
+  const waitForTransaction = useCallback(
+    async (hash: `0x${string}`, id: string) => {
+      const transaction = await publicClient.waitForTransactionReceipt({ hash });
+      if (transaction.status === "success") {
+        updateTransactionStatus(id, RecentTransactionStatus.SUCCESS, address);
+      }
 
-  const waitForTransaction = useCallback(async (hash: `0x${string}`, id: string) => {
-    const transaction = await publicClient.waitForTransactionReceipt(
-      { hash }
-    );
-    if (transaction.status === "success") {
-      updateTransactionStatus(id, RecentTransactionStatus.SUCCESS, address);
-    }
+      if (transaction.status === "reverted") {
+        updateTransactionStatus(id, RecentTransactionStatus.ERROR, address);
+      }
 
-    if (transaction.status === "reverted") {
-      updateTransactionStatus(id, RecentTransactionStatus.ERROR, address);
-    }
-
-    setIsViewed(id, address, false);
-  }, [address, publicClient, setIsViewed, updateTransactionStatus])
+      setIsViewed(id, address, false);
+    },
+    [address, publicClient, setIsViewed, updateTransactionStatus],
+  );
 
   useEffect(() => {
     for (const transaction of transactionsForAddress) {

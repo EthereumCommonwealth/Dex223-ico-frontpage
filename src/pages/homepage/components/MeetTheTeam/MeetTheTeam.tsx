@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./MeetTheTeam.module.scss";
-import ArticleHeading from "../../../../components/atoms/ArticleHeading";
-import TeamMemberCard from "../../../../components/organisms/others/TeamMemberCard";
-import NeonBlock from "../../../../components/organisms/others/NeonBlock";
+
 import { dexEmailLink } from "@/constants/email";
+
+import ArticleHeading from "../../../../components/atoms/ArticleHeading";
+import NeonBlock from "../../../../components/organisms/others/NeonBlock";
+import TeamMemberCard from "../../../../components/organisms/others/TeamMemberCard";
+import styles from "./MeetTheTeam.module.scss";
 
 const team = [
   {
@@ -13,8 +15,8 @@ const team = [
     socials: {
       github: "https://github.com/Dexaran",
       twitter: "http://twitter.com/Dexaran",
-      email: dexEmailLink
-    }
+      email: dexEmailLink,
+    },
   },
   {
     image: "/images/team/TioToi.jpg",
@@ -22,8 +24,8 @@ const team = [
     name: "Tio Toi",
     socials: {
       github: "https://github.com/tiotoi",
-      linkedin: "https://www.linkedin.com/in/tio-toi-192279165/"
-    }
+      linkedin: "https://www.linkedin.com/in/tio-toi-192279165/",
+    },
   },
   // {
   //   image: "/images/team/YuriyKharytoshyn.jpg",
@@ -42,8 +44,8 @@ const team = [
     socials: {
       twitter: "https://twitter.com/docranroland",
       linkedin: "https://www.linkedin.com/in/randall-k-roland-5b53b7142",
-      email: "mailto:ranroland@eossupport.io"
-    }
+      email: "mailto:ranroland@eossupport.io",
+    },
   },
   {
     image: "/images/team/AleksandrTerekhov.jpg",
@@ -52,8 +54,8 @@ const team = [
     socials: {
       github: "http://github.com/Exzender",
       linkedin: "https://www.linkedin.com/in/aleksandr-s-terekhov",
-      email: "mailto:suriken@gmail.com"
-    }
+      email: "mailto:suriken@gmail.com",
+    },
   },
   {
     image: "/images/team/KostyaOstapenko.jpg",
@@ -61,8 +63,8 @@ const team = [
     name: "Kostya Ostapenko",
     socials: {
       github: "https://github.com/kostya12362",
-      linkedin: "https://www.linkedin.com/in/kostya-ostapenko-a677aa160/"
-    }
+      linkedin: "https://www.linkedin.com/in/kostya-ostapenko-a677aa160/",
+    },
   },
   {
     image: "/images/team/ViktorPeredera.jpg",
@@ -70,8 +72,8 @@ const team = [
     name: "Viktor Peredera",
     socials: {
       github: "https://github.com/Dalcor",
-      linkedin: "https://www.linkedin.com/in/viktor-peredera/"
-    }
+      linkedin: "https://www.linkedin.com/in/viktor-peredera/",
+    },
   },
   {
     image: "/images/team/OlegGorbatiuk.jpg",
@@ -79,8 +81,8 @@ const team = [
     name: "Oleg Gorbatiuk",
     socials: {
       github: "https://github.com/gorbatiukcom",
-      linkedin: "https://www.linkedin.com/in/gorbatiuk/"
-    }
+      linkedin: "https://www.linkedin.com/in/gorbatiuk/",
+    },
   },
   {
     image: "/images/team/NadiiaUdovychenko.jpg",
@@ -88,36 +90,40 @@ const team = [
     name: "Nadiia Udovychenko",
     socials: {
       linkedin: "https://www.linkedin.com/in/naud",
-      behance: "https://www.behance.net/Na_Ud"
-    }
-  }
-]
+      behance: "https://www.behance.net/Na_Ud",
+    },
+  },
+];
 
 export default function MeetTheTeam() {
-  return <>
-    <NeonBlock
-      icon="team"
-      color="blue"
-      overlineText="Team"
-      anchor="team"
-      leftContent={
-        <>
-          <ArticleHeading text="Meet the Team"/>
-        </>
-      }
-    />
-    <div className={"container_internal"}>
-      <div className={styles.memberCards}>
-        {team.map(({ image, position, name, socials }) => {
-          return <TeamMemberCard
-            key={name}
-            image={image}
-            position={position}
-            name={name}
-            socials={socials}
-          />
-        })}
+  return (
+    <>
+      <NeonBlock
+        icon="team"
+        color="blue"
+        overlineText="Team"
+        anchor="team"
+        leftContent={
+          <>
+            <ArticleHeading text="Meet the Team" />
+          </>
+        }
+      />
+      <div className={"container_internal"}>
+        <div className={styles.memberCards}>
+          {team.map(({ image, position, name, socials }) => {
+            return (
+              <TeamMemberCard
+                key={name}
+                image={image}
+                position={position}
+                name={name}
+                socials={socials}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </>
+    </>
+  );
 }

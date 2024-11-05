@@ -28,7 +28,7 @@ export const trackPageview = (props?: any) => {
   }
 };
 
-export const mixpanelIdentify  = (id: string | number) => {
+export const mixpanelIdentify = (id: string | number) => {
   try {
     if ((window as any).mixpanel) {
       (window as any).mixpanel.identify(id);
@@ -38,7 +38,7 @@ export const mixpanelIdentify  = (id: string | number) => {
   }
 };
 
-export const mixpanelSetProfileProp  = (name: string, value: any) => {
+export const mixpanelSetProfileProp = (name: string, value: any) => {
   try {
     if ((window as any).mixpanel) {
       (window as any).mixpanel.people.set({ [name]: value });

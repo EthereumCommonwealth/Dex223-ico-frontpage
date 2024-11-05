@@ -1,50 +1,49 @@
+import { useEffect, useMemo } from "react";
+import { parseUnits } from "viem";
 import {
   useAccount,
   useContractWrite,
   useNetwork,
   usePrepareContractWrite,
   usePublicClient,
-  useSendTransaction
+  useSendTransaction,
 } from "wagmi";
+
+import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
+import testICOABI from "@/constants/abis/icoABI.json";
 import {
   ICOContractAddressETH,
   ICOContractAddressETHPreSale,
   tokensToPayWith,
-  tokensToPayWithPreSale
+  tokensToPayWithPreSale,
 } from "@/constants/tokens";
-import { parseUnits } from "viem";
-import { useEffect, useMemo } from "react";
-import testICOABI from "@/constants/abis/icoABI.json";
-import { useRecentTransactionsStore } from "@/stores/useRecentTransactions";
-import {
-  useTransactionGasFee, useTransactionGasLimit,
-  useTransactionGasPrice,
-  useTransactionPriorityFee,
-  useTransactionTypeStore
-} from "@/stores/useGasSettings";
-import { useSnackbar } from "@/providers/SnackbarProvider";
-import { usePurchaseData } from "@/stores/usePurchaseData";
-import { useReward } from "@/components/organisms/purchase-components/BuyForm/hooks/useReward";
 import { isNativeToken } from "@/functions/isNativeToken";
 import { trackEvent } from "@/functions/mixpanel";
+import { useSnackbar } from "@/providers/SnackbarProvider";
+import {
+  useTransactionGasFee,
+  useTransactionGasLimit,
+  useTransactionGasPrice,
+  useTransactionPriorityFee,
+  useTransactionTypeStore,
+} from "@/stores/useGasSettings";
+import { usePurchaseData } from "@/stores/usePurchaseData";
+import { useRecentTransactionsStore } from "@/stores/useRecentTransactions";
 
 function stringifyObject(object: { [key: string]: any }) {
-  return JSON.parse(JSON.stringify(object, (key, value) =>
-    typeof value === 'bigint'
-      ? value.toString()
-      : value // return everything else unchanged
-  ));
+  return JSON.parse(
+    JSON.stringify(
+      object,
+      (key, value) => (typeof value === "bigint" ? value.toString() : value), // return everything else unchanged
+    ),
+  );
 }
 
-export function usePurchaseTokens({presale}) {
-  const {
-    setPickedTokenId,
-    amountToPay,
-    pickedToken
-  } = usePurchaseData((state) => ({
+export function usePurchaseTokens({ presale }) {
+  const { setPickedTokenId, amountToPay, pickedToken } = usePurchaseData((state) => ({
     setPickedTokenId: state.setPickedTokenId,
     amountToPay: state.amountToPay,
-    pickedToken: state.computed.pickedToken
+    pickedToken: state.computed.pickedToken,
   }));
 
   const { addTransaction, isViewed } = useRecentTransactionsStore();
@@ -62,13 +61,14 @@ export function usePurchaseTokens({presale}) {
 
   const { showMessage } = useSnackbar();
 
-  const gasSettings: {gasPrice: bigint} | {maxFeePerGas: bigint, maxPriorityFeePerGas: bigint} = useMemo(() => {
-    if (type === "legacy") {
-      return { gasPrice }
-    } else {
-      return { maxPriorityFeePerGas, maxFeePerGas }
-    }
-  }, [gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
+  const gasSettings: { gasPrice: bigint } | { maxFeePerGas: bigint; maxPriorityFeePerGas: bigint } =
+    useMemo(() => {
+      if (type === "legacy") {
+        return { gasPrice };
+      } else {
+        return { maxPriorityFeePerGas, maxFeePerGas };
+      }
+    }, [gasPrice, maxFeePerGas, maxPriorityFeePerGas, type]);
 
   useEffect(() => {
     setPickedTokenId(presale ? tokensToPayWithPreSale[0].id : tokensToPayWith[0].id);
@@ -79,38 +79,33 @@ export function usePurchaseTokens({presale}) {
   const { config: purchaseConfig, error } = usePrepareContractWrite({
     address: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
     abi: testICOABI,
-    functionName: 'purchaseTokens',
+    functionName: "purchaseTokens",
     gas: gasLimit,
     ...gasSettings,
-    args: [
-      pickedToken.address,
-      parseUnits(amountToPay, pickedToken.decimals)
-    ],
+    args: [pickedToken.address, parseUnits(amountToPay, pickedToken.decimals)],
     cacheTime: 0,
-    enabled: !isNativeToken(pickedToken)
+    enabled: !isNativeToken(pickedToken),
   });
 
-  const {
-    write: purchaseWithTokens,
-    isLoading: waitingForPurchaseWithTokens
-  } = useContractWrite({
+  const { write: purchaseWithTokens, isLoading: waitingForPurchaseWithTokens } = useContractWrite({
     ...purchaseConfig,
     onSettled: async (data, error) => {
       if (error) {
         trackEvent("error", {
           message: "Something went wrong",
-          errorFunction: "purchaseWithTokens"
-        })  
+          errorFunction: "purchaseWithTokens",
+        });
         return showMessage("Something went wrong", "error");
       }
 
       showMessage("Transaction submitted!");
       const _nonce = await publicClient.getTransactionCount({
         address,
-        blockTag: "pending"
+        blockTag: "pending",
       });
 
-      addTransaction({
+      addTransaction(
+        {
           hash: data.hash,
           chainId: chain.id,
           title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
@@ -119,16 +114,13 @@ export function usePurchaseTokens({presale}) {
             nonce: _nonce - 1,
             address: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
             abi: "ICO_ABI",
-            functionName: 'purchaseTokens',
+            functionName: "purchaseTokens",
             gas: gasLimit.toString(),
             ...stringifyObject(gasSettings),
-            args: [
-              pickedToken.address,
-              parseUnits(amountToPay, pickedToken.decimals).toString()
-            ]
-          }
+            args: [pickedToken.address, parseUnits(amountToPay, pickedToken.decimals).toString()],
+          },
         },
-        address
+        address,
       );
 
       // Track token purchase
@@ -138,54 +130,59 @@ export function usePurchaseTokens({presale}) {
         dex223Amount: output || 0,
         amountToPay,
         amountSymbol: pickedToken.symbol,
-      })
-    }
+      });
+    },
   });
 
-  const { data, sendTransaction: purchaseWithCoins, isLoading: waitingForPurchaseWithCoins } =
-    useSendTransaction({
-      to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
-      value: parseUnits(amountToPay, pickedToken.decimals),
-      gas: gasLimit,
-      ...gasSettings,
-      onSettled: async (data, error) => {
-        if (error) {
-          trackEvent("error", {
-            message: "Something went wrong",
-            errorFunction: "purchaseWithCoins"
-          })  
-        }
-
-        const _nonce = await publicClient.getTransactionCount({
-          address,
-          blockTag: "pending"
+  const {
+    data,
+    sendTransaction: purchaseWithCoins,
+    isLoading: waitingForPurchaseWithCoins,
+  } = useSendTransaction({
+    to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
+    value: parseUnits(amountToPay, pickedToken.decimals),
+    gas: gasLimit,
+    ...gasSettings,
+    onSettled: async (data, error) => {
+      if (error) {
+        trackEvent("error", {
+          message: "Something went wrong",
+          errorFunction: "purchaseWithCoins",
         });
-
-        addTransaction({
-            hash: data.hash,
-            chainId: chain.id,
-            title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
-            type: type === "default" ? 2 : 0,
-            details: {
-              nonce: _nonce - 1,
-              to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
-              value: parseUnits(amountToPay, pickedToken.decimals).toString(),
-              gas: gasLimit.toString(),
-              ...stringifyObject(gasSettings)
-            },
-          }, address
-        );
-
-        // Track token purchase
-        trackEvent("purchaseTokens", {
-          txHash: data.hash,
-          purchaseType: "coins",
-          dex223Amount: output || 0,
-          amountToPay,
-          amountSymbol: pickedToken.symbol,
-        })
       }
-    })
+
+      const _nonce = await publicClient.getTransactionCount({
+        address,
+        blockTag: "pending",
+      });
+
+      addTransaction(
+        {
+          hash: data.hash,
+          chainId: chain.id,
+          title: `Purchase ${output || 0} DEX223 for ${amountToPay} ${pickedToken.symbol}`,
+          type: type === "default" ? 2 : 0,
+          details: {
+            nonce: _nonce - 1,
+            to: presale ? ICOContractAddressETHPreSale : ICOContractAddressETH,
+            value: parseUnits(amountToPay, pickedToken.decimals).toString(),
+            gas: gasLimit.toString(),
+            ...stringifyObject(gasSettings),
+          },
+        },
+        address,
+      );
+
+      // Track token purchase
+      trackEvent("purchaseTokens", {
+        txHash: data.hash,
+        purchaseType: "coins",
+        dex223Amount: output || 0,
+        amountToPay,
+        amountSymbol: pickedToken.symbol,
+      });
+    },
+  });
 
   const isLoading = useMemo(() => {
     return waitingForPurchaseWithCoins || waitingForPurchaseWithTokens;
@@ -195,6 +192,6 @@ export function usePurchaseTokens({presale}) {
     purchaseWithCoins,
     purchaseWithTokens,
     isLoading,
-    error
-  }
+    error,
+  };
 }

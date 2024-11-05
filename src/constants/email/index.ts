@@ -10,4 +10,3 @@ export const dexEmailLink = getEmailLink(dexEmail);
 export const mediaEmailLink = getEmailLink(mediaEmail);
 export const privacyEmailLink = getEmailLink(privacyEmail);
 export const legalEmailLink = getEmailLink(legalEmail);
-

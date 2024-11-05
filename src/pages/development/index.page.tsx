@@ -1,14 +1,17 @@
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
-import React, { useEffect, useRef, useState } from "react";
-import styles from "../../styles/Development.module.scss";
 import clsx from "clsx";
+import React, { useEffect, useRef, useState } from "react";
+import { throttle } from "throttle-debounce";
+
+import Layout from "@/components/layout/Layout";
+import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
+
+import Spacer from "../../components/atoms/Spacer";
+import Footer from "../../components/layout/Footer";
+import Header from "../../components/layout/Header";
+import styles from "../../styles/Development.module.scss";
 import DevelopmentReports from "./components/DevelopmentReports";
 import References from "./components/References";
-import Spacer from "../../components/atoms/Spacer";
 import Structure from "./components/Structure";
-import { throttle } from 'throttle-debounce';
-import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -18,11 +21,9 @@ export default function Home() {
   const secondRef = useRef();
   const thirdRef = useRef();
 
-
   useEffect(() => {
     function logPositions() {
       if (firstRef.current && secondRef.current && thirdRef.current) {
-
         // @ts-ignore
         const firstTop = firstRef.current.getBoundingClientRect().top;
         // @ts-ignore
@@ -54,7 +55,7 @@ export default function Home() {
 
     return () => {
       window.removeEventListener("scroll", throttledPositions);
-    }
+    };
   }, [setActiveTab]);
 
   useEffect(() => {
@@ -67,20 +68,25 @@ export default function Home() {
   }
 
   return (
-    <>
-      <Header/>
+    <Layout>
       <h1 className={styles.pageHeading}>Development progress</h1>
 
-      <p className={styles.pageSubheading}>Here you can track the development progress of DEX223 decentralized exchange
-        and related services.</p>
+      <p className={styles.pageSubheading}>
+        Here you can track the development progress of DEX223 decentralized exchange and related
+        services.
+      </p>
 
       <div className={styles.tabButtonsContainer}>
         <div className={styles.tabButtons}>
           <a href="#structure">
-            <button className={clsx(styles.tabButton, activeTab === 0 && styles.active)}>Structure</button>
+            <button className={clsx(styles.tabButton, activeTab === 0 && styles.active)}>
+              Structure
+            </button>
           </a>
           <a href="#references">
-            <button className={clsx(styles.tabButton, activeTab === 1 && styles.active)}>References</button>
+            <button className={clsx(styles.tabButton, activeTab === 1 && styles.active)}>
+              References
+            </button>
           </a>
           <a href="#reports">
             <button className={clsx(styles.tabButton, activeTab === 2 && styles.active)}>
@@ -91,14 +97,12 @@ export default function Home() {
         </div>
       </div>
 
-
-      <Spacer height={20}/>
-      <Structure refEl={firstRef}/>
-      <References refEl={secondRef}/>
-      <DevelopmentReports refEl={thirdRef}/>
+      <Spacer height={20} />
+      <Structure refEl={firstRef} />
+      <References refEl={secondRef} />
+      <DevelopmentReports refEl={thirdRef} />
 
       <ScrollToTopButton />
-      <Footer/>
-    </>
-  )
+    </Layout>
+  );
 }

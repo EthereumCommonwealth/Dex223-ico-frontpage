@@ -1,10 +1,10 @@
 type Parameters = {
-  supportedStandards: string,
-  deploymentChain: string,
-  listingProcess: string,
-  marginTrading: string,
-  markets: string,
-}
+  supportedStandards: string;
+  deploymentChain: string;
+  listingProcess: string;
+  marginTrading: string;
+  markets: string;
+};
 
 const parametersLabels: Parameters = {
   supportedStandards: "Supported standards",
@@ -12,7 +12,7 @@ const parametersLabels: Parameters = {
   listingProcess: "Listing process",
   marginTrading: "Margin trading",
   markets: "Markets",
-}
+};
 
 const Dex223Params: Parameters = {
   supportedStandards: "ERC-20, ERC-223",
@@ -20,7 +20,7 @@ const Dex223Params: Parameters = {
   listingProcess: "Smart-contract, tokenlists",
   marginTrading: "Encapsulated margin trading",
   markets: "Unlimited",
-}
+};
 
 const uniswapParams: Parameters = {
   supportedStandards: "ERC-20",
@@ -28,7 +28,7 @@ const uniswapParams: Parameters = {
   listingProcess: "Tokenlists",
   marginTrading: "No",
   markets: "Unlimited",
-}
+};
 
 const dydxParams: Parameters = {
   supportedStandards: "ERC-20",
@@ -36,7 +36,7 @@ const dydxParams: Parameters = {
   listingProcess: "Centralized",
   marginTrading: "Leverage up to 20x",
   markets: "56 pairs",
-}
+};
 
 const kineParams: Parameters = {
   supportedStandards: "ERC-20",
@@ -44,7 +44,7 @@ const kineParams: Parameters = {
   listingProcess: "Centralized",
   marginTrading: "Leverage up to 200x",
   markets: "21 pairs",
-}
+};
 
 const curveParams: Parameters = {
   supportedStandards: "ERC-20",
@@ -52,7 +52,7 @@ const curveParams: Parameters = {
   listingProcess: "Centralized",
   marginTrading: "No",
   markets: "156 pairs",
-}
+};
 
 const standardsRow: string[] = [
   parametersLabels.supportedStandards,
@@ -60,7 +60,7 @@ const standardsRow: string[] = [
   uniswapParams.supportedStandards,
   dydxParams.supportedStandards,
   kineParams.supportedStandards,
-  curveParams.supportedStandards
+  curveParams.supportedStandards,
 ];
 
 const chainsRow: string[] = [
@@ -69,7 +69,7 @@ const chainsRow: string[] = [
   uniswapParams.deploymentChain,
   dydxParams.deploymentChain,
   kineParams.deploymentChain,
-  curveParams.deploymentChain
+  curveParams.deploymentChain,
 ];
 
 const listingProcessRow: string[] = [
@@ -78,7 +78,7 @@ const listingProcessRow: string[] = [
   uniswapParams.listingProcess,
   dydxParams.listingProcess,
   kineParams.listingProcess,
-  curveParams.listingProcess
+  curveParams.listingProcess,
 ];
 
 const marginTradingRow: string[] = [
@@ -87,7 +87,7 @@ const marginTradingRow: string[] = [
   uniswapParams.marginTrading,
   dydxParams.marginTrading,
   kineParams.marginTrading,
-  curveParams.marginTrading
+  curveParams.marginTrading,
 ];
 
 const marketsRow: string[] = [
@@ -96,7 +96,7 @@ const marketsRow: string[] = [
   uniswapParams.markets,
   dydxParams.markets,
   kineParams.markets,
-  curveParams.markets
+  curveParams.markets,
 ];
 
 export const comparativeTableData = [
@@ -104,5 +104,5 @@ export const comparativeTableData = [
   chainsRow,
   listingProcessRow,
   marginTradingRow,
-  marketsRow
-]
+  marketsRow,
+];

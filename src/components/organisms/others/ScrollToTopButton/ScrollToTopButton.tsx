@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./ScrollToTopButton.module.scss";
 import clsx from "clsx";
-import Svg from "../../../atoms/Svg";
+import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
+
+import Svg from "../../../atoms/Svg";
+import styles from "./ScrollToTopButton.module.scss";
 
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -23,12 +24,18 @@ export default function ScrollToTopButton() {
 
     return () => {
       window.removeEventListener("scroll", throttledPositions);
-    }
+    };
   }, []);
 
-  return <button onClick={() => {
-    window.scrollTo(0, 0);
-  }} ref={ref} className={clsx(styles.button, visible && styles.visible)}>
-    <Svg iconName="to-top"/>
-  </button>;
+  return (
+    <button
+      onClick={() => {
+        window.scrollTo(0, 0);
+      }}
+      ref={ref}
+      className={clsx(styles.button, visible && styles.visible)}
+    >
+      <Svg iconName="to-top" />
+    </button>
+  );
 }

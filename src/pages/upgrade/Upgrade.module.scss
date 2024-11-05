@@ -1,0 +1,52 @@
+@use "src/styles/colors";
+@use "src/styles/typography";
+@use "src/styles/media";
+
+.formWrapper {
+  max-width: 600px;
+  margin: 350px auto;
+  position: relative;
+}
+
+.pattern1 {
+  position: absolute;
+  top: -488px;
+  z-index: -1;
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+  transform: scale(-1, 1);
+  left: -500px;
+}
+
+.pattern2 {
+  position: absolute;
+  bottom: -434px;
+  right: -500px;
+  z-index: -1;
+  transform: scale(1, -1);
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+}
+
+.heading {
+  margin: 0 auto 24px;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+  color: colors.$text-primary;
+  text-align: center;
+}
+
+.anyQuestion {
+  color: colors.$text-secondary;
+  margin-bottom: 40px;
+  text-align: center;
+
+  @include typography.t-body-20;
+
+  @include media.for-mobile {
+    @include typography.t-body-14;
+  }
+}
+

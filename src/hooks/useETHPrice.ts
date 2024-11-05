@@ -1,8 +1,10 @@
-import { useETHPriceStore } from "@/stores/useETHPriceStore";
 import { useCallback, useEffect } from "react";
-import { IIFE } from "@/functions/iife";
 
-const API_URL = "https://api-data.absolutewallet.com/api/v1/currencies/minimal/eth/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2?fiat=USD";
+import { IIFE } from "@/functions/iife";
+import { useETHPriceStore } from "@/stores/useETHPriceStore";
+
+const API_URL =
+  "https://api-data.absolutewallet.com/api/v1/currencies/minimal/eth/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2?fiat=USD";
 export default function useETHPrice() {
   const { price, setPrice } = useETHPriceStore();
 
@@ -28,12 +30,15 @@ export default function useETHPrice() {
 
     return () => {
       clearInterval(i);
-    }
+    };
   }, [setPrice]);
 
-  const getPriceForETH = useCallback((amount: number) => {
-    return (amount * price).toFixed(1);
-  }, [price]);
+  const getPriceForETH = useCallback(
+    (amount: number) => {
+      return (amount * price).toFixed(1);
+    },
+    [price],
+  );
 
   return { getPriceForETH };
 }
