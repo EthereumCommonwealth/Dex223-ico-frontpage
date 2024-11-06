@@ -2,7 +2,16 @@ import { useWeb3Modal } from "@web3modal/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useAccount, useBalance, useContractWrite, useSendTransaction } from "wagmi";
+import {
+  useAccount,
+  useBalance,
+  useChainId,
+  useConnect,
+  useContractWrite,
+  useNetwork,
+  useSendTransaction,
+  useSwitchNetwork,
+} from "wagmi";
 
 import Button from "@/components/atoms/Button";
 import DrawerDialog from "@/components/atoms/DrawerDialog";
@@ -13,7 +22,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import KeystoreConnect from "@/components/organisms/others/KeystoreConnect";
 import { ERC223_ABI } from "@/constants/abis/erc223";
-import { DEX223, DEX223_UPGRADED, upgradeD223Contract } from "@/constants/tokens";
+import { chainToConnect, DEX223, DEX223_UPGRADED, upgradeD223Contract } from "@/constants/tokens";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 import styles from "./Upgrade.module.scss";
@@ -31,6 +40,7 @@ export default function UpgradePage() {
   const [dialogOpened, setDialogOpened] = useState(false);
 
   const { address, isConnected } = useAccount();
+  const { chain } = useNetwork();
 
   const { data: D223Balance } = useBalance({
     address,
@@ -52,7 +62,12 @@ export default function UpgradePage() {
     address: DEX223.address,
     args: [upgradeD223Contract, D223Balance?.value],
     gas: BigInt(90000),
+    chainId: 1,
   } as any);
+
+  console.log(chain?.id);
+
+  const { switchNetwork, isLoading: loadingSwitchNetwork } = useSwitchNetwork();
 
   if (!hasMounted) {
     return;
@@ -97,31 +112,52 @@ export default function UpgradePage() {
 
               {isConnected ? (
                 <>
-                  {!!D223Balance?.value && (
+                  {chain?.id === 1 ? (
+                    <>
+                      {!!D223Balance?.value && (
+                        <div className="flex justify-center mt-6">
+                          <Button
+                            disabled={isLoading}
+                            onClick={async () => {
+                              try {
+                                await upgradeTokens();
+                                setStatus("success");
+                              } catch (e) {
+                                console.log(e);
+
+                                if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
+                                  setStatus("error");
+                                }
+                              }
+                            }}
+                            fullWidth={isMobile}
+                          >
+                            {isLoading ? (
+                              <span className="flex items-center gap-2">
+                                Upgrading tokens
+                                <Preloader size={24} color="#000000" />
+                              </span>
+                            ) : (
+                              "Upgrade tokens now"
+                            )}
+                          </Button>
+                        </div>
+                      )}
+                    </>
+                  ) : (
                     <div className="flex justify-center mt-6">
                       <Button
-                        disabled={isLoading}
-                        onClick={async () => {
-                          try {
-                            await upgradeTokens();
-                            setStatus("success");
-                          } catch (e) {
-                            console.log(e);
-
-                            if ((e as any)?.cause?.name !== "UserRejectedRequestError") {
-                              setStatus("error");
-                            }
-                          }
-                        }}
+                        disabled={loadingSwitchNetwork}
+                        onClick={() => switchNetwork(1)}
                         fullWidth={isMobile}
                       >
-                        {isLoading ? (
+                        {loadingSwitchNetwork ? (
                           <span className="flex items-center gap-2">
-                            Upgrading tokens
+                            Switching network
                             <Preloader size={24} color="#000000" />
                           </span>
                         ) : (
-                          "Upgrade tokens now"
+                          "Switch to Ethereum"
                         )}
                       </Button>
                     </div>
