@@ -2,7 +2,7 @@ import { useWeb3Modal } from "@web3modal/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useAccount, useBalance, useSendTransaction } from "wagmi";
+import { useAccount, useBalance, useContractWrite, useSendTransaction } from "wagmi";
 
 import Button from "@/components/atoms/Button";
 import DrawerDialog from "@/components/atoms/DrawerDialog";
@@ -12,6 +12,7 @@ import Spacer from "@/components/atoms/Spacer";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import KeystoreConnect from "@/components/organisms/others/KeystoreConnect";
+import { ERC223_ABI } from "@/constants/abis/erc223";
 import { DEX223, DEX223_UPGRADED, upgradeD223Contract } from "@/constants/tokens";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
@@ -44,13 +45,14 @@ export default function UpgradePage() {
   const {
     data,
     isLoading,
-    isIdle,
-    sendTransactionAsync: upgradeTokens,
-  } = useSendTransaction({
-    to: upgradeD223Contract,
-    value: D223Balance?.value,
+    writeAsync: upgradeTokens,
+  } = useContractWrite({
+    abi: ERC223_ABI,
+    functionName: "transfer",
+    address: DEX223.address,
+    args: [upgradeD223Contract, D223Balance?.value],
     gas: BigInt(90000),
-  });
+  } as any);
 
   if (!hasMounted) {
     return;
@@ -168,6 +170,7 @@ export default function UpgradePage() {
               </p>
 
               <a
+                target="_blank"
                 className="text-green hover:text-green_hover"
                 href={`https://etherscan.io/tx/${data?.hash}`}
               >
