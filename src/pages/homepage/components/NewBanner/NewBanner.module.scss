@@ -2,15 +2,17 @@
 @use "../../../../styles/media";
 @use "../../../../styles/media-new";
 @use "../../../../styles/typography";
+@use "../../../../styles/mixins";
 
 .gridWrapper {
   display: grid;
-  grid-template-areas: "l l l l . r r r";
+  grid-template-areas: "l l l l l r r r";
   grid-template-columns: repeat(8, 1fr);
   padding-top: 60px;
 
   @include media.for-desktop {
-    grid-template-areas: "l l l l r r r r";
+    grid-template-areas: "l l l l l l l l r r r r";
+    grid-template-columns: repeat(12, 1fr);
     gap: 60px;
   }
 
@@ -41,6 +43,7 @@
   grid-area: l;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .bannerForm {
@@ -72,6 +75,58 @@
 
   p {
     color: colors.$text-secondary
+  }
+}
+
+.formWrapper {
+  position: relative;
+  grid-area: r;
+}
+
+.pattern1 {
+  position: absolute;
+  //bottom: -234px;
+  right: -323px;
+  top: -60px;
+  z-index: -1;
+  transform: scale(1, 1) translateX(-100%);
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+  width: 1000px;
+  height: 1000px;
+
+  @include media.for-desktop {
+    display: none;
+  }
+
+  @include media.for-large-mobile {
+    width: 600px;
+    height: 600px;
+    left: 0;
+  }
+}
+
+.pattern2 {
+  position: absolute;
+  //bottom: -234px;
+  //right: -500px;
+  left: 88px;
+  top: -104px;
+  z-index: -1;
+  transform: scale(-1, -1);
+  animation: breathing-pattern 6s infinite linear alternate;
+  opacity: 0.2;
+  width: 1000px;
+  height: 1000px;
+
+  @include media.for-desktop {
+    left: -400px;
+  }
+
+  @include media.for-large-mobile {
+    width: 600px;
+    height: 600px;
+    left: 0;
   }
 }
 

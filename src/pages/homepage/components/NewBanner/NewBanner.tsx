@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import React, { ChangeEvent, useCallback, useState } from "react";
 
@@ -98,6 +99,9 @@ export default function NewBanner() {
       <div className={styles.gridWrapper}>
         <MobileHeading />
         <div className={styles.bannerText}>
+          <div className={styles.pattern1}>
+            <Image alt="" src="/images/patterns/purple.svg" layout="fill" />
+          </div>
           <DesktopHeading />
           <div className={styles.blockWithNeonWrapper}>
             <div className={styles.neonContainer}>
@@ -209,15 +213,21 @@ export default function NewBanner() {
             </div>
           </div>
         </div>
-        <div className={styles.bannerForm}>
-          <div className={styles.video}>
-            <video autoPlay muted loop src="/banner_398d494b.webm"></video>
+        <div className={styles.formWrapper}>
+          <div className={styles.pattern2}>
+            <Image alt="" src="/images/patterns/green.svg" layout="fill" />
           </div>
-          <div style={{ position: "relative" }}>
-            <div className={styles.buyAnchor} id="buy" />
-          </div>
-          <BuyForm />
         </div>
+
+        {/*<div className={styles.bannerForm}>*/}
+        {/*  <div className={styles.video}>*/}
+        {/*    <video autoPlay muted loop src="/banner_398d494b.webm"></video>*/}
+        {/*  </div>*/}
+        {/*  <div style={{ position: "relative" }}>*/}
+        {/*    <div className={styles.buyAnchor} id="buy" />*/}
+        {/*  </div>*/}
+        {/*  <BuyForm />*/}
+        {/*</div>*/}
       </div>
       <div className={styles.blockWithNeonWrapper}>
         <div className={styles.neonContainer}>
