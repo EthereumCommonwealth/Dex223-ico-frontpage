@@ -10,6 +10,14 @@ import styles from "./DevelopmentReports.module.scss";
 
 const reports = [
   {
+    text: "November 2024",
+    href: "https://gist.github.com/Dexaran/d53d29b3dd88279bbc3cf5c51dd6638b",
+  },
+  {
+    text: "October 2024",
+    href: "https://gist.github.com/Dexaran/8f222be80bc01ee8db0fae8b729459be",
+  },
+  {
     text: "September 2024",
     href: "https://gist.github.com/Dexaran/5722f3e7002b7010bdd4d8c10af9f4fe",
   },

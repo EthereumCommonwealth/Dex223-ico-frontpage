@@ -90,7 +90,7 @@
   top: -60px;
   z-index: -1;
   transform: scale(1, 1) translateX(-100%);
-  animation: breathing-pattern 6s infinite linear alternate;
+  //animation: breathing-pattern 6s infinite linear alternate;
   opacity: 0.2;
   width: 1000px;
   height: 1000px;
@@ -127,6 +127,7 @@
     width: 600px;
     height: 600px;
     left: 0;
+    top:-220px;
   }
 }
 

@@ -6,8 +6,6 @@ import Layout from "@/components/layout/Layout";
 import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
 
 import Spacer from "../../components/atoms/Spacer";
-import Footer from "../../components/layout/Footer";
-import Header from "../../components/layout/Header";
 import styles from "../../styles/Development.module.scss";
 import DevelopmentReports from "./components/DevelopmentReports";
 import References from "./components/References";
