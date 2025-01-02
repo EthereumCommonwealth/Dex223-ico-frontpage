@@ -62,7 +62,7 @@ export default function NewBanner() {
     mixpanelSetProfileProp("$email", emailInput);
 
     try {
-      const res = await fetch("https://api.dex223.io/v1/main/emails", {
+      const res = await fetch("https://api.dex223.io/v1/core/api/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,8 +78,8 @@ export default function NewBanner() {
       }
 
       if (res.status === 400) {
-        if (data.detail) {
-          showMessage(data.detail, "error");
+        if (data.errors[0].message) {
+          showMessage(data.errors[0].message, "error");
         }
       }
 
