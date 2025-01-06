@@ -72,8 +72,9 @@ export default function NewBanner() {
         }),
       });
       const data = await res.json();
+      console.log(data);
 
-      if (data.created) {
+      if (data.code === "EMAIL_ADD_SUCCESS") {
         showMessage("You have successfully subscribed to our newsletter");
       }
 
