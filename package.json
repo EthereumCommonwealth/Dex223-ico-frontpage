@@ -40,6 +40,7 @@
     "react-swipeable": "^7.0.1",
     "sass": "^1.65.1",
     "tailwind": "^4.0.0",
+    "tailwind-merge": "^2.6.0",
     "throttle-debounce": "^5.0.0",
     "uuid": "^9.0.1",
     "viem": "^1.6.0",

@@ -3,16 +3,15 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import Button from "@/components/atoms/Button";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import Layout from "@/components/layout/Layout";
+import { ButtonColor } from "@/pages/email/components/Button";
 
-import styles from "../components/Unsubscribe.module.scss";
+import Pic from "../assets/unsubscribe_image_1.png";
+import Button from "../components/Button";
 
 const resubscribeHandler = async (email: string) => {
   try {
-    await fetch("https://mail.dex223.io/email-notification/notification/save-email", {
+    await fetch("https://api.dex223.io/v1/core/api/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +28,8 @@ const resubscribeHandler = async (email: string) => {
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
   const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const email_id = searchParams.get("email_id");
+  const [email, setEmail] = useState("");
 
   const router = useRouter();
 
@@ -39,18 +39,24 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (email) {
+    if (email_id) {
       (async () => {
         try {
-          await fetch(`https://mail.dex223.io/email-notification/notification/delete/${email}`, {
-            method: "DELETE",
+          const res = await fetch(`https://api.dex223.io/v1/core/api/email/${email_id}`, {
+            method: "PUT",
           });
+
+          const data = await res.json();
+
+          if (data.email) {
+            setEmail(data.email);
+          }
         } catch (error) {
           console.warn("Delete email error:", error);
         }
       })();
     }
-  }, [email]);
+  }, [email_id]);
 
   if (!hasMounted) {
     return;
@@ -58,29 +64,32 @@ export default function Home() {
 
   return (
     <Layout blurHeader>
-      <div className={styles.container}>
-        <div className={styles.pattern1}>
-          <Image alt="" src="/images/patterns/purple.svg" width={600} height={600} />
+      <div className=" bg-primary-bg">
+        <div className=" my-[100px] mx-4 md:mx-auto bg-secondary-bg flex justify-center items-center flex-col p-10 rounded-2 max-w-[800px]">
+          <div className="relative">
+            <Image src={Pic} alt="" />
+          </div>
+
+          <h1 className="texty-28 md:text-36 text-primary-text text-center mb-3">
+            You have been successfully unsubscribed
+          </h1>
+          <p className="text-18 text-secondary-text text-center mb-4">
+            If this was a mistake, don&apos;t worry — you can easily resubscribe by clicking the
+            button below. We&apos;d be happy to have you back!
+          </p>
+          {email ? (
+            <Button
+              fullWidth
+              colorScheme={ButtonColor.LIGHT_GREEN}
+              onClick={async () => {
+                await resubscribeHandler(email);
+                router.push(`/email/resubscribe?email_id=${email}`);
+              }}
+            >
+              Resubscribe
+            </Button>
+          ) : null}
         </div>
-        <div className={styles.pattern2}>
-          <Image alt="" src="/images/patterns/green.svg" width={600} height={600} />
-        </div>
-        <Image width={364} height={258} src="/images/email/email_unsubscribe.png" alt="" />
-        <h1 className={styles.pageHeading}>You have been successfully unsubscribed</h1>
-        <p
-          className={styles.pageSubheading}
-        >{`You have been removed from our mailing list. If this is a mistake or if you want to receive updates again you can resubscribe.`}</p>
-        {email ? (
-          <Button
-            className={styles.resubscribeButton}
-            onClick={async () => {
-              await resubscribeHandler(email);
-              router.push(`/email/resubscribe?email=${email}`);
-            }}
-          >
-            Resubscribe
-          </Button>
-        ) : null}
       </div>
     </Layout>
   );

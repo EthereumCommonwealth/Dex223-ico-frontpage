@@ -27,7 +27,13 @@ module.exports = {
 
         "primary-bg": "#010101",
         "secondary-bg": "#1D1C1E",
-        "tertiary-bg": "#141316"
+        "tertiary-bg": "#141316",
+
+        "green-new": "#7DA491",
+        "green-hover-new": "#A5E7C5",
+        "green-bg-hover-new": "#495C5A",
+
+        "green-bg": "#3C4C4A",
       }
     },
     fontSize: {
@@ -41,6 +47,7 @@ module.exports = {
       24: ["24px", "40px"],
       30: ["30px", "44px"],
       32: ["32px", "48px"],
+      36: ["36px", "52px"],
       58: ["58px", "80px"],
     },
     spacing: {
