@@ -42,9 +42,12 @@ export default function Home() {
     if (email_id) {
       (async () => {
         try {
-          const res = await fetch(`https://api.dex223.io/v1/core/api/email/${email_id}`, {
-            method: "PUT",
-          });
+          const res = await fetch(
+            `https://api.dex223.io/v1/core/api/email/unsubscribe/${email_id}`,
+            {
+              method: "PUT",
+            },
+          );
 
           const data = await res.json();
 
@@ -83,7 +86,7 @@ export default function Home() {
               colorScheme={ButtonColor.LIGHT_GREEN}
               onClick={async () => {
                 await resubscribeHandler(email);
-                router.push(`/email/resubscribe?email_id=${email}`);
+                router.push(`/email/resubscribe?email_id=${email_id}`);
               }}
             >
               Resubscribe
