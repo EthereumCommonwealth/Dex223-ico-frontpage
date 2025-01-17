@@ -3,11 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import Button from "@/components/atoms/Button";
-import TextLink from "@/components/atoms/ExternalTextLink";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import BuyForm from "@/components/organisms/purchase-components/BuyForm";
-import { dexEmail, dexEmailLink } from "@/constants/email";
 
 import styles from "./PreSale.module.scss";
 
