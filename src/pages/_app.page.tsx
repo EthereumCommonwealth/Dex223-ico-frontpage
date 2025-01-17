@@ -1,36 +1,36 @@
 import "@/styles/globals.css";
-import "@/styles/globals.scss";
 
-import { EthereumClient, w3mConnectors, w3mProvider } from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
+// import "@/styles/globals.scss";
+// import { EthereumClient, w3mConnectors, w3mProvider } from "@web3modal/ethereum";
+// import { Web3Modal } from "@web3modal/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
 
+// import { configureChains, createConfig, WagmiConfig } from "wagmi";
+// import { publicProvider } from "wagmi/providers/public";
 import { golos_text } from "@/assets/fonts";
-import { chainsToConnect } from "@/constants/tokens";
+// import { chainsToConnect } from "@/constants/tokens";
 import { trackPageview } from "@/functions/mixpanel";
-import { SnackbarProvider } from "@/providers/SnackbarProvider";
+// import { SnackbarProvider } from "@/providers/SnackbarProvider";
 
 const isProd = process.env.NODE_ENV === "production";
 const projectId = "b426036634aca8d1f9795404b66664b5";
 
-export const { publicClient } = configureChains(chainsToConnect, [
-  w3mProvider({ projectId }),
-  publicProvider(),
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains: chainsToConnect }),
-  publicClient,
-});
-
-const ethereumClient = new EthereumClient(wagmiConfig, chainsToConnect);
+// export const { publicClient } = configureChains(chainsToConnect, [
+//   w3mProvider({ projectId }),
+//   publicProvider(),
+// ]);
+//
+// const wagmiConfig = createConfig({
+//   autoConnect: true,
+//   connectors: w3mConnectors({ projectId, chains: chainsToConnect }),
+//   publicClient,
+// });
+//
+// const ethereumClient = new EthereumClient(wagmiConfig, chainsToConnect);
 
 const description =
   "Next generation decentralized exchange for ERC-223 & ERC-20 tokens with margin trading, 15% cheaper GAS fees and transparent auto-listings for any tokens.";
@@ -91,14 +91,14 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         />
       )}
-      <SnackbarProvider>
-        <div className={golos_text.className}>
-          <WagmiConfig config={wagmiConfig}>
-            <Component {...pageProps} />
-          </WagmiConfig>
-          <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-        </div>
-      </SnackbarProvider>
+      {/*<SnackbarProvider>*/}
+      <div className={golos_text.className}>
+        {/*<WagmiConfig config={wagmiConfig}>*/}
+        <Component {...pageProps} />
+        {/*</WagmiConfig>*/}
+        {/*<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />*/}
+      </div>
+      {/*</SnackbarProvider>*/}
     </>
   );
 }

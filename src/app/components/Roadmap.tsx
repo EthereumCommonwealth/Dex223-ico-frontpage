@@ -1,15 +1,13 @@
 import clsx from "clsx";
 import React from "react";
 
-import ArticleHeading from "@/components/atoms/ArticleHeading";
-import TextLink from "@/components/atoms/ExternalTextLink";
-import Spacer from "@/components/atoms/Spacer";
+import ArticleHeading from "@/components/ArticleHeading";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
-import Text from "@/components/atoms/Text";
-import NeonBlock from "@/components/organisms/others/NeonBlock";
+import TextLink from "@/components/atoms/TextLink";
+// import Text from "@/components/atoms/Text";
+import NeonBlock from "@/components/organisms/NeonBlock";
 
-import styles from "./Roadmap.module.scss";
 function SchemeItem({
   text,
   date,
@@ -24,17 +22,15 @@ function SchemeItem({
   isActive?: boolean;
 }) {
   return (
-    <div className={styles.schemeItem}>
-      <div className={styles.imageWrapper}>
-        <div
-          className={clsx(styles.svgWrapper, isPassed && styles.passed, isActive && styles.active)}
-        >
+    <div className="{styles.schemeItem}">
+      <div className="{styles.imageWrapper}">
+        <div className="{clsx(styles.svgWrapper, isPassed && styles.passed, isActive && styles.active)}">
           <Svg iconName={icon} />
         </div>
-        <div className={clsx(styles.roadmapArrow, isPassed && styles.passed)}>
-          <div className={clsx(styles.arrowLine, isPassed && styles.passed)} />
+        <div className="{clsx(styles.roadmapArrow, isPassed && styles.passed)}">
+          <div className="{clsx(styles.arrowLine, isPassed && styles.passed)}" />
           <svg
-            className={styles.point}
+            className="{styles.point}"
             width="5"
             height="6"
             viewBox="0 0 5 6"
@@ -49,9 +45,9 @@ function SchemeItem({
             />
           </svg>
         </div>
-        <div className={clsx(styles.lastRowRoadmapArrow, isPassed && styles.passed)}>
+        <div className="{clsx(styles.lastRowRoadmapArrow, isPassed && styles.passed)}">
           <svg
-            className={styles.lastRowArrowPoint}
+            className="{styles.lastRowArrowPoint}"
             width="5"
             height="6"
             viewBox="0 0 5 6"
@@ -66,9 +62,9 @@ function SchemeItem({
             />
           </svg>
         </div>
-        <div className={clsx(styles.leftRoadmapArrow, isPassed && styles.passed)}>
+        <div className="{clsx(styles.leftRoadmapArrow, isPassed && styles.passed)}">
           <svg
-            className={styles.leftRowArrowPoint}
+            className="{styles.leftRowArrowPoint}"
             width="5"
             height="6"
             viewBox="0 0 5 6"
@@ -86,11 +82,8 @@ function SchemeItem({
       </div>
 
       <div>
-        <Text weight={700} variant={18}>
-          {date}
-        </Text>
-        <Spacer height={4} />
-        <p className={styles.text}>{text}</p>
+        <p className="text-18 font-bold mb-1">{date}</p>
+        <p className="text-secondary-text text-20">{text}</p>
       </div>
     </div>
   );
@@ -106,8 +99,8 @@ export default function Roadmap() {
         leftContent={
           <>
             <ArticleHeading text="Roadmap" />
-            <div className={styles.paragraphs}>
-              <p className={styles.text}>
+            <div className="{styles.paragraphs}">
+              <p className="{styles.text}">
                 The deployment schedule of the DEX223 platform on other chains will be released
                 after the deployment on BSC. You can follow the Roadmap on our{" "}
                 <TextLink
@@ -121,7 +114,7 @@ export default function Roadmap() {
         }
       />
       <div className={"container_internal"}>
-        <div className={styles.roadmapSchemeContainer}>
+        <div className="{styles.roadmapSchemeContainer}">
           <SchemeItem
             isPassed
             icon="aggressive"

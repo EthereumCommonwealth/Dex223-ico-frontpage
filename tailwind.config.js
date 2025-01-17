@@ -9,31 +9,69 @@ module.exports = {
         "purple-neon-line-gradient": "linear-gradient(180deg, rgba(149, 118, 236, 0) 0%, #9576EC 50%, rgba(149, 118, 236, 0) 100%)"
       },
       colors: {
-        purple: "#9576EC",
-        green: "#3BD171",
-        blue: "#22AEFC",
-        red: "#D13B3B",
-        orange: "#D38932",
+        transparent: "transparent",
+        current: "currentColor",
+        inherit: "inherit",
+        // main background colors
+
+        "primary-bg": "#1D1E1E",
+        "secondary-bg": "#0F0F0F",
+        "tertiary-bg": "#272727",
+        "quaternary-bg": "#2E2F2F",
+
+        // core colors
+
+        green: "#7DA491",
+        orange: "#AF9A7A",
+        yellow: "#ECD245",
+        "yellow-light": "#D2BD8B",
+        red: "#D24B4B",
+        "red-light": "#CD8C8C",
+        "red-light-shadow": "#C0A0A0",
+        blue: "#7D97A4",
+        purple: "#8089BD",
+
+        black: "#000000",
         white: "#FFFFFF",
-        placeholder: "#7F7F7F",
 
-        green_hover: "#2DBF61",
-
-        "primary-border": "#5A5A5A",
-        "disabled-border": "#393939",
-
-        "primary-text": "#F7FFE4",
-        "secondary-text": "#B2B2B2",
-
-        "primary-bg": "#010101",
-        "secondary-bg": "#1D1C1E",
-        "tertiary-bg": "#141316",
-
-        "green-new": "#7DA491",
-        "green-hover-new": "#A5E7C5",
-        "green-bg-hover-new": "#495C5A",
+        // snackbar, badges, warnings colored backgrounds
 
         "green-bg": "#3C4C4A",
+        "red-bg": "#443535",
+        "orange-bg": "#4A4237",
+        "yellow-bg": "#4C483C",
+        "blue-bg": "#2A3A45",
+        "purple-bg": "#3C3D4C",
+
+        "erc-20-bg": "#434B4A",
+        "erc-223-bg": "#44434B",
+
+        "global-bg": "#0F0F0F",
+
+        // hover colors
+
+        "green-hover": "#A5E7C5",
+        "green-bg-hover": "#495C5A",
+        "green-hover-icon": "#A5E7E6",
+        "red-light-hover": "#F6B4B4",
+        "red-hover": "#DA5D57",
+        "red-bg-hover": "#655050",
+        "purple-hover": "#A5AEE7",
+        "purple-bg-hover": "#56586F",
+        "purple-hover-icon": "#B8C4FF",
+        "blue-hover": "#96B5C4",
+        "orange-hover": "#B89158",
+        "yellow-bg-hover": "#6C634F",
+
+        "primary-text": "#D1DEDF",
+        "secondary-text": "#A2AAA9",
+        "tertiary-text": "#798180",
+
+        "erc-20-text": "#97B9B6",
+        "erc-223-text": "#949ED4",
+
+        "primary-border": "#575A58",
+        "secondary-border": "#383C3A",
       }
     },
     fontSize: {
@@ -48,6 +86,7 @@ module.exports = {
       30: ["30px", "44px"],
       32: ["32px", "48px"],
       36: ["36px", "52px"],
+      40: ["40px", "60px"],
       58: ["58px", "80px"],
     },
     spacing: {
@@ -81,6 +120,21 @@ module.exports = {
       full: "50%",
     },
   },
-  plugins: [],
+  plugins: [
+    require("@savvywombat/tailwindcss-grid-areas"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.transform-box-fill': {
+          'transform-box': 'fill-box',
+        },
+        '.transform-box-view': {
+          'transform-box': 'view-box',
+        },
+        '.transform-box-border': {
+          'transform-box': 'border-box',
+        },
+      });
+    },
+  ],
 }
 

@@ -79,13 +79,13 @@ function FeatureBlock({ heading, content, image }) {
   );
 }
 
-export default function Innovation() {
+export default function Advantages() {
   return (
     <>
       <NeonBlock
         icon="lamp"
         color="blue"
-        overlineText="Innovation"
+        overlineText="Advantages"
         leftContent={
           <>
             <ArticleHeading text="Unique Features" />
