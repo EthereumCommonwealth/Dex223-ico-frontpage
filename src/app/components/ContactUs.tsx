@@ -11,6 +11,7 @@ import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { dexEmail, dexEmailLink, mediaEmail, mediaEmailLink } from "@/constants/email";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import ContactUsPlane from "@/inlined-svgs/ContactUsPlane";
 
 const styles: any = {};
 
@@ -20,47 +21,42 @@ export default function ContactUs() {
 
   return (
     <div className="relative">
-      {/*<div className={styles.pattern}>*/}
-      {/*  <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000} />*/}
-      {/*</div>*/}
       <NeonBlock
         icon="contact"
         color="green"
         overlineText="Contact Us"
         anchor="contact"
+        differentColumns
         leftContent={
           <>
             <ArticleHeading text="Get in touch" />
-            <div className={styles.texts}>
-              <p className={styles.text}>
-                Questions regarding the private sales or large-scale purchase proposals:{" "}
-                <TextLink text={dexEmail} href={dexEmailLink} />{" "}
+            <div className="flex flex-col gap-5 text-18 text-secondary-text">
+              <p>We’re here to help you make the most of DEX223.</p>
+              <p>
+                For marketing and general inquiries, emails:{" "}
+                <TextLink text={mediaEmail} href={mediaEmailLink} />.
               </p>
-              <p className={styles.text}>
-                Marketing and general inquiries:{" "}
-                <TextLink text={mediaEmail} href={mediaEmailLink} />
-              </p>
-              <p className={styles.text}>
-                You can ask your questions in our telegram group where admins will help you to
-                connect with the right person:{" "}
-                <TextLink href="https://t.me/Dex223_defi" text="https://t.me/Dex223_defi" />
+              <p>
+                You can also join our{" "}
+                <TextLink href="https://t.me/Dex223_defi" text="Telegram group" />, where our admins
+                will direct you to the right contact.
               </p>
             </div>
-            <div className={styles.buttonsWrapper}>
+            <div className="grid grid-cols-2 gap-3 mt-10 mb-5">
               <a href={dexEmailLink}>
-                <button>
-                  <span>Contact by email</span>
+                <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
+                  <span>Write to email</span>
                   <Svg iconName="email" />
                 </button>
               </a>
               <a href="https://t.me/Dex223_defi">
-                <button>
-                  <span>Telegram</span>
+                <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
+                  <span>Write to Telegram</span>
                   <Svg iconName="telegram" />
                 </button>
               </a>
             </div>
-            <div className={styles.openSrcInfo}>
+            <div className="rounded-1 bg-primary-bg border-l-4 border-green flex items-center gap-2.5 pl-4 py-2.5">
               <span className={styles.srcIcon}>
                 <Svg iconName="code" />
               </span>
@@ -72,8 +68,14 @@ export default function ContactUs() {
           </>
         }
         rightContent={
-          <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
-            <Image src={ContactUsImage} alt={""} objectFit="cover" />
+          <div
+            ref={ref}
+            className={clsx(
+              "flex flex-col justify-end h-full group",
+              entry?.isIntersecting && "animated",
+            )}
+          >
+            <ContactUsPlane />
           </div>
         }
       />

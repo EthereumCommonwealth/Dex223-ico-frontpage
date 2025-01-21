@@ -1,18 +1,16 @@
 "use client";
 
-import clsx from "clsx";
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { PropsWithChildren, ReactNode, useEffect, useRef, useState } from "react";
 
-import FirstCardImage from "@/assets/images/gear.svg";
-import ThirdCardImage from "@/assets/images/listings.svg";
-import SecondCardImage from "@/assets/images/margin.svg";
 import ArticleHeading from "@/components/ArticleHeading";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import ERC223SupportImage from "@/inlined-svgs/ERC-223SupportImage";
+import MTImage from "@/inlined-svgs/MTImage";
+import TransparentALImage from "@/inlined-svgs/TransparentALImage";
 
-const styles: any = {};
+import BulletListItem from "../../components/atoms/BulletListItem";
 
 function FeatureBlock({ heading, content, image }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -69,17 +67,18 @@ function FeatureBlock({ heading, content, image }) {
       style={{
         transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)`,
       }}
-      className="bg-primary-bg rounded-5"
+      className="bg-primary-bg rounded-5 p-10 group overflow-hidden duration-300 hover:duration-100"
     >
-      <div style={{ left: positions.left, top: positions.top }} className={styles.gradientCursor} />
+      <div
+        style={{ left: positions.left, top: positions.top }}
+        className="absolute pointer-events-none w-0 h-0 -translate-x-1/2 -translate-y-1/2 opacity-[.22] z-[1] blur-[20px] group-hover:w-[700px] group-hover:h-[700px] bg-[radial-gradient(circle_closest-side,#7D97A4,transparent)]"
+      />
 
-      <div className={styles.textBlock}>
-        <h4 className={styles.featureCardHeading}>{heading}</h4>
-        {content}
+      <div className="flex items-center gap-5 mb-5">
+        {image}
+        <h4 className="text-24 font-bold">{heading}</h4>
       </div>
-      <div className={styles.imageBlock}>
-        <Image src={image} alt="" objectFit="cover" />
-      </div>
+      {content}
     </div>
   );
 }
@@ -88,13 +87,14 @@ export default function Advantages() {
   return (
     <>
       <NeonBlock
-        icon="lamp"
+        icon="star"
         color="blue"
         overlineText="Advantages"
+        differentColumns
         leftContent={
           <>
             <ArticleHeading text="Unique Features" />
-            <p className="mb-10 text-20 text-secondary-text">
+            <p className="mb-[60px] text-18 text-secondary-text">
               DEX223 introduces a number of revolutionary concepts that no other exchange implements
               in the same way currently. These features will drastically improve the security, make
               token listings as easy and transparent as possible and allow on-platform lending of
@@ -104,117 +104,152 @@ export default function Advantages() {
         }
       />
       <Container>
-        {/*<div className={styles.pattern1}>*/}
-        {/*  <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />*/}
-        {/*</div>*/}
-        {/*<div className={styles.pattern2}>*/}
-        {/*  <Image alt="" src="/images/patterns/blue.svg" width={1000} height={1000} />*/}
-        {/*</div>*/}
         <div className="grid grid-cols-2 gap-5">
           <FeatureBlock
-            image={FirstCardImage}
+            image={<MTImage />}
             content={
               <>
-                <div className={styles.paragraphs}>
-                  <div className={styles.text}>
-                    The support of ERC-223 token standard will{" "}
-                    <span className="bold primary-color">
-                      solve the problem of ERC-20 design that caused a loss of $201,690,000
-                    </span>{" "}
-                    worth of tokens on Ethereum mainnet as of 29/08/2023, allow us to give users
-                    full control over their funds during the exchange process eliminating the need
-                    for approvals. This can{" "}
-                    <span className="bold primary-color">
-                      optimize the GAS usage by approximately 15%
-                    </span>{" "}
-                    in some cases and also lay the foundation for the implementation of
-                    &quot;encapsulated margin trading&quot; at the platform.
+                <div className="flex flex-col gap-5 text-secondary-text text-18">
+                  <p className="text-18">
+                    DEX223 introduces an innovative lending mechanism that enables users to create
+                    “lending orders” with full control over terms and conditions. Here’s how it
+                    works:
+                  </p>
+
+                  <div>
+                    <h5 className="text-20 font-bold mb-3">Flexible lending orders</h5>
+                    <ul className="flex flex-col gap-2">
+                      <BulletListItem>
+                        <b className="text-20">Funds: </b> Place any token in your lending order.
+                      </BulletListItem>
+                      <BulletListItem>
+                        <b className="text-20">Interest Rate & Deadline: </b> Define your desired
+                        annualized interest rate and loan duration.
+                      </BulletListItem>
+                      <BulletListItem>
+                        <b className="text-20">Permitted Markets: </b> Specify which markets the
+                        borrower can trade on.
+                      </BulletListItem>
+                      <li>
+                        <b className="text-20">Collateral & Configuration: </b> Require a minimum
+                        collateral amount and set optional parameters for customization.
+                      </li>
+                    </ul>
                   </div>
-                  <div className={styles.text}>
-                    It will still be possible to fallback to ERC-20 for the users of our platform
-                    however should it be necessary. The exchange will fully support the ERC-20
-                    standard alongside ERC-223.
+                  <div>
+                    <h5 className="text-20 font-bold mb-3">Borrower access & control</h5>
+                    <ul className="flex flex-col gap-2">
+                      <BulletListItem>
+                        A borrower deposits the required collateral to accept your lending order.
+                      </BulletListItem>
+                      <BulletListItem>
+                        They gain the ability to trade with the borrowed funds on the permitted
+                        markets but cannot withdraw those funds from DEX223.
+                      </BulletListItem>
+                      <BulletListItem>
+                        This ensures the lender maintains ultimate security while still allowing the
+                        borrower to engage in active market strategies.
+                      </BulletListItem>
+                    </ul>
                   </div>
-                  <div className={styles.text}>
-                    <span className="bold primary-color">
-                      EIP-7417 will make ERC-20 and ERC-223 tokens interchangeable
-                    </span>{" "}
-                    so that it will be possible to create a ERC-223 wrapper for any existing ERC-20
-                    tokens in order to enhance the security of token holders funds. ERC-223 versions
-                    of existing ERC-20 tokens created via EIP-7417 and their ERC-20 origins will be
-                    merged into one liquidity pool.
+                  <div>
+                    <h5 className="text-20 font-bold mb-3">Flexible lending orders</h5>
+                    <ul className="flex flex-col gap-2">
+                      <BulletListItem>
+                        The lender sets an “expected balance” for the borrower’s positions at any
+                        moment during the loan. For example, if 15 ETH is lent at 20% for 30 days,
+                        the borrower’s cumulative balance must be 18 ETH on day 30 or 16.5 ETH on
+                        day 15.
+                      </BulletListItem>
+                      <BulletListItem>
+                        At any point, the borrower’s actual balance is measured by the immediate
+                        market sell value of all their positions (accounting for liquidity).
+                      </BulletListItem>
+                      <BulletListItem>
+                        If the actual balance falls below the expected balance, anyone can trigger
+                        liquidation in return for a small reward—defined by the lender at order
+                        creation.
+                      </BulletListItem>
+                      <BulletListItem>
+                        Liquidation automatically closes the borrower’s positions on the spot,
+                        protecting the lender’s investment.
+                      </BulletListItem>
+                      <BulletListItem>
+                        This self-contained approach removes reliance on external price oracles,
+                        bolstering security and transparency.
+                      </BulletListItem>
+                    </ul>
                   </div>
+
+                  <p>
+                    Encapsulated Margin Trading on DEX223 pairs flexibility with robust safeguards,
+                    allowing users to lend and borrow on their own terms while keeping everyone’s
+                    funds protected.
+                  </p>
+
+                  <p>
+                    Deep Dive:{" "}
+                    <TextLink text="DEX223 Margin Trading Showcase video" isExternal href="#" />
+                  </p>
                 </div>
-                <div className={styles.anchor} id="margin" />
+                <div className="" id="margin" />
               </>
             }
             heading="ERC-223 Support"
           />
           <div className="flex flex-col gap-5">
             <FeatureBlock
-              image={SecondCardImage}
+              image={<ERC223SupportImage />}
               content={
-                <div className={styles.paragraphs}>
-                  <div className={styles.text}>
-                    On DEX223 users will be allowed to create &quot;lending orders&quot; where they
-                    can place their funds (in any token) and specify
-                  </div>
-                  <div className={styles.list}>
-                    <ul>
-                      <li className={styles.text}>interest rate</li>
-                      <li className={styles.text}>deadline</li>
-                      <li className={styles.text}>
-                        markets that borrowers are allowed to trade on
-                      </li>
-                      <li className={styles.text}>required collateral</li>
-                      <li className={styles.text}>other configuration options</li>
-                    </ul>
-                  </div>
-                  <div className={styles.text}>
-                    Another user can borrow the funds from the &quot;lending order&quot; if they
-                    deposit the required collateral amount. After entering the lending order the
-                    borrower will gain control over the borrowed funds and will be allowed to make
-                    market trades with them at the markets specified by the lender but not to
-                    withdraw them from the platform.
-                  </div>
-                  <div className={styles.text}>
-                    Liquidation will be implemented as a function of time and expected balance. If
-                    the lender provided 15 ETH at 20% interest rate for 30 days then the cumulative
-                    balance of the borrowers positions must be 18 ETH at 30th day or 16.5 ETH at
-                    15th day. For each moment it is possible to calculate the expected balance and
-                    actual balance that the borrower would have if he sold all the tokens
-                    immediately accounting for liquidity. If the actual balance does not match the
-                    expected balance then anyone would be allowed to execute the
-                    &quot;liquidation&quot; of the borrower in exchange for a small reward specified
-                    by the lender at the time of order creation. Liquidation will trigger the market
-                    sell of all the active borrowers positions.
-                  </div>
-                  <div className={styles.text}>
-                    This implementation eliminates the problem of price oracles.
-                  </div>
+                <div className="flex flex-col gap-5 text-18 text-secondary-text">
+                  <p>
+                    Integrating ERC-223 directly addresses a key shortcoming of the ERC-20 design,
+                    which has led to the loss of approximately $201,690,000 worth of tokens on
+                    Ethereum mainnet as of 29 August 2023. By adopting ERC-223, our platform ensures
+                    users have full control over their tokens during the exchange process,
+                    eliminating the need for traditional approval steps. This not only enhances
+                    security but can also reduce GAS costs by up to 15% in certain transactions.
+                  </p>
+                  <p>
+                    Additionally, ERC-223 paves the way for implementing our “Encapsulated Margin
+                    Trading” feature, further expanding the scope of decentralized finance on the
+                    platform.
+                  </p>
+                  <p>
+                    For users who still prefer ERC-20, the exchange will maintain full support
+                    alongside ERC-223, allowing a seamless fallback whenever necessary. As EIP-7417
+                    moves toward standardization, it will enable ERC-20 and ERC-223 tokens to be
+                    used interchangeably. Through a simple wrapping process, any existing ERC-20
+                    token can be upgraded to an ERC-223 equivalent, bolstering fund security. These
+                    wrapped tokens and their original ERC-20 counterparts will share unified
+                    liquidity pools, delivering both convenience and confidence to all participants.
+                  </p>
                 </div>
               }
               heading="Encapsulated Margin Trading"
             />
             <FeatureBlock
-              image={ThirdCardImage}
+              image={<TransparentALImage />}
               content={
-                <div className={styles.paragraphs}>
-                  <div className={styles.text}>
-                    On DEX223 users will be allowed to import any existing tokenlist from{" "}
-                    <TextLink text="https://tokenlists.org" href="https://tokenlists.org/" /> or
-                    import tokens from the auto-listing contract.{" "}
-                    <span className="bold primary-color">
-                      Auto-listing contract will allow anyone to list a token on the platform
-                      without asking for anyones permission or interacting with the exchange team.
-                    </span>
-                  </div>
-                  <div className={styles.text}>
-                    Auto-listings contract will serve as a more decentralized version of tokenlists.
-                    The collected listing fees will be redistributed between DEX223 token holders as
-                    revenue. Listing fees will be configurable by DEX223 token holders via the
-                    voting sessions.
-                  </div>
+                <div className="flex flex-col gap-5 text-18 text-secondary-text">
+                  <p>
+                    DEX223 empowers users to freely import any existing token list from{" "}
+                    <TextLink href="https://tokenlists.org" isExternal text="tokenlists.org" /> or
+                    integrate new tokens directly through{" "}
+                    <TextLink
+                      text="our auto-listing
+                    contract"
+                      href="https://test-app.dex223.io/en/token-listing"
+                      isExternal
+                    />
+                    . This open, permissionless approach allows anyone to list a token without
+                    seeking approval from the exchange team or intermediaries. Acting as a
+                    decentralized alternative to traditional token lists, the auto-listing contract
+                    collects listing fees that are then distributed among DEX223 token holders as
+                    revenue. Through on-chain voting, the community also determines listing fees,
+                    reinforcing collective governance and ensuring that DEX223 remains transparent,
+                    inclusive, and owned by its users.
+                  </p>
                 </div>
               }
               heading="Transparent Auto-Listings"

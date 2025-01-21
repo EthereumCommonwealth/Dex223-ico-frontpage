@@ -34,6 +34,7 @@
     "react-awesome-reveal": "^4.2.5",
     "react-dom": "^18.3.0",
     "react-swipeable": "^7.0.1",
+    "sonner": "^1.7.2",
     "tailwind-merge": "^2.6.0",
     "throttle-debounce": "^5.0.0",
     "viem": "^2.22.9",

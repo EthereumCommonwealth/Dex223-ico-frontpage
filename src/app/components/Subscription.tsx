@@ -1,82 +1,111 @@
 "use client";
 
 import clsx from "clsx";
-import Image from "next/image";
-import React, { useRef } from "react";
+import React, { ChangeEvent, useCallback, useRef, useState } from "react";
 
-import ContactUsImage from "@/assets/images/tg-contact-us.svg";
 import ArticleHeading from "@/components/ArticleHeading";
-import Svg from "@/components/atoms/Svg";
-import TextLink from "@/components/atoms/TextLink";
+import Button from "@/components/atoms/Button/Button";
+import Input from "@/components/atoms/Input";
+import Preloader from "@/components/atoms/Preloader";
 import NeonBlock from "@/components/organisms/NeonBlock";
-import { dexEmail, dexEmailLink, mediaEmail, mediaEmailLink } from "@/constants/email";
+import { mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-
-const styles: any = {};
+import SubscribeEmail from "@/inlined-svgs/SubscribeEmail";
+import addToast from "@/other/toast";
+import ToastProvider from "@/providers/ToastProvider";
 
 export default function Subscription() {
   const ref = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(ref, { threshold: 0.8, freezeOnceVisible: true });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+
+  // const [infoOpened, setInfoOpened] = useState(false);
+
+  const handleEmailSubmit = useCallback(async () => {
+    setIsSubmitting(true);
+    trackEvent("subscribe", { email: emailInput });
+    mixpanelSetProfileProp("$email", emailInput);
+
+    try {
+      const res = await fetch("https://api.dex223.io/v1/core/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInput,
+        }),
+      });
+      const data = await res.json();
+      console.log(data);
+
+      if (data.code === "EMAIL_ADD_SUCCESS") {
+        addToast("You have successfully subscribed to our newsletter");
+      }
+
+      if (res.status === 400) {
+        if (data.errors[0].message) {
+          addToast(data.errors[0].message, "error");
+        }
+      }
+
+      if (res.status === 422) {
+        addToast("Error: invalid email", "error");
+      }
+
+      setIsSubmitting(false);
+    } catch (e) {
+      addToast("Unknown error", "error");
+      setIsSubmitting(false);
+    }
+  }, [emailInput]);
+
   return (
-    <div className="relative">
-      {/*<div className={styles.pattern}>*/}
-      {/*  <Image alt="" src="/images/patterns/green.svg" width={1000} height={1000} />*/}
-      {/*</div>*/}
-      <NeonBlock
-        icon="contact"
-        color="green"
-        overlineText="Contact Us"
-        anchor="contact"
-        leftContent={
-          <>
-            <ArticleHeading text="Get in touch" />
-            <div className={styles.texts}>
-              <p className={styles.text}>
-                Questions regarding the private sales or large-scale purchase proposals:{" "}
-                <TextLink text={dexEmail} href={dexEmailLink} />{" "}
+    <ToastProvider>
+      <div className="relative">
+        <NeonBlock
+          icon="contact"
+          color="green"
+          overlineText="Subscription"
+          anchor="contact"
+          differentColumns
+          leftContent={
+            <>
+              <ArticleHeading text="Subscribe to our newsletter" />
+              <p className="text-secondary-text text-18 mb-10">
+                Stay informed about upcoming releases, security enhancements, and gas-saving
+                benefits, ensuring you’re always ahead in the world of decentralized trading.
               </p>
-              <p className={styles.text}>
-                Marketing and general inquiries:{" "}
-                <TextLink text={mediaEmail} href={mediaEmailLink} />
-              </p>
-              <p className={styles.text}>
-                You can ask your questions in our telegram group where admins will help you to
-                connect with the right person:{" "}
-                <TextLink href="https://t.me/Dex223_defi" text="https://t.me/Dex223_defi" />
-              </p>
+              <label className="text-20 font-bold mb-1">Subscribe to our newsletter</label>
+              <div className="flex gap-3">
+                <Input
+                  value={emailInput}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    setEmailInput(e.target.value);
+                  }}
+                  placeholder="Your email"
+                  type="email"
+                  className="flex-grow bg-primary-bg"
+                />
+                <Button
+                  className="min-w-[130px]"
+                  disabled={isSubmitting || !emailInput}
+                  onClick={handleEmailSubmit}
+                >
+                  {isSubmitting ? <Preloader size={20} /> : "Subscribe"}
+                </Button>
+              </div>
+            </>
+          }
+          rightContent={
+            <div ref={ref} className={clsx("pt-[115px]", entry?.isIntersecting && "animated")}>
+              <SubscribeEmail />
             </div>
-            <div className={styles.buttonsWrapper}>
-              <a href={dexEmailLink}>
-                <button>
-                  <span>Contact by email</span>
-                  <Svg iconName="email" />
-                </button>
-              </a>
-              <a href="https://t.me/Dex223_defi">
-                <button>
-                  <span>Telegram</span>
-                  <Svg iconName="telegram" />
-                </button>
-              </a>
-            </div>
-            <div className={styles.openSrcInfo}>
-              <span className={styles.srcIcon}>
-                <Svg iconName="code" />
-              </span>
-              <span>
-                This page is open-source. You can reuse it in your projects without any
-                restrictions.
-              </span>
-            </div>
-          </>
-        }
-        rightContent={
-          <div ref={ref} className={clsx(styles.rightContent, entry?.isIntersecting && "animated")}>
-            <Image src={ContactUsImage} alt={""} objectFit="cover" />
-          </div>
-        }
-      />
-    </div>
+          }
+        />
+      </div>
+    </ToastProvider>
   );
 }

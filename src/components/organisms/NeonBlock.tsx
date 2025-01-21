@@ -7,6 +7,7 @@ import OverlineText from "@/components/atoms/OverlineText";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import Container from "@/components/Container";
+import { clsxMerge } from "@/functions/clsxMerge";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 interface Props {
@@ -61,11 +62,11 @@ export default function NeonBlock({
   return (
     <Container>
       <div
-        className={clsx(
-          "grid gap-7 grid-areas-[top-line_._right-content,icon_heading_right-content,bottom-line_left-content_right-content]",
+        className={clsxMerge(
+          "grid gap-6 grid-areas-[top-line_._right-content,icon_heading_right-content,bottom-line_left-content_right-content] pl-5",
           "grid-cols-[48px_calc(50%_-_136px)_calc(50%_-_28px)]",
-          "grid-rows-[minmax(168px,_auto)_48px_auto]",
-          differentColumns && "grid-cols-[108px_5fr_3fr]",
+          "grid-rows-[minmax(120px,_auto)_48px_auto]",
+          differentColumns && "grid-cols-[48px_53fr_41fr]",
           onlyBottom && "grid-rows-[auto_48px_auto]",
         )}
       >

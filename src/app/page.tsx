@@ -5,6 +5,7 @@ import EcosystemProblems from "@/app/components/EcosystemProblems";
 import Features from "@/app/components/Features";
 import Fight from "@/app/components/Fight";
 import Info from "@/app/components/Info";
+import Innovation from "@/app/components/Innovation";
 import MultiChain from "@/app/components/MultiChain";
 import Philosophy from "@/app/components/Philosophy";
 import Roadmap from "@/app/components/Roadmap";
@@ -13,10 +14,11 @@ import Team from "@/app/components/Team";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="flex flex-col gap-12 mb-[145px]">
       <Features />
-      <EcosystemProblems />
       <Philosophy />
+      <Innovation />
+      <EcosystemProblems />
       <Advantages />
       <Allocation />
       <MultiChain />

@@ -1,14 +1,17 @@
 "use client";
 
+import clsx from "clsx";
 import Image from "next/image";
 import React, { useRef } from "react";
 
 import FightImage from "@/assets/images/fight.svg";
 import ArticleHeading from "@/components/ArticleHeading";
+import BulletListItem from "@/components/atoms/BulletListItem";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import FightImageSvg from "@/inlined-svgs/FightImageSvg";
 
 const problems = [
   {
@@ -47,45 +50,51 @@ export default function Fight() {
       icon="fight"
       color="purple"
       overlineText="Fight"
+      differentColumns
       leftContent={
         <>
-          <ArticleHeading text="ERC-20 vs ERC-223 fight" />
-          <h4 className="{styles.subheading}">
-            Unveil the full history of ERC-223 vs ERC-20 fight going since 2017 at{" "}
-            <TextLink text="erc-223 frontpage" href="https://dexaran.github.io/erc223" />
-          </h4>
-          <div className="flex flex-col gap-5">
-            <p className="text-secondary-text text-20">
-              Tokens and plain ether are deposited differently to &quot;Externally Owner
-              Addresses&quot; (addresses owned by humans) and to smart-contracts. Ether and ERC-223
-              tokens automatically determine if the recipient of the deposit is a contract or EOA
-              and decide the method of deposit accordingly. ERC-20 tokens however place the burden
-              of determining the transferring method on the user. Even worse, if the ERC-20 token
-              transferring method is chosen incorrectly, this results in the loss of tokens due to
-              the impossibility of error handling with ERC-20 standard.
+          <ArticleHeading
+            text={
+              <>
+                ERC-20 vs ERC-223: <br /> a clash of token standards
+              </>
+            }
+          />
+          <div className="text-secondary-text text-18 flex flex-col gap-5">
+            <p>
+              Since 2017, a heated debate has raged over which standard—ERC-20 or ERC-223—offers a
+              safer, more seamless experience. The core issue revolves around how tokens and Ether
+              are deposited into externally owned addresses (controlled by individuals) versus smart
+              contracts.
             </p>
-            <p className="text-secondary-text text-20">
-              This problem of ERC-20 standard is widely known:
+            <ul>
+              <BulletListItem>
+                Ether and ERC-223 automatically detect whether the recipient is an externally owned
+                address or a contract, choosing the right deposit method accordingly.
+              </BulletListItem>
+              <BulletListItem>
+                ERC-20, however, places the burden on the user to pick the correct transfer method.
+                If the wrong path is chosen, the tokens are lost because the ERC-20 standard lacks a
+                proper transaction handling model.
+              </BulletListItem>
+            </ul>
+            <p>
+              To learn more about this ongoing rivalry and its impact on the broader ecosystem,
+              visit the{" "}
+              <TextLink
+                href="https://dexaran.github.io/erc223/"
+                isExternal
+                text="ERC-223 front page"
+              />{" "}
+              to uncover the full history since 2017.
             </p>
           </div>
-          <ul className="{styles.problemsList}">
-            {problems.map((problem) => {
-              return (
-                <li key={problem.text} className="{styles.problemItem}">
-                  <a target="_blank" href={problem.href} className="{styles.problemItemLink}">
-                    <span>{problem.text}</span>
-                    <Svg iconName="forward" />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
         </>
       }
       rightContent={
-        <div ref={ref} className="{clsx(styles.rightContent, entry?.isIntersecting && animated)}">
+        <div ref={ref} className={clsx("group", entry?.isIntersecting && "animated")}>
           <div className="relative">
-            <Image src={FightImage} alt={""} objectFit="cover" />
+            <FightImageSvg />
             <Image src="/images/fight-bg.png" alt="ERC-20 vs ERC223 Fight" layout="fill" />
           </div>
         </div>

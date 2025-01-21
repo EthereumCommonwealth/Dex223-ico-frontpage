@@ -1,10 +1,11 @@
 "use client";
 
-import Image from "next/image";
+import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
 import TextLink from "@/components/atoms/TextLink";
+import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
 
 export default function Allocation() {
@@ -37,137 +38,148 @@ export default function Allocation() {
         leftContent={
           <>
             <ArticleHeading text="Tokenomics" />
-            <p className="{styles.subheading}">
-              DEX223 tokenomics is based on the{" "}
-              <TextLink
-                text="launch model of the Ethereum platform"
-                href="https://web.archive.org/web/20140824160811/https://www.ethereum.org/"
-              />
-              , one of the most successful crypto projects out there.
-            </p>
-            <div className="flex flex-col gap-5 mb-24">
-              <p className="text-20 text-secondary-text">
-                The original D223 tokens will be issued in November 2023 on Ethereum mainnet. Once
-                DEX223 is deployed a fee will be charged for any on-platform trade. This fees will
-                be redistributed among D223 token holders in proportion to their share. Unsold
-                tokens will be subtracted from the total supply i.e. if the platform will accumulate
-                revenue before public ICO round then 32% of the existing tokens will get the rights
-                to claim the revenue as if 68% of tokens allocated for public sales didn&apos;t
-                exist.
-              </p>
-              <p className="text-20 text-secondary-text">
-                Unsold tokens from pre-ICO sales and public sales will be re-allocated for the next
-                public round until all tokens are sold. The development team adheres to the policy
-                of financial transparency. A full financial report regarding the distribution of any
-                funds collected from ICO or private sales will be published quarterly.
-              </p>
-            </div>
 
-            <div className="{styles.total}">
-              <div className="{styles.totalText}">
-                <span>Total</span>
-                <span>100%</span>
+            <div className="flex flex-col gap-5 mb-24 text-18 text-secondary-text">
+              <p>
+                DEX223’s tokenomics draws inspiration from{" "}
+                <TextLink href={"#"} text="Ethereum’s highly successful launch" isExternal /> model,
+                emphasizing both security and sustainability. The original D223 tokens were issued
+                in November 2023 on the Ethereum mainnet. From the moment DEX223 is launched, a fee
+                will be charged on every on-platform trade, and those fees will be redistributed
+                proportionally among D223 token holders.
+              </p>
+              <p>
+                Any tokens that remain unsold will be removed from the total supply. For instance,
+                if 32% of platform tokens are sold, the existing tokens will claim that revenue,
+                effectively treating the remaining 68% as non-existent. Decision will be made by
+                DEX223 DAO on redistribution of unsold tokens from pre-ICO or public rounds.
+              </p>
+              <p>
+                In the spirit of financial transparency, the development team commits to publishing{" "}
+                <TextLink href={"/development#reports"} text="monthly report" /> detailing the
+                distribution and use of any funds collected through ICO events or private sales,
+                ensuring that every aspect of DEX223’s growth and progress remains visible to the
+                community.
+              </p>
+
+              <div className="flex justify-between items-center border-y border-secondary-border py-2.5 text-primary-text">
+                <div className="flex flex-col">
+                  <span className="text-20">Total</span>
+                  <span>100%</span>
+                </div>
+                <span className="text-40">8,000,000,000 D223</span>
               </div>
-              <span className="{styles.totalValue}">8,000,000,000 D223</span>
             </div>
           </>
         }
       />
       <div ref={ref} />
-      <div className="container_internal relative">
-        {/*<div className="{styles.pattern}">*/}
-        {/*  <Image alt="" src="/images/patterns/purple.svg" width={883} height={890} />*/}
-        {/*</div>*/}
-        <div className="{styles.chartWrapper}">
-          <div className="{styles.chart} mb-5">
-            <div>
-              <div
-                className={"clsx(styles.chartColumn1, isIntersected && styles.withAnimation)"}
-                style={{ width: "100%" }}
-              >
-                <span className="{styles.percentage}">
-                  <span>3%</span>
-                </span>
+      <Container className="w-full pl-[108px]">
+        <div>
+          <div className="mt-[110px] h-[10px] relative pointer-events-none">
+            <div className="grid grid-cols-5 absolute bottom-0 w-full h-[1000px] mb-5 gap-5">
+              <div className="flex items-end relative">
+                <div
+                  className={clsx(
+                    "bg-green-hover h-2.5 relative rounded-3",
+                    isIntersected && "animate-grow-column-1",
+                  )}
+                  style={{ width: "100%" }}
+                >
+                  <span className="absolute z-[2] -top-[60px] left-1/2 -translate-x-1/2 text-primary-text text-40">
+                    <span>3%</span>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-end relative">
+                <div
+                  className={clsx(
+                    "bg-green h-2.5 relative rounded-3",
+                    isIntersected && "animate-grow-column-2",
+                  )}
+                  style={{ width: "100%" }}
+                >
+                  <span className="absolute z-[2] -top-[60px] left-1/2 -translate-x-1/2 text-primary-text text-40">
+                    <span>9.5%</span>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-end relative">
+                <div
+                  className={clsx(
+                    "bg-[#6F8381] h-2.5 relative rounded-3",
+                    isIntersected && "animate-grow-column-3",
+                  )}
+                  style={{ width: "100%" }}
+                >
+                  <span className="absolute z-[2] -top-[60px] left-1/2 -translate-x-1/2 text-primary-text text-40">
+                    <span>9.5%</span>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-end relative">
+                <div
+                  className={clsx(
+                    "bg-green-bg-hover h-2.5 relative rounded-3",
+                    isIntersected && "animate-grow-column-4",
+                  )}
+                  style={{ width: "100%" }}
+                >
+                  <span className="absolute z-[2] -top-[60px] left-1/2 -translate-x-1/2 text-primary-text text-40">
+                    <span>10%</span>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-end relative ">
+                <div
+                  className={clsx(
+                    "bg-green-bg h-2.5 relative rounded-3",
+                    isIntersected && "animate-grow-column-5",
+                  )}
+                  style={{ width: "100%" }}
+                >
+                  <span className="absolute z-[2] -top-[60px] left-1/2 -translate-x-1/2 text-primary-text text-40">
+                    <span>68%</span>
+                  </span>
+                </div>
               </div>
             </div>
-            <div>
-              <div
-                className={"clsx(styles.chartColumn2, isIntersected && styles.withAnimation)"}
-                style={{ width: "100%" }}
-              >
-                <span className={"styles.percentage"}>
-                  <span>9.5%</span>
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className={"clsx(styles.chartColumn3, isIntersected && styles.withAnimation)"}
-                style={{ width: "100%" }}
-              >
-                <span className={"styles.percentage"}>
-                  <span>9.5%</span>
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className={"clsx(styles.chartColumn4, isIntersected && styles.withAnimation)"}
-                style={{ width: "100%" }}
-              >
-                <span className={"styles.percentage"}>
-                  <span>10%</span>
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className={"clsx(styles.chartColumn5, isIntersected && styles.withAnimation)"}
-                style={{ width: "100%" }}
-              >
-                <span className={"styles.percentage"}>
-                  <span>68%</span>
-                </span>
-              </div>
-            </div>
-          </div>
-          {/*<Spacer height={20} />*/}
-        </div>
-      </div>
-      <div className="container_internal">
-        <div className="{styles.labels}">
-          <div className="{styles.columnLabel}">
-            <span className="{styles.labelText}">Discounted pre-ICO sales</span>
-            <span className={"styles.labelValue"}>
-              240,000,000 D223 <span className="{styles.labelPercentage}">3%</span>
-            </span>
-          </div>
-          <div className="{styles.columnLabel}">
-            <span className="{styles.labelText}">Core team allocation</span>
-            <span className="{styles.labelValue}">
-              760,000,000 D223 <span className="{styles.labelPercentage}">9.5%</span>
-            </span>
-          </div>
-          <div className="{styles.columnLabel}">
-            <span className="{styles.labelText}">Project development & team incentivization</span>
-            <span className="{styles.labelValue}">
-              760,000,000 D223 <span className="{styles.labelPercentage}">9.5%</span>
-            </span>
-          </div>
-          <div className="{styles.columnLabel}">
-            <span className="{styles.labelText}">Private purchase rounds</span>
-            <span className="{styles.labelValue}">
-              800,000,000 D223 <span className="{styles.labelPercentage}">10%</span>
-            </span>
-          </div>
-          <div className="{styles.columnLabel}">
-            <span className="{styles.labelText}">Public sales</span>
-            <span className="{styles.labelValue}">
-              5,440,000,000 D223 <span className="{styles.labelPercentage}">68%</span>
-            </span>
+            {/*<Spacer height={20} />*/}
           </div>
         </div>
-      </div>
+        <div className="grid grid-cols-5 gap-5">
+          <div className="grid gap-2 grid-rows-[1fr_auto]">
+            <span className="text-secondary-text pr-2.5">Discounted pre-ICO sales</span>
+            <span className="font-bold">
+              240,000,000 D223 <span className="hidden">3%</span>
+            </span>
+          </div>
+          <div className="grid gap-2 grid-rows-[1fr_auto]">
+            <span className="text-secondary-text pr-2.5">Core team allocation</span>
+            <span className="font-bold">
+              760,000,000 D223 <span className="hidden">9.5%</span>
+            </span>
+          </div>
+          <div className="grid gap-2 grid-rows-[1fr_auto]">
+            <span className="text-secondary-text pr-2.5">Project development</span>
+            <span className="font-bold">
+              760,000,000 D223 <span className="hidden">9.5%</span>
+            </span>
+          </div>
+          <div className="grid gap-2 grid-rows-[1fr_auto]">
+            <span className="text-secondary-text pr-2.5">Private investment rounds</span>
+            <span className="font-bold">
+              800,000,000 D223 <span className="hidden">10%</span>
+            </span>
+          </div>
+          <div className="grid gap-2 grid-rows-[1fr_auto]">
+            <span className="text-secondary-text pr-2.5">Public sales</span>
+            <span className="font-bold">
+              5,440,000,000 D223 <span className="hidden">68%</span>
+            </span>
+          </div>
+        </div>
+      </Container>
     </>
   );
 }

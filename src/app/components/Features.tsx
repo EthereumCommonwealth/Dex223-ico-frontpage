@@ -1,84 +1,93 @@
-import clsx from "clsx";
-import React from "react";
+import React, { ReactNode } from "react";
 
+import ArticleHeading from "@/components/ArticleHeading";
 import Svg from "@/components/atoms/Svg";
+import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
 
-const styles: any = {};
+function KeyFeatureCard({
+  iconName,
+  heading,
+  text,
+}: {
+  text: ReactNode;
+  heading: string;
+  iconName: IconName;
+}) {
+  return (
+    <div className="p-5 bg-primary-bg rounded-5">
+      <h3 className="flex items-center gap-2 mb-2 font-bold text-20">
+        <Svg size={32} className="text-green" iconName={iconName} />
+        {heading}
+      </h3>
+      <p className="text-secondary-text text-18">{text}</p>
+    </div>
+  );
+}
 
 export default function Features() {
   return (
     <>
-      <NeonBlock color="green" icon="thumb-up" leftContent="Key pioints" overlineText="Features" />
-      <Container>
-        <div className={clsx(styles.content, styles.subscribeContent)}>
-          <div className={styles.keyPointsWrapper}>
-            <h2>Key Points</h2>
-            <div className={styles.cardsWrapper}>
-              <div className={styles.keyPointCard}>
-                <Svg size={48} iconName="security" />
-                <div>
-                  <h3>
-                    Addressing a <u>real problem</u>
-                  </h3>
-                  <p>
-                    <span className={styles.importantPhrase}>Millions of dollars are lost</span> due
-                    to errors with ERC-20 tokens every year. By supporting ERC-223 standard we are
-                    making the first step towards solving the problem. We believe that in the long
-                    run the standard that prevents funds losses will thrive.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.keyPointCard}>
-                <Svg size={48} iconName="multichain-rollout" />
-                <div>
-                  <h3>Maximizing chains support</h3>
-                  <p>
-                    DEX223 will be deployed on{" "}
-                    <span className={styles.importantPhrase}>every EVM-compatible chain</span>{" "}
-                    including Ethereum, EOS EVM, Arbitrum, Optimism, BASE and many more. It will
-                    become the exchange that supports the largest number of networks in the
-                    industry.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.keyPointCard}>
-                <Svg size={48} iconName="token" />
-                <div>
-                  <h3>Non-discrimination philosophy</h3>
-                  <p>
-                    We let <span className={styles.importantPhrase}>any token</span> to be listed on
-                    the platform. Meme coins are a sizeable market now. Listing them on an exchange
-                    is a challenge but we{" "}
-                    <span className={styles.importantPhrase}>
-                      provide a solution for it out of the box.
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div className={clsx(styles.keyPointCard, styles.transparencyCard)}>
-                <div className={styles.transparencyCardIcon}>
-                  <div className={styles.transparencySvgGradient} />
-                  <Svg iconName="double-usd" />
-                </div>
-
-                <div>
-                  <h3>Financial transparency</h3>
-                  <p>
-                    We adhere to the policy of financial transparency. The usage of ICO funds is
-                    publicly commented and accessible for everyone{" "}
-                    <TextLink
-                      href="https://github.com/EthereumCommonwealth/Roadmap/issues/70"
-                      text="here on github"
-                    />
-                    .
-                  </p>
-                </div>
-              </div>
-            </div>
+      <NeonBlock
+        color="green"
+        icon="key"
+        differentColumns
+        leftContent={
+          <div className="mb-[60px]">
+            <ArticleHeading text="Key features of DEX223" />
+            <p className="text-secondary-text text-18">
+              DEX223 combines security, versatility, and transparency. With the ERC-223 standard, it
+              prevents token transfer errors, supports seamless operation across multiple
+              EVM-compatible blockchains, enables inclusive token listings, and ensures trust
+              through publicly accessible financial reporting.
+            </p>
           </div>
+        }
+        overlineText="Features"
+      />
+
+      <Container>
+        <div className="grid grid-cols-4 gap-5">
+          <KeyFeatureCard
+            heading="Solving a real problem"
+            text="Every year, millions of dollars are lost due to errors with ERC-20 tokens. By adopting the
+      ERC-223 standard, DEX223 takes the first crucial step toward eliminating these costly
+      mistakes. We are confident that this enhanced standard, which prevents fund losses, will
+      become the industry norm in the long run."
+            iconName="solving-problem"
+          />
+          <KeyFeatureCard
+            heading="Maximizing chain support"
+            text="DEX223 is designed to operate seamlessly across all EVM-compatible blockchains, including
+      Ethereum, EOS EVM, Arbitrum, Optimism, BASE, and many others. This broad compatibility ensures
+      that DEX223 will be the most versatile exchange in the market, supporting the largest number
+      of networks in the industry"
+            iconName="references"
+          />
+
+          <KeyFeatureCard
+            heading="Non-discrimination philosophy"
+            text="Inclusivity is at the heart of DEX223. The protocol allows for any token to be listed,
+          embracing the diverse and growing market of meme coins. Recognizing that listing these
+          tokens can be challenging, we provide out-of-the-box solutions to make the process smooth
+          and accessible for all projects"
+            iconName="non-discrimination"
+          />
+          <KeyFeatureCard
+            heading="Financial transparency"
+            text={
+              <span>
+                Transparency is a cornerstone of our operations. DEX223 adheres to a strict policy
+                of financial openness, ensuring that the usage of ICO funds is publicly documented
+                and accessible to everyone on <TextLink text="Github" href="#" isExternal />. This
+                commitment allows our community to trust and verify how funds are being managed and
+                utilized.
+              </span>
+            }
+            iconName="financial-transparency"
+          />
         </div>
       </Container>
     </>

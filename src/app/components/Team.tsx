@@ -8,8 +8,8 @@ import { dexEmailLink } from "@/constants/email";
 
 const team = [
   {
-    image: "/images/team/Dexaran.jpg",
-    position: "Founder, Smart-contract Developer",
+    image: "/images/team/Member=Dexaran.png",
+    position: "Co-Founder / CTO",
     name: "Dexaran",
     socials: {
       github: "https://github.com/Dexaran",
@@ -18,26 +18,16 @@ const team = [
     },
   },
   {
-    image: "/images/team/TioToi.jpg",
-    position: "Product manager",
+    image: "/images/team/Member=Tio Toi.png",
+    position: "Co-Founder / Project Manager",
     name: "Tio Toi",
     socials: {
       github: "https://github.com/tiotoi",
       linkedin: "https://www.linkedin.com/in/tio-toi-192279165/",
     },
   },
-  // {
-  //   image: "/images/team/YuriyKharytoshyn.jpg",
-  //   position: "Advisor, Security Auditor",
-  //   name: "Yuriy Kharytoshyn",
-  //   socials: {
-  //     github: "https://github.com/yuriy77k",
-  //     linkedin: "https://www.linkedin.com/in/yuriy-kharytoshyn-b6b89517b/",
-  //     email: "mailto:yuri@callisto.network"
-  //   }
-  // },
   {
-    image: "/images/team/RandallRoland.jpg",
+    image: "/images/team/Member=Randall Roland.png",
     position: "Co-Founder/ Strategic Advisor",
     name: "Randall Roland",
     socials: {
@@ -47,17 +37,17 @@ const team = [
     },
   },
   {
-    image: "/images/team/AleksandrGorbunov.jpg",
-    position: "Smart-contract Developer",
-    name: "Aleksandr Gorbonov",
+    image: "/images/team/Member=Aleksandr Gorbunov.png",
+    position: "Smart-contract Developer / Security Auditor",
+    name: "Aleksandr Gorbunov",
     socials: {
-      github: "https://github.com",
-      twitter: "https://x.com",
-      email: "mailto:example@gmail.com",
+      github: "https://github.com/gorbunovperm",
+      twitter: "https://x.com/efir_eth",
+      email: "gorbunovperm@gmail.com",
     },
   },
   {
-    image: "/images/team/AleksandrTerekhov.jpg",
+    image: "/images/team/Member=Aleksandr Terekhov.png",
     position: "Backend Developer",
     name: "Aleksandr Terekhov",
     socials: {
@@ -67,7 +57,7 @@ const team = [
     },
   },
   {
-    image: "/images/team/KostyaOstapenko.jpg",
+    image: "/images/team/Member=Kostya Ostapenko.png",
     position: "Backend Developer",
     name: "Kostya Ostapenko",
     socials: {
@@ -76,7 +66,7 @@ const team = [
     },
   },
   {
-    image: "/images/team/ViktorPeredera.jpg",
+    image: "/images/team/Member=Viktor Peredera.png",
     position: "Web Developer",
     name: "Viktor Peredera",
     socials: {
@@ -85,7 +75,7 @@ const team = [
     },
   },
   {
-    image: "/images/team/NadiiaUdovychenko.jpg",
+    image: "/images/team/Member=Nadiia Udovychenko.png",
     position: "UI / UX Developer",
     name: "Nadiia Udovychenko",
     socials: {
@@ -97,7 +87,7 @@ const team = [
 
 export default function Team() {
   return (
-    <>
+    <div>
       <NeonBlock
         icon="team"
         color="blue"
@@ -110,7 +100,7 @@ export default function Team() {
         }
       />
       <Container>
-        <div className="grid grid-cols-4 gap-7">
+        <div className="grid grid-cols-3 gap-5">
           {team.map(({ image, position, name, socials }) => {
             return (
               <TeamMemberCard
@@ -124,6 +114,6 @@ export default function Team() {
           })}
         </div>
       </Container>
-    </>
+    </div>
   );
 }

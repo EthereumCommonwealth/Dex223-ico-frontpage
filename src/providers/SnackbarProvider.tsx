@@ -10,8 +10,7 @@ interface SnackbarContextInterface {
   ) => void;
 }
 
-const SnackbarContext = createContext<SnackbarContextInterface | null>(null);
-
+const SnackbarContext = createContext<SnackbarContextInterface>({ showMessage: () => {} });
 export const SnackbarProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");

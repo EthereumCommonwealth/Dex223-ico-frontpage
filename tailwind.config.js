@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,6 +7,91 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        DEFAULT: "0px 0px 8px 0px var(--tw-shadow-color)",
+        notification: "0px -8px 24px 0px var(--tw-shadow-color)",
+        icon: "0px 0px 24px 0px var(--tw-shadow-color)",
+        popover: "0 4px 42px 0px var(--tw-shadow-color)",
+      },
+      keyframes: {
+        'innovation-arrow': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(10%)' },
+        },
+        'vertical-swing': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(-10%)' },
+        },
+        'innovation-percentage': {
+          from: { transform: 'rotate(-15deg)' },
+          to: { transform: 'rotate(15deg)' },
+        },
+        'innovation-plus': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(-10deg)' },
+        },
+        'appear': {
+          from: { opacity: '0' },
+          to: { opacity: '100' },
+        },
+        'philosophy-attention': {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        "contact-us-plane": {
+          from: { transform: 'translate(-140px, 140px)', opacity: '0' },
+          to: { transform: 'translate(0, 0)', opacity: '100' },
+        },
+        "dash": {
+          to: {
+            strokeDashoffset: 0
+          }
+        },
+        'grow-column-1': {
+          from: { height: '1%' },
+          to: { height: '3%' },
+        },
+        'grow-column-2': {
+          from: { height: '1%' },
+          to: { height: '9.5%' },
+        },
+        'grow-column-3': {
+          from: { height: '1%' },
+          to: { height: '9.5%' },
+        },
+        'grow-column-4': {
+          from: { height: '1%' },
+          to: { height: '10%' },
+        },
+        'grow-column-5': {
+          from: { height: '1%' },
+          to: { height: '68%' },
+        },
+      },
+      animation: {
+        "innovation-spin": "spin 16s linear infinite",
+        "innovation-arrow": "innovation-arrow 1.5s alternate infinite",
+        "innovation-percentage": "innovation-percentage 1.5s alternate infinite",
+        "innovation-plus": "innovation-plus 1.5s alternate infinite",
+        "appear-no-delay": "appear 0.5s forwards",
+        "appear-delay-200ms": "appear 0.5s 200ms forwards",
+        "appear-delay-400ms": "appear 0.5s 400ms forwards",
+        "appear-delay-600ms": "appear 0.5s 600ms forwards",
+        "appear-fight-no-delay": "appear 1s forwards",
+        "appear-fight-delay-500ms": "appear 1s 0.5s forwards",
+        "appear-fight-delay-1000ms": "appear 1s 1s forwards",
+        "philosophy-attention": "philosophy-attention 1s forwards ease-in-out",
+        "contact-us-plane": "contact-us-plane 0.8s forwards ease-out",
+        "contact-us-line": "dash 1.2s ease-out forwards",
+        "info-image-1": "vertical-swing 2.5s infinite alternate",
+        "info-image-2": "vertical-swing 3.7s infinite alternate",
+        'grow-column-1': 'grow-column-1 1s forwards ease-in-out',
+        'grow-column-2': 'grow-column-2 1s forwards ease-in-out ',
+        'grow-column-3': 'grow-column-3 1s forwards ease-in-out',
+        'grow-column-4': 'grow-column-4 1s forwards ease-in-out ',
+        'grow-column-5': 'grow-column-5 1s forwards ease-in-out ',
+      },
       backgroundImage: {
         "purple-neon-line-gradient": "linear-gradient(180deg, rgba(149, 118, 236, 0) 0%, #9576EC 50%, rgba(149, 118, 236, 0) 100%)"
       },
@@ -91,6 +178,7 @@ module.exports = {
     },
     spacing: {
       "0": "0px",
+      "px": "1px",
       "0.5": "2px",
       "1": "4px",
       "1.5": "6px",
@@ -122,6 +210,11 @@ module.exports = {
   },
   plugins: [
     require("@savvywombat/tailwindcss-grid-areas"),
+    plugin(function ({ addVariant, e }) {
+      addVariant("hocus", ["&:hover", "&:focus-visible"]);
+      addVariant("group-hocus", [".group:hover &", ".group:focus-visible &"]);
+      addVariant("peer-hocus", [".peer:hover ~ &", ".peer:focus-visible ~ &"]);
+    }),
     function ({ addUtilities }) {
       addUtilities({
         '.transform-box-fill': {

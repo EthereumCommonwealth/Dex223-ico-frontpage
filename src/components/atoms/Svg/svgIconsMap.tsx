@@ -87,6 +87,15 @@ export const svgIconsNames = [
   "amendment",
   "distribution",
   "download",
+  "key",
+  "star",
+  "solving-problem",
+  "non-discrimination",
+  "financial-transparency",
+  "economic-sustainability",
+  "educating",
+  "permissionless",
+  "long-term-vision",
 ] as const;
 
 export type IconName = (typeof svgIconsNames)[number];

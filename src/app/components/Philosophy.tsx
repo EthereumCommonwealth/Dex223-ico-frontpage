@@ -4,6 +4,7 @@ import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
+import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import PhilosophyImage from "@/inlined-svgs/Philosophy";
@@ -24,23 +25,29 @@ export default function Philosophy() {
   }, [entry?.isIntersecting]);
 
   return (
-    <>
+    <div>
       <NeonBlock
         icon="target"
         color="purple"
         overlineText="Our Goals"
         anchor="philosophy"
+        differentColumns
         leftContent={
           <>
             <ArticleHeading text="Philosophy" />
             <div className="flex flex-col gap-5">
-              <p className="text-20 text-secondary-text">
+              <p className="text-18 text-secondary-text">
                 DEX223 is founded on the belief that a truly decentralized exchange must be
                 unstoppable, secure, and governed by the people who use it. Our core principles
                 revolve around user empowerment, transparent governance, and robust technical
                 safeguards. By combining strict security measures with open, permissionless
-                functionality, we aim to set a new standard in decentralized finance. Test DEX223
-                here
+                functionality, we aim to set a new standard in decentralized finance.{" "}
+                <TextLink
+                  href="https://test-app.dex223.io/en"
+                  isExternal
+                  text="Test DEX223
+                here"
+                />
               </p>
             </div>
           </>
@@ -49,7 +56,7 @@ export default function Philosophy() {
           <div
             ref={ref}
             className={clsx(
-              "styles.rightBlock",
+              "w-full relative group",
               entry?.isIntersecting && "animated",
               addAnimation && "removeAfterAnimated",
             )}
@@ -58,6 +65,6 @@ export default function Philosophy() {
           </div>
         }
       />
-    </>
+    </div>
   );
 }
