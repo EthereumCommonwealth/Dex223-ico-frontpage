@@ -82,7 +82,7 @@ export default function NeonBlock({
               (entryTopLine?.isIntersecting || noAnimation) && "h-full",
             )}
           />
-          {anchor && <span id={anchor} className="absolute bottom-[140px] invisible" />}
+          {anchor && <span id={anchor} className={clsxMerge("absolute bottom-[102px] invisible", onlyBottom && "-bottom-[10px]")} />}
         </div>
 
         {/* Icon */}

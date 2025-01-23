@@ -27,8 +27,8 @@ export default function ContactUsPlane() {
         style={{ strokeDasharray: 1042, strokeDashoffset: 1000 }}
         d="M68 416.5C140.552 416.207 236.997 393.002 256.368 289.397C264.171 247.594 257.239 202.783 232.103 172.274C200.35 133.721 165.483 168.949 174.066 222.78C188.153 311.204 270.047 357.573 332.274 358.502C388.02 358.502 427.902 313.083 440.396 274.887"
         stroke="url(#paint3_linear_7051_64867)"
-        stroke-width="2"
-        stroke-miterlimit="10"
+        strokeWidth="2"
+        strokeMiterlimit="10"
       />
       <defs>
         <linearGradient
@@ -39,8 +39,8 @@ export default function ContactUsPlane() {
           y2="266.739"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#656565" />
-          <stop offset="1" stop-color="#313131" />
+          <stop stopColor="#656565" />
+          <stop offset="1" stopColor="#313131" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_7051_64867"
@@ -50,8 +50,8 @@ export default function ContactUsPlane() {
           y2="267.622"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.233181" stop-color="#4A484C" />
-          <stop offset="1" stop-color="#2B2B2B" />
+          <stop offset="0.233181" stopColor="#4A484C" />
+          <stop offset="1" stopColor="#2B2B2B" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_7051_64867"
@@ -61,8 +61,8 @@ export default function ContactUsPlane() {
           y2="266.329"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#747474" />
-          <stop offset="1" stop-color="#2D2D2D" />
+          <stop stopColor="#747474" />
+          <stop offset="1" stopColor="#2D2D2D" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_7051_64867"
@@ -72,8 +72,8 @@ export default function ContactUsPlane() {
           y2="405.63"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#A5A5A5" />
-          <stop offset="1" stop-color="#131313" />
+          <stop stopColor="#A5A5A5" />
+          <stop offset="1" stopColor="#131313" />
         </linearGradient>
       </defs>
     </svg>

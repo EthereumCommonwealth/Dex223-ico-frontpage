@@ -7,7 +7,7 @@ export default function SubscribeEmail() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_7051_64866)">
+      <g clipPath="url(#clip0_7051_64866)">
         <path
           d="M80.6061 332.114C146.662 407.272 455.137 411.113 423.997 300.336C398.332 209.037 103.801 219.629 151.705 91.5077C199.608 -36.6139 554.092 207.019 644.351 26.9425"
           stroke="url(#paint0_linear_7051_64866)"
@@ -42,8 +42,8 @@ export default function SubscribeEmail() {
           y2="407.118"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#A5A5A5" />
-          <stop offset="1" stop-color="#131313" />
+          <stop stopColor="#A5A5A5" />
+          <stop offset="1" stopColor="#131313" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_7051_64866"
@@ -53,8 +53,8 @@ export default function SubscribeEmail() {
           y2="201.416"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#151414" />
-          <stop offset="1" stop-color="#535353" />
+          <stop stopColor="#151414" />
+          <stop offset="1" stopColor="#535353" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_7051_64866"
@@ -64,8 +64,8 @@ export default function SubscribeEmail() {
           y2="102.654"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.233181" stop-color="#4A484C" />
-          <stop offset="1" stop-color="#2B2B2B" />
+          <stop offset="0.233181" stopColor="#4A484C" />
+          <stop offset="1" stopColor="#2B2B2B" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_7051_64866"
@@ -75,8 +75,8 @@ export default function SubscribeEmail() {
           y2="48.3066"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.233181" stop-color="#4A484C" />
-          <stop offset="1" stop-color="#2B2B2B" />
+          <stop offset="0.233181" stopColor="#4A484C" />
+          <stop offset="1" stopColor="#2B2B2B" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_7051_64866"
@@ -86,8 +86,8 @@ export default function SubscribeEmail() {
           y2="366.821"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.233181" stop-color="#4A484C" />
-          <stop offset="1" stop-color="#2B2B2B" />
+          <stop offset="0.233181" stopColor="#4A484C" />
+          <stop offset="1" stopColor="#2B2B2B" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_7051_64866"
@@ -97,8 +97,8 @@ export default function SubscribeEmail() {
           y2="206.028"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.233181" stop-color="#4A484C" />
-          <stop offset="1" stop-color="#2B2B2B" />
+          <stop offset="0.233181" stopColor="#4A484C" />
+          <stop offset="1" stopColor="#2B2B2B" />
         </linearGradient>
         <clipPath id="clip0_7051_64866">
           <rect width="662" height="404" fill="white" />

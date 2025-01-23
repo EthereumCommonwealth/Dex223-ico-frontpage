@@ -1,33 +1,20 @@
+"use client";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useSearchParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import Layout from "@/components/layout/Layout";
 import Pic from "@/pages/email/assets/unsubscribe_image_2.png";
 
 import Button, { ButtonColor } from "@/components/atoms/Button";
-
 export default function Home() {
-  const [hasMounted, setHasMounted] = useState(false);
   const searchParams = useSearchParams();
   const email_id = searchParams.get("email_id");
 
   const router = useRouter();
 
-  useEffect(() => {
-    setHasMounted(true);
-    document.getElementById("__next").className = "";
-  }, []);
-
-  if (!hasMounted) {
-    return;
-  }
-
   return (
-    <Layout blurHeader>
-      <div className=" bg-primary-bg">
-        <div className=" my-[100px] mx-auto bg-secondary-bg flex justify-center items-center flex-col p-4 md:p-10 rounded-2 max-w-[800px]">
+      <div>
+        <div className="my-[80px] mx-auto bg-primary-bg flex justify-center items-center flex-col p-4 md:p-10 rounded-2 max-w-[800px]">
           <div className="relative">
             <Image src={Pic} alt="" />
           </div>
@@ -53,6 +40,5 @@ export default function Home() {
           ) : null}
         </div>
       </div>
-    </Layout>
   );
 }

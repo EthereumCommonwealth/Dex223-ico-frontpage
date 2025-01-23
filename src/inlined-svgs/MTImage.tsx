@@ -10,7 +10,7 @@ export default function MTImage() {
         className="animate-innovation-percentage transform-box-fill origin-center"
         d="M48.5253 52.046C46.4633 57.7112 40.1762 60.6456 34.5102 58.5893C21.0693 53.0451 28.1402 33.631 41.9951 38.0248C47.6573 40.0916 50.5873 46.3807 48.5253 52.046Z"
         fill="#1D1E1E"
-        fill-opacity="0.8"
+        fillOpacity="0.8"
         stroke="#7D97A4"
       />
       <path

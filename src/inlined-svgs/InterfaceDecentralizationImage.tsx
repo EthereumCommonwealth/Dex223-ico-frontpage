@@ -37,7 +37,7 @@ export default function InterfaceDecentralizationImage() {
     </g>
     <path d="M185.383 283.461H425.809V453.127C425.809 454.651 424.746 455.888 423.437 455.888H187.755C186.446 455.888 185.383 454.651 185.383 453.127V283.461Z" fill="#1D1E1E"/>
     <path d="M187.849 277.996H423.441C424.75 277.996 425.813 279.22 425.813 280.728V283.46H185.387V280.832C185.387 279.267 186.49 277.996 187.849 277.996Z" fill="#495C5A"/>
-    <path d="M410.914 396.051H272.418L269.4 393.034V314.92C269.4 313.438 270.602 312.236 272.084 312.236H410.914C412.396 312.236 413.598 313.438 413.598 314.92V393.368C413.598 394.85 412.396 396.051 410.914 396.051Z" stroke="#3C4C4A" stroke-width="1.61293"/>
+    <path d="M410.914 396.051H272.418L269.4 393.034V314.92C269.4 313.438 270.602 312.236 272.084 312.236H410.914C412.396 312.236 413.598 313.438 413.598 314.92V393.368C413.598 394.85 412.396 396.051 410.914 396.051Z" stroke="#3C4C4A" strokeWidth="1.61293"/>
     <g filter="url(#filter2_d_733_32830)">
       <path d="M318.551 366.212C318.551 368.091 317.028 369.613 315.149 369.613H283.649C281.414 369.613 279.602 367.801 279.602 365.566L279.602 358.906V326.745C279.602 324.867 281.124 323.344 283.003 323.344H315.149C317.028 323.344 318.551 324.867 318.551 326.745V366.212Z" fill="#D1DEDF"/>
     </g>
@@ -47,17 +47,17 @@ export default function InterfaceDecentralizationImage() {
     <path d="M190.272 280.603C190.272 281.214 189.777 281.71 189.165 281.71C188.554 281.71 188.059 281.214 188.059 280.603C188.059 279.992 188.554 279.496 189.165 279.496C189.777 279.496 190.272 279.992 190.272 280.603Z" fill="#D1DEDF"/>
     <path d="M196.14 280.603C196.14 281.214 195.644 281.71 195.033 281.71C194.421 281.71 193.926 281.214 193.926 280.603C193.926 279.992 194.421 279.496 195.033 279.496C195.644 279.496 196.14 279.992 196.14 280.603Z" fill="#D1DEDF"/>
     <path d="M202.003 280.603C202.003 281.214 201.507 281.71 200.896 281.71C200.285 281.71 199.789 281.214 199.789 280.603C199.789 279.992 200.285 279.496 200.896 279.496C201.507 279.496 202.003 279.992 202.003 280.603Z" fill="#D1DEDF"/>
-    <path d="M326.961 334.57H357.772" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M326.961 341.602H368.142" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M326.961 354.49H390.765" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M326.961 360.59H390.765" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M326.961 366.691H359.88" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M326.961 327.219H341.879" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M203.917 414.656H287.925C289.07 414.656 289.999 415.585 289.999 416.73V432.712C289.999 433.857 289.07 434.786 287.925 434.786H203.917C202.773 434.786 201.844 433.857 201.844 432.712V416.73C201.844 415.585 202.773 414.656 203.917 414.656Z" stroke="#3C4C4A" stroke-width="1.07529" stroke-miterlimit="10"/>
-    <path d="M203.077 386.672H255.727C256.445 386.672 257.027 387.597 257.027 388.736V404.643C257.027 405.783 256.444 406.707 255.727 406.707H203.077C202.36 406.707 201.777 405.783 201.777 404.643V388.736C201.777 387.597 202.36 386.672 203.077 386.672Z" stroke="#3C4C4A" stroke-width="1.07529" stroke-miterlimit="10"/>
-    <path d="M210.148 424.719H254.738" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M210.277 396.994H238.813" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M276.723 424.719H282.606" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
+    <path d="M326.961 334.57H357.772" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M326.961 341.602H368.142" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M326.961 354.49H390.765" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M326.961 360.59H390.765" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M326.961 366.691H359.88" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M326.961 327.219H341.879" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M203.917 414.656H287.925C289.07 414.656 289.999 415.585 289.999 416.73V432.712C289.999 433.857 289.07 434.786 287.925 434.786H203.917C202.773 434.786 201.844 433.857 201.844 432.712V416.73C201.844 415.585 202.773 414.656 203.917 414.656Z" stroke="#3C4C4A" strokeWidth="1.07529" strokeMiterlimit="10"/>
+    <path d="M203.077 386.672H255.727C256.445 386.672 257.027 387.597 257.027 388.736V404.643C257.027 405.783 256.444 406.707 255.727 406.707H203.077C202.36 406.707 201.777 405.783 201.777 404.643V388.736C201.777 387.597 202.36 386.672 203.077 386.672Z" stroke="#3C4C4A" strokeWidth="1.07529" strokeMiterlimit="10"/>
+    <path d="M210.148 424.719H254.738" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M210.277 396.994H238.813" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M276.723 424.719H282.606" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
     <g filter="url(#filter3_d_733_32830)">
       <path d="M254.721 371.507H203.918C203.111 370.701 202.65 370.24 201.844 369.433V314.121C201.844 312.975 202.772 312.047 203.917 312.047H254.721C255.866 312.047 256.795 312.975 256.795 314.121V369.434C256.795 370.579 255.866 371.507 254.721 371.507Z" fill="#D1DEDF"/>
     </g>
@@ -69,17 +69,17 @@ export default function InterfaceDecentralizationImage() {
       <path d="M350.42 468.234H299.617C298.81 467.427 298.35 466.966 297.543 466.16V410.847C297.543 409.702 298.471 408.773 299.617 408.773H350.42C351.566 408.773 352.494 409.702 352.494 410.847V466.16C352.494 467.305 351.566 468.234 350.42 468.234Z" fill="#D1DEDF"/>
     </g>
     <path d="M299.617 408.773H350.421C351.565 408.773 352.494 409.702 352.494 410.847V466.16C352.494 467.305 351.565 468.234 350.42 468.234H299.617C298.472 468.234 297.543 467.305 297.543 466.16V410.847C297.543 409.703 298.472 408.773 299.617 408.773Z" fill="#D1DEDF"/>
-    <path d="M307.645 426.117H324.724" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M307.645 433.15H330.472" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M307.645 446.039H343.013" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M307.645 452.139H343.013" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M307.645 458.24H325.893" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M307.645 418.768H315.914" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M368.133 418.852H403.502" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M368.133 424.953H403.502" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M368.133 431.053H386.381" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M368.133 458.375H403.347" stroke="#D1DEDF" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
-    <path d="M380.596 301.715V297.667C380.596 295.198 378.595 293.197 376.127 293.197H231.933C229.105 293.197 226.812 295.49 226.812 298.317V304.528" stroke="#495C5A" stroke-width="2.15058" stroke-miterlimit="10" stroke-linecap="round"/>
+    <path d="M307.645 426.117H324.724" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M307.645 433.15H330.472" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M307.645 446.039H343.013" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M307.645 452.139H343.013" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M307.645 458.24H325.893" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M307.645 418.768H315.914" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M368.133 418.852H403.502" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M368.133 424.953H403.502" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M368.133 431.053H386.381" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M368.133 458.375H403.347" stroke="#D1DEDF" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
+    <path d="M380.596 301.715V297.667C380.596 295.198 378.595 293.197 376.127 293.197H231.933C229.105 293.197 226.812 295.49 226.812 298.317V304.528" stroke="#495C5A" strokeWidth="2.15058" strokeMiterlimit="10" strokeLinecap="round"/>
     <path d="M306.059 250.038C306.743 250.722 307.851 250.722 308.534 250.038L319.671 238.901C320.355 238.218 320.355 237.11 319.671 236.426C318.988 235.743 317.88 235.743 317.196 236.426L307.297 246.326L297.397 236.426C296.714 235.743 295.606 235.743 294.923 236.426C294.239 237.11 294.239 238.218 294.923 238.901L306.059 250.038ZM305.547 172.801L305.547 248.801L309.047 248.801L309.047 172.801L305.547 172.801Z" fill="#7DA491"/>
     <path d="M308.534 171.563C307.851 170.88 306.743 170.88 306.059 171.563L294.923 182.7C294.239 183.384 294.239 184.492 294.923 185.175C295.606 185.859 296.714 185.859 297.397 185.175L307.297 175.276L317.196 185.175C317.88 185.859 318.988 185.859 319.671 185.175C320.355 184.492 320.355 183.384 319.671 182.7L308.534 171.563ZM309.047 248.801L309.047 172.801L305.547 172.801L305.547 248.801L309.047 248.801Z" fill="#7DA491"/>
     <path d="M412.957 518.05C412.364 518.073 411.901 518.573 411.924 519.166L412.301 528.836C412.324 529.43 412.823 529.892 413.417 529.869C414.01 529.846 414.473 529.346 414.45 528.753L414.115 520.157L422.711 519.823C423.304 519.8 423.767 519.3 423.744 518.706C423.72 518.113 423.221 517.651 422.627 517.674L412.957 518.05ZM452.668 554.357L413.729 518.335L412.269 519.914L451.207 555.936L452.668 554.357Z" fill="#7DA491"/>
@@ -88,18 +88,18 @@ export default function InterfaceDecentralizationImage() {
     <path d="M153.288 435.365C153.708 435.785 153.708 436.465 153.288 436.885L146.445 443.728C146.025 444.148 145.344 444.148 144.924 443.728C144.505 443.309 144.505 442.628 144.924 442.208L151.007 436.125L144.924 430.042C144.505 429.622 144.505 428.941 144.924 428.522C145.344 428.102 146.025 428.102 146.445 428.522L153.288 435.365ZM95 435.05L152.528 435.05V437.2L95 437.2L95 435.05Z" fill="#7DA491"/>
     <path d="M310.76 547.364C310.34 546.944 309.66 546.944 309.24 547.364L302.397 554.207C301.977 554.627 301.977 555.308 302.397 555.728C302.816 556.148 303.497 556.148 303.917 555.728L310 549.645L316.083 555.728C316.503 556.148 317.184 556.148 317.603 555.728C318.023 555.308 318.023 554.627 317.603 554.207L310.76 547.364ZM311.075 605.652L311.075 548.124L308.925 548.124L308.925 605.652H311.075Z" fill="#7DA491"/>
     <defs>
-      <filter id="filter0_f_733_32830" x="110.261" y="-96.7627" width="394.936" height="394.935" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter0_f_733_32830" x="110.261" y="-96.7627" width="394.936" height="394.935" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
         <feGaussianBlur stdDeviation="66.5474" result="effect1_foregroundBlur_733_32830"/>
       </filter>
-      <filter id="filter1_f_733_32830" x="172.375" y="231.439" width="280.66" height="280.661" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter1_f_733_32830" x="172.375" y="231.439" width="280.66" height="280.661" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
         <feGaussianBlur stdDeviation="20" result="effect1_foregroundBlur_733_32830"/>
       </filter>
-      <filter id="filter2_d_733_32830" x="273.687" y="317.43" width="54.0032" height="61.3236" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter2_d_733_32830" x="273.687" y="317.43" width="54.0032" height="61.3236" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dx="1.61293" dy="1.61293"/>
         <feGaussianBlur stdDeviation="3.76351"/>
@@ -107,8 +107,8 @@ export default function InterfaceDecentralizationImage() {
         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_733_32830"/>
         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_733_32830" result="shape"/>
       </filter>
-      <filter id="filter3_d_733_32830" x="196.467" y="306.67" width="70.0032" height="74.5145" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter3_d_733_32830" x="196.467" y="306.67" width="70.0032" height="74.5145" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dx="2.15058" dy="2.15058"/>
         <feGaussianBlur stdDeviation="3.76351"/>
@@ -116,8 +116,8 @@ export default function InterfaceDecentralizationImage() {
         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_733_32830"/>
         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_733_32830" result="shape"/>
       </filter>
-      <filter id="filter4_d_733_32830" x="292.167" y="403.397" width="70.0032" height="74.5145" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <filter id="filter4_d_733_32830" x="292.167" y="403.397" width="70.0032" height="74.5145" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
         <feOffset dx="2.15058" dy="2.15058"/>
         <feGaussianBlur stdDeviation="3.76351"/>
