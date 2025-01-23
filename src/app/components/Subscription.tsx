@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React, { ChangeEvent, useCallback, useRef, useState } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
-import Button from "@/components/atoms/Button/Button";
+import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Preloader from "@/components/atoms/Preloader";
 import NeonBlock from "@/components/organisms/NeonBlock";
@@ -67,7 +67,7 @@ export default function Subscription() {
       <div className="relative">
         <NeonBlock
           icon="contact"
-          color="green"
+          color="purple"
           overlineText="Subscription"
           anchor="contact"
           differentColumns

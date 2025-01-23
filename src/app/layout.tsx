@@ -2,6 +2,14 @@ import "../assets/styles/global.css";
 
 import { Golos_Text } from "next/font/google";
 import { PropsWithChildren } from "react";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Providers from "@/app/providers";
+import { cookieToInitialState } from "wagmi";
+import { config } from "@/config/wagmi/config";
+import { headers } from "next/headers";
+
+
 
 const golos_text = Golos_Text({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -11,10 +19,18 @@ const golos_text = Golos_Text({
 });
 
 export default async function RootLayout({ children }: PropsWithChildren<{}>) {
+  const initialState = cookieToInitialState(config, (await headers()).get("cookie"));
+
   return (
     <html>
       <head></head>
-      <body className={golos_text.className}>{children}</body>
+      <body className={golos_text.className}>
+      <Providers initialState={initialState}>
+        <Header />
+        {children}
+        <Footer />
+      </Providers>
+      </body>
     </html>
   );
 }

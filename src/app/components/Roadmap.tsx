@@ -28,7 +28,8 @@ function SchemeItem({
       <div className="flex gap-5 items-center">
         <div
           className={clsx(
-            "w-12 h-12 rounded-full border border-[#848484] flex-shrink-0 flex items-center justify-center text-white",
+            "w-12 h-12 rounded-full border  flex-shrink-0 flex items-center justify-center text-white",
+            isPassed ? "border-purple" : "border-[#848484]"
           )}
         >
           <Svg iconName={icon} />
@@ -94,7 +95,7 @@ function SchemeItem({
 
       <div>
         <p className="text-20 text-secondary-text font-bold mb-1">{date}</p>
-        <p className="text-secondary-text text-18 -mr-[15px]">{text}</p>
+        <div className="text-secondary-text text-18 -mr-[15px]">{text}</div>
       </div>
     </div>
   );

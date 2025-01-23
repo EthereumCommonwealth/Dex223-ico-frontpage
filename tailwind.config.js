@@ -93,7 +93,8 @@ module.exports = {
         'grow-column-5': 'grow-column-5 1s forwards ease-in-out ',
       },
       backgroundImage: {
-        "purple-neon-line-gradient": "linear-gradient(180deg, rgba(149, 118, 236, 0) 0%, #9576EC 50%, rgba(149, 118, 236, 0) 100%)"
+        "purple-neon-line-gradient": "linear-gradient(180deg, rgba(128, 137, 189, 0) 0%, #8089BD 50%, rgba(128, 137, 189, 0) 100%)",
+        "red-gradient": "linear-gradient(270deg, #443535 0%, #362323 100%)"
       },
       colors: {
         transparent: "transparent",
@@ -174,6 +175,8 @@ module.exports = {
       32: ["32px", "48px"],
       36: ["36px", "52px"],
       40: ["40px", "60px"],
+      48: ["48px", "60px"],
+      56: ["56px", "80px"],
       58: ["58px", "80px"],
     },
     spacing: {

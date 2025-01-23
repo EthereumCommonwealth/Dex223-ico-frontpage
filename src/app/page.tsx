@@ -11,16 +11,20 @@ import Philosophy from "@/app/components/Philosophy";
 import Roadmap from "@/app/components/Roadmap";
 import Subscription from "@/app/components/Subscription";
 import Team from "@/app/components/Team";
+import Banner from "@/app/components/Banner";
+import RevenueModel from "@/app/components/RevenueModel";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-12 mb-[145px]">
+      <Banner />
       <Features />
       <Philosophy />
       <Innovation />
       <EcosystemProblems />
       <Advantages />
       <Allocation />
+      <RevenueModel />
       <MultiChain />
       <Info />
       <Fight />

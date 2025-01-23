@@ -20,6 +20,7 @@ interface Props {
   anchor?: string;
   onlyBottom?: boolean;
   noAnimation?: boolean;
+  fullWidth?: boolean;
 }
 
 export default function NeonBlock({
@@ -32,6 +33,7 @@ export default function NeonBlock({
   anchor,
   onlyBottom = false,
   noAnimation = false,
+  fullWidth = false
 }: Props) {
   const ref = useRef(null);
   const entryTopLine = useIntersectionObserver(ref, { threshold: 0 });
@@ -68,6 +70,7 @@ export default function NeonBlock({
           "grid-rows-[minmax(120px,_auto)_48px_auto]",
           differentColumns && "grid-cols-[48px_53fr_41fr]",
           onlyBottom && "grid-rows-[auto_48px_auto]",
+          fullWidth &&"grid-cols-[48px_1fr] grid-areas-[top-line_.,icon_heading,bottom-line_left-content]",
         )}
       >
         {/* Top Line */}
@@ -122,7 +125,7 @@ export default function NeonBlock({
         <div className="text-white grid-in-[left-content]">{leftContent}</div>
 
         {/* Right Content */}
-        <div className="grid-in-[right-content]">{rightContent}</div>
+        {!fullWidth && <div className="grid-in-[right-content]">{rightContent}</div>}
       </div>
     </Container>
   );

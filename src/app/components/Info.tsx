@@ -1,7 +1,7 @@
 import React from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
-import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button/Button";
+import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
