@@ -60,7 +60,7 @@ export default function Fight() {
               </>
             }
           />
-          <div className="text-secondary-text text-18 flex flex-col gap-5">
+          <div className="text-secondary-text text-16 lg:text-18 flex flex-col lg:gap-5 gap-2">
             <p>
               Since 2017, a heated debate has raged over which standard—ERC-20 or ERC-223—offers a
               safer, more seamless experience. The core issue revolves around how tokens and Ether
@@ -92,8 +92,11 @@ export default function Fight() {
         </>
       }
       rightContent={
-        <div ref={ref} className={clsx("group", entry?.isIntersecting && "animated")}>
-          <div className="relative">
+        <div
+          ref={ref}
+          className={clsx("group flex items-end h-full", entry?.isIntersecting && "animated")}
+        >
+          <div className="relative max-w-[296px] lg:max-w-[unset]">
             <FightImageSvg />
             <Image src="/images/fight-bg.png" alt="ERC-20 vs ERC223 Fight" layout="fill" />
           </div>

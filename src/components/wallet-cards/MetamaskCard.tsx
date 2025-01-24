@@ -2,14 +2,14 @@ import { isMobile } from "react-device-detect";
 import { useAccount, useConnect, useSwitchChain } from "wagmi";
 
 import PickButton from "@/components/PickButton";
-import {
-  useConnectWalletDialogStateStore,
-  useConnectWalletStore,
-} from "@/stores/useConnectWalletStore";
 import { wallets } from "@/config/wallets";
 import useDetectMetaMaskMobile from "@/hooks/useMetamaskMobile";
 import usePreloaderTimeout from "@/hooks/usePreloader";
 import addToast from "@/other/toast";
+import {
+  useConnectWalletDialogStateStore,
+  useConnectWalletStore,
+} from "@/stores/useConnectWalletStore";
 
 const { image, name } = wallets.metamask;
 export default function MetamaskCard() {

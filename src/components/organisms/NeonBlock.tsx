@@ -33,7 +33,7 @@ export default function NeonBlock({
   anchor,
   onlyBottom = false,
   noAnimation = false,
-  fullWidth = false
+  fullWidth = false,
 }: Props) {
   const ref = useRef(null);
   const entryTopLine = useIntersectionObserver(ref, { threshold: 0 });
@@ -65,12 +65,13 @@ export default function NeonBlock({
     <Container>
       <div
         className={clsxMerge(
-          "grid gap-6 grid-areas-[top-line_._right-content,icon_heading_right-content,bottom-line_left-content_right-content] pl-5",
-          "grid-cols-[48px_calc(50%_-_136px)_calc(50%_-_28px)]",
-          "grid-rows-[minmax(120px,_auto)_48px_auto]",
-          differentColumns && "grid-cols-[48px_53fr_41fr]",
-          onlyBottom && "grid-rows-[auto_48px_auto]",
-          fullWidth &&"grid-cols-[48px_1fr] grid-areas-[top-line_.,icon_heading,bottom-line_left-content]",
+          "grid gap-x-2 gap-y-4 lg:gap-6 grid-areas-[top-line_right-content,icon_heading,bottom-line_left-content] lg:grid-areas-[top-line_._right-content,icon_heading_right-content,bottom-line_left-content_right-content] lg:pl-5",
+          "grid-cols-[24px_1fr] lg:grid-cols-[48px_calc(50%_-_136px)_calc(50%_-_28px)]",
+          "grid-rows-[minmax(56px,_auto)_24px_auto] lg:grid-rows-[minmax(120px,_auto)_48px_auto]",
+          differentColumns && "grid-cols-[24px_1fr] lg:grid-cols-[48px_53fr_41fr] ",
+          onlyBottom && "grid-cols-[auto_24px_auto] lg:grid-rows-[auto_48px_auto]",
+          fullWidth &&
+            "grid-cols-[24px_1fr] lg:grid-cols-[48px_1fr] grid-areas-[top-line_.,icon_heading,bottom-line_left-content]",
         )}
       >
         {/* Top Line */}
@@ -82,7 +83,15 @@ export default function NeonBlock({
               (entryTopLine?.isIntersecting || noAnimation) && "h-full",
             )}
           />
-          {anchor && <span id={anchor} className={clsxMerge("absolute bottom-[102px] invisible", onlyBottom && "-bottom-[10px]")} />}
+          {anchor && (
+            <span
+              id={anchor}
+              className={clsxMerge(
+                "absolute bottom-[102px] invisible",
+                onlyBottom && "-bottom-[10px]",
+              )}
+            />
+          )}
         </div>
 
         {/* Icon */}
@@ -92,7 +101,7 @@ export default function NeonBlock({
             (entryBottomLine?.isIntersecting || isBottomVisible || noAnimation) && "opacity-100",
           )}
         >
-          <div className="relative w-12 h-12">
+          <div className="relative w-6 lg:w-12 h-6 lg:h-12">
             <Svg iconName={icon} layout="cover" />
             <div
               className={clsx(

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 import { ChainId } from "@/config/types/ChainId";
 
 export type WalletName = "metamask" | "wc" | "keystore";

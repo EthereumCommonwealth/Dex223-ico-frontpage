@@ -29,7 +29,7 @@ function SchemeItem({
         <div
           className={clsx(
             "w-12 h-12 rounded-full border  flex-shrink-0 flex items-center justify-center text-white",
-            isPassed ? "border-purple" : "border-[#848484]"
+            isPassed ? "border-purple" : "border-[#848484]",
           )}
         >
           <Svg iconName={icon} />

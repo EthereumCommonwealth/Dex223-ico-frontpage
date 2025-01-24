@@ -1,5 +1,6 @@
 import Advantages from "@/app/components/Advantages";
 import Allocation from "@/app/components/Allocation";
+import Banner from "@/app/components/Banner";
 import ContactUs from "@/app/components/ContactUs";
 import EcosystemProblems from "@/app/components/EcosystemProblems";
 import Features from "@/app/components/Features";
@@ -8,11 +9,10 @@ import Info from "@/app/components/Info";
 import Innovation from "@/app/components/Innovation";
 import MultiChain from "@/app/components/MultiChain";
 import Philosophy from "@/app/components/Philosophy";
+import RevenueModel from "@/app/components/RevenueModel";
 import Roadmap from "@/app/components/Roadmap";
 import Subscription from "@/app/components/Subscription";
 import Team from "@/app/components/Team";
-import Banner from "@/app/components/Banner";
-import RevenueModel from "@/app/components/RevenueModel";
 
 export default function HomePage() {
   return (
@@ -21,14 +21,14 @@ export default function HomePage() {
       <Features />
       <Philosophy />
       <Innovation />
-      <EcosystemProblems />
+      {/*<EcosystemProblems />*/}
       <Advantages />
-      <Allocation />
+      {/*<Allocation />*/}
       <RevenueModel />
       <MultiChain />
       <Info />
       <Fight />
-      <Roadmap />
+      {/*<Roadmap />*/}
       <Team />
       <ContactUs />
       <Subscription />

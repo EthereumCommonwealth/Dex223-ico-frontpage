@@ -42,7 +42,7 @@ export default function PickButton({
           )}
         >
           <span className="absolute bg-green-bg rounded-full w-[18px] h-[18px]" />
-          <Svg size={19} iconName="success" className="z-10 absolute" />
+          <Svg size={19} iconName="done" className="z-10 absolute" />
         </span>
       </div>
       <span className="text-12 sm:text-14">{label}</span>

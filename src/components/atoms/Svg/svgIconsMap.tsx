@@ -98,6 +98,7 @@ export const svgIconsNames = [
   "educating",
   "permissionless",
   "long-term-vision",
+  "logout",
 ] as const;
 
 export type IconName = (typeof svgIconsNames)[number];

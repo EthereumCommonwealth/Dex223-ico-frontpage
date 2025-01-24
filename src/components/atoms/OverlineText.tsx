@@ -13,5 +13,7 @@ export default function OverlineText({ text, color }: Props) {
     blue: "text-blue text-shadow-[0_0_24px_#22AEFC,0_0_24px_rgba(34,174,252,0.25)]",
   };
 
-  return <h3 className={clsx("text-20 font-bold uppercase", colorStyles[color])}>{text}</h3>;
+  return (
+    <h3 className={clsx("text-16 lg:text-20 font-bold uppercase", colorStyles[color])}>{text}</h3>
+  );
 }

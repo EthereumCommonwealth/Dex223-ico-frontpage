@@ -74,12 +74,12 @@ export default function Subscription() {
           leftContent={
             <>
               <ArticleHeading text="Subscribe to our newsletter" />
-              <p className="text-secondary-text text-18 mb-10">
+              <p className="text-secondary-text text-16 lg:text-18 mb-3 lg:mb-10">
                 Stay informed about upcoming releases, security enhancements, and gas-saving
                 benefits, ensuring you’re always ahead in the world of decentralized trading.
               </p>
-              <label className="text-20 font-bold mb-1">Subscribe to our newsletter</label>
-              <div className="flex gap-3">
+              <label className="text-20 font-bold mb-2">Subscribe to our newsletter</label>
+              <div className="flex gap-3 flex-col md:flex-row">
                 <Input
                   value={emailInput}
                   onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +90,7 @@ export default function Subscription() {
                   className="flex-grow bg-primary-bg"
                 />
                 <Button
-                  className="min-w-[130px]"
+                  className="min-w-[130px] w-full md:w-[unset]"
                   disabled={isSubmitting || !emailInput}
                   onClick={handleEmailSubmit}
                 >
@@ -100,7 +100,13 @@ export default function Subscription() {
             </>
           }
           rightContent={
-            <div ref={ref} className={clsx("pt-[115px]", entry?.isIntersecting && "animated")}>
+            <div
+              ref={ref}
+              className={clsx(
+                "flex lg:flex-col lg:justify-end pb-0 md:pb-10 2xl:pb-0 items-center h-full group",
+                entry?.isIntersecting && "animated",
+              )}
+            >
               <SubscribeEmail />
             </div>
           }

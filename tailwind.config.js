@@ -92,6 +92,9 @@ module.exports = {
         'grow-column-4': 'grow-column-4 1s forwards ease-in-out ',
         'grow-column-5': 'grow-column-5 1s forwards ease-in-out ',
       },
+      screens: {
+        "3xl": "2000px",
+      },
       backgroundImage: {
         "purple-neon-line-gradient": "linear-gradient(180deg, rgba(128, 137, 189, 0) 0%, #8089BD 50%, rgba(128, 137, 189, 0) 100%)",
         "red-gradient": "linear-gradient(270deg, #443535 0%, #362323 100%)"
@@ -171,6 +174,7 @@ module.exports = {
       18: ["18px", "28px"],
       20: ["20px", "32px"],
       24: ["24px", "40px"],
+      28: ["28px", "44px"],
       30: ["30px", "44px"],
       32: ["32px", "48px"],
       36: ["36px", "52px"],

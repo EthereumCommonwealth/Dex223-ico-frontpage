@@ -11,7 +11,7 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 
-import { DexChainId } from "@/sdk_hybrid/chains";
+import { ChainId } from "@/config/types/ChainId";
 
 export type KeystoreConnectorParameters = {
   pk: Address;
@@ -31,7 +31,7 @@ export function keystore({ pk }: KeystoreConnectorParameters) {
     async setup() {
       //initial setup
     },
-    async connect({ chainId }: { chainId: DexChainId }) {
+    async connect({ chainId }: { chainId: ChainId }) {
       const provider: WalletClient = await this.getProvider({ chainId });
 
       try {
@@ -90,14 +90,7 @@ export function keystore({ pk }: KeystoreConnectorParameters) {
         client = createWalletClient({
           account,
           chain,
-          transport: fallback([
-            webSocket("wss://sepolia.infura.io/ws/v3/6689c099b8d542589b1842e30dbc2027"),
-            webSocket("wss://eth-sepolia.g.alchemy.com/v2/kvidqVpyVu4aivBEb55XXIzCHDqMm7CO"),
-            http("https://sepolia.infura.io/v3/6689c099b8d542589b1842e30dbc2027"),
-            http("https://eth-sepolia.g.alchemy.com/v2/kvidqVpyVu4aivBEb55XXIzCHDqMm7CO"),
-            http("https://rpc.ankr.com/eth_sepolia"),
-            http(),
-          ]),
+          transport: http(),
         });
       }
       return client;
@@ -110,14 +103,7 @@ export function keystore({ pk }: KeystoreConnectorParameters) {
         client = createWalletClient({
           account,
           chain,
-          transport: fallback([
-            webSocket("wss://sepolia.infura.io/ws/v3/6689c099b8d542589b1842e30dbc2027"),
-            webSocket("wss://eth-sepolia.g.alchemy.com/v2/kvidqVpyVu4aivBEb55XXIzCHDqMm7CO"),
-            http("https://sepolia.infura.io/v3/6689c099b8d542589b1842e30dbc2027"),
-            http("https://eth-sepolia.g.alchemy.com/v2/kvidqVpyVu4aivBEb55XXIzCHDqMm7CO"),
-            http("https://rpc.ankr.com/eth_sepolia"),
-            http(),
-          ]),
+          transport: http(),
         });
       }
       return client;

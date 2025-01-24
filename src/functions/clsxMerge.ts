@@ -23,6 +23,6 @@ const customTwMerge = extendTailwindMerge({
   },
 });
 
-export function clsxMerge(...args: ClassValue[]) {
+export function clsxMerge(...args: (ClassValue | undefined | false)[]) {
   return customTwMerge(clsx(args));
 }

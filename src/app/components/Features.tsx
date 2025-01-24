@@ -18,26 +18,28 @@ function KeyFeatureCard({
 }) {
   return (
     <div className="p-5 bg-primary-bg rounded-5">
-      <h3 className="flex items-center gap-2 mb-2 font-bold text-20">
-        <Svg size={32} className="text-green" iconName={iconName} />
+      <h3 className="flex gap-2 mb-2 font-bold text-18 lg:text-20">
+        <span className="w-6 h-6 lg:w-8 lg:h-8 mt-px">
+          <Svg size={24} className="text-green flex-shrink-0 !w-full !h-full" iconName={iconName} />
+        </span>
         {heading}
       </h3>
-      <p className="text-secondary-text text-18">{text}</p>
+      <p className="text-secondary-text text-16 lg:text-18">{text}</p>
     </div>
   );
 }
 
 export default function Features() {
   return (
-    <>
+    <div>
       <NeonBlock
         color="green"
         icon="key"
         differentColumns
         leftContent={
-          <div className="mb-[60px]">
+          <div className="lg:mb-[60px] mb-6">
             <ArticleHeading text="Key features of DEX223" />
-            <p className="text-secondary-text text-18">
+            <p className="text-secondary-text text-16 lg:text-18">
               DEX223 combines security, versatility, and transparency. With the ERC-223 standard, it
               prevents token transfer errors, supports seamless operation across multiple
               EVM-compatible blockchains, enables inclusive token listings, and ensures trust
@@ -49,7 +51,7 @@ export default function Features() {
       />
 
       <Container>
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-5">
           <KeyFeatureCard
             heading="Solving a real problem"
             text="Every year, millions of dollars are lost due to errors with ERC-20 tokens. By adopting the
@@ -90,6 +92,6 @@ export default function Features() {
           />
         </div>
       </Container>
-    </>
+    </div>
   );
 }

@@ -2,17 +2,17 @@ import { Formik } from "formik";
 import { ChangeEvent, useRef, useState } from "react";
 import { useConnect } from "wagmi";
 
-import DialogHeader from "@/components/DialogHeader";
-import DrawerDialog from "@/components/DrawerDialog";
+import Button, { ButtonColor } from "@/components/atoms/Button";
 import Preloader from "@/components/atoms/Preloader";
 import TextField from "@/components/atoms/TextField";
-import Button, { ButtonColor } from "@/components/atoms/Button";
+import DialogHeader from "@/components/DialogHeader";
+import DrawerDialog from "@/components/DrawerDialog";
+import { keystore } from "@/config/connectors/keystore/connector";
+import { unlockKeystore } from "@/functions/keystore";
 import {
   useConnectWalletDialogStateStore,
   useConnectWalletStore,
 } from "@/stores/useConnectWalletStore";
-import { keystore } from "@/config/connectors/keystore/connector";
-import { unlockKeystore } from "@/functions/keystore";
 
 interface Props {
   isOpen: boolean;
@@ -113,7 +113,7 @@ export default function KeystoreConnectDialog({ isOpen, setIsOpen }: Props) {
                       }}
                       colorScheme={ButtonColor.LIGHT_GREEN}
                     >
-                     Browse
+                      Browse
                     </Button>
                   </div>
                   <p className="overflow-hidden overflow-ellipsis whitespace-nowrap w-[200px]">

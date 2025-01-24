@@ -5,13 +5,13 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
+import BulletListItem from "@/components/atoms/BulletListItem";
+import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import OverlineText from "@/components/atoms/OverlineText";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import Container from "@/components/Container";
-import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
-import BulletListItem from "@/components/atoms/BulletListItem";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import InterfaceDecentralizationImage from "@/inlined-svgs/InterfaceDecentralizationImage";
 import ListingImage from "@/inlined-svgs/ListingImage";
 
@@ -19,7 +19,14 @@ const styles: any = {};
 
 function LostCard({ icon, name, lost, percentage, color, active = false, animate = false }) {
   return (
-    <div className={clsx("pt-4 px-5 pb-5 rounded-2", active ? "relative before:absolute before:w-full before:h-full before:rounded-2 before:top-0 before:left-0 before:border-red before:border bg-red-gradient" : "bg-primary-bg")}>
+    <div
+      className={clsx(
+        "pt-4 px-5 pb-5 rounded-2",
+        active
+          ? "relative before:absolute before:w-full before:h-full before:rounded-2 before:top-0 before:left-0 before:border-red before:border bg-red-gradient"
+          : "bg-primary-bg",
+      )}
+    >
       <div className={"flex justify-between text-primary-text"}>
         <div className={"text-20 flex items-center gap-2"}>
           {icon} {name}
@@ -56,7 +63,10 @@ const slides = [
         <div className="px-5 py-4 border border-red-light rounded-3 shadow shadow-red">
           <p className="text-18 mb-3">
             Watch{" "}
-            <TextLink text="ERC-20 Live Losses Calculator" href="https://dexaran.github.io/erc20-losses" />
+            <TextLink
+              text="ERC-20 Live Losses Calculator"
+              href="https://dexaran.github.io/erc20-losses"
+            />
           </p>
           <div className="flex justify-between gap-5 bg-red-bg rounded-3 items-center py-2.5 px-5">
             <div className="flex items-center gap-2 text-20">
@@ -76,8 +86,9 @@ const slides = [
           of ERC-20 tokens were lost.
         </p>
         <p className="text-secondary-text text-18">
-          ERC-223 is designed with security in mind. ERC-223 would allow to prevent user mistakes and we
-          believe than in the long term a standard that prevents user mistakes and losses of funds will thrive.
+          ERC-223 is designed with security in mind. ERC-223 would allow to prevent user mistakes
+          and we believe than in the long term a standard that prevents user mistakes and losses of
+          funds will thrive.
         </p>
       </div>
     ),
@@ -144,18 +155,23 @@ const slides = [
           contract to operate funds on users behalf.
         </p>
         <p className="text-secondary-text text-18">
-          ERC-20 tokens require approval before depositing to smart contracts, as approval and
-          swap are separate transactions. To save GAS and enhance user experience, DEXes suggest
-          issuing unlimited approvals once. However, this gives the contract ongoing control
-          over the tokens, risking loss if the contract is hacked, even years later.
+          ERC-20 tokens require approval before depositing to smart contracts, as approval and swap
+          are separate transactions. To save GAS and enhance user experience, DEXes suggest issuing
+          unlimited approvals once. However, this gives the contract ongoing control over the
+          tokens, risking loss if the contract is hacked, even years later.
         </p>
         <p className="text-green pl-4 border-l-4 border-green text-18 mb-[184px]">
-          ERC-223 tokens can be swapped without approvals. The user has the control over their ERC-223 tokens at any moment and no third party is authorized to make transfers on users behalf.
+          ERC-223 tokens can be swapped without approvals. The user has the control over their
+          ERC-223 tokens at any moment and no third party is authorized to make transfers on users
+          behalf.
         </p>
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className="relative h-full rounded-5 overflow-hidden bg-[url('/images/approve-prob.png')] bg-no-repeat bg-cover bg-top">
+      <div
+        key={key}
+        className="relative h-full rounded-5 overflow-hidden bg-[url('/images/approve-prob.png')] bg-no-repeat bg-cover bg-top"
+      >
         <div className={clsx(styles.attentionMark, animate && styles.animate)} />
         <div className="absolute w-full p-5 flex gap-3 bg-secondary-bg bottom-0 left-0 right-0 border-t border-secondary-border">
           <svg
@@ -203,7 +219,7 @@ const slides = [
         </div>
         <div>
           <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
-          <img className="block" src="images/prob3.png" />
+            <img className="block" src="images/prob3.png" />
           </div>
         </div>
       </div>
@@ -213,12 +229,8 @@ const slides = [
     heading: "GAS optimization",
     content: (
       <div className="grid gap-5 text-secondary-text text-20">
-        <p>
-          ERC-223 token swaps can be 15% cheaper than ERC-20 swaps.
-        </p>
-        <p>
-          ERC-20 swap consumed 257K GAS.
-        </p>
+        <p>ERC-223 token swaps can be 15% cheaper than ERC-20 swaps.</p>
+        <p>ERC-20 swap consumed 257K GAS.</p>
         <ul className="flex flex-col gap-2">
           <BulletListItem>
             <TextLink
@@ -288,7 +300,10 @@ const slides = [
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className={clsx("h-full flex items-center justify-center", animate && "animated")}>
+      <div
+        key={key}
+        className={clsx("h-full flex items-center justify-center", animate && "animated")}
+      >
         <InterfaceDecentralizationImage />
       </div>
     ),
@@ -315,7 +330,10 @@ const slides = [
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className={clsx("flex group items-center justify-center h-full", animate && "animated")}>
+      <div
+        key={key}
+        className={clsx("flex group items-center justify-center h-full", animate && "animated")}
+      >
         <ListingImage />
       </div>
     ),
@@ -324,7 +342,13 @@ const slides = [
 
 function EcosystemSlide({ index, activeSlide, slide }) {
   return (
-    <div className={clsx(index === activeSlide ? "visible block opacity-100 h-unset relative" : "h-0 opacity-0 hidden")}>
+    <div
+      className={clsx(
+        index === activeSlide
+          ? "visible block opacity-100 h-unset relative"
+          : "h-0 opacity-0 hidden",
+      )}
+    >
       <h2 className="mt-4 text-40 text-primary-text mb-6">{slide.heading}</h2>
       {slide.content}
     </div>
@@ -392,10 +416,20 @@ export default function EcosystemProblems() {
                   })}
                 </div>
                 <div className="flex gap-3">
-                  <Button className="px-5 md:px-5 lg:px-5" size={ButtonSize.MEDIUM} colorScheme={ButtonColor.LIGHT_GREEN}  onClick={previousSlide}>
+                  <Button
+                    className="px-5 md:px-5 lg:px-5"
+                    size={ButtonSize.MEDIUM}
+                    colorScheme={ButtonColor.LIGHT_GREEN}
+                    onClick={previousSlide}
+                  >
                     <Svg iconName="arrow-left-small" />
                   </Button>
-                  <Button className="px-5 md:px-5 lg:px-5" size={ButtonSize.MEDIUM} colorScheme={ButtonColor.LIGHT_GREEN}  onClick={nextSlide}>
+                  <Button
+                    className="px-5 md:px-5 lg:px-5"
+                    size={ButtonSize.MEDIUM}
+                    colorScheme={ButtonColor.LIGHT_GREEN}
+                    onClick={nextSlide}
+                  >
                     <Svg iconName="arrow-right-small" />
                   </Button>
                 </div>

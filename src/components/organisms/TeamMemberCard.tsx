@@ -28,17 +28,20 @@ const socialIcons = {
 
 export default function TeamMemberCard({ image, position, socials, name }: Props) {
   return (
-    <div className="bg-primary-bg rounded-5 relative overflow-hidden p-5 grid grid-cols-[172px_1fr] gap-5">
-      <Image src={image} alt={name} height={172} width={172} className="rounded-3" />
+    <div className="grid-rows-[auto_1fr] lg:grid-rows-1 bg-primary-bg rounded-5 relative overflow-hidden p-2 lg:p-5 grid grid-cols-1 lg:grid-cols-[172px_1fr] gap-3 lg:gap-5">
+      <div className="w-full lg:w-[172px] relative aspect-square">
+        <Image src={image} alt={name} fill className="rounded-3" />
+      </div>
+
       {/*<div*/}
       {/*  style={{ backgroundImage: `url(${image})` }}*/}
       {/*  className="w-[172px] h-[172px] bg-center bg-cover relative rounded-[14px]"*/}
       {/*/>*/}
 
       <div className="flex flex-col flex-1 justify-between">
-        <div className="flex flex-col">
-          <span className="text-24 font-bold mb-1">{name}</span>
-          <span className="text-tertiary-text text-18 mb-1">{position}</span>
+        <div className="flex flex-col flex-grow">
+          <span className="text-14 lg:text-24 font-medium lg:font-bold mb-1">{name}</span>
+          <span className="text-tertiary-text text-12 lg:text-18 mb-3 lg:mb-1">{position}</span>
         </div>
 
         <div className="flex flex-col justify-end flex-1">
@@ -50,7 +53,7 @@ export default function TeamMemberCard({ image, position, socials, name }: Props
                 href={socials[key]}
                 className="flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-300 hover:border-green-500 py-2"
               >
-                <img alt="" src={socialIcons[key]} className="w-6 h-6" />
+                <img alt="" src={socialIcons[key]} className="w-4 h-4 lg:w-6 lg:h-6" />
               </a>
             ))}
           </div>

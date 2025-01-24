@@ -1,15 +1,15 @@
 "use client";
 
 import clsx from "clsx";
+import Image from "next/image";
 import React, { useRef } from "react";
 
+import BulletListItem from "@/components/atoms/BulletListItem";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 import DevSourcesImage from "../../../../assets/images/dev-src-2.svg";
 import Svg from "../../../../components/atoms/Svg";
 import NeonBlock from "../../../../components/organisms/NeonBlock";
-import Image from "next/image";
-import BulletListItem from "@/components/atoms/BulletListItem";
 
 const references = [
   {
@@ -72,13 +72,19 @@ export default function References({ refEl }) {
         leftContent={
           <>
             <div className="flex flex-col gap-5">
-              <p className="text-24 font-semibold text-primary-text">Here you can track the progress:</p>
+              <p className="text-24 font-semibold text-primary-text">
+                Here you can track the progress:
+              </p>
             </div>
             <ul className="mt-24">
               {references.map((reference) => {
                 return (
-                  <li className="border-b border-primary-border"  key={reference.text}>
-                    <a target="_blank" href={reference.href} className="hover:text-green py-3.5 text-secondary-text flex items-center gap-6 justify-between text-18 duration-200">
+                  <li className="border-b border-primary-border" key={reference.text}>
+                    <a
+                      target="_blank"
+                      href={reference.href}
+                      className="hover:text-green py-3.5 text-secondary-text flex items-center gap-6 justify-between text-18 duration-200"
+                    >
                       <span>{reference.text}</span>
                       <Svg className="flex-shrink-0" iconName="forward" />
                     </a>
@@ -91,7 +97,10 @@ export default function References({ refEl }) {
         rightContent={
           <div
             ref={referencesEntryRef}
-            className={clsx("pt-[200px] flex justify-end", referencesEntry?.isIntersecting && "animated")}
+            className={clsx(
+              "pt-[200px] flex justify-end",
+              referencesEntry?.isIntersecting && "animated",
+            )}
           >
             <Image src={DevSourcesImage} alt="" />
           </div>

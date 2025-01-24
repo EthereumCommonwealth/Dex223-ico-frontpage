@@ -11,6 +11,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   internalText?: string | ReactNode;
   internalTextClassName?: string;
   isError?: boolean;
+  tooltipText?: string;
   isWarning?: boolean;
   inputSize?: InputSize;
 } & (
@@ -90,35 +91,35 @@ export default function TextField({
   return (
     <div>
       <InputLabel inputSize={inputSize} label={label} tooltipText={tooltipText} />
-        <div className="relative">
-          {props.isNumeric ? (
-            (() => {
-              const { isNumeric, ...rest } = props;
-              return (
-                <NumericFormat
-                  inputMode="decimal"
-                  allowedDecimalSeparators={[","]}
-                  isError={Boolean(error) || isError}
-                  isWarning={Boolean(warning) || isWarning}
-                  customInput={Input}
-                  inputSize={inputSize}
-                  {...rest}
-                />
-              );
-            })()
-          ) : (
-            <Input
-              isError={Boolean(error) || isError}
-              isWarning={Boolean(warning) || isWarning}
-              {...props }
-            />
-          )}
-          {internalText && (
-            <span className="absolute right-5 text-tertiary-text top-1/2 -translate-y-1/2">
-              {internalText}
-            </span>
-          )}
-        </div>
+      <div className="relative">
+        {props.isNumeric ? (
+          (() => {
+            const { isNumeric, ...rest } = props;
+            return (
+              <NumericFormat
+                inputMode="decimal"
+                allowedDecimalSeparators={[","]}
+                isError={Boolean(error) || isError}
+                isWarning={Boolean(warning) || isWarning}
+                customInput={Input}
+                inputSize={inputSize}
+                {...rest}
+              />
+            );
+          })()
+        ) : (
+          <Input
+            isError={Boolean(error) || isError}
+            isWarning={Boolean(warning) || isWarning}
+            {...props}
+          />
+        )}
+        {internalText && (
+          <span className="absolute right-5 text-tertiary-text top-1/2 -translate-y-1/2">
+            {internalText}
+          </span>
+        )}
+      </div>
       <HelperText
         helperText={helperText}
         error={error}

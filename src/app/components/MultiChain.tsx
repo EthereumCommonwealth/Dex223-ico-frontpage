@@ -15,7 +15,7 @@ export default function MultiChain() {
         <>
           <ArticleHeading text="Crosschain deployment policy" />
 
-          <div className="flex flex-col gap-5 text-secondary-text text-18">
+          <div className="flex flex-col gap-5 text-secondary-text text-16 lg:text-18">
             <p>
               D223 tokens will initially be offered on the Ethereum Mainnet, while the DEX223
               exchange is scheduled to launch on multiple chains. Holders who keep their D223 tokens
@@ -36,8 +36,8 @@ export default function MultiChain() {
         </>
       }
       rightContent={
-        <div className="flex items-center justify-center mb-[53px] h-full pt-[55px]">
-          <div className="w-full flex items-center justify-center relative shrink-0">
+        <div className="flex items-center mb-[53px] h-full pt-[72px] lg:pt-[55px]">
+          <div className="max-w-[296px] lg:max-w-[unset] w-full flex items-center relative shrink-0">
             <div className="absolute top-1/2 left-1/2 w-[72%] h-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 bg-blue blur-[160px] animate-breathing"></div>
             <img className="relative z-10" src="/images/crosschain.svg" alt="" />
           </div>

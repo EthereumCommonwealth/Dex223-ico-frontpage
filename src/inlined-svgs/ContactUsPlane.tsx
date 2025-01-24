@@ -1,6 +1,7 @@
 export default function ContactUsPlane() {
   return (
     <svg
+      className="w-full h-auto max-w-[296px] lg:h-[unset] lg:max-w-[unset]"
       width="662"
       height="424"
       viewBox="0 0 662 424"

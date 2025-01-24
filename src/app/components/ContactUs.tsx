@@ -30,7 +30,7 @@ export default function ContactUs() {
         leftContent={
           <>
             <ArticleHeading text="Get in touch" />
-            <div className="flex flex-col gap-5 text-18 text-secondary-text">
+            <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 text-16 lg:text-18 text-secondary-text">
               <p>We’re here to help you make the most of DEX223.</p>
               <p>
                 For marketing and general inquiries, emails:{" "}
@@ -42,7 +42,7 @@ export default function ContactUs() {
                 will direct you to the right contact.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3 mt-10 mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 mt-6 md:mt-10 mb-4 m:mb-5 gap-2">
               <a href={dexEmailLink}>
                 <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
                   <span>Write to email</span>
@@ -56,8 +56,8 @@ export default function ContactUs() {
                 </button>
               </a>
             </div>
-            <div className="rounded-1 bg-primary-bg border-l-4 border-green flex items-center gap-2.5 pl-4 py-2.5">
-              <span className={styles.srcIcon}>
+            <div className="rounded-1 bg-primary-bg border-l-4 border-green flex gap-2.5 pl-4 py-2.5">
+              <span className="relative">
                 <Svg iconName="code" />
               </span>
               <span>
@@ -71,7 +71,7 @@ export default function ContactUs() {
           <div
             ref={ref}
             className={clsx(
-              "flex flex-col justify-end h-full group",
+              "flex lg:flex-col lg:justify-end items-center h-full group",
               entry?.isIntersecting && "animated",
             )}
           >

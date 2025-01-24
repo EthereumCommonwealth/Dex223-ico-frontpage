@@ -67,7 +67,7 @@ function FeatureBlock({ heading, content, image }) {
       style={{
         transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)`,
       }}
-      className="bg-primary-bg rounded-5 p-10 group overflow-hidden duration-300 hover:duration-100"
+      className="bg-primary-bg rounded-5 p-4 lg:p-10 group overflow-hidden duration-300 hover:duration-100"
     >
       <div
         style={{ left: positions.left, top: positions.top }}
@@ -76,7 +76,7 @@ function FeatureBlock({ heading, content, image }) {
 
       <div className="flex items-center gap-5 mb-5">
         {image}
-        <h4 className="text-24 font-bold">{heading}</h4>
+        <h4 className="text-18 lg:text-24 font-bold">{heading}</h4>
       </div>
       {content}
     </div>
@@ -94,7 +94,7 @@ export default function Advantages() {
         leftContent={
           <>
             <ArticleHeading text="Unique Features" />
-            <p className="mb-[60px] text-18 text-secondary-text">
+            <p className="mb-6 lg:mb-[60px] text-16 lg:text-18 text-secondary-text">
               DEX223 introduces a number of revolutionary concepts that no other exchange implements
               in the same way currently. These features will drastically improve the security, make
               token listings as easy and transparent as possible and allow on-platform lending of
@@ -104,40 +104,41 @@ export default function Advantages() {
         }
       />
       <Container>
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-5 grid-cols-1">
           <FeatureBlock
             image={<MTImage />}
             content={
               <>
-                <div className="flex flex-col gap-5 text-secondary-text text-18">
-                  <p className="text-18">
+                <div className="flex flex-col gap-5 text-secondary-text text-16 lg:text-18">
+                  <p>
                     DEX223 introduces an innovative lending mechanism that enables users to create
                     “lending orders” with full control over terms and conditions. Here’s how it
                     works:
                   </p>
 
                   <div>
-                    <h5 className="text-20 font-bold mb-3">Flexible lending orders</h5>
+                    <h5 className="text-18 lg:text-20 font-bold mb-3">Flexible lending orders</h5>
                     <ul className="flex flex-col gap-2">
                       <BulletListItem>
-                        <b className="text-20">Funds: </b> Place any token in your lending order.
+                        <b className="text-18 lg:text-20">Funds: </b> Place any token in your
+                        lending order.
                       </BulletListItem>
                       <BulletListItem>
-                        <b className="text-20">Interest Rate & Deadline: </b> Define your desired
-                        annualized interest rate and loan duration.
+                        <b className="text-18 lg:text-20">Interest Rate & Deadline: </b> Define your
+                        desired annualized interest rate and loan duration.
                       </BulletListItem>
                       <BulletListItem>
-                        <b className="text-20">Permitted Markets: </b> Specify which markets the
-                        borrower can trade on.
+                        <b className="text-18 lg:text-20">Permitted Markets: </b> Specify which
+                        markets the borrower can trade on.
                       </BulletListItem>
                       <li>
-                        <b className="text-20">Collateral & Configuration: </b> Require a minimum
-                        collateral amount and set optional parameters for customization.
+                        <b className="text-18 lg:text-20">Collateral & Configuration: </b> Require a
+                        minimum collateral amount and set optional parameters for customization.
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <h5 className="text-20 font-bold mb-3">Borrower access & control</h5>
+                    <h5 className="text-18 lg:text-20 font-bold mb-3">Borrower access & control</h5>
                     <ul className="flex flex-col gap-2">
                       <BulletListItem>
                         A borrower deposits the required collateral to accept your lending order.
@@ -153,7 +154,7 @@ export default function Advantages() {
                     </ul>
                   </div>
                   <div>
-                    <h5 className="text-20 font-bold mb-3">Flexible lending orders</h5>
+                    <h5 className="text-18 lg:text-20 font-bold mb-3">Flexible lending orders</h5>
                     <ul className="flex flex-col gap-2">
                       <BulletListItem>
                         The lender sets an “expected balance” for the borrower’s positions at any
@@ -201,7 +202,7 @@ export default function Advantages() {
             <FeatureBlock
               image={<ERC223SupportImage />}
               content={
-                <div className="flex flex-col gap-5 text-18 text-secondary-text">
+                <div className="flex flex-col gap-5 text-16 lg:text-18 text-secondary-text">
                   <p>
                     Integrating ERC-223 directly addresses a key shortcoming of the ERC-20 design,
                     which has led to the loss of approximately $201,690,000 worth of tokens on
@@ -231,7 +232,7 @@ export default function Advantages() {
             <FeatureBlock
               image={<TransparentALImage />}
               content={
-                <div className="flex flex-col gap-5 text-18 text-secondary-text">
+                <div className="flex flex-col gap-5 text-16 lg:text-18 text-secondary-text">
                   <p>
                     DEX223 empowers users to freely import any existing token list from{" "}
                     <TextLink href="https://tokenlists.org" isExternal text="tokenlists.org" /> or

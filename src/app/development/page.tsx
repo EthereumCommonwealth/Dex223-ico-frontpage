@@ -4,11 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
 
 import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
+import { clsxMerge } from "@/functions/clsxMerge";
 
 import DevelopmentReports from "./components/DevelopmentReports";
 import References from "./components/References";
 import Structure from "./components/Structure";
-import { clsxMerge } from "@/functions/clsxMerge";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(-1);
@@ -54,10 +54,11 @@ export default function Home() {
     };
   }, [setActiveTab]);
 
-
   return (
     <div className="mb-[200px]">
-      <h1 className="text-center text-58 font-bold mb-3 mt-[60px] text-primary-text">Development progress</h1>
+      <h1 className="text-center text-58 font-bold mb-3 mt-[60px] text-primary-text">
+        Development progress
+      </h1>
 
       <p className="text-18 text-secondary-text text-center max-w-[822px] mx-auto mb-5">
         Here you can track the development progress of DEX223 decentralized exchange and related
@@ -67,17 +68,35 @@ export default function Home() {
       <div className="sticky py-5 top-0 z-[5] mb-5">
         <div className="grid grid-cols-3 mx-auto max-w-[822px]">
           <a href="#structure">
-            <button className={clsxMerge("bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text", activeTab === 0 && "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]")}>
+            <button
+              className={clsxMerge(
+                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                activeTab === 0 &&
+                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+              )}
+            >
               Structure
             </button>
           </a>
           <a href="#references">
-            <button className={clsxMerge("bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text", activeTab === 1 && "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]")}>
+            <button
+              className={clsxMerge(
+                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                activeTab === 1 &&
+                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+              )}
+            >
               References
             </button>
           </a>
           <a href="#reports">
-            <button className={clsxMerge("bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text", activeTab === 2 && "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]")}>
+            <button
+              className={clsxMerge(
+                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                activeTab === 2 &&
+                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+              )}
+            >
               <span className="">Development reports</span>
             </button>
           </a>

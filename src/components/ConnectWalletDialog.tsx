@@ -1,11 +1,9 @@
 import DialogHeader from "@/components/DialogHeader";
-import {
-  useConnectWalletDialogStateStore,
-} from "@/stores/useConnectWalletStore";
+import DrawerDialog from "@/components/DrawerDialog";
 import KeystoreCard from "@/components/wallet-cards/KeystoreCard";
 import MetamaskCard from "@/components/wallet-cards/MetamaskCard";
 import WalletConnectCard from "@/components/wallet-cards/WalletConnectCard";
-import DrawerDialog from "@/components/DrawerDialog";
+import { useConnectWalletDialogStateStore } from "@/stores/useConnectWalletStore";
 
 function StepLabel({ step, label }: { step: string; label: string }) {
   return (

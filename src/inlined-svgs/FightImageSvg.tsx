@@ -1,7 +1,7 @@
 export default function FightImageSvg() {
   return (
     <svg
-      className="relative z-[2]"
+      className="relative z-[2] w-full aspect-[296/373] h-auto"
       width="662"
       height="836"
       viewBox="0 0 662 836"

@@ -36,7 +36,7 @@ export default function Philosophy() {
           <>
             <ArticleHeading text="Philosophy" />
             <div className="flex flex-col gap-5">
-              <p className="text-18 text-secondary-text">
+              <p className="text-16 lg:text-18 text-secondary-text">
                 DEX223 is founded on the belief that a truly decentralized exchange must be
                 unstoppable, secure, and governed by the people who use it. Our core principles
                 revolve around user empowerment, transparent governance, and robust technical

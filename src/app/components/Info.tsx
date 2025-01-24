@@ -25,9 +25,9 @@ const infoFields = [
       <a
         className="text-green underline"
         target="_blank"
-        href="https://etherscan.io/address/0xcce968120e6ded56f32fbfe5a2ec06cbf1e7c8ed"
+        href="https://etherscan.io/address/0x0908078da2935a14bc7a17770292818c85b580dd"
       >
-        0xc&shy;Ce968120e&shy;6Ded56F32f&shy;bfe5A2Ec0&shy;6CBF1e7&shy;c8ED
+        0x09&shy;08078d&shy;a2935a&shy;14bc7a1&shy;7770292&shy;818c85&shy;b580dd
       </a>
     ),
   },
@@ -66,7 +66,7 @@ export default function Info() {
           <>
             <ArticleHeading text="Projection and token information" />
 
-            <div className="flex flex-col gap-5 mb-6 text-secondary-text text-18">
+            <div className="flex flex-col gap-5 mb-6 text-secondary-text text-16 lg:text-18">
               <p>
                 On August 29, 2023, Uniswap V3 recorded a daily trading volume of $883 million. If
                 DEX223 manages to capture just 5% of that volume with a 0.2% taker fee, the
@@ -91,10 +91,14 @@ export default function Info() {
                 return (
                   <div
                     key={infoField.label}
-                    className="py-2.5 flex justify-between items-start border-b border-b-secondary-border last-of-type:border-b-0"
+                    className="py-2.5 flex justify-between gap-4 items-start border-b border-b-secondary-border last-of-type:border-b-0"
                   >
-                    <span className="text-18 text-secondary-text">{infoField.label}</span>
-                    <span className="text-18 text-right text-primary-text">{infoField.value}</span>
+                    <span className="text-16 lg:text-18 text-secondary-text">
+                      {infoField.label}
+                    </span>
+                    <span className="text-16 lg:text-18 text-right text-primary-text">
+                      {infoField.value}
+                    </span>
                   </div>
                 );
               })}
@@ -113,8 +117,8 @@ export default function Info() {
           </>
         }
         rightContent={
-          <div className="flex items-center justify-center mb-[53px] h-full">
-            <div className="w-full pt-[100%] relative shrink-0">
+          <div className="flex items-center mb-[75px] lg:mb-[56px] h-full">
+            <div className="max-w-[296px] lg:max-w-[unset] w-full aspect-square relative shrink-0">
               <div className="absolute top-1/2 left-1/2 w-[72%] h-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 bg-green blur-[160px] animate-breathing"></div>
               <img
                 className="absolute z-10 top-[8%] right-[8%] w-[31%] animate-info-image-1"

@@ -1,6 +1,7 @@
 import { http } from "viem";
 import { createConfig, createStorage, parseCookie } from "wagmi";
 import { metaMask, walletConnect } from "wagmi/connectors";
+
 import { mainnet } from "@/config/chains/mainnet";
 
 const cookieStorage = {
@@ -20,9 +21,7 @@ const cookieStorage = {
 };
 
 export const config = createConfig({
-  chains: [
-    mainnet
-  ],
+  chains: [mainnet],
   connectors: [
     walletConnect({
       projectId: "109bdaa543046acc8c6a4d3d5310af12",

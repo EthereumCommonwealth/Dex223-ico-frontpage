@@ -97,7 +97,11 @@ export default function Footer({ className }: Props) {
               {socialLinks.map((link) => {
                 return (
                   <div key={link.text}>
-                    <a target="_blank" href={link.href} className="font-medium hover:text-green duration-200 text-secondary-text">
+                    <a
+                      target="_blank"
+                      href={link.href}
+                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                    >
                       {link.text}
                     </a>
                   </div>
@@ -109,7 +113,11 @@ export default function Footer({ className }: Props) {
               {usefulLinks.map((link) => {
                 return (
                   <div key={link.text}>
-                    <a target="_blank" href={link.href} className="font-medium hover:text-green duration-200 text-secondary-text">
+                    <a
+                      target="_blank"
+                      href={link.href}
+                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                    >
                       {link.text}
                     </a>
                   </div>
@@ -121,7 +129,11 @@ export default function Footer({ className }: Props) {
               {partners.map((link) => {
                 return (
                   <div key={link.text}>
-                    <a target="_blank" href={link.href} className="font-medium hover:text-green duration-200 text-secondary-text">
+                    <a
+                      target="_blank"
+                      href={link.href}
+                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                    >
                       {link.text}
                     </a>
                   </div>
@@ -151,19 +163,19 @@ export default function Footer({ className }: Props) {
           </div>
           <div />
         </div>
-          <div className="p-6 flex justify-between items-center before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
-            <div style={{ maxWidth: 872 }}>
-              <p className="text-tertiary-text">
-                Disclaimer: Cryptocurrency may be unregulated in your jurisdiction. The value of
-                cryptocurrencies may go down as well as up. Profits may be subject to capital gains
-                or other taxes applicable in your jurisdiction.
-              </p>
-            </div>
-            <span className="text-tertiary-text text-right">
-              Copyright © {new Date(Date.now()).getFullYear()} DEX223 <br /> All Rights Reserved
-            </span>
+        <div className="p-6 flex justify-between items-center before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
+          <div style={{ maxWidth: 872 }}>
+            <p className="text-tertiary-text">
+              Disclaimer: Cryptocurrency may be unregulated in your jurisdiction. The value of
+              cryptocurrencies may go down as well as up. Profits may be subject to capital gains or
+              other taxes applicable in your jurisdiction.
+            </p>
           </div>
-        </Container>
+          <span className="text-tertiary-text text-right">
+            Copyright © {new Date(Date.now()).getFullYear()} DEX223 <br /> All Rights Reserved
+          </span>
+        </div>
+      </Container>
     </footer>
   );
 }

@@ -1,7 +1,7 @@
 export default function PhilosophyImage() {
   return (
     <svg
-      className="w-[662px] h-[662px] absolute top-3"
+      className="w-full h-auto relative max-w-[296px] lg:max-w-[unset] mt-[72px] lg:mt-[85px] 2xl:mt-3"
       width="795"
       height="795"
       viewBox="0 0 795 795"

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAccount } from "wagmi";
 
-import PickButton from "@/components/PickButton";
 import KeystoreConnectDialog from "@/components/KeystoreConnectDialog";
+import PickButton from "@/components/PickButton";
 import { wallets } from "@/config/wallets";
 
 const { image, name } = wallets.keystore;
