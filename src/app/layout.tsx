@@ -25,9 +25,9 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
       <head></head>
       <body className={golos_text.className}>
         <Providers initialState={initialState}>
-          {/*<Header />*/}
+          <Header />
           {children}
-          {/*<Footer />*/}
+          <Footer />
         </Providers>
       </body>
     </html>
