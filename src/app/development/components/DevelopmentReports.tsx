@@ -3,12 +3,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import React, { useRef } from "react";
 
-import BulletListItem from "@/components/atoms/BulletListItem";
 import Svg from "@/components/atoms/Svg";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-import DevSourcesBlueImage from "../../../../assets/images/dev-sources-blue.svg";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import DevSourcesBlueImage from "../../../assets/images/dev-sources-blue.svg";
+import NeonBlock from "../../../components/organisms/NeonBlock";
 
 const reports = [
   {
@@ -86,12 +85,13 @@ export default function DevelopmentReports({ refEl }) {
       <NeonBlock
         icon="reports"
         color="blue"
+        differentColumns
         overlineText="Development reports"
         anchor="reports"
         leftContent={
           <>
             <div className="flex flex-col gap-5">
-              <p className="text-24 font-semibold text-primary-text">
+              <p className="text-18 lg:text-24 font-semibold text-primary-text">
                 Summaries will be published here monthly.
               </p>
             </div>
@@ -102,10 +102,10 @@ export default function DevelopmentReports({ refEl }) {
                     <a
                       target="_blank"
                       href={report.href}
-                      className="hover:text-green py-3.5 text-secondary-text flex items-center gap-6 justify-between text-18 duration-200"
+                      className="hover:text-green py-3.5 text-secondary-text flex gap-6 justify-between text-16 lg:text-18 duration-200"
                     >
                       <span>{report.text}</span>
-                      <Svg iconName="forward" />
+                      <Svg className="flex-shrink-0 mt-0.5" iconName="forward" />
                     </a>
                   </li>
                 );
@@ -116,12 +116,9 @@ export default function DevelopmentReports({ refEl }) {
         rightContent={
           <div
             ref={reportsEntryRef}
-            className={clsx(
-              "pt-[100px] flex justify-end",
-              reportsEntry?.isIntersecting && "animated",
-            )}
+            className={clsx("pt-0 lg:pt-[152px]", reportsEntry?.isIntersecting && "animated")}
           >
-            <Image src={DevSourcesBlueImage} alt={""} />
+            <Image src={DevSourcesBlueImage} className="w-full max-lg:max-w-[310px]" alt={""} />
           </div>
         }
       />

@@ -36,9 +36,9 @@ export default function Banner() {
           </div>
 
           <div className="rounded-3 border-l-4 border-green flex gap-2 py-2 lg:py-3.5 bg-primary-bg pl-3 pr-4 lg:pr-5 lg:pl-4 w-full">
-            <Svg className="flex-shrink-0 text-green mt-px" iconName="collected-data" />
+            <Svg className="flex-shrink-0 text-green mt-px" iconName="calendar" />
             <p className="text-secondary-text text-16 lg:text-18 font-medium">
-              First Round of ICO is concluded 1st CEX listing of D223 happened on 18 January 2025
+              First Round of ICO is concluded 1st CEX listing of D223 happened on 25 January 2025
             </p>
           </div>
         </div>

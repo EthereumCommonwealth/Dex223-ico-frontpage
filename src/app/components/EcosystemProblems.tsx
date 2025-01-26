@@ -21,21 +21,21 @@ function LostCard({ icon, name, lost, percentage, color, active = false, animate
   return (
     <div
       className={clsx(
-        "pt-4 px-5 pb-5 rounded-2",
+        "py-2 px-4 xl:py-4 xl:px-5 rounded-2",
         active
           ? "relative before:absolute before:w-full before:h-full before:rounded-2 before:top-0 before:left-0 before:border-red before:border bg-red-gradient"
           : "bg-primary-bg",
       )}
     >
       <div className={"flex justify-between text-primary-text"}>
-        <div className={"text-20 flex items-center gap-2"}>
+        <div className={"text-14 xl:text-20 flex items-center gap-2"}>
           {icon} {name}
         </div>
-        <span className="font-bold text-20">{lost}</span>
+        <span className="font-bold text-14 xl:text-20">{lost}</span>
       </div>
-      <div className={"h-8 mt-[18px]"}>
+      <div className={"h-5 xl:h-8 mt-2 xl:mt-[18px]"}>
         <div
-          className="h-full w-[1%] rounded-2"
+          className="h-full w-[1%] xl:rounded-2 rounded-[2px]"
           style={{
             width: animate ? `${percentage}%` : "1%",
             backgroundColor: color,
@@ -48,44 +48,51 @@ function LostCard({ icon, name, lost, percentage, color, active = false, animate
   );
 }
 
-const ERCLosses = "$108,94M";
+const ERCLosses = "$108,235,147";
 const ERCLossesInt = "$108M";
 
 const slides = [
   {
     heading: "Security problems of ERC-20 standard",
     content: (
-      <div className="grid gap-5">
-        <p className="text-24 text-primary-text">
+      <div className="grid 2xl:gap-5 xl:pr-9  lg:gap-3 gap-2">
+        <p className="text-18 2xl:text-24 text-primary-text">
           ERC-20 standard violates common secure software design principles which resulted in a loss
           of {ERCLossesInt} worth of tokens.
         </p>
-        <div className="px-5 py-4 border border-red-light rounded-3 shadow shadow-red">
-          <p className="text-18 mb-3">
+        <div className="py-3 px-4 xl:px-5 xl:py-4 border border-red-light rounded-3 shadow shadow-red">
+          <p className="text-16 2xl:text-18 mb-3 lg:max-2xl:text-center">
             Watch{" "}
             <TextLink
               text="ERC-20 Live Losses Calculator"
               href="https://dexaran.github.io/erc20-losses"
             />
           </p>
-          <div className="flex justify-between gap-5 bg-red-bg rounded-3 items-center py-2.5 px-5">
-            <div className="flex items-center gap-2 text-20">
-              <Svg className="text-red-light" size={32} iconName="warning" />
+          <div className="flex justify-between gap-0 sm:gap-5 bg-red-bg rounded-3 items-center py-2.5 px-3.5 sm:px-5 lg:max-2xl:flex-col lg:max-2xl:items-center lg:max-2xl:gap-0 max-sm:flex-col">
+            <div className="flex items-center max-sm:gap-1 gap-2 text-16 2xl:text-20 max-sm:text-12">
+              <Svg
+                className="text-red-light !w-6 !h-6 sm:h-8 sm:w-8"
+                size={32}
+                iconName="warning"
+              />
               <span>Total amount of lost ERC-20 tokens</span>
             </div>
-            <span className="text-red-light text-24 font-bold">
+            <span className="text-red-light text-20 2xl:text-24 font-medium">
               <span>{ERCLosses}</span>
             </span>
           </div>
         </div>
 
-        <p className="text-secondary-text text-18">
+        <p className="text-secondary-text text-16 2xl:text-18">
           ERC-20 was designed in 2015. At that time there was a bug in EthereumVM. In order to make
           tokens not affected by this bug ERC-20 was designed in a clunky way which does not allow
-          for error handling. As the result of impossibility of handling user mistakes $201M worth
-          of ERC-20 tokens were lost.
+          for error handling.{" "}
+          <span className="max-xl:hidden">
+            As the result of impossibility of handling user mistakes $201M worth of ERC-20 tokens
+            were lost.
+          </span>
         </p>
-        <p className="text-secondary-text text-18">
+        <p className="text-secondary-text text-16 2xl:text-18">
           ERC-223 is designed with security in mind. ERC-223 would allow to prevent user mistakes
           and we believe than in the long term a standard that prevents user mistakes and losses of
           funds will thrive.
@@ -93,17 +100,17 @@ const slides = [
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className="px-5 pb-5 bg-secondary-bg rounded-3">
-        <div className="py-[11px] flex justify-between text-secondary-text text-20">
+      <div key={key} className="px-4 pb-4 xl:px-5 xl:pb-5 bg-secondary-bg rounded-3">
+        <div className="pt-1 pb-2 xl:py-[11px] flex justify-between text-secondary-text text-14 xl:text-20">
           <span>Problem</span>
           <span>Lost</span>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col xl:gap-2 gap-1">
           <LostCard
             animate={animate}
             color="#DDAEAE"
             lost={"$60M"}
-            icon={<Image width={32} height={32} src="/images/curve-logo.png" alt="" />}
+            icon={<img className="w-5 h-5 xl:w-8 xl:h-8" src="/images/curve-logo.png" alt="" />}
             name="Curve hack"
             percentage={18}
           />
@@ -111,7 +118,9 @@ const slides = [
             animate={animate}
             color="#CD8C8C"
             lost={"$62M"}
-            icon={<Image src="/images/problem-logos/dao.svg" alt="" width={32} height={32} />}
+            icon={
+              <img src="/images/problem-logos/dao.svg" alt="" className="w-5 h-5 xl:w-8 xl:h-8" />
+            }
             name="DAO hack"
             percentage={18}
           />
@@ -121,7 +130,11 @@ const slides = [
             color="#D24B4B"
             lost={ERCLossesInt}
             icon={
-              <Image src="/images/problem-logos/user-errors.svg" alt="" width={32} height={32} />
+              <img
+                src="/images/problem-logos/user-errors.svg"
+                alt=""
+                className="w-5 h-5 xl:w-8 xl:h-8"
+              />
             }
             name="ERC-20 user errors"
             percentage={33}
@@ -130,7 +143,13 @@ const slides = [
             animate={animate}
             color="#CB7373"
             lost={"$150M"}
-            icon={<Image src="/images/problem-logos/compound.svg" alt="" width={32} height={32} />}
+            icon={
+              <img
+                src="/images/problem-logos/compound.svg"
+                alt=""
+                className="w-5 h-5 xl:w-8 xl:h-8"
+              />
+            }
             name="Compound hack"
             percentage={46}
           />
@@ -138,7 +157,13 @@ const slides = [
             animate={animate}
             color="#711212"
             lost={"$326M"}
-            icon={<Image src="/images/problem-logos/wormhole.svg" alt="" width={32} height={32} />}
+            icon={
+              <img
+                src="/images/problem-logos/wormhole.svg"
+                alt=""
+                className="w-5 h-5 xl:w-8 xl:h-8"
+              />
+            }
             name="Wormhole hack"
             percentage={100}
           />
@@ -149,18 +174,18 @@ const slides = [
   {
     heading: "Security problems of approve & transferFrom pattern",
     content: (
-      <div className="grid gap-4">
-        <p className="text-24 text-primary-text">
+      <div className="grid gap-2 xl:gap-4 xl:pr-9 ">
+        <p className="text-18 xl:text-24 text-primary-text">
           Transacting method of ERC-20 tokens can put users funds at risk by authorizing DEX
           contract to operate funds on users behalf.
         </p>
-        <p className="text-secondary-text text-18">
+        <p className="text-secondary-text text-16 xl:text-18">
           ERC-20 tokens require approval before depositing to smart contracts, as approval and swap
           are separate transactions. To save GAS and enhance user experience, DEXes suggest issuing
           unlimited approvals once. However, this gives the contract ongoing control over the
           tokens, risking loss if the contract is hacked, even years later.
         </p>
-        <p className="text-green pl-4 border-l-4 border-green text-18 mb-[184px]">
+        <p className="text-green pl-4 border-l-4 border-green text-16 xl:text-18">
           ERC-223 tokens can be swapped without approvals. The user has the control over their
           ERC-223 tokens at any moment and no third party is authorized to make transfers on users
           behalf.
@@ -170,7 +195,7 @@ const slides = [
     illustration: ({ animate, key }) => (
       <div
         key={key}
-        className="relative h-full rounded-5 overflow-hidden bg-[url('/images/approve-prob.png')] bg-no-repeat bg-cover bg-top"
+        className="relative h-full rounded-5 overflow-hidden xl:bg-[url('/images/approve-prob.png')] bg-[url('/images/approve-prob-mobile.png')]  bg-no-repeat bg-cover bg-top"
       >
         <div className={clsx(styles.attentionMark, animate && styles.animate)} />
         <div className="absolute w-full p-5 flex gap-3 bg-secondary-bg bottom-0 left-0 right-0 border-t border-secondary-border">
@@ -187,7 +212,7 @@ const slides = [
               fill="#CD8C8C"
             />
           </svg>
-          <span>
+          <span className="max-md:text-12">
             An approval must be issued every time you perform a swap. If an exchange prompts you to
             issue a one-time approval then it authorizes the contracts to do anything with your
             tokens forever.
@@ -199,8 +224,8 @@ const slides = [
   {
     heading: "Security problems of existing ERC-20 exchanges",
     content: (
-      <div className="grid gap-6">
-        <p className="text-24 text-primary-text">
+      <div className="grid gap-6 xl:pr-9 ">
+        <p className="xl:text-24 text-primary-text text-18">
           Most ERC-20 exchanges prompt a user to issue a one-time &quot;unlimited&quot; approval.
           This puts users funds at risk as the contract will have unlimited access to users funds
           even after the user stopped using it.
@@ -208,18 +233,32 @@ const slides = [
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className="grid grid-cols-2 gap-5 h-full overflow-hidden">
-        <div className="flex flex-col gap-5">
-          <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
-            <img className="block" src="images/prob1.png" />
+      <div className="flex items-center">
+        <div
+          key={key}
+          className="items-start max-xl:mx-auto max-xl:w-[322px] max-xl:py-1 grid grid-cols-2 gap-2 xl:gap-5 overflow-hidden"
+        >
+          <div className="flex flex-col gap-2 xl:gap-5">
+            <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
+              <picture className="w-full h-auto block">
+                <source srcSet="/images/prob1_mobile.png" media="(max-width: 1024px)" />
+                <img src="/images/prob1.png" alt="" />
+              </picture>
+            </div>
+            <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
+              <picture className="w-full h-auto block">
+                <source srcSet="/images/prob2_mobile.png" media="(max-width: 1024px)" />
+                <img src="/images/prob2.png" alt="" />
+              </picture>
+            </div>
           </div>
-          <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
-            <img className="block" src="images/prob2.png" />
-          </div>
-        </div>
-        <div>
-          <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
-            <img className="block" src="images/prob3.png" />
+          <div>
+            <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
+              <picture className="w-full h-auto block">
+                <source srcSet="/images/prob3_mobile.png" media="(max-width: 1024px)" />
+                <img src="/images/prob3.png" alt="" />
+              </picture>
+            </div>
           </div>
         </div>
       </div>
@@ -228,7 +267,7 @@ const slides = [
   {
     heading: "GAS optimization",
     content: (
-      <div className="grid gap-5 text-secondary-text text-20">
+      <div className="grid gap-5 text-secondary-text text-16 xl:text-20 xl:pr-9 ">
         <p>ERC-223 token swaps can be 15% cheaper than ERC-20 swaps.</p>
         <p>ERC-20 swap consumed 257K GAS.</p>
         <ul className="flex flex-col gap-2">
@@ -263,18 +302,37 @@ const slides = [
       </div>
     ),
     illustration: ({ animate, key }) => (
-      <div key={key} className="grid grid-cols-2 gap-5 h-full overflow-hidden">
-        <div>
-          <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
-            <img className="block" src="/images/sec1.png" alt="" />
+      <div className="flex items-center">
+        <div
+          key={key}
+          className="items-start max-xl:mx-auto max-xl:w-[322px] max-xl:py-1 grid grid-cols-2 gap-2 xl:gap-5 overflow-hidden"
+        >
+          <div className="h-full">
+            <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
+              <picture className="w-full h-auto block">
+                <source srcSet="/images/sec1_mobile.png" media="(max-width: 1024px)" />
+                <img src="/images/sec1.png" alt="" />
+              </picture>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-5">
-          <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
-            <img className="block" src="/images/sec2.png" alt="" />
-          </div>
-          <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
-            <img className="block" src="/images/sec3.png" alt="" />
+          <div className="flex flex-col gap-2 xl:gap-5 h-full">
+            <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
+              <picture className="w-full h-auto block">
+                <source
+                  className="block"
+                  srcSet="/images/sec2_mobile.png"
+                  media="(max-width: 1024px)"
+                />
+                <img src="/images/sec2.png" alt="" />
+              </picture>
+            </div>
+
+            <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
+              <picture className="w-full h-auto block">
+                <source srcSet="/images/sec3_mobile.png" media="(max-width: 1024px)" />
+                <img src="/images/sec3.png" alt="" />
+              </picture>
+            </div>
           </div>
         </div>
       </div>
@@ -283,18 +341,18 @@ const slides = [
   {
     heading: "Interface decentralization",
     content: (
-      <div className="grid gap-6">
-        <p className="text-24 text-primary-text">
+      <div className="grid gap-6 xl:pr-9 ">
+        <p className="text-18 xl:text-24 text-primary-text">
           Most DEXes still run one instance of centralized UI.
         </p>
-        <p className="text-secondary-text text-18">
+        <p className="text-secondary-text text-16 xl:text-18">
           The ideology of cryptocurrencies is built upon decentralization. However the benefits of
           decentralization are lost as soon as a centralized gateway becomes involved. The emergence
           of DEXes is a big step towards decentralization. Smart-contracts replaced the
           &quot;backend&quot; of traditional centralized exchanges but interfaces remained as
           centralized as they were before.
         </p>
-        <p className="text-green pl-4 border-l-4 border-l-green text-20">
+        <p className="text-green pl-4 border-l-4 border-l-green text-16 xl:text-20">
           DEX223 will have multiple competing versions of the UI allowing for full decentralization.
         </p>
       </div>
@@ -311,19 +369,19 @@ const slides = [
   {
     heading: "Centralized token listings governed by exchange teams",
     content: (
-      <div className="grid gap-6">
-        <p className="text-24 text-primary-text">
+      <div className="grid gap-6 xl:pr-9 ">
+        <p className="text-18 xl:text-24 text-primary-text">
           Most &quot;decentralized&quot; exchanges still rely on teams decision to list a new token.
           This can be a nightmare for both token developers who have to comply with the listing
           rules and users who may not have some tokens available for trading.
         </p>
-        <p className="text-secondary-text text-18">
+        <p className="text-secondary-text text-16 xl:text-18">
           Uniswap did a big step towards listing decentralization with their tokenlists project but
           DEX223 goes even further. DEX223 will have an option to import any asset from tokenlists
           as well as import a list of assets from a contract deployed on Ethereum mainnet which will
           act as one decentralized tokenlist.
         </p>
-        <p className="text-green pl-4 border-l-4 border-l-green text-20">
+        <p className="text-green pl-4 border-l-4 border-l-green text-16 xl:text-20">
           Anyone will be able to list a new token on DEX223 without asking a permission from
           exchange team just by paying an anti-spam listing fee via the autolisting contract.
         </p>
@@ -349,7 +407,9 @@ function EcosystemSlide({ index, activeSlide, slide }) {
           : "h-0 opacity-0 hidden",
       )}
     >
-      <h2 className="mt-4 text-40 text-primary-text mb-6">{slide.heading}</h2>
+      <h2 className="mxl:t-4 text-28 2xl:text-40 text-primary-text xl:mb-6 mt-1 mb-3">
+        {slide.heading}
+      </h2>
       {slide.content}
     </div>
   );
@@ -386,26 +446,45 @@ export default function EcosystemProblems() {
 
   return (
     <Container>
-      <div className="bg-primary-bg relative">
-        <div className="grid grid-cols-[1fr_40px]">
-          <div ref={ref} className="p-10">
-            <div {...handlers} className="grid gap-5 grid-cols-[622px_1fr]">
-              <div className={clsx("rounded-5 min-h-[696px]")}>
-                {slides[activeSlide].illustration({
-                  animate: entry?.isIntersecting && animationPlayed.includes(activeSlide),
-                  key: activeSlide,
-                })}
-              </div>
-              <div className="grid grid-rows-[1fr_40px] relative">
-                <div className="hidden">
-                  <button onClick={previousSlide}>
-                    <Svg iconName="arrow-left" />
-                  </button>
-                  <button onClick={nextSlide}>
-                    <Svg iconName="arrow-right" />
-                  </button>
+      <div className="bg-primary-bg relative rounded-5">
+        <div className="grid xl:grid-cols-[1fr_40px]">
+          <div ref={ref} className="xl:py-10 pt-1">
+            <div {...handlers} className="grid gap-5 grid-cols-1 xl:grid-cols-12">
+              <div
+                className={clsx(
+                  "rounded-5 min-h-[388px] max-xl:max-h-[388px] xl:min-h-[696px] xl:col-start-1 xl:col-end-6",
+                )}
+              >
+                <div className="xl:grid xl:grid-cols-[40px_1fr] h-full max-xl:px-1">
+                  <div className="max-xl:hidden" />
+                  {slides[activeSlide].illustration({
+                    animate: entry?.isIntersecting && animationPlayed.includes(activeSlide),
+                    key: activeSlide,
+                  })}
                 </div>
-                <div>
+              </div>
+              <div className="flex flex-col justify-between xl:grid xl:col-start-6 xl:col-end-13 xl:grid-rows-[1fr_40px] relative max-xl:px-4 max-xl:pb-6">
+                <div className="sm:hidden grid grid-cols-2 gap-3 py-6">
+                  <Button
+                    fullWidth
+                    className="px-5 md:px-5 lg:px-5"
+                    size={ButtonSize.MEDIUM}
+                    colorScheme={ButtonColor.LIGHT_GREEN}
+                    onClick={previousSlide}
+                  >
+                    <Svg iconName="arrow-left-small" />
+                  </Button>
+                  <Button
+                    fullWidth
+                    className="px-5 md:px-5 lg:px-5"
+                    size={ButtonSize.MEDIUM}
+                    colorScheme={ButtonColor.LIGHT_GREEN}
+                    onClick={nextSlide}
+                  >
+                    <Svg iconName="arrow-right-small" />
+                  </Button>
+                </div>
+                <div className="max-xl:min-h-[512px] pb-4">
                   <OverlineText text="Problems Of The Ecosystem" color="purple" />
                   {slides.map((slide, index) => {
                     return (
@@ -415,9 +494,9 @@ export default function EcosystemProblems() {
                     );
                   })}
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-3 max-sm:hidden">
                   <Button
-                    className="px-5 md:px-5 lg:px-5"
+                    className="sm:max-xl:w-full px-5 md:px-5 lg:px-5"
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={previousSlide}
@@ -425,7 +504,7 @@ export default function EcosystemProblems() {
                     <Svg iconName="arrow-left-small" />
                   </Button>
                   <Button
-                    className="px-5 md:px-5 lg:px-5"
+                    className="sm:max-xl:w-full px-5 md:px-5 lg:px-5"
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={nextSlide}
@@ -436,7 +515,7 @@ export default function EcosystemProblems() {
               </div>
             </div>
           </div>
-          <div className="border-l border-primary-border flex items-center flex-col justify-center gap-3">
+          <div className="max-xl:h-10 max-xl:border-t xl:border-l border-secondary-bg flex items-center xl:flex-col justify-center gap-3">
             {slides.map((item, index) => {
               return (
                 <div
@@ -453,6 +532,14 @@ export default function EcosystemProblems() {
           </div>
         </div>
       </div>
+
+      {/*<div className="grid grid-cols-[repeat(12,1fr)] gap-5">*/}
+      {/*  <div className="bg-green col-start-1 col-end-9 h-[200px] grid grid-cols-[40px_1fr]">*/}
+      {/*    <div className="bg-red h-[100px]" />*/}
+      {/*    <div className="bg-orange h-[100px]" />*/}
+      {/*  </div>*/}
+      {/*  <div className="bg-purple h-[200px] col-start-9 col-end-13" />*/}
+      {/*</div>*/}
     </Container>
   );
 }

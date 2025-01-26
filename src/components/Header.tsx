@@ -41,7 +41,7 @@ export default function Header() {
               <Image src="/images/comp-dex-logo.svg" alt="" fill />
             </div>
           </Link>
-          <nav>
+          <nav className="max-lg:hidden">
             <ul className="flex items-center">
               <Link
                 prefetch={false}

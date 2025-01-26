@@ -90,8 +90,8 @@ export default function Footer({ className }: Props) {
   return (
     <footer>
       <Container>
-        <div className="p-10 flex justify-between before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
-          <div className="flex gap-[80px]">
+        <div className="py-6 lg:py-10 flex justify-between before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
+          <div className="flex lg:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase">Social media</div>
               {socialLinks.map((link) => {
@@ -163,16 +163,17 @@ export default function Footer({ className }: Props) {
           </div>
           <div />
         </div>
-        <div className="p-6 flex justify-between items-center before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
+        <div className="py-4 lg:py-6 flex justify-between max-lg:flex-col max-lg:items-start items-center before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
           <div style={{ maxWidth: 872 }}>
-            <p className="text-tertiary-text">
+            <p className="text-tertiary-text max-lg:mb-4">
               Disclaimer: Cryptocurrency may be unregulated in your jurisdiction. The value of
               cryptocurrencies may go down as well as up. Profits may be subject to capital gains or
               other taxes applicable in your jurisdiction.
             </p>
           </div>
-          <span className="text-tertiary-text text-right">
-            Copyright © {new Date(Date.now()).getFullYear()} DEX223 <br /> All Rights Reserved
+          <span className="text-tertiary-text text-right max-lg:text-12">
+            Copyright © {new Date(Date.now()).getFullYear()} DEX223{" "}
+            <br className="max-lg:hidden" /> All Rights Reserved
           </span>
         </div>
       </Container>

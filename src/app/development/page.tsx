@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
 
+import Ecosystem from "@/app/development/components/Ecosystem";
 import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
 import { clsxMerge } from "@/functions/clsxMerge";
 
@@ -10,7 +11,7 @@ import DevelopmentReports from "./components/DevelopmentReports";
 import References from "./components/References";
 import Structure from "./components/Structure";
 
-export default function Home() {
+export default function DevelopmentPage() {
   const [activeTab, setActiveTab] = useState(-1);
 
   const firstRef = useRef();
@@ -21,7 +22,7 @@ export default function Home() {
     function logPositions() {
       if (firstRef.current && secondRef.current && thirdRef.current) {
         // @ts-ignore
-        const firstTop = firstRef.current.getBoundingClientRect().top;
+        const firstTop = firstRef.current.getBoundingClientRect().top - 108;
         // @ts-ignore
         const secondTop = secondRef.current.getBoundingClientRect().top;
         // @ts-ignore
@@ -56,23 +57,23 @@ export default function Home() {
 
   return (
     <div className="mb-[200px]">
-      <h1 className="text-center text-58 font-bold mb-3 mt-[60px] text-primary-text">
+      <h1 className="text-center text-30 lg:text-58 font-bold mb-3 mt-[60px] text-primary-text">
         Development progress
       </h1>
 
-      <p className="text-18 text-secondary-text text-center max-w-[822px] mx-auto mb-5">
+      <p className="text-18 text-secondary-text text-center max-w-[822px] mx-auto mb-5 px-4">
         Here you can track the development progress of DEX223 decentralized exchange and related
         services.
       </p>
 
-      <div className="sticky py-5 top-0 z-[5] mb-5">
-        <div className="grid grid-cols-3 mx-auto max-w-[822px]">
+      <div className="sticky py-5 top-0 z-[100] mb-5 px-4">
+        <div className="grid grid-cols-3 mx-auto max-w-[822px] p-1 gap-1 rounded-3 bg-primary-bg">
           <a href="#structure">
             <button
               className={clsxMerge(
-                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                "rounded-2 bg-secondary-bg border border-transparent inline-block w-full h-12 text-secondary-text cursor-pointer relative text-18 hover:bg-tertiary-bg duration-200 hover:border-primary-border hover:text-primary-text",
                 activeTab === 0 &&
-                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+                  "bg-quaternary-bg border-primary-border pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
               )}
             >
               Structure
@@ -81,9 +82,9 @@ export default function Home() {
           <a href="#references">
             <button
               className={clsxMerge(
-                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text border-r-0 cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                "rounded-2 bg-secondary-bg border border-transparent inline-block w-full h-12 text-secondary-text cursor-pointer relative text-18 hover:bg-tertiary-bg duration-200 hover:border-primary-border hover:text-primary-text",
                 activeTab === 1 &&
-                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+                  "bg-quaternary-bg border-primary-border pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
               )}
             >
               References
@@ -92,20 +93,26 @@ export default function Home() {
           <a href="#reports">
             <button
               className={clsxMerge(
-                "bg-primary-bg inline-block w-full h-12 border border-primary-border text-secondary-text cursor-pointer relative text-18 before:absolute before:w-full before:h-full before:border before:border-transparent hover:before:border-primary-text before:left-0 before:top-0 hover:before:z-[4] hover:text-primary-text",
+                "rounded-2 bg-secondary-bg border border-transparent inline-block w-full h-12 text-secondary-text cursor-pointer relative text-18 hover:bg-tertiary-bg duration-200 hover:border-primary-border hover:text-primary-text",
                 activeTab === 2 &&
-                  "bg-secondary-bg pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
+                  "bg-quaternary-bg border-primary-border pointer-events-none text-primary-text before:border-primary-text before:z-[4]",
               )}
             >
-              <span className="">Development reports</span>
+              <span className="">
+                <span className="max-lg:hidden">Development reports</span>
+                <span className="lg:hidden">Reports</span>
+              </span>
             </button>
           </a>
         </div>
       </div>
 
-      <Structure refEl={firstRef} />
-      <References refEl={secondRef} />
-      <DevelopmentReports refEl={thirdRef} />
+      <div className="flex flex-col gap-10">
+        <Structure refEl={firstRef} />
+        <Ecosystem />
+        <References refEl={secondRef} />
+        <DevelopmentReports refEl={thirdRef} />
+      </div>
 
       <ScrollToTopButton />
     </div>

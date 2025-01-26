@@ -4,12 +4,11 @@ import clsx from "clsx";
 import Image from "next/image";
 import React, { useRef } from "react";
 
-import BulletListItem from "@/components/atoms/BulletListItem";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-import DevSourcesImage from "../../../../assets/images/dev-src-2.svg";
-import Svg from "../../../../components/atoms/Svg";
-import NeonBlock from "../../../../components/organisms/NeonBlock";
+import DevSourcesImage from "../../../assets/images/dev-src-2.svg";
+import Svg from "../../../components/atoms/Svg";
+import NeonBlock from "../../../components/organisms/NeonBlock";
 
 const references = [
   {
@@ -66,6 +65,7 @@ export default function References({ refEl }) {
       <div ref={refEl} />
       <NeonBlock
         icon="references"
+        differentColumns
         color="green"
         overlineText="References"
         anchor="references"
@@ -83,10 +83,10 @@ export default function References({ refEl }) {
                     <a
                       target="_blank"
                       href={reference.href}
-                      className="hover:text-green py-3.5 text-secondary-text flex items-center gap-6 justify-between text-18 duration-200"
+                      className="hover:text-green py-3.5 text-secondary-text flex gap-6 justify-between text-16 lg:text-18 duration-200"
                     >
                       <span>{reference.text}</span>
-                      <Svg className="flex-shrink-0" iconName="forward" />
+                      <Svg className="flex-shrink-0 mt-0.5" iconName="forward" />
                     </a>
                   </li>
                 );
@@ -97,12 +97,9 @@ export default function References({ refEl }) {
         rightContent={
           <div
             ref={referencesEntryRef}
-            className={clsx(
-              "pt-[200px] flex justify-end",
-              referencesEntry?.isIntersecting && "animated",
-            )}
+            className={clsx("pt-0 lg:pt-[152px]", referencesEntry?.isIntersecting && "animated")}
           >
-            <Image src={DevSourcesImage} alt="" />
+            <Image src={DevSourcesImage} className="w-full max-lg:max-w-[310px]" alt="" />
           </div>
         }
       />

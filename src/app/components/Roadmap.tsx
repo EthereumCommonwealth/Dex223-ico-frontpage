@@ -24,69 +24,91 @@ function SchemeItem({
   isActive?: boolean;
 }) {
   return (
-    <div className="group flex flex-col gap-4 relative pr-[15px] w-[calc(25%_-_30px)] [&:nth-child(1)]:order-[1] [&:nth-child(2)]:order-[2] [&:nth-child(3)]:order-[3] [&:nth-child(4)]:order-[4] [&:nth-child(5)]:order-[6] [&:nth-child(6)]:order-[5]">
+    <div
+      className="group flex flex-col gap-4 relative pr-[15px] w-full
+      2xl:[&:nth-child(1)]:order-[1] 2xl:[&:nth-child(2)]:order-[2] 2xl:[&:nth-child(3)]:order-[3] 2xl:[&:nth-child(4)]:order-[4] 2xl:[&:nth-child(5)]:order-[6] 2xl:[&:nth-child(6)]:col-start-3 2xl:[&:nth-child(6)]:col-span-1 2xl:[&:nth-child(6)]:order-[5]
+      lg:[&:nth-child(1)]:order-[1] lg:[&:nth-child(2)]:order-[2] lg:[&:nth-child(3)]:order-[3] lg:[&:nth-child(4)]:order-[6] lg:[&:nth-child(5)]:order-[5] lg:[&:nth-child(6)]:order-[4]
+      sm:[&:nth-child(1)]:order-[1] sm:[&:nth-child(2)]:order-[2] sm:[&:nth-child(3)]:order-[4] sm:[&:nth-child(4)]:order-[3] sm:[&:nth-child(5)]:order-[5] sm:[&:nth-child(6)]:order-[6]
+      [&:nth-child(1)]:order-[1] [&:nth-child(2)]:order-[2] [&:nth-child(3)]:order-[3] [&:nth-child(4)]:order-[4] [&:nth-child(5)]:order-[5] [&:nth-child(6)]:order-[6]
+    "
+    >
       <div className="flex gap-5 items-center">
         <div
           className={clsx(
-            "w-12 h-12 rounded-full border  flex-shrink-0 flex items-center justify-center text-white",
-            isPassed ? "border-purple" : "border-[#848484]",
+            "w-12 h-12 rounded-full border-2 flex-shrink-0 flex items-center justify-center",
+            isPassed || isActive ? "border-purple" : "border-[#848484]",
+            isActive ? "bg-purple text-secondary-bg" : "bg-primary-bg text-primary-text",
+            !isActive && !isPassed && "text-tertiary-text border-transparent",
           )}
         >
           <Svg iconName={icon} />
         </div>
         <div
           className={clsx(
-            "relative w-full text-[#848484] -mr-[30px] group-[&:nth-child(4)]:hidden group-[&:nth-child(5)]:hidden group-[&:nth-child(5)]:rotate-180 group-[&:nth-child(6)]:rotate-180",
-            isPassed && "text-purple",
+            "relative w-full text-[#848484] -mr-[30px]",
+            "2xl:group-[&:nth-child(5)]:hidden sm:max-lg:group-[&:nth-child(2)]:hidden sm:max-2xl:group-[&:nth-child(3)]:hidden lg:group-[&:nth-child(4)]:hidden sm:max-lg:group-[&:nth-child(6)]:hidden",
+            "max-sm:group-[&:nth-child(1)]:hidden max-sm:group-[&:nth-child(2)]:hidden max-sm:group-[&:nth-child(3)]:hidden max-sm:group-[&:nth-child(4)]:hidden max-sm:group-[&:nth-child(5)]:hidden max-sm:group-[&:nth-child(6)]:hidden",
+            "lg:group-[&:nth-child(5)]:rotate-180 lg:group-[&:nth-child(6)]:rotate-180 sm:max-lg:group-[&:nth-child(4)]:rotate-180",
+            (isPassed || isActive) && "text-purple",
           )}
         >
-          <div className={clsx("h-px bg-[#848484]", isPassed && "bg-purple")} />
+          <div className={clsx("h-0.5 bg-[#848484]", (isPassed || isActive) && "bg-purple")} />
           <svg
             className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2"
-            width="5"
-            height="6"
-            viewBox="0 0 5 6"
+            width="11"
+            height="12"
+            viewBox="0 0 11 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z"
+              d="M0.975595 11.7736L10.9756 6.00005L0.975577 0.226565L0.975595 11.7736Z"
               fill="currentColor"
             />
           </svg>
         </div>
-        <div className="hidden absolute text-[#848484] h-[calc(100%_+_40.5px)] border border-l-0 rounded-r-5 border-[#848484] left-[68px] top-6 w-[calc(100%_-_68px)] group-[&:nth-child(4)]:block">
+        <div
+          className={clsx(
+            "hidden absolute text-[#848484] h-[calc(100%_+_40.5px)] border-2 border-l-0 rounded-r-5 border-[#848484] left-[68px] top-6 w-[calc(100%_-_68px)] 2xl:group-[&:nth-child(4)]:block lg:max-2xl:group-[&:nth-child(3)]:block sm:max-lg:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(1)]:block max-sm:group-[&:nth-child(3)]:block max-sm:group-[&:nth-child(5)]:block",
+            isPassed && "border-purple text-purple",
+          )}
+        >
           <svg
-            className="absolute -bottom-[3.5px] -translate-x-[2px] -rotate-180 origin-center"
-            width="5"
-            height="6"
-            viewBox="0 0 5 6"
+            className="absolute -bottom-1.5 -translate-x-[2px] -rotate-180 origin-center"
+            width="11"
+            height="12"
+            viewBox="0 0 11 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z"
+              d="M0.975595 11.7736L10.9756 6.00005L0.975577 0.226565L0.975595 11.7736Z"
               fill="currentColor"
             />
           </svg>
         </div>
-        <div className="hidden absolute w-[18px] border-r-0 border rounded-l-2 top-6 -left-[34px] h-[calc(100%_+_40.5px)] text-[#848484]">
+        <div
+          className={clsx(
+            "hidden absolute w-[18px] border-r-0 border-2 rounded-l-2 top-6 -left-[34px] h-[calc(100%_+_40.5px)] text-[#848484] sm:max-lg:group-[&:nth-child(4)]:block max-sm:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(4)]:block",
+            isPassed && "border-purple text-purple",
+          )}
+        >
           <svg
-            className="absolute -bottom-[3.5px] translate-x-[1px] origin-center right-0"
-            width="5"
-            height="6"
-            viewBox="0 0 5 6"
+            className="absolute -bottom-1.5 translate-x-[2px] origin-center right-0"
+            width="11"
+            height="12"
+            viewBox="0 0 11 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M0 0.113281L5 3.00003L5.04736e-07 5.88678L2.96079e-07 3.50003L2.08656e-07 2.50003L0 0.113281Z"
+              d="M0.975595 11.7736L10.9756 6.00005L0.975577 0.226565L0.975595 11.7736Z"
               fill="currentColor"
             />
           </svg>
@@ -100,6 +122,7 @@ function SchemeItem({
     </div>
   );
 }
+
 export default function Roadmap() {
   return (
     <>
@@ -126,13 +149,13 @@ export default function Roadmap() {
         }
       />
       <Container>
-        <div className="flex flex-wrap justify-end gap-10 pr-[20px] mt-[60px]">
+        <div className="min-w-full justify-items-end grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 lg:pt-[60px] pt-6 max-lg:pl-8 max-lg:pr-0 -mt-12">
           <SchemeItem
             isPassed
             icon="aggressive"
             date={"Q1 2024 (February-March)"}
             text={
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Launch initial DEX infrastructure</BulletListItem>
                 <BulletListItem>Implement core ERC-223 support</BulletListItem>
                 <BulletListItem>Establish legal framework for DEX</BulletListItem>
@@ -146,7 +169,7 @@ export default function Roadmap() {
             icon="auto-listing"
             date={"Q2 2024 (April-June)"}
             text={
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Launch DEX prototype for testing</BulletListItem>
                 <BulletListItem>Optimize gas efficiency</BulletListItem>
                 <BulletListItem>Complete merged liquidity pools</BulletListItem>
@@ -160,7 +183,7 @@ export default function Roadmap() {
             icon="test"
             date={"Q3 2024 (July-September)"}
             text={
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Complete margin trading module</BulletListItem>
                 <BulletListItem>Initiate bug bounty program</BulletListItem>
                 <BulletListItem>Begin security audit process</BulletListItem>
@@ -170,11 +193,11 @@ export default function Roadmap() {
             }
           />
           <SchemeItem
-            isActive
-            icon="margin-trading"
+            isPassed
+            icon="security"
             date={"Q4 2024 (October-December)"}
             text={
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Launch D223-v2 token</BulletListItem>
                 <BulletListItem>Start token upgrading process</BulletListItem>
                 <BulletListItem>Deep security audits and bug fixing</BulletListItem>
@@ -185,10 +208,11 @@ export default function Roadmap() {
             }
           />
           <SchemeItem
-            icon="bug"
+            isActive
+            icon="code"
             date={"Q1 2025 (January-March)"}
             text={
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Finalizing internal security audit</BulletListItem>
                 <BulletListItem>External security audit</BulletListItem>
                 <BulletListItem>D223 listing on CEX (BitMart)</BulletListItem>
@@ -199,10 +223,10 @@ export default function Roadmap() {
             }
           />
           <SchemeItem
-            icon="eos"
+            icon="integration"
             date={"Future Milestones"}
             text={
-              <ul>
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Integration of AI Agents</BulletListItem>
                 <BulletListItem>Traditional Stock trading functionality</BulletListItem>
                 <BulletListItem>NFT&apos;s</BulletListItem>

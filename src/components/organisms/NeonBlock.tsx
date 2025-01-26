@@ -69,7 +69,7 @@ export default function NeonBlock({
           "grid-cols-[24px_1fr] lg:grid-cols-[48px_calc(50%_-_136px)_calc(50%_-_28px)]",
           "grid-rows-[minmax(56px,_auto)_24px_auto] lg:grid-rows-[minmax(120px,_auto)_48px_auto]",
           differentColumns && "grid-cols-[24px_1fr] lg:grid-cols-[48px_53fr_41fr] ",
-          onlyBottom && "grid-cols-[auto_24px_auto] lg:grid-rows-[auto_48px_auto]",
+          onlyBottom && "grid-cols-[24px_auto] lg:grid-rows-[auto_48px_auto]",
           fullWidth &&
             "grid-cols-[24px_1fr] lg:grid-cols-[48px_1fr] grid-areas-[top-line_.,icon_heading,bottom-line_left-content]",
         )}
@@ -88,7 +88,7 @@ export default function NeonBlock({
               id={anchor}
               className={clsxMerge(
                 "absolute bottom-[102px] invisible",
-                onlyBottom && "-bottom-[10px]",
+                onlyBottom && "bottom-[102px]",
               )}
             />
           )}
@@ -102,10 +102,10 @@ export default function NeonBlock({
           )}
         >
           <div className="relative w-6 lg:w-12 h-6 lg:h-12">
-            <Svg iconName={icon} layout="cover" />
+            <Svg iconName={icon} className="text-primary-text relative z-20" layout="cover" />
             <div
               className={clsx(
-                "absolute inset-0 blur-[20px]",
+                "absolute inset-0 blur-[20px] z-10",
                 color === "green" && "bg-green",
                 color === "blue" && "bg-blue",
                 color === "purple" && "bg-purple",

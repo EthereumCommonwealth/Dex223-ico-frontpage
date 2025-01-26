@@ -21,8 +21,6 @@ export default function Subscription() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailInput, setEmailInput] = useState("");
 
-  // const [infoOpened, setInfoOpened] = useState(false);
-
   const handleEmailSubmit = useCallback(async () => {
     setIsSubmitting(true);
     trackEvent("subscribe", { email: emailInput });
@@ -66,7 +64,7 @@ export default function Subscription() {
     <ToastProvider>
       <div className="relative">
         <NeonBlock
-          icon="contact"
+          icon="email"
           color="purple"
           overlineText="Subscription"
           anchor="contact"
@@ -78,7 +76,7 @@ export default function Subscription() {
                 Stay informed about upcoming releases, security enhancements, and gas-saving
                 benefits, ensuring you’re always ahead in the world of decentralized trading.
               </p>
-              <label className="text-20 font-bold mb-2">Subscribe to our newsletter</label>
+              <label className="text-20 font-bold block mb-2">Subscribe to our newsletter</label>
               <div className="flex gap-3 flex-col md:flex-row">
                 <Input
                   value={emailInput}
@@ -103,7 +101,7 @@ export default function Subscription() {
             <div
               ref={ref}
               className={clsx(
-                "flex lg:flex-col lg:justify-end pb-0 md:pb-10 2xl:pb-0 items-center h-full group",
+                "flex lg:flex-col lg:justify-end pb-0 md:pb-10 pt-[72px] 2xl:pb-0 items-center h-full group",
                 entry?.isIntersecting && "animated",
               )}
             >

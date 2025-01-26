@@ -12,7 +12,7 @@ import TransparentALImage from "@/inlined-svgs/TransparentALImage";
 
 import BulletListItem from "../../components/atoms/BulletListItem";
 
-function FeatureBlock({ heading, content, image }) {
+function FeatureBlock({ heading, content, image, anchor }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [positions, setPositions] = useState({
     left: 0,
@@ -67,8 +67,9 @@ function FeatureBlock({ heading, content, image }) {
       style={{
         transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)`,
       }}
-      className="bg-primary-bg rounded-5 p-4 lg:p-10 group overflow-hidden duration-300 hover:duration-100"
+      className="relative bg-primary-bg rounded-5 p-4 lg:p-10 group overflow-hidden duration-300 hover:duration-100"
     >
+      <div className="absolute -top-10" id={anchor} />
       <div
         style={{ left: positions.left, top: positions.top }}
         className="absolute pointer-events-none w-0 h-0 -translate-x-1/2 -translate-y-1/2 opacity-[.22] z-[1] blur-[20px] group-hover:w-[700px] group-hover:h-[700px] bg-[radial-gradient(circle_closest-side,#7D97A4,transparent)]"
@@ -193,13 +194,13 @@ export default function Advantages() {
                     <TextLink text="DEX223 Margin Trading Showcase video" isExternal href="#" />
                   </p>
                 </div>
-                <div className="" id="margin" />
               </>
             }
             heading="ERC-223 Support"
           />
           <div className="flex flex-col gap-5">
             <FeatureBlock
+              anchor="margin"
               image={<ERC223SupportImage />}
               content={
                 <div className="flex flex-col gap-5 text-16 lg:text-18 text-secondary-text">

@@ -1,6 +1,7 @@
 export default function InterfaceDecentralizationImage() {
   return (
     <svg
+      className="w-full h-full"
       width="622"
       height="696"
       viewBox="0 0 622 696"

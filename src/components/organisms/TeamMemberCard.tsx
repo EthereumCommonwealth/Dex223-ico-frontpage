@@ -33,11 +33,6 @@ export default function TeamMemberCard({ image, position, socials, name }: Props
         <Image src={image} alt={name} fill className="rounded-3" />
       </div>
 
-      {/*<div*/}
-      {/*  style={{ backgroundImage: `url(${image})` }}*/}
-      {/*  className="w-[172px] h-[172px] bg-center bg-cover relative rounded-[14px]"*/}
-      {/*/>*/}
-
       <div className="flex flex-col flex-1 justify-between">
         <div className="flex flex-col flex-grow">
           <span className="text-14 lg:text-24 font-medium lg:font-bold mb-1">{name}</span>
@@ -51,7 +46,7 @@ export default function TeamMemberCard({ image, position, socials, name }: Props
                 key={key}
                 target="_blank"
                 href={socials[key]}
-                className="flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-300 hover:border-green-500 py-2"
+                className="hocus:bg-green-bg flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-200 py-2"
               >
                 <img alt="" src={socialIcons[key]} className="w-4 h-4 lg:w-6 lg:h-6" />
               </a>

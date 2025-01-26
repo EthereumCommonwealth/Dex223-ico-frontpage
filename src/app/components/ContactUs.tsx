@@ -56,7 +56,7 @@ export default function ContactUs() {
                 </button>
               </a>
             </div>
-            <div className="rounded-1 bg-primary-bg border-l-4 border-green flex gap-2.5 pl-4 py-2.5">
+            <div className="rounded-1 bg-primary-bg border-l-4 border-green flex gap-2.5 pl-4 py-2.5 text-secondary-text">
               <span className="relative">
                 <Svg iconName="code" />
               </span>
