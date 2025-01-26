@@ -12,7 +12,17 @@ import TransparentALImage from "@/inlined-svgs/TransparentALImage";
 
 import BulletListItem from "../../components/atoms/BulletListItem";
 
-function FeatureBlock({ heading, content, image, anchor }) {
+function FeatureBlock({
+  heading,
+  content,
+  image,
+  anchor,
+}: {
+  heading: string;
+  content: ReactNode;
+  image: ReactNode;
+  anchor?: string;
+}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [positions, setPositions] = useState({
     left: 0,

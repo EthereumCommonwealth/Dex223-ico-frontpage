@@ -28,7 +28,10 @@ export default function Ecosystem() {
 
             <ul className="text-16 lg:text-18 flex flex-col gap-2">
               <BulletListItem>
-                <TextLink text="Token standard converter" />
+                <TextLink
+                  href="https://dexaran.github.io/token-converter"
+                  text="Token standard converter"
+                />
                 <p>
                   A smart-contract service that bridges ERC-20 and ERC-223 tokens. This tool ensures
                   seamless token compatibility, enabling users to convert from one standard to the
@@ -36,14 +39,20 @@ export default function Ecosystem() {
                 </p>
               </BulletListItem>
               <BulletListItem>
-                <TextLink text="ERC-20 losses calculator" />
+                <TextLink
+                  href="https://dexaran.github.io/erc20-losses"
+                  text="ERC-20 losses calculator"
+                />
                 <p>
                   A script that calculates “lost” ERC-20 tokens in real time, demonstrating how
                   ERC-223 enhances safety and reduces errors common with the older standard.
                 </p>
               </BulletListItem>
               <BulletListItem>
-                <TextLink text="ERC-223 aggregation page" />
+                <TextLink
+                  href="https://dexaran.github.io/erc223/"
+                  text="ERC-223 aggregation page"
+                />
                 <p>
                   A central resource hosting development guidelines, articles, reference source
                   code, and a historical record of ERC-223’s evolution. This hub will inform and
