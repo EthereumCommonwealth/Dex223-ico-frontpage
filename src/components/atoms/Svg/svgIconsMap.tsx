@@ -102,6 +102,8 @@ export const svgIconsNames = [
   "integration",
   "calendar",
   "ecosystem",
+  "menu",
+  "blog",
 ] as const;
 
 export type IconName = (typeof svgIconsNames)[number];

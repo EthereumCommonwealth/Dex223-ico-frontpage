@@ -16,7 +16,7 @@ import Team from "@/app/components/Team";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col gap-12 mb-[119px] lg:mb-[145]">
+    <div className="flex flex-col gap-12 mb-10 md:mb-[119px] lg:mb-[145]">
       <Banner />
       <Features />
       <Philosophy />

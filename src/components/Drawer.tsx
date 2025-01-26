@@ -83,9 +83,9 @@ export default function Drawer({
           <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
             <div
               className={clsx(
-                "drawer-container bg-primary-bg rounded-t-5",
+                "drawer-container bg-primary-bg",
                 placement === "left" && "h-full",
-                placement === "bottom" && "w-full max-h-[100vh]",
+                placement === "bottom" && "w-full max-h-[100vh] rounded-t-5",
               )}
               ref={refs.setFloating}
               aria-labelledby={headingId}

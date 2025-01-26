@@ -57,7 +57,7 @@ export default function DevelopmentPage() {
 
   return (
     <div className="mb-[200px]">
-      <h1 className="text-center text-30 lg:text-58 font-bold mb-3 mt-[60px] text-primary-text">
+      <h1 className="text-center text-30 lg:text-58 font-bold mb-3 mt-10 xl:mt-[60px] text-primary-text">
         Development progress
       </h1>
 

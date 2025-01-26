@@ -27,6 +27,20 @@ div[role="dialog"]:focus {
     padding-top: 40px;
 }
 
+.drawer-overlay {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.7);
+    display: grid;
+    place-items: center;
+    z-index: 101;
+}
+
+.drawer-container {
+    position: fixed;
+    z-index: 101;
+    overflow: auto;
+}
+
 
 .card-spacing-x {
     @apply px-4 sm:px-6 lg:px-10;
