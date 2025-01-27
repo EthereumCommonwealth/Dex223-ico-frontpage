@@ -1,5 +1,5 @@
 import TextLink from "@/components/atoms/TextLink";
-import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
+import ScrollToTopButton from "@/components/organisms/ScrollToTopButton";
 import DownloadScanButton from "@/components/static-pages-components/DownloadScanButton";
 import HeadingWithSubheading from "@/components/static-pages-components/HeadingWithSubheading";
 import Paragraphs from "@/components/static-pages-components/Paragraphs";

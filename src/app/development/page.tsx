@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
 
 import Ecosystem from "@/app/development/components/Ecosystem";
-import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
+import ScrollToTopButton from "@/components/organisms/ScrollToTopButton";
 import { clsxMerge } from "@/functions/clsxMerge";
 
 import DevelopmentReports from "./components/DevelopmentReports";

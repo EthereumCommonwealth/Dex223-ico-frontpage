@@ -33,3 +33,9 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
     </html>
   );
 }
+
+export const metadata = {
+  title: "Dex223 Blog",
+  description:
+    "Explore in-depth insights, updates, and guides on Dex223 – your go-to source for decentralized exchange (DEX) development, token standards, and blockchain innovations. Stay ahead in the Web3 ecosystem!",
+};

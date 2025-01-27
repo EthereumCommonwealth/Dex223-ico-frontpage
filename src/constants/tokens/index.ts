@@ -113,5 +113,4 @@ export const upgradeD223Contract = PRODUCTION_UPGRADE_ADDRESS;
 export const ICOContractAddressETHPreSale = PRODUCTION_ICO_ADDRESS_PRE_SALE;
 export const DEX223 = devMode ? TEST_DEX223 : PROD_DEX223;
 export const DEX223_UPGRADED = devMode ? TEST_DEX223 : PROD_DEX223_UPGRADED;
-export const chainToConnect = mainnet;
-export const chainsToConnect = [chainToConnect];
+export const chainsToConnect = [mainnet];

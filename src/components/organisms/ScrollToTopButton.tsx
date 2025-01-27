@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
 
-import Svg from "../../atoms/Svg";
+import Svg from "../atoms/Svg";
 
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);

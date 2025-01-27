@@ -13,7 +13,7 @@ import RevenueModel from "@/app/components/RevenueModel";
 import Roadmap from "@/app/components/Roadmap";
 import Subscription from "@/app/components/Subscription";
 import Team from "@/app/components/Team";
-import ScrollToTopButton from "@/components/organisms/others/ScrollToTopButton";
+import ScrollToTopButton from "@/components/organisms/ScrollToTopButton";
 
 export default function HomePage() {
   return (
