@@ -1,13 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 import BulletListItem from "@/components/atoms/BulletListItem";
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import OverlineText from "@/components/atoms/OverlineText";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
@@ -446,6 +446,11 @@ export default function EcosystemProblems() {
 
   return (
     <Container>
+      <Pattern
+        patternColor={PatternColor.PURPLE}
+        className="w-250 h-250 -right-[871px] bg-cover -scale-100"
+      />
+
       <div className="bg-primary-bg relative rounded-5">
         <div className="grid xl:grid-cols-[1fr_40px]">
           <div ref={ref} className="xl:py-10 pt-1">
@@ -532,14 +537,6 @@ export default function EcosystemProblems() {
           </div>
         </div>
       </div>
-
-      {/*<div className="grid grid-cols-[repeat(12,1fr)] gap-5">*/}
-      {/*  <div className="bg-green col-start-1 col-end-9 h-[200px] grid grid-cols-[40px_1fr]">*/}
-      {/*    <div className="bg-red h-[100px]" />*/}
-      {/*    <div className="bg-orange h-[100px]" />*/}
-      {/*  </div>*/}
-      {/*  <div className="bg-purple h-[200px] col-start-9 col-end-13" />*/}
-      {/*</div>*/}
     </Container>
   );
 }

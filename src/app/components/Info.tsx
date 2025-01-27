@@ -1,7 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
@@ -62,6 +64,18 @@ export default function Info() {
         icon="info"
         color="green"
         overlineText="Info"
+        patterns={
+          <>
+            <Pattern
+              patternColor={PatternColor.GREEN}
+              className="w-250 h-250 -right-[411px] top-[152px]"
+            />
+            <Pattern
+              patternColor={PatternColor.GREEN}
+              className="w-250 h-250 -left-[611px] top-[152px]"
+            />
+          </>
+        }
         leftContent={
           <>
             <ArticleHeading text="Projection and token information" />
@@ -104,16 +118,31 @@ export default function Info() {
               })}
             </div>
 
-            <Button
-              className="text-16"
-              colorScheme={ButtonColor.LIGHT_GREEN}
-              size={ButtonSize.EXTRA_LARGE}
-            >
-              <span className="flex items-center gap-3">
-                Download pitch deck
-                <Svg iconName="download" />
-              </span>
-            </Button>
+            <div className="flex gap-3">
+              <Link href="/upgrade">
+                <Button
+                  className="text-16"
+                  colorScheme={ButtonColor.GREEN}
+                  size={ButtonSize.EXTRA_LARGE}
+                >
+                  <span className="flex items-center gap-3">
+                    Upgrade tokens
+                    <Svg iconName="forward" />
+                  </span>
+                </Button>
+              </Link>
+
+              <Button
+                className="text-16"
+                colorScheme={ButtonColor.LIGHT_GREEN}
+                size={ButtonSize.EXTRA_LARGE}
+              >
+                <span className="flex items-center gap-3">
+                  Download pitch deck
+                  <Svg iconName="download" />
+                </span>
+              </Button>
+            </div>
           </>
         }
         rightContent={

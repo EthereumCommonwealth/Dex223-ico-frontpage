@@ -97,7 +97,10 @@ module.exports = {
       },
       backgroundImage: {
         "purple-neon-line-gradient": "linear-gradient(180deg, rgba(128, 137, 189, 0) 0%, #8089BD 50%, rgba(128, 137, 189, 0) 100%)",
-        "red-gradient": "linear-gradient(270deg, #443535 0%, #362323 100%)"
+        "red-gradient": "linear-gradient(270deg, #443535 0%, #362323 100%)",
+        "pattern-blue": "url('/images/patterns/blue.svg')",
+        "pattern-purple": "url('/images/patterns/purple.svg')",
+        "pattern-green": "url('/images/patterns/green.svg')"
       },
       colors: {
         transparent: "transparent",
@@ -203,6 +206,11 @@ module.exports = {
       "10": "40px",
       "11": "44px",
       "12": "48px",
+      "150": "600px",
+      "200": "800px",
+      "250": "1000px",
+      "300": "1200px",
+      "450": "1800px",
     },
     borderRadius: {
       "0": "0px",

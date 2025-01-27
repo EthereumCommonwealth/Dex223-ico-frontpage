@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
 import BulletListItem from "@/components/atoms/BulletListItem";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import TextLink from "@/components/atoms/TextLink";
@@ -132,6 +133,18 @@ export default function Roadmap() {
         overlineText="Development timeline"
         anchor="roadmap"
         differentColumns
+        patterns={
+          <>
+            <Pattern
+              patternColor={PatternColor.PURPLE}
+              className="w-250 h-250 -right-[631px] top-0"
+            />
+            <Pattern
+              patternColor={PatternColor.PURPLE}
+              className="w-150 h-150 -left-[391px] top-[500px]"
+            />
+          </>
+        }
         leftContent={
           <>
             <ArticleHeading text="Roadmap" />

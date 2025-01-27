@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import React, { useMemo, useRef } from "react";
+import React, { ReactNode, useMemo, useRef } from "react";
 
 import OverlineText from "@/components/atoms/OverlineText";
 import Svg from "@/components/atoms/Svg";
@@ -21,6 +21,7 @@ interface Props {
   onlyBottom?: boolean;
   noAnimation?: boolean;
   fullWidth?: boolean;
+  patterns?: ReactNode;
 }
 
 export default function NeonBlock({
@@ -34,6 +35,7 @@ export default function NeonBlock({
   onlyBottom = false,
   noAnimation = false,
   fullWidth = false,
+  patterns,
 }: Props) {
   const ref = useRef(null);
   const entryTopLine = useIntersectionObserver(ref, { threshold: 0 });
@@ -63,6 +65,7 @@ export default function NeonBlock({
 
   return (
     <Container>
+      {patterns}
       <div
         className={clsxMerge(
           "grid gap-x-2 gap-y-4 lg:gap-6 grid-areas-[top-line_right-content,icon_heading,bottom-line_left-content] lg:grid-areas-[top-line_._right-content,icon_heading_right-content,bottom-line_left-content_right-content] lg:pl-5",

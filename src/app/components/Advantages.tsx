@@ -1,8 +1,9 @@
 "use client";
 
-import React, { PropsWithChildren, ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
@@ -115,6 +116,15 @@ export default function Advantages() {
         }
       />
       <Container>
+        <Pattern
+          patternColor={PatternColor.BLUE}
+          className="w-300 h-300 -left-[401px] top-[148px]"
+        />
+        <Pattern
+          patternColor={PatternColor.BLUE}
+          className="w-250 h-250 -right-[681px] -top-[276px] -scale-100"
+        />
+
         <div className="grid lg:grid-cols-2 gap-4 lg:gap-5 grid-cols-1">
           <FeatureBlock
             image={<MTImage />}
@@ -194,9 +204,9 @@ export default function Advantages() {
                   </div>
 
                   <p>
-                    Encapsulated Margin Trading on DEX223 pairs flexibility with robust safeguards,
-                    allowing users to lend and borrow on their own terms while keeping everyone’s
-                    funds protected.
+                    Encapsulated Margin Trading on DEX223 combines flexibility with robust
+                    safeguards, allowing users to lend and borrow on their own terms while keeping
+                    everyone’s funds protected.
                   </p>
 
                   <p>
@@ -206,7 +216,7 @@ export default function Advantages() {
                 </div>
               </>
             }
-            heading="ERC-223 Support"
+            heading="Encapsulated margin trading"
           />
           <div className="flex flex-col gap-5">
             <FeatureBlock
@@ -238,7 +248,7 @@ export default function Advantages() {
                   </p>
                 </div>
               }
-              heading="Encapsulated Margin Trading"
+              heading="ERC-223 Support"
             />
             <FeatureBlock
               image={<TransparentALImage />}

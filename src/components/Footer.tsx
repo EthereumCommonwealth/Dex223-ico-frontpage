@@ -36,11 +36,11 @@ const usefulLinks = [
     href: "https://dexaran.github.io/erc20-losses/",
   },
   {
-    text: "ERC20 & ERC223 Token Converter",
+    text: "ERC-20 & ERC-223 Token Converter",
     href: "https://dexaran.github.io/token-converter/",
   },
   {
-    text: "ERC223 Front Page",
+    text: "ERC-223 Front Page",
     href: "https://dexaran.github.io/erc223",
   },
   {

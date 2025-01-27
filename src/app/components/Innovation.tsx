@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React, { HTMLProps, ReactNode } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import Container from "@/components/Container";
@@ -47,6 +48,11 @@ export default function Innovation() {
       />
 
       <Container>
+        <Pattern
+          patternColor={PatternColor.GREEN}
+          className="w-450 h-450 -left-[871px] -top-[276px] -scale-y-100"
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
           <div className="flex flex-col gap-4 lg:gap-5">
             <KeyFeatureCard

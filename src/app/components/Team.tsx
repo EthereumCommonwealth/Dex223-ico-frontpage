@@ -1,6 +1,7 @@
 import React from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import TeamMemberCard from "@/components/organisms/TeamMemberCard";
@@ -93,6 +94,18 @@ export default function Team() {
         color="blue"
         overlineText="Team"
         anchor="team"
+        patterns={
+          <>
+            <Pattern
+              patternColor={PatternColor.BLUE}
+              className="w-200 h-200 -right-[711px] top-[300px] -scale-y-100"
+            />
+            <Pattern
+              patternColor={PatternColor.BLUE}
+              className="w-250 h-250 -left-[611px] top-[152px] -scale-100"
+            />
+          </>
+        }
         leftContent={
           <div className="mb-9">
             <ArticleHeading text="Meet the Team" />

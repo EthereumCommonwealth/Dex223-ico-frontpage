@@ -56,7 +56,7 @@ export default function Fight() {
           <ArticleHeading
             text={
               <>
-                ERC-20 vs ERC-223: <br /> a clash of token standards
+                ERC-20 vs ERC-223: <br /> A Clash of Token Standards
               </>
             }
           />
@@ -98,7 +98,7 @@ export default function Fight() {
         >
           <div className="relative max-w-[296px] lg:max-w-[unset]">
             <FightImageSvg />
-            <Image src="/images/fight-bg.png" alt="ERC-20 vs ERC223 Fight" layout="fill" />
+            <Image src="/images/fight-bg.png" alt="ERC-20 vs ERC-223 Fight" layout="fill" />
           </div>
         </div>
       }

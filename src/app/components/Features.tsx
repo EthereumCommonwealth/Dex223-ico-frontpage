@@ -54,7 +54,7 @@ export default function Features() {
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-5">
           <KeyFeatureCard
             heading="Solving a real problem"
-            text="Every year, millions of dollars are lost due to errors with ERC-20 tokens. By adopting the
+            text="Every year, millions of dollars are lost due to transaction errors involving ERC-20 tokens. By adopting the
       ERC-223 standard, DEX223 takes the first crucial step toward eliminating these costly
       mistakes. We are confident that this enhanced standard, which prevents fund losses, will
       become the industry norm in the long run."

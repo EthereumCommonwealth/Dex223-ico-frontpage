@@ -6,6 +6,7 @@ import React, { ChangeEvent, useCallback, useRef, useState } from "react";
 import ArticleHeading from "@/components/ArticleHeading";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Preloader from "@/components/atoms/Preloader";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
@@ -69,6 +70,18 @@ export default function Subscription() {
           overlineText="Subscription"
           anchor="contact"
           differentColumns
+          patterns={
+            <>
+              <Pattern
+                patternColor={PatternColor.GREEN}
+                className="w-200 h-200 -right-[471px] top-0 -scale-100"
+              />
+              <Pattern
+                patternColor={PatternColor.GREEN}
+                className="w-250 h-250 -left-[911px] bottom-[92px] -scale-100"
+              />
+            </>
+          }
           leftContent={
             <>
               <ArticleHeading text="Subscribe to our newsletter" />

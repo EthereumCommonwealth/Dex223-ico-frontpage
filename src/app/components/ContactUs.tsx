@@ -45,13 +45,13 @@ export default function ContactUs() {
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 mt-6 md:mt-10 mb-4 m:mb-5 gap-2">
               <a href={dexEmailLink}>
                 <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
-                  <span>Write to email</span>
+                  <span>Contact via email</span>
                   <Svg iconName="email" />
                 </button>
               </a>
               <a href="https://t.me/Dex223_defi">
                 <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
-                  <span>Write to Telegram</span>
+                  <span>Contact via Telegram</span>
                   <Svg iconName="telegram" />
                 </button>
               </a>

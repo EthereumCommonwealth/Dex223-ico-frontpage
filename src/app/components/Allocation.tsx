@@ -4,8 +4,8 @@ import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import TextLink from "@/components/atoms/TextLink";
-import Container from "@/components/Container";
 import NeonBlock from "@/components/organisms/NeonBlock";
 
 export default function Allocation() {
@@ -36,6 +36,18 @@ export default function Allocation() {
         differentColumns
         anchor="tokenomics"
         fullWidth
+        patterns={
+          <>
+            <Pattern
+              patternColor={PatternColor.GREEN}
+              className="w-150 h-150 -left-[491px] top-[152px] -scale-x-100"
+            />
+            <Pattern
+              patternColor={PatternColor.GREEN}
+              className="w-250 h-250 -right-[481px] top-[203px]"
+            />
+          </>
+        }
         leftContent={
           <>
             <ArticleHeading text="Tokenomics" />
