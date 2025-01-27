@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: theme("colors.global-bg");
+    color: theme("colors.primary-text");
+    overflow-x: hidden;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus,
+div[role="button"]:focus,
+div[role="dialog"]:focus {
+    outline: none;
+}
+
+.Dialog-overlay {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.7);
+    display: grid;
+    place-items: center;
+    z-index: 88;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.drawer-overlay {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.7);
+    display: grid;
+    place-items: center;
+    z-index: 101;
+}
+
+.drawer-container {
+    position: fixed;
+    z-index: 101;
+    overflow: auto;
+}
+
+
+.card-spacing-x {
+    @apply px-4 sm:px-6 lg:px-10;
+}
+
+.card-spacing-b {
+    @apply pb-4 sm:pb-5 lg:pb-10
+}
+
+.card-spacing {
+    @apply card-spacing-x card-spacing-b;
+}
