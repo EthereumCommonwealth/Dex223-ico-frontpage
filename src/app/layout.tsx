@@ -17,6 +17,9 @@ const golos_text = Golos_Text({
   adjustFontFallback: false,
 });
 
+const description =
+  "Next generation decentralized exchange for ERC-223 & ERC-20 tokens with margin trading, 15% cheaper GAS fees and transparent auto-listings for any tokens.";
+
 export default async function RootLayout({ children }: PropsWithChildren<{}>) {
   const initialState = cookieToInitialState(config, (await headers()).get("cookie"));
 
@@ -38,4 +41,19 @@ export const metadata = {
   title: "Dex223",
   description:
     "Explore in-depth insights, updates, and guides on Dex223 – your go-to source for decentralized exchange (DEX) development, token standards, and blockchain innovations. Stay ahead in the Web3 ecosystem!",
+  openGraph: {
+    siteName: "DEX223",
+    title: "DEX223: Decentralized exchange for ERC-223 & ERC-20 tokens!",
+    description,
+    url: "https://dex223.io",
+    images: [
+      {
+        url: "https://www.dex223.io/social-link.png", // Must be an absolute URL
+        width: 1600,
+        height: 900,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
