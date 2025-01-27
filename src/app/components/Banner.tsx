@@ -23,22 +23,29 @@ export default function Banner() {
           </p>
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
-            <Button size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
-              <span className="flex items-center gap-2">
-                DEX223 test-app
-                <Svg iconName="forward" />
-              </span>
-            </Button>
-            <Button
-              size={ButtonSize.EXTRA_LARGE}
-              colorScheme={ButtonColor.LIGHT_GREEN}
-              mobileSize={ButtonSize.LARGE}
+            <a target="_blank" href="https://test-app.dex223.io/en/">
+              <Button size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
+                <span className="flex items-center gap-2">
+                  DEX223 test-app
+                  <Svg iconName="forward" />
+                </span>
+              </Button>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.bitmart.com/trade/en-US?type=spot&symbol=D223_USDT"
             >
-              <span className="flex items-center gap-2">
-                Buy/Sell D223
-                <Svg iconName="forward" />
-              </span>
-            </Button>
+              <Button
+                size={ButtonSize.EXTRA_LARGE}
+                colorScheme={ButtonColor.LIGHT_GREEN}
+                mobileSize={ButtonSize.LARGE}
+              >
+                <span className="flex items-center gap-2">
+                  Buy/Sell D223
+                  <Svg iconName="forward" />
+                </span>
+              </Button>
+            </a>
           </div>
 
           <div className="rounded-3 border-l-4 border-green flex gap-2 py-2 lg:py-3.5 bg-primary-bg pl-3 pr-4 lg:pr-5 lg:pl-4 w-full">
