@@ -63,7 +63,7 @@ function SvgGradient({ className, icon = "security" }) {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#A5E7C5" />
-          <stop offset="1" stop-color="#7DA491" />
+          <stop offset="1" stopColor="#7DA491" />
         </linearGradient>
       </defs>
     </svg>

@@ -1,34 +1,10 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import ArticleHeading from "@/components/ArticleHeading";
-import Svg from "@/components/atoms/Svg";
-import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
 import KeyFeatureCard from "@/components/KeyFeatureCard";
 import NeonBlock from "@/components/organisms/NeonBlock";
-
-// function KeyFeatureCard({
-//   iconName,
-//   heading,
-//   text,
-// }: {
-//   text: ReactNode;
-//   heading: string;
-//   iconName: IconName;
-// }) {
-//   return (
-//     <div className="p-5 bg-primary-bg rounded-5">
-//       <h3 className="flex gap-2 mb-2 font-bold text-18 lg:text-20">
-//         <span className="w-6 h-6 lg:w-8 lg:h-8 mt-px">
-//           <Svg size={24} className="text-green flex-shrink-0 !w-full !h-full" iconName={iconName} />
-//         </span>
-//         {heading}
-//       </h3>
-//       <p className="text-secondary-text text-16 lg:text-18">{text}</p>
-//     </div>
-//   );
-// }
 
 export default function Features() {
   return (

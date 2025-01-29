@@ -239,13 +239,26 @@ const slides = [
           className="items-start max-xl:mx-auto max-xl:w-[322px] max-xl:py-1 grid grid-cols-2 gap-2 xl:gap-5 overflow-hidden"
         >
           <div className="flex flex-col gap-2 xl:gap-5">
-            <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source srcSet="/images/prob1_mobile.png" media="(max-width: 1024px)" />
                 <img src="/images/prob1.png" alt="" />
               </picture>
             </div>
-            <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+                transitionDelay: "200ms",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source srcSet="/images/prob2_mobile.png" media="(max-width: 1024px)" />
                 <img src="/images/prob2.png" alt="" />
@@ -253,7 +266,14 @@ const slides = [
             </div>
           </div>
           <div>
-            <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+                transitionDelay: "400ms",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source srcSet="/images/prob3_mobile.png" media="(max-width: 1024px)" />
                 <img src="/images/prob3.png" alt="" />
@@ -308,7 +328,13 @@ const slides = [
           className="items-start max-xl:mx-auto max-xl:w-[322px] max-xl:py-1 grid grid-cols-2 gap-2 xl:gap-5 overflow-hidden"
         >
           <div className="h-full">
-            <div className={clsx("opacity-0", animate && "animate-appear-no-delay")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source srcSet="/images/sec1_mobile.png" media="(max-width: 1024px)" />
                 <img src="/images/sec1.png" alt="" />
@@ -316,7 +342,14 @@ const slides = [
             </div>
           </div>
           <div className="flex flex-col gap-2 xl:gap-5 h-full">
-            <div className={clsx("opacity-0", animate && "animate-appear-delay-200ms")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+                transitionDelay: "200ms",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source
                   className="block"
@@ -327,7 +360,14 @@ const slides = [
               </picture>
             </div>
 
-            <div className={clsx("opacity-0", animate && "animate-appear-delay-400ms")}>
+            <div
+              style={{
+                opacity: animate ? `100` : "0",
+                transitionDuration: "0.5s",
+                transitionDelay: "400ms",
+              }}
+              className={clsx("opacity-0")}
+            >
               <picture className="w-full h-auto block">
                 <source srcSet="/images/sec3_mobile.png" media="(max-width: 1024px)" />
                 <img src="/images/sec3.png" alt="" />
