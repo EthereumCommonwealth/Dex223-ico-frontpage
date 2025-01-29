@@ -55,7 +55,11 @@ export default function Allocation() {
               <div className="flex flex-col gap-5 lg:mb-10 tex-16 lg:text-18 text-secondary-text">
                 <p>
                   DEX223’s tokenomics draws inspiration from{" "}
-                  <TextLink href={"#"} text="Ethereum’s highly successful launch" isExternal />{" "}
+                  <TextLink
+                    href={"https://web.archive.org/web/20140824160811/https://www.ethereum.org/"}
+                    text="Ethereum’s highly successful launch"
+                    isExternal
+                  />{" "}
                   model, emphasizing both security and sustainability. The original D223 tokens were
                   issued in November 2023 on the Ethereum mainnet. From the moment DEX223 is
                   launched, a fee will be charged on every on-platform trade, and those fees will be

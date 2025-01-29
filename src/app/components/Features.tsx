@@ -5,29 +5,30 @@ import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
+import KeyFeatureCard from "@/components/KeyFeatureCard";
 import NeonBlock from "@/components/organisms/NeonBlock";
 
-function KeyFeatureCard({
-  iconName,
-  heading,
-  text,
-}: {
-  text: ReactNode;
-  heading: string;
-  iconName: IconName;
-}) {
-  return (
-    <div className="p-5 bg-primary-bg rounded-5">
-      <h3 className="flex gap-2 mb-2 font-bold text-18 lg:text-20">
-        <span className="w-6 h-6 lg:w-8 lg:h-8 mt-px">
-          <Svg size={24} className="text-green flex-shrink-0 !w-full !h-full" iconName={iconName} />
-        </span>
-        {heading}
-      </h3>
-      <p className="text-secondary-text text-16 lg:text-18">{text}</p>
-    </div>
-  );
-}
+// function KeyFeatureCard({
+//   iconName,
+//   heading,
+//   text,
+// }: {
+//   text: ReactNode;
+//   heading: string;
+//   iconName: IconName;
+// }) {
+//   return (
+//     <div className="p-5 bg-primary-bg rounded-5">
+//       <h3 className="flex gap-2 mb-2 font-bold text-18 lg:text-20">
+//         <span className="w-6 h-6 lg:w-8 lg:h-8 mt-px">
+//           <Svg size={24} className="text-green flex-shrink-0 !w-full !h-full" iconName={iconName} />
+//         </span>
+//         {heading}
+//       </h3>
+//       <p className="text-secondary-text text-16 lg:text-18">{text}</p>
+//     </div>
+//   );
+// }
 
 export default function Features() {
   return (
@@ -65,7 +66,7 @@ export default function Features() {
             text="DEX223 is designed to operate seamlessly across all EVM-compatible blockchains, including
       Ethereum, EOS EVM, Arbitrum, Optimism, BASE, and many others. This broad compatibility ensures
       that DEX223 will be the most versatile exchange in the market, supporting the largest number
-      of networks in the industry"
+      of networks in the industry."
             iconName="references"
           />
 
@@ -74,7 +75,7 @@ export default function Features() {
             text="Inclusivity is at the heart of DEX223. The protocol allows for any token to be listed,
           embracing the diverse and growing market of meme coins. Recognizing that listing these
           tokens can be challenging, we provide out-of-the-box solutions to make the process smooth
-          and accessible for all projects"
+          and accessible for all projects."
             iconName="non-discrimination"
           />
           <KeyFeatureCard

@@ -6,25 +6,8 @@ import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import Container from "@/components/Container";
+import KeyFeatureCard from "@/components/KeyFeatureCard";
 import NeonBlock from "@/components/organisms/NeonBlock";
-
-interface FeatureCardProps extends HTMLProps<HTMLDivElement> {
-  text: ReactNode;
-  heading: string;
-  iconName: IconName;
-}
-
-function KeyFeatureCard({ iconName, heading, text, className }: FeatureCardProps) {
-  return (
-    <div className={clsx("p-5 bg-primary-bg rounded-5", className)}>
-      <h3 className="flex items-center gap-2 mb-2 font-bold text-18 md:text-20">
-        <Svg size={32} className="text-green" iconName={iconName} />
-        {heading}
-      </h3>
-      <p className="text-secondary-text text-16 md:text-18">{text}</p>
-    </div>
-  );
-}
 
 export default function Innovation() {
   return (
@@ -62,7 +45,7 @@ export default function Innovation() {
       security, reducing exposure to malicious activities and user errors alike."
               iconName="security"
               heading="Uncompromising security"
-              className="flex-grow bg-[url('/images/innovation_bg_1.png')] bg-bottom bg-contain bg-no-repeat pb-[224px] sm:[pb-340px] lg:pb-0"
+              className="flex-grow md:max-2xl:bg-[url('/images/innovation_bg_1_mobile.png')] bg-[url('/images/innovation_bg_1.png')] bg-bottom bg-contain bg-no-repeat pb-[224px] sm:pb-[300px] md:pb-[370px] lg:pb-0"
             />
             <KeyFeatureCard
               text="The platform’s incentive models, such as the revenue-sharing program from listing fees
@@ -89,7 +72,7 @@ export default function Innovation() {
             confidence."
               iconName="educating"
               heading="Educating and empowering users"
-              className="flex-grow bg-[url('/images/innovation_bg_2.png')] bg-bottom bg-contain bg-no-repeat pb-[276px] md:pb-[312px] lg:pb-0"
+              className="flex-grow md:max-2xl:bg-[url('/images/innovation_bg_2_mobile.png')] bg-[url('/images/innovation_bg_2.png')] bg-bottom bg-contain bg-no-repeat pb-[276px] md:pb-[312px] lg:pb-0"
             />
           </div>
           <div className="contents lg:flex flex-col gap-4 lg:gap-5">

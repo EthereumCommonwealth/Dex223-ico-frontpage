@@ -118,12 +118,13 @@ export default function Info() {
               })}
             </div>
 
-            <div className="flex gap-3">
-              <Link href="/upgrade">
+            <div className="flex gap-3 max-md:flex-col">
+              <Link className="max-md:w-full flex flex-col" href="/upgrade">
                 <Button
                   className="text-16"
                   colorScheme={ButtonColor.GREEN}
                   size={ButtonSize.EXTRA_LARGE}
+                  mobileSize={ButtonSize.LARGE}
                 >
                   <span className="flex items-center gap-3">
                     Upgrade tokens
@@ -136,6 +137,7 @@ export default function Info() {
                 className="text-16"
                 colorScheme={ButtonColor.LIGHT_GREEN}
                 size={ButtonSize.EXTRA_LARGE}
+                mobileSize={ButtonSize.LARGE}
               >
                 <span className="flex items-center gap-3">
                   Download pitch deck

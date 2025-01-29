@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background: theme("colors.global-bg");
     color: theme("colors.primary-text");
