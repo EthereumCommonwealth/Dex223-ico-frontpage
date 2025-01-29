@@ -165,7 +165,7 @@ Phone: (877) 773-0888"
                       </span>,
                       <span key="3">
                         <b className="text-primary-text">Token contract address:</b> <br />
-                        0xcce&shy;968120e&shy;6ded5&shy;6f32fb&shy;fe5a2ec&shy;06cbf1&shy;e7c8ed
+                        0x09&shy;08078d&shy;a2935a&shy;14bc7a1&shy;7770292&shy;818c85&shy;b580dd
                       </span>,
                     ]}
                     key="list-1"
