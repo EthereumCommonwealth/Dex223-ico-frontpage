@@ -1,5 +1,6 @@
 import "../assets/styles/global.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Golos_Text } from "next/font/google";
 import { headers } from "next/headers";
 import { PropsWithChildren } from "react";
@@ -25,7 +26,6 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
 
   return (
     <html>
-      <head></head>
       <body className={golos_text.className}>
         <Providers initialState={initialState}>
           <Header />
@@ -33,6 +33,7 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
           <Footer />
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-E9D88G4XGB" />
     </html>
   );
 }
