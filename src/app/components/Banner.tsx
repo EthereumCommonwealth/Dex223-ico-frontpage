@@ -51,8 +51,8 @@ export default function Banner() {
           <div className="rounded-3 border-l-4 border-green flex gap-2 py-2 lg:py-3.5 bg-primary-bg pl-3 pr-4 lg:pr-5 lg:pl-4 w-full">
             <Svg className="flex-shrink-0 text-green mt-px" iconName="calendar" />
             <p className="text-secondary-text text-16 lg:text-18 font-medium">
-              The first round of the ICO has concluded. The first CEX listing of D223 occurred on
-              January 25, 2025
+              D223 achieved its inaugural centralized exchange (CEX) listing of D223 token on
+              January 25, 2025. Currently, Dex223 smart contracts are undergoing an external audit.
             </p>
           </div>
         </div>
