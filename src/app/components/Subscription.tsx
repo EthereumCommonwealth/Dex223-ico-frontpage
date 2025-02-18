@@ -1,5 +1,6 @@
 "use client";
 
+import { sendGAEvent } from "@next/third-parties/google";
 import clsx from "clsx";
 import React, { ChangeEvent, useCallback, useRef, useState } from "react";
 
@@ -9,7 +10,6 @@ import Input from "@/components/atoms/Input";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Preloader from "@/components/atoms/Preloader";
 import NeonBlock from "@/components/organisms/NeonBlock";
-import { mixpanelSetProfileProp, trackEvent } from "@/functions/mixpanel";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import SubscribeEmail from "@/inlined-svgs/SubscribeEmail";
 import addToast from "@/other/toast";
@@ -24,8 +24,6 @@ export default function Subscription() {
 
   const handleEmailSubmit = useCallback(async () => {
     setIsSubmitting(true);
-    trackEvent("subscribe", { email: emailInput });
-    mixpanelSetProfileProp("$email", emailInput);
 
     try {
       const res = await fetch("https://api.dex223.io/v1/core/api/email", {
@@ -41,6 +39,7 @@ export default function Subscription() {
       console.log(data);
 
       if (data.code === "EMAIL_ADD_SUCCESS") {
+        sendGAEvent("event", "conversion", { send_to: "AW-16880113256/KZcOCNfWmZ8aEOisiPE-" });
         addToast("You have successfully subscribed to our newsletter");
       }
 
