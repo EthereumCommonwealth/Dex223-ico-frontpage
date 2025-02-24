@@ -55,8 +55,8 @@ const usefulLinks = [
 
 const partners = [
   {
-    text: "EOS Support",
-    href: "https://eossupport.io/",
+    text: "BlockzHub",
+    href: "https://blockzhub.io/",
   },
 ];
 
