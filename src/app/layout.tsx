@@ -9,7 +9,10 @@ import { cookieToInitialState } from "wagmi";
 import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SEOAgent from "@/components/SEOAgent";
 import { config } from "@/config/wagmi/config";
+
+const isProd = process.env.NODE_ENV === "production";
 
 const golos_text = Golos_Text({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -26,6 +29,8 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
 
   return (
     <html>
+      <head>{isProd ? <SEOAgent /> : null}</head>
+
       <body className={golos_text.className}>
         <Providers initialState={initialState}>
           <Header />
