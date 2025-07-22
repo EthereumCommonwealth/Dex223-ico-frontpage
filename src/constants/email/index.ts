@@ -1,5 +1,5 @@
 export const dexEmail = "purchase@dex223.io";
-export const mediaEmail = "media@dex223.io";
+export const mediaEmail = "contact@dex223.io";
 export const privacyEmail = "privacy@dex223.io";
 export const legalEmail = "legal@dex223.io";
 
