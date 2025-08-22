@@ -58,6 +58,14 @@ const partners = [
     text: "BlockzHub",
     href: "https://blockzhub.io/",
   },
+  {
+    text: "CLS Global",
+    href: "https://www.cls.global",
+  },
+  {
+    text: "Beosin",
+    href: "https://beosin.com",
+  }
 ];
 
 const companyLinks = [
