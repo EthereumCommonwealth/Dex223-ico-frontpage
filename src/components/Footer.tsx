@@ -65,7 +65,7 @@ const partners = [
   {
     text: "Beosin",
     href: "https://beosin.com",
-  }
+  },
 ];
 
 const companyLinks = [
