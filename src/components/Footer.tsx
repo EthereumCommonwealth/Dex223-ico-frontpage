@@ -66,6 +66,10 @@ const partners = [
     text: "Beosin",
     href: "https://beosin.com",
   },
+  {
+    text: "Roro Technology",
+    href: "https://rorotechnology.io/",
+  },
 ];
 
 const companyLinks = [

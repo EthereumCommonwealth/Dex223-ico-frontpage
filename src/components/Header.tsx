@@ -2,7 +2,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useAccount, useDisconnect } from "wagmi";
 
@@ -70,6 +70,10 @@ const partners = [
   {
     text: "Beosin",
     href: "https://beosin.com",
+  },
+  {
+    text: "Roro Technology",
+    href: "https://rorotechnology.io/",
   },
 ];
 
