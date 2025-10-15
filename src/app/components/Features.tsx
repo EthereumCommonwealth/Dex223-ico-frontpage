@@ -60,9 +60,14 @@ export default function Features() {
               <span>
                 Transparency is a cornerstone of our operations. DEX223 adheres to a strict policy
                 of financial openness, ensuring that the usage of ICO funds is publicly documented
-                and accessible to everyone on <TextLink text="Github" href="#" isExternal />. This
-                commitment allows our community to trust and verify how funds are being managed and
-                utilized.
+                and accessible to everyone on{" "}
+                <TextLink
+                  text="Github"
+                  href="http://github.com/EthereumCommonwealth/Roadmap/issues/70"
+                  isExternal
+                />
+                . This commitment allows our community to trust and verify how funds are being
+                managed and utilized.
               </span>
             }
             iconName="financial-transparency"

@@ -211,7 +211,11 @@ export default function Advantages() {
 
                   <p>
                     Deep Dive:{" "}
-                    <TextLink text="DEX223 Margin Trading Showcase video" isExternal href="#" />
+                    <TextLink
+                      text="DEX223 Margin Trading Showcase video"
+                      isExternal
+                      href="https://youtu.be/hZW6AIrAznQ?si=XK3twzPiFyuHjlPF"
+                    />
                   </p>
                 </div>
               </>

@@ -38,26 +38,6 @@ const team = [
     },
   },
   {
-    image: "/images/team/Member=Aleksandr Gorbunov.png",
-    position: "Smart-contract Developer / Security Auditor",
-    name: "Aleksandr Gorbunov",
-    socials: {
-      github: "https://github.com/gorbunovperm",
-      twitter: "https://x.com/efir_eth",
-      email: "gorbunovperm@gmail.com",
-    },
-  },
-  {
-    image: "/images/team/Member=Aleksandr Terekhov.png",
-    position: "Backend Developer",
-    name: "Aleksandr Terekhov",
-    socials: {
-      github: "http://github.com/Exzender",
-      linkedin: "https://www.linkedin.com/in/aleksandr-s-terekhov",
-      email: "mailto:suriken@gmail.com",
-    },
-  },
-  {
     image: "/images/team/Member=Kostya Ostapenko.png",
     position: "Backend Developer",
     name: "Kostya Ostapenko",

@@ -133,17 +133,23 @@ export default function Info() {
                 </Button>
               </Link>
 
-              <Button
-                className="text-16"
-                colorScheme={ButtonColor.LIGHT_GREEN}
-                size={ButtonSize.EXTRA_LARGE}
-                mobileSize={ButtonSize.LARGE}
+              <a
+                className="max-md:w-full flex flex-col"
+                target="_blank"
+                href="https://docsend.com/view/zdcya97tgiiiqvwy"
               >
-                <span className="flex items-center gap-3">
-                  Download pitch deck
-                  <Svg iconName="download" />
-                </span>
-              </Button>
+                <Button
+                  className="text-16"
+                  colorScheme={ButtonColor.LIGHT_GREEN}
+                  size={ButtonSize.EXTRA_LARGE}
+                  mobileSize={ButtonSize.LARGE}
+                >
+                  <span className="flex items-center gap-3">
+                    View pitch deck
+                    <Svg iconName="forward" />
+                  </span>
+                </Button>
+              </a>
             </div>
           </>
         }
