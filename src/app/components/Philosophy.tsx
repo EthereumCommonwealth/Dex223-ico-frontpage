@@ -34,7 +34,7 @@ export default function Philosophy() {
         differentColumns
         leftContent={
           <>
-            <ArticleHeading text="Philosophy" />
+            <ArticleHeading text="Project philosophy" />
             <div className="flex flex-col gap-5">
               <p className="text-16 lg:text-18 text-secondary-text">
                 DEX223 is founded on the belief that a truly decentralized exchange must be

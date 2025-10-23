@@ -13,12 +13,14 @@ import RevenueModel from "@/app/components/RevenueModel";
 import Roadmap from "@/app/components/Roadmap";
 import Subscription from "@/app/components/Subscription";
 import Team from "@/app/components/Team";
+import WhyChooseUs from "@/app/components/WhyChooseUs";
 import ScrollToTopButton from "@/components/organisms/ScrollToTopButton";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-12 mb-10 md:mb-[119px] lg:mb-[145]">
       <Banner />
+      <WhyChooseUs />
       <Features />
       <Philosophy />
       <Innovation />

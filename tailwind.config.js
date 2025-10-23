@@ -161,6 +161,8 @@ module.exports = {
         "secondary-text": "#A2AAA9",
         "tertiary-text": "#798180",
 
+        "red-text": "#AAA2A2",
+
         "erc-20-text": "#97B9B6",
         "erc-223-text": "#949ED4",
 

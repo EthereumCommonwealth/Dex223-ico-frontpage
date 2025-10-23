@@ -58,3 +58,366 @@ div[role="dialog"]:focus {
 .card-spacing {
     @apply card-spacing-x card-spacing-b;
 }
+
+@keyframes reveal {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes line {
+    0% {
+        left: 0%;
+        background-color: theme("colors.blue");
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+        background-color: theme("colors.green");
+    }
+}
+
+.animate-reveal {
+    animation: reveal 2s ease-in-out forwards;
+}
+
+.animate-line {
+    animation: line 2s ease-in-out forwards;
+}
+
+@keyframes gradient-move {
+    0% {
+        left: 0;
+        width: 180px;
+    }
+
+    0% {
+        width: 170px;
+    }
+
+    100% {
+        left: 100%;
+        width: 16px;
+    }
+}
+
+@keyframes hue-shift {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(-47deg); /* приблизно blue → green */
+    }
+}
+
+.animate-green-shift-gradient {
+    position: absolute;
+    height: 100%;
+    width: 180px;
+    left: -100%;
+    background: linear-gradient(to left, #B6D1DF66, #ffffff00); /* синій → прозорий */
+    animation:
+            gradient-move 2s ease-in-out forwards,
+            hue-shift 2s ease-in-out forwards;
+}
+
+@keyframes line-red {
+    0% {
+        left: 0%;
+        background-color: theme("colors.blue");
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+        background-color: theme("colors.red-light");
+    }
+}
+
+.animate-line-red {
+    animation: line-red 2s ease-in-out forwards;
+}
+
+@keyframes hue-shift-red {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(160deg); /* приблизно blue → green */
+    }
+}
+
+.animate-red-shift-gradient {
+    position: absolute;
+    height: 100%;
+    width: 180px;
+    left: -100%;
+    background: linear-gradient(to left, #7D97A466, #ffffff00); /* синій → прозорий */
+    animation:
+            gradient-move 2s ease-in-out forwards,
+            hue-shift-red 2s ease-in-out forwards;
+}
+
+@keyframes test-1 {
+    from {
+        width: 0;
+    }
+
+    to {
+         width: 50%;
+    }
+}
+
+@keyframes test-2 {
+    from {
+        width: 50%;
+    }
+
+    to {
+        width: 0;
+    }
+}
+
+@property --start {
+    syntax: '<color>';
+    initial-value: theme("colors.red-bg"); /* червоний */
+    inherits: false;
+}
+@property --end {
+    syntax: '<color>';
+    initial-value: theme("colors.secondary-bg"); /* чорний */
+    inherits: false;
+}
+
+@keyframes moveAndColor {
+    0% {
+        left: 0;
+        --start: theme("colors.red-bg"); /* червоний */
+        --end: theme("colors.secondary-bg");   /* чорний */
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+        --start: theme("colors.secondary-bg"); /* чорний */
+        --end: theme("colors.green");   /* зелений */
+    }
+}
+
+@keyframes moveAndColorBottom {
+    0% {
+        left: 0;
+        --start: theme("colors.red-bg"); /* червоний */
+        --end: theme("colors.secondary-bg");   /* чорний */
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+        --start: theme("colors.secondary-bg"); /* чорний */
+        --end: theme("colors.green-bg");   /* зелений */
+    }
+}
+
+.animate-erc {
+    background: linear-gradient(90deg, var(--start), var(--end));
+   animation: moveAndColor 0.8s ease-in-out 4.5s forwards;
+}
+
+.animate-erc-bottom {
+    background: linear-gradient(90deg, var(--start), var(--end));
+    animation: moveAndColorBottom 0.8s ease-in-out 4.5s forwards;
+}
+
+.dashed-box {
+    background-image: url("/images/dashed-red-line-1.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.dashed-box-top-right {
+    background-image: url("/images/dashed-green-line-1.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.dashed-box-bottom-right {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("/images/dashed-green-line-2.svg");
+}
+
+@property --p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+
+.reveal-diagonal {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(60deg, #000 0 var(--p), transparent var(--p));
+
+    animation: reveal-diagonal 0.8s linear 6.7s forwards;
+}
+
+.reveal-diagonal-br {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(135deg, #000 0 var(--p), transparent var(--p));
+
+    animation: reveal-diagonal 0.8s linear 5.3s forwards;
+}
+
+.reveal-diagonal-l {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(-135deg, #000 0 var(--p), transparent var(--p));
+
+    animation:
+            reveal-diagonal 0.8s linear forwards,
+            reveal-diagonal 0.8s linear 4s reverse forwards,
+            reveal-diagonal 0.8s 9.5s linear forwards;
+}
+
+@keyframes reveal-diagonal {
+    from {--p: 0%;}
+    to { --p: 100%; } /* 100% іноді мало, 150% гарантує покриття всього */
+}
+
+.red-shadow {
+    box-shadow: -2px -2px 8px 0 #975E5E99;
+}
+
+.green-shadow {
+    box-shadow: -2px -2px 8px 0px #9BB4AB99;
+}
+
+@keyframes appear-1 {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.large-warn {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-warn-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 0.6s linear 0.5s forwards,
+            appear-1 0.6s linear 4s reverse forwards,
+            appear-1 0.6s 9.5s ease-in-out forwards;
+}
+
+.large-shield {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-shield-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 0.6s linear 4.5s forwards;
+}
+
+@keyframes animate-approval-red {
+    from {
+        bottom: 40px;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+.animate-approval-red {
+    opacity: 0;
+    animation:
+            animate-approval-red 0.6s 0.5s ease-in-out forwards,
+            animate-approval-red 0.6s 4s ease-in-out reverse forwards,
+            animate-approval-red 0.6s 9.5s ease-in-out forwards;
+}
+
+@keyframes animate-approval-green-top {
+    from {
+        top: 20px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.animate-approval-green-bottom {
+    opacity: 0;
+    animation: animate-approval-red 0.6s 6.1s ease-in-out forwards;
+}
+
+.animate-approval-green-top {
+    opacity: 0;
+    animation: animate-approval-green-top 0.5s 7.5s ease-in-out forwards;
+}
+
+@keyframes reveal-top {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.animate-reveal-top {
+    clip-path: inset(0 0 100% 0);
+    animation: reveal-top 1.5s ease-in-out 8s forwards;
+}
+
+@keyframes drop-down {
+    from {
+        top: 0;
+    }
+    to {
+        top: 40px;
+    }
+}
+
+@keyframes drop-zero {
+    from {
+        top: -40px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.animate-drop-down {
+    animation: drop-down 1.5s forwards 8.2s;
+}
+
+
+.animate-drop-zero {
+    animation: drop-zero 1.5s forwards 8.2s;
+}
+
+@keyframes svg-drop-down {
+  from {
+      top: -25px;
+      color: theme("colors.red-light");
+  }
+  to {
+      top: 7px;
+      color: theme("colors.green-hover");
+  }
+}
+
+.animate-svg-drop-down {
+    animation: svg-drop-down 1.5s forwards 8s;
+}

@@ -1,6 +1,7 @@
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
+import CompareAnimationSlider from "@/components/CompareAnimationSlider";
 import Container from "@/components/Container";
 
 export default function Banner() {
@@ -11,7 +12,7 @@ export default function Banner() {
         patternColor={PatternColor.GREEN}
         className="w-250 h-250 -right-[461px] bg-cover top-0 opacity-10 -z-10 -scale-100"
       />
-      <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] w-full pt-10 lg:pt-[80px]">
+      <div className="grid grid-cols-1 lg:grid-cols-[6fr_1fr_5fr] w-full pt-10 lg:pt-[80px]">
         <div>
           <h1 className="text-30 lg:text-48 3xl:text-56 mb-3 text-medium">
             <span className="text-green">DEX223</span>: Decentralized exchange for{" "}
@@ -19,7 +20,8 @@ export default function Banner() {
             <span className="text-purple">ERC-20</span> tokens!
           </h1>
           <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8">
-            Secure, gas-efficient, fully decentralized exchange built with Ethereum smart-contracts.
+            Other exchanges keep supporting ERC-20 leading to proliferation of insecure standards
+            and losses of funds. DEX223 is first to support ERC-223 which solves this problems
           </p>
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
@@ -56,6 +58,8 @@ export default function Banner() {
             </p>
           </div>
         </div>
+        <div />
+        <CompareAnimationSlider />
       </div>
     </Container>
   );
