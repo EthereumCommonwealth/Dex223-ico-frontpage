@@ -34,8 +34,10 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
       <body className={golos_text.className}>
         <Providers initialState={initialState}>
           <Header />
-          {children}
-          <Footer />
+          <div className="flex flex-col h-full">
+            <div className="flex-grow">{children}</div>
+            <Footer />
+          </div>
         </Providers>
       </body>
       <GoogleAnalytics gaId="G-E9D88G4XGB" />

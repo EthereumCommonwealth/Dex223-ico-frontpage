@@ -105,6 +105,12 @@ export const svgIconsNames = [
   "menu",
   "blog",
   "forward-small",
+  "swap-horizontal",
+  "settings",
+  "edit",
+  "gas",
+  "low",
+  "edit-off",
 ] as const;
 
 export type IconName = (typeof svgIconsNames)[number];

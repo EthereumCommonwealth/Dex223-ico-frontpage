@@ -4,13 +4,46 @@
 
 html {
     overflow-x: hidden;
+    height: 100%;
 }
 
 body {
     background: theme("colors.global-bg");
     color: theme("colors.primary-text");
     overflow-x: hidden;
+    height: 100%;
 }
+
+:root {
+    --dur0: 0.5s; /*red dash*/
+    --dur1: 1s; /*red block*/
+    --dur2: 0.5s; /*red block*/
+    --dur3: 0.5s; /*red dash*/
+    --dur4: 1s; /*slider to right*/
+    --dur5: 0.5s; /*green bottom dash*/
+    --dur6: 1s; /*green bottom block*/
+    --dur7: 0.5s; /*strike*/
+    --dur8: 0.5s; /*green top dash*/
+    --dur9: 1s; /*green top block*/
+    --dur10: 1s; /*gas and safe choice label*/
+    --dur11: 0.5s; /*red dash re-appear*/
+    --dur12: 1s; /*red all re-appear*/
+
+    --del0: 0s; /*red dash*/
+    --del1: calc(var(--del0) + var(--dur0) - 0.5s); /*red block*/
+    --del2: calc(var(--del1) + var(--dur1) + 1s); /*red block*/
+    --del3: calc(var(--del2) + var(--dur2) - 0.5s); /*red dash*/
+    --del4: calc(var(--del3) + var(--dur3)); /*slider to right*/
+    --del5: calc(var(--del4) + var(--dur4)); /*green bottom dash*/
+    --del6: calc(var(--del5) + var(--dur5) - 0.5s); /*green bottom block*/
+    --del7: calc(var(--del6) + var(--dur6) + 0.15s); /*strike*/
+    --del8: calc(var(--del7) + var(--dur7)); /*green top dash*/
+    --del9: calc(var(--del8) + var(--dur8) - 0.5s); /*green top block*/
+    --del10: calc(var(--del9) + var(--dur9) + 0.2s);  /*gas and safe choice label*/
+    --del11: calc(var(--del10) + var(--dur10) + 0.5s);  /*red dash re-appear*/
+    --del12: calc(var(--del11) + var(--dur11) - 0.5s);  /*red all re-appear*/
+}
+
 
 button:focus,
 a:focus,
@@ -57,6 +90,25 @@ div[role="dialog"]:focus {
 
 .card-spacing {
     @apply card-spacing-x card-spacing-b;
+}
+
+
+.dashed-box {
+    background-image: url("/images/dashed-red-line-1.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.dashed-box-top-right {
+    background-image: url("/images/dashed-green-line-1.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.dashed-box-bottom-right {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("/images/dashed-green-line-2.svg");
 }
 
 @keyframes reveal {
@@ -126,7 +178,7 @@ div[role="dialog"]:focus {
 
 @keyframes line-red {
     0% {
-        left: 0%;
+        left: 0;
         background-color: theme("colors.blue");
     }
     100% {
@@ -149,6 +201,14 @@ div[role="dialog"]:focus {
     }
 }
 
+.red-shadow {
+    box-shadow: -2px -2px 8px 0 #975E5E99;
+}
+
+.green-shadow {
+    box-shadow: -2px -2px 8px 0px #9BB4AB99;
+}
+
 .animate-red-shift-gradient {
     position: absolute;
     height: 100%;
@@ -158,26 +218,6 @@ div[role="dialog"]:focus {
     animation:
             gradient-move 2s ease-in-out forwards,
             hue-shift-red 2s ease-in-out forwards;
-}
-
-@keyframes test-1 {
-    from {
-        width: 0;
-    }
-
-    to {
-         width: 50%;
-    }
-}
-
-@keyframes test-2 {
-    from {
-        width: 50%;
-    }
-
-    to {
-        width: 0;
-    }
 }
 
 @property --start {
@@ -190,6 +230,15 @@ div[role="dialog"]:focus {
     initial-value: theme("colors.secondary-bg"); /* чорний */
     inherits: false;
 }
+
+@property --start-bg {
+    syntax: '<color>';
+    initial-value: theme("colors.primary-bg"); /* червоний */
+    inherits: false;
+}
+
+@property --p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+
 
 @keyframes moveAndColor {
     0% {
@@ -219,80 +268,18 @@ div[role="dialog"]:focus {
     }
 }
 
-.animate-erc {
-    background: linear-gradient(90deg, var(--start), var(--end));
-   animation: moveAndColor 0.8s ease-in-out 4.5s forwards;
-}
-
-.animate-erc-bottom {
-    background: linear-gradient(90deg, var(--start), var(--end));
-    animation: moveAndColorBottom 0.8s ease-in-out 4.5s forwards;
-}
-
-.dashed-box {
-    background-image: url("/images/dashed-red-line-1.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.dashed-box-top-right {
-    background-image: url("/images/dashed-green-line-1.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.dashed-box-bottom-right {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-image: url("/images/dashed-green-line-2.svg");
-}
-
-@property --p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
-
-.reveal-diagonal {
-    --p: 0%;
-    display: inline-block;
-
-    /* маска під кутом 45° */
-    mask: linear-gradient(60deg, #000 0 var(--p), transparent var(--p));
-
-    animation: reveal-diagonal 0.8s linear 6.7s forwards;
-}
-
-.reveal-diagonal-br {
-    --p: 0%;
-    display: inline-block;
-
-    /* маска під кутом 45° */
-    mask: linear-gradient(135deg, #000 0 var(--p), transparent var(--p));
-
-    animation: reveal-diagonal 0.8s linear 5.3s forwards;
-}
-
-.reveal-diagonal-l {
-    --p: 0%;
-    display: inline-block;
-
-    /* маска під кутом 45° */
-    mask: linear-gradient(-135deg, #000 0 var(--p), transparent var(--p));
-
-    animation:
-            reveal-diagonal 0.8s linear forwards,
-            reveal-diagonal 0.8s linear 4s reverse forwards,
-            reveal-diagonal 0.8s 9.5s linear forwards;
+@keyframes erc-bg {
+    0% {
+        --start-bg: theme("colors.primary-bg");
+    }
+    100% {
+        --start-bg: theme("colors.red-bg");
+    }
 }
 
 @keyframes reveal-diagonal {
     from {--p: 0%;}
     to { --p: 100%; } /* 100% іноді мало, 150% гарантує покриття всього */
-}
-
-.red-shadow {
-    box-shadow: -2px -2px 8px 0 #975E5E99;
-}
-
-.green-shadow {
-    box-shadow: -2px -2px 8px 0px #9BB4AB99;
 }
 
 @keyframes appear-1 {
@@ -303,27 +290,6 @@ div[role="dialog"]:focus {
         opacity: 1
     }
 }
-
-.large-warn {
-    opacity: 0;
-    background-image: url("/images/why-choose/large-warn-bg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    animation:
-            appear-1 0.6s linear 0.5s forwards,
-            appear-1 0.6s linear 4s reverse forwards,
-            appear-1 0.6s 9.5s ease-in-out forwards;
-}
-
-.large-shield {
-    opacity: 0;
-    background-image: url("/images/why-choose/large-shield-bg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    animation:
-            appear-1 0.6s linear 4.5s forwards;
-}
-
 @keyframes animate-approval-red {
     from {
         bottom: 40px;
@@ -335,15 +301,6 @@ div[role="dialog"]:focus {
         opacity: 1;
     }
 }
-
-.animate-approval-red {
-    opacity: 0;
-    animation:
-            animate-approval-red 0.6s 0.5s ease-in-out forwards,
-            animate-approval-red 0.6s 4s ease-in-out reverse forwards,
-            animate-approval-red 0.6s 9.5s ease-in-out forwards;
-}
-
 @keyframes animate-approval-green-top {
     from {
         top: 20px;
@@ -356,15 +313,6 @@ div[role="dialog"]:focus {
     }
 }
 
-.animate-approval-green-bottom {
-    opacity: 0;
-    animation: animate-approval-red 0.6s 6.1s ease-in-out forwards;
-}
-
-.animate-approval-green-top {
-    opacity: 0;
-    animation: animate-approval-green-top 0.5s 7.5s ease-in-out forwards;
-}
 
 @keyframes reveal-top {
     0% {
@@ -374,12 +322,6 @@ div[role="dialog"]:focus {
         clip-path: inset(0 0 0 0);
     }
 }
-
-.animate-reveal-top {
-    clip-path: inset(0 0 100% 0);
-    animation: reveal-top 1.5s ease-in-out 8s forwards;
-}
-
 @keyframes drop-down {
     from {
         top: 0;
@@ -398,26 +340,190 @@ div[role="dialog"]:focus {
     }
 }
 
-.animate-drop-down {
-    animation: drop-down 1.5s forwards 8.2s;
+@keyframes svg-drop-down {
+    from {
+        top: -25px;
+        color: theme("colors.red-light");
+    }
+    to {
+        top: -2px;
+        color: theme("colors.green-hover");
+    }
+}
+@keyframes strike {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 128px;
+    }
 }
 
+
+@keyframes darken-approve {
+    from {
+        color: theme("colors.primary-text");
+    }
+
+    to {
+        color: theme("colors.tertiary-text");
+    }
+}
+
+@keyframes opacity-to-20 {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.2;
+    }
+}
+@keyframes add-outline {
+    from {
+        border-color: transparent;
+        box-shadow: 0 0 0 0 theme("colors.green");
+    }
+    to {
+        border-color: theme("colors.green");
+        box-shadow: 0 0 24px 0 theme("colors.green");
+    }
+}
+@keyframes appear-safe-choice {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+
+    to {
+        top: -14px;
+        opacity: 1;
+    }
+}
+
+/* reveal left dash and remove after red block removed */
+.reveal-diagonal-l {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(-135deg, #000 0 var(--p), transparent var(--p));
+
+    animation:
+            reveal-diagonal var(--dur0) linear forwards,
+            reveal-diagonal var(--dur3) linear var(--del3) reverse forwards,
+            reveal-diagonal var(--dur11) var(--del11) linear forwards;
+}
+
+/* reveal left red block and remove slightly after. reveal again in the end of animation */
+.animate-approval-red {
+    opacity: 0;
+    animation:
+            animate-approval-red var(--dur1) ease-in-out var(--del1) forwards,
+            animate-approval-red var(--dur2) ease-in-out var(--del2) reverse forwards,
+            animate-approval-red var(--dur12) ease-in-out var(--del12) forwards;
+}
+
+.large-warn {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-warn-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 var(--dur1) linear var(--del1) forwards,
+            appear-1 var(--dur2) linear var(--del2) reverse forwards,
+            appear-1 var(--dur12) ease-in-out var(--del12) forwards;
+}
+
+/* move from left to right standard picker with re-color, color right part with red at the end*/
+.animate-erc {
+    background: linear-gradient(90deg, var(--start), var(--end));
+    animation: moveAndColor var(--dur4) ease-in-out var(--del4) forwards;
+}
+
+.animate-erc-bottom {
+    background: linear-gradient(90deg, var(--start), var(--end));
+    animation: moveAndColorBottom var(--dur4) ease-in-out var(--del4) forwards;
+}
+
+.animate-erc-bg {
+    background: linear-gradient(90deg, var(--start-bg), theme("colors.secondary-bg"), theme("colors.primary-bg"));
+    animation: erc-bg var(--dur11) ease-in-out var(--del11) forwards;
+}
+
+.large-shield {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-shield-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 var(--dur4) linear var(--del4) forwards;
+}
+
+/* reveal right bottom green dash and block. strike approve with minor delay */
+.reveal-diagonal-br {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(135deg, #000 0 var(--p), transparent var(--p));
+
+    animation: reveal-diagonal var(--dur5) linear var(--del5) forwards;
+}
+
+.animate-approval-green-bottom {
+    opacity: 0;
+    animation: animate-approval-red var(--dur6) var(--del6) ease-in-out forwards;
+}
+
+.animate-strike {
+    animation:
+            strike var(--dur7) forwards var(--del7),
+            darken-approve var(--dur7)  forwards var(--del7);
+}
+
+.animate-opacity-to-20 {
+    animation: opacity-to-20 var(--dur7) forwards var(--del7);
+}
+
+/* reveal right top green dash and block. */
+
+.reveal-diagonal {
+    --p: 0%;
+    display: inline-block;
+    mask: linear-gradient(60deg, #000 0 var(--p), transparent var(--p));
+    animation: reveal-diagonal  var(--dur8)  linear var(--del8) forwards;
+}
+
+.animate-approval-green-top {
+    opacity: 0;
+    animation: animate-approval-green-top var(--dur9) ease-in-out var(--del9) forwards;
+}
+
+/*play gas animation with safe choice label */
+
+.animate-reveal-top {
+    clip-path: inset(0 0 100% 0);
+    animation: reveal-top var(--dur10) ease-in-out var(--del10) forwards;
+}
+
+.animate-drop-down {
+    animation: drop-down var(--dur10) forwards var(--del10);
+}
 
 .animate-drop-zero {
-    animation: drop-zero 1.5s forwards 8.2s;
-}
-
-@keyframes svg-drop-down {
-  from {
-      top: -25px;
-      color: theme("colors.red-light");
-  }
-  to {
-      top: 7px;
-      color: theme("colors.green-hover");
-  }
+    animation: drop-zero var(--dur10) forwards var(--del10);
 }
 
 .animate-svg-drop-down {
-    animation: svg-drop-down 1.5s forwards 8s;
+    animation: svg-drop-down var(--dur10) forwards var(--del10);
+}
+
+.animate-add-outline {
+    animation: add-outline var(--dur10) forwards var(--del10);
+}
+
+.animate-appear-safe-choice {
+    animation: appear-safe-choice var(--dur10) forwards var(--del10);
 }

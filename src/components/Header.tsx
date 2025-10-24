@@ -99,6 +99,7 @@ const companyLinks = [
     href: "/trademark-policy",
   },
 ];
+
 export default function Header() {
   const { isConnected, address } = useAccount();
 
@@ -174,6 +175,13 @@ export default function Header() {
                 href="/development"
               >
                 Development
+              </Link>
+              <Link
+                prefetch={false}
+                className="py-5 font-medium px-3 text-secondary-text hover:text-green duration-200"
+                href="/airdrops"
+              >
+                Airdrops
               </Link>
               <Link
                 prefetch={false}

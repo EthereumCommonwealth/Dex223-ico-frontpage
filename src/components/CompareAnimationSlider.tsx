@@ -89,7 +89,11 @@ const texts: Record<
     option1: (
       <span>
         Security problems detected,{" "}
-        <a className="inline-flex items-center text-red-light" href="#">
+        <a
+          className="inline-flex items-center text-red-light hocus:text-red-light-hover duration-200"
+          target="_blank"
+          href="https://dexaran.github.io/erc20-losses/"
+        >
           <span className="underline">$108M lost</span>
           <Svg iconName="forward-small" />
         </a>
