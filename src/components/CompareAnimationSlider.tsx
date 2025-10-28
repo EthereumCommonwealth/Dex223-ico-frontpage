@@ -9,55 +9,48 @@ enum SliderColor {
   RED,
 }
 
+function PlaceholderOption({ className }: { className: string }): ReactNode {
+  return (
+    <div className="flex items-center gap-1 lg:gap-3  pl-2 lg:pl-5">
+      <div className="relative">
+        <div className="w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-[#2B2F32]" />
+      </div>
+      <div className={clsx("max-lg:mt-1 h-2 lg:h-4 rounded-1 bg-[#2B2F32]", className)} />
+    </div>
+  );
+}
+
 function SliderPlaceholderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
   return (
     <div className="absolute w-full h-full bg-[#1D2123] pt-3">
-      <div className="flex items-center gap-2  pl-3.5">
-        <div className="w-9 h-9 rounded-full bg-[#2B2F32]" />
+      <div className="flex items-center gap-1 lg:gap-2 pl-2 lg:pl-3.5">
+        <div className="w-5 h-5 lg:w-9 lg:h-9 rounded-full bg-[#2B2F32]" />
         <div
           className={clsx(
-            " h-4 rounded-1 bg-[#2B2F32]",
-            color === SliderColor.GREEN ? "w-[86px]" : "w-[149px]",
+            "h-2 lg:h-4 rounded-1 bg-[#2B2F32]",
+            color === SliderColor.GREEN ? "w-[76px] lg:w-[86px]" : "w-[131px] md:w-[149px]",
           )}
         />
       </div>
-      <div className="px-5">
-        <div className="bg-[#2B2F32]  w-full h-px mt-3 mb-4" />
+      <div className="px-3 lg:px-5">
+        <div className="bg-white opacity-10 w-full h-px lg:mt-3 lg:mb-4 my-2" />
       </div>
-      <div className="flex flex-col gap-2 pb-4">
-        <div className="flex items-center gap-3  pl-5">
-          <div className="p-0.5">
-            <div className="w-5 h-5 rounded-full bg-[#2B2F32]" />
-          </div>
-          <div
-            className={clsx(
-              "h-4 rounded-1 bg-[#2B2F32]",
-              color === SliderColor.GREEN ? "w-[54px]" : "w-[308px]",
-            )}
-          />
-        </div>
-        <div className="flex items-center gap-3  pl-5">
-          <div className="p-0.5">
-            <div className="w-5 h-5 rounded-full bg-[#2B2F32]" />
-          </div>
-          <div
-            className={clsx(
-              "h-4 rounded-1 bg-[#2B2F32]",
-              color === SliderColor.GREEN ? "w-[270px]" : "w-[209px]",
-            )}
-          />
-        </div>
-        <div className="flex items-center gap-3  pl-5">
-          <div className="p-0.5">
-            <div className="w-5 h-5 rounded-full bg-[#2B2F32]" />
-          </div>
-          <div
-            className={clsx(
-              "h-4 rounded-1 bg-[#2B2F32]",
-              color === SliderColor.GREEN ? "w-[289px]" : "w-[412px]",
-            )}
-          />
-        </div>
+      <div className="flex flex-col max-lg:gap-3 gap-2 pb-4">
+        <PlaceholderOption
+          className={color === SliderColor.GREEN ? "w-[47px] lg:w-[54px]" : "w-[76px] lg:w-[284px]"}
+        />
+        <PlaceholderOption
+          className={
+            color === SliderColor.GREEN ? "w-[236px] lg:w-[270px]" : "w-[183px] lg:w-[209px]"
+          }
+        />
+        <PlaceholderOption
+          className={
+            color === SliderColor.GREEN
+              ? "w-[253px] lg:w-[264px] max-w-full mr-3"
+              : "w-[260px] lg:w-[295px] max-w-full mr-3"
+          }
+        />
       </div>
     </div>
   );
@@ -95,36 +88,49 @@ const texts: Record<
           href="https://dexaran.github.io/erc20-losses/"
         >
           <span className="underline">$108M lost</span>
-          <Svg iconName="forward-small" />
+          <Svg size={20} iconName="forward-small" />
         </a>
       </span>
     ),
     option2: 'Require "approving" tokens',
-    option3: "Simple user mistakes cause permanent loss of tokens",
+    option3: "Simple mistake, permanent token loss",
   },
 };
 
 function SliderOption({
   color = SliderColor.GREEN,
   text,
+  className = "",
 }: {
   color?: SliderColor;
   text: string | ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="flex items-center gap-3  pl-5">
-      <div className="p-0.5">
+    <div className="flex gap-1 lg:gap-3  pl-2 lg:pl-5">
+      <div className="max-lg:top-0.5 relative">
         <div
           className={clsx(
-            "w-5 h-5 rounded-full bg-cover",
+            "w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-cover",
             color === SliderColor.RED
               ? "bg-[url('/images/slider-check-red.png')]"
               : "bg-[url('/images/slider-check-green.png')]",
           )}
         ></div>
       </div>
-      <div className="text-16 text-secondary-text">{text}</div>
+      <div className={clsx("text-14 lg:text-16 text-secondary-text", className)}>{text}</div>
     </div>
+  );
+}
+
+function OtherLogo({ bgClassName }: { bgClassName: string }) {
+  return (
+    <div
+      className={clsx(
+        "w-6 h-6 lg:w-8 lg:h-8 2xl:w-10 2xl:h-10 rounded-full relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color",
+        bgClassName,
+      )}
+    />
   );
 }
 
@@ -132,33 +138,38 @@ function SliderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
   return (
     <div
       className={clsx(
-        "absolute w-full h-full bg-gradient-to-r  pt-3 animate-reveal",
+        "w-full h-full bg-gradient-to-r  pt-3 animate-reveal",
         color === SliderColor.RED ? "from-[#211C1C] to-[#352C2C]" : "from-[#171C19] to-[#282D2B]",
       )}
     >
       <div className="absolute right-[27px] bottom-0">
         <Image width={131} height={109} src={icons[color].bgIcon} alt="" />
       </div>
-      <div className="flex items-center gap-2  pl-3.5">
+      <div className="flex items-center gap-1 lg:gap-2 pl-2 lg:pl-3.5">
         <div
           className={clsx(
-            "w-9 h-9 rounded-full  flex items-center justify-center",
+            "w-5 h-5 lg:w-9 lg:h-9 rounded-full  flex items-center justify-center",
             color === SliderColor.RED ? "bg-red-bg" : "bg-green-bg",
           )}
         >
-          <Image width={24} height={24} alt={""} src={icons[color].mainIcon} />
+          <div className="w-4 h-4 lg:w-6 lg:h-6 relative">
+            <Image fill style={{ objectFit: "cover" }} alt={""} src={icons[color].mainIcon} />
+          </div>
         </div>
         <div
-          className={clsx("text-16", color === SliderColor.RED ? "text-red-light" : "text-green")}
+          className={clsx(
+            "text-14 lg:text-16",
+            color === SliderColor.RED ? "text-red-light" : "text-green",
+          )}
         >
           {texts[color].title}
         </div>
       </div>
-      <div className="px-5">
-        <div className="bg-white opacity-10 w-full h-px mt-3 mb-4" />
+      <div className="px-3 lg:px-5">
+        <div className="bg-white opacity-10 w-full h-px lg:mt-3 lg:mb-4 my-2" />
       </div>
-      <div className="flex flex-col gap-2 pb-4">
-        <SliderOption text={texts[color].option1} color={color} />
+      <div className="flex flex-col gap-2 pb-4 relative pr-3">
+        <SliderOption className="whitespace-nowrap" text={texts[color].option1} color={color} />
         <SliderOption text={texts[color].option2} color={color} />
         <SliderOption text={texts[color].option3} color={color} />
       </div>
@@ -168,19 +179,30 @@ function SliderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
 
 export default function CompareAnimationSlider() {
   return (
-    <div>
-      <div className="mb-[64px]">
+    <div className="max-w-[588px] max-lg:mt-6">
+      <div className="mb-6 lg:mb-[64px]">
         <div className="flex justify-between mb-1.5">
           <div className="flex items-center">
-            <Image src={"/images/network_slider_main.png"} width={40} height={40} alt={"Dex223"} />
+            <div className="relative w-6 h-6 lg:w-8 lg:h-8 2xl:w-10 2xl:h-10">
+              <Image
+                src={"/images/network_slider_main.png"}
+                alt={"Dex223"}
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
           </div>
 
-          <div className="flex justify-between items-center gap-5">
-            <span className="text-24 font-medium text-secondary-text">First to support</span>
-            <span className="text-40 block min-w-[166px]">ERC-223</span>
+          <div className="flex justify-between items-center gap-2 lg:gap-3 2xl:gap-5">
+            <span className="text-14 lg:text-18 2xl:text-24 font-medium text-secondary-text  block min-w-[105px] lg:min-w-[130px] 2xl:min-w-[180px] ">
+              First to support
+            </span>
+            <p className="text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
+              ERC-223
+            </p>
           </div>
         </div>
-        <div className="relative h-[180px] rounded-3 overflow-hidden">
+        <div className="relative rounded-3 overflow-hidden">
           <div className="bg-blue w-1 absolute left-0 h-full z-10 animate-line"></div>
           <div className="absolute h-full z-10 -translate-x-full animate-green-shift-gradient"></div>
           <SliderPlaceholderImage />
@@ -190,20 +212,24 @@ export default function CompareAnimationSlider() {
 
       <div>
         <div className="flex justify-between mb-1.5">
-          <div className="flex items-center">
-            <div className="bg-[url('/images/uniswap-logo.png')] w-10 h-10 rounded-full relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color" />
-            <div className="bg-[url('/images/x-logo.png')] w-10 h-10 rounded-full -ml-3 relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color" />
-            <div className="bg-[url('/images/curve-logo-slider.png')] w-10 h-10 rounded-full -ml-3 relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color" />
-            <div className="bg-[url('/images/pancake-swap-logo.png')] w-10 h-10 rounded-full -ml-3 relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color" />
-            <div className="bg-[url('/images/sushi-swap-logo.png')] w-10 h-10 rounded-full -ml-3 relative bg-cover before:absolute before:top-0 before:left-0 before:w-full before:h-full before:rounded-full before:bg-white before:opacity-80 before:mix-blend-color" />
+          <div className="flex items-center origin-left">
+            <OtherLogo bgClassName="bg-[url('/images/uniswap-logo.png')] " />
+            <OtherLogo bgClassName="bg-[url('/images/x-logo.png')] -ml-2 lg:-ml-3" />
+            <OtherLogo bgClassName="bg-[url('/images/curve-logo-slider.png')] -ml-2 lg:-ml-3 " />
+            <OtherLogo bgClassName="bg-[url('/images/pancake-swap-logo.png')] -ml-2 lg:-ml-3" />
+            <OtherLogo bgClassName="bg-[url('/images/sushi-swap-logo.png')] -ml-2 lg:-ml-3" />
           </div>
 
-          <div className="flex justify-between items-center gap-5">
-            <span className="text-24">Only supports</span>
-            <span className="text-40 block min-w-[166px]">ERC-20</span>
+          <div className="flex justify-between items-center gap-2 lg:gap-3 2xl::gap-5">
+            <span className="text-14 lg:text-18 2xl:text-24 block min-w-[105px] lg:min-w-[134px] 2xl:min-w-[180px] text-secondary-text">
+              Only supports
+            </span>
+            <span className="text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A]">
+              ERC-20
+            </span>
           </div>
         </div>
-        <div className="relative h-[180px] rounded-3 overflow-hidden">
+        <div className="relative rounded-3 overflow-hidden">
           <div className="bg-blue w-1 absolute left-0 h-full z-10 animate-line-red"></div>
           <div className="absolute h-full z-10 -translate-x-full animate-red-shift-gradient"></div>
           <SliderPlaceholderImage color={SliderColor.RED} />

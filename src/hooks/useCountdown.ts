@@ -1,37 +1,50 @@
 import { useEffect, useState } from "react";
 
-const useCountdown = (targetDate) => {
+export const useCountdown = (targetDate: Date | string | number) => {
   const countDownDate = new Date(targetDate).getTime();
-
-  const [countDown, setCountDown] = useState(countDownDate - new Date().getTime());
+  const [countDown, setCountDown] = useState(countDownDate - Date.now());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountDown(countDownDate - new Date().getTime());
+      const distance = countDownDate - Date.now();
 
-      if (Date.now() - countDownDate > 0) {
+      if (distance <= 0) {
+        setCountDown(0);
         clearInterval(interval);
+      } else {
+        setCountDown(distance);
       }
     }, 1000);
 
     return () => clearInterval(interval);
   }, [countDownDate]);
 
-  return getReturnValues(countDown);
+  return formatCountdown(countDown);
 };
 
-function formatTo2Digits(number: number) {
-  return String(number).padStart(2, "0");
+function formatCountdown(diff: number) {
+  if (diff <= 0) return "Finished";
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const totalHours = Math.floor(totalMinutes / 60);
+  const totalDays = Math.floor(totalHours / 24);
+
+  if (totalDays > 0) {
+    return `${totalDays}d left`;
+  }
+
+  if (totalHours >= 1) {
+    const hours = totalHours;
+    const minutes = totalMinutes % 60;
+    return `${hours}h ${minutes}m left`;
+  }
+
+  if (totalMinutes >= 1) {
+    const minutes = totalMinutes;
+    const seconds = totalSeconds % 60;
+    return `${minutes}m ${seconds}s left`;
+  }
+
+  return `${totalSeconds}s left`;
 }
-
-const getReturnValues = (countDown) => {
-  // calculate time left
-  const days = formatTo2Digits(Math.floor(countDown / (1000 * 60 * 60 * 24)));
-  const hours = formatTo2Digits(Math.floor((countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-  const minutes = formatTo2Digits(Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60)));
-  const seconds = formatTo2Digits(Math.floor((countDown % (1000 * 60)) / 1000));
-
-  return [days, hours, minutes, seconds];
-};
-
-export { useCountdown };

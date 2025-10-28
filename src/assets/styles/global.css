@@ -301,6 +301,19 @@ div[role="dialog"]:focus {
         opacity: 1;
     }
 }
+
+@keyframes animate-approval-red-mobile {
+    from {
+        top: 16px;
+        opacity: 0;
+    }
+
+    to {
+        top: -16px;
+        opacity: 1;
+    }
+}
+
 @keyframes animate-approval-green-top {
     from {
         top: 20px;
@@ -407,13 +420,23 @@ div[role="dialog"]:focus {
     --p: 0%;
     display: inline-block;
 
-    /* маска під кутом 45° */
     mask: linear-gradient(-135deg, #000 0 var(--p), transparent var(--p));
 
     animation:
             reveal-diagonal var(--dur0) linear forwards,
             reveal-diagonal var(--dur3) linear var(--del3) reverse forwards,
             reveal-diagonal var(--dur11) var(--del11) linear forwards;
+}
+
+.reveal-diagonal-l-mobile {
+    --p: 0%;
+    display: inline-block;
+
+    mask: linear-gradient(80deg, #000 0 var(--p), transparent var(--p));
+
+    animation:
+            reveal-diagonal var(--dur0) linear forwards,
+            reveal-diagonal var(--dur3) linear var(--del3) reverse forwards;
 }
 
 /* reveal left red block and remove slightly after. reveal again in the end of animation */
@@ -423,6 +446,13 @@ div[role="dialog"]:focus {
             animate-approval-red var(--dur1) ease-in-out var(--del1) forwards,
             animate-approval-red var(--dur2) ease-in-out var(--del2) reverse forwards,
             animate-approval-red var(--dur12) ease-in-out var(--del12) forwards;
+}
+
+.animate-approval-red-mobile {
+    opacity: 0;
+    animation:
+            animate-approval-red-mobile var(--dur1) ease-in-out var(--del1) forwards,
+            animate-approval-red-mobile var(--dur2) ease-in-out var(--del2) reverse forwards;
 }
 
 .large-warn {
@@ -436,6 +466,16 @@ div[role="dialog"]:focus {
             appear-1 var(--dur12) ease-in-out var(--del12) forwards;
 }
 
+.large-warn-mobile {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-warn-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 var(--dur1) linear var(--del1) forwards,
+            appear-1 var(--dur2) linear var(--del2) reverse forwards;
+}
+
 /* move from left to right standard picker with re-color, color right part with red at the end*/
 .animate-erc {
     background: linear-gradient(90deg, var(--start), var(--end));
@@ -447,12 +487,25 @@ div[role="dialog"]:focus {
     animation: moveAndColorBottom var(--dur4) ease-in-out var(--del4) forwards;
 }
 
-.animate-erc-bg {
-    background: linear-gradient(90deg, var(--start-bg), theme("colors.secondary-bg"), theme("colors.primary-bg"));
-    animation: erc-bg var(--dur11) ease-in-out var(--del11) forwards;
+@media screen and (min-width: 768px) {
+    .animate-erc-bg {
+
+        background: linear-gradient(90deg, var(--start-bg), theme("colors.secondary-bg"), theme("colors.primary-bg"));
+        animation: erc-bg var(--dur11) ease-in-out var(--del11) forwards;
+    }
 }
 
+
 .large-shield {
+    opacity: 0;
+    background-image: url("/images/why-choose/large-shield-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation:
+            appear-1 var(--dur4) linear var(--del4) forwards;
+}
+
+.large-shield-mobile {
     opacity: 0;
     background-image: url("/images/why-choose/large-shield-bg.svg");
     background-repeat: no-repeat;
@@ -472,10 +525,27 @@ div[role="dialog"]:focus {
     animation: reveal-diagonal var(--dur5) linear var(--del5) forwards;
 }
 
+.reveal-diagonal-br-mobile {
+    --p: 0%;
+    display: inline-block;
+
+    /* маска під кутом 45° */
+    mask: linear-gradient(80deg, #000 0 var(--p), transparent var(--p));
+
+    animation: reveal-diagonal var(--dur5) linear var(--del5) forwards;
+}
+
+
 .animate-approval-green-bottom {
     opacity: 0;
     animation: animate-approval-red var(--dur6) var(--del6) ease-in-out forwards;
 }
+
+.animate-approval-green-bottom-mobile {
+    opacity: 0;
+    animation: animate-approval-red-mobile var(--dur6) var(--del6) ease-in-out forwards;
+}
+
 
 .animate-strike {
     animation:
@@ -499,6 +569,11 @@ div[role="dialog"]:focus {
 .animate-approval-green-top {
     opacity: 0;
     animation: animate-approval-green-top var(--dur9) ease-in-out var(--del9) forwards;
+}
+
+.animate-approval-green-top-mobile {
+    opacity: 0;
+    animation: animate-approval-red-mobile var(--dur9) var(--del9) ease-in-out forwards;
 }
 
 /*play gas animation with safe choice label */
