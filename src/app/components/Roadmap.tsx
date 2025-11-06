@@ -27,18 +27,20 @@ function SchemeItem({
   return (
     <div
       className="group flex flex-col gap-4 relative pr-[15px] w-full
-      2xl:[&:nth-child(1)]:order-[1] 2xl:[&:nth-child(2)]:order-[2] 2xl:[&:nth-child(3)]:order-[3] 2xl:[&:nth-child(4)]:order-[4] 2xl:[&:nth-child(5)]:order-[6] 2xl:[&:nth-child(6)]:col-start-3 2xl:[&:nth-child(6)]:col-span-1 2xl:[&:nth-child(6)]:order-[5]
-      lg:[&:nth-child(1)]:order-[1] lg:[&:nth-child(2)]:order-[2] lg:[&:nth-child(3)]:order-[3] lg:[&:nth-child(4)]:order-[6] lg:[&:nth-child(5)]:order-[5] lg:[&:nth-child(6)]:order-[4]
-      sm:[&:nth-child(1)]:order-[1] sm:[&:nth-child(2)]:order-[2] sm:[&:nth-child(3)]:order-[4] sm:[&:nth-child(4)]:order-[3] sm:[&:nth-child(5)]:order-[5] sm:[&:nth-child(6)]:order-[6]
-      [&:nth-child(1)]:order-[1] [&:nth-child(2)]:order-[2] [&:nth-child(3)]:order-[3] [&:nth-child(4)]:order-[4] [&:nth-child(5)]:order-[5] [&:nth-child(6)]:order-[6]
+      2xl:[&:nth-child(1)]:order-[1] 2xl:[&:nth-child(2)]:order-[2] 2xl:[&:nth-child(3)]:order-[3] 2xl:[&:nth-child(4)]:order-[4] 2xl:[&:nth-child(5)]:order-[7] 2xl:[&:nth-child(6)]:order-[6] 2xl:[&:nth-child(7)]:col-start-2 2xl:[&:nth-child(7)]:col-span-1 2xl:[&:nth-child(7)]:order-[5]
+      lg:[&:nth-child(1)]:order-[1] lg:[&:nth-child(2)]:order-[2] lg:[&:nth-child(3)]:order-[3] lg:[&:nth-child(4)]:order-[6] lg:[&:nth-child(5)]:order-[5] lg:[&:nth-child(6)]:order-[4] lg:[&:nth-child(7)]:order-[7] lg:[&:nth-child(7)]:col-start-1
+      sm:[&:nth-child(1)]:order-[1] sm:[&:nth-child(2)]:order-[2] sm:[&:nth-child(3)]:order-[4] sm:[&:nth-child(4)]:order-[3] sm:[&:nth-child(5)]:order-[5] sm:[&:nth-child(6)]:order-[6] sm:[&:nth-child(7)]:col-start-2 sm:[&:nth-child(7)]:col-span-1 sm:[&:nth-child(7)]:order-[7]
+      [&:nth-child(1)]:order-[1] [&:nth-child(2)]:order-[2] [&:nth-child(3)]:order-[3] [&:nth-child(4)]:order-[4] [&:nth-child(5)]:order-[5] [&:nth-child(6)]:order-[6] [&:nth-child(7)]:order-[7]
     "
     >
       <div className="flex gap-5 items-center">
         <div
           className={clsx(
             "w-12 h-12 rounded-full border-2 flex-shrink-0 flex items-center justify-center",
-            isPassed || isActive ? "border-purple" : "border-[#848484]",
-            isActive ? "bg-purple text-secondary-bg" : "bg-primary-bg text-primary-text",
+            isPassed || isActive ? "border-purple" : "border-secondary-border",
+            isActive
+              ? "bg-purple text-secondary-bg shadow shadow-purple/60"
+              : "bg-primary-bg text-primary-text",
             !isActive && !isPassed && "text-tertiary-text border-transparent",
           )}
         >
@@ -46,14 +48,16 @@ function SchemeItem({
         </div>
         <div
           className={clsx(
-            "relative w-full text-[#848484] -mr-[30px]",
+            "relative w-full  -mr-[30px]",
             "2xl:group-[&:nth-child(5)]:hidden sm:max-lg:group-[&:nth-child(2)]:hidden sm:max-2xl:group-[&:nth-child(3)]:hidden lg:group-[&:nth-child(4)]:hidden sm:max-lg:group-[&:nth-child(6)]:hidden",
-            "max-sm:group-[&:nth-child(1)]:hidden max-sm:group-[&:nth-child(2)]:hidden max-sm:group-[&:nth-child(3)]:hidden max-sm:group-[&:nth-child(4)]:hidden max-sm:group-[&:nth-child(5)]:hidden max-sm:group-[&:nth-child(6)]:hidden",
-            "lg:group-[&:nth-child(5)]:rotate-180 lg:group-[&:nth-child(6)]:rotate-180 sm:max-lg:group-[&:nth-child(4)]:rotate-180",
-            (isPassed || isActive) && "text-purple",
+            "max-sm:group-[&:nth-child(1)]:hidden max-sm:group-[&:nth-child(2)]:hidden max-sm:group-[&:nth-child(3)]:hidden max-sm:group-[&:nth-child(4)]:hidden max-sm:group-[&:nth-child(5)]:hidden max-sm:group-[&:nth-child(6)]:hidden max-2xl:group-[&:nth-child(7)]:hidden",
+            "lg:group-[&:nth-child(5)]:rotate-180 lg:group-[&:nth-child(6)]:rotate-180 lg:group-[&:nth-child(7)]:rotate-180 sm:max-lg:group-[&:nth-child(4)]:rotate-180",
+            isPassed || isActive ? "text-purple" : "text-secondary-border",
           )}
         >
-          <div className={clsx("h-0.5 bg-[#848484]", (isPassed || isActive) && "bg-purple")} />
+          <div
+            className={clsx("h-0.5 bg-secondary-border", (isPassed || isActive) && "bg-purple")}
+          />
           <svg
             className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2"
             width="11"
@@ -72,8 +76,12 @@ function SchemeItem({
         </div>
         <div
           className={clsx(
-            "hidden absolute text-[#848484] h-[calc(100%_+_40.5px)] border-2 border-l-0 rounded-r-5 border-[#848484] left-[68px] top-6 w-[calc(100%_-_68px)] 2xl:group-[&:nth-child(4)]:block lg:max-2xl:group-[&:nth-child(3)]:block sm:max-lg:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(1)]:block max-sm:group-[&:nth-child(3)]:block max-sm:group-[&:nth-child(5)]:block",
-            isPassed && "border-purple text-purple",
+            "hidden absolute  h-[calc(100%_+_40.5px)] border-2 border-l-0 rounded-r-5  left-[68px] top-6 w-[calc(100%_-_68px)]",
+            "2xl:group-[&:nth-child(4)]:block lg:max-2xl:group-[&:nth-child(3)]:block sm:max-lg:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(1)]:block sm:max-lg:group-[&:nth-child(6)]:block",
+            "max-sm:group-[&:nth-child(3)]:block max-sm:group-[&:nth-child(5)]:block",
+            isPassed
+              ? "border-purple text-purple"
+              : "text-secondary-border border-secondary-border",
           )}
         >
           <svg
@@ -94,8 +102,11 @@ function SchemeItem({
         </div>
         <div
           className={clsx(
-            "hidden absolute w-[18px] border-r-0 border-2 rounded-l-2 top-6 -left-[34px] h-[calc(100%_+_40.5px)] text-[#848484] sm:max-lg:group-[&:nth-child(4)]:block max-sm:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(4)]:block",
-            isPassed && "border-purple text-purple",
+            "hidden absolute w-[18px] border-r-0 border-2 rounded-l-2 top-6 -left-[34px] h-[calc(100%_+_40.5px)]",
+            "sm:max-lg:group-[&:nth-child(4)]:block max-sm:group-[&:nth-child(2)]:block max-sm:group-[&:nth-child(4)]:block lg:max-2xl:group-[&:nth-child(6)]:block max-sm:group-[&:nth-child(6)]:block",
+            isPassed
+              ? "border-purple text-purple"
+              : "border-secondary-border text-secondary-border",
           )}
         >
           <svg
@@ -117,7 +128,14 @@ function SchemeItem({
       </div>
 
       <div>
-        <p className="text-20 text-secondary-text font-bold mb-1">{date}</p>
+        <p
+          className={clsx(
+            "text-20 font-bold mb-1",
+            isActive ? "text-purple" : "text-secondary-text",
+          )}
+        >
+          {date}
+        </p>
         <div className="text-secondary-text text-18 -mr-[15px]">{text}</div>
       </div>
     </div>
@@ -162,7 +180,7 @@ export default function Roadmap() {
         }
       />
       <Container>
-        <div className="min-w-full justify-items-end grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 lg:pt-[60px] pt-6 max-lg:pl-8 max-lg:pr-0 -mt-12">
+        <div className="min-w-full justify-items-end grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 lg:pt-[60px] pt-6 max-2xl:pl-8 max-lg:pr-0 -mt-12">
           <SchemeItem
             isPassed
             icon="aggressive"
@@ -221,17 +239,28 @@ export default function Roadmap() {
             }
           />
           <SchemeItem
-            isActive
+            isPassed
             icon="code"
-            date={"Q1 2025 (January-March)"}
+            date={"Q1-Q3 2025 (January-September)"}
             text={
               <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Finalizing internal security audit</BulletListItem>
                 <BulletListItem>External security audit</BulletListItem>
                 <BulletListItem>D223 listing on CEX (BitMart)</BulletListItem>
+                <BulletListItem>Fiat on ramp</BulletListItem>
+              </ul>
+            }
+          />
+          <SchemeItem
+            isActive
+            icon="evm"
+            date={"Q4 2025 (September-December)"}
+            text={
+              <ul className="flex flex-col gap-1 pr-2">
                 <BulletListItem>Launch DEX223 on Ethereum Mainnet</BulletListItem>
                 <BulletListItem>Launch DEX223 on more EVM chains</BulletListItem>
-                <BulletListItem>EVM deployment schedule to be released</BulletListItem>
+                <BulletListItem>Revenue feature release</BulletListItem>
+                <BulletListItem>Margin module security audit</BulletListItem>
               </ul>
             }
           />
@@ -240,9 +269,7 @@ export default function Roadmap() {
             date={"Future Milestones"}
             text={
               <ul className="flex flex-col gap-1 pr-2">
-                <BulletListItem>Integration of AI Agents</BulletListItem>
-                <BulletListItem>Traditional Stock trading functionality</BulletListItem>
-                <BulletListItem>NFT&apos;s</BulletListItem>
+                <BulletListItem>Margin trading support</BulletListItem>
               </ul>
             }
           />

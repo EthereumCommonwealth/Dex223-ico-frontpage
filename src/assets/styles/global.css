@@ -415,6 +415,10 @@ div[role="dialog"]:focus {
     }
 }
 
+.animations-paused * {
+    animation: none !important;
+}
+
 /* reveal left dash and remove after red block removed */
 .reveal-diagonal-l {
     --p: 0%;

@@ -13,11 +13,23 @@ export default function Banner() {
         className="w-250 h-250 -right-[461px] bg-cover top-0 opacity-10 -z-10 -scale-100"
       />
       <div className="grid grid-cols-1 lg:grid-cols-[6fr_1fr_5fr] w-full pt-10 lg:pt-[80px]">
-        <div>
+        <div className="flex flex-col justify-center">
+          <div className="flex mb-3">
+            <div className="relative py-1.5 text-18">
+              <div className="absolute top-0 left-0 right-0 w-full h-px bg-gradient-to-r from-secondary-bg via-[#C76060] to-secondary-bg" />
+              <div className="absolute bottom-0 left-0 right-0 w-full h-px bg-gradient-to-r from-secondary-bg via-[#C76060] to-secondary-bg" />
+              <p className="bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A] font-medium">
+                ERC-20 standard is insecure
+              </p>
+            </div>
+          </div>
+
           <h1 className="text-30 lg:text-48 3xl:text-56 mb-3 text-medium">
-            <span className="text-green">DEX223</span>: Decentralized exchange for{" "}
-            <span className="text-green">ERC-223</span> &{" "}
-            <span className="text-purple">ERC-20</span> tokens!
+            First decentralized exchange to support{" "}
+            <span className="bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
+              ERC-223
+            </span>{" "}
+            standard
           </h1>
           <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8">
             Other exchanges keep supporting ERC-20 leading to proliferation of insecure standards
@@ -48,14 +60,6 @@ export default function Banner() {
                 </span>
               </Button>
             </a>
-          </div>
-
-          <div className="rounded-3 border-l-4 border-green flex gap-2 py-2 lg:py-3.5 bg-primary-bg pl-3 pr-4 lg:pr-5 lg:pl-4 w-full">
-            <Svg className="flex-shrink-0 text-green mt-px" iconName="calendar" />
-            <p className="text-secondary-text text-16 lg:text-18 font-medium">
-              Dex223 achieved its inaugural centralized exchange (CEX) listing of D223 token on
-              January 25, 2025. Currently, Dex223 smart contracts are undergoing an external audit.
-            </p>
           </div>
         </div>
         <div />

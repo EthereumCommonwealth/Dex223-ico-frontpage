@@ -197,7 +197,7 @@ export default function CompareAnimationSlider() {
             <span className="text-14 lg:text-18 2xl:text-24 font-medium text-secondary-text  block min-w-[105px] lg:min-w-[130px] 2xl:min-w-[180px] ">
               First to support
             </span>
-            <p className="text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
+            <p className="font-medium text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
               ERC-223
             </p>
           </div>
@@ -220,11 +220,11 @@ export default function CompareAnimationSlider() {
             <OtherLogo bgClassName="bg-[url('/images/sushi-swap-logo.png')] -ml-2 lg:-ml-3" />
           </div>
 
-          <div className="flex justify-between items-center gap-2 lg:gap-3 2xl::gap-5">
-            <span className="text-14 lg:text-18 2xl:text-24 block min-w-[105px] lg:min-w-[134px] 2xl:min-w-[180px] text-secondary-text">
+          <div className="flex justify-between items-center gap-2 lg:gap-3 2xl:gap-5">
+            <span className="text-14 lg:text-18 2xl:text-24 font-medium block min-w-[105px] lg:min-w-[134px] 2xl:min-w-[180px] text-secondary-text">
               Only supports
             </span>
-            <span className="text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A]">
+            <span className="font-medium text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A]">
               ERC-20
             </span>
           </div>

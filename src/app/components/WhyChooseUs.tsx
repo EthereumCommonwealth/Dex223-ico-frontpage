@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -5,6 +7,7 @@ import React from "react";
 import ArticleHeading from "@/components/ArticleHeading";
 import Svg from "@/components/atoms/Svg";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import { useOnScreen } from "@/hooks/useOnScreen";
 
 function RedLeftBlock() {
   return (
@@ -180,6 +183,11 @@ function GreenBottomBlockMobile() {
 }
 
 export default function WhyChooseUs() {
+  const { ref, isVisible } = useOnScreen<HTMLDivElement>({
+    once: true,
+    rootMargin: "0px 0px -50% 0px",
+  });
+
   return (
     <NeonBlock
       icon="target"
@@ -203,8 +211,13 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="col-span-2 row-span-1 mt-6 md:mt-[60px]">
-            <div className="flex justify-center  max-md:pt-[340px]">
-              <div className="max-2xl:scale-75 max-[1090px]:scale-[0.65] max-[925px]:scale-[0.6] max-[865px]:scale-[0.55] max-[800px]:scale-[0.5] max-[1090px]:-mt-10 max-[925px]:-mt-12 max-[865px]:-mt-[90px] max-[800px]:-mt-[140px] max-md:scale-110 max-md:mt-12 max-sm:scale-100 max-sm:mt-0 origin-center w-[296px] md:w-[470px] rounded-5 px-4 md:px-10 pb-4 md:pb-10 bg-primary-bg relative">
+            <div ref={ref} className="flex justify-center  max-md:pt-[340px]">
+              <div
+                className={clsx(
+                  "max-2xl:scale-75 max-[1090px]:scale-[0.65] max-[925px]:scale-[0.6] max-[865px]:scale-[0.55] max-[800px]:scale-[0.5] max-[1090px]:-mt-10 max-[925px]:-mt-12 max-[865px]:-mt-[90px] max-[800px]:-mt-[140px] max-md:scale-110 max-md:mt-12 max-sm:scale-[0.62] max-sm:-mt-[230px] origin-center w-[296px] md:w-[470px] rounded-5 px-4 md:px-10 pb-4 md:pb-10 bg-primary-bg relative",
+                  isVisible ? "animations-ready" : "animations-paused",
+                )}
+              >
                 <div className="w-[280px] h-[254px] max-md:hidden md:w-[630px] md:h-[573px] large-warn absolute -z-10 md:-left-[57px] -top-4 md:bottom-0 max-md:-translate-y-full md:-translate-x-1/2" />
                 <div className="w-[280px] h-[254px] md:hidden md:w-[630px] md:h-[573px] large-warn-mobile absolute -z-10 md:-left-[57px] -top-4 md:bottom-0 max-md:-translate-y-full md:-translate-x-1/2" />
                 <div className="w-[296px] md:w-[531px] max-md:hidden h-[365px] md:h-[654px] large-shield absolute -z-10 top-4 right-0 max-md:-translate-y-full md:-right-[130px] md:-bottom-[41px]" />

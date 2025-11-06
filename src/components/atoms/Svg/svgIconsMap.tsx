@@ -111,6 +111,7 @@ export const svgIconsNames = [
   "gas",
   "low",
   "edit-off",
+  "evm",
 ] as const;
 
 export type IconName = (typeof svgIconsNames)[number];
