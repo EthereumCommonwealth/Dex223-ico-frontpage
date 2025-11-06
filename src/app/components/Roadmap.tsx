@@ -37,9 +37,11 @@ function SchemeItem({
         <div
           className={clsx(
             "w-12 h-12 rounded-full border-2 flex-shrink-0 flex items-center justify-center",
-            isPassed || isActive ? "border-purple" : "border-secondary-border",
+            isPassed || isActive
+              ? "text-purple border-purple"
+              : "border-secondary-border text-secondary-border",
             isActive
-              ? "bg-purple text-secondary-bg shadow shadow-purple/60"
+              ? "bg-purple  text-secondary-bg shadow shadow-purple/60"
               : "bg-primary-bg text-primary-text",
             !isActive && !isPassed && "text-tertiary-text border-transparent",
           )}
@@ -56,7 +58,7 @@ function SchemeItem({
           )}
         >
           <div
-            className={clsx("h-0.5 bg-secondary-border", (isPassed || isActive) && "bg-purple")}
+            className={clsx("h-0.5 ", isPassed || isActive ? "bg-purple" : "bg-secondary-border")}
           />
           <svg
             className="absolute right-0 top-1/2 translate-x-full -translate-y-1/2"
