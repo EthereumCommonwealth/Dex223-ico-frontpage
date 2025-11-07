@@ -98,9 +98,9 @@ function GreenBottomBlock() {
 
 function RedLeftBlockMobile() {
   return (
-    <div className="text-16 md:text-18 font-normal absolute -translate-x-1/2 w-[16px] h-[464px] bottom-1/2  md:hidden">
+    <div className="text-16 md:text-18 font-normal absolute -translate-x-1/2 w-[16px] h-[250px] bottom-1/2  md:hidden">
       <div className="absolute w-full h-full bottom-0 left-0 reveal-diagonal-l-mobile">
-        <Image src="/images/dashed-red-line-mobile-1.svg" alt={""} width={290} height={279} />
+        <Image src="/images/dashed-red-line-mobile-1.svg" alt={""} width={16} height={250} />
       </div>
       <div className="absolute left-full top-4 flex flex-col gap-3 text-red-text animate-approval-red-mobile">
         <div className="red-shadow border border-red-light flex items-center gap-2  min-w-[264px] pl-5 rounded-3 py-2 bg-gradient-to-r from-red-bg to-secondary-bg">

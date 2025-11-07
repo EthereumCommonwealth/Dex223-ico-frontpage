@@ -15,19 +15,19 @@ body {
 }
 
 :root {
-    --dur0: 0.5s; /*red dash*/
-    --dur1: 1s; /*red block*/
-    --dur2: 0.5s; /*red block*/
-    --dur3: 0.5s; /*red dash*/
-    --dur4: 1s; /*slider to right*/
-    --dur5: 0.5s; /*green bottom dash*/
-    --dur6: 1s; /*green bottom block*/
-    --dur7: 0.5s; /*strike*/
-    --dur8: 0.5s; /*green top dash*/
-    --dur9: 1s; /*green top block*/
-    --dur10: 1s; /*gas and safe choice label*/
-    --dur11: 0.5s; /*red dash re-appear*/
-    --dur12: 1s; /*red all re-appear*/
+     --dur0: 0.35s; /*red dash*/
+    --dur1: 0.7s; /*red block*/
+    --dur2: 0.35s; /*red block*/
+    --dur3: 0.35s; /*red dash*/
+    --dur4: 0.7s; /*slider to right*/
+    --dur5: 0.35s; /*green bottom dash*/
+    --dur6: 0.7s; /*green bottom block*/
+    --dur7: 0.35s; /*strike*/
+    --dur8: 0.35s; /*green top dash*/
+    --dur9: 0.7s; /*green top block*/
+    --dur10: 0.7s; /*gas and safe choice label*/
+    --dur11: 0.35s; /*red dash re-appear*/
+    --dur12: 0.7s; /*red all re-appear*/
 
     --del0: 0s; /*red dash*/
     --del1: calc(var(--del0) + var(--dur0) - 0.5s); /*red block*/
