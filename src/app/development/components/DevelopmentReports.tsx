@@ -11,6 +11,22 @@ import NeonBlock from "../../../components/organisms/NeonBlock";
 
 const reports = [
   {
+    text: "March 2026",
+    href: "https://gist.github.com/Dexaran/73edea9e538782ef06ea120d036627eb",
+  },
+  {
+    text: "February 2026",
+    href: "https://gist.github.com/Dexaran/73edea9e538782ef06ea120d036627eb",
+  },
+  {
+    text: "November 2025",
+    href: "https://gist.github.com/Dexaran/73e95e9dc36134879345ff7e2837bae2",
+  },
+  {
+    text: "October 2025",
+    href: "https://gist.github.com/Dexaran/73e95e9dc36134879345ff7e2837bae2",
+  },
+  {
     text: "September 2025",
     href: "https://gist.github.com/Dexaran/5f403cd65775dc45b123cd5816837cf0",
   },
