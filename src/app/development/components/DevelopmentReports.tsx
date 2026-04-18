@@ -19,6 +19,14 @@ const reports = [
     href: "https://gist.github.com/Dexaran/73edea9e538782ef06ea120d036627eb",
   },
   {
+    text: "January 2026",
+    href: "https://gist.github.com/Dexaran/394df2ed452570f73d6ce52be72a62e4",
+  },
+  {
+    text: "December 2025",
+    href: "https://gist.github.com/Dexaran/394df2ed452570f73d6ce52be72a62e4",
+  },
+  {
     text: "November 2025",
     href: "https://gist.github.com/Dexaran/73e95e9dc36134879345ff7e2837bae2",
   },
