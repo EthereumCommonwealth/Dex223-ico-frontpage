@@ -47,7 +47,7 @@ export default function Banner() {
             </a>
             <a
               target="_blank"
-              href="https://www.bitmart.com/trade/en-US?type=spot&symbol=D223_USDT"
+              href="https://app.dex223.io/en/swap?tokenB=0x675eb5922604F434bcaAC4B4B433D8668925DD67"
             >
               <Button
                 size={ButtonSize.EXTRA_LARGE}
