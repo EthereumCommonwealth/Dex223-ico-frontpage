@@ -88,16 +88,36 @@
   },
   "Airdrops": {
     "title": "空投",
-    "description": "空投是指向用户一次性分发代币，通常作为对早期参与项目互动的奖励。",
-    "howItWorksLink": "点击此处了解运作方式。",
-    "table": {
-      "name": "名称",
-      "linkToGithub": "GitHub 链接"
-    },
-    "snapshotDate": "快照日期",
-    "snapshotBlock": "快照区块",
+    "subtitle": "面向 Dex223 社区的一次性代币分发。",
+    "name": "空投 #{number}",
     "upcoming": "即将开始",
-    "githubAnnouncement": "Github 公告"
+    "details": {
+      "snapshotDate": "快照日期",
+      "reward": "奖励",
+      "snapshotBlock": "快照区块",
+      "toBeAnnounced": "待公布"
+    },
+    "followAnnouncements": "关注公告",
+    "howItWorks": {
+      "title": "运作方式",
+      "snapshot": {
+        "title": "快照",
+        "text": "在快照区块记录余额。"
+      },
+      "announcement": {
+        "title": "公告",
+        "text": "分发前公布详细信息。"
+      },
+      "distribution": {
+        "title": "分发",
+        "text": "代币将发送至符合条件的钱包。"
+      }
+    },
+    "safety": "我们绝不会索要你的助记词或私钥。请只使用官方链接。",
+    "past": {
+      "title": "往期空投",
+      "empty": "暂无往期空投"
+    }
   },
   "Allocation": {
     "overline": "分配",
