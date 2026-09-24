@@ -204,6 +204,7 @@ export default function DevelopmentReports({ refEl }) {
                   <li className="border-b border-primary-border" key={label}>
                     <a
                       target="_blank"
+                      rel="noopener noreferrer"
                       href={report.href}
                       className="hover:text-green py-3.5 text-secondary-text flex gap-6 justify-between text-16 lg:text-18 duration-200"
                     >

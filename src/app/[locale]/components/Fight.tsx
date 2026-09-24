@@ -88,7 +88,7 @@ export default function Fight() {
               <p>
                 {t.rich("learnMore", {
                   link: (chunks) => (
-                    <TextLink href="https://dexaran.github.io/erc223/" isExternal text={chunks} />
+                    <TextLink href="https://dexaran.github.io/erc223/" text={chunks} />
                   ),
                 })}
               </p>

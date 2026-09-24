@@ -12,6 +12,7 @@ import Container from "@/components/Container";
 import Drawer from "@/components/Drawer";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { clsxMerge } from "@/functions/clsxMerge";
+import { linkTargetProps } from "@/functions/links";
 import { Link, usePathname } from "@/i18n/routing";
 
 const socialLinks = [
@@ -227,14 +228,9 @@ export default function Header() {
                 <Link prefetch={false} className={navLinkClassName} href="/airdrops">
                   {t("airdrops")}
                 </Link>
-                <Link
-                  prefetch={false}
-                  target="_blank"
-                  className={navLinkClassName}
-                  href="https://blog.dex223.io/"
-                >
+                <a className={navLinkClassName} href="https://blog.dex223.io/">
                   {t("blog")}
-                </Link>
+                </a>
               </ul>
             </nav>
           </div>
@@ -243,7 +239,6 @@ export default function Header() {
             <LocaleSwitcher />
             <a
               href={`https://app.dex223.io/${locale}/swap`}
-              target="_blank"
               className="sheen max-xl:hidden whitespace-nowrap group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-2 text-14 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover hocus:-translate-y-px"
             >
               {t("launchApp")}
@@ -362,8 +357,7 @@ export default function Header() {
                 {group.links.map((link) => (
                   <a
                     key={link.key}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...linkTargetProps(link.href)}
                     href={link.href}
                     className="min-h-11 flex items-center px-4 text-secondary-text duration-200 hocus:text-primary-text hocus:bg-tertiary-bg"
                   >
