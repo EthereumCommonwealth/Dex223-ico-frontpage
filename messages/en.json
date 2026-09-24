@@ -144,7 +144,7 @@
     },
     "autoListings": {
       "heading": "Transparent Auto-Listings",
-      "description": "DEX223 empowers users to freely import any existing token list from <tokenlists>tokenlists.org</tokenlists> or integrate new tokens directly through <autolisting>our auto-listing contract</autolisting>. This open, permissionless approach allows anyone to list a token without seeking approval from the exchange team or intermediaries. Acting as a decentralized alternative to traditional token lists, the auto-listing contract collects listing fees that are then distributed among DEX223 token holders as revenue. Through on-chain voting, the community also determines listing fees, reinforcing collective governance and ensuring that DEX223 remains transparent, inclusive, and owned by its users.",
+      "description": "DEX223 empowers users to freely import any existing token list from <tokenlists>tokenlists.org</tokenlists> or integrate new tokens directly through <autolisting>our auto-listing contract</autolisting>. This open, permissionless approach allows anyone to list a token without seeking approval from the exchange team or intermediaries. Listing fees paid to auto-listing contracts are collected by the listing owner today. Protocol fee sharing for stakers is rolling out through the Revenue contract. On-chain community voting for listing fees is planned next.",
       "lede": "Anyone can list a token. No permission from the exchange team needed.",
       "glyphs": {
         "import": {
@@ -156,12 +156,12 @@
           "text": "Add new tokens via <autolisting>the auto-listing contract</autolisting>."
         },
         "revenue": {
-          "title": "Fees go to holders",
-          "text": "Listing fees are shared among DEX223 token holders."
+          "title": "Fees for stakers",
+          "text": "Protocol fees can be shared with users who stake in the Revenue contract."
         },
         "voting": {
-          "title": "Community sets fees",
-          "text": "The community sets listing fees by on-chain voting."
+          "title": "Fee voting next",
+          "text": "On-chain voting for listing fees is coming soon. Until then, prices are set by the listing owner."
         }
       }
     },
@@ -204,7 +204,7 @@
     "overline": "Allocation",
     "heading": "Tokenomics",
     "paragraphs": {
-      "inspiration": "DEX223’s tokenomics draws inspiration from <link>Ethereum’s highly successful launch</link> model, emphasizing both security and sustainability. The original D223 tokens were issued in November 2023 on the Ethereum mainnet. From the moment DEX223 is launched, a fee will be charged on every on-platform trade, and those fees will be redistributed proportionally among D223 token holders.",
+      "inspiration": "DEX223’s tokenomics draws inspiration from <link>Ethereum’s highly successful launch</link> model, emphasizing both security and sustainability. The original D223 tokens were issued in November 2023 on the Ethereum mainnet. Protocol fees collected into the Revenue contract can be claimed by users who stake the staking token there.",
       "unsoldTokens": "Any tokens that remain unsold will be removed from the total supply. For instance, if 32% of platform tokens are sold, the existing tokens will claim that revenue, effectively treating the remaining 68% as non-existent. Decision will be made by DEX223 DAO on redistribution of unsold tokens from pre-ICO or public rounds.",
       "transparency": "In the spirit of financial transparency, the development team commits to publishing <link>monthly report</link> detailing the distribution and use of any funds collected through ICO events or private sales, ensuring that every aspect of DEX223’s growth and progress remains visible to the community."
     },

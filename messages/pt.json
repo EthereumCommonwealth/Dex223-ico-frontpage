@@ -144,7 +144,7 @@
     },
     "autoListings": {
       "heading": "Listagens automáticas transparentes",
-      "description": "A DEX223 permite que os usuários importem livremente qualquer lista de tokens existente do <tokenlists>tokenlists.org</tokenlists> ou integrem novos tokens diretamente pelo <autolisting>nosso contrato de listagem automática</autolisting>. Essa abordagem aberta e sem permissões permite que qualquer pessoa liste um token sem pedir aprovação à equipe da exchange ou a intermediários. Funcionando como uma alternativa descentralizada às listas de tokens tradicionais, o contrato de listagem automática arrecada taxas de listagem, que depois são distribuídas como receita entre os detentores do token DEX223. Por meio de votação on-chain, a comunidade também define as taxas de listagem, reforçando a governança coletiva e garantindo que a DEX223 continue transparente, inclusiva e pertencente aos seus usuários.",
+      "description": "A DEX223 permite importar livremente qualquer lista de tokens existente de <tokenlists>tokenlists.org</tokenlists> ou integrar novos tokens diretamente pelo <autolisting>nosso contrato de auto-listagem</autolisting>. Essa abordagem aberta e sem permissão permite que qualquer pessoa liste um token sem aprovação da equipe da exchange ou de intermediários. As taxas de listagem pagas aos contratos de auto-listagem são cobradas hoje pelo proprietário da listagem. O compartilhamento de taxas de protocolo para stakers está sendo lançado pelo contrato Revenue. A votação on-chain das taxas de listagem está prevista em seguida.",
       "lede": "Qualquer pessoa pode listar um token, sem pedir permissão à equipe da exchange.",
       "glyphs": {
         "import": {
@@ -156,12 +156,12 @@
           "text": "Adicione novos tokens pelo <autolisting>contrato de listagem automática</autolisting>."
         },
         "revenue": {
-          "title": "Taxas para os detentores",
-          "text": "As taxas de listagem são divididas entre os detentores do token DEX223."
+          "title": "Taxas para stakers",
+          "text": "As taxas de protocolo podem ser compartilhadas com quem faz stake no contrato Revenue."
         },
         "voting": {
-          "title": "A comunidade decide",
-          "text": "A comunidade define as taxas de listagem por votação on-chain."
+          "title": "Votação de taxas em seguida",
+          "text": "A votação on-chain das taxas de listagem chega em breve. Até lá, os preços são definidos pelo proprietário da listagem."
         }
       }
     },

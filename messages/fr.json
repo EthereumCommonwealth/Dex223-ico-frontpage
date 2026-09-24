@@ -144,7 +144,7 @@
     },
     "autoListings": {
       "heading": "Auto-listings transparents",
-      "description": "DEX223 permet aux utilisateurs d’importer librement n’importe quelle liste de jetons depuis <tokenlists>tokenlists.org</tokenlists> ou d’intégrer directement de nouveaux jetons via <autolisting>notre contrat d’auto-listing</autolisting>. Cette approche ouverte et sans permission permet à chacun de lister un jeton sans demander l’accord de l’équipe de la plateforme ni d’un intermédiaire. Véritable alternative décentralisée aux listes de jetons traditionnelles, le contrat d’auto-listing perçoit des frais de listing qui sont ensuite redistribués aux détenteurs du jeton DEX223 sous forme de revenus. Grâce au vote on-chain, la communauté fixe également les frais de listing, ce qui renforce la gouvernance collective et garantit que DEX223 reste transparent, inclusif et détenu par ses utilisateurs.",
+      "description": "DEX223 permet d’importer librement toute liste de tokens existante depuis <tokenlists>tokenlists.org</tokenlists> ou d’intégrer de nouveaux tokens via <autolisting>notre contrat d’auto-listing</autolisting>. Cette approche ouverte et sans permission permet à quiconque de lister un token sans l’approbation de l’équipe de l’exchange ni d’intermédiaires. Les frais de listing payés aux contrats d’auto-listing sont aujourd’hui collectés par le propriétaire du listing. Le partage des frais de protocole pour les stakers est déployé via le contrat Revenue. Un vote on-chain sur les frais de listing est prévu ensuite.",
       "lede": "Chacun peut lister un jeton, sans l’accord de l’équipe de la plateforme.",
       "glyphs": {
         "import": {
@@ -156,12 +156,12 @@
           "text": "Ajoutez de nouveaux jetons via <autolisting>le contrat d’auto-listing</autolisting>."
         },
         "revenue": {
-          "title": "Frais aux détenteurs",
-          "text": "Les frais de listing sont partagés entre les détenteurs du jeton DEX223."
+          "title": "Frais pour les stakers",
+          "text": "Les frais de protocole peuvent être partagés avec les utilisateurs qui stakent dans le contrat Revenue."
         },
         "voting": {
-          "title": "La communauté fixe les frais",
-          "text": "La communauté fixe les frais de listing par vote on-chain."
+          "title": "Vote sur les frais ensuite",
+          "text": "Le vote on-chain des frais de listing arrive bientôt. En attendant, les prix sont fixés par le propriétaire du listing."
         }
       }
     },
