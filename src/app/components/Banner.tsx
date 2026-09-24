@@ -33,7 +33,7 @@ export default function Banner() {
           </h1>
           <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8">
             Other exchanges keep supporting ERC-20 leading to proliferation of insecure standards
-            and losses of funds. DEX223 is first to support ERC-223 which solves this problems
+            and losses of funds. DEX223 is first to support ERC-223 which solves these problems
           </p>
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
