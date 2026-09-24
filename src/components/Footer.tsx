@@ -106,7 +106,7 @@ export default function Footer({ className }: Props) {
       <Container>
         <div className="py-6 lg:py-10 flex justify-between before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
           <div className="flex lg:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col lg:gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
                 {t("socialMedia")}
               </div>
@@ -116,7 +116,7 @@ export default function Footer({ className }: Props) {
                     <a
                       {...linkTargetProps(link.href)}
                       href={link.href}
-                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
+                      className="inline-flex items-center max-lg:min-h-11 font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {t(`links.${link.key}`)}
                     </a>
@@ -124,7 +124,7 @@ export default function Footer({ className }: Props) {
                 );
               })}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col lg:gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
                 {t("usefulLinks")}
               </div>
@@ -134,7 +134,7 @@ export default function Footer({ className }: Props) {
                     <a
                       {...linkTargetProps(link.href)}
                       href={link.href}
-                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
+                      className="inline-flex items-center max-lg:min-h-11 font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {t(`links.${link.key}`)}
                     </a>
@@ -142,7 +142,7 @@ export default function Footer({ className }: Props) {
                 );
               })}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col lg:gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
                 {t("partners")}
               </div>
@@ -152,7 +152,7 @@ export default function Footer({ className }: Props) {
                     <a
                       {...linkTargetProps(link.href)}
                       href={link.href}
-                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
+                      className="inline-flex items-center max-lg:min-h-11 font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {t(`links.${link.key}`)}
                     </a>
@@ -160,7 +160,7 @@ export default function Footer({ className }: Props) {
                 );
               })}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col lg:gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
                 {t("company")}
               </div>
@@ -170,7 +170,7 @@ export default function Footer({ className }: Props) {
                     <Link
                       href={link.href}
                       className={clsx(
-                        "text-16 font-medium duration-200 hover:text-green",
+                        "inline-flex items-center max-lg:min-h-11 text-16 font-medium duration-200 hover:text-green",
                         pathname.includes(link.href)
                           ? "text-green pointer-events-none"
                           : "text-secondary-text",
