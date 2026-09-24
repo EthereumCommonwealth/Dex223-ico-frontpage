@@ -6,14 +6,14 @@ import React, { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useAccount, useDisconnect } from "wagmi";
 
-import IconButton from "@/components/atoms/IconButton";
+import IconButton, { IconButtonSize } from "@/components/atoms/IconButton";
 import Svg from "@/components/atoms/Svg";
 import Container from "@/components/Container";
 import Drawer from "@/components/Drawer";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { clsxMerge } from "@/functions/clsxMerge";
 import { linkTargetProps } from "@/functions/links";
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 
 const socialLinks = [
   {
@@ -103,6 +103,18 @@ const companyLinks = [
   },
 ];
 
+const drawerNavLinks = [
+  { key: "philosophy", href: "/#philosophy", icon: "lamp" },
+  { key: "marginTrading", href: "/#margin", icon: "margin-trading" },
+  { key: "tokenomics", href: "/#tokenomics", icon: "chart" },
+  { key: "contactUs", href: "/#contact", icon: "contact" },
+  { key: "development", href: "/development", icon: "code" },
+  { key: "airdrops", href: "/airdrops", icon: "calendar" },
+] as const;
+
+const drawerNavLinkClassName =
+  "min-h-12 flex items-center gap-3 px-4 text-16 text-secondary-text duration-200 hocus:text-primary-text hocus:bg-tertiary-bg";
+
 const navLinkClassName =
   "relative whitespace-nowrap font-medium text-14 2xl:text-16 py-5 px-1.5 xl:px-2 2xl:px-3 text-secondary-text hocus:text-primary-text duration-200 after:absolute after:left-1.5 after:right-1.5 xl:after:left-2 xl:after:right-2 2xl:after:left-3 2xl:after:right-3 after:bottom-3.5 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-green after:to-green-hover after:transition-transform after:duration-300 hocus:after:scale-x-100";
 
@@ -140,6 +152,37 @@ export default function Header() {
   //     }
   //   }
   // }, []);
+
+  const pathname = usePathname();
+  const [returnFocus, setReturnFocus] = useState(true);
+  const openMenu = () => {
+    setReturnFocus(true);
+    setMenuOpened(true);
+  };
+  const closeMenu = () => setMenuOpened(false);
+
+  // On the home page an in-page link only needs to scroll. Close the drawer first so its
+  // scroll lock is released, then scroll, instead of letting the lock snap the page back.
+  const onDrawerNavigate = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const [path, hash] = href.split("#");
+    // Returning focus to the menu button would cancel the smooth scroll below.
+    setReturnFocus(false);
+    setMenuOpened(false);
+    if (!hash || pathname !== (path || "/")) {
+      return;
+    }
+    const target = document.getElementById(hash);
+    if (!target) {
+      return;
+    }
+    e.preventDefault();
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.pushState(null, "", `#${hash}`);
+      }),
+    );
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: (eventData) => {
@@ -205,9 +248,14 @@ export default function Header() {
                 className="duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
-            <div className="lg:hidden" onClick={() => setMenuOpened(true)}>
-              <IconButton iconName="menu" aria-label={t("menu")} />
-            </div>
+            <IconButton
+              className="lg:hidden"
+              iconName="menu"
+              buttonSize={IconButtonSize.LARGE}
+              aria-label={t("menu")}
+              aria-expanded={isMenuOpened}
+              onClick={openMenu}
+            />
           </div>
           {isConnected && address && (
             <div className="relative">
@@ -246,122 +294,78 @@ export default function Header() {
         <Drawer
           handlers={handlers}
           placement="left"
+          label={t("menu")}
+          returnFocus={returnFocus}
           isOpen={isMenuOpened}
           setIsOpen={() => setMenuOpened(false)}
         >
-          <div className="flex flex-col w-[320px] gap-6 mt-1">
-            <div className="flex flex-col gap-1">
-              <Link
-                onClick={() => {
-                  setMenuOpened(false);
-                }}
-                prefetch={false}
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="/#philosophy"
-              >
-                <Svg iconName="lamp" />
-                {t("philosophy")}
+          <div className="flex flex-col w-[min(320px,86vw)] min-h-full pb-6">
+            <div className="sticky top-0 z-10 flex items-center justify-between h-[66px] pl-4 pr-2 bg-primary-bg border-b border-white/[0.06]">
+              <Link prefetch={false} href="/" onClick={closeMenu} aria-label="DEX223">
+                <div className="w-[118px] h-[46px] relative">
+                  <Image src="/images/comp-dex-logo.svg" alt="" fill />
+                </div>
               </Link>
-              <Link
-                onClick={() => {
-                  setMenuOpened(false);
-                }}
-                prefetch={false}
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="/#margin"
-              >
-                <Svg iconName="margin-trading" />
-                {t("marginTrading")}
-              </Link>
-              <Link
-                onClick={() => {
-                  setMenuOpened(false);
-                }}
-                prefetch={false}
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="/#tokenomics"
-              >
-                <Svg iconName="chart" />
-                {t("tokenomics")}
-              </Link>
-              <Link
-                onClick={() => {
-                  setMenuOpened(false);
-                }}
-                prefetch={false}
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="/#contact"
-              >
-                <Svg iconName="contact" />
-                {t("contactUs")}
-              </Link>
-              <Link
-                onClick={() => {
-                  setMenuOpened(false);
-                }}
-                prefetch={false}
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="/development"
-              >
-                <Svg iconName="code" />
-                {t("development")}
-              </Link>
-              <a
-                className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
-                href="https://blog.dex223.io/"
-              >
+              <IconButton
+                iconName="close"
+                buttonSize={IconButtonSize.LARGE}
+                aria-label={t("closeMenu")}
+                onClick={closeMenu}
+              />
+            </div>
+
+            <nav className="flex flex-col py-2">
+              {drawerNavLinks.map((link) => (
+                <Link
+                  key={link.key}
+                  prefetch={false}
+                  href={link.href}
+                  onClick={(e) => onDrawerNavigate(e, link.href)}
+                  className={drawerNavLinkClassName}
+                >
+                  <Svg iconName={link.icon} />
+                  {t(link.key)}
+                </Link>
+              ))}
+              <a href="https://blog.dex223.io/" className={drawerNavLinkClassName}>
                 <Svg iconName="blog" />
                 {t("blog")}
               </a>
+            </nav>
+
+            <div className="flex items-center gap-3 px-4 pb-6">
+              <a
+                href={`https://app.dex223.io/${locale}/swap`}
+                className="flex-grow inline-flex items-center justify-center gap-1.5 h-12 px-5 rounded-2 text-16 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover"
+              >
+                {t("launchApp")}
+                <Svg iconName="forward" size={20} />
+              </a>
+              <LocaleSwitcher placement="bottom-end" portal={false} />
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-3">{t("socialMedia")}</div>
-              {socialLinks.map((link) => {
-                return (
-                  <div key={link.key}>
-                    <a
-                      {...linkTargetProps(link.href)}
-                      href={link.href}
-                      className="flex items-center gap-3 text-secondary-text pl-4"
-                    >
-                      {t(`links.${link.key}`)}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-3">{t("usefulLinks")}</div>
-              {usefulLinks.map((link) => {
-                return (
-                  <div key={link.key}>
-                    <a
-                      {...linkTargetProps(link.href)}
-                      href={link.href}
-                      className="flex items-center gap-3 text-secondary-text pl-4"
-                    >
-                      {t(`links.${link.key}`)}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-4">{t("partners")}</div>
-              {partners.map((link) => {
-                return (
-                  <div key={link.key}>
-                    <a
-                      {...linkTargetProps(link.href)}
-                      href={link.href}
-                      className="flex items-center gap-3 text-secondary-text pl-4"
-                    >
-                      {t(`links.${link.key}`)}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
+
+            {[
+              { title: t("socialMedia"), links: socialLinks },
+              // Blog is already in the main list above.
+              { title: t("usefulLinks"), links: usefulLinks.filter((l) => l.key !== "blog") },
+              { title: t("partners"), links: partners },
+            ].map((group) => (
+              <div key={group.title} className="flex flex-col pb-4">
+                <div className="text-tertiary-text uppercase text-12 font-semibold tracking-[0.14em] px-4 py-2">
+                  {group.title}
+                </div>
+                {group.links.map((link) => (
+                  <a
+                    key={link.key}
+                    {...linkTargetProps(link.href)}
+                    href={link.href}
+                    className="min-h-11 flex items-center px-4 text-secondary-text duration-200 hocus:text-primary-text hocus:bg-tertiary-bg"
+                  >
+                    {t(`links.${link.key}`)}
+                  </a>
+                ))}
+              </div>
+            ))}
           </div>
         </Drawer>
       </Container>

@@ -48,7 +48,14 @@ function LocaleMark({ locale }: { locale: Locale }) {
   );
 }
 
-export default function LocaleSwitcher({ placement = "bottom-end" as const }) {
+export default function LocaleSwitcher({
+  placement = "bottom-end" as const,
+  portal = true,
+}: {
+  placement?: "bottom-end" | "bottom-start" | "top-end" | "top-start";
+  /** Render in place instead of at the end of <body>, e.g. inside a modal drawer. */
+  portal?: boolean;
+}) {
   const t = useTranslations("Navigation");
   const current = useLocale() as Locale;
   const pathname = usePathname();
@@ -102,7 +109,7 @@ export default function LocaleSwitcher({ placement = "bottom-end" as const }) {
       </button>
 
       {isOpen && (
-        <FloatingPortal>
+        <FloatingPortal root={portal ? undefined : refs.domReference.current?.parentElement}>
           <FloatingFocusManager context={context} modal={false}>
             <ul
               ref={refs.setFloating}
