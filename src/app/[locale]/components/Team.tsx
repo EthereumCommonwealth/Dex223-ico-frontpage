@@ -35,7 +35,7 @@ const team = [
     socials: {
       twitter: "https://twitter.com/docranroland",
       linkedin: "https://www.linkedin.com/in/randall-k-roland-5b53b7142",
-      email: "mailto:ranroland@eossupport.io",
+      github: "https://github.com/rroland10",
     },
   },
   {
