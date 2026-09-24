@@ -1,0 +1,582 @@
+{
+  "Metadata": {
+    "description": "탈중앙화 거래소(DEX) 개발, 토큰 표준, 블록체인 혁신에 관한 Dex223의 심층 분석, 최신 소식, 가이드를 만나 보세요. Web3 생태계에서 한발 앞서 나가세요!",
+    "ogTitle": "DEX223: ERC-223 및 ERC-20 토큰을 위한 탈중앙화 거래소!",
+    "ogDescription": "마진 거래, 15% 저렴한 가스 수수료, 모든 토큰을 위한 투명한 자동 상장을 제공하는 ERC-223 및 ERC-20 토큰용 차세대 탈중앙화 거래소입니다."
+  },
+  "Navigation": {
+    "philosophy": "철학",
+    "marginTrading": "마진 거래",
+    "tokenomics": "토크노믹스",
+    "contactUs": "문의하기",
+    "development": "개발",
+    "airdrops": "에어드롭",
+    "blog": "블로그",
+    "launchApp": "앱 실행",
+    "language": "언어",
+    "menu": "메뉴",
+    "socialMedia": "소셜 미디어",
+    "usefulLinks": "유용한 링크",
+    "partners": "파트너",
+    "company": "회사",
+    "disclaimer": "면책 조항: 암호화폐는 귀하의 관할 지역에서 규제되지 않을 수 있습니다. 암호화폐의 가치는 오를 수도, 내릴 수도 있습니다. 수익에는 귀하의 관할 지역에서 적용되는 양도소득세 또는 기타 세금이 부과될 수 있습니다.",
+    "copyright": "Copyright © {year} DEX223",
+    "rightsReserved": "All Rights Reserved",
+    "links": {
+      "telegramDiscussions": "Telegram 토론방",
+      "telegramAnnouncements": "Telegram 공지 채널",
+      "dex223X": "Dex223 X 계정",
+      "discord": "Discord",
+      "dexaranX": "Dexaran의 X 계정",
+      "lossesCalculator": "ERC-20 실시간 손실 계산기",
+      "tokenConverter": "ERC-20 및 ERC-223 토큰 변환기",
+      "erc223FrontPage": "ERC-223 프런트 페이지",
+      "sourceCode": "페이지 소스 코드",
+      "blog": "블로그",
+      "blockzhub": "BlockzHub",
+      "clsGlobal": "CLS Global",
+      "beosin": "Beosin",
+      "roroTechnology": "Roro Technology",
+      "operatingAgreement": "운영 계약서",
+      "tokenDescription": "토큰 설명서",
+      "privacyPolicy": "개인정보 처리방침",
+      "defiAgreement": "DeFi 계약서",
+      "trademarkPolicy": "상표 정책"
+    }
+  },
+  "Advantages": {
+    "overline": "장점",
+    "heading": "독보적인 기능",
+    "intro": "DEX223은 현재 다른 어떤 거래소도 같은 방식으로 구현하지 않은 혁신적인 개념을 다수 도입합니다. 이 기능들은 보안을 획기적으로 강화하고, 토큰 상장을 최대한 쉽고 투명하게 만들며, 플랫폼 내 자산 대출을 가능하게 합니다.",
+    "marginTrading": {
+      "heading": "캡슐화된 마진 거래",
+      "intro": "DEX223은 사용자가 조건을 완전히 직접 정해 “대출 주문”을 생성할 수 있는 혁신적인 대출 메커니즘을 도입합니다. 작동 방식은 다음과 같습니다.",
+      "lendingOrders": {
+        "heading": "유연한 대출 주문",
+        "funds": "<b>자금: </b> 어떤 토큰이든 대출 주문에 넣을 수 있습니다.",
+        "interestRate": "<b>이자율 및 기한: </b> 원하는 연 이자율과 대출 기간을 정합니다.",
+        "permittedMarkets": "<b>허용 마켓: </b> 차입자가 거래할 수 있는 마켓을 지정합니다.",
+        "collateral": "<b>담보 및 설정: </b> 최소 담보 금액을 요구하고, 필요에 따라 선택적 매개변수를 설정합니다."
+      },
+      "borrowerAccess": {
+        "heading": "차입자의 접근 권한과 통제",
+        "deposit": "차입자는 필요한 담보를 예치하여 대출 주문을 수락합니다.",
+        "trade": "차입자는 허용된 마켓에서 차입한 자금으로 거래할 수 있지만, 해당 자금을 DEX223 밖으로 출금할 수는 없습니다.",
+        "security": "이를 통해 대출자는 최종적인 안전을 유지하면서도 차입자는 적극적인 시장 전략을 펼칠 수 있습니다."
+      },
+      "liquidation": {
+        "heading": "유연한 대출 주문",
+        "expectedBalance": "대출자는 대출 기간 중 어느 시점에서든 차입자 포지션의 “예상 잔액”을 설정합니다. 예를 들어 15 ETH를 연 20%로 30일간 빌려준 경우, 차입자의 누적 잔액은 30일째에 18 ETH, 15일째에 16.5 ETH여야 합니다.",
+        "actualBalance": "차입자의 실제 잔액은 언제든 모든 포지션을 즉시 시장에 매도했을 때의 가치(유동성 반영)로 측정됩니다.",
+        "trigger": "실제 잔액이 예상 잔액 아래로 떨어지면 누구나 청산을 실행하고 소정의 보상을 받을 수 있으며, 이 보상은 대출자가 주문 생성 시 정합니다.",
+        "autoClose": "청산이 실행되면 차입자의 포지션이 즉시 자동으로 종료되어 대출자의 투자금을 보호합니다.",
+        "noOracles": "이처럼 자체적으로 완결된 방식은 외부 가격 오라클에 대한 의존을 없애 보안과 투명성을 높입니다."
+      },
+      "summary": "DEX223의 캡슐화된 마진 거래는 유연성과 강력한 보호 장치를 결합하여, 모든 참여자의 자금을 안전하게 지키면서 사용자가 원하는 조건으로 대출하고 차입할 수 있게 합니다.",
+      "deepDive": "자세히 보기: <link>DEX223 마진 거래 소개 영상</link>"
+    },
+    "erc223Support": {
+      "heading": "ERC-223 지원",
+      "losses": "ERC-223 통합은 ERC-20 설계의 핵심 결함을 직접 해결합니다. 이 결함으로 인해 2023년 8월 29일 기준 이더리움 메인넷에서 약 $201,690,000 상당의 토큰이 손실되었습니다. ERC-223을 채택함으로써 저희 플랫폼은 거래 과정 내내 사용자가 자신의 토큰을 완전히 통제할 수 있도록 보장하며, 기존의 승인 단계가 필요 없습니다. 이는 보안을 강화할 뿐 아니라 일부 트랜잭션에서 가스 비용을 최대 15%까지 절감할 수 있습니다.",
+      "marginTrading": "또한 ERC-223은 “캡슐화된 마진 거래” 기능 구현의 기반이 되어, 플랫폼에서 탈중앙화 금융의 범위를 더욱 넓혀 줍니다.",
+      "erc20Fallback": "여전히 ERC-20을 선호하는 사용자를 위해 거래소는 ERC-223과 함께 ERC-20도 완벽하게 지원하며, 필요할 때 언제든 매끄럽게 전환할 수 있습니다. EIP-7417이 표준화되면 ERC-20과 ERC-223 토큰을 서로 호환하여 사용할 수 있게 됩니다. 간단한 래핑 과정을 통해 기존의 모든 ERC-20 토큰을 ERC-223 토큰으로 업그레이드하여 자금 보안을 강화할 수 있습니다. 래핑된 토큰과 원본 ERC-20 토큰은 통합된 유동성 풀을 공유하므로, 모든 참여자에게 편리함과 신뢰를 함께 제공합니다."
+    },
+    "autoListings": {
+      "heading": "투명한 자동 상장",
+      "description": "DEX223에서는 <tokenlists>tokenlists.org</tokenlists>의 기존 토큰 목록을 자유롭게 가져오거나 <autolisting>자동 상장 컨트랙트</autolisting>를 통해 새 토큰을 직접 추가할 수 있습니다. 이 개방적이고 무허가형인 방식 덕분에 누구나 거래소 팀이나 중개자의 승인 없이 토큰을 상장할 수 있습니다. 기존 토큰 목록의 탈중앙화 대안으로서 자동 상장 컨트랙트는 상장 수수료를 징수하며, 이 수수료는 DEX223 토큰 보유자에게 수익으로 분배됩니다. 상장 수수료 역시 커뮤니티가 온체인 투표로 결정하므로, 공동 거버넌스가 강화되고 DEX223은 투명하고 포용적이며 사용자가 소유하는 거래소로 유지됩니다."
+    }
+  },
+  "Airdrops": {
+    "title": "에어드롭",
+    "description": "에어드롭은 사용자에게 토큰을 일회성으로 배포하는 것으로, 주로 프로젝트와 초기에 상호작용한 사용자에 대한 보상으로 제공됩니다.",
+    "howItWorksLink": "작동 방식은 이 링크에서 확인하세요.",
+    "table": {
+      "name": "이름",
+      "linkToGithub": "GitHub 링크"
+    },
+    "snapshotDate": "스냅샷 날짜",
+    "snapshotBlock": "스냅샷 블록",
+    "upcoming": "예정",
+    "githubAnnouncement": "Github 공지"
+  },
+  "Allocation": {
+    "overline": "배분",
+    "heading": "토크노믹스",
+    "paragraphs": {
+      "inspiration": "DEX223의 토크노믹스는 <link>이더리움의 매우 성공적인 출시</link> 모델에서 영감을 받아 보안과 지속 가능성을 모두 중시합니다. 최초의 D223 토큰은 2023년 11월 이더리움 메인넷에서 발행되었습니다. DEX223이 출시되는 순간부터 플랫폼 내 모든 거래에 수수료가 부과되며, 이 수수료는 D223 토큰 보유자에게 보유량에 비례하여 재분배됩니다.",
+      "unsoldTokens": "판매되지 않은 토큰은 모두 총 공급량에서 제외됩니다. 예를 들어 플랫폼 토큰의 32%가 판매되면, 기존 토큰이 해당 수익을 가져가며 나머지 68%는 존재하지 않는 것으로 간주됩니다. 프리 ICO 또는 공개 라운드에서 판매되지 않은 토큰의 재분배는 DEX223 DAO가 결정합니다.",
+      "transparency": "재무 투명성의 원칙에 따라 개발팀은 ICO 이벤트나 비공개 판매로 모금한 자금의 분배와 사용 내역을 상세히 담은 <link>월간 보고서</link>를 공개하여, DEX223의 성장과 진행 상황 전반을 커뮤니티가 확인할 수 있도록 합니다."
+    },
+    "total": "합계",
+    "categories": {
+      "preIco": "할인 프리 ICO 판매",
+      "coreTeam": "핵심 팀 배분",
+      "projectDevelopment": "프로젝트 개발",
+      "privateRounds": "비공개 투자 라운드",
+      "publicSales": "공개 판매"
+    }
+  },
+  "Banner": {
+    "badge": "ERC-20 표준은 안전하지 않습니다",
+    "heading": "<shimmer>ERC-223</shimmer> 표준을 지원하는 최초의 탈중앙화 거래소",
+    "description": "다른 거래소들은 계속 ERC-20을 지원하며 안전하지 않은 표준의 확산과 자금 손실을 초래하고 있습니다. DEX223은 이러한 문제를 해결하는 ERC-223을 최초로 지원합니다",
+    "testAppButton": "DEX223 테스트 앱",
+    "buySellButton": "D223 구매/판매"
+  },
+  "Common": {
+    "scrollToTop": "맨 위로 이동"
+  },
+  "Compare": {
+    "firstToSupport": "최초 지원",
+    "onlySupports": "지원 표준",
+    "safe": {
+      "title": "안전한 사용",
+      "option1": "안전함",
+      "option2": "“승인” 절차가 필요 없음",
+      "option3": "잘못된 주소로의 전송 방지"
+    },
+    "risk": {
+      "title": "사용자 자금이 위험에 노출됨",
+      "option1": "보안 문제 발견, <link>$108M 손실</link>",
+      "option2": "토큰 “승인” 필요",
+      "option3": "단순한 실수로 토큰을 영구 손실"
+    }
+  },
+  "ContactUs": {
+    "overline": "문의하기",
+    "heading": "연락하기",
+    "intro": "DEX223을 최대한 활용하실 수 있도록 도와드리겠습니다.",
+    "marketingInquiries": "마케팅 및 일반 문의는 이메일로 보내 주세요: <email>contact@dex223.io</email>.",
+    "telegramGroup": "<link>Telegram 그룹</link>에 참여하시면 관리자가 알맞은 담당자를 안내해 드립니다.",
+    "contactViaEmail": "이메일로 문의",
+    "contactViaTelegram": "Telegram으로 문의",
+    "openSource": "이 페이지는 오픈 소스입니다. 제한 없이 여러분의 프로젝트에 재사용하실 수 있습니다."
+  },
+  "Development": {
+    "title": "개발 진행 상황",
+    "description": "DEX223 탈중앙화 거래소와 관련 서비스의 개발 진행 상황을 여기에서 확인할 수 있습니다.",
+    "tabs": {
+      "structure": "구조",
+      "references": "참고 자료",
+      "developmentReports": "개발 보고서",
+      "reports": "보고서"
+    },
+    "structure": {
+      "overline": "구조",
+      "heading": "DEX223은 안전하고 진정으로 탈중앙화된 거래 환경을 만들기 위해 함께 작동하는 여러 구성 요소로 이루어져 있습니다.",
+      "items": {
+        "smartContract": {
+          "title": "DEX223 스마트 컨트랙트",
+          "description": "이 스마트 컨트랙트는 거래소의 모든 핵심 로직을 구동합니다. 한 번 배포되면 자율적으로 작동하여, 중앙화된 팀에 의존하지 않고도 거래, 수수료, 거버넌스 절차가 원활하게 운영되도록 보장합니다."
+        },
+        "webInterface": {
+          "title": "DEX223 웹 인터페이스",
+          "description": "“공식” 사용자 인터페이스는 거래소 팀이 개발하지만, 누구나 DEX223 스마트 컨트랙트와 상호작용하는 대체 UI를 만들 수 있습니다. 이러한 개방성은 혁신과 사용자 선택을 촉진하며, 커뮤니티가 자신만의 거래 경험을 만들어 갈 수 있게 합니다."
+        },
+        "autoListing": {
+          "title": "자동 상장 스마트 컨트랙트",
+          "description": "DEX223은 수수료 구조가 서로 다른 “기본” 자동 상장 컨트랙트를 최소 3개 운영합니다. 이 컨트랙트들은 토큰 상장을 무허가형으로 만듭니다. 사용자가 지정된 수수료를 지불하는 즉시 토큰이 거래 가능 상태가 됩니다. 사용자는 언제든 특정 자동 상장 컨트랙트를 활성화하거나 비활성화할 수 있으며, 이에 따라 인터페이스에 표시되는 토큰이 달라집니다. 다만 한 번 이 컨트랙트를 통해 상장된 토큰은 해당 컨트랙트에서 상장 폐지될 수 없습니다."
+        },
+        "arbitraryAutoListing": {
+          "title": "임의 자동 상장 컨트랙트",
+          "description": "누구나 고유한 규칙과 수수료 설정을 가진 맞춤형 자동 상장 컨트랙트를 자유롭게 배포할 수 있습니다. 사용자가 컨트랙트 주소를 입력하면 DEX223 UI가 이러한 서드파티 컨트랙트를 인식합니다. 이 모델은 완전한 탈중앙화를 촉진하고 게이트키퍼의 필요성을 줄여 줍니다."
+        },
+        "liquidationBots": {
+          "title": "자동 청산 봇",
+          "description": "DEX223의 대출자는 청산을 수동으로 실행하지만, 청산 함수를 호출하는 누구에게나 보상하는 수수료를 설정할 수 있습니다. 이 인센티브 덕분에 서드파티 봇이 거래소 전반의 포지션을 모니터링하고 안정적으로 청산을 실행할 수 있습니다. 거래소 팀이 이를 위한 참조 스크립트를 개발하지만, 시스템은 맞춤형 솔루션에도 열려 있습니다."
+        }
+      }
+    },
+    "ecosystem": {
+      "overline": "생태계",
+      "heading": "ERC-223 생태계",
+      "intro": "DEX223 거래소 자체의 일부는 아니지만, 여러 이니셔티브가 ERC-223 표준의 채택을 뒷받침합니다.",
+      "items": {
+        "converter": {
+          "title": "토큰 표준 변환기",
+          "description": "ERC-20과 ERC-223 토큰을 연결하는 스마트 컨트랙트 서비스입니다. 이 도구는 원활한 토큰 호환성을 보장하여 사용자가 한 표준에서 다른 표준으로 변환할 수 있게 합니다."
+        },
+        "lossesCalculator": {
+          "title": "ERC-20 손실 계산기",
+          "description": "“손실된” ERC-20 토큰을 실시간으로 계산하는 스크립트로, ERC-223이 이전 표준에서 흔히 발생하는 오류를 줄이고 안전성을 높이는 방법을 보여 줍니다."
+        },
+        "aggregationPage": {
+          "title": "ERC-223 종합 페이지",
+          "description": "개발 가이드라인, 아티클, 참조 소스 코드, ERC-223의 발전 이력을 모아 둔 중앙 자료실입니다. 이 허브는 ERC-223의 잠재력을 활용하려는 프로젝트에 정보를 제공하고 서로를 연결합니다."
+        }
+      }
+    },
+    "references": {
+      "overline": "참고 자료",
+      "heading": "진행 상황은 여기에서 확인할 수 있습니다.",
+      "items": {
+        "icoPageSource": "ICO 페이지 소스 코드",
+        "icoSmartContracts": "ICO 스마트 컨트랙트",
+        "autoListingSource": "자동 상장 스마트 컨트랙트 소스 코드 (베타)",
+        "erc223Hub": "ERC-223 허브 페이지",
+        "erc223PageSource": "ERC-223 페이지 소스 코드",
+        "converterUi": "토큰 변환기 UI (개발 중 / 테스트 버전)",
+        "converterUiSource": "토큰 변환기 UI 소스 코드",
+        "converterContractSource": "토큰 표준 변환기 스마트 컨트랙트 소스 코드 (개발 중 / 테스트 버전)",
+        "lossesCalculatorScript": "ERC-20 손실 계산기 스크립트",
+        "lossesOldVersion": "ERC-20 손실 계산기 구버전 (지원 중단)"
+      }
+    },
+    "reports": {
+      "overline": "개발 보고서",
+      "heading": "요약 보고서는 매월 이곳에 게시됩니다.",
+      "monthYear": "{year}년 {month}",
+      "entries": {
+        "round2CompletionReport": "2차 라운드 완료 보고서",
+        "presaleRound2": "프리세일 2차 라운드 (04.12.2023 - 10.01.2024)",
+        "presaleRound1": "프리세일 1차 라운드 (15.09.2023 - 16.09.2023)"
+      }
+    },
+    "months": {
+      "january": "1월",
+      "february": "2월",
+      "march": "3월",
+      "april": "4월",
+      "may": "5월",
+      "june": "6월",
+      "july": "7월",
+      "august": "8월",
+      "september": "9월",
+      "october": "10월",
+      "november": "11월",
+      "december": "12월"
+    }
+  },
+  "EcosystemProblems": {
+    "overline": "생태계의 문제점",
+    "erc20Security": {
+      "heading": "ERC-20 표준의 보안 문제",
+      "lead": "ERC-20 표준은 일반적인 안전한 소프트웨어 설계 원칙을 위반하며, 그 결과 {amount} 상당의 토큰이 손실되었습니다.",
+      "watchCalculator": "<link>ERC-20 실시간 손실 계산기</link> 보기",
+      "totalLost": "손실된 ERC-20 토큰 총액",
+      "history": "ERC-20은 2015년에 설계되었습니다. 당시 EthereumVM에는 버그가 있었고, 토큰이 이 버그의 영향을 받지 않도록 ERC-20은 오류 처리를 허용하지 않는 투박한 방식으로 설계되었습니다. <desktopOnly>사용자 실수를 처리할 수 없었던 탓에 $201M 상당의 ERC-20 토큰이 손실되었습니다.</desktopOnly>",
+      "erc223Security": "ERC-223은 보안을 최우선으로 설계되었습니다. ERC-223은 사용자 실수를 방지할 수 있으며, 장기적으로는 사용자 실수와 자금 손실을 막아 주는 표준이 성공할 것이라고 저희는 믿습니다.",
+      "table": {
+        "problem": "문제",
+        "lost": "손실액"
+      },
+      "incidents": {
+        "curveHack": "Curve 해킹",
+        "daoHack": "DAO 해킹",
+        "erc20UserErrors": "ERC-20 사용자 오류",
+        "compoundHack": "Compound 해킹",
+        "wormholeHack": "Wormhole 해킹"
+      }
+    },
+    "approveTransferFrom": {
+      "heading": "approve 및 transferFrom 패턴의 보안 문제",
+      "lead": "ERC-20 토큰의 거래 방식은 DEX 컨트랙트가 사용자를 대신해 자금을 운용하도록 권한을 부여하므로 사용자 자금을 위험에 빠뜨릴 수 있습니다.",
+      "description": "ERC-20 토큰은 승인과 스왑이 별개의 트랜잭션이기 때문에 스마트 컨트랙트에 예치하기 전에 승인이 필요합니다. 가스를 절약하고 사용자 경험을 개선하기 위해 DEX들은 무제한 승인을 한 번만 하도록 권장합니다. 하지만 이렇게 하면 컨트랙트가 토큰에 대한 지속적인 통제권을 갖게 되어, 수년이 지난 뒤라도 컨트랙트가 해킹되면 자금을 잃을 위험이 있습니다.",
+      "erc223Solution": "ERC-223 토큰은 승인 없이 스왑할 수 있습니다. 사용자는 언제나 자신의 ERC-223 토큰을 직접 통제하며, 어떤 제3자도 사용자를 대신해 전송할 권한을 갖지 않습니다.",
+      "warning": "스왑할 때마다 매번 승인을 해야 합니다. 거래소가 일회성 승인을 요청한다면, 이는 컨트랙트가 귀하의 토큰으로 무엇이든 영구적으로 할 수 있도록 권한을 부여하는 것입니다."
+    },
+    "existingExchanges": {
+      "heading": "기존 ERC-20 거래소의 보안 문제",
+      "lead": "대부분의 ERC-20 거래소는 사용자에게 일회성 “무제한” 승인을 요청합니다. 이 경우 사용자가 이용을 중단한 후에도 컨트랙트가 사용자 자금에 무제한으로 접근할 수 있으므로 자금이 위험에 노출됩니다."
+    },
+    "gasOptimization": {
+      "heading": "가스 최적화",
+      "cheaper": "ERC-223 토큰 스왑은 ERC-20 스왑보다 15% 저렴할 수 있습니다.",
+      "erc20Consumed": "ERC-20 스왑에는 257K 가스가 소모되었습니다.",
+      "approvalTx": "<link>승인</link> 45K 가스",
+      "tokensSwapTx": "<link>토큰 스왑</link> 212K 가스",
+      "erc223Consumed": "같은 토큰의 ERC-223 스왑에는 220K 가스가 소모되었으며, 승인 트랜잭션이 전혀 필요하지 않습니다.",
+      "erc223SwapTx": "<link>ERC-223 토큰 스왑</link> 220K 가스"
+    },
+    "interfaceDecentralization": {
+      "heading": "인터페이스 탈중앙화",
+      "lead": "대부분의 DEX는 여전히 중앙화된 UI 하나만 운영합니다.",
+      "description": "암호화폐의 이념은 탈중앙화에 기반합니다. 그러나 중앙화된 관문이 개입하는 순간 탈중앙화의 이점은 사라집니다. DEX의 등장은 탈중앙화를 향한 큰 진전입니다. 스마트 컨트랙트가 기존 중앙화 거래소의 “백엔드”를 대체했지만, 인터페이스는 여전히 이전처럼 중앙화된 상태로 남아 있습니다.",
+      "solution": "DEX223은 서로 경쟁하는 여러 버전의 UI를 제공하여 완전한 탈중앙화를 실현합니다."
+    },
+    "tokenListings": {
+      "heading": "거래소 팀이 좌우하는 중앙화된 토큰 상장",
+      "lead": "대부분의 “탈중앙화” 거래소는 새 토큰 상장을 여전히 팀의 결정에 의존합니다. 이는 상장 규정을 따라야 하는 토큰 개발자와 일부 토큰을 거래할 수 없는 사용자 모두에게 악몽이 될 수 있습니다.",
+      "description": "Uniswap은 tokenlists 프로젝트로 상장 탈중앙화를 향해 큰 걸음을 내디뎠지만, DEX223은 한 걸음 더 나아갑니다. DEX223에서는 tokenlists의 모든 자산을 가져올 수 있을 뿐 아니라, 이더리움 메인넷에 배포된 컨트랙트에서 자산 목록을 가져올 수도 있으며, 이 컨트랙트는 하나의 탈중앙화된 토큰 목록 역할을 합니다.",
+      "solution": "누구나 거래소 팀의 허가를 구할 필요 없이, 자동 상장 컨트랙트를 통해 스팸 방지용 상장 수수료만 지불하면 DEX223에 새 토큰을 상장할 수 있습니다."
+    }
+  },
+  "Email": {
+    "unsubscribe": {
+      "title": "구독이 해지되었습니다",
+      "description": "실수로 해지하셨더라도 걱정하지 마세요. 아래 버튼을 클릭하면 쉽게 다시 구독할 수 있습니다. 다시 함께해 주시면 기쁘겠습니다!",
+      "resubscribeButton": "다시 구독하기"
+    },
+    "resubscribe": {
+      "title": "다시 구독되었습니다",
+      "description": "다시 오신 것을 환영합니다! 최신 소식을 받아 보실 수 있도록 다시 구독되었습니다. 다시 함께하게 되어 기쁩니다!",
+      "unsubscribeButton": "구독 해지"
+    }
+  },
+  "Features": {
+    "overline": "기능",
+    "heading": "DEX223의 주요 기능",
+    "description": "DEX223은 보안, 다양성, 투명성을 모두 갖추었습니다. ERC-223 표준으로 토큰 전송 오류를 방지하고, 여러 EVM 호환 블록체인에서 원활하게 작동하며, 포용적인 토큰 상장을 지원하고, 공개된 재무 보고로 신뢰를 보장합니다.",
+    "cards": {
+      "solvingProblem": {
+        "heading": "실제 문제 해결",
+        "text": "매년 ERC-20 토큰과 관련된 트랜잭션 오류로 수백만 달러가 손실되고 있습니다. DEX223은 ERC-223 표준을 채택함으로써 이러한 값비싼 실수를 없애기 위한 결정적인 첫걸음을 내딛습니다. 저희는 자금 손실을 방지하는 이 개선된 표준이 장기적으로 업계 표준이 될 것이라고 확신합니다."
+      },
+      "chainSupport": {
+        "heading": "체인 지원 극대화",
+        "text": "DEX223은 Ethereum, EOS EVM, Arbitrum, Optimism, BASE 등 모든 EVM 호환 블록체인에서 원활하게 작동하도록 설계되었습니다. 이러한 폭넓은 호환성 덕분에 DEX223은 업계에서 가장 많은 네트워크를 지원하는, 시장에서 가장 다재다능한 거래소가 될 것입니다."
+      },
+      "nonDiscrimination": {
+        "heading": "차별 없는 철학",
+        "text": "포용성은 DEX223의 핵심입니다. 프로토콜은 어떤 토큰이든 상장할 수 있도록 허용하며, 다양하고 성장하는 밈 코인 시장을 받아들입니다. 이러한 토큰의 상장이 어려울 수 있다는 점을 고려하여, 모든 프로젝트가 원활하고 쉽게 상장할 수 있도록 즉시 사용 가능한 솔루션을 제공합니다."
+      },
+      "financialTransparency": {
+        "heading": "재무 투명성",
+        "text": "투명성은 저희 운영의 초석입니다. DEX223은 엄격한 재무 공개 정책을 준수하며, ICO 자금의 사용 내역을 <link>Github</link>에 공개하여 누구나 확인할 수 있도록 합니다. 이를 통해 커뮤니티는 자금이 어떻게 관리되고 사용되는지 신뢰하고 검증할 수 있습니다."
+      }
+    }
+  },
+  "Fight": {
+    "overline": "대결",
+    "heading": "ERC-20 vs ERC-223: <br></br> 토큰 표준의 대결",
+    "intro": "2017년부터 ERC-20과 ERC-223 중 어느 표준이 더 안전하고 매끄러운 경험을 제공하는지를 두고 뜨거운 논쟁이 이어져 왔습니다. 핵심 쟁점은 토큰과 이더가 개인이 제어하는 외부 소유 주소(EOA)와 스마트 컨트랙트에 각각 어떻게 입금되는가입니다.",
+    "points": {
+      "erc223": "이더와 ERC-223은 수신자가 외부 소유 주소인지 컨트랙트인지 자동으로 감지하여 알맞은 입금 방식을 선택합니다.",
+      "erc20": "반면 ERC-20은 올바른 전송 방식을 선택하는 부담을 사용자에게 지웁니다. 잘못된 방식을 선택하면 토큰이 손실되는데, ERC-20 표준에는 적절한 트랜잭션 처리 모델이 없기 때문입니다."
+    },
+    "learnMore": "이 오랜 경쟁과 그것이 생태계 전반에 미친 영향에 대해 더 알아보려면 <link>ERC-223 프런트 페이지</link>를 방문하여 2017년부터의 전체 역사를 확인하세요.",
+    "imageAlt": "ERC-20 vs ERC-223 대결"
+  },
+  "Info": {
+    "overline": "정보",
+    "heading": "수익 전망 및 토큰 정보",
+    "projection": "2023년 8월 29일, Uniswap V3의 일일 거래량은 8억 8,300만 달러를 기록했습니다. DEX223이 0.2%의 테이커 수수료로 그 거래량의 5%만 확보해도 D223 보유자에게 분배되는 월 예상 수익은 $2,649,000에 이를 수 있습니다. 이 조건에서 공개 판매가로 D223 토큰을 구매한 사람은 거래 수수료 수익만으로 12개월 동안 약 397%의 ROI를 기대할 수 있습니다.",
+    "upgradeGuide": "D223 업그레이드와 토큰을 컨트랙트로 직접 전송하는 방법에 대한 자세한 내용은 <link>D223 토큰 업그레이드 가이드</link>를 참고하세요.",
+    "fields": {
+      "tokenName": "토큰 이름",
+      "network": "네트워크",
+      "ticker": "티커",
+      "address": "주소",
+      "maxSupply": "최대 공급량",
+      "decimals": "소수점 자릿수",
+      "standard": "표준",
+      "publicSalePrice": "공개 판매가"
+    },
+    "standardValue": "ERC-223 / <link>EIP-7417</link>을 통해 ERC-20으로 변환 가능",
+    "upgradeTokens": "토큰 업그레이드",
+    "viewPitchDeck": "피치 덱 보기"
+  },
+  "Innovation": {
+    "overline": "혁신",
+    "heading": "탈중앙화 거래의 혁신",
+    "description": "DEX223은 현재 다른 어떤 거래소도 같은 방식으로 구현하지 않은 혁신적인 개념을 다수 도입합니다. 이 기능들은 보안을 획기적으로 강화하고, 토큰 상장을 최대한 쉽고 투명하게 만들며, 플랫폼 내 자산 대출을 가능하게 합니다.",
+    "cards": {
+      "security": {
+        "heading": "타협 없는 보안",
+        "text": "사용자 자금의 안전이 무엇보다 중요합니다. 스마트 컨트랙트부터 인터페이스까지 모든 구성 요소는 단일 장애 지점을 없애도록 설계되고 감사를 거쳐야 합니다. 캡슐화된 마진 거래 시스템과 자동 상장 메커니즘은 보안에 대한 선제적 접근 방식으로 구축되어, 악의적인 활동과 사용자 오류에 대한 노출을 모두 줄입니다."
+      },
+      "economicSustainability": {
+        "heading": "경제적 지속 가능성",
+        "text": "상장 수수료와 대출 주문 이자에서 나오는 수익 공유 프로그램 등 플랫폼의 인센티브 모델은 지속 가능한 성장을 목표로 합니다. DEX223 토큰 보유자와 보상을 나눔으로써 프로토콜의 성공과 투자자의 참여가 서로를 이끄는 공생 관계를 만들어 갑니다."
+      },
+      "decentralization": {
+        "heading": "진정한 탈중앙화",
+        "text": "저희는 외부 개입이나 중앙화된 감독 없이 무기한 운영될 수 있는 애플리케이션을 꿈꿉니다. 스마트 컨트랙트 기반 상장, 프로토콜 수준의 거버넌스, 분산된 개발을 통해 DEX223은 거래, 대출, 토큰 상장의 모든 단계가 신뢰 없이도 작동하고 투명하도록 하는 것을 목표로 합니다."
+      },
+      "educating": {
+        "heading": "사용자 교육과 역량 강화",
+        "text": "DEX223은 명확한 문서, 단계별 튜토리얼, 접근하기 쉬운 사용자 인터페이스를 통해 안전한 환경을 조성하는 데 힘씁니다. 안전한 거래 방법과 플랫폼 위험에 대해 사용자를 교육하여 DeFi 세계를 자신 있게 탐색할 수 있도록 돕습니다."
+      },
+      "permissionless": {
+        "heading": "무허가형 혁신",
+        "text": "DEX223은 누구나 저희 프로토콜 위에 구축하거나 통합할 수 있는 모델을 지향합니다. 토큰은 자유롭게 상장할 수 있으며, 캡슐화된 마진 거래와 같은 새로운 금융 상품은 게이트키퍼 없이 모든 참여자에게 제공됩니다. 이러한 개방성은 생태계 안에서 지속적인 실험과 창의성을 촉진합니다."
+      },
+      "governance": {
+        "heading": "커뮤니티 거버넌스",
+        "text": "DEX223 토큰 보유자가 의사 결정의 중심에 있습니다. 상장 수수료, 새로운 프로토콜 기능, 전략적 제안은 온체인 투표로 결정되어 플랫폼 개발을 직접 민주적으로 통제할 수 있습니다. 이러한 커뮤니티 중심 설계는 프로토콜의 투명한 발전을 이끕니다."
+      },
+      "longTermVision": {
+        "heading": "장기 비전",
+        "text": "매끄러운 사용자 경험, 개방된 통합 경로, 견고한 보안 체계에 집중하여 DEX223은 차세대 탈중앙화 거래를 위한 대표 플랫폼이 되고자 합니다. 한 번 배포되면 프로토콜은 DeFi 생태계의 영구적인 일부가 되며, 커뮤니티가 이를 운영하고 개선해 나갑니다."
+      }
+    }
+  },
+  "Legal": {
+    "englishOnly": "이 문서는 영어로만 제공됩니다. 영어판이 공식 원문입니다.",
+    "downloadDocument": "문서 다운로드",
+    "downloadPdf": "PDF 파일 다운로드"
+  },
+  "MultiChain": {
+    "overline": "멀티체인 출시",
+    "heading": "크로스체인 배포 정책",
+    "paragraphs": {
+      "initialOffering": "D223 토큰은 처음에 이더리움 메인넷에서 제공되며, DEX223 거래소는 여러 체인에 출시될 예정입니다. D223 토큰을 이더리움에 보유하고 스마트 컨트랙트에 락업한 보유자는 새로운 체인에 DEX223이 배포될 때마다 해당 체인에서 같은 수량의 토큰을 받게 됩니다.",
+      "influencers": "더 많은 사람에게 다가가기 위해 핵심 팀 D223 토큰의 일부를 인플루언서와 미디어 파트너에게 배분하여, 각 커뮤니티에서 저희 플랫폼의 인지도를 높일 예정입니다.",
+      "confirmedChains": "DEX223 배포가 확정된 체인은 Ethereum, Avalanche, BSC, EOS EVM, CELO, Base, Optimism, Arbitrum입니다. 이 체인들은 확정되었지만, 팀은 상황에 따라 우선순위를 정하고 배포 전략을 변경할 수 있습니다."
+    }
+  },
+  "Philosophy": {
+    "overline": "목표",
+    "heading": "프로젝트 철학",
+    "description": "DEX223은 진정한 탈중앙화 거래소라면 멈출 수 없고, 안전하며, 이를 사용하는 사람들이 운영해야 한다는 믿음에서 출발했습니다. 저희의 핵심 원칙은 사용자 역량 강화, 투명한 거버넌스, 견고한 기술적 보호 장치입니다. 엄격한 보안 조치와 개방적이고 무허가형인 기능을 결합하여 탈중앙화 금융의 새로운 기준을 세우고자 합니다. <link>여기에서 DEX223을 체험해 보세요</link>"
+  },
+  "RevenueModel": {
+    "overline": "수익 모델"
+  },
+  "Roadmap": {
+    "overline": "개발 일정",
+    "heading": "로드맵",
+    "intro": "BSC 배포가 완료되면 멀티체인 배포 일정을 발표할 예정입니다. 최신 세부 정보와 업데이트는 <link>Github</link>에서 확인하세요.",
+    "milestones": {
+      "q1_2024": {
+        "date": "2024년 1분기 (2월~3월)",
+        "items": {
+          "launchInfrastructure": "초기 DEX 인프라 출시",
+          "coreErc223Support": "핵심 ERC-223 지원 구현",
+          "legalFramework": "DEX 법적 체계 수립",
+          "testnetContracts": "테스트넷에 기본 스마트 컨트랙트 배포",
+          "autoListingDevelopment": "자동 상장 개발 착수"
+        }
+      },
+      "q2_2024": {
+        "date": "2024년 2분기 (4월~6월)",
+        "items": {
+          "prototypeForTesting": "테스트용 DEX 프로토타입 출시",
+          "gasEfficiency": "가스 효율 최적화",
+          "mergedLiquidityPools": "통합 유동성 풀 완성",
+          "mobileUi": "모바일 UI 구현",
+          "autoListingContracts": "자동 상장 컨트랙트 배포"
+        }
+      },
+      "q3_2024": {
+        "date": "2024년 3분기 (7월~9월)",
+        "items": {
+          "marginTradingModule": "마진 거래 모듈 완성",
+          "bugBounty": "버그 바운티 프로그램 시작",
+          "securityAuditProcess": "보안 감사 절차 착수",
+          "eosTesting": "EOS 체인으로 테스트 확대",
+          "portfolioAndListing": "포트폴리오 및 상장 기능 배포"
+        }
+      },
+      "q4_2024": {
+        "date": "2024년 4분기 (10월~12월)",
+        "items": {
+          "d223V2Token": "D223-v2 토큰 출시",
+          "tokenUpgrading": "토큰 업그레이드 절차 시작",
+          "deepSecurityAudits": "심층 보안 감사 및 버그 수정",
+          "mainnetContracts": "메인넷 컨트랙트 배포",
+          "migratePresaleTokens": "프리세일 토큰을 ETH로 이전",
+          "blogAndDocumentation": "프로토타입에 블로그 및 문서 추가"
+        }
+      },
+      "q1q3_2025": {
+        "date": "2025년 1~3분기 (1월~9월)",
+        "items": {
+          "internalAudit": "내부 보안 감사 마무리",
+          "externalAudit": "외부 보안 감사",
+          "cexListing": "CEX(BitMart)에 D223 상장",
+          "fiatOnRamp": "법정화폐 온램프"
+        }
+      },
+      "q4_2025": {
+        "date": "2025년 4분기 (9월~12월)",
+        "items": {
+          "ethereumMainnet": "이더리움 메인넷에 DEX223 출시",
+          "moreEvmChains": "더 많은 EVM 체인에 DEX223 출시",
+          "revenueFeature": "수익 기능 출시",
+          "marginModuleAudit": "마진 모듈 보안 감사"
+        }
+      },
+      "future": {
+        "date": "향후 마일스톤",
+        "items": {
+          "marginTradingSupport": "마진 거래 지원"
+        }
+      }
+    }
+  },
+  "Subscription": {
+    "overline": "구독",
+    "heading": "뉴스레터 구독",
+    "description": "향후 출시, 보안 강화, 가스 절감 혜택에 대한 소식을 받아 보고 탈중앙화 거래의 세계에서 언제나 한발 앞서 나가세요.",
+    "label": "뉴스레터 구독",
+    "emailPlaceholder": "이메일 주소",
+    "subscribe": "구독하기",
+    "toasts": {
+      "success": "뉴스레터 구독이 완료되었습니다",
+      "invalidEmail": "오류: 유효하지 않은 이메일",
+      "unknownError": "알 수 없는 오류"
+    }
+  },
+  "Team": {
+    "overline": "팀",
+    "heading": "팀 소개",
+    "positions": {
+      "cofounderCto": "공동 창업자 / CTO",
+      "cofounderProjectManager": "공동 창업자 / 프로젝트 매니저",
+      "cofounderStrategicAdvisor": "공동 창업자 / 전략 고문",
+      "backendDeveloper": "백엔드 개발자",
+      "webDeveloper": "웹 개발자",
+      "uiUxDeveloper": "UI / UX 개발자"
+    }
+  },
+  "Upgrade": {
+    "title": "토큰 업그레이드",
+    "connectToSeeBalance": "잔액을 확인하려면 지갑을 연결하세요",
+    "youHave": "보유 수량",
+    "upgradingTokens": "토큰 업그레이드 중",
+    "upgradeTokensNow": "지금 토큰 업그레이드",
+    "switchingNetwork": "네트워크 전환 중",
+    "switchToEthereum": "이더리움으로 전환",
+    "connectWallet": "지갑 연결",
+    "statusImageAlt": "성공",
+    "toasts": {
+      "walletClientNotFound": "지갑 클라이언트를 찾을 수 없습니다",
+      "balanceEmpty": "잔액이 없습니다",
+      "somethingWentWrong": "문제가 발생했습니다"
+    },
+    "error": {
+      "title": "문제가 발생했습니다",
+      "description": "토큰 업그레이드 중 오류가 발생했습니다. 다시 시도해 주세요",
+      "tryAgain": "다시 시도"
+    },
+    "success": {
+      "title": "토큰이 업그레이드되었습니다",
+      "description": "토큰이 업그레이드되어 이제 사용할 수 있습니다",
+      "viewTransaction": "트랜잭션 보기"
+    }
+  },
+  "Wallet": {
+    "connectWallet": "지갑 연결",
+    "keystore": {
+      "title": "JSON 파일로 지갑 가져오기",
+      "browse": "찾아보기",
+      "selectFile": "Keystore 파일 선택",
+      "password": "Keystore 비밀번호",
+      "unlock": "잠금 해제",
+      "unsupportedFileFormat": "지원하지 않는 파일 형식",
+      "wrongPassword": "비밀번호가 올바르지 않습니다"
+    },
+    "toasts": {
+      "installMetamask": "계속하려면 MetaMask를 설치하세요",
+      "walletConnected": "지갑이 연결되었습니다",
+      "userRejected": "사용자가 요청을 거부했습니다",
+      "somethingWentWrong": "문제가 발생했습니다"
+    }
+  },
+  "WhyChooseUs": {
+    "overline": "차별점",
+    "heading": "DEX223을 선택해야 하는 이유",
+    "description": "DEX223은 ERC-20과 ERC-223 표준을 모두 지원하는 최초의 DEX입니다. ERC-20은 2015년부터 EVM 체인의 지배적인 표준이었으며, 그 채택은 생태계 사용자들에게 기하급수적으로 늘어나는 금전적 손실을 초래했습니다. 저희는 초창기의 낡은 표준, 사용자 실수, 승인 사기로 인한 금전적 피해를 막기 위해 존재합니다.",
+    "swap": "스왑",
+    "youPay": "지불",
+    "youReceive": "수령",
+    "safeChoice": "안전한 선택",
+    "approvalNeeded": "ERC-20 승인 필요",
+    "higherGasPrice": "더 높은 가스 가격",
+    "lowerGasPrice": "더 낮은 가스 가격",
+    "gasPrice": "가스 가격",
+    "noApproval": "승인 불필요",
+    "approve": "승인"
+  }
+}

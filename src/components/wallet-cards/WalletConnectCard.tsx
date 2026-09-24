@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { useAccount, useConnect } from "wagmi";
 
 import PickButton from "@/components/PickButton";
@@ -11,6 +12,7 @@ import {
 
 const { image, name } = wallets.wc;
 export default function WalletConnectCard() {
+  const t = useTranslations("Wallet");
   const { isConnecting } = useAccount();
   const { connectors, connectAsync, isPending } = useConnect();
 
@@ -30,13 +32,13 @@ export default function WalletConnectCard() {
         })
           .then(() => {
             setIsOpened(false);
-            addToast("Wallet connected");
+            addToast(t("toasts.walletConnected"));
           })
           .catch((e) => {
             if (e.code && e.code === 4001) {
-              addToast("User rejected the request", "error");
+              addToast(t("toasts.userRejected"), "error");
             } else {
-              addToast("Something went wrong", "error");
+              addToast(t("toasts.somethingWentWrong"), "error");
             }
           });
       }}

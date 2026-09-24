@@ -857,3 +857,9 @@ p, li {
     display: none;
 }
 
+/* Korean wraps between words, not inside them. */
+:lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+

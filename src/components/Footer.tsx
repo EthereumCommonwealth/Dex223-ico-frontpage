@@ -1,96 +1,96 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { HTMLProps } from "react";
 
 import Container from "@/components/Container";
+import { Link, usePathname } from "@/i18n/routing";
 
 const socialLinks = [
   {
-    text: "Telegram discussions",
+    key: "telegramDiscussions",
     href: "https://t.me/Dex223_Defi",
   },
   {
-    text: "Telegram announcements channel",
+    key: "telegramAnnouncements",
     href: "https://t.me/Dex_223",
   },
   {
-    text: "Dex223 X account",
+    key: "dex223X",
     href: "https://twitter.com/Dex_223",
   },
   {
-    text: "Discord",
+    key: "discord",
     href: "https://discord.gg/t5bdeGC5Jk",
   },
   {
-    text: "Dexaran's X account",
+    key: "dexaranX",
     href: "https://twitter.com/Dexaran",
   },
 ];
 
 const usefulLinks = [
   {
-    text: "ERC-20 live losses calculator",
+    key: "lossesCalculator",
     href: "https://dexaran.github.io/erc20-losses/",
   },
   {
-    text: "ERC-20 & ERC-223 Token Converter",
+    key: "tokenConverter",
     href: "https://dexaran.github.io/token-converter/",
   },
   {
-    text: "ERC-223 Front Page",
+    key: "erc223FrontPage",
     href: "https://dexaran.github.io/erc223",
   },
   {
-    text: "Page source codes",
+    key: "sourceCode",
     href: "https://github.com/Dexaran/Dex223-ICO-page/tree/main",
   },
   {
-    text: "Blog",
+    key: "blog",
     href: "https://blog.dex223.io/",
   },
 ];
 
 const partners = [
   {
-    text: "BlockzHub",
+    key: "blockzhub",
     href: "https://blockzhub.io/",
   },
   {
-    text: "CLS Global",
+    key: "clsGlobal",
     href: "https://www.cls.global",
   },
   {
-    text: "Beosin",
+    key: "beosin",
     href: "https://beosin.com",
   },
   {
-    text: "Roro Technology",
+    key: "roroTechnology",
     href: "https://rorotechnology.io/",
   },
 ];
 
 const companyLinks = [
   {
-    text: "Operating agreement",
+    key: "operatingAgreement",
     href: "/operating-agreement",
   },
   {
-    text: "Token Description",
+    key: "tokenDescription",
     href: "/token-description",
   },
   {
-    text: "Privacy policy",
+    key: "privacyPolicy",
     href: "/privacy-policy",
   },
   {
-    text: "DeFi agreement",
+    key: "defiAgreement",
     href: "/defi-agreement",
   },
   {
-    text: "Trademark policy",
+    key: "trademarkPolicy",
     href: "/trademark-policy",
   },
 ];
@@ -98,6 +98,7 @@ const companyLinks = [
 interface Props extends HTMLProps<HTMLDivElement> {}
 export default function Footer({ className }: Props) {
   const pathname = usePathname();
+  const t = useTranslations("Navigation");
 
   return (
     <footer>
@@ -106,17 +107,17 @@ export default function Footer({ className }: Props) {
           <div className="flex lg:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
-                Social media
+                {t("socialMedia")}
               </div>
               {socialLinks.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );
@@ -124,17 +125,17 @@ export default function Footer({ className }: Props) {
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
-                Useful links
+                {t("usefulLinks")}
               </div>
               {usefulLinks.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );
@@ -142,17 +143,17 @@ export default function Footer({ className }: Props) {
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
-                Partners
+                {t("partners")}
               </div>
               {partners.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );
@@ -160,11 +161,11 @@ export default function Footer({ className }: Props) {
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
-                Company
+                {t("company")}
               </div>
               {companyLinks.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <Link
                       href={link.href}
                       className={clsx(
@@ -174,7 +175,7 @@ export default function Footer({ className }: Props) {
                           : "text-secondary-text",
                       )}
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </Link>
                   </div>
                 );
@@ -185,15 +186,11 @@ export default function Footer({ className }: Props) {
         </div>
         <div className="py-4 lg:py-6 flex justify-between max-lg:flex-col max-lg:items-start items-center before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
           <div style={{ maxWidth: 872 }}>
-            <p className="text-tertiary-text max-lg:mb-4">
-              Disclaimer: Cryptocurrency may be unregulated in your jurisdiction. The value of
-              cryptocurrencies may go down as well as up. Profits may be subject to capital gains or
-              other taxes applicable in your jurisdiction.
-            </p>
+            <p className="text-tertiary-text max-lg:mb-4">{t("disclaimer")}</p>
           </div>
           <span className="text-tertiary-text text-right max-lg:text-12">
-            Copyright © {new Date(Date.now()).getFullYear()} DEX223{" "}
-            <br className="max-lg:hidden" /> All Rights Reserved
+            {t("copyright", { year: new Date(Date.now()).getFullYear() })}{" "}
+            <br className="max-lg:hidden" /> {t("rightsReserved")}
           </span>
         </div>
       </Container>

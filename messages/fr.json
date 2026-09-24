@@ -1,0 +1,582 @@
+{
+  "Metadata": {
+    "description": "Découvrez des analyses approfondies, des actualités et des guides sur Dex223, votre source de référence sur le développement des plateformes d’échange décentralisées (DEX), les standards de jetons et les innovations blockchain. Gardez une longueur d’avance dans l’écosystème Web3 !",
+    "ogTitle": "DEX223 : la plateforme d’échange décentralisée pour les jetons ERC-223 et ERC-20 !",
+    "ogDescription": "Plateforme d’échange décentralisée nouvelle génération pour les jetons ERC-223 et ERC-20, avec trading sur marge, des frais de GAS 15% moins chers et des auto-listings transparents pour tous les jetons."
+  },
+  "Navigation": {
+    "philosophy": "Philosophie",
+    "marginTrading": "Trading sur marge",
+    "tokenomics": "Tokenomics",
+    "contactUs": "Contact",
+    "development": "Développement",
+    "airdrops": "Airdrops",
+    "blog": "Blog",
+    "launchApp": "Lancer l’app",
+    "language": "Langue",
+    "menu": "Menu",
+    "socialMedia": "Réseaux sociaux",
+    "usefulLinks": "Liens utiles",
+    "partners": "Partenaires",
+    "company": "Entreprise",
+    "disclaimer": "Avertissement : les cryptomonnaies peuvent ne pas être réglementées dans votre juridiction. La valeur des cryptomonnaies peut baisser comme augmenter. Vos gains peuvent être soumis à l’impôt sur les plus-values ou à d’autres taxes applicables dans votre juridiction.",
+    "copyright": "Copyright © {year} DEX223",
+    "rightsReserved": "Tous droits réservés",
+    "links": {
+      "telegramDiscussions": "Discussions Telegram",
+      "telegramAnnouncements": "Canal d’annonces Telegram",
+      "dex223X": "Compte X de Dex223",
+      "discord": "Discord",
+      "dexaranX": "Compte X de Dexaran",
+      "lossesCalculator": "Calculateur des pertes ERC-20 en direct",
+      "tokenConverter": "Convertisseur de jetons ERC-20 et ERC-223",
+      "erc223FrontPage": "Page d’accueil ERC-223",
+      "sourceCode": "Code source de la page",
+      "blog": "Blog",
+      "blockzhub": "BlockzHub",
+      "clsGlobal": "CLS Global",
+      "beosin": "Beosin",
+      "roroTechnology": "Roro Technology",
+      "operatingAgreement": "Accord d’exploitation",
+      "tokenDescription": "Description du jeton",
+      "privacyPolicy": "Politique de confidentialité",
+      "defiAgreement": "Accord DeFi",
+      "trademarkPolicy": "Politique relative aux marques"
+    }
+  },
+  "Advantages": {
+    "overline": "Avantages",
+    "heading": "Fonctionnalités uniques",
+    "intro": "DEX223 introduit plusieurs concepts révolutionnaires qu’aucune autre plateforme d’échange ne met actuellement en œuvre de la même manière. Ces fonctionnalités vont considérablement renforcer la sécurité, rendre le listing de jetons aussi simple et transparent que possible et permettre le prêt d’actifs directement sur la plateforme.",
+    "marginTrading": {
+      "heading": "Trading sur marge encapsulé",
+      "intro": "DEX223 introduit un mécanisme de prêt innovant qui permet aux utilisateurs de créer des « ordres de prêt » en gardant un contrôle total sur les termes et conditions. Voici comment cela fonctionne :",
+      "lendingOrders": {
+        "heading": "Ordres de prêt flexibles",
+        "funds": "<b>Fonds : </b> placez n’importe quel jeton dans votre ordre de prêt.",
+        "interestRate": "<b>Taux d’intérêt et échéance : </b> définissez le taux d’intérêt annualisé souhaité et la durée du prêt.",
+        "permittedMarkets": "<b>Marchés autorisés : </b> indiquez sur quels marchés l’emprunteur peut trader.",
+        "collateral": "<b>Garantie et configuration : </b> exigez un montant minimum de garantie et définissez des paramètres optionnels pour personnaliser l’ordre."
+      },
+      "borrowerAccess": {
+        "heading": "Accès et contrôle de l’emprunteur",
+        "deposit": "Un emprunteur dépose la garantie requise pour accepter votre ordre de prêt.",
+        "trade": "Il peut alors trader avec les fonds empruntés sur les marchés autorisés, mais ne peut pas retirer ces fonds de DEX223.",
+        "security": "Le prêteur conserve ainsi une sécurité maximale, tout en permettant à l’emprunteur de mener des stratégies de marché actives."
+      },
+      "liquidation": {
+        "heading": "Ordres de prêt flexibles",
+        "expectedBalance": "Le prêteur fixe un « solde attendu » pour les positions de l’emprunteur à tout moment du prêt. Par exemple, si 15 ETH sont prêtés à 20% sur 30 jours, le solde cumulé de l’emprunteur doit atteindre 18 ETH au 30e jour ou 16,5 ETH au 15e jour.",
+        "actualBalance": "À tout moment, le solde réel de l’emprunteur correspond à la valeur de vente immédiate sur le marché de toutes ses positions (en tenant compte de la liquidité).",
+        "trigger": "Si le solde réel passe sous le solde attendu, n’importe qui peut déclencher la liquidation en échange d’une petite récompense, définie par le prêteur lors de la création de l’ordre.",
+        "autoClose": "La liquidation clôture automatiquement et immédiatement les positions de l’emprunteur, ce qui protège l’investissement du prêteur.",
+        "noOracles": "Cette approche autonome supprime toute dépendance aux oracles de prix externes, renforçant la sécurité et la transparence."
+      },
+      "summary": "Le trading sur marge encapsulé de DEX223 allie flexibilité et garde-fous solides : chacun peut prêter et emprunter selon ses propres conditions, tandis que les fonds de tous restent protégés.",
+      "deepDive": "Pour aller plus loin : <link>vidéo de présentation du trading sur marge DEX223</link>"
+    },
+    "erc223Support": {
+      "heading": "Prise en charge d’ERC-223",
+      "losses": "L’intégration d’ERC-223 corrige directement une faiblesse majeure de la conception d’ERC-20, qui a entraîné la perte d’environ 201 690 000 $ de jetons sur le réseau principal Ethereum au 29 août 2023. En adoptant ERC-223, notre plateforme garantit aux utilisateurs un contrôle total sur leurs jetons pendant l’échange, sans les étapes d’approbation habituelles. Cela renforce la sécurité et peut aussi réduire les coûts de GAS jusqu’à 15% pour certaines transactions.",
+      "marginTrading": "ERC-223 ouvre également la voie à notre fonctionnalité de « trading sur marge encapsulé », élargissant encore le champ de la finance décentralisée sur la plateforme.",
+      "erc20Fallback": "Pour les utilisateurs qui préfèrent encore ERC-20, la plateforme continuera de le prendre pleinement en charge aux côtés d’ERC-223, avec un repli transparent dès que nécessaire. À mesure qu’EIP-7417 progresse vers la standardisation, les jetons ERC-20 et ERC-223 pourront être utilisés de manière interchangeable. Grâce à un simple processus d’encapsulation (wrapping), tout jeton ERC-20 existant peut être converti en équivalent ERC-223, renforçant la sécurité des fonds. Ces jetons encapsulés et leurs équivalents ERC-20 d’origine partageront des pools de liquidité unifiés, pour plus de commodité et de confiance pour tous les participants."
+    },
+    "autoListings": {
+      "heading": "Auto-listings transparents",
+      "description": "DEX223 permet aux utilisateurs d’importer librement n’importe quelle liste de jetons depuis <tokenlists>tokenlists.org</tokenlists> ou d’intégrer directement de nouveaux jetons via <autolisting>notre contrat d’auto-listing</autolisting>. Cette approche ouverte et sans permission permet à chacun de lister un jeton sans demander l’accord de l’équipe de la plateforme ni d’un intermédiaire. Véritable alternative décentralisée aux listes de jetons traditionnelles, le contrat d’auto-listing perçoit des frais de listing qui sont ensuite redistribués aux détenteurs du jeton DEX223 sous forme de revenus. Grâce au vote on-chain, la communauté fixe également les frais de listing, ce qui renforce la gouvernance collective et garantit que DEX223 reste transparent, inclusif et détenu par ses utilisateurs."
+    }
+  },
+  "Airdrops": {
+    "title": "Airdrops",
+    "description": "Un airdrop désigne la distribution ponctuelle de jetons aux utilisateurs, souvent pour récompenser une interaction précoce avec un projet.",
+    "howItWorksLink": "Voici un lien expliquant son fonctionnement.",
+    "table": {
+      "name": "Nom",
+      "linkToGithub": "Lien vers GitHub"
+    },
+    "snapshotDate": "Date du snapshot",
+    "snapshotBlock": "Bloc du snapshot",
+    "upcoming": "À venir",
+    "githubAnnouncement": "Annonce sur Github"
+  },
+  "Allocation": {
+    "overline": "Répartition",
+    "heading": "Tokenomics",
+    "paragraphs": {
+      "inspiration": "La tokenomics de DEX223 s’inspire du modèle de <link>lancement très réussi d’Ethereum</link>, en mettant l’accent sur la sécurité comme sur la durabilité. Les jetons D223 d’origine ont été émis en novembre 2023 sur le réseau principal Ethereum. Dès le lancement de DEX223, des frais seront prélevés sur chaque transaction effectuée sur la plateforme et redistribués proportionnellement aux détenteurs du jeton D223.",
+      "unsoldTokens": "Les jetons invendus seront retirés de l’offre totale. Par exemple, si 32% des jetons de la plateforme sont vendus, les jetons existants percevront l’intégralité des revenus, les 68% restants étant considérés comme inexistants. La DAO de DEX223 décidera de la redistribution des jetons invendus lors du pré-ICO ou des tours publics.",
+      "transparency": "Dans un esprit de transparence financière, l’équipe de développement s’engage à publier un <link>rapport mensuel</link> détaillant la répartition et l’utilisation des fonds collectés lors des ICO ou des ventes privées, afin que chaque étape de la croissance et des progrès de DEX223 reste visible pour la communauté."
+    },
+    "total": "Total",
+    "categories": {
+      "preIco": "Ventes pré-ICO à prix réduit",
+      "coreTeam": "Allocation de l’équipe principale",
+      "projectDevelopment": "Développement du projet",
+      "privateRounds": "Tours d’investissement privés",
+      "publicSales": "Ventes publiques"
+    }
+  },
+  "Banner": {
+    "badge": "Le standard ERC-20 n’est pas sûr",
+    "heading": "La première plateforme d’échange décentralisée à prendre en charge le standard <shimmer>ERC-223</shimmer>",
+    "description": "Les autres plateformes continuent de prendre en charge ERC-20, ce qui entretient des standards non sécurisés et des pertes de fonds. DEX223 est la première à prendre en charge ERC-223, qui résout ces problèmes",
+    "testAppButton": "App de test DEX223",
+    "buySellButton": "Acheter/Vendre D223"
+  },
+  "Common": {
+    "scrollToTop": "Retour en haut"
+  },
+  "Compare": {
+    "firstToSupport": "Premier à prendre en charge",
+    "onlySupports": "Ne prend en charge que",
+    "safe": {
+      "title": "Sûr à utiliser",
+      "option1": "Sécurisé",
+      "option2": "Supprime le besoin d’« approbations »",
+      "option3": "Empêche l’envoi vers de mauvaises adresses"
+    },
+    "risk": {
+      "title": "Fonds des utilisateurs en danger",
+      "option1": "Failles de sécurité détectées, <link>108 M$ perdus</link>",
+      "option2": "Exige d’« approuver » les jetons",
+      "option3": "Une simple erreur, une perte de jetons définitive"
+    }
+  },
+  "ContactUs": {
+    "overline": "Contact",
+    "heading": "Contactez-nous",
+    "intro": "Nous sommes là pour vous aider à tirer le meilleur parti de DEX223.",
+    "marketingInquiries": "Pour le marketing et les demandes générales, écrivez-nous à : <email>contact@dex223.io</email>.",
+    "telegramGroup": "Vous pouvez aussi rejoindre notre <link>groupe Telegram</link>, où nos administrateurs vous orienteront vers le bon interlocuteur.",
+    "contactViaEmail": "Nous écrire par e-mail",
+    "contactViaTelegram": "Nous contacter sur Telegram",
+    "openSource": "Cette page est open source. Vous pouvez la réutiliser dans vos projets sans aucune restriction."
+  },
+  "Development": {
+    "title": "Avancement du développement",
+    "description": "Suivez ici l’avancement du développement de la plateforme d’échange décentralisée DEX223 et des services associés.",
+    "tabs": {
+      "structure": "Structure",
+      "references": "Références",
+      "developmentReports": "Rapports de développement",
+      "reports": "Rapports"
+    },
+    "structure": {
+      "overline": "Structure",
+      "heading": "DEX223 se compose de plusieurs éléments qui fonctionnent ensemble pour offrir un environnement de trading sécurisé et véritablement décentralisé :",
+      "items": {
+        "smartContract": {
+          "title": "Contrat intelligent DEX223",
+          "description": "Ce contrat intelligent porte toute la logique centrale de la plateforme. Une fois déployé, il fonctionne de manière autonome : les échanges, les frais et les procédures de gouvernance se déroulent sans dépendre d’une équipe centralisée."
+        },
+        "webInterface": {
+          "title": "Interface web DEX223",
+          "description": "Une interface « officielle » est développée par l’équipe de la plateforme, mais chacun peut créer une interface alternative qui interagit avec le contrat intelligent DEX223. Cette ouverture encourage l’innovation et le libre choix, et permet à la communauté de façonner sa propre expérience de trading."
+        },
+        "autoListing": {
+          "title": "Contrats intelligents d’auto-listing",
+          "description": "DEX223 maintient au moins trois contrats d’auto-listing « par défaut » avec des structures de frais différentes. Ces contrats rendent le listing de jetons sans permission : dès qu’un utilisateur paie les frais indiqués, le jeton devient disponible au trading. Un utilisateur peut activer ou désactiver certains contrats d’auto-listing à tout moment, ce qui détermine les jetons visibles dans l’interface. En revanche, un jeton listé via l’un de ces contrats ne peut plus en être retiré."
+        },
+        "arbitraryAutoListing": {
+          "title": "Contrats d’auto-listing personnalisés",
+          "description": "Chacun est libre de déployer son propre contrat d’auto-listing avec ses règles et ses frais. L’interface DEX223 reconnaît ces contrats tiers dès qu’un utilisateur fournit l’adresse du contrat. Ce modèle assure une décentralisation complète et rend les gardiens superflus."
+        },
+        "liquidationBots": {
+          "title": "Bots de liquidation automatique",
+          "description": "Sur DEX223, les liquidations sont déclenchées manuellement, mais les prêteurs peuvent fixer une récompense pour quiconque appelle la fonction de liquidation. Cette incitation permet à des bots tiers de surveiller les positions sur toute la plateforme et d’exécuter les liquidations de manière fiable. L’équipe développe un script de référence pour cette tâche, mais le système reste ouvert aux solutions personnalisées."
+        }
+      }
+    },
+    "ecosystem": {
+      "overline": "Écosystème",
+      "heading": "Écosystème ERC-223",
+      "intro": "Sans faire partie de la plateforme DEX223 elle-même, plusieurs initiatives favorisent l’adoption du standard ERC-223 :",
+      "items": {
+        "converter": {
+          "title": "Convertisseur de standards de jetons",
+          "description": "Un service de contrat intelligent qui fait le pont entre les jetons ERC-20 et ERC-223. Cet outil assure une compatibilité fluide des jetons en permettant de les convertir d’un standard à l’autre."
+        },
+        "lossesCalculator": {
+          "title": "Calculateur des pertes ERC-20",
+          "description": "Un script qui calcule en temps réel les jetons ERC-20 « perdus », montrant comment ERC-223 améliore la sécurité et réduit les erreurs courantes avec l’ancien standard."
+        },
+        "aggregationPage": {
+          "title": "Page d’agrégation ERC-223",
+          "description": "Une ressource centrale réunissant des guides de développement, des articles, du code source de référence et l’historique de l’évolution d’ERC-223. Ce hub informera et reliera les projets qui souhaitent tirer parti d’ERC-223."
+        }
+      }
+    },
+    "references": {
+      "overline": "Références",
+      "heading": "Suivez l’avancement ici :",
+      "items": {
+        "icoPageSource": "Code source de la page ICO",
+        "icoSmartContracts": "Contrats intelligents de l’ICO",
+        "autoListingSource": "Code source du contrat intelligent d’auto-listing (bêta)",
+        "erc223Hub": "Page hub ERC-223",
+        "erc223PageSource": "Code source de la page ERC-223",
+        "converterUi": "Interface du convertisseur de jetons (en cours de développement / version de test)",
+        "converterUiSource": "Code source de l’interface du convertisseur de jetons",
+        "converterContractSource": "Code source du contrat intelligent du convertisseur de standards (en cours de développement / version de test)",
+        "lossesCalculatorScript": "Script du calculateur des pertes ERC-20",
+        "lossesOldVersion": "Ancienne version du calculateur des pertes ERC-20 (obsolète)"
+      }
+    },
+    "reports": {
+      "overline": "Rapports de développement",
+      "heading": "Des synthèses seront publiées ici chaque mois.",
+      "monthYear": "{month} {year}",
+      "entries": {
+        "round2CompletionReport": "Rapport de clôture du tour 2",
+        "presaleRound2": "Prévente, tour 2 (04.12.2023 - 10.01.2024)",
+        "presaleRound1": "Prévente, tour 1 (15.09.2023 - 16.09.2023)"
+      }
+    },
+    "months": {
+      "january": "Janvier",
+      "february": "Février",
+      "march": "Mars",
+      "april": "Avril",
+      "may": "Mai",
+      "june": "Juin",
+      "july": "Juillet",
+      "august": "Août",
+      "september": "Septembre",
+      "october": "Octobre",
+      "november": "Novembre",
+      "december": "Décembre"
+    }
+  },
+  "EcosystemProblems": {
+    "overline": "Les problèmes de l’écosystème",
+    "erc20Security": {
+      "heading": "Les failles de sécurité du standard ERC-20",
+      "lead": "Le standard ERC-20 enfreint des principes courants de conception de logiciels sécurisés, ce qui a entraîné la perte de {amount} de jetons.",
+      "watchCalculator": "Consultez le <link>calculateur des pertes ERC-20 en direct</link>",
+      "totalLost": "Montant total des jetons ERC-20 perdus",
+      "history": "ERC-20 a été conçu en 2015. À l’époque, l’EthereumVM comportait un bug. Pour que les jetons ne soient pas affectés par ce bug, ERC-20 a été conçu de façon maladroite, sans possibilité de gestion des erreurs. <desktopOnly>Faute de pouvoir gérer les erreurs des utilisateurs, 201 M$ de jetons ERC-20 ont été perdus.</desktopOnly>",
+      "erc223Security": "ERC-223 a été conçu avec la sécurité comme priorité. ERC-223 permettrait d’éviter les erreurs des utilisateurs, et nous pensons qu’à long terme, un standard qui prévient les erreurs et les pertes de fonds finira par s’imposer.",
+      "table": {
+        "problem": "Problème",
+        "lost": "Pertes"
+      },
+      "incidents": {
+        "curveHack": "Piratage de Curve",
+        "daoHack": "Piratage de The DAO",
+        "erc20UserErrors": "Erreurs d’utilisateurs ERC-20",
+        "compoundHack": "Piratage de Compound",
+        "wormholeHack": "Piratage de Wormhole"
+      }
+    },
+    "approveTransferFrom": {
+      "heading": "Les failles de sécurité du modèle approve et transferFrom",
+      "lead": "Le mode de transaction des jetons ERC-20 peut mettre en danger les fonds des utilisateurs en autorisant le contrat du DEX à gérer ces fonds en leur nom.",
+      "description": "Les jetons ERC-20 exigent une approbation avant tout dépôt dans un contrat intelligent, car l’approbation et l’échange sont deux transactions distinctes. Pour économiser du GAS et améliorer l’expérience utilisateur, les DEX proposent d’émettre une seule approbation illimitée. Mais le contrat garde alors un contrôle permanent sur les jetons, avec un risque de perte en cas de piratage du contrat, même des années plus tard.",
+      "erc223Solution": "Les jetons ERC-223 peuvent être échangés sans approbation. L’utilisateur garde à tout moment le contrôle de ses jetons ERC-223 et aucun tiers n’est autorisé à effectuer des transferts en son nom.",
+      "warning": "Une approbation doit être émise à chaque échange. Si une plateforme vous invite à émettre une approbation unique, elle autorise ses contrats à faire n’importe quoi avec vos jetons, pour toujours."
+    },
+    "existingExchanges": {
+      "heading": "Les failles de sécurité des plateformes d’échange ERC-20 existantes",
+      "lead": "La plupart des plateformes ERC-20 invitent l’utilisateur à émettre une approbation unique « illimitée ». Ses fonds sont alors en danger, car le contrat conserve un accès illimité à ces fonds même après que l’utilisateur a cessé de s’en servir."
+    },
+    "gasOptimization": {
+      "heading": "Optimisation du GAS",
+      "cheaper": "Les échanges de jetons ERC-223 peuvent coûter 15% de moins que les échanges ERC-20.",
+      "erc20Consumed": "Un échange ERC-20 a consommé 257K de GAS.",
+      "approvalTx": "<link>Approbation</link> 45K de GAS",
+      "tokensSwapTx": "<link>Échange de jetons</link> 212K de GAS",
+      "erc223Consumed": "Un échange ERC-223 du même jeton a consommé 220K de GAS, sans aucune transaction d’approbation.",
+      "erc223SwapTx": "<link>Échange de jetons ERC-223</link> 220K de GAS"
+    },
+    "interfaceDecentralization": {
+      "heading": "Décentralisation de l’interface",
+      "lead": "La plupart des DEX reposent encore sur une seule instance d’interface centralisée.",
+      "description": "L’idéologie des cryptomonnaies repose sur la décentralisation. Pourtant, ses avantages disparaissent dès qu’une passerelle centralisée entre en jeu. L’essor des DEX constitue un grand pas vers la décentralisation. Les contrats intelligents ont remplacé le « backend » des plateformes centralisées traditionnelles, mais les interfaces sont restées aussi centralisées qu’avant.",
+      "solution": "DEX223 proposera plusieurs versions concurrentes de l’interface, permettant une décentralisation complète."
+    },
+    "tokenListings": {
+      "heading": "Des listings de jetons centralisés, décidés par les équipes des plateformes",
+      "lead": "La plupart des plateformes « décentralisées » dépendent encore de la décision de leur équipe pour lister un nouveau jeton. Cela peut devenir un cauchemar, aussi bien pour les développeurs de jetons, contraints de respecter les règles de listing, que pour les utilisateurs, qui ne trouvent pas toujours les jetons qu’ils veulent trader.",
+      "description": "Uniswap a fait un grand pas vers la décentralisation du listing avec son projet tokenlists, mais DEX223 va encore plus loin. DEX223 permettra d’importer n’importe quel actif depuis tokenlists, ainsi qu’une liste d’actifs issue d’un contrat déployé sur le réseau principal Ethereum, qui fera office de liste de jetons décentralisée.",
+      "solution": "Chacun pourra lister un nouveau jeton sur DEX223 sans demander l’autorisation de l’équipe, simplement en payant des frais de listing anti-spam via le contrat d’auto-listing."
+    }
+  },
+  "Email": {
+    "unsubscribe": {
+      "title": "Votre désabonnement a bien été pris en compte",
+      "description": "S’il s’agit d’une erreur, pas d’inquiétude. Vous pouvez facilement vous réabonner en cliquant sur le bouton ci-dessous. Nous serons ravis de vous retrouver !",
+      "resubscribeButton": "Se réabonner"
+    },
+    "resubscribe": {
+      "title": "Votre réabonnement a bien été pris en compte",
+      "description": "Bon retour parmi nous ! Vous êtes de nouveau abonné et recevrez nos dernières actualités. Nous sommes ravis de vous compter à nouveau parmi nous !",
+      "unsubscribeButton": "Se désabonner"
+    }
+  },
+  "Features": {
+    "overline": "Fonctionnalités",
+    "heading": "Les fonctionnalités clés de DEX223",
+    "description": "DEX223 allie sécurité, polyvalence et transparence. Grâce au standard ERC-223, la plateforme évite les erreurs de transfert de jetons, fonctionne de manière fluide sur de nombreuses blockchains compatibles EVM, permet un listing de jetons inclusif et inspire confiance grâce à des rapports financiers accessibles au public.",
+    "cards": {
+      "solvingProblem": {
+        "heading": "Résoudre un vrai problème",
+        "text": "Chaque année, des millions de dollars sont perdus à cause d’erreurs de transaction impliquant des jetons ERC-20. En adoptant le standard ERC-223, DEX223 franchit la première étape décisive pour éliminer ces erreurs coûteuses. Nous sommes convaincus que ce standard amélioré, qui prévient les pertes de fonds, deviendra à terme la norme du secteur."
+      },
+      "chainSupport": {
+        "heading": "Une compatibilité maximale entre blockchains",
+        "text": "DEX223 est conçu pour fonctionner de manière fluide sur toutes les blockchains compatibles EVM, dont Ethereum, EOS EVM, Arbitrum, Optimism, BASE et bien d’autres. Cette large compatibilité fera de DEX223 la plateforme d’échange la plus polyvalente du marché, prenant en charge le plus grand nombre de réseaux du secteur."
+      },
+      "nonDiscrimination": {
+        "heading": "Une philosophie de non-discrimination",
+        "text": "L’inclusivité est au cœur de DEX223. Le protocole permet de lister n’importe quel jeton et accueille le marché diversifié et en plein essor des meme coins. Conscients que le listing de ces jetons peut être complexe, nous proposons des solutions clés en main pour rendre le processus simple et accessible à tous les projets."
+      },
+      "financialTransparency": {
+        "heading": "Transparence financière",
+        "text": "La transparence est un pilier de notre fonctionnement. DEX223 applique une politique stricte d’ouverture financière : l’utilisation des fonds de l’ICO est documentée publiquement et accessible à tous sur <link>Github</link>. Cet engagement permet à notre communauté de faire confiance et de vérifier comment les fonds sont gérés et utilisés."
+      }
+    }
+  },
+  "Fight": {
+    "overline": "Le combat",
+    "heading": "ERC-20 contre ERC-223 : <br></br> le choc des standards de jetons",
+    "intro": "Depuis 2017, un débat animé oppose les partisans d’ERC-20 et d’ERC-223 sur le standard offrant l’expérience la plus sûre et la plus fluide. Le cœur du problème réside dans la façon dont les jetons et l’Ether sont déposés sur des adresses détenues en propre (contrôlées par des personnes) plutôt que sur des contrats intelligents.",
+    "points": {
+      "erc223": "L’Ether et ERC-223 détectent automatiquement si le destinataire est une adresse détenue en propre ou un contrat, et choisissent la méthode de dépôt adaptée.",
+      "erc20": "Avec ERC-20, en revanche, c’est à l’utilisateur de choisir la bonne méthode de transfert. S’il se trompe, les jetons sont perdus, car le standard ERC-20 ne dispose pas d’un véritable modèle de gestion des transactions."
+    },
+    "learnMore": "Pour en savoir plus sur cette rivalité et son impact sur l’écosystème, consultez la <link>page d’accueil ERC-223</link> et découvrez toute son histoire depuis 2017.",
+    "imageAlt": "Le combat ERC-20 contre ERC-223"
+  },
+  "Info": {
+    "overline": "Infos",
+    "heading": "Projections et informations sur le jeton",
+    "projection": "Le 29 août 2023, Uniswap V3 a enregistré un volume d’échange quotidien de 883 millions de dollars. Si DEX223 captait seulement 5% de ce volume avec des frais taker de 0,2%, les revenus mensuels projetés et partagés entre les détenteurs de D223 pourraient atteindre 2 649 000 $. Dans ces conditions, toute personne achetant des jetons D223 au prix de la vente publique pourrait obtenir un ROI estimé à 397% sur 12 mois, issu uniquement des revenus des frais de transaction.",
+    "upgradeGuide": "Pour en savoir plus sur la mise à niveau de D223 et sur la façon de transférer des jetons directement vers le contrat, consultez le <link>guide de mise à niveau du jeton D223</link>.",
+    "fields": {
+      "tokenName": "Nom du jeton",
+      "network": "Réseau",
+      "ticker": "Ticker",
+      "address": "Adresse",
+      "maxSupply": "Offre maximale",
+      "decimals": "Décimales",
+      "standard": "Standard",
+      "publicSalePrice": "Prix de la vente publique"
+    },
+    "standardValue": "ERC-223 / convertible en ERC-20 via <link>EIP-7417</link>",
+    "upgradeTokens": "Mettre à niveau les jetons",
+    "viewPitchDeck": "Voir le pitch deck"
+  },
+  "Innovation": {
+    "overline": "Innovation",
+    "heading": "Innover dans le trading décentralisé",
+    "description": "DEX223 introduit plusieurs concepts révolutionnaires qu’aucune autre plateforme d’échange ne met actuellement en œuvre de la même manière. Ces fonctionnalités vont considérablement renforcer la sécurité, rendre le listing de jetons aussi simple et transparent que possible et permettre le prêt d’actifs directement sur la plateforme.",
+    "cards": {
+      "security": {
+        "heading": "Une sécurité sans compromis",
+        "text": "La sécurité des fonds des utilisateurs est primordiale. Chaque composant, des contrats intelligents à l’interface, doit être conçu et audité pour éliminer tout point de défaillance unique. Notre système de trading sur marge encapsulé et nos mécanismes d’auto-listing reposent sur une approche proactive de la sécurité, réduisant l’exposition aux activités malveillantes comme aux erreurs des utilisateurs."
+      },
+      "economicSustainability": {
+        "heading": "Durabilité économique",
+        "text": "Les modèles d’incitation de la plateforme, comme le partage des revenus issus des frais de listing et des intérêts des ordres de prêt, visent une croissance durable. En partageant les récompenses avec les détenteurs du jeton DEX223, nous créons une relation symbiotique entre le succès du protocole et l’engagement des investisseurs."
+      },
+      "decentralization": {
+        "heading": "Une véritable décentralisation",
+        "text": "Nous imaginons une application capable de fonctionner indéfiniment, sans intervention extérieure ni supervision centralisée. Grâce aux listings pilotés par contrats intelligents, à la gouvernance au niveau du protocole et au développement distribué, DEX223 veille à ce que chaque étape du trading, du prêt et du listing de jetons soit transparente et ne repose sur aucun tiers de confiance."
+      },
+      "educating": {
+        "heading": "Former et responsabiliser les utilisateurs",
+        "text": "DEX223 s’engage à favoriser un environnement sûr grâce à une documentation claire, des tutoriels pas à pas et des interfaces accessibles. Informer les utilisateurs sur les bonnes pratiques de trading et les risques de la plateforme leur permet d’évoluer dans l’univers DeFi en toute confiance."
+      },
+      "permissionless": {
+        "heading": "Une innovation sans permission",
+        "text": "DEX223 adopte un modèle où chacun peut bâtir sur notre protocole ou s’y intégrer. Les jetons peuvent être listés librement, et les nouveaux instruments financiers, comme le trading sur marge encapsulé, sont accessibles à tous les participants sans gardiens. Cette ouverture nourrit l’expérimentation et la créativité au sein de l’écosystème."
+      },
+      "governance": {
+        "heading": "Gouvernance communautaire",
+        "text": "Les détenteurs du jeton DEX223 sont au premier plan des décisions. Les frais de listing, les nouvelles fonctionnalités du protocole et les propositions stratégiques sont soumis au vote on-chain, garantissant un contrôle démocratique direct sur le développement de la plateforme. Cette approche centrée sur la communauté favorise une évolution transparente de notre protocole."
+      },
+      "longTermVision": {
+        "heading": "Une vision à long terme",
+        "text": "En misant sur une expérience utilisateur fluide, des possibilités d’intégration ouvertes et un cadre de sécurité robuste, DEX223 ambitionne de devenir la plateforme de référence du trading décentralisé nouvelle génération. Une fois déployé, le protocole s’inscrit durablement dans le paysage DeFi, gouverné et amélioré par sa communauté."
+      }
+    }
+  },
+  "Legal": {
+    "englishOnly": "Ce document est disponible uniquement en anglais. La version anglaise fait foi.",
+    "downloadDocument": "Télécharger le document",
+    "downloadPdf": "Télécharger le fichier PDF"
+  },
+  "MultiChain": {
+    "overline": "DÉPLOIEMENT MULTICHAÎNE",
+    "heading": "Politique de déploiement cross-chain",
+    "paragraphs": {
+      "initialOffering": "Les jetons D223 seront d’abord proposés sur le réseau principal Ethereum, tandis que la plateforme DEX223 doit être lancée sur plusieurs blockchains. Les détenteurs qui conservent leurs jetons D223 sur Ethereum et les verrouillent dans le contrat intelligent recevront un nombre équivalent de jetons sur chaque nouvelle blockchain, au moment du déploiement de DEX223 sur celle-ci.",
+      "influencers": "Pour étendre notre portée, une partie des jetons D223 de l’équipe principale sera attribuée à des influenceurs et à des partenaires médias, afin de faire connaître notre plateforme au sein de leurs communautés.",
+      "confirmedChains": "Les blockchains confirmées pour le déploiement de DEX223 sont Ethereum, Avalanche, BSC, EOS EVM, CELO, Base, Optimism et Arbitrum. Bien que ces blockchains soient confirmées, l’équipe fixera les priorités et pourra adapter sa stratégie de déploiement selon ce qu’elle jugera opportun."
+    }
+  },
+  "Philosophy": {
+    "overline": "Nos objectifs",
+    "heading": "La philosophie du projet",
+    "description": "DEX223 repose sur la conviction qu’une plateforme d’échange véritablement décentralisée doit être inarrêtable, sécurisée et gouvernée par ceux qui l’utilisent. Nos principes fondamentaux s’articulent autour de l’autonomie des utilisateurs, d’une gouvernance transparente et de solides garde-fous techniques. En associant des mesures de sécurité strictes à des fonctionnalités ouvertes et sans permission, nous voulons établir une nouvelle référence dans la finance décentralisée. <link>Testez DEX223 ici</link>"
+  },
+  "RevenueModel": {
+    "overline": "Modèle de revenus"
+  },
+  "Roadmap": {
+    "overline": "Calendrier de développement",
+    "heading": "Feuille de route",
+    "intro": "Nous prévoyons d’annoncer notre calendrier de déploiement multichaîne une fois le déploiement sur BSC terminé. Rendez-vous sur notre <link>Github</link> pour les derniers détails et mises à jour.",
+    "milestones": {
+      "q1_2024": {
+        "date": "T1 2024 (février-mars)",
+        "items": {
+          "launchInfrastructure": "Lancer l’infrastructure initiale du DEX",
+          "coreErc223Support": "Implémenter la prise en charge de base d’ERC-223",
+          "legalFramework": "Établir le cadre juridique du DEX",
+          "testnetContracts": "Déployer les contrats intelligents de base sur le testnet",
+          "autoListingDevelopment": "Démarrer le développement de l’auto-listing"
+        }
+      },
+      "q2_2024": {
+        "date": "T2 2024 (avril-juin)",
+        "items": {
+          "prototypeForTesting": "Lancer un prototype du DEX pour les tests",
+          "gasEfficiency": "Optimiser la consommation de gas",
+          "mergedLiquidityPools": "Finaliser les pools de liquidité fusionnés",
+          "mobileUi": "Implémenter l’interface mobile",
+          "autoListingContracts": "Déployer les contrats d’auto-listing"
+        }
+      },
+      "q3_2024": {
+        "date": "T3 2024 (juillet-septembre)",
+        "items": {
+          "marginTradingModule": "Finaliser le module de trading sur marge",
+          "bugBounty": "Lancer le programme de bug bounty",
+          "securityAuditProcess": "Démarrer le processus d’audit de sécurité",
+          "eosTesting": "Étendre les tests à la blockchain EOS",
+          "portfolioAndListing": "Déployer les fonctionnalités de portefeuille et de listing"
+        }
+      },
+      "q4_2024": {
+        "date": "T4 2024 (octobre-décembre)",
+        "items": {
+          "d223V2Token": "Lancer le jeton D223-v2",
+          "tokenUpgrading": "Démarrer le processus de mise à niveau des jetons",
+          "deepSecurityAudits": "Audits de sécurité approfondis et correction des bugs",
+          "mainnetContracts": "Déployer les contrats sur le mainnet",
+          "migratePresaleTokens": "Migrer les jetons de prévente vers ETH",
+          "blogAndDocumentation": "Ajouter un blog et la documentation au prototype"
+        }
+      },
+      "q1q3_2025": {
+        "date": "T1-T3 2025 (janvier-septembre)",
+        "items": {
+          "internalAudit": "Finalisation de l’audit de sécurité interne",
+          "externalAudit": "Audit de sécurité externe",
+          "cexListing": "Listing de D223 sur un CEX (BitMart)",
+          "fiatOnRamp": "Passerelle d’achat en monnaie fiat"
+        }
+      },
+      "q4_2025": {
+        "date": "T4 2025 (septembre-décembre)",
+        "items": {
+          "ethereumMainnet": "Lancer DEX223 sur le réseau principal Ethereum",
+          "moreEvmChains": "Lancer DEX223 sur d’autres blockchains EVM",
+          "revenueFeature": "Lancement de la fonctionnalité de revenus",
+          "marginModuleAudit": "Audit de sécurité du module de marge"
+        }
+      },
+      "future": {
+        "date": "Étapes futures",
+        "items": {
+          "marginTradingSupport": "Prise en charge du trading sur marge"
+        }
+      }
+    }
+  },
+  "Subscription": {
+    "overline": "Abonnement",
+    "heading": "Abonnez-vous à notre newsletter",
+    "description": "Restez informé des prochaines versions, des améliorations de sécurité et des économies de gas, pour toujours garder une longueur d’avance dans l’univers du trading décentralisé.",
+    "label": "Abonnez-vous à notre newsletter",
+    "emailPlaceholder": "Votre e-mail",
+    "subscribe": "S’abonner",
+    "toasts": {
+      "success": "Vous êtes bien abonné à notre newsletter",
+      "invalidEmail": "Erreur : e-mail invalide",
+      "unknownError": "Erreur inconnue"
+    }
+  },
+  "Team": {
+    "overline": "Équipe",
+    "heading": "Découvrez l’équipe",
+    "positions": {
+      "cofounderCto": "Cofondateur / CTO",
+      "cofounderProjectManager": "Cofondateur / Chef de projet",
+      "cofounderStrategicAdvisor": "Cofondateur / Conseiller stratégique",
+      "backendDeveloper": "Développeur backend",
+      "webDeveloper": "Développeur web",
+      "uiUxDeveloper": "Développeur UI / UX"
+    }
+  },
+  "Upgrade": {
+    "title": "Mettez à niveau vos jetons",
+    "connectToSeeBalance": "Connectez votre portefeuille pour voir votre solde",
+    "youHave": "Vous avez",
+    "upgradingTokens": "Mise à niveau des jetons",
+    "upgradeTokensNow": "Mettre à niveau maintenant",
+    "switchingNetwork": "Changement de réseau",
+    "switchToEthereum": "Passer sur Ethereum",
+    "connectWallet": "Connecter le portefeuille",
+    "statusImageAlt": "succès",
+    "toasts": {
+      "walletClientNotFound": "Client du portefeuille introuvable",
+      "balanceEmpty": "Le solde est vide",
+      "somethingWentWrong": "Une erreur s’est produite"
+    },
+    "error": {
+      "title": "Une erreur s’est produite",
+      "description": "Une erreur est survenue lors de la mise à niveau des jetons. Veuillez réessayer",
+      "tryAgain": "Réessayer"
+    },
+    "success": {
+      "title": "Jetons mis à niveau",
+      "description": "Les jetons ont bien été mis à niveau et sont prêts à être utilisés",
+      "viewTransaction": "Voir la transaction"
+    }
+  },
+  "Wallet": {
+    "connectWallet": "Connecter le portefeuille",
+    "keystore": {
+      "title": "Importer un portefeuille avec un fichier JSON",
+      "browse": "Parcourir",
+      "selectFile": "Sélectionner le fichier Keystore",
+      "password": "Mot de passe du Keystore",
+      "unlock": "Déverrouiller",
+      "unsupportedFileFormat": "Format de fichier non pris en charge",
+      "wrongPassword": "Mot de passe incorrect"
+    },
+    "toasts": {
+      "installMetamask": "Installez MetaMask pour continuer",
+      "walletConnected": "Portefeuille connecté",
+      "userRejected": "L’utilisateur a refusé la demande",
+      "somethingWentWrong": "Une erreur s’est produite"
+    }
+  },
+  "WhyChooseUs": {
+    "overline": "Singularité",
+    "heading": "Pourquoi nous choisir ?",
+    "description": "DEX223 est le premier DEX à prendre en charge à la fois les standards ERC-20 et ERC-223. ERC-20 est le standard dominant sur les blockchains EVM depuis 2015, et son adoption a entraîné des pertes financières en hausse exponentielle pour les utilisateurs de l’écosystème. Nous sommes là pour mettre fin aux dommages financiers causés par des standards obsolètes datant des débuts, par les erreurs des utilisateurs et par les arnaques aux approbations.",
+    "swap": "Échanger",
+    "youPay": "Vous payez",
+    "youReceive": "Vous recevez",
+    "safeChoice": "CHOIX SÛR",
+    "approvalNeeded": "Approbation ERC-20 requise",
+    "higherGasPrice": "Prix du gas plus élevé",
+    "lowerGasPrice": "Prix du gas plus bas",
+    "gasPrice": "Prix du gas",
+    "noApproval": "Aucune approbation requise",
+    "approve": "Approuver"
+  }
+}

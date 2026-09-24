@@ -1,0 +1,75 @@
+import { useLocale, useTranslations } from "next-intl";
+import type { CSSProperties } from "react";
+
+import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
+import Pattern, { PatternColor } from "@/components/atoms/Pattern";
+import Svg from "@/components/atoms/Svg";
+import CompareAnimationSlider from "@/components/CompareAnimationSlider";
+import Container from "@/components/Container";
+
+export default function Banner() {
+  const t = useTranslations("Banner");
+  const locale = useLocale();
+
+  return (
+    <Container>
+      <Pattern patternColor={PatternColor.PURPLE} className="w-250 h-250 -left-[680px] top-10" />
+      <Pattern
+        patternColor={PatternColor.GREEN}
+        className="w-250 h-250 -right-[461px] bg-cover top-0 opacity-10 -z-10 -scale-100"
+      />
+      <div className="grid grid-cols-1 lg:grid-cols-[6fr_1fr_5fr] w-full pt-10 lg:pt-[80px]">
+        <div className="flex flex-col justify-center hero-stagger">
+          <div className="flex mb-3">
+            <div className="relative py-1.5 text-18">
+              <div className="absolute top-0 left-0 right-0 w-full h-px bg-gradient-to-r from-secondary-bg via-[#C76060] to-secondary-bg" />
+              <div className="absolute bottom-0 left-0 right-0 w-full h-px bg-gradient-to-r from-secondary-bg via-[#C76060] to-secondary-bg" />
+              <p className="bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A] font-medium">
+                {t("badge")}
+              </p>
+            </div>
+          </div>
+
+          <h1 className="text-30 lg:text-48 3xl:text-56 mb-4 lg:mb-5 font-medium tracking-[-0.025em] leading-[1.12]">
+            {t.rich("heading", {
+              shimmer: (chunks) => <span className="text-shimmer">{chunks}</span>,
+            })}
+          </h1>
+          <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8 max-w-[560px]">
+            {t("description")}
+          </p>
+
+          <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
+            <a target="_blank" href={`https://test-app.dex223.io/${locale}/`}>
+              <Button className="sheen" size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
+                <span className="flex items-center gap-2">
+                  {t("testAppButton")}
+                  <Svg iconName="forward" />
+                </span>
+              </Button>
+            </a>
+            <a
+              target="_blank"
+              href={`https://app.dex223.io/${locale}/swap?tokenB=0x675eb5922604F434bcaAC4B4B433D8668925DD67`}
+            >
+              <Button
+                size={ButtonSize.EXTRA_LARGE}
+                colorScheme={ButtonColor.LIGHT_GREEN}
+                mobileSize={ButtonSize.LARGE}
+              >
+                <span className="flex items-center gap-2">
+                  {t("buySellButton")}
+                  <Svg iconName="forward" />
+                </span>
+              </Button>
+            </a>
+          </div>
+        </div>
+        <div />
+        <div className="hero-rise" style={{ "--hero-delay": "380ms" } as CSSProperties}>
+          <CompareAnimationSlider />
+        </div>
+      </div>
+    </Container>
+  );
+}

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint -c .eslintrc.json --ext .js,.jsx,.ts,.tsx src --quiet --fix"
+    "lint": "eslint -c .eslintrc.json --ext .js,.jsx,.ts,.tsx src --quiet --fix",
+    "check:messages": "node scripts/check-messages.mjs"
   },
   "devDependencies": {
     "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
@@ -32,6 +33,7 @@
     "ethereumjs-wallet": "^1.0.2",
     "formik": "^2.4.6",
     "next": "^15.5.15",
+    "next-intl": "^3.26.5",
     "react": "^18.3.0",
     "react-awesome-reveal": "^4.2.5",
     "react-device-detect": "^2.2.3",
