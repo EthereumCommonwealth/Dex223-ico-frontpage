@@ -86,7 +86,7 @@ export default function LocaleSwitcher({ placement = "bottom-end" as const }) {
         type="button"
         aria-label={t("language")}
         className={clsx(
-          "inline-flex items-center gap-2 h-10 pl-2.5 pr-2 rounded-2 text-14 font-medium text-secondary-text border duration-200 hocus:text-primary-text hocus:bg-tertiary-bg",
+          "inline-flex items-center gap-2 h-11 lg:h-10 pl-2.5 pr-2 rounded-2 text-14 font-medium text-secondary-text border duration-200 hocus:text-primary-text hocus:bg-tertiary-bg",
           isOpen ? "bg-tertiary-bg border-white/[0.08]" : "border-transparent",
           isPending && "opacity-60",
         )}

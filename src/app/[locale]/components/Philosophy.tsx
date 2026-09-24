@@ -77,7 +77,7 @@ export default function Philosophy() {
               />
             </div>
             <ExternalTextLink
-              className="mt-8 text-18 font-medium"
+              className="mt-8 text-18 font-medium min-h-11 self-start"
               color="green"
               href={`https://test-app.dex223.io/${locale}`}
               text={t("tryIt")}

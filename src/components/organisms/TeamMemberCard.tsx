@@ -15,6 +15,17 @@ interface Props {
   };
 }
 
+const socialLabels: Record<string, string> = {
+  facebook: "Facebook",
+  linkedin: "LinkedIn",
+  reddit: "Reddit",
+  telegram: "Telegram",
+  github: "GitHub",
+  twitter: "X",
+  email: "Email",
+  behance: "Behance",
+};
+
 const socialIcons = {
   facebook: "/images/socials/facebook.svg",
   linkedin: "/images/socials/linkedin.svg",
@@ -49,7 +60,8 @@ export default function TeamMemberCard({ image, position, socials, name }: Props
                 key={key}
                 target="_blank"
                 href={socials[key]}
-                className="hocus:bg-green-bg flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-200 py-2"
+                aria-label={`${socialLabels[key] ?? key}: ${name}`}
+                className="hocus:bg-green-bg flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-200 py-2 max-lg:min-h-11"
               >
                 <img alt="" src={socialIcons[key]} className="w-4 h-4 lg:w-6 lg:h-6" />
               </a>

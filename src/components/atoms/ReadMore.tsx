@@ -50,7 +50,7 @@ export default function ReadMore({
         aria-expanded={isOpen}
         aria-controls={id}
         onClick={() => setIsOpen(!isOpen)}
-        className="mt-3 inline-flex items-center gap-1 text-14 lg:text-16 font-medium text-green duration-200 hocus:text-green-hover"
+        className="relative mt-3 inline-flex items-center gap-1 text-14 lg:text-16 font-medium text-green duration-200 hocus:text-green-hover after:absolute after:-inset-x-2 after:-inset-y-3 after:content-['']"
       >
         {isOpen ? t("showLess") : t("readMore")}
         <Svg
