@@ -28,7 +28,7 @@ export default function Ecosystem() {
             <ul className="text-16 lg:text-18 flex flex-col gap-2">
               <BulletListItem>
                 <TextLink
-                  href="https://dexaran.github.io/token-converter"
+                  href="https://app.dex223.io/converter"
                   text={t("ecosystem.items.converter.title")}
                 />
                 <p>{t("ecosystem.items.converter.description")}</p>
