@@ -192,7 +192,7 @@ export default function WhyChooseUs() {
     <NeonBlock
       icon="target"
       color="green"
-      overlineText="Uniquness"
+      overlineText="Uniqueness"
       differentColumns
       fullWidth
       leftContent={
