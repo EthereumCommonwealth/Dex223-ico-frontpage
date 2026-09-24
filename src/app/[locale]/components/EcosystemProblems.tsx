@@ -5,13 +5,14 @@ import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
-import BulletListItem from "@/components/atoms/BulletListItem";
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import OverlineText from "@/components/atoms/OverlineText";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
+import ReadMore from "@/components/atoms/ReadMore";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import Container from "@/components/Container";
+import GlyphPoint from "@/components/GlyphPoint";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import InterfaceDecentralizationImage from "@/inlined-svgs/InterfaceDecentralizationImage";
 import ListingImage from "@/inlined-svgs/ListingImage";
@@ -52,6 +53,19 @@ function LostCard({ icon, name, lost, percentage, color, active = false, animate
 const ERCLosses = "$108,235,147";
 const ERCLossesInt = "$108M";
 
+/** Full original copy, kept one tap away behind "Read more". */
+function Details({ children }: { children: React.ReactNode }) {
+  return (
+    <ReadMore>
+      <div className="flex flex-col gap-3 text-secondary-text text-16 xl:text-18">{children}</div>
+    </ReadMore>
+  );
+}
+
+function Lede({ children }: { children: React.ReactNode }) {
+  return <p className="text-18 xl:text-24 leading-[1.4] text-primary-text">{children}</p>;
+}
+
 function useSlides() {
   const t = useTranslations("EcosystemProblems");
 
@@ -59,41 +73,42 @@ function useSlides() {
     {
       heading: t("erc20Security.heading"),
       content: (
-        <div className="grid 2xl:gap-5 xl:pr-9  lg:gap-3 gap-2">
-          <p className="text-18 2xl:text-24 text-primary-text">
-            {t("erc20Security.lead", { amount: ERCLossesInt })}
-          </p>
-          <div className="py-3 px-4 xl:px-5 xl:py-4 border border-red-light rounded-3 shadow shadow-red">
-            <p className="text-16 2xl:text-18 mb-3 lg:max-2xl:text-center">
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <Lede>{t("erc20Security.lede")}</Lede>
+          <div className="rounded-3 border border-red-light/60 bg-red-bg px-4 py-4 xl:px-6 xl:py-5">
+            <div className="flex items-center gap-2 text-14 xl:text-16 text-secondary-text">
+              <Svg className="text-red-light flex-shrink-0" size={20} iconName="warning" />
+              <span>{t("erc20Security.totalLost")}</span>
+            </div>
+            <p className="mt-1 text-red-light font-bold tabular-nums tracking-[-0.02em] text-36 leading-[1.2] sm:text-48 sm:leading-[1.2]">
+              {ERCLosses}
+            </p>
+            <p className="mt-2 text-14 xl:text-16">
               {t.rich("erc20Security.watchCalculator", {
                 link: (chunks) => (
                   <TextLink text={chunks} href="https://dexaran.github.io/erc20-losses" />
                 ),
               })}
             </p>
-            <div className="flex justify-between gap-0 sm:gap-5 bg-red-bg rounded-3 items-center py-2.5 px-3.5 sm:px-5 lg:max-2xl:flex-col lg:max-2xl:items-center lg:max-2xl:gap-0 max-sm:flex-col">
-              <div className="flex items-center max-sm:gap-1 gap-2 text-16 2xl:text-20 max-sm:text-12">
-                <Svg
-                  className="text-red-light !w-6 !h-6 sm:h-8 sm:w-8"
-                  size={32}
-                  iconName="warning"
-                />
-                <span>{t("erc20Security.totalLost")}</span>
-              </div>
-              <span className="text-red-light text-20 2xl:text-24 font-medium">
-                <span>{ERCLosses}</span>
-              </span>
-            </div>
           </div>
-
-          <p className="text-secondary-text text-16 2xl:text-18">
-            {t.rich("erc20Security.history", {
-              desktopOnly: (chunks) => <span className="max-xl:hidden">{chunks}</span>,
-            })}
-          </p>
-          <p className="text-secondary-text text-16 2xl:text-18">
-            {t("erc20Security.erc223Security")}
-          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <GlyphPoint
+              icon="error"
+              tone="red"
+              title={t("erc20Security.glyphs.legacy.title")}
+              text={t("erc20Security.glyphs.legacy.text")}
+            />
+            <GlyphPoint
+              icon="security"
+              title={t("erc20Security.glyphs.fix.title")}
+              text={t("erc20Security.glyphs.fix.text")}
+            />
+          </div>
+          <Details>
+            <p>{t("erc20Security.lead", { amount: ERCLossesInt })}</p>
+            <p>{t.rich("erc20Security.history", { desktopOnly: (chunks) => chunks })}</p>
+            <p>{t("erc20Security.erc223Security")}</p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (
@@ -171,14 +186,34 @@ function useSlides() {
     {
       heading: t("approveTransferFrom.heading"),
       content: (
-        <div className="grid gap-2 xl:gap-4 xl:pr-9 ">
-          <p className="text-18 xl:text-24 text-primary-text">{t("approveTransferFrom.lead")}</p>
-          <p className="text-secondary-text text-16 xl:text-18">
-            {t("approveTransferFrom.description")}
-          </p>
-          <p className="text-green pl-4 border-l-4 border-green text-16 xl:text-18">
-            {t("approveTransferFrom.erc223Solution")}
-          </p>
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <Lede>{t("approveTransferFrom.lede")}</Lede>
+          <div className="grid gap-4">
+            <GlyphPoint
+              icon="key"
+              tone="red"
+              title={t("approveTransferFrom.glyphs.unlimited.title")}
+              text={t("approveTransferFrom.glyphs.unlimited.text")}
+            />
+            <GlyphPoint
+              icon="warning"
+              tone="red"
+              title={t("approveTransferFrom.glyphs.hack.title")}
+              text={t("approveTransferFrom.glyphs.hack.text")}
+            />
+            <GlyphPoint
+              icon="security"
+              title={t("approveTransferFrom.glyphs.noApproval.title")}
+              text={t("approveTransferFrom.glyphs.noApproval.text")}
+            />
+          </div>
+          <Details>
+            <p>{t("approveTransferFrom.lead")}</p>
+            <p>{t("approveTransferFrom.description")}</p>
+            <p className="text-green pl-4 border-l-4 border-green">
+              {t("approveTransferFrom.erc223Solution")}
+            </p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (
@@ -209,8 +244,25 @@ function useSlides() {
     {
       heading: t("existingExchanges.heading"),
       content: (
-        <div className="grid gap-6 xl:pr-9 ">
-          <p className="xl:text-24 text-primary-text text-18">{t("existingExchanges.lead")}</p>
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <Lede>{t("existingExchanges.lede")}</Lede>
+          <div className="grid gap-4">
+            <GlyphPoint
+              icon="restrictions"
+              tone="red"
+              title={t("existingExchanges.glyphs.unlimited.title")}
+              text={t("existingExchanges.glyphs.unlimited.text")}
+            />
+            <GlyphPoint
+              icon="warning"
+              tone="red"
+              title={t("existingExchanges.glyphs.lingering.title")}
+              text={t("existingExchanges.glyphs.lingering.text")}
+            />
+          </div>
+          <Details>
+            <p>{t("existingExchanges.lead")}</p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (
@@ -268,44 +320,78 @@ function useSlides() {
     {
       heading: t("gasOptimization.heading"),
       content: (
-        <div className="grid gap-5 text-secondary-text text-16 xl:text-20 xl:pr-9 ">
-          <p>{t("gasOptimization.cheaper")}</p>
-          <p>{t("gasOptimization.erc20Consumed")}</p>
-          <ul className="flex flex-col gap-2">
-            <BulletListItem>
-              {t.rich("gasOptimization.approvalTx", {
-                link: (chunks) => (
-                  <TextLink
-                    href="https://explorer.callistodao.org//tx/0xa20d2838ea371759f92e7d4ae9700d2de96cf65de738b518dea1753db7180377"
-                    text={chunks}
-                  />
-                ),
-              })}
-            </BulletListItem>
-            <BulletListItem>
-              {t.rich("gasOptimization.tokensSwapTx", {
-                link: (chunks) => (
-                  <TextLink
-                    href="https://explorer.callistodao.org//tx/0xedf726375e86b2e1df80a614049ab5e1a797174fb762d81471e3379e98497d36"
-                    text={chunks}
-                  />
-                ),
-              })}
-            </BulletListItem>
-          </ul>
-          <p>{t("gasOptimization.erc223Consumed")}</p>
-          <ul>
-            <BulletListItem>
-              {t.rich("gasOptimization.erc223SwapTx", {
-                link: (chunks) => (
-                  <TextLink
-                    href="https://explorer.callistodao.org//tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b"
-                    text={chunks}
-                  />
-                ),
-              })}
-            </BulletListItem>
-          </ul>
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <div className="flex items-center gap-4">
+            <span className="text-green font-bold tabular-nums tracking-[-0.02em] text-48 leading-[1.1] xl:text-58 xl:leading-[1.1]">
+              15%
+            </span>
+            <span className="text-18 xl:text-24 leading-[1.3] text-primary-text [text-wrap:balance]">
+              {t("gasOptimization.cheaperLabel")}
+            </span>
+          </div>
+          <div className="grid gap-3 grid-cols-2">
+            <div className="rounded-3 bg-secondary-bg p-3 sm:p-4 xl:p-5 ring-1 ring-inset ring-red/20">
+              <div className="flex items-center gap-2 text-14 xl:text-16 text-secondary-text">
+                <Svg iconName="gas" size={20} className="text-red-light" />
+                {t("gasOptimization.erc20Label")}
+              </div>
+              <p className="mt-1 text-28 sm:text-32 xl:text-40 font-bold tabular-nums text-primary-text">
+                257K <span className="text-14 xl:text-16 font-medium text-secondary-text">GAS</span>
+              </p>
+              <ul className="mt-2 flex flex-col gap-1 text-12 sm:text-14 xl:text-16 text-secondary-text">
+                <li>
+                  {t.rich("gasOptimization.approvalTx", {
+                    link: (chunks) => (
+                      <TextLink
+                        href="https://explorer.callistodao.org//tx/0xa20d2838ea371759f92e7d4ae9700d2de96cf65de738b518dea1753db7180377"
+                        text={chunks}
+                      />
+                    ),
+                  })}
+                </li>
+                <li>
+                  {t.rich("gasOptimization.tokensSwapTx", {
+                    link: (chunks) => (
+                      <TextLink
+                        href="https://explorer.callistodao.org//tx/0xedf726375e86b2e1df80a614049ab5e1a797174fb762d81471e3379e98497d36"
+                        text={chunks}
+                      />
+                    ),
+                  })}
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-3 bg-secondary-bg p-3 sm:p-4 xl:p-5 ring-1 ring-inset ring-green/30">
+              <div className="flex items-center gap-2 text-14 xl:text-16 text-secondary-text">
+                <Svg iconName="gas" size={20} className="text-green" />
+                {t("gasOptimization.erc223Label")}
+              </div>
+              <p className="mt-1 text-28 sm:text-32 xl:text-40 font-bold tabular-nums text-green">
+                220K <span className="text-14 xl:text-16 font-medium text-secondary-text">GAS</span>
+              </p>
+              <ul className="mt-2 flex flex-col gap-1 text-12 sm:text-14 xl:text-16 text-secondary-text">
+                <li>
+                  {t.rich("gasOptimization.erc223SwapTx", {
+                    link: (chunks) => (
+                      <TextLink
+                        href="https://explorer.callistodao.org//tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b"
+                        text={chunks}
+                      />
+                    ),
+                  })}
+                </li>
+                <li className="flex items-start gap-1 text-green">
+                  <Svg iconName="check" size={20} className="flex-shrink-0" />
+                  {t("gasOptimization.noApproval")}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <Details>
+            <p>{t("gasOptimization.cheaper")}</p>
+            <p>{t("gasOptimization.erc20Consumed")}</p>
+            <p>{t("gasOptimization.erc223Consumed")}</p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (
@@ -368,16 +454,27 @@ function useSlides() {
     {
       heading: t("interfaceDecentralization.heading"),
       content: (
-        <div className="grid gap-6 xl:pr-9 ">
-          <p className="text-18 xl:text-24 text-primary-text">
-            {t("interfaceDecentralization.lead")}
-          </p>
-          <p className="text-secondary-text text-16 xl:text-18">
-            {t("interfaceDecentralization.description")}
-          </p>
-          <p className="text-green pl-4 border-l-4 border-l-green text-16 xl:text-20">
-            {t("interfaceDecentralization.solution")}
-          </p>
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <Lede>{t("interfaceDecentralization.lead")}</Lede>
+          <div className="grid gap-4">
+            <GlyphPoint
+              icon="warning"
+              tone="red"
+              title={t("interfaceDecentralization.glyphs.gateway.title")}
+              text={t("interfaceDecentralization.glyphs.gateway.text")}
+            />
+            <GlyphPoint
+              icon="integration"
+              title={t("interfaceDecentralization.glyphs.manyUis.title")}
+              text={t("interfaceDecentralization.glyphs.manyUis.text")}
+            />
+          </div>
+          <Details>
+            <p>{t("interfaceDecentralization.description")}</p>
+            <p className="text-green pl-4 border-l-4 border-l-green">
+              {t("interfaceDecentralization.solution")}
+            </p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (
@@ -392,12 +489,34 @@ function useSlides() {
     {
       heading: t("tokenListings.heading"),
       content: (
-        <div className="grid gap-6 xl:pr-9 ">
-          <p className="text-18 xl:text-24 text-primary-text">{t("tokenListings.lead")}</p>
-          <p className="text-secondary-text text-16 xl:text-18">{t("tokenListings.description")}</p>
-          <p className="text-green pl-4 border-l-4 border-l-green text-16 xl:text-20">
-            {t("tokenListings.solution")}
-          </p>
+        <div className="grid gap-5 xl:gap-6 xl:pr-9">
+          <Lede>{t("tokenListings.lede")}</Lede>
+          <div className="grid gap-4">
+            <GlyphPoint
+              icon="restrictions"
+              tone="red"
+              title={t("tokenListings.glyphs.gated.title")}
+              text={t("tokenListings.glyphs.gated.text")}
+            />
+            <GlyphPoint
+              icon="auto-listing"
+              title={t("tokenListings.glyphs.permissionless.title")}
+              text={t("tokenListings.glyphs.permissionless.text")}
+            />
+            <GlyphPoint
+              icon="token"
+              tone="blue"
+              title={t("tokenListings.glyphs.importLists.title")}
+              text={t("tokenListings.glyphs.importLists.text")}
+            />
+          </div>
+          <Details>
+            <p>{t("tokenListings.lead")}</p>
+            <p>{t("tokenListings.description")}</p>
+            <p className="text-green pl-4 border-l-4 border-l-green">
+              {t("tokenListings.solution")}
+            </p>
+          </Details>
         </div>
       ),
       illustration: ({ animate, key }) => (

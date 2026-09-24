@@ -8,9 +8,8 @@ import React, { useRef } from "react";
 import ContactUsImage from "@/assets/images/tg-contact-us.svg";
 import ArticleHeading from "@/components/ArticleHeading";
 import Svg from "@/components/atoms/Svg";
-import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
-import { dexEmail, dexEmailLink, mediaEmail, mediaEmailLink } from "@/constants/email";
+import { dexEmailLink } from "@/constants/email";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import ContactUsPlane from "@/inlined-svgs/ContactUsPlane";
 
@@ -33,17 +32,7 @@ export default function ContactUs() {
           <>
             <ArticleHeading text={t("heading")} />
             <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 text-16 lg:text-18 text-secondary-text">
-              <p>{t("intro")}</p>
-              <p>
-                {t.rich("marketingInquiries", {
-                  email: () => <TextLink text={mediaEmail} href={mediaEmailLink} />,
-                })}
-              </p>
-              <p>
-                {t.rich("telegramGroup", {
-                  link: (chunks) => <TextLink href="https://t.me/Dex223_defi" text={chunks} />,
-                })}
-              </p>
+              <p className="text-primary-text/90 text-18 lg:text-20 leading-[1.5]">{t("intro")}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 mt-6 md:mt-10 mb-4 m:mb-5 gap-2">
               <a href={dexEmailLink}>

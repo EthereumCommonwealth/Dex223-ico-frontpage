@@ -1,9 +1,11 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import ArticleHeading from "@/components/ArticleHeading";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
+import ReadMore from "@/components/atoms/ReadMore";
+import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import SectionIntro from "@/components/SectionIntro";
 
 export default function MultiChain() {
   const t = useTranslations("MultiChain");
@@ -29,13 +31,34 @@ export default function MultiChain() {
       }
       leftContent={
         <>
-          <ArticleHeading text={t("heading")} />
-
-          <div className="flex flex-col gap-5 text-secondary-text text-16 lg:text-18">
-            <p>{t("paragraphs.initialOffering")}</p>
-            <p>{t("paragraphs.influencers")}</p>
-            <p>{t("paragraphs.confirmedChains")}</p>
+          <SectionIntro heading={t("heading")} lede={t("lede")} />
+          <div className="mt-8 flex flex-col gap-5">
+            <GlyphPoint
+              icon="eth"
+              tone="blue"
+              title={t("points.lock.title")}
+              text={t("points.lock.text")}
+            />
+            <GlyphPoint
+              icon="multichain-rollout"
+              tone="blue"
+              title={t("points.chains.title")}
+              text={t("points.chains.text")}
+            />
+            <GlyphPoint
+              icon="partners"
+              tone="blue"
+              title={t("points.partners.title")}
+              text={t("points.partners.text")}
+            />
           </div>
+          <ReadMore>
+            <div className="flex flex-col gap-5 text-secondary-text text-16 lg:text-18">
+              <p>{t("paragraphs.initialOffering")}</p>
+              <p>{t("paragraphs.influencers")}</p>
+              <p>{t("paragraphs.confirmedChains")}</p>
+            </div>
+          </ReadMore>
         </>
       }
       rightContent={

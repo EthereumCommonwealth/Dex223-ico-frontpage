@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import React, { HTMLProps, ReactNode } from "react";
 
+import ReadMore from "@/components/atoms/ReadMore";
+
 type GradientIconName =
   | "security"
   | "references"
@@ -15,6 +17,8 @@ type GradientIconName =
 
 interface FeatureCardProps extends HTMLProps<HTMLDivElement> {
   text: ReactNode;
+  /** One short line shown up front; when set, `text` moves behind "Read more". */
+  shortText?: ReactNode;
   heading: string;
   iconName: GradientIconName;
 }
@@ -70,14 +74,37 @@ function SvgGradient({ className, icon = "security" }) {
   );
 }
 
-export default function KeyFeatureCard({ iconName, heading, text, className }: FeatureCardProps) {
+export default function KeyFeatureCard({
+  iconName,
+  heading,
+  text,
+  shortText,
+  className,
+}: FeatureCardProps) {
   return (
-    <div data-reveal className={clsx("p-5 lg:p-6 surface surface-hover rounded-5", className)}>
-      <h3 className="flex gap-2.5 mb-2 font-bold text-18 md:text-20 tracking-[-0.01em]">
-        <SvgGradient className="mt-1 lg:mt-px text-green w-6 h-6 lg:w-8 lg:h-8" icon={iconName} />
+    <div
+      data-reveal
+      className={clsx("p-5 lg:p-7 surface surface-hover rounded-5 flex flex-col", className)}
+    >
+      <span
+        aria-hidden
+        className="w-12 h-12 mb-4 rounded-3 flex items-center justify-center bg-green/10 ring-1 ring-inset ring-green/20"
+      >
+        <SvgGradient className="w-7 h-7" icon={iconName} />
+      </span>
+      <h3 className="mb-1.5 font-semibold text-20 lg:text-24 tracking-[-0.01em] leading-[1.25]">
         {heading}
       </h3>
-      <p className="text-secondary-text text-16 md:text-18">{text}</p>
+      {shortText ? (
+        <>
+          <p className="text-secondary-text text-16 lg:text-18">{shortText}</p>
+          <ReadMore>
+            <p className="text-secondary-text text-16">{text}</p>
+          </ReadMore>
+        </>
+      ) : (
+        <p className="text-secondary-text text-16 md:text-18">{text}</p>
+      )}
     </div>
   );
 }

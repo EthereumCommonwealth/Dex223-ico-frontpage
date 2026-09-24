@@ -4,10 +4,12 @@ import clsx from "clsx";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 
-import ArticleHeading from "@/components/ArticleHeading";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
+import ReadMore from "@/components/atoms/ReadMore";
 import TextLink from "@/components/atoms/TextLink";
+import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import SectionIntro from "@/components/SectionIntro";
 
 export default function Allocation() {
   const t = useTranslations("Allocation");
@@ -53,33 +55,54 @@ export default function Allocation() {
         }
         leftContent={
           <>
-            <ArticleHeading text={t("heading")} />
+            <SectionIntro className="mb-8" heading={t("heading")} lede={t("lede")} />
             <div className="grid lg:grid-cols-[53fr_41fr] grid-cols-1">
               <div className="flex flex-col gap-5 lg:mb-10 tex-16 lg:text-18 text-secondary-text">
-                <p>
-                  {t.rich("paragraphs.inspiration", {
-                    link: (chunks) => (
-                      <TextLink
-                        href={
-                          "https://web.archive.org/web/20140824160811/https://www.ethereum.org/"
-                        }
-                        text={chunks}
-                        isExternal
-                      />
-                    ),
-                  })}
-                </p>
-                <p>{t("paragraphs.unsoldTokens")}</p>
-                <p>
-                  {t.rich("paragraphs.transparency", {
-                    link: (chunks) => (
-                      <TextLink
-                        href={`${locale === "en" ? "" : `/${locale}`}/development#reports`}
-                        text={chunks}
-                      />
-                    ),
-                  })}
-                </p>
+                <div className="flex flex-col gap-5">
+                  <GlyphPoint
+                    icon="double-usd"
+                    title={t("points.revenue.title")}
+                    text={t("points.revenue.text")}
+                  />
+                  <GlyphPoint
+                    icon="distribution"
+                    title={t("points.unsold.title")}
+                    text={t("points.unsold.text")}
+                  />
+                  <GlyphPoint
+                    icon="financial-transparency"
+                    title={t("points.reports.title")}
+                    text={t("points.reports.text")}
+                  />
+                </div>
+                <ReadMore className="mb-2">
+                  <div className="flex flex-col gap-5">
+                    <p>
+                      {t.rich("paragraphs.inspiration", {
+                        link: (chunks) => (
+                          <TextLink
+                            href={
+                              "https://web.archive.org/web/20140824160811/https://www.ethereum.org/"
+                            }
+                            text={chunks}
+                            isExternal
+                          />
+                        ),
+                      })}
+                    </p>
+                    <p>{t("paragraphs.unsoldTokens")}</p>
+                    <p>
+                      {t.rich("paragraphs.transparency", {
+                        link: (chunks) => (
+                          <TextLink
+                            href={`${locale === "en" ? "" : `/${locale}`}/development#reports`}
+                            text={chunks}
+                          />
+                        ),
+                      })}
+                    </p>
+                  </div>
+                </ReadMore>
 
                 <div className="flex justify-between items-center border-y border-secondary-border py-2.5 text-primary-text">
                   <div className="flex flex-col">

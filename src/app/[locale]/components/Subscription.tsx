@@ -86,8 +86,8 @@ export default function Subscription() {
           leftContent={
             <>
               <ArticleHeading text={t("heading")} />
-              <p className="text-secondary-text text-16 lg:text-18 mb-3 lg:mb-10">
-                {t("description")}
+              <p className="text-primary-text/90 text-18 lg:text-20 leading-[1.5] max-w-[44ch] mb-6 lg:mb-10">
+                {t("lede")}
               </p>
               <label className="text-20 font-bold block mb-2">{t("label")}</label>
               <div className="flex gap-3 flex-col md:flex-row">
