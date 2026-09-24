@@ -8,6 +8,7 @@ import React, { useRef } from "react";
 import DevSourcesImage from "@/assets/images/dev-src-2.svg";
 import Svg from "@/components/atoms/Svg";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import { linkTargetProps } from "@/functions/links";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const references = [
@@ -33,7 +34,7 @@ const references = [
   },
   {
     key: "converterUi",
-    href: "https://dexaran.github.io/token-converter",
+    href: "https://app.dex223.io/converter",
   },
   {
     key: "converterUiSource",
@@ -80,8 +81,7 @@ export default function References({ refEl }) {
                 return (
                   <li className="border-b border-primary-border" key={reference.key}>
                     <a
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...linkTargetProps(reference.href)}
                       href={reference.href}
                       className="hover:text-green py-3.5 text-secondary-text flex gap-6 justify-between text-16 lg:text-18 duration-200"
                     >

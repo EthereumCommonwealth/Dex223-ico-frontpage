@@ -38,7 +38,7 @@ const usefulLinks = [
   },
   {
     key: "tokenConverter",
-    href: "https://dexaran.github.io/token-converter/",
+    href: "https://app.dex223.io/converter",
   },
   {
     key: "erc223FrontPage",
