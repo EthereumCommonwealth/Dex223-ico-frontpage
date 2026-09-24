@@ -10,13 +10,17 @@ import {
   useTransitionStyles,
 } from "@floating-ui/react";
 import clsx from "clsx";
-import { PropsWithChildren, useId } from "react";
+import { PropsWithChildren } from "react";
 
 interface Props {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   placement?: "left" | "bottom";
   handlers?: any;
+  /** Accessible name for the dialog, e.g. "Menu". */
+  label?: string;
+  /** Send focus back to the opener on close. Off when a link inside moved the page. */
+  returnFocus?: boolean;
 }
 
 export default function Drawer({
@@ -25,6 +29,8 @@ export default function Drawer({
   children,
   placement = "bottom",
   handlers = {},
+  label,
+  returnFocus = true,
 }: PropsWithChildren<Props>) {
   const { refs, context } = useFloating({
     open: isOpen,
@@ -70,17 +76,21 @@ export default function Drawer({
 
   const { getFloatingProps } = useInteractions([click, role, dismiss]);
 
-  const headingId = useId();
-  const descriptionId = useId();
-
   return (
     <FloatingPortal>
       <div {...handlers}>
         {isMounted && (
-          <FloatingOverlay className="drawer-overlay" style={{ ...transitionStyles }} lockScroll />
+          // Release the scroll lock as soon as the drawer starts closing, so a link that
+          // scrolls the page (an in-page #anchor) is not undone when the lock restores the
+          // old position after the close animation.
+          <FloatingOverlay
+            className="drawer-overlay"
+            style={{ ...transitionStyles }}
+            lockScroll={isOpen}
+          />
         )}
         {isMountedDrawer && (
-          <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
+          <FloatingFocusManager context={context} modal returnFocus={returnFocus}>
             <div
               className={clsx(
                 "drawer-container bg-primary-bg",
@@ -88,8 +98,8 @@ export default function Drawer({
                 placement === "bottom" && "w-full max-h-[100vh] rounded-t-5",
               )}
               ref={refs.setFloating}
-              aria-labelledby={headingId}
-              aria-describedby={descriptionId}
+              aria-label={label}
+              aria-modal="true"
               {...getFloatingProps()}
               style={{
                 ...transitionStylesDrawer,
