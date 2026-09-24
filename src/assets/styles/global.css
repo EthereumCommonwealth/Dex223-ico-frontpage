@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* `clip` instead of `hidden`: hides the decorative overflow without turning
+   <body> into its own scroll container, so window scroll, anchor links and
+   the scroll-to-top button (which listens on window) all work. */
 html {
-    overflow-x: hidden;
-    height: 100%;
+    overflow-x: clip;
+    min-height: 100%;
 }
 
 body {
     background: theme("colors.global-bg");
     color: theme("colors.primary-text");
-    overflow-x: hidden;
-    height: 100%;
+    overflow-x: clip;
+    min-height: 100%;
 }
 
 :root {
