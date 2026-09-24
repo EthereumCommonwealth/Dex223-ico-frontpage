@@ -242,7 +242,10 @@
   "Common": {
     "scrollToTop": "Voltar ao topo",
     "readMore": "Saiba mais",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "previousSlide": "Slide anterior",
+    "nextSlide": "Próximo slide",
+    "goToSlide": "Ir para o slide {number}"
   },
   "Compare": {
     "firstToSupport": "Primeira a suportar",

@@ -550,6 +550,7 @@ function EcosystemSlide({ index, activeSlide, slide }) {
 
 export default function EcosystemProblems() {
   const t = useTranslations("EcosystemProblems");
+  const tCommon = useTranslations("Common");
   const slides = useSlides();
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [animationPlayed, setAnimationPlayed] = useState<number[]>([0]);
@@ -574,6 +575,16 @@ export default function EcosystemProblems() {
     setActiveSlide((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
   };
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      nextSlide();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      previousSlide();
+    }
+  };
+
   const handlers = useSwipeable({
     onSwipedLeft: () => nextSlide(),
     onSwipedRight: () => previousSlide(),
@@ -586,7 +597,13 @@ export default function EcosystemProblems() {
         className="w-250 h-250 -right-[871px] bg-cover -scale-100"
       />
 
-      <div className="surface relative rounded-5">
+      <div
+        className="surface relative rounded-5"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={t("overline")}
+        onKeyDown={onKeyDown}
+      >
         <div className="grid xl:grid-cols-[1fr_40px]">
           <div ref={ref} className="xl:py-10 pt-1">
             <div {...handlers} className="grid gap-5 grid-cols-1 xl:grid-cols-12">
@@ -611,6 +628,7 @@ export default function EcosystemProblems() {
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={previousSlide}
+                    aria-label={tCommon("previousSlide")}
                   >
                     <Svg iconName="arrow-left-small" />
                   </Button>
@@ -620,11 +638,12 @@ export default function EcosystemProblems() {
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={nextSlide}
+                    aria-label={tCommon("nextSlide")}
                   >
                     <Svg iconName="arrow-right-small" />
                   </Button>
                 </div>
-                <div className="max-xl:min-h-[512px] pb-4">
+                <div className="max-xl:min-h-[512px] pb-4" aria-live="polite">
                   <OverlineText text={t("overline")} color="purple" />
                   {slides.map((slide, index) => {
                     return (
@@ -640,6 +659,7 @@ export default function EcosystemProblems() {
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={previousSlide}
+                    aria-label={tCommon("previousSlide")}
                   >
                     <Svg iconName="arrow-left-small" />
                   </Button>
@@ -648,6 +668,7 @@ export default function EcosystemProblems() {
                     size={ButtonSize.MEDIUM}
                     colorScheme={ButtonColor.LIGHT_GREEN}
                     onClick={nextSlide}
+                    aria-label={tCommon("nextSlide")}
                   >
                     <Svg iconName="arrow-right-small" />
                   </Button>
@@ -655,20 +676,25 @@ export default function EcosystemProblems() {
               </div>
             </div>
           </div>
-          <div className="max-xl:h-10 max-xl:border-t xl:border-l border-secondary-bg flex items-center xl:flex-col justify-center gap-3">
-            {slides.map((item, index) => {
-              return (
-                <div
-                  role="button"
-                  onClick={() => setActiveSlide(index)}
-                  key={index}
+          <div className="max-xl:h-10 max-xl:border-t xl:border-l border-secondary-bg flex items-center xl:flex-col justify-center xl:gap-1">
+            {slides.map((slide, index) => (
+              <button
+                type="button"
+                key={index}
+                onClick={() => setActiveSlide(index)}
+                aria-label={tCommon("goToSlide", { number: index + 1 })}
+                aria-current={index === activeSlide ? "true" : undefined}
+                title={slide.heading}
+                className="group w-11 h-10 xl:w-10 xl:h-7 flex items-center justify-center"
+              >
+                <span
                   className={clsx(
-                    "w-3 h-3 rounded-full border-green border relative cursor-pointer before:w-6 before:h-6 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2",
-                    index === activeSlide && "bg-green",
+                    "w-3 h-3 rounded-full border-green border duration-200",
+                    index === activeSlide ? "bg-green scale-110" : "group-hocus:bg-green/40",
                   )}
                 />
-              );
-            })}
+              </button>
+            ))}
           </div>
         </div>
       </div>

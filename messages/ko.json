@@ -242,7 +242,10 @@
   "Common": {
     "scrollToTop": "맨 위로 이동",
     "readMore": "더 보기",
-    "showLess": "접기"
+    "showLess": "접기",
+    "previousSlide": "이전 슬라이드",
+    "nextSlide": "다음 슬라이드",
+    "goToSlide": "{number}번 슬라이드로 이동"
   },
   "Compare": {
     "firstToSupport": "최초 지원",

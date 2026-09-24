@@ -242,7 +242,10 @@
   "Common": {
     "scrollToTop": "返回顶部",
     "readMore": "了解更多",
-    "showLess": "收起"
+    "showLess": "收起",
+    "previousSlide": "上一张",
+    "nextSlide": "下一张",
+    "goToSlide": "转到第 {number} 张"
   },
   "Compare": {
     "firstToSupport": "率先支持",
