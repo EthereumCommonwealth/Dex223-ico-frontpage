@@ -88,16 +88,36 @@
   },
   "Airdrops": {
     "title": "Airdrops",
-    "description": "Un airdrop désigne la distribution ponctuelle de jetons aux utilisateurs, souvent pour récompenser une interaction précoce avec un projet.",
-    "howItWorksLink": "Voici un lien expliquant son fonctionnement.",
-    "table": {
-      "name": "Nom",
-      "linkToGithub": "Lien vers GitHub"
-    },
-    "snapshotDate": "Date du snapshot",
-    "snapshotBlock": "Bloc du snapshot",
+    "subtitle": "Des distributions ponctuelles de jetons pour la communauté Dex223.",
+    "name": "Airdrop #{number}",
     "upcoming": "À venir",
-    "githubAnnouncement": "Annonce sur Github"
+    "details": {
+      "snapshotDate": "Date du snapshot",
+      "reward": "Récompense",
+      "snapshotBlock": "Bloc du snapshot",
+      "toBeAnnounced": "À annoncer"
+    },
+    "followAnnouncements": "Suivre les annonces",
+    "howItWorks": {
+      "title": "Fonctionnement",
+      "snapshot": {
+        "title": "Snapshot",
+        "text": "Les soldes sont enregistrés au bloc du snapshot."
+      },
+      "announcement": {
+        "title": "Annonce",
+        "text": "Les détails sont publiés avant la distribution."
+      },
+      "distribution": {
+        "title": "Distribution",
+        "text": "Les jetons sont envoyés aux portefeuilles éligibles."
+      }
+    },
+    "safety": "Nous ne vous demanderons jamais votre phrase de récupération ni votre clé privée. Utilisez uniquement les liens officiels.",
+    "past": {
+      "title": "Airdrops passés",
+      "empty": "Aucun airdrop passé pour le moment"
+    }
   },
   "Allocation": {
     "overline": "Répartition",

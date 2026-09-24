@@ -88,16 +88,36 @@
   },
   "Airdrops": {
     "title": "Airdrops",
-    "description": "Um airdrop é a distribuição única de tokens aos usuários, geralmente como recompensa por interagir com um projeto logo no início.",
-    "howItWorksLink": "Veja aqui como funciona.",
-    "table": {
-      "name": "Nome",
-      "linkToGithub": "Link para o GitHub"
-    },
-    "snapshotDate": "Data do snapshot",
-    "snapshotBlock": "Bloco do snapshot",
+    "subtitle": "Distribuições únicas de tokens para a comunidade Dex223.",
+    "name": "Airdrop #{number}",
     "upcoming": "Em breve",
-    "githubAnnouncement": "Anúncio no Github"
+    "details": {
+      "snapshotDate": "Data do snapshot",
+      "reward": "Recompensa",
+      "snapshotBlock": "Bloco do snapshot",
+      "toBeAnnounced": "A ser anunciado"
+    },
+    "followAnnouncements": "Acompanhe os anúncios",
+    "howItWorks": {
+      "title": "Como funciona",
+      "snapshot": {
+        "title": "Snapshot",
+        "text": "Os saldos são registrados no bloco do snapshot."
+      },
+      "announcement": {
+        "title": "Anúncio",
+        "text": "Os detalhes são publicados antes da distribuição."
+      },
+      "distribution": {
+        "title": "Distribuição",
+        "text": "Os tokens são enviados às carteiras elegíveis."
+      }
+    },
+    "safety": "Nunca pedimos sua frase semente nem sua chave privada. Use apenas links oficiais.",
+    "past": {
+      "title": "Airdrops anteriores",
+      "empty": "Ainda não há airdrops anteriores"
+    }
   },
   "Allocation": {
     "overline": "Alocação",

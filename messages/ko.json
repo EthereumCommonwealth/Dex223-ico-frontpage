@@ -88,16 +88,36 @@
   },
   "Airdrops": {
     "title": "에어드롭",
-    "description": "에어드롭은 사용자에게 토큰을 일회성으로 배포하는 것으로, 주로 프로젝트와 초기에 상호작용한 사용자에 대한 보상으로 제공됩니다.",
-    "howItWorksLink": "작동 방식은 이 링크에서 확인하세요.",
-    "table": {
-      "name": "이름",
-      "linkToGithub": "GitHub 링크"
-    },
-    "snapshotDate": "스냅샷 날짜",
-    "snapshotBlock": "스냅샷 블록",
+    "subtitle": "Dex223 커뮤니티를 위한 일회성 토큰 배포입니다.",
+    "name": "에어드롭 #{number}",
     "upcoming": "예정",
-    "githubAnnouncement": "Github 공지"
+    "details": {
+      "snapshotDate": "스냅샷 날짜",
+      "reward": "보상",
+      "snapshotBlock": "스냅샷 블록",
+      "toBeAnnounced": "추후 공지"
+    },
+    "followAnnouncements": "공지 확인하기",
+    "howItWorks": {
+      "title": "진행 방식",
+      "snapshot": {
+        "title": "스냅샷",
+        "text": "스냅샷 블록 기준으로 잔액을 기록합니다."
+      },
+      "announcement": {
+        "title": "공지",
+        "text": "배포 전에 세부 내용을 공개합니다."
+      },
+      "distribution": {
+        "title": "배포",
+        "text": "대상 지갑으로 토큰을 전송합니다."
+      }
+    },
+    "safety": "시드 문구나 개인 키를 절대 요청하지 않습니다. 공식 링크만 이용하십시오.",
+    "past": {
+      "title": "지난 에어드롭",
+      "empty": "아직 지난 에어드롭이 없습니다"
+    }
   },
   "Allocation": {
     "overline": "배분",

@@ -1,242 +1,61 @@
-"use client";
-import Image from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
-import { useMemo } from "react";
 
-import ExternalTextLink from "@/components/atoms/ExternalTextLink";
-import TextLink from "@/components/atoms/TextLink";
+import Svg from "@/components/atoms/Svg";
+import { IconName } from "@/components/atoms/Svg/svgIconsMap";
 import Container from "@/components/Container";
 import ScrollToTopButton from "@/components/organisms/ScrollToTopButton";
-import { useCountdown } from "@/hooks/useCountdown";
-import { useNow } from "@/hooks/useNow";
+import { clsxMerge } from "@/functions/clsxMerge";
 
-type UpcomingAirdrop = {
-  name: string;
-  icon: string;
-};
+const ANNOUNCEMENTS_URL = "https://t.me/Dex_223";
 
-type SnapshotAirdrop = {
-  name: string;
-  icon: string;
-  date: Date;
-  shapshotBlock: {
-    number: number;
-    link: string;
-  };
-  githubAnnouncementLink: string;
-};
+// Airdrop #1 is planned for November 2026. Only the month is public, so nothing more precise is
+// shown. Mid-month in UTC keeps the month stable in every time zone.
+const SNAPSHOT_MONTH = new Date(Date.UTC(2026, 10, 15));
 
-const upcomingAirdrops: UpcomingAirdrop[] = [
-  {
-    name: "Airdrop#1",
-    icon: "/images/tokens/ETH.svg",
-  },
+const steps: { key: "snapshot" | "announcement" | "distribution"; icon: IconName }[] = [
+  { key: "snapshot", icon: "calendar" },
+  { key: "announcement", icon: "flag" },
+  { key: "distribution", icon: "distribution" },
 ];
 
-const shapshotAirdrops: SnapshotAirdrop[] = [
-  {
-    name: "Airdrop#1",
-    icon: "/images/tokens/ETH.svg",
-    date: new Date(Date.now() + 20000),
-    shapshotBlock: {
-      number: 23471565,
-      link: "https://etherscan.io/block/23647593",
-    },
-    githubAnnouncementLink: "https://github.com/",
-  },
-  {
-    name: "Airdrop#1",
-    icon: "/images/tokens/ETH.svg",
-    date: new Date(Date.now() - 20000),
-    shapshotBlock: {
-      number: 23471565,
-      link: "https://etherscan.io/block/23647593",
-    },
-    githubAnnouncementLink: "https://github.com/",
-  },
-];
-
-function UpcomingAirdropRow({ airdrop }: { airdrop: UpcomingAirdrop }) {
-  const t = useTranslations("Airdrops");
+function Glyph({ icon, className }: { icon: IconName; className?: string }) {
   return (
-    <div className="bg-primary-bg rounded-3 py-[18px] px-5 grid grid-cols-[5fr_5fr_3fr_5fr]">
-      <div className="flex items-center gap-2">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-      <div className="flex items-center">
-        <div className="border border-secondary-border rounded-20 text-14 px-3 py-1.5">
-          {t("upcoming")}
-        </div>
-      </div>
-      <div></div>
-      <div></div>
-    </div>
+    <span
+      aria-hidden
+      className={clsxMerge(
+        "flex shrink-0 items-center justify-center rounded-3 bg-tertiary-bg text-green shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+        className,
+      )}
+    >
+      <Svg iconName={icon} />
+    </span>
   );
 }
 
-function UpcomingSnapshotAirdropRow({ airdrop }: { airdrop: SnapshotAirdrop }) {
-  const t = useTranslations("Airdrops");
-  const format = useFormatter();
+function Detail({
+  icon,
+  label,
+  value,
+  muted,
+}: {
+  icon: IconName;
+  label: string;
+  value: string;
+  muted?: boolean;
+}) {
   return (
-    <div className="bg-primary-bg rounded-3 py-[18px] px-5 grid grid-cols-[5fr_5fr_3fr_5fr] ">
-      <div className="flex items-center gap-2">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-      <div className="flex items-center font-bold">
-        {format.dateTime(airdrop.date, {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        })}
-      </div>
-      <div className="flex items-center">
-        <ExternalTextLink
-          text={airdrop.shapshotBlock.number}
-          href={airdrop.shapshotBlock.link}
-          withArrow={false}
-        />
-      </div>
-      <div className="flex items-center">
-        <ExternalTextLink text={t("githubAnnouncement")} href={airdrop.githubAnnouncementLink} />
-      </div>
-    </div>
-  );
-}
-
-function FinishedSnapshotAirdropRow({ airdrop }: { airdrop: SnapshotAirdrop }) {
-  const t = useTranslations("Airdrops");
-  const format = useFormatter();
-  return (
-    <div className="bg-primary-bg rounded-3 py-[18px] px-5 grid grid-cols-[5fr_5fr_3fr_5fr]">
-      <div className="flex items-center gap-2 text-secondary-text">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-      <div className="text-tertiary-text flex items-center">
-        {format.dateTime(airdrop.date, {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        })}
-      </div>
-      <div className="flex items-center">
-        <ExternalTextLink
-          text={airdrop.shapshotBlock.number}
-          href={airdrop.shapshotBlock.link}
-          withArrow={false}
-        />
-      </div>
-      <div className="flex items-center">
-        <ExternalTextLink text={t("githubAnnouncement")} href={airdrop.githubAnnouncementLink} />
-      </div>
-    </div>
-  );
-}
-
-function UpcomingAirdropCard({ airdrop }: { airdrop: UpcomingAirdrop }) {
-  const t = useTranslations("Airdrops");
-  return (
-    <div className="bg-primary-bg rounded-3 p-4 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-
-      <div className="border border-secondary-border rounded-20 text-14 px-3 py-1.5">
-        {t("upcoming")}
-      </div>
-    </div>
-  );
-}
-
-function UpcomingSnapshotAirdropCard({ airdrop }: { airdrop: SnapshotAirdrop }) {
-  const t = useTranslations("Airdrops");
-  const format = useFormatter();
-  const countdown = useCountdown(airdrop.date);
-
-  return (
-    <div className="bg-primary-bg rounded-3 p-4 flex flex-col">
-      <div className="flex items-center gap-2 mb-4">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-      <div className="flex flex-col gap-2">
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotDate")}</p>
-          <p className="font-bold">
-            {format.dateTime(airdrop.date, {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })}{" "}
-            <span>({countdown})</span>
-          </p>
-        </div>
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotBlock")}</p>
-          <p>
-            <ExternalTextLink
-              text={airdrop.shapshotBlock.number}
-              href={airdrop.shapshotBlock.link}
-              withArrow={false}
-            />
-          </p>
-        </div>
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotDate")}</p>
-          <p>
-            <ExternalTextLink
-              text={t("githubAnnouncement")}
-              href={airdrop.githubAnnouncementLink}
-            />
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FinishedSnapshotCard({ airdrop }: { airdrop: SnapshotAirdrop }) {
-  const t = useTranslations("Airdrops");
-  const format = useFormatter();
-  return (
-    <div className="bg-primary-bg rounded-3 p-4 flex flex-col">
-      <div className="flex items-center gap-2 mb-4">
-        <Image src={airdrop.icon} alt="" width={32} height={32} />
-        {airdrop.name}
-      </div>
-      <div className="flex flex-col gap-2">
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotDate")}</p>
-          <p className="text-tertiary-text">
-            {format.dateTime(airdrop.date, {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </p>
-        </div>
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotBlock")}</p>
-          <p>
-            <ExternalTextLink
-              text={airdrop.shapshotBlock.number}
-              href={airdrop.shapshotBlock.link}
-              withArrow={false}
-            />
-          </p>
-        </div>
-        <div className="bg-tertiary-bg px-4 py-2">
-          <p className="text-14 text-tertiary-text">{t("snapshotDate")}</p>
-          <p>
-            <ExternalTextLink
-              text={t("githubAnnouncement")}
-              href={airdrop.githubAnnouncementLink}
-            />
-          </p>
-        </div>
+    <div className="flex items-center gap-4 rounded-4 bg-secondary-bg/60 p-4 md:flex-col md:items-start md:gap-5 md:p-5">
+      <Glyph icon={icon} className="size-11" />
+      <div className="min-w-0">
+        <dt className="text-14 text-tertiary-text">{label}</dt>
+        <dd
+          className={clsxMerge(
+            "mt-0.5 text-18 font-medium text-primary-text",
+            muted && "text-secondary-text",
+          )}
+        >
+          {value}
+        </dd>
       </div>
     </div>
   );
@@ -244,94 +63,116 @@ function FinishedSnapshotCard({ airdrop }: { airdrop: SnapshotAirdrop }) {
 
 export default function AirdropsPage() {
   const t = useTranslations("Airdrops");
-  const now = useNow();
-
-  const upcomingSnapshotAirdrops = useMemo(() => {
-    return shapshotAirdrops.filter((airdrop) => airdrop.date.getTime() > now);
-  }, [now]);
-
-  const finishedSnapshotAirdrops = useMemo(() => {
-    return shapshotAirdrops.filter((airdrop) => airdrop.date.getTime() < now);
-  }, [now]);
+  const format = useFormatter();
+  const toBeAnnounced = t("details.toBeAnnounced");
 
   return (
     <>
-      <div>
-        <Container className="3xl:max-w-[1064px] 2xl:max-w-[1064px] lg:max-w-[1064px]">
-          <h1 className="text-center md:text-56 mb-2 text-30 md:mt-[60px]">{t("title")}</h1>
-          <p className="text-center text-16 md:text-18 text-secondary-text mb-10">
-            {t("description")} <TextLink text={t("howItWorksLink")} href="" />
-          </p>
+      <Container className="3xl:max-w-[1064px] 2xl:max-w-[1064px] lg:max-w-[1064px] pb-[80px] md:pb-[120px]">
+        <header className="hero-stagger mx-auto max-w-[40rem] pt-10 pb-10 text-center md:pt-[72px] md:pb-[56px]">
+          <h1 className="text-36 font-medium tracking-[-0.02em] text-primary-text md:text-56">
+            {t("title")}
+          </h1>
+          <p className="mt-3 text-16 text-secondary-text md:text-20">{t("subtitle")}</p>
+        </header>
 
-          <div className="max-md:hidden mb-10">
-            <div className="bg-quaternary-bg rounded-3 py-[18px] px-5 grid grid-cols-[5fr_5fr_3fr_5fr] text-tertiary-text mb-5">
-              <div>{t("table.name")}</div>
-              <div>{t("snapshotDate")}</div>
-              <div>{t("snapshotBlock")}</div>
-              <div>{t("table.linkToGithub")}</div>
-            </div>
-            {!!upcomingAirdrops.length && (
-              <>
-                {upcomingAirdrops.map((airdrop, index) => (
-                  <UpcomingAirdropRow airdrop={airdrop} key={airdrop.name + index} />
-                ))}{" "}
-                <div className="h-px bg-secondary-border my-5" />
-              </>
-            )}
-
-            {!!upcomingSnapshotAirdrops.length && (
-              <>
-                {upcomingSnapshotAirdrops.map((airdrop, index) => (
-                  <UpcomingSnapshotAirdropRow airdrop={airdrop} key={airdrop.name + index} />
-                ))}
-                <div className="h-px bg-secondary-border my-5" />
-              </>
-            )}
-
-            {!!finishedSnapshotAirdrops.length && (
-              <>
-                {finishedSnapshotAirdrops.map((airdrop, index) => (
-                  <FinishedSnapshotAirdropRow airdrop={airdrop} key={airdrop.name + index} />
-                ))}
-              </>
-            )}
+        <section
+          data-reveal
+          aria-labelledby="upcoming-airdrop"
+          className="surface rounded-5 p-5 md:p-8"
+        >
+          <div className="flex items-center gap-4">
+            <Glyph icon="token" className="size-12 md:size-[56px]" />
+            <h2 id="upcoming-airdrop" className="text-20 font-medium text-primary-text md:text-28">
+              {t("name", { number: 1 })}
+            </h2>
+            <span className="ml-auto inline-flex items-center gap-2 rounded-20 border border-green/30 bg-green-bg px-3 py-1 text-14 text-primary-text">
+              <span
+                aria-hidden
+                className="size-1.5 rounded-full bg-green-hover shadow-[0_0_8px_#A5E7C5]"
+              />
+              {t("upcoming")}
+            </span>
           </div>
 
-          <div className="md:hidden mb-10">
-            {!!upcomingAirdrops.length && (
-              <>
-                <div className="grid grid-cols-2 gap-2 max-sm:grid-cols-1">
-                  {upcomingAirdrops.map((airdrop, index) => (
-                    <UpcomingAirdropCard airdrop={airdrop} key={airdrop.name + index} />
-                  ))}
-                </div>
-                <div className="h-px bg-secondary-border my-4" />
-              </>
-            )}
+          <dl className="mt-6 grid gap-3 md:mt-8 md:grid-cols-3 md:gap-4">
+            <Detail
+              icon="calendar"
+              label={t("details.snapshotDate")}
+              value={format.dateTime(SNAPSHOT_MONTH, {
+                month: "long",
+                year: "numeric",
+                timeZone: "UTC",
+              })}
+            />
+            <Detail icon="star" label={t("details.reward")} value={toBeAnnounced} muted />
+            <Detail icon="code" label={t("details.snapshotBlock")} value={toBeAnnounced} muted />
+          </dl>
 
-            {!!upcomingSnapshotAirdrops.length && (
-              <>
-                <div className="grid grid-cols-2 gap-2 max-sm:grid-cols-1">
-                  {upcomingSnapshotAirdrops.map((airdrop, index) => (
-                    <UpcomingSnapshotAirdropCard airdrop={airdrop} key={airdrop.name + index} />
-                  ))}
-                </div>
-                <div className="h-px bg-secondary-border my-4" />
-              </>
-            )}
+          <a
+            href={ANNOUNCEMENTS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 flex min-h-12 w-full items-center justify-center gap-2 rounded-3 bg-green px-6 text-16 font-medium text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_30px_-12px_rgba(125,164,145,0.75)] transition-colors duration-200 hocus:bg-green-hover md:mt-8 md:inline-flex md:w-auto"
+          >
+            <Svg iconName="telegram" size={20} aria-hidden />
+            {t("followAnnouncements")}
+          </a>
+        </section>
 
-            {!!finishedSnapshotAirdrops.length && (
-              <>
-                <div className="grid grid-cols-2 gap-2 max-sm:grid-cols-1">
-                  {finishedSnapshotAirdrops.map((airdrop, index) => (
-                    <FinishedSnapshotCard airdrop={airdrop} key={airdrop.name + index} />
-                  ))}
+        <section data-reveal aria-labelledby="how-it-works" className="mt-15 md:mt-[96px]">
+          <h2
+            id="how-it-works"
+            className="mb-6 text-24 font-medium text-primary-text md:mb-8 md:text-32"
+          >
+            {t("howItWorks.title")}
+          </h2>
+          <ol data-reveal-stagger className="grid gap-3 md:grid-cols-3 md:gap-4">
+            {steps.map(({ key, icon }, index) => (
+              <li
+                key={key}
+                data-reveal
+                className="surface surface-hover flex gap-4 rounded-5 p-5 md:flex-col md:gap-6 md:p-6"
+              >
+                <Glyph icon={icon} className="size-11" />
+                <div className="max-w-[65ch]">
+                  <h3 className="flex items-baseline gap-2 text-18 font-medium text-primary-text">
+                    <span className="text-14 tabular-nums text-tertiary-text">{index + 1}</span>
+                    {t(`howItWorks.${key}.title`)}
+                  </h3>
+                  <p className="mt-1 text-16 text-secondary-text">{t(`howItWorks.${key}.text`)}</p>
                 </div>
-              </>
-            )}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <p
+          data-reveal
+          className="mt-4 flex items-start gap-3 rounded-4 border border-secondary-border px-5 py-4 text-14 text-secondary-text md:items-center md:text-16"
+        >
+          <Svg iconName="security" className="shrink-0 text-green" aria-hidden />
+          <span className="max-w-[65ch]">{t("safety")}</span>
+        </p>
+
+        <section data-reveal aria-labelledby="past-airdrops" className="mt-15 md:mt-[96px]">
+          <h2
+            id="past-airdrops"
+            className="mb-6 text-24 font-medium text-primary-text md:mb-8 md:text-32"
+          >
+            {t("past.title")}
+          </h2>
+          <div className="flex flex-col items-center gap-4 rounded-5 border border-dashed border-secondary-border px-6 py-12 text-center md:py-[64px]">
+            <span
+              aria-hidden
+              className="flex size-12 items-center justify-center rounded-full bg-primary-bg text-tertiary-text"
+            >
+              <Svg iconName="recent-transactions" />
+            </span>
+            <p className="text-16 text-tertiary-text md:text-18">{t("past.empty")}</p>
           </div>
-        </Container>
-      </div>
+        </section>
+      </Container>
       <ScrollToTopButton />
     </>
   );
