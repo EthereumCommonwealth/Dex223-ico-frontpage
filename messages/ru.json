@@ -241,7 +241,10 @@
   "Common": {
     "scrollToTop": "Наверх",
     "readMore": "Подробнее",
-    "showLess": "Свернуть"
+    "showLess": "Свернуть",
+    "previousSlide": "Предыдущий слайд",
+    "nextSlide": "Следующий слайд",
+    "goToSlide": "Перейти к слайду {number}"
   },
   "Compare": {
     "firstToSupport": "Первыми поддерживаем",
