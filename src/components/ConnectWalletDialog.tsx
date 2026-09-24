@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import DialogHeader from "@/components/DialogHeader";
 import DrawerDialog from "@/components/DrawerDialog";
 import KeystoreCard from "@/components/wallet-cards/KeystoreCard";
@@ -17,13 +19,14 @@ function StepLabel({ step, label }: { step: string; label: string }) {
 }
 
 export default function ConnectWalletDialog() {
+  const t = useTranslations("Wallet");
   const { isOpened: isOpenedWallet, setIsOpened: setOpenedWallet } =
     useConnectWalletDialogStateStore();
 
   return (
     <DrawerDialog isOpen={isOpenedWallet} setIsOpen={setOpenedWallet}>
       <div className="w-full md:w-[600px]">
-        <DialogHeader onClose={() => setOpenedWallet(false)} title={"Connect wallet"} />
+        <DialogHeader onClose={() => setOpenedWallet(false)} title={t("connectWallet")} />
         <div className="card-spacing">
           <div className="grid grid-cols-3 gap-3 mt-3">
             <MetamaskCard />

@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { isMobile } from "react-device-detect";
 import { useAccount, useConnect, useSwitchChain } from "wagmi";
 
@@ -13,6 +14,7 @@ import {
 
 const { image, name } = wallets.metamask;
 export default function MetamaskCard() {
+  const t = useTranslations("Wallet");
   const { connectors, connectAsync, isPending } = useConnect();
   const { isConnecting } = useAccount();
   const { setName, chainToConnect } = useConnectWalletStore();
@@ -40,7 +42,7 @@ export default function MetamaskCard() {
 
         console.log(connectorToConnect);
         if (!connectorToConnect) {
-          return addToast("Install metamask to proceed", "error");
+          return addToast(t("toasts.installMetamask"), "error");
         }
 
         try {
@@ -49,13 +51,13 @@ export default function MetamaskCard() {
           });
           // await switchChainAsync({ chainId: chainToConnect });
           setIsOpened(false);
-          addToast("Wallet connected");
+          addToast(t("toasts.walletConnected"));
         } catch (e: any) {
           // console.log(e);
           if (e.code && e.code === 4001) {
-            addToast("User rejected the request", "error");
+            addToast(t("toasts.userRejected"), "error");
           } else {
-            addToast("Something went wrong", "error");
+            addToast(t("toasts.somethingWentWrong"), "error");
           }
         }
       }}

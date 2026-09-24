@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import Image from "next/image";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useAccount, useDisconnect } from "wagmi";
@@ -10,100 +10,104 @@ import IconButton from "@/components/atoms/IconButton";
 import Svg from "@/components/atoms/Svg";
 import Container from "@/components/Container";
 import Drawer from "@/components/Drawer";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { clsxMerge } from "@/functions/clsxMerge";
+import { Link } from "@/i18n/routing";
 
 const socialLinks = [
   {
-    text: "Telegram discussions",
+    key: "telegramDiscussions",
     href: "https://t.me/Dex223_Defi",
   },
   {
-    text: "Telegram announcements channel",
+    key: "telegramAnnouncements",
     href: "https://t.me/Dex_223",
   },
   {
-    text: "Dex223 X account",
+    key: "dex223X",
     href: "https://twitter.com/Dex_223",
   },
   {
-    text: "Discord",
+    key: "discord",
     href: "https://discord.gg/t5bdeGC5Jk",
   },
   {
-    text: "Dexaran's X account",
+    key: "dexaranX",
     href: "https://twitter.com/Dexaran",
   },
 ];
 
 const usefulLinks = [
   {
-    text: "ERC-20 live losses calculator",
+    key: "lossesCalculator",
     href: "https://dexaran.github.io/erc20-losses/",
   },
   {
-    text: "ERC-20 & ERC-223 Token Converter",
+    key: "tokenConverter",
     href: "https://dexaran.github.io/token-converter/",
   },
   {
-    text: "ERC-223 Front Page",
+    key: "erc223FrontPage",
     href: "https://dexaran.github.io/erc223",
   },
   {
-    text: "Page source codes",
+    key: "sourceCode",
     href: "https://github.com/Dexaran/Dex223-ICO-page/tree/main",
   },
   {
-    text: "Blog",
+    key: "blog",
     href: "https://blog.dex223.io/",
   },
 ];
 
 const partners = [
   {
-    text: "BlockzHub",
+    key: "blockzhub",
     href: "https://blockzhub.io/",
   },
   {
-    text: "CLS Global",
+    key: "clsGlobal",
     href: "https://www.cls.global",
   },
   {
-    text: "Beosin",
+    key: "beosin",
     href: "https://beosin.com",
   },
   {
-    text: "Roro Technology",
+    key: "roroTechnology",
     href: "https://rorotechnology.io/",
   },
 ];
 
 const companyLinks = [
   {
-    text: "Operating agreement",
+    key: "operatingAgreement",
     href: "/operating-agreement",
   },
   {
-    text: "Token Description",
+    key: "tokenDescription",
     href: "/token-description",
   },
   {
-    text: "Privacy policy",
+    key: "privacyPolicy",
     href: "/privacy-policy",
   },
   {
-    text: "DeFi agreement",
+    key: "defiAgreement",
     href: "/defi-agreement",
   },
   {
-    text: "Trademark policy",
+    key: "trademarkPolicy",
     href: "/trademark-policy",
   },
 ];
 
 const navLinkClassName =
-  "relative font-medium py-5 px-3 text-secondary-text hocus:text-primary-text duration-200 after:absolute after:left-3 after:right-3 after:bottom-3.5 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-green after:to-green-hover after:transition-transform after:duration-300 hocus:after:scale-x-100";
+  "relative whitespace-nowrap font-medium text-14 2xl:text-16 py-5 px-1.5 xl:px-2 2xl:px-3 text-secondary-text hocus:text-primary-text duration-200 after:absolute after:left-1.5 after:right-1.5 xl:after:left-2 xl:after:right-2 2xl:after:left-3 2xl:after:right-3 after:bottom-3.5 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-green after:to-green-hover after:transition-transform after:duration-300 hocus:after:scale-x-100";
 
 export default function Header() {
+  const t = useTranslations("Navigation");
+  const locale = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -156,29 +160,29 @@ export default function Header() {
         <header className="flex justify-between items-center max-lg:py-2.5 max-lg:-mr-2">
           <div className="flex items-center gap-5">
             <Link prefetch={false} href="/">
-              <div className="w-[118px] lg:w-[186px] h-[46px] relative">
+              <div className="w-[118px] lg:w-[150px] 2xl:w-[186px] h-[46px] relative">
                 <Image src="/images/comp-dex-logo.svg" alt="" fill />
               </div>
             </Link>
             <nav className="max-lg:hidden">
               <ul className="flex items-center">
                 <Link prefetch={false} className={navLinkClassName} href="/#philosophy">
-                  Philosophy
+                  {t("philosophy")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/#margin">
-                  Margin trading{" "}
+                  {t("marginTrading")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/#tokenomics">
-                  Tokenomics
+                  {t("tokenomics")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/#contact">
-                  Contact us
+                  {t("contactUs")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/development">
-                  Development
+                  {t("development")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/airdrops">
-                  Airdrops
+                  {t("airdrops")}
                 </Link>
                 <Link
                   prefetch={false}
@@ -186,19 +190,20 @@ export default function Header() {
                   className={navLinkClassName}
                   href="https://blog.dex223.io/"
                 >
-                  Blog
+                  {t("blog")}
                 </Link>
               </ul>
             </nav>
           </div>
 
           <div className="flex items-center gap-3">
+            <LocaleSwitcher />
             <a
-              href="https://app.dex223.io/en/swap"
+              href={`https://app.dex223.io/${locale}/swap`}
               target="_blank"
-              className="sheen max-lg:hidden group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-2 text-14 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover hocus:-translate-y-px"
+              className="sheen max-xl:hidden whitespace-nowrap group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-2 text-14 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover hocus:-translate-y-px"
             >
-              Launch app
+              {t("launchApp")}
               <Svg
                 iconName="forward"
                 size={20}
@@ -206,7 +211,7 @@ export default function Header() {
               />
             </a>
             <div className="lg:hidden" onClick={() => setMenuOpened(true)}>
-              <IconButton iconName="menu" />
+              <IconButton iconName="menu" aria-label={t("menu")} />
             </div>
           </div>
           {isConnected && address && (
@@ -260,7 +265,7 @@ export default function Header() {
                 href="/#philosophy"
               >
                 <Svg iconName="lamp" />
-                Philosophy
+                {t("philosophy")}
               </Link>
               <Link
                 onClick={() => {
@@ -271,7 +276,7 @@ export default function Header() {
                 href="/#margin"
               >
                 <Svg iconName="margin-trading" />
-                Margin trading
+                {t("marginTrading")}
               </Link>
               <Link
                 onClick={() => {
@@ -282,7 +287,7 @@ export default function Header() {
                 href="/#tokenomics"
               >
                 <Svg iconName="chart" />
-                Tokenomics
+                {t("tokenomics")}
               </Link>
               <Link
                 onClick={() => {
@@ -293,7 +298,7 @@ export default function Header() {
                 href="/#contact"
               >
                 <Svg iconName="contact" />
-                Contact us
+                {t("contactUs")}
               </Link>
               <Link
                 onClick={() => {
@@ -304,7 +309,7 @@ export default function Header() {
                 href="/development"
               >
                 <Svg iconName="code" />
-                Development
+                {t("development")}
               </Link>
               <Link
                 prefetch={false}
@@ -313,52 +318,52 @@ export default function Header() {
                 href="https://blog.dex223.io/"
               >
                 <Svg iconName="blog" />
-                Blog
+                {t("blog")}
               </Link>
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-3">Social media</div>
+              <div className="text-tertiary-text uppercase pl-3">{t("socialMedia")}</div>
               {socialLinks.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-3">Useful links</div>
+              <div className="text-tertiary-text uppercase pl-3">{t("usefulLinks")}</div>
               {usefulLinks.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase pl-4">Partners</div>
+              <div className="text-tertiary-text uppercase pl-4">{t("partners")}</div>
               {partners.map((link) => {
                 return (
-                  <div key={link.text}>
+                  <div key={link.key}>
                     <a
                       target="_blank"
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >
-                      {link.text}
+                      {t(`links.${link.key}`)}
                     </a>
                   </div>
                 );

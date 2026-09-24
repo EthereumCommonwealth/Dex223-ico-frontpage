@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
 
 import Svg from "@/components/atoms/Svg";
@@ -67,34 +68,9 @@ const icons: Record<SliderColor, { mainIcon: string; bgIcon: string }> = {
   },
 };
 
-const texts: Record<
-  SliderColor,
-  { title: string; option1: ReactNode; option2: string; option3: string }
-> = {
-  [SliderColor.GREEN]: {
-    title: "Safe to use",
-    option1: "Secure",
-    option2: 'Eliminates the need for "approvals"',
-    option3: "Prevents sending to wrong addresses",
-  },
-  [SliderColor.RED]: {
-    title: "Users’ funds at risk",
-    option1: (
-      <span>
-        Security problems detected,{" "}
-        <a
-          className="inline-flex items-center text-red-light hocus:text-red-light-hover duration-200"
-          target="_blank"
-          href="https://dexaran.github.io/erc20-losses/"
-        >
-          <span className="underline">$108M lost</span>
-          <Svg size={20} iconName="forward-small" />
-        </a>
-      </span>
-    ),
-    option2: 'Require "approving" tokens',
-    option3: "Simple mistake, permanent token loss",
-  },
+const textKeys: Record<SliderColor, "safe" | "risk"> = {
+  [SliderColor.GREEN]: "safe",
+  [SliderColor.RED]: "risk",
 };
 
 function SliderOption({
@@ -135,6 +111,33 @@ function OtherLogo({ bgClassName }: { bgClassName: string }) {
 }
 
 function SliderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
+  const t = useTranslations("Compare");
+  const key = textKeys[color];
+  const texts = {
+    title: t(`${key}.title`),
+    option1:
+      color === SliderColor.RED ? (
+        <span>
+          {t.rich("risk.option1", {
+            link: (chunks) => (
+              <a
+                className="inline-flex items-center text-red-light hocus:text-red-light-hover duration-200"
+                target="_blank"
+                href="https://dexaran.github.io/erc20-losses/"
+              >
+                <span className="underline">{chunks}</span>
+                <Svg size={20} iconName="forward-small" />
+              </a>
+            ),
+          })}
+        </span>
+      ) : (
+        t("safe.option1")
+      ),
+    option2: t(`${key}.option2`),
+    option3: t(`${key}.option3`),
+  };
+
   return (
     <div
       className={clsx(
@@ -162,22 +165,24 @@ function SliderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
             color === SliderColor.RED ? "text-red-light" : "text-green",
           )}
         >
-          {texts[color].title}
+          {texts.title}
         </div>
       </div>
       <div className="px-3 lg:px-5">
         <div className="bg-white opacity-10 w-full h-px lg:mt-3 lg:mb-4 my-2" />
       </div>
       <div className="flex flex-col gap-2 pb-4 relative pr-3">
-        <SliderOption className="whitespace-nowrap" text={texts[color].option1} color={color} />
-        <SliderOption text={texts[color].option2} color={color} />
-        <SliderOption text={texts[color].option3} color={color} />
+        <SliderOption className="whitespace-nowrap" text={texts.option1} color={color} />
+        <SliderOption text={texts.option2} color={color} />
+        <SliderOption text={texts.option3} color={color} />
       </div>
     </div>
   );
 }
 
 export default function CompareAnimationSlider() {
+  const t = useTranslations("Compare");
+
   return (
     <div className="max-w-[588px] max-lg:mt-6">
       <div className="mb-6 lg:mb-[64px]">
@@ -195,7 +200,7 @@ export default function CompareAnimationSlider() {
 
           <div className="flex justify-between items-center gap-2 lg:gap-3 2xl:gap-5">
             <span className="text-14 lg:text-18 2xl:text-24 font-medium text-secondary-text  block min-w-[105px] lg:min-w-[130px] 2xl:min-w-[180px] ">
-              First to support
+              {t("firstToSupport")}
             </span>
             <p className="font-medium text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
               ERC-223
@@ -222,7 +227,7 @@ export default function CompareAnimationSlider() {
 
           <div className="flex justify-between items-center gap-2 lg:gap-3 2xl:gap-5">
             <span className="text-14 lg:text-18 2xl:text-24 font-medium block min-w-[105px] lg:min-w-[134px] 2xl:min-w-[180px] text-secondary-text">
-              Only supports
+              {t("onlySupports")}
             </span>
             <span className="font-medium text-24 lg:text-30 2xl:text-40 block min-w-[100px] lg:min-w-[123px] 2xl:min-w-[166px] text-right bg-gradient-to-r text-transparent from-[#F0B1B1] bg-clip-text to-[#B15A5A]">
               ERC-20

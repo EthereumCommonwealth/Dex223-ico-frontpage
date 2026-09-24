@@ -1,12 +1,14 @@
 "use client";
 
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 import { throttle } from "throttle-debounce";
 
 import Svg from "../atoms/Svg";
 
 export default function ScrollToTopButton() {
+  const t = useTranslations("Common");
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLButtonElement | null>(null);
 
@@ -30,7 +32,7 @@ export default function ScrollToTopButton() {
 
   return (
     <button
-      aria-label="Scroll to top"
+      aria-label={t("scrollToTop")}
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
