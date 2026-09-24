@@ -9,6 +9,7 @@ import { cookieToInitialState } from "wagmi";
 import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import MotionController from "@/components/MotionController";
 import SEOAgent from "@/components/SEOAgent";
 import { config } from "@/config/wagmi/config";
 
@@ -33,6 +34,7 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
 
       <body className={golos_text.className}>
         <Providers initialState={initialState}>
+          <MotionController />
           <Header />
           <div className="flex flex-col h-full">
             <div className="flex-grow">{children}</div>

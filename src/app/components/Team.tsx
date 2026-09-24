@@ -93,7 +93,10 @@ export default function Team() {
         }
       />
       <Container>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-5 md:gap-4 gap-2">
+        <div
+          data-reveal-stagger
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-5 md:gap-4 gap-2"
+        >
           {team.map(({ image, position, name, socials }) => {
             return (
               <TeamMemberCard

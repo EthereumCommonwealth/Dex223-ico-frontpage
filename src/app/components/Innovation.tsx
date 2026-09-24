@@ -36,7 +36,10 @@ export default function Innovation() {
           className="w-450 h-450 -left-[871px] -top-[276px] -scale-y-100"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        <div
+          data-reveal-stagger
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5"
+        >
           <div className="flex flex-col gap-4 lg:gap-5">
             <KeyFeatureCard
               text="The safety of user funds is paramount. Every component—from smart contracts to the
