@@ -1,12 +1,12 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import ArticleHeading from "@/components/ArticleHeading";
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import SectionIntro from "@/components/SectionIntro";
 import { Link } from "@/i18n/routing";
 
 const infoFields = [
@@ -76,10 +76,14 @@ export default function Info() {
         }
         leftContent={
           <>
-            <ArticleHeading text={t("heading")} />
+            <SectionIntro
+              className="mb-8"
+              heading={t("heading")}
+              lede={t("lede")}
+              details={<p>{t("projection")}</p>}
+            />
 
             <div className="flex flex-col gap-5 mb-6 text-secondary-text text-16 lg:text-18">
-              <p>{t("projection")}</p>
               <p className="">
                 {t.rich("upgradeGuide", {
                   link: (chunks) => (

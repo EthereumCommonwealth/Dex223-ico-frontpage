@@ -8,8 +8,10 @@ import React, { useRef } from "react";
 import FightImage from "@/assets/images/fight.svg";
 import ArticleHeading from "@/components/ArticleHeading";
 import BulletListItem from "@/components/atoms/BulletListItem";
+import ReadMore from "@/components/atoms/ReadMore";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
+import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import FightImageSvg from "@/inlined-svgs/FightImageSvg";
@@ -60,20 +62,38 @@ export default function Fight() {
               br: () => <br />,
             })}
           />
-          <div className="text-secondary-text text-16 lg:text-18 flex flex-col lg:gap-5 gap-2">
-            <p>{t("intro")}</p>
-            <ul>
-              <BulletListItem>{t("points.erc223")}</BulletListItem>
-              <BulletListItem>{t("points.erc20")}</BulletListItem>
-            </ul>
-            <p>
-              {t.rich("learnMore", {
-                link: (chunks) => (
-                  <TextLink href="https://dexaran.github.io/erc223/" isExternal text={chunks} />
-                ),
-              })}
-            </p>
+          <p className="text-primary-text/90 text-18 lg:text-20 leading-[1.5] max-w-[44ch]">
+            {t("lede")}
+          </p>
+          <div className="mt-8 flex flex-col gap-5">
+            <GlyphPoint
+              icon="check"
+              title={t("glyphs.erc223.title")}
+              text={t("glyphs.erc223.text")}
+            />
+            <GlyphPoint
+              icon="warning"
+              tone="red"
+              title={t("glyphs.erc20.title")}
+              text={t("glyphs.erc20.text")}
+            />
           </div>
+          <ReadMore>
+            <div className="text-secondary-text text-16 lg:text-18 flex flex-col lg:gap-5 gap-2">
+              <p>{t("intro")}</p>
+              <ul>
+                <BulletListItem>{t("points.erc223")}</BulletListItem>
+                <BulletListItem>{t("points.erc20")}</BulletListItem>
+              </ul>
+              <p>
+                {t.rich("learnMore", {
+                  link: (chunks) => (
+                    <TextLink href="https://dexaran.github.io/erc223/" isExternal text={chunks} />
+                  ),
+                })}
+              </p>
+            </div>
+          </ReadMore>
         </>
       }
       rightContent={

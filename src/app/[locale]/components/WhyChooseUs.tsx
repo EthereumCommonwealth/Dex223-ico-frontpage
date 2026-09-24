@@ -5,9 +5,10 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import ArticleHeading from "@/components/ArticleHeading";
 import Svg from "@/components/atoms/Svg";
+import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import SectionIntro from "@/components/SectionIntro";
 import { useOnScreen } from "@/hooks/useOnScreen";
 
 function RedLeftBlock() {
@@ -212,9 +213,27 @@ export default function WhyChooseUs() {
       leftContent={
         <div className="grid lg:grid-cols-[53fr_41fr] grid-cols-1">
           <div>
-            <ArticleHeading text={t("heading")} />
-            <div className="flex flex-col gap-5">
-              <p className="text-16 lg:text-18 text-secondary-text">{t("description")}</p>
+            <SectionIntro
+              heading={t("heading")}
+              lede={t("lede")}
+              details={<p>{t("description")}</p>}
+            />
+            <div className="mt-8 flex flex-col gap-5 max-w-[520px]">
+              <GlyphPoint
+                icon="check"
+                title={t("points.bothStandards.title")}
+                text={t("points.bothStandards.text")}
+              />
+              <GlyphPoint
+                icon="edit-off"
+                title={t("points.noApprovals.title")}
+                text={t("points.noApprovals.text")}
+              />
+              <GlyphPoint
+                icon="gas"
+                title={t("points.lowerGas.title")}
+                text={t("points.lowerGas.text")}
+              />
             </div>
           </div>
 

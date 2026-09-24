@@ -4,9 +4,11 @@ import clsx from "clsx";
 import { useLocale, useTranslations } from "next-intl";
 import React, { useEffect, useRef, useState } from "react";
 
-import ArticleHeading from "@/components/ArticleHeading";
+import ExternalTextLink from "@/components/atoms/ExternalTextLink";
 import TextLink from "@/components/atoms/TextLink";
+import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
+import SectionIntro from "@/components/SectionIntro";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import PhilosophyImage from "@/inlined-svgs/Philosophy";
 
@@ -37,20 +39,49 @@ export default function Philosophy() {
         differentColumns
         leftContent={
           <>
-            <ArticleHeading text={t("heading")} />
-            <div className="flex flex-col gap-5">
-              <p className="text-16 lg:text-18 text-secondary-text">
-                {t.rich("description", {
-                  link: (chunks) => (
-                    <TextLink
-                      href={`https://test-app.dex223.io/${locale}`}
-                      isExternal
-                      text={chunks}
-                    />
-                  ),
-                })}
-              </p>
+            <SectionIntro
+              heading={t("heading")}
+              lede={t("lede")}
+              details={
+                <p>
+                  {t.rich("description", {
+                    link: (chunks) => (
+                      <TextLink
+                        href={`https://test-app.dex223.io/${locale}`}
+                        isExternal
+                        text={chunks}
+                      />
+                    ),
+                  })}
+                </p>
+              }
+            />
+            <div className="mt-8 flex flex-col gap-5">
+              <GlyphPoint
+                icon="security"
+                tone="purple"
+                title={t("points.secure.title")}
+                text={t("points.secure.text")}
+              />
+              <GlyphPoint
+                icon="permissionless"
+                tone="purple"
+                title={t("points.open.title")}
+                text={t("points.open.text")}
+              />
+              <GlyphPoint
+                icon="team"
+                tone="purple"
+                title={t("points.community.title")}
+                text={t("points.community.text")}
+              />
             </div>
+            <ExternalTextLink
+              className="mt-8 text-18 font-medium"
+              color="green"
+              href={`https://test-app.dex223.io/${locale}`}
+              text={t("tryIt")}
+            />
           </>
         }
         rightContent={
