@@ -80,6 +80,10 @@ export default function LocaleSwitcher({
   const select = (locale: Locale) => {
     setIsOpen(false);
     if (locale === current) return;
+    // English has no URL prefix, so the middleware falls back to the NEXT_LOCALE cookie
+    // and would send the visitor straight back to the language they were leaving.
+    // Store the choice first so every language, English included, sticks.
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
     startTransition(() => {
       // Keep the visitor on the same page and section in the new language.
       router.replace(`${pathname}${window.location.hash}`, { locale, scroll: false });
