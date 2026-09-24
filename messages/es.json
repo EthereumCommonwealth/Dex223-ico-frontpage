@@ -144,7 +144,7 @@
     },
     "autoListings": {
       "heading": "Listados automáticos transparentes",
-      "description": "DEX223 permite a los usuarios importar libremente cualquier lista de tokens existente de <tokenlists>tokenlists.org</tokenlists> o integrar nuevos tokens directamente mediante <autolisting>nuestro contrato de listado automático</autolisting>. Este enfoque abierto y sin permisos permite que cualquiera liste un token sin pedir la aprobación del equipo del exchange ni de intermediarios. Como alternativa descentralizada a las listas de tokens tradicionales, el contrato de listado automático cobra comisiones de listado que después se reparten como ingresos entre los titulares del token de DEX223. Mediante votación on-chain, la comunidad también determina las comisiones de listado, lo que refuerza la gobernanza colectiva y garantiza que DEX223 siga siendo transparente, inclusivo y propiedad de sus usuarios.",
+      "description": "DEX223 permite a los usuarios importar libremente cualquier lista de tokens existente de <tokenlists>tokenlists.org</tokenlists> o integrar nuevos tokens directamente mediante <autolisting>nuestro contrato de listado automático</autolisting>. Este enfoque abierto y sin permisos permite que cualquiera liste un token sin pedir la aprobación del equipo del exchange ni de intermediarios. Las comisiones de listado pagadas a los contratos de auto-listado las cobra hoy el propietario del listado. El reparto de comisiones de protocolo para quienes hacen stake se está desplegando con el contrato Revenue. La votación on-chain de las comisiones de listado está prevista a continuación.",
       "lede": "Cualquiera puede listar un token. Sin pedir permiso al equipo del exchange.",
       "glyphs": {
         "import": {
@@ -156,12 +156,12 @@
           "text": "Añade tokens nuevos con <autolisting>el contrato de listado automático</autolisting>."
         },
         "revenue": {
-          "title": "Comisiones para los titulares",
-          "text": "Las comisiones de listado se reparten entre los titulares de tokens DEX223."
+          "title": "Comisiones para stakers",
+          "text": "Las comisiones de protocolo pueden compartirse con quienes hacen stake en el contrato Revenue."
         },
         "voting": {
-          "title": "La comunidad fija las comisiones",
-          "text": "La comunidad fija las comisiones de listado mediante votación on-chain."
+          "title": "Votación de comisiones después",
+          "text": "La votación on-chain de las comisiones de listado llegará pronto. Hasta entonces, los precios los fija el propietario del listado."
         }
       }
     },
