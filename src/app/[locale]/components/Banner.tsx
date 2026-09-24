@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import type { CSSProperties } from "react";
 
-import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
+import { buttonClassName, ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import CompareAnimationSlider from "@/components/CompareAnimationSlider";
@@ -40,25 +40,28 @@ export default function Banner() {
           </p>
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
-            <a href={`https://test-app.dex223.io/${locale}/`}>
-              <Button className="sheen" size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
-                <span className="flex items-center gap-2">
-                  {t("testAppButton")}
-                  <Svg iconName="forward" />
-                </span>
-              </Button>
+            <a
+              href={`https://test-app.dex223.io/${locale}/`}
+              className={buttonClassName({
+                className: "sheen max-sm:w-full",
+                size: ButtonSize.EXTRA_LARGE,
+                mobileSize: ButtonSize.LARGE,
+              })}
+            >
+              {t("testAppButton")}
+              <Svg iconName="forward" aria-hidden />
             </a>
-            <a href={`https://app.dex223.io/${locale}/buy-crypto`}>
-              <Button
-                size={ButtonSize.EXTRA_LARGE}
-                colorScheme={ButtonColor.LIGHT_GREEN}
-                mobileSize={ButtonSize.LARGE}
-              >
-                <span className="flex items-center gap-2">
-                  {t("buySellButton")}
-                  <Svg iconName="forward" />
-                </span>
-              </Button>
+            <a
+              href={`https://app.dex223.io/${locale}/buy-crypto`}
+              className={buttonClassName({
+                className: "max-sm:w-full",
+                size: ButtonSize.EXTRA_LARGE,
+                colorScheme: ButtonColor.LIGHT_GREEN,
+                mobileSize: ButtonSize.LARGE,
+              })}
+            >
+              {t("buySellButton")}
+              <Svg iconName="forward" aria-hidden />
             </a>
           </div>
         </div>

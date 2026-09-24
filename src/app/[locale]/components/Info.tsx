@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
+import { buttonClassName, ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
 import TextLink from "@/components/atoms/TextLink";
@@ -125,37 +125,32 @@ export default function Info() {
             </div>
 
             <div className="flex gap-3 max-md:flex-col">
-              <Link className="max-md:w-full flex flex-col" href="/upgrade">
-                <Button
-                  className="text-16"
-                  colorScheme={ButtonColor.GREEN}
-                  size={ButtonSize.EXTRA_LARGE}
-                  mobileSize={ButtonSize.LARGE}
-                >
-                  <span className="flex items-center gap-3">
-                    {t("upgradeTokens")}
-                    <Svg iconName="forward" />
-                  </span>
-                </Button>
+              <Link
+                href="/upgrade"
+                className={buttonClassName({
+                  className: "max-md:w-full gap-3 text-16",
+                  colorScheme: ButtonColor.GREEN,
+                  size: ButtonSize.EXTRA_LARGE,
+                  mobileSize: ButtonSize.LARGE,
+                })}
+              >
+                {t("upgradeTokens")}
+                <Svg iconName="forward" aria-hidden />
               </Link>
 
               <a
-                className="max-md:w-full flex flex-col"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://docsend.com/view/zdcya97tgiiiqvwy"
+                className={buttonClassName({
+                  className: "max-md:w-full gap-3 text-16",
+                  colorScheme: ButtonColor.LIGHT_GREEN,
+                  size: ButtonSize.EXTRA_LARGE,
+                  mobileSize: ButtonSize.LARGE,
+                })}
               >
-                <Button
-                  className="text-16"
-                  colorScheme={ButtonColor.LIGHT_GREEN}
-                  size={ButtonSize.EXTRA_LARGE}
-                  mobileSize={ButtonSize.LARGE}
-                >
-                  <span className="flex items-center gap-3">
-                    {t("viewPitchDeck")}
-                    <Svg iconName="forward" />
-                  </span>
-                </Button>
+                {t("viewPitchDeck")}
+                <Svg iconName="forward" aria-hidden />
               </a>
             </div>
           </>
