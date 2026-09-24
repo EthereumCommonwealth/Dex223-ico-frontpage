@@ -41,7 +41,7 @@ export default function ContactUs() {
                   <Svg iconName="email" />
                 </button>
               </a>
-              <a href="https://t.me/Dex223_defi">
+              <a href="https://t.me/Dex223_defi" target="_blank" rel="noopener noreferrer">
                 <button className="bg-green-bg rounded-3 flex justify-center items-center gap-3 text-primary-text w-full h-[60px] font-medium border border-transparent hover:border-green hover:bg-green-bg-hover duration-200">
                   <span>{t("contactViaTelegram")}</span>
                   <Svg iconName="telegram" />

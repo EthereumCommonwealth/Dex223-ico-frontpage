@@ -61,7 +61,6 @@ export default function Features() {
                     <TextLink
                       text={chunks}
                       href="http://github.com/EthereumCommonwealth/Roadmap/issues/70"
-                      isExternal
                     />
                   ),
                 })}

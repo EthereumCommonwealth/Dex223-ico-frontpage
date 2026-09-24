@@ -123,6 +123,7 @@ function SliderImage({ color = SliderColor.GREEN }: { color?: SliderColor }) {
               <a
                 className="inline-flex items-center text-red-light hocus:text-red-light-hover duration-200"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://dexaran.github.io/erc20-losses/"
               >
                 <span className="underline">{chunks}</span>

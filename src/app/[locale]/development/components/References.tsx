@@ -81,6 +81,7 @@ export default function References({ refEl }) {
                   <li className="border-b border-primary-border" key={reference.key}>
                     <a
                       target="_blank"
+                      rel="noopener noreferrer"
                       href={reference.href}
                       className="hover:text-green py-3.5 text-secondary-text flex gap-6 justify-between text-16 lg:text-18 duration-200"
                     >

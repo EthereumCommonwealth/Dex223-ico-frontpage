@@ -30,8 +30,8 @@ export default function DeFiAgreementPage() {
               <span>
                 DEX223 DAO LLC, a United States-based incorporated entity, herein details its
                 practices regarding the collection, use, and sharing of information through its web
-                app (<TextLink isExternal={false} text="dex223.io" href="/" />
-                ), official website (<TextLink isExternal={false} text="www.dex223.io" href="/" />
+                app (<TextLink text="dex223.io" href="/" />
+                ), official website (<TextLink text="www.dex223.io" href="/" />
                 ), and other associated products and services, collectively referred to as the
                 “Services.” The utilization of the Services implies acceptance of both this Privacy
                 Policy and our Terms of Service.

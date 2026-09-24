@@ -141,14 +141,10 @@ export default function Advantages() {
   const locale = useLocale();
   const bold = (chunks: ReactNode) => <b className="text-primary-text">{chunks}</b>;
   const tokenlistsLink = (chunks: ReactNode) => (
-    <TextLink href="https://tokenlists.org" isExternal text={chunks} />
+    <TextLink href="https://tokenlists.org" text={chunks} />
   );
   const autolistingLink = (chunks: ReactNode) => (
-    <TextLink
-      text={chunks}
-      href={`https://test-app.dex223.io/${locale}/token-listing`}
-      isExternal
-    />
+    <TextLink text={chunks} href={`https://test-app.dex223.io/${locale}/token-listing`} />
   );
 
   return (
@@ -310,7 +306,6 @@ export default function Advantages() {
                       link: (chunks) => (
                         <TextLink
                           text={chunks}
-                          isExternal
                           href="https://youtu.be/hZW6AIrAznQ?si=XK3twzPiFyuHjlPF"
                         />
                       ),

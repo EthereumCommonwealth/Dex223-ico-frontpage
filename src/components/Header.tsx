@@ -12,6 +12,7 @@ import Container from "@/components/Container";
 import Drawer from "@/components/Drawer";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { clsxMerge } from "@/functions/clsxMerge";
+import { linkTargetProps } from "@/functions/links";
 import { Link } from "@/i18n/routing";
 
 const socialLinks = [
@@ -184,14 +185,9 @@ export default function Header() {
                 <Link prefetch={false} className={navLinkClassName} href="/airdrops">
                   {t("airdrops")}
                 </Link>
-                <Link
-                  prefetch={false}
-                  target="_blank"
-                  className={navLinkClassName}
-                  href="https://blog.dex223.io/"
-                >
+                <a className={navLinkClassName} href="https://blog.dex223.io/">
                   {t("blog")}
-                </Link>
+                </a>
               </ul>
             </nav>
           </div>
@@ -200,7 +196,6 @@ export default function Header() {
             <LocaleSwitcher />
             <a
               href={`https://app.dex223.io/${locale}/swap`}
-              target="_blank"
               className="sheen max-xl:hidden whitespace-nowrap group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-2 text-14 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover hocus:-translate-y-px"
             >
               {t("launchApp")}
@@ -311,15 +306,13 @@ export default function Header() {
                 <Svg iconName="code" />
                 {t("development")}
               </Link>
-              <Link
-                prefetch={false}
-                target="_blank"
+              <a
                 className="h-[44px] flex items-center gap-3 text-secondary-text pl-4"
                 href="https://blog.dex223.io/"
               >
                 <Svg iconName="blog" />
                 {t("blog")}
-              </Link>
+              </a>
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-tertiary-text uppercase pl-3">{t("socialMedia")}</div>
@@ -327,7 +320,7 @@ export default function Header() {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >
@@ -343,7 +336,7 @@ export default function Header() {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >
@@ -359,7 +352,7 @@ export default function Header() {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="flex items-center gap-3 text-secondary-text pl-4"
                     >

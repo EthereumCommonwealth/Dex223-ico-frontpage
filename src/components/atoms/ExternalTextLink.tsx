@@ -2,6 +2,7 @@ import { AnchorHTMLAttributes } from "react";
 
 import Svg from "@/components/atoms/Svg";
 import { clsxMerge } from "@/functions/clsxMerge";
+import { linkTargetProps } from "@/functions/links";
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   text: string | number;
@@ -24,8 +25,8 @@ export default function ExternalTextLink({
 }: Props) {
   return (
     <a
+      {...linkTargetProps(href)}
       {...props}
-      target="_blank"
       href={href}
       className={clsxMerge(
         "flex items-center duration-200",

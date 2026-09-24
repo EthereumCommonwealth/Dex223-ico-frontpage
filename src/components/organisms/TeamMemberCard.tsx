@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+import { linkTargetProps } from "@/functions/links";
+
 interface Props {
   image: string;
   position: string;
@@ -47,7 +49,7 @@ export default function TeamMemberCard({ image, position, socials, name }: Props
             {Object.keys(socials).map((key) => (
               <a
                 key={key}
-                target="_blank"
+                {...linkTargetProps(socials[key])}
                 href={socials[key]}
                 className="hocus:bg-green-bg flex items-center justify-center rounded-3 bg-tertiary-bg w-full rounded transition duration-200 py-2"
               >

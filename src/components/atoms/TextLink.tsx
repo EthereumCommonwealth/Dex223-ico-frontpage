@@ -1,23 +1,35 @@
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 
-import styles from "./ExternalTextLink.module.scss";
+import Svg from "@/components/atoms/Svg";
+import { isThirdPartyHref, linkTargetProps } from "@/functions/links";
 
-export default function TextLink({ text, href, isExternal = true }) {
-  if (isExternal) {
+const className = "text-green underline hover:text-green-hover duration-200";
+
+/**
+ * Inline text link. Links to our own sites stay in the same tab; third-party links open a
+ * new tab and carry a small arrow so readers know they are leaving dex223.io.
+ */
+export default function TextLink({ text, href }: { text: ReactNode; href: string }) {
+  if (href.startsWith("/") || href.startsWith("#")) {
     return (
-      <a
-        target="_blank"
-        className="text-green underline hover:text-green-hover duration-200"
-        href={href}
-      >
+      <Link className={className} href={href}>
         {text}
-      </a>
+      </Link>
     );
   }
+
   return (
-    <Link className="text-green underline hover:text-green-hover duration-200" href={href}>
+    <a className={className} href={href} {...linkTargetProps(href)}>
       {text}
-    </Link>
+      {isThirdPartyHref(href) && (
+        <Svg
+          iconName="forward-small"
+          size={16}
+          aria-hidden
+          className="inline-block ml-0.5 align-[-0.2em]"
+        />
+      )}
+    </a>
   );
 }
