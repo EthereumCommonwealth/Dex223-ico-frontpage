@@ -30,6 +30,7 @@ export default function ScrollToTopButton() {
 
   return (
     <button
+      aria-label="Scroll to top"
       onClick={() => {
         window.scrollTo(0, 0);
       }}
