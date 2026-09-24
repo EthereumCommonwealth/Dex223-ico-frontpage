@@ -201,6 +201,7 @@ export default function UpgradePage() {
 
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-green hover:text-green_hover"
                 href={`https://etherscan.io/tx/${hash}`}
               >

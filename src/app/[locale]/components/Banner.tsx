@@ -40,7 +40,7 @@ export default function Banner() {
           </p>
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
-            <a target="_blank" href={`https://test-app.dex223.io/${locale}/`}>
+            <a href={`https://test-app.dex223.io/${locale}/`}>
               <Button className="sheen" size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
                 <span className="flex items-center gap-2">
                   {t("testAppButton")}
@@ -49,7 +49,6 @@ export default function Banner() {
               </Button>
             </a>
             <a
-              target="_blank"
               href={`https://app.dex223.io/${locale}/swap?tokenB=0x675eb5922604F434bcaAC4B4B433D8668925DD67`}
             >
               <Button

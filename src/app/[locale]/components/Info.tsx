@@ -28,6 +28,7 @@ const infoFields = [
       <a
         className="text-green underline"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://etherscan.io/address/0x0908078da2935a14bc7a17770292818c85b580dd"
       >
         0x09&shy;08078d&shy;a2935a&shy;14bc7a1&shy;7770292&shy;818c85&shy;b580dd
@@ -141,6 +142,7 @@ export default function Info() {
               <a
                 className="max-md:w-full flex flex-col"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://docsend.com/view/zdcya97tgiiiqvwy"
               >
                 <Button

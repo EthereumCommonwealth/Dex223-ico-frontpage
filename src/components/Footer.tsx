@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import React, { HTMLProps } from "react";
 
 import Container from "@/components/Container";
+import { linkTargetProps } from "@/functions/links";
 import { Link, usePathname } from "@/i18n/routing";
 
 const socialLinks = [
@@ -113,7 +114,7 @@ export default function Footer({ className }: Props) {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
@@ -131,7 +132,7 @@ export default function Footer({ className }: Props) {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
@@ -149,7 +150,7 @@ export default function Footer({ className }: Props) {
                 return (
                   <div key={link.key}>
                     <a
-                      target="_blank"
+                      {...linkTargetProps(link.href)}
                       href={link.href}
                       className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >

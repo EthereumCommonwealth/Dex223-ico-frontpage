@@ -46,11 +46,7 @@ export default function Philosophy() {
                 <p>
                   {t.rich("description", {
                     link: (chunks) => (
-                      <TextLink
-                        href={`https://test-app.dex223.io/${locale}`}
-                        isExternal
-                        text={chunks}
-                      />
+                      <TextLink href={`https://test-app.dex223.io/${locale}`} text={chunks} />
                     ),
                   })}
                 </p>

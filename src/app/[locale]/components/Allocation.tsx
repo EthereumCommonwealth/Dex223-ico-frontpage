@@ -85,7 +85,6 @@ export default function Allocation() {
                               "https://web.archive.org/web/20140824160811/https://www.ethereum.org/"
                             }
                             text={chunks}
-                            isExternal
                           />
                         ),
                       })}
