@@ -28,7 +28,7 @@ const socialIcons = {
 
 export default function TeamMemberCard({ image, position, socials, name }: Props) {
   return (
-    <div className="grid-rows-[auto_1fr] lg:grid-rows-1 bg-primary-bg rounded-5 relative overflow-hidden p-2 lg:p-5 grid grid-cols-1 lg:grid-cols-[172px_1fr] gap-3 lg:gap-5">
+    <div className="grid-rows-[auto_1fr] lg:grid-rows-1 surface surface-hover rounded-5 relative overflow-hidden p-2 lg:p-5 grid grid-cols-1 lg:grid-cols-[172px_1fr] gap-3 lg:gap-5">
       <div className="w-full lg:w-[172px] relative aspect-square">
         <Image src={image} alt={name} fill className="rounded-3" />
       </div>

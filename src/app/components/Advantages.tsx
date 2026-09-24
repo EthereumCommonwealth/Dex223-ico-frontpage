@@ -78,7 +78,7 @@ function FeatureBlock({
       style={{
         transform: `perspective(700px) rotateX(${rotations.x}deg) rotateY(${rotations.y}deg)`,
       }}
-      className="relative bg-primary-bg rounded-5 p-4 lg:p-10 group overflow-hidden duration-300 hover:duration-100"
+      className="relative surface surface-hover rounded-5 p-4 lg:p-10 group overflow-hidden duration-300 hover:duration-100"
     >
       <div className="absolute -top-10" id={anchor} />
       <div
