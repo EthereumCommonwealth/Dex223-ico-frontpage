@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import Button, { ButtonColor, ButtonSize } from "@/components/atoms/Button";
 import Pattern, { PatternColor } from "@/components/atoms/Pattern";
 import Svg from "@/components/atoms/Svg";
@@ -13,7 +15,7 @@ export default function Banner() {
         className="w-250 h-250 -right-[461px] bg-cover top-0 opacity-10 -z-10 -scale-100"
       />
       <div className="grid grid-cols-1 lg:grid-cols-[6fr_1fr_5fr] w-full pt-10 lg:pt-[80px]">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center hero-stagger">
           <div className="flex mb-3">
             <div className="relative py-1.5 text-18">
               <div className="absolute top-0 left-0 right-0 w-full h-px bg-gradient-to-r from-secondary-bg via-[#C76060] to-secondary-bg" />
@@ -25,10 +27,7 @@ export default function Banner() {
           </div>
 
           <h1 className="text-30 lg:text-48 3xl:text-56 mb-4 lg:mb-5 font-medium tracking-[-0.025em] leading-[1.12]">
-            First decentralized exchange to support{" "}
-            <span className="bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
-              ERC-223
-            </span>{" "}
+            First decentralized exchange to support <span className="text-shimmer">ERC-223</span>{" "}
             standard
           </h1>
           <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8 max-w-[560px]">
@@ -38,7 +37,7 @@ export default function Banner() {
 
           <div className="flex items-center mb-6 lg:mb-8 gap-3 flex-wrap">
             <a target="_blank" href="https://test-app.dex223.io/en/">
-              <Button size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
+              <Button className="sheen" size={ButtonSize.EXTRA_LARGE} mobileSize={ButtonSize.LARGE}>
                 <span className="flex items-center gap-2">
                   DEX223 test-app
                   <Svg iconName="forward" />
@@ -63,7 +62,9 @@ export default function Banner() {
           </div>
         </div>
         <div />
-        <CompareAnimationSlider />
+        <div className="hero-rise" style={{ "--hero-delay": "380ms" } as CSSProperties}>
+          <CompareAnimationSlider />
+        </div>
       </div>
     </Container>
   );

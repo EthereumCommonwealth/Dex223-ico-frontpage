@@ -134,10 +134,20 @@ export default function NeonBlock({
         </div>
 
         {/* Left Content */}
-        <div className="text-white grid-in-[left-content]">{leftContent}</div>
+        <div data-reveal className="text-white grid-in-[left-content]">
+          {leftContent}
+        </div>
 
         {/* Right Content */}
-        {!fullWidth && <div className="grid-in-[right-content]">{rightContent}</div>}
+        {!fullWidth && (
+          <div
+            data-reveal
+            style={{ "--reveal-delay": "140ms" } as React.CSSProperties}
+            className="grid-in-[right-content]"
+          >
+            {rightContent}
+          </div>
+        )}
       </div>
     </Container>
   );

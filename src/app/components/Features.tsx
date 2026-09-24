@@ -28,7 +28,10 @@ export default function Features() {
       />
 
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-5">
+        <div
+          data-reveal-stagger
+          className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-5"
+        >
           <KeyFeatureCard
             heading="Solving a real problem"
             text="Every year, millions of dollars are lost due to transaction errors involving ERC-20 tokens. By adopting the
