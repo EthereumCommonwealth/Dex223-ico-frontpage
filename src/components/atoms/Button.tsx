@@ -87,34 +87,54 @@ const disabledClassnameMap: Record<ButtonVariant, string> = {
   [ButtonVariant.OUTLINED]: "disabled:text-secondary-text disabled:border-secondary-border",
 };
 
-export default function Button({
+/** Button styling for elements that are not <button>, such as links that look like buttons. */
+export function buttonClassName({
   variant = ButtonVariant.CONTAINED,
   size = ButtonSize.LARGE,
   mobileSize,
   tabletSize,
   fullWidth,
   colorScheme = ButtonColor.GREEN,
+  isLoading,
+  className,
+}: CommonProps & { className?: string }) {
+  return clsxMerge(
+    "flex items-center justify-center gap-2 transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out hocus:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none",
+    buttonVariantClassnameMap[variant][colorScheme],
+    buttonSizeClassnameMap[size],
+    tabletButtonSizeClassnameMap[tabletSize || size],
+    mobileButtonSizeClassnameMap[mobileSize || size],
+    fullWidth && "w-full",
+    disabledClassnameMap[variant],
+    isLoading && "opacity-50 pointer-events-none",
+    className,
+  );
+}
+
+export default function Button({
+  variant,
+  size,
+  mobileSize,
+  tabletSize,
+  fullWidth,
+  colorScheme,
   children,
   className,
   isLoading,
   ...props
 }: Props) {
-  const _mobileSize = mobileSize || size;
-  const _tabletSize = tabletSize || size;
-
   return (
     <button
-      className={clsxMerge(
-        "flex items-center justify-center gap-2 transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out hocus:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none",
-        buttonVariantClassnameMap[variant][colorScheme],
-        buttonSizeClassnameMap[size],
-        tabletButtonSizeClassnameMap[_tabletSize],
-        mobileButtonSizeClassnameMap[_mobileSize],
-        fullWidth && "w-full",
-        disabledClassnameMap[variant],
-        isLoading && "opacity-50 pointer-events-none",
+      className={buttonClassName({
+        variant,
+        size,
+        mobileSize,
+        tabletSize,
+        fullWidth,
+        colorScheme,
+        isLoading,
         className,
-      )}
+      })}
       {...props}
     >
       {children}
