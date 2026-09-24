@@ -491,7 +491,7 @@ export default function EcosystemProblems() {
         className="w-250 h-250 -right-[871px] bg-cover -scale-100"
       />
 
-      <div className="bg-primary-bg relative rounded-5">
+      <div className="surface relative rounded-5">
         <div className="grid xl:grid-cols-[1fr_40px]">
           <div ref={ref} className="xl:py-10 pt-1">
             <div {...handlers} className="grid gap-5 grid-cols-1 xl:grid-cols-12">

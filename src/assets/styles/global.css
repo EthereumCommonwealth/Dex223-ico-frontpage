@@ -58,6 +58,29 @@ div[role="dialog"]:focus {
     outline: none;
 }
 
+/* Keyboard users still get a clear, on-brand focus ring. */
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+div[role="button"]:focus-visible {
+    outline: 2px solid theme("colors.green-hover");
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 .Dialog-overlay {
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.7);
@@ -609,3 +632,228 @@ div[role="dialog"]:focus {
 .animate-appear-safe-choice {
     animation: appear-safe-choice var(--dur10) forwards var(--del10);
 }
+
+/* ---- Premium polish layer ---- */
+
+html {
+    scroll-padding-top: 88px;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "calt";
+}
+
+/* Soft ambient light at the top of every page. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 720px;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(60% 60% at 18% 0%, rgba(125, 164, 145, 0.10) 0%, rgba(125, 164, 145, 0) 70%),
+        radial-gradient(50% 50% at 85% 5%, rgba(128, 137, 189, 0.08) 0%, rgba(128, 137, 189, 0) 70%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+::selection {
+    background: rgba(125, 164, 145, 0.35);
+    color: theme("colors.white");
+}
+
+h1, h2, h3, h4 {
+    text-wrap: balance;
+}
+
+p, li {
+    text-wrap: pretty;
+}
+
+.underline {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+}
+
+/* Thin, quiet scrollbars that match the dark surfaces. */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.quaternary-bg") transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: theme("colors.quaternary-bg");
+    border: 3px solid theme("colors.global-bg");
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.primary-border");
+}
+
+/* In the components layer so bg-[url(...)] utilities on a card still win. */
+@layer components {
+    /* Raised card surface: hairline edge, faint top light, gentle hover. */
+    .surface {
+        background-color: theme("colors.primary-bg");
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0) 40%);
+        box-shadow:
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+            0 24px 48px -32px rgba(0, 0, 0, 0.8);
+        transition: box-shadow 300ms ease, transform 300ms ease;
+    }
+
+    .surface-hover:hover {
+        box-shadow:
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.07),
+            inset 0 0 0 1px rgba(125, 164, 145, 0.22),
+            0 28px 56px -30px rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* ---- Motion ---- */
+
+:root {
+    --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Scroll reveal. Hidden only when scripts run and motion is welcome, so content is never
+   lost without JavaScript or for people who prefer less motion. */
+[data-reveal] {
+    transition:
+        opacity 800ms var(--ease-out-soft),
+        transform 900ms var(--ease-out-soft),
+        filter 800ms var(--ease-out-soft),
+        box-shadow 300ms ease;
+    transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms;
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    [data-reveal]:not([data-revealed]) {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+    }
+}
+
+/* Hero entrance: each line rises in turn on first paint. */
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-rise,
+    .hero-stagger > * {
+        animation: hero-rise 900ms var(--ease-out-soft) both;
+        animation-delay: var(--hero-delay, 0ms);
+    }
+
+    .hero-stagger > :nth-child(2) { --hero-delay: 90ms; }
+    .hero-stagger > :nth-child(3) { --hero-delay: 180ms; }
+    .hero-stagger > :nth-child(4) { --hero-delay: 270ms; }
+}
+
+/* A single slow light sweep across gradient text. */
+@keyframes text-shimmer {
+    from {
+        background-position: 100% 50%;
+    }
+    to {
+        background-position: 0% 50%;
+    }
+}
+
+.text-shimmer {
+    background-image: linear-gradient(100deg, #CDF5E2 0%, #7DA491 35%, #F2FFF8 50%, #7DA491 65%, #CDF5E2 100%);
+    background-size: 250% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .text-shimmer {
+        animation: text-shimmer 2.8s var(--ease-out-soft) 700ms both;
+    }
+}
+
+/* Light sweep across a button on hover. */
+.sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0ms;
+}
+
+.sheen:hover::after,
+.sheen:focus-visible::after {
+    transform: translateX(120%);
+    transition: transform 900ms var(--ease-out-soft);
+}
+
+/* Soft light that follows the cursor across hoverable cards (position set by MotionController). */
+.surface-hover {
+    position: relative;
+    isolation: isolate;
+}
+
+.surface-hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(125, 164, 145, 0.10), transparent 60%);
+}
+
+.surface-hover:hover::before {
+    opacity: 1;
+}
+
+.surface-hover.no-spotlight::before {
+    display: none;
+}
+

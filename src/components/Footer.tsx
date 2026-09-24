@@ -105,14 +105,16 @@ export default function Footer({ className }: Props) {
         <div className="py-6 lg:py-10 flex justify-between before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
           <div className="flex lg:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase">Social media</div>
+              <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
+                Social media
+              </div>
               {socialLinks.map((link) => {
                 return (
                   <div key={link.text}>
                     <a
                       target="_blank"
                       href={link.href}
-                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {link.text}
                     </a>
@@ -121,14 +123,16 @@ export default function Footer({ className }: Props) {
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase">Useful links</div>
+              <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
+                Useful links
+              </div>
               {usefulLinks.map((link) => {
                 return (
                   <div key={link.text}>
                     <a
                       target="_blank"
                       href={link.href}
-                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {link.text}
                     </a>
@@ -137,14 +141,16 @@ export default function Footer({ className }: Props) {
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase">Partners</div>
+              <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
+                Partners
+              </div>
               {partners.map((link) => {
                 return (
                   <div key={link.text}>
                     <a
                       target="_blank"
                       href={link.href}
-                      className="font-medium hover:text-green duration-200 text-secondary-text"
+                      className="font-medium hocus:text-green-hover duration-200 text-secondary-text"
                     >
                       {link.text}
                     </a>
@@ -153,7 +159,9 @@ export default function Footer({ className }: Props) {
               })}
             </div>
             <div className="flex flex-col gap-3">
-              <div className="text-tertiary-text uppercase">Company</div>
+              <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
+                Company
+              </div>
               {companyLinks.map((link) => {
                 return (
                   <div key={link.text}>

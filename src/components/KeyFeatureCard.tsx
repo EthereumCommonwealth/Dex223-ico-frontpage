@@ -72,8 +72,8 @@ function SvgGradient({ className, icon = "security" }) {
 
 export default function KeyFeatureCard({ iconName, heading, text, className }: FeatureCardProps) {
   return (
-    <div className={clsx("p-5 bg-primary-bg rounded-5", className)}>
-      <h3 className="flex gap-2 mb-2 font-bold text-18 md:text-20">
+    <div data-reveal className={clsx("p-5 lg:p-6 surface surface-hover rounded-5", className)}>
+      <h3 className="flex gap-2.5 mb-2 font-bold text-18 md:text-20 tracking-[-0.01em]">
         <SvgGradient className="mt-1 lg:mt-px text-green w-6 h-6 lg:w-8 lg:h-8" icon={iconName} />
         {heading}
       </h3>
