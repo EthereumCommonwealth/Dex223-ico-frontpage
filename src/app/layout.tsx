@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: PropsWithChildren<{}>) {
   const initialState = cookieToInitialState(config, (await headers()).get("cookie"));
 
   return (
-    <html>
+    <html lang="en">
       <head>{isProd ? <SEOAgent /> : null}</head>
 
       <body className={golos_text.className}>

@@ -58,6 +58,29 @@ div[role="dialog"]:focus {
     outline: none;
 }
 
+/* Keyboard users still get a clear, on-brand focus ring. */
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+div[role="button"]:focus-visible {
+    outline: 2px solid theme("colors.green-hover");
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 .Dialog-overlay {
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.7);
