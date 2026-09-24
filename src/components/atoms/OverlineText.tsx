@@ -14,6 +14,13 @@ export default function OverlineText({ text, color }: Props) {
   };
 
   return (
-    <h3 className={clsx("text-16 lg:text-20 font-bold uppercase", colorStyles[color])}>{text}</h3>
+    <h3
+      className={clsx(
+        "text-14 lg:text-16 font-bold uppercase tracking-[0.14em]",
+        colorStyles[color],
+      )}
+    >
+      {text}
+    </h3>
   );
 }

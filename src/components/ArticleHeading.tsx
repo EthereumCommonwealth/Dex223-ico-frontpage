@@ -8,7 +8,7 @@ interface Props {
 export default function ArticleHeading({ text, align = "left" }: Props) {
   return (
     <h3
-      className="mb-3 lg:mb-6 -mt-3 lg:-mt-4 text-28 lg:text-40 font-medium"
+      className="mb-3 lg:mb-6 -mt-3 lg:-mt-4 text-28 lg:text-40 font-medium tracking-[-0.02em] leading-[1.2] lg:leading-[1.15]"
       style={{ textAlign: align }}
     >
       {text}

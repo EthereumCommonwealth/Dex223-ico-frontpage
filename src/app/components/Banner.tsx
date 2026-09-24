@@ -24,14 +24,14 @@ export default function Banner() {
             </div>
           </div>
 
-          <h1 className="text-30 lg:text-48 3xl:text-56 mb-3 text-medium">
+          <h1 className="text-30 lg:text-48 3xl:text-56 mb-4 lg:mb-5 font-medium tracking-[-0.025em] leading-[1.12]">
             First decentralized exchange to support{" "}
             <span className="bg-gradient-to-r text-transparent from-[#CDF5E2] bg-clip-text to-green">
               ERC-223
             </span>{" "}
             standard
           </h1>
-          <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8">
+          <p className="text-secondary-text text-16 lg:text-18 mb-6 lg:mb-8 max-w-[560px]">
             Other exchanges keep supporting ERC-20 leading to proliferation of insecure standards
             and losses of funds. DEX223 is first to support ERC-223 which solves these problems
           </p>
