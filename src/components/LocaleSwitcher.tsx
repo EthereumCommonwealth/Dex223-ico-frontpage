@@ -21,15 +21,16 @@ import { useState, useTransition } from "react";
 import Svg from "@/components/atoms/Svg";
 import { Locale, locales, usePathname, useRouter } from "@/i18n/routing";
 
-// Same labels and flags as the app's switcher.
+// Same labels as the app's switcher. English uses the US flag; Portuguese uses Brazil
+// because the site's Portuguese copy is Brazilian.
 export const localesMap: Record<Locale, { img?: string; label: string; symbol: string }> = {
   en: { img: "/images/locales/en.svg", label: "English", symbol: "En" },
   es: { img: "/images/locales/es.svg", label: "Español", symbol: "Es" },
   zh: { img: "/images/locales/zh.svg", label: "中文", symbol: "Zh" },
-  ko: { label: "한국어", symbol: "Ko" },
-  fr: { label: "Français", symbol: "Fr" },
-  pt: { label: "Português", symbol: "Pt" },
-  ru: { label: "Русский", symbol: "Ru" },
+  ko: { img: "/images/locales/ko.svg", label: "한국어", symbol: "Ko" },
+  fr: { img: "/images/locales/fr.svg", label: "Français", symbol: "Fr" },
+  pt: { img: "/images/locales/pt.svg", label: "Português", symbol: "Pt" },
+  ru: { img: "/images/locales/ru.svg", label: "Русский", symbol: "Ru" },
 };
 
 function LocaleMark({ locale }: { locale: Locale }) {
