@@ -48,9 +48,7 @@ export default function Banner() {
                 </span>
               </Button>
             </a>
-            <a
-              href={`https://app.dex223.io/${locale}/swap?tokenB=0x675eb5922604F434bcaAC4B4B433D8668925DD67`}
-            >
+            <a href={`https://app.dex223.io/${locale}/buy-crypto`}>
               <Button
                 size={ButtonSize.EXTRA_LARGE}
                 colorScheme={ButtonColor.LIGHT_GREEN}
