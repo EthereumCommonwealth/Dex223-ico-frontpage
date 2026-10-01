@@ -43,7 +43,6 @@ const team = [
     position: "backendDeveloper",
     name: "Kostya Ostapenko",
     socials: {
-      github: "https://github.com/kostya12362",
       linkedin: "https://www.linkedin.com/in/kostya-ostapenko-a677aa160/",
     },
   },
