@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: { params: Params }) {
       siteName: "DEX223",
       title: t("ogTitle"),
       description: t("ogDescription"),
-      url: "https://dex223.io",
+      url: "https://www.dex223.io",
       images: [
         {
           url: "https://www.dex223.io/social-link.png", // Must be an absolute URL
