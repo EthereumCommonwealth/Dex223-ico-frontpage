@@ -341,22 +341,12 @@ function useSlides() {
               <ul className="mt-2 flex flex-col gap-1 text-12 sm:text-14 xl:text-16 text-secondary-text">
                 <li>
                   {t.rich("gasOptimization.approvalTx", {
-                    link: (chunks) => (
-                      <TextLink
-                        href="https://explorer.callistodao.org//tx/0xa20d2838ea371759f92e7d4ae9700d2de96cf65de738b518dea1753db7180377"
-                        text={chunks}
-                      />
-                    ),
+                    link: (chunks) => chunks,
                   })}
                 </li>
                 <li>
                   {t.rich("gasOptimization.tokensSwapTx", {
-                    link: (chunks) => (
-                      <TextLink
-                        href="https://explorer.callistodao.org//tx/0xedf726375e86b2e1df80a614049ab5e1a797174fb762d81471e3379e98497d36"
-                        text={chunks}
-                      />
-                    ),
+                    link: (chunks) => chunks,
                   })}
                 </li>
               </ul>
@@ -372,12 +362,7 @@ function useSlides() {
               <ul className="mt-2 flex flex-col gap-1 text-12 sm:text-14 xl:text-16 text-secondary-text">
                 <li>
                   {t.rich("gasOptimization.erc223SwapTx", {
-                    link: (chunks) => (
-                      <TextLink
-                        href="https://explorer.callistodao.org//tx/0x8cf1d1454723c2c4e0d57b1f7d202bccd47d780de1ffb1482de377a4ae1bef9b"
-                        text={chunks}
-                      />
-                    ),
+                    link: (chunks) => chunks,
                   })}
                 </li>
                 <li className="flex items-start gap-1 text-green">
