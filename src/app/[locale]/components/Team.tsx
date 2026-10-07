@@ -62,7 +62,6 @@ const team = [
     name: "Nadiia Udovychenko",
     socials: {
       linkedin: "https://www.linkedin.com/in/naud",
-      behance: "https://www.behance.net/Na_Ud",
     },
   },
 ];
