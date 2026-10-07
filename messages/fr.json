@@ -2,7 +2,7 @@
   "Metadata": {
     "description": "Découvrez des analyses approfondies, des actualités et des guides sur Dex223, votre source de référence sur le développement des plateformes d’échange décentralisées (DEX), les standards de jetons et les innovations blockchain. Gardez une longueur d’avance dans l’écosystème Web3 !",
     "ogTitle": "DEX223 : la plateforme d’échange décentralisée pour les jetons ERC-223 et ERC-20 !",
-    "ogDescription": "Plateforme d’échange décentralisée nouvelle génération pour les jetons ERC-223 et ERC-20, avec trading sur marge, des frais de GAS 15% moins chers et des auto-listings transparents pour tous les jetons."
+    "ogDescription": "Exchange décentralisé pour les tokens ERC-223 et ERC-20, en ligne sur le mainnet Ethereum. Des swaps sans approbation, jusqu’à 15 % de gas en moins et des listings de tokens sans permission. Le trading sur marge est en ligne sur le testnet."
   },
   "Navigation": {
     "philosophy": "Philosophie",
@@ -55,7 +55,7 @@
       "lendingOrders": {
         "heading": "Ordres de prêt flexibles",
         "funds": "<b>Fonds : </b> placez n’importe quel jeton dans votre ordre de prêt.",
-        "interestRate": "<b>Taux d’intérêt et échéance : </b> définissez le taux d’intérêt annualisé souhaité et la durée du prêt.",
+        "interestRate": "<b>Taux d’intérêt et échéance : </b> Définissez le taux d’intérêt mensuel souhaité et la durée du prêt.",
         "permittedMarkets": "<b>Marchés autorisés : </b> indiquez sur quels marchés l’emprunteur peut trader.",
         "collateral": "<b>Garantie et configuration : </b> exigez un montant minimum de garantie et définissez des paramètres optionnels pour personnaliser l’ordre.",
         "glyphs": {
@@ -65,7 +65,7 @@
           },
           "terms": {
             "title": "Taux et échéance",
-            "text": "Fixez le taux d’intérêt annuel et la durée du prêt."
+            "text": "Fixez le taux d’intérêt mensuel et la durée du prêt."
           },
           "markets": {
             "title": "Marchés autorisés",
@@ -117,7 +117,7 @@
       },
       "summary": "Le trading sur marge encapsulé de DEX223 allie flexibilité et garde-fous solides : chacun peut prêter et emprunter selon ses propres conditions, tandis que les fonds de tous restent protégés.",
       "deepDive": "Pour aller plus loin : <link>vidéo de présentation du trading sur marge DEX223</link>",
-      "lede": "Prêtez n’importe quel jeton à vos conditions. L’emprunteur le trade, sans pouvoir le retirer."
+      "lede": "Prêtez n’importe quel jeton à vos conditions. L’emprunteur le trade, sans pouvoir le retirer. Déjà en ligne sur le testnet, bientôt sur le mainnet Ethereum."
     },
     "erc223Support": {
       "heading": "Prise en charge d’ERC-223",
@@ -258,7 +258,7 @@
     },
     "risk": {
       "title": "Fonds des utilisateurs en danger",
-      "option1": "Failles de sécurité détectées, <link>108 M$ perdus</link>",
+      "option1": "Failles de sécurité détectées, <link>201 M$ perdus</link>",
       "option2": "Exige d’« approuver » les jetons",
       "option3": "Une simple erreur, une perte de jetons définitive"
     }
@@ -371,8 +371,8 @@
     "erc20Security": {
       "heading": "Les failles de sécurité du standard ERC-20",
       "lead": "Le standard ERC-20 enfreint des principes courants de conception de logiciels sécurisés, ce qui a entraîné la perte de {amount} de jetons.",
-      "watchCalculator": "Consultez le <link>calculateur des pertes ERC-20 en direct</link>",
-      "totalLost": "Montant total des jetons ERC-20 perdus",
+      "watchCalculator": "Voir le total actuel dans le <link>calculateur de pertes ERC-20 en temps réel</link>",
+      "totalLost": "Tokens ERC-20 perdus au 29 août 2023",
       "history": "ERC-20 a été conçu en 2015. À l’époque, l’EthereumVM comportait un bug. Pour que les jetons ne soient pas affectés par ce bug, ERC-20 a été conçu de façon maladroite, sans possibilité de gestion des erreurs. <desktopOnly>Faute de pouvoir gérer les erreurs des utilisateurs, 201 M$ de jetons ERC-20 ont été perdus.</desktopOnly>",
       "erc223Security": "ERC-223 a été conçu avec la sécurité comme priorité. ERC-223 permettrait d’éviter les erreurs des utilisateurs, et nous pensons qu’à long terme, un standard qui prévient les erreurs et les pertes de fonds finira par s’imposer.",
       "table": {
@@ -467,8 +467,8 @@
     "tokenListings": {
       "heading": "Des listings de jetons centralisés, décidés par les équipes des plateformes",
       "lead": "La plupart des plateformes « décentralisées » dépendent encore de la décision de leur équipe pour lister un nouveau jeton. Cela peut devenir un cauchemar, aussi bien pour les développeurs de jetons, contraints de respecter les règles de listing, que pour les utilisateurs, qui ne trouvent pas toujours les jetons qu’ils veulent trader.",
-      "description": "Uniswap a fait un grand pas vers la décentralisation du listing avec son projet tokenlists, mais DEX223 va encore plus loin. DEX223 permettra d’importer n’importe quel actif depuis tokenlists, ainsi qu’une liste d’actifs issue d’un contrat déployé sur le réseau principal Ethereum, qui fera office de liste de jetons décentralisée.",
-      "solution": "Chacun pourra lister un nouveau jeton sur DEX223 sans demander l’autorisation de l’équipe, simplement en payant des frais de listing anti-spam via le contrat d’auto-listing.",
+      "description": "Uniswap a fait un grand pas vers la décentralisation des listings avec son projet tokenlists, mais DEX223 va plus loin. Sur DEX223, vous pouvez importer n’importe quel actif depuis tokenlists, ou importer une liste d’actifs depuis un contrat déployé sur le mainnet Ethereum, qui sert de liste de tokens décentralisée.",
+      "solution": "N’importe qui peut lister un nouveau token sur DEX223 sans demander la permission à l’équipe de l’exchange. Il suffit de payer des frais de listing anti-spam via le contrat d’auto-listing.",
       "lede": "Sur la plupart des DEX, c’est encore l’équipe qui décide des jetons listés.",
       "glyphs": {
         "gated": {
@@ -551,7 +551,7 @@
   "Info": {
     "overline": "Infos",
     "heading": "Projections et informations sur le jeton",
-    "projection": "Le 29 août 2023, Uniswap V3 a enregistré un volume d’échange quotidien de 883 millions de dollars. Si DEX223 captait seulement 5% de ce volume avec des frais taker de 0,2%, les revenus mensuels projetés et partagés entre les détenteurs de D223 pourraient atteindre 2 649 000 $. Dans ces conditions, toute personne achetant des jetons D223 au prix de la vente publique pourrait obtenir un ROI estimé à 397% sur 12 mois, issu uniquement des revenus des frais de transaction.",
+    "projection": "Une illustration du modèle de frais : le 29 août 2023, Uniswap V3 a enregistré un volume quotidien de 883 millions de dollars. Avec 5 % de ce volume et des frais taker de 0,2 %, DEX223 percevrait environ 2,65 millions de dollars de frais par mois, que le protocole partage avec les stakers de D223. Il s’agit d’une illustration, pas d’une prévision ni d’une promesse de rendement.",
     "upgradeGuide": "Pour en savoir plus sur la mise à niveau de D223 et sur la façon de transférer des jetons directement vers le contrat, consultez le <link>guide de mise à niveau du jeton D223</link>.",
     "fields": {
       "tokenName": "Nom du jeton",
@@ -719,19 +719,21 @@
           "fiatOnRamp": "Passerelle d’achat en monnaie fiat"
         }
       },
-      "q4_2025": {
-        "date": "T4 2025 (septembre-décembre)",
+      "y2026": {
+        "date": "2026 (en cours)",
         "items": {
-          "ethereumMainnet": "Lancer DEX223 sur le réseau principal Ethereum",
-          "moreEvmChains": "Lancer DEX223 sur d’autres blockchains EVM",
-          "revenueFeature": "Lancement de la fonctionnalité de revenus",
-          "marginModuleAudit": "Audit de sécurité du module de marge"
+          "mainnetLive": "DEX223 en ligne sur le mainnet Ethereum",
+          "marginTestnet": "Trading sur marge en ligne sur le testnet Sepolia",
+          "interactiveDemo": "Démo interactive, sans wallet"
         }
       },
       "future": {
         "date": "Étapes futures",
         "items": {
-          "marginTradingSupport": "Prise en charge du trading sur marge"
+          "marginAudit": "Audit de sécurité du module de marge",
+          "marginMainnet": "Trading sur marge sur le mainnet Ethereum",
+          "moreEvmChains": "Lancement sur d’autres chaînes EVM",
+          "listingFeeVoting": "Vote on-chain des frais de listing"
         }
       }
     }

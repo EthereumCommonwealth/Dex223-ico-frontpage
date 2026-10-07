@@ -53,7 +53,7 @@ const usefulLinks = [
   },
   {
     key: "sourceCode",
-    href: "https://github.com/Dexaran/Dex223-ICO-page/tree/main",
+    href: "https://github.com/EthereumCommonwealth/Dex223-ico-frontpage",
   },
   {
     key: "blog",

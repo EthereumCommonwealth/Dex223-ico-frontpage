@@ -208,15 +208,15 @@ const milestones: {
     items: ["internalAudit", "externalAudit", "cexListing", "fiatOnRamp"],
   },
   {
-    key: "q4_2025",
+    key: "y2026",
     icon: "evm",
     isActive: true,
-    items: ["ethereumMainnet", "moreEvmChains", "revenueFeature", "marginModuleAudit"],
+    items: ["mainnetLive", "marginTestnet", "interactiveDemo"],
   },
   {
     key: "future",
     icon: "integration",
-    items: ["marginTradingSupport"],
+    items: ["marginAudit", "marginMainnet", "moreEvmChains", "listingFeeVoting"],
   },
 ];
 

@@ -50,8 +50,8 @@ function LostCard({ icon, name, lost, percentage, color, active = false, animate
   );
 }
 
-const ERCLosses = "$108,235,147";
-const ERCLossesInt = "$108M";
+const ERCLosses = "$201,690,000";
+const ERCLossesInt = "$201M";
 
 /** Full original copy, kept one tap away behind "Read more". */
 function Details({ children }: { children: React.ReactNode }) {

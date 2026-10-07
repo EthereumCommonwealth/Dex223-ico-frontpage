@@ -2,7 +2,7 @@
   "Metadata": {
     "description": "Descubre análisis detallados, novedades y guías sobre Dex223, tu fuente de referencia sobre el desarrollo de exchanges descentralizados (DEX), estándares de tokens e innovación blockchain. ¡Mantente a la vanguardia del ecosistema Web3!",
     "ogTitle": "DEX223: ¡exchange descentralizado para tokens ERC-223 y ERC-20!",
-    "ogDescription": "Exchange descentralizado de nueva generación para tokens ERC-223 y ERC-20, con trading con margen, comisiones de GAS un 15% más bajas y listados automáticos transparentes para cualquier token."
+    "ogDescription": "Exchange descentralizado para tokens ERC-223 y ERC-20, activo en la mainnet de Ethereum. Swaps sin aprobaciones, hasta un 15% menos de gas y listados de tokens sin permisos. El trading con margen ya funciona en testnet."
   },
   "Navigation": {
     "philosophy": "Filosofía",
@@ -55,7 +55,7 @@
       "lendingOrders": {
         "heading": "Órdenes de préstamo flexibles",
         "funds": "<b>Fondos: </b> coloca cualquier token en tu orden de préstamo.",
-        "interestRate": "<b>Tipo de interés y plazo: </b> define el tipo de interés anual deseado y la duración del préstamo.",
+        "interestRate": "<b>Tasa de interés y plazo: </b> Define la tasa de interés mensual que deseas y la duración del préstamo.",
         "permittedMarkets": "<b>Mercados permitidos: </b> especifica en qué mercados puede operar el prestatario.",
         "collateral": "<b>Garantía y configuración: </b> exige una garantía mínima y establece parámetros opcionales para personalizarla.",
         "glyphs": {
@@ -65,7 +65,7 @@
           },
           "terms": {
             "title": "Interés y plazo",
-            "text": "Define el tipo de interés anual y la duración del préstamo."
+            "text": "Fija la tasa de interés mensual y la duración del préstamo."
           },
           "markets": {
             "title": "Mercados permitidos",
@@ -117,7 +117,7 @@
       },
       "summary": "El trading con margen encapsulado de DEX223 combina flexibilidad con sólidas salvaguardas: permite a los usuarios prestar y pedir prestado en sus propios términos mientras los fondos de todos permanecen protegidos.",
       "deepDive": "En profundidad: <link>vídeo de demostración del trading con margen de DEX223</link>",
-      "lede": "Presta cualquier token en tus términos. El prestatario opera con él, pero no puede retirarlo."
+      "lede": "Presta cualquier token en tus términos. El prestatario opera con él, pero no puede retirarlo. Ya activo en testnet, pronto en la mainnet de Ethereum."
     },
     "erc223Support": {
       "heading": "Compatibilidad con ERC-223",
@@ -258,7 +258,7 @@
     },
     "risk": {
       "title": "Fondos de los usuarios en riesgo",
-      "option1": "Problemas de seguridad detectados, <link>$108M perdidos</link>",
+      "option1": "Problemas de seguridad detectados, <link>$201M perdidos</link>",
       "option2": "Requiere «aprobar» los tokens",
       "option3": "Un simple error, pérdida permanente de tokens"
     }
@@ -371,8 +371,8 @@
     "erc20Security": {
       "heading": "Problemas de seguridad del estándar ERC-20",
       "lead": "El estándar ERC-20 incumple principios habituales de diseño de software seguro, lo que ha provocado la pérdida de tokens por valor de {amount}.",
-      "watchCalculator": "Consulta la <link>calculadora de pérdidas de ERC-20 en tiempo real</link>",
-      "totalLost": "Cantidad total de tokens ERC-20 perdidos",
+      "watchCalculator": "Consulta el total actual en la <link>calculadora de pérdidas de ERC-20 en tiempo real</link>",
+      "totalLost": "Tokens ERC-20 perdidos al 29 de agosto de 2023",
       "history": "ERC-20 se diseñó en 2015. En aquel momento existía un error en la EthereumVM. Para que los tokens no se vieran afectados por ese error, ERC-20 se diseñó de una forma poco elegante que no permite gestionar errores. <desktopOnly>Como resultado de la imposibilidad de gestionar los errores de los usuarios, se perdieron tokens ERC-20 por valor de $201M.</desktopOnly>",
       "erc223Security": "ERC-223 está diseñado pensando en la seguridad. ERC-223 permitiría evitar los errores de los usuarios, y creemos que a largo plazo prosperará un estándar que evite los errores de los usuarios y la pérdida de fondos.",
       "table": {
@@ -467,8 +467,8 @@
     "tokenListings": {
       "heading": "Listados de tokens centralizados controlados por los equipos de los exchanges",
       "lead": "La mayoría de los exchanges «descentralizados» todavía dependen de la decisión de su equipo para listar un nuevo token. Esto puede ser una pesadilla tanto para los desarrolladores de tokens, que deben cumplir las reglas de listado, como para los usuarios, que pueden no tener algunos tokens disponibles para operar.",
-      "description": "Uniswap dio un gran paso hacia la descentralización del listado con su proyecto tokenlists, pero DEX223 va aún más lejos. DEX223 permitirá importar cualquier activo desde tokenlists, así como importar una lista de activos desde un contrato desplegado en la red principal de Ethereum que actuará como una lista de tokens descentralizada.",
-      "solution": "Cualquiera podrá listar un nuevo token en DEX223 sin pedir permiso al equipo del exchange, simplemente pagando una comisión de listado antispam a través del contrato de listado automático.",
+      "description": "Uniswap dio un gran paso hacia la descentralización de los listados con su proyecto tokenlists, pero DEX223 va más allá. En DEX223 puedes importar cualquier activo desde tokenlists, o importar una lista de activos desde un contrato desplegado en la mainnet de Ethereum que funciona como una lista de tokens descentralizada.",
+      "solution": "Cualquiera puede listar un token nuevo en DEX223 sin pedir permiso al equipo del exchange. Solo paga una comisión antispam de listado a través del contrato de auto-listing.",
       "lede": "La mayoría de los DEX aún dejan que su propio equipo decida qué tokens se listan.",
       "glyphs": {
         "gated": {
@@ -551,7 +551,7 @@
   "Info": {
     "overline": "Información",
     "heading": "Proyección e información del token",
-    "projection": "El 29 de agosto de 2023, Uniswap V3 registró un volumen de trading diario de $883 millones. Si DEX223 lograra captar solo el 5% de ese volumen con una comisión de taker del 0.2%, los ingresos mensuales previstos a repartir entre los titulares de D223 podrían alcanzar $2,649,000. En estas condiciones, quien compre tokens D223 al precio de la venta pública podría obtener un ROI estimado del 397% en un periodo de 12 meses, derivado únicamente de los ingresos por comisiones de trading.",
+    "projection": "Una ilustración del modelo de comisiones: el 29 de agosto de 2023, Uniswap V3 registró un volumen diario de $883 millones. Con el 5% de ese volumen y una comisión de taker del 0.2%, DEX223 cobraría unos $2.65 millones al mes en comisiones, que el protocolo comparte con quienes hacen staking de D223. Es una ilustración, no una previsión ni una promesa de rentabilidad.",
     "upgradeGuide": "Para más información sobre la actualización de D223 y cómo transferir tokens directamente al contrato, consulta la <link>guía de actualización del token D223</link>.",
     "fields": {
       "tokenName": "Nombre del token",
@@ -719,19 +719,21 @@
           "fiatOnRamp": "Rampa de entrada fiat"
         }
       },
-      "q4_2025": {
-        "date": "T4 2025 (septiembre-diciembre)",
+      "y2026": {
+        "date": "2026 (en curso)",
         "items": {
-          "ethereumMainnet": "Lanzar DEX223 en la red principal de Ethereum",
-          "moreEvmChains": "Lanzar DEX223 en más cadenas EVM",
-          "revenueFeature": "Lanzamiento de la función de ingresos",
-          "marginModuleAudit": "Auditoría de seguridad del módulo de margen"
+          "mainnetLive": "DEX223 activo en la mainnet de Ethereum",
+          "marginTestnet": "Trading con margen activo en la testnet Sepolia",
+          "interactiveDemo": "Demo interactiva, sin necesidad de wallet"
         }
       },
       "future": {
         "date": "Próximos hitos",
         "items": {
-          "marginTradingSupport": "Compatibilidad con trading con margen"
+          "marginAudit": "Auditoría de seguridad del módulo de margen",
+          "marginMainnet": "Trading con margen en la mainnet de Ethereum",
+          "moreEvmChains": "Lanzamiento en más cadenas EVM",
+          "listingFeeVoting": "Votación on-chain de las comisiones de listado"
         }
       }
     }

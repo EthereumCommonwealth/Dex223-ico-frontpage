@@ -14,7 +14,7 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 const references = [
   {
     key: "icoPageSource",
-    href: "https://github.com/Dexaran/Dex223-ICO-page",
+    href: "https://github.com/EthereumCommonwealth/Dex223-ico-frontpage",
   },
   {
     key: "icoSmartContracts",
