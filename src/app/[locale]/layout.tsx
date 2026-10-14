@@ -1,6 +1,7 @@
 import "@/assets/styles/global.css";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
+import type { Metadata } from "next";
 import { Golos_Text } from "next/font/google";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
@@ -14,8 +15,9 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MotionController from "@/components/MotionController";
 import SEOAgent from "@/components/SEOAgent";
+import { pageMetadata, SITE_NAME, SITE_URL, siteJsonLd } from "@/config/seo";
 import { config } from "@/config/wagmi/config";
-import { Locale, locales, routing } from "@/i18n/routing";
+import { Locale, routing } from "@/i18n/routing";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -45,7 +47,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <head>{isProd ? <SEOAgent /> : null}</head>
+      <head>
+        <script
+          type="application/ld+json"
+          // Static data built from our own constants, not user input.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd(locale)) }}
+        />
+        {isProd ? <SEOAgent /> : null}
+      </head>
 
       <body className={golos_text.className}>
         <NextIntlClientProvider messages={messages}>
@@ -64,44 +73,25 @@ export default async function RootLayout({
   );
 }
 
-const ogLocales: Record<Locale, string> = {
-  en: "en_US",
-  es: "es_ES",
-  zh: "zh_CN",
-  ko: "ko_KR",
-  fr: "fr_FR",
-  pt: "pt_BR",
-  ru: "ru_RU",
-};
-
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  const page = pageMetadata({
+    locale,
+    path: "",
+    title: t("home.title"),
+    description: t("home.description"),
+  });
 
   return {
-    title: "Dex223",
-    description: t("description"),
-    alternates: {
-      canonical: locale === routing.defaultLocale ? "/" : `/${locale}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, l === routing.defaultLocale ? "/" : `/${l}`]),
-      ),
-    },
-    metadataBase: new URL("https://www.dex223.io"),
-    openGraph: {
-      siteName: "DEX223",
-      title: t("ogTitle"),
-      description: t("ogDescription"),
-      url: "https://www.dex223.io",
-      images: [
-        {
-          url: "https://www.dex223.io/social-link.png", // Must be an absolute URL
-          width: 1600,
-          height: 900,
-        },
-      ],
-      locale: ogLocales[locale as Locale] ?? "en_US",
-      type: "website",
+    ...page,
+    metadataBase: new URL(SITE_URL),
+    title: { default: t("home.title"), template: `%s | ${SITE_NAME}` },
+    applicationName: SITE_NAME,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
     },
   };
 }

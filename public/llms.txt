@@ -1,0 +1,56 @@
+# DEX223
+
+> DEX223 is a decentralized exchange (DEX) for ERC-223 and ERC-20 tokens. It was the first exchange to support the ERC-223 token standard. Every pool accepts both standards, a built-in converter moves tokens between ERC-20 and ERC-223 at 1:1 (EIP-7417), and anyone can list a token without permission through on-chain auto-listing contracts. DEX223 is live on Ethereum mainnet. Margin trading is live on the Sepolia testnet.
+
+DEX223 is non-custodial: people trade from their own wallets and sign every transaction themselves. The project is run by DEX223 DAO LLC. Its utility and governance token is D223.
+
+## Key facts
+
+- Supported token standards: ERC-223 and ERC-20, in the same pools.
+- Converter: ERC-20 and ERC-223 versions of a token convert 1:1 through EIP-7417. Converting has no protocol fee.
+- Approvals: ERC-223 swaps need no approval transaction. ERC-20 swaps still need one.
+- Gas: in a measured example, an ERC-20 swap used 257K gas (45K approval plus 212K swap) and the same ERC-223 swap used 220K gas with no approval.
+- Listing: permissionless. A token is listed by paying an anti-spam fee to an auto-listing contract, or by importing a token list. No application to the team is needed.
+- Margin trading: "Encapsulated Margin Trading". Lenders set their own terms, and borrowers can trade the borrowed tokens but cannot withdraw them. Live on Sepolia testnet; Ethereum mainnet is planned after a security audit.
+- ERC-20 losses: about $201,690,000 worth of ERC-20 tokens had been lost to the standard's design flaw on Ethereum mainnet as of 29 August 2023. ERC-223 is designed to prevent these losses.
+- Chains: live on Ethereum mainnet. Confirmed for future deployment: Avalanche, BSC, EOS EVM, CELO, Base, Optimism and Arbitrum.
+
+## D223 token
+
+- Ticker: D223. Standard: ERC-223, convertible to ERC-20 via EIP-7417. Decimals: 18. Max supply: 8,000,000,000 D223.
+- Ethereum contract: 0x0908078da2935a14bc7a17770292818c85b580dd
+- Holders who lock D223 take part in governance and share in listing, trading and liquidity fees.
+
+## Common questions
+
+- What is DEX223? A decentralized exchange where you can swap, provide liquidity, lend, borrow and trade on margin with ERC-20 and ERC-223 tokens.
+- Do I need ERC-223 tokens to use it? No. Every pool accepts both standards, and the converter moves tokens between them at 1:1.
+- How do I list a token? Open Token listing in the app, pick an auto-listing contract and confirm. No approval from the team is needed.
+- Is DEX223 custodial? No. You trade from your own wallet, and DEX223 never holds your keys.
+- What does trading cost? The pool's fee tier, which goes to its liquidity providers, plus network gas.
+- What is the difference between ERC-20 and ERC-223? ERC-223 lets a receiving contract handle or reject incoming tokens, so tokens sent to the wrong contract are not lost, and it needs no separate approval transaction. ERC-20 cannot do either.
+
+## Links
+
+- [Website](https://www.dex223.io): overview, ERC-20 vs ERC-223, tokenomics and roadmap
+- [DEX223 app](https://app.dex223.io): swap, pools, token converter, token listing, margin trading and lending
+- [Token converter](https://app.dex223.io/en/converter): convert between ERC-20 and ERC-223 at 1:1
+- [Token listing](https://app.dex223.io/en/token-listing): list a token without permission
+- [D223 token description](https://www.dex223.io/token-description)
+- [Development progress](https://www.dex223.io/development): contracts, source code and references
+- [Blog](https://blog.dex223.io): development reports and articles
+- [ERC-223 standard](https://github.com/ethereum/EIPs/pull/610)
+
+## Community
+
+- [X (Twitter)](https://x.com/Dex_223)
+- [Telegram](https://t.me/Dex223_defi)
+- [Discord](https://discord.gg/t5bdeGC5Jk)
+- [GitHub](https://github.com/EthereumCommonwealth)
+
+## Legal
+
+- [DeFi Protocol User Agreement](https://www.dex223.io/defi-agreement)
+- [Privacy Policy](https://www.dex223.io/privacy-policy)
+- [Trademark Guidelines](https://www.dex223.io/trademark-policy)
+- [DEX223 DAO LLC Operating Agreement](https://www.dex223.io/operating-agreement)
