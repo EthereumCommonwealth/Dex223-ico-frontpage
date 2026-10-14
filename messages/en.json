@@ -4,6 +4,24 @@
     "ogTitle": "DEX223: Decentralized exchange for ERC-223 & ERC-20 tokens!",
     "ogDescription": "Decentralized exchange for ERC-223 and ERC-20 tokens, live on Ethereum mainnet. Swaps without approvals, up to 15% lower gas fees and permissionless token listings. Margin trading is live on testnet."
   },
+  "Seo": {
+    "home": {
+      "title": "DEX223: ERC-223 and ERC-20 Decentralized Exchange",
+      "description": "The first decentralized exchange for ERC-223 and ERC-20 tokens. Swap without approvals, convert between standards 1:1 and list any token without permission."
+    },
+    "development": {
+      "title": "Development Progress",
+      "description": "Track DEX223 development: what has shipped, what is in progress and the code behind the decentralized exchange for ERC-223 and ERC-20 tokens."
+    },
+    "upgrade": {
+      "title": "Upgrade Your D223 Tokens",
+      "description": "Connect your wallet to check your D223 balance and upgrade your tokens to the current D223 contract on Ethereum."
+    },
+    "airdrops": {
+      "title": "D223 Airdrops",
+      "description": "One-time D223 token distributions for the DEX223 community. See upcoming and past airdrops. We never ask for your seed phrase or private key."
+    }
+  },
   "Navigation": {
     "philosophy": "Philosophy",
     "marginTrading": "Margin trading",
