@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MotionController from "@/components/MotionController";
 import SEOAgent from "@/components/SEOAgent";
-import { pageMetadata, SITE_NAME, SITE_URL, siteJsonLd } from "@/config/seo";
+import { pageMetadata, SITE_NAME, SITE_URL, siteJsonLd, siteVerification } from "@/config/seo";
 import { Locale, routing } from "@/i18n/routing";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -87,6 +87,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     metadataBase: new URL(SITE_URL),
     title: { default: t("home.title"), template: `%s | ${SITE_NAME}` },
     applicationName: SITE_NAME,
+    verification: siteVerification(),
     robots: {
       index: true,
       follow: true,
