@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import NextLink from "next/link";
 import { useTranslations } from "next-intl";
 import React, { HTMLProps } from "react";
 
@@ -167,7 +168,10 @@ export default function Footer({ className }: Props) {
               {companyLinks.map((link) => {
                 return (
                   <div key={link.key}>
-                    <Link
+                    {/* These pages exist only in English. Link their one English
+                        URL directly, not /es/... copies that canonicalize back to it
+                        (next-intl's Link would add the prefix, or /en and a redirect). */}
+                    <NextLink
                       href={link.href}
                       className={clsx(
                         "inline-flex items-center max-lg:min-h-11 text-16 font-medium duration-200 hover:text-green",
@@ -177,7 +181,7 @@ export default function Footer({ className }: Props) {
                       )}
                     >
                       {t(`links.${link.key}`)}
-                    </Link>
+                    </NextLink>
                   </div>
                 );
               })}
