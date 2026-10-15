@@ -2,12 +2,14 @@
 
 import clsx from "clsx";
 import NextLink from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React, { HTMLProps } from "react";
 
 import Container from "@/components/Container";
+import { localesMap } from "@/components/LocaleSwitcher";
+import { LOCALIZED_PAGES } from "@/config/seo";
 import { linkTargetProps } from "@/functions/links";
-import { Link, usePathname } from "@/i18n/routing";
+import { getPathname, type Locale, locales, usePathname } from "@/i18n/routing";
 
 const socialLinks = [
   {
@@ -101,12 +103,17 @@ interface Props extends HTMLProps<HTMLDivElement> {}
 export default function Footer({ className }: Props) {
   const pathname = usePathname();
   const t = useTranslations("Navigation");
+  const currentLocale = useLocale() as Locale;
+  // Pages that exist in every language link to themselves in each language. English-only
+  // pages (legal documents, token description) and utility pages link to each home page.
+  const segment = pathname.split("/")[1] ?? "";
+  const languageHref = (LOCALIZED_PAGES as readonly string[]).includes(segment) ? pathname : "/";
 
   return (
     <footer>
       <Container>
         <div className="py-6 lg:py-10 flex justify-between before:h-[1px] before:bg-gradient-to-r before:from-secondary-border/20 before:via-50% before:via-secondary-border before:to-secondary-border/20 before:w-full before:absolute relative before:top-0 before:left-0">
-          <div className="flex lg:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
+          <div className="flex lg:gap-12 xl:gap-[80px] flex-col sm:grid sm:grid-cols-2 lg:flex gap-6 sm:gap-5 lg:flex-row w-full">
             <div className="flex flex-col lg:gap-3">
               <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
                 {t("socialMedia")}
@@ -185,6 +192,42 @@ export default function Footer({ className }: Props) {
                   </div>
                 );
               })}
+            </div>
+            <div className="flex flex-col lg:gap-3">
+              <div className="text-tertiary-text uppercase text-12 lg:text-14 font-semibold tracking-[0.14em]">
+                {t("language")}
+              </div>
+              {/* Plain links in the server HTML so search engines find every language
+                  version of this page. The header switcher only renders its options
+                  when open. */}
+              <ul className="grid grid-cols-2 gap-x-4 lg:flex lg:flex-col lg:gap-3">
+                {locales.map((locale) => {
+                  const isCurrent = locale === currentLocale;
+                  return (
+                    <li key={locale}>
+                      <a
+                        href={getPathname({ href: languageHref, locale })}
+                        hrefLang={locale}
+                        lang={locale}
+                        aria-current={isCurrent ? "page" : undefined}
+                        onClick={() => {
+                          // English has no URL prefix, so without the cookie the middleware
+                          // would send the visitor back to the language they were leaving.
+                          document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
+                        }}
+                        className={clsx(
+                          "inline-flex items-center max-lg:min-h-11 font-medium duration-200",
+                          isCurrent
+                            ? "text-green-hover pointer-events-none"
+                            : "text-secondary-text hocus:text-green-hover",
+                        )}
+                      >
+                        {localesMap[locale].label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
           <div />
