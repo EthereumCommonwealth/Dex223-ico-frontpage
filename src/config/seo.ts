@@ -162,3 +162,33 @@ export function siteJsonLd(locale: string) {
     ],
   };
 }
+
+// HTML meta verification for Google Search Console, Yandex Webmaster, Bing Webmaster Tools,
+// Naver Search Advisor, Seznam Webmaster and Baidu Ziyuan. Each env var takes one token or a
+// comma-separated list; unset ones emit nothing.
+export function siteVerification(): Metadata["verification"] {
+  const read = (name: string) => {
+    const tokens = (process.env[name] || "")
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+    return tokens.length === 0 ? undefined : tokens.length === 1 ? tokens[0] : tokens;
+  };
+  const google = read("GOOGLE_SITE_VERIFICATION");
+  const yandex = read("YANDEX_SITE_VERIFICATION");
+  const other: Record<string, string | string[]> = {};
+  const bing = read("BING_SITE_VERIFICATION");
+  const naver = read("NAVER_SITE_VERIFICATION");
+  const seznam = read("SEZNAM_SITE_VERIFICATION");
+  const baidu = read("BAIDU_SITE_VERIFICATION");
+  if (bing) other["msvalidate.01"] = bing;
+  if (naver) other["naver-site-verification"] = naver;
+  if (seznam) other["seznam-wmt"] = seznam;
+  if (baidu) other["baidu-site-verification"] = baidu;
+  if (!google && !yandex && Object.keys(other).length === 0) return undefined;
+  return {
+    ...(google ? { google } : {}),
+    ...(yandex ? { yandex } : {}),
+    ...(Object.keys(other).length ? { other } : {}),
+  };
+}

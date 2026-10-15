@@ -1,0 +1,31 @@
+name: IndexNow
+
+# After Vercel finishes a production deploy of www.dex223.io, submit the
+# sitemap to IndexNow so Bing, Yandex and the other IndexNow engines recrawl
+# changed pages quickly. Preview deploys are skipped.
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            scripts/indexnow-submit.mjs
+            public/*.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: node scripts/indexnow-submit.mjs https://www.dex223.io
