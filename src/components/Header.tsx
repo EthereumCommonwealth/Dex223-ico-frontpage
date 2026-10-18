@@ -105,6 +105,7 @@ const companyLinks = [
 
 const drawerNavLinks = [
   { key: "philosophy", href: "/#philosophy", icon: "lamp" },
+  { key: "erc223", href: "/erc-223", icon: "token" },
   { key: "marginTrading", href: "/#margin", icon: "margin-trading" },
   { key: "tokenomics", href: "/#tokenomics", icon: "chart" },
   { key: "contactUs", href: "/#contact", icon: "contact" },
@@ -212,6 +213,9 @@ export default function Header() {
               <ul className="flex items-center">
                 <Link prefetch={false} className={navLinkClassName} href="/#philosophy">
                   {t("philosophy")}
+                </Link>
+                <Link prefetch={false} className={navLinkClassName} href="/erc-223">
+                  {t("erc223")}
                 </Link>
                 <Link prefetch={false} className={navLinkClassName} href="/#margin">
                   {t("marginTrading")}

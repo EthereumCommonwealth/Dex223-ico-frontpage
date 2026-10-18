@@ -22,8 +22,135 @@
       "description": "面向 DEX223 社区的一次性 D223 代币分发。查看即将进行和已完成的空投。我们绝不会索要你的助记词或私钥。"
     }
   },
+  "Erc223": {
+    "seo": {
+      "title": "什么是 ERC-223？ERC-20 与 ERC-223 对比详解",
+      "description": "ERC-223 是以太坊代币标准，发往错误合约的代币不会丢失，也无需授权。了解它的工作原理，以及 ERC-20 与 ERC-223 的区别。"
+    },
+    "breadcrumb": {
+      "home": "DEX223",
+      "current": "ERC-223"
+    },
+    "hero": {
+      "overline": "代币标准",
+      "title": "什么是 ERC-223？",
+      "answer": "ERC-223 是由 Dexaran 于 2017 年编写的以太坊及其他 EVM 链代币标准。它让代币的行为与 ether 一致：当你把 ERC-223 代币发送到智能合约时，合约会收到通知，并可以接受或拒绝这些代币，因此发往错误合约的代币不会丢失。存入只需一笔交易，无需授权步骤。",
+      "convert": "将代币转换为 ERC-223",
+      "trade": "在 DEX223 交易"
+    },
+    "facts": {
+      "title": "要点",
+      "standardLabel": "标准",
+      "standardValue": "EIP-223: Token with transaction handling model",
+      "statusLabel": "状态",
+      "statusValue": "Final",
+      "proposedLabel": "提出时间",
+      "proposedValue": "2017 年 5 月 3 日",
+      "authorLabel": "作者",
+      "authorValue": "Dexaran",
+      "erc20Label": "兼容 ERC-20",
+      "erc20Value": "是，通过 EIP-7417 转换器（1:1）",
+      "approvalsLabel": "是否需要授权",
+      "approvalsValue": "不需要"
+    },
+    "how": {
+      "overline": "工作原理",
+      "title": "行为与 ether 一致的代币",
+      "lede": "ERC-223 为代币转账增加了一条规则：如果接收方是智能合约，代币会先询问它。钱包的使用方式保持不变。",
+      "step1Title": "你发送代币",
+      "step1Body": "你调用 transfer(to, amount)，其函数名和签名与 ERC-20 相同，因此任何钱包都可以发送 ERC-223 代币。",
+      "step2Title": "合约收到通知",
+      "step2Body": "如果接收方是智能合约，代币会调用它的 tokenReceived 函数，就像 ether 会触发合约的 receive 函数一样。",
+      "step3Title": "接受或拒绝",
+      "step3Body": "为该代币设计的合约会处理这笔存入。未为其设计的合约会回滚交易，代币仍留在你的钱包中。",
+      "codeComment": "ERC-223（EIP-223）接收合约",
+      "codeNote": "未实现该函数？转账会回滚，代币仍归发送方所有。"
+    },
+    "problem": {
+      "overline": "问题所在",
+      "title": "为什么 ERC-20 代币会丢失",
+      "p1": "ERC-20 设计于 2015 年。它的转账函数不会通知接收方，因此收到不支持代币的合约无法拒绝它们。这些代币会被锁在该合约中，通常是永久锁定。",
+      "p2": "向 dApp 存入时，ERC-20 还需要两笔交易：先 approve，再 transferFrom。为了节省 gas，许多交易所会要求一次性的无限授权。这样合约可以随时转移你的代币，一旦合约被攻击，已授权的代币可能被盗。",
+      "p3": "ERC-223 同时解决了这两个问题：接收方总会被询问，存入也只需一次转账。",
+      "statText": "价值的 ERC-20 代币因这一设计缺陷在以太坊主网上丢失（截至 2023 年 8 月 29 日）。",
+      "statLink": "在 ERC-20 损失计算器中查看最新总额"
+    },
+    "compare": {
+      "overline": "对比",
+      "title": "ERC-20 与 ERC-223",
+      "feature": "特性",
+      "contractLabel": "发送到合约",
+      "contractErc20": "合约不会收到通知，不支持的代币会被卡住。",
+      "contractErc223": "合约会收到通知，并拒绝无法处理的代币。",
+      "depositLabel": "存入 dApp",
+      "depositErc20": "两笔交易：先 approve，再 transferFrom",
+      "depositErc223": "一笔交易：transfer",
+      "approvalsLabel": "授权",
+      "approvalsErc20": "必需。无限授权会让资金面临风险。",
+      "approvalsErc223": "不需要",
+      "gasLabel": "一次兑换的 gas（示例）",
+      "gasErc20": "257K（授权 45K + 兑换 212K）",
+      "gasErc223": "220K，无需授权",
+      "etherLabel": "行为与 ether 一致",
+      "etherErc20": "否",
+      "etherErc223": "是",
+      "statusLabel": "标准状态",
+      "statusErc20": "Final（EIP-20，2015）",
+      "statusErc223": "Final（EIP-223，2017）",
+      "note": "gas 数据来自在 DEX223 上对同一代币进行的一次实测兑换。实际结果因代币和网络状况而异。"
+    },
+    "converter": {
+      "overline": "兼容性",
+      "title": "同时使用 ERC-20 和 ERC-223",
+      "lede": "你不必二选一。EIP-7417 代币转换器可随时把任何 ERC-20 代币按 1:1 转换为其 ERC-223 版本，也可以转换回来。两个版本是同一种代币。",
+      "card1Title": "任何代币，双向转换",
+      "card1Body": "存入 ERC-20 版本即可获得 ERC-223 版本，反之亦然。转换回来没有任何限制。",
+      "card2Title": "同一个流动性池",
+      "card2Body": "在 DEX223 上，每个池都同时接受代币的两个版本。你可以为交易的每一方选择 ERC-20 或 ERC-223。",
+      "card3Title": "无协议费用",
+      "card3Body": "在 DEX223 上进行 ERC-20 与 ERC-223 之间的转换，只需支付网络 gas。"
+    },
+    "dex": {
+      "overline": "立即使用",
+      "title": "在 DEX223 上使用 ERC-223",
+      "lede": "DEX223 是首个支持 ERC-223 的去中心化交易所。它是非托管的：你从自己的钱包进行交易。",
+      "card1Title": "无需授权的兑换",
+      "card1Body": "一笔交易即可兑换 ERC-223 代币。无需授权步骤，gas 更低。",
+      "card2Title": "在应用内转换",
+      "card2Body": "使用内置转换器，将任何代币在 ERC-20 与 ERC-223 之间按 1:1 转换。",
+      "card3Title": "上线任何代币",
+      "card3Body": "通过自动上线合约，无需许可即可上线代币。",
+      "launch": "打开应用",
+      "openConverter": "打开转换器"
+    },
+    "faq": {
+      "overline": "常见问题",
+      "title": "关于 ERC-223 的问题",
+      "q1": "ERC-223 与 ERC-20 兼容吗？",
+      "a1": "兼容。ERC-223 保留了相同的 transfer 函数，因此钱包可以发送它；EIP-7417 转换器还能把任何 ERC-20 代币按 1:1 转换为其 ERC-223 版本，并可转换回来。",
+      "q2": "ERC-223 是以太坊的官方标准吗？",
+      "a2": "是的。EIP-223「Token with transaction handling model」在以太坊改进提案（EIP）中的状态为 Final。",
+      "q3": "ERC-223 是谁创建的？",
+      "a3": "Dexaran 于 2017 年提出 ERC-223。该 EIP 创建于 2017 年 5 月 3 日。",
+      "q4": "如果我把 ERC-223 代币发送到不支持它的合约，会发生什么？",
+      "a4": "转账会失败，代币仍留在你的钱包中。而使用 ERC-20 时，同样的错误通常会让代币被永久锁定。",
+      "q5": "ERC-223 代币需要授权吗？",
+      "a5": "不需要。存入只是一次由接收合约处理的转账，因此没有 approve 步骤，也没有需要撤销的无限授权。",
+      "q6": "如何把 ERC-20 代币转换为 ERC-223？",
+      "a6": "使用 DEX223 应用中的代币转换器。它支持 1:1 双向转换，不收取协议费用，只需支付网络 gas。"
+    },
+    "sources": {
+      "overline": "参考来源",
+      "title": "了解更多",
+      "eip223": "EIP-223: Token with transaction handling model",
+      "eip7417": "EIP-7417: Token Converter",
+      "losses": "ERC-20 损失计算器",
+      "blog": "DEX223 博客：开发报告与文章"
+    }
+  },
   "Navigation": {
     "philosophy": "理念",
+    "erc223": "ERC-223",
     "marginTrading": "保证金交易",
     "tokenomics": "代币经济",
     "contactUs": "联系我们",
@@ -42,6 +169,7 @@
     "copyright": "版权所有 © {year} DEX223",
     "rightsReserved": "保留所有权利",
     "links": {
+      "erc223Explained": "什么是 ERC-223？",
       "telegramDiscussions": "Telegram 讨论群",
       "telegramAnnouncements": "Telegram 公告频道",
       "dex223X": "Dex223 X 账号",
@@ -552,6 +680,7 @@
       "erc223": "Ether 和 ERC-223 会自动识别接收方是外部账户地址还是合约，并据此选择正确的存入方式。",
       "erc20": "而 ERC-20 则把选择正确转账方式的负担交给了用户。一旦选错，代币就会丢失，因为 ERC-20 标准缺乏完善的交易处理模型。"
     },
+    "explainer": "刚接触这个标准？阅读<link>什么是 ERC-223 以及它与 ERC-20 的区别</link>。",
     "learnMore": "如需进一步了解这场持续已久的竞争及其对整个生态系统的影响，请访问 <link>ERC-223 主页</link>，了解自 2017 年以来的完整历史。",
     "imageAlt": "ERC-20 与 ERC-223 之争",
     "lede": "自 2017 年起，只有一个问题：哪个标准能保障代币安全？",

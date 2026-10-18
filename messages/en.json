@@ -22,8 +22,135 @@
       "description": "One-time D223 token distributions for the DEX223 community. See upcoming and past airdrops. We never ask for your seed phrase or private key."
     }
   },
+  "Erc223": {
+    "seo": {
+      "title": "What is ERC-223? ERC-20 vs ERC-223 Explained",
+      "description": "ERC-223 is an Ethereum token standard that stops tokens being lost when sent to the wrong contract and needs no approvals. How it works, and ERC-20 vs ERC-223."
+    },
+    "breadcrumb": {
+      "home": "DEX223",
+      "current": "ERC-223"
+    },
+    "hero": {
+      "overline": "Token standard",
+      "title": "What is ERC-223?",
+      "answer": "ERC-223 is a token standard for Ethereum and other EVM chains, written by Dexaran in 2017. It makes tokens behave like ether: when you send ERC-223 tokens to a smart contract, the contract is notified and can accept or reject them, so tokens sent to the wrong contract are not lost. Deposits take one transaction, with no approval step.",
+      "convert": "Convert tokens to ERC-223",
+      "trade": "Trade on DEX223"
+    },
+    "facts": {
+      "title": "Key facts",
+      "standardLabel": "Standard",
+      "standardValue": "EIP-223: Token with transaction handling model",
+      "statusLabel": "Status",
+      "statusValue": "Final",
+      "proposedLabel": "Proposed",
+      "proposedValue": "May 3, 2017",
+      "authorLabel": "Author",
+      "authorValue": "Dexaran",
+      "erc20Label": "Works with ERC-20",
+      "erc20Value": "Yes, via the EIP-7417 converter (1:1)",
+      "approvalsLabel": "Approvals needed",
+      "approvalsValue": "None"
+    },
+    "how": {
+      "overline": "How it works",
+      "title": "Tokens that behave like ether",
+      "lede": "ERC-223 adds one rule to token transfers: if the recipient is a smart contract, the token asks it first. Wallets keep working as before.",
+      "step1Title": "You send tokens",
+      "step1Body": "You call transfer(to, amount), the same function name and signature as ERC-20, so any wallet can send ERC-223 tokens.",
+      "step2Title": "The contract is notified",
+      "step2Body": "If the recipient is a smart contract, the token calls its tokenReceived function, the way ether triggers a contract's receive function.",
+      "step3Title": "Accept or reject",
+      "step3Body": "A contract built for the token handles the deposit. A contract that is not built for it reverts, and the tokens stay in your wallet.",
+      "codeComment": "ERC-223 (EIP-223) receiving contract",
+      "codeNote": "Not implemented? The transfer reverts and the sender keeps the tokens."
+    },
+    "problem": {
+      "overline": "The problem",
+      "title": "Why ERC-20 tokens get lost",
+      "p1": "ERC-20 was designed in 2015. Its transfer function does not tell the recipient anything, so a contract that receives tokens it does not support cannot reject them. The tokens stay locked in that contract, usually forever.",
+      "p2": "To deposit into a dApp, ERC-20 also needs two transactions: approve, then transferFrom. To save gas, many exchanges ask for an unlimited approval once. That lets the contract move your tokens at any time, and if it is ever hacked, approved tokens can be drained.",
+      "p3": "ERC-223 removes both problems: the recipient is always asked, and deposits are a single transfer.",
+      "statText": "worth of ERC-20 tokens lost on Ethereum mainnet to this design flaw, as of 29 August 2023.",
+      "statLink": "See today's total in the ERC-20 losses calculator"
+    },
+    "compare": {
+      "overline": "Comparison",
+      "title": "ERC-20 vs ERC-223",
+      "feature": "Feature",
+      "contractLabel": "Sending to a contract",
+      "contractErc20": "The contract is not notified. Unsupported tokens get stuck.",
+      "contractErc223": "The contract is notified and rejects tokens it cannot handle.",
+      "depositLabel": "Depositing into a dApp",
+      "depositErc20": "Two transactions: approve, then transferFrom",
+      "depositErc223": "One transaction: transfer",
+      "approvalsLabel": "Approvals",
+      "approvalsErc20": "Required. Unlimited approvals put funds at risk.",
+      "approvalsErc223": "Not needed",
+      "gasLabel": "Gas for a swap (example)",
+      "gasErc20": "257K (45K approval + 212K swap)",
+      "gasErc223": "220K, no approval",
+      "etherLabel": "Behaves like ether",
+      "etherErc20": "No",
+      "etherErc223": "Yes",
+      "statusLabel": "Standard status",
+      "statusErc20": "Final (EIP-20, 2015)",
+      "statusErc223": "Final (EIP-223, 2017)",
+      "note": "Gas figures are from a measured swap of the same token on DEX223. Results vary by token and network conditions."
+    },
+    "converter": {
+      "overline": "Compatibility",
+      "title": "Use ERC-20 and ERC-223 together",
+      "lede": "You do not have to choose. The EIP-7417 token converter turns any ERC-20 token into its ERC-223 version and back, 1:1, at any time. Both versions are the same token.",
+      "card1Title": "Any token, both directions",
+      "card1Body": "Deposit the ERC-20 version and receive the ERC-223 version, or the reverse. There is no limit on converting back.",
+      "card2Title": "One liquidity pool",
+      "card2Body": "On DEX223 every pool accepts both versions of a token. You choose ERC-20 or ERC-223 for each side of a trade.",
+      "card3Title": "No protocol fee",
+      "card3Body": "Converting between ERC-20 and ERC-223 on DEX223 costs only network gas."
+    },
+    "dex": {
+      "overline": "Use it today",
+      "title": "ERC-223 on DEX223",
+      "lede": "DEX223 was the first decentralized exchange to support ERC-223. It is non-custodial: you trade from your own wallet.",
+      "card1Title": "Swap without approvals",
+      "card1Body": "Swap ERC-223 tokens in one transaction. No approval step, lower gas.",
+      "card2Title": "Convert in the app",
+      "card2Body": "Move any token between ERC-20 and ERC-223 at 1:1 with the built-in converter.",
+      "card3Title": "List any token",
+      "card3Body": "List a token without permission through an auto-listing contract.",
+      "launch": "Launch app",
+      "openConverter": "Open the converter"
+    },
+    "faq": {
+      "overline": "FAQ",
+      "title": "ERC-223 questions",
+      "q1": "Is ERC-223 compatible with ERC-20?",
+      "a1": "Yes. ERC-223 keeps the same transfer function, so wallets can send it, and the EIP-7417 converter turns any ERC-20 token into its ERC-223 version and back at 1:1.",
+      "q2": "Is ERC-223 an official Ethereum standard?",
+      "a2": "Yes. EIP-223, \"Token with transaction handling model\", has Final status in the Ethereum Improvement Proposals.",
+      "q3": "Who created ERC-223?",
+      "a3": "Dexaran proposed ERC-223 in 2017. The EIP was created on May 3, 2017.",
+      "q4": "What happens if I send ERC-223 tokens to a contract that does not support them?",
+      "a4": "The transfer fails and the tokens stay in your wallet. With ERC-20 the same mistake usually locks the tokens forever.",
+      "q5": "Do ERC-223 tokens need approvals?",
+      "a5": "No. A deposit is a single transfer that the receiving contract handles, so there is no approve step and no unlimited approval to revoke.",
+      "q6": "How do I convert ERC-20 tokens to ERC-223?",
+      "a6": "Use the token converter in the DEX223 app. It converts 1:1 in both directions and charges no protocol fee, only network gas."
+    },
+    "sources": {
+      "overline": "Sources",
+      "title": "Learn more",
+      "eip223": "EIP-223: Token with transaction handling model",
+      "eip7417": "EIP-7417: Token Converter",
+      "losses": "ERC-20 losses calculator",
+      "blog": "DEX223 blog: development reports and articles"
+    }
+  },
   "Navigation": {
     "philosophy": "Philosophy",
+    "erc223": "ERC-223",
     "marginTrading": "Margin trading",
     "tokenomics": "Tokenomics",
     "contactUs": "Contact us",
@@ -42,6 +169,7 @@
     "copyright": "Copyright © {year} DEX223",
     "rightsReserved": "All Rights Reserved",
     "links": {
+      "erc223Explained": "What is ERC-223?",
       "telegramDiscussions": "Telegram discussions",
       "telegramAnnouncements": "Telegram announcements channel",
       "dex223X": "Dex223 X account",
@@ -552,6 +680,7 @@
       "erc223": "Ether and ERC-223 automatically detect whether the recipient is an externally owned address or a contract, choosing the right deposit method accordingly.",
       "erc20": "ERC-20, however, places the burden on the user to pick the correct transfer method. If the wrong path is chosen, the tokens are lost because the ERC-20 standard lacks a proper transaction handling model."
     },
+    "explainer": "New to the standard? Read <link>what ERC-223 is and how it compares with ERC-20</link>.",
     "learnMore": "To learn more about this ongoing rivalry and its impact on the broader ecosystem, visit the <link>ERC-223 front page</link> to uncover the full history since 2017.",
     "imageAlt": "ERC-20 vs ERC-223 Fight",
     "lede": "Since 2017, one question: which standard keeps tokens safe?",

@@ -9,6 +9,7 @@ type Frequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 // pages are private and omitted.
 const LOCALIZED_ROUTES: { path: string; priority: number; changeFrequency: Frequency }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "erc-223", priority: 0.9, changeFrequency: "monthly" },
   { path: "development", priority: 0.8, changeFrequency: "weekly" },
   { path: "upgrade", priority: 0.7, changeFrequency: "monthly" },
   { path: "airdrops", priority: 0.6, changeFrequency: "weekly" },

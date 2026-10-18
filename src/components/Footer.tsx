@@ -36,6 +36,10 @@ const socialLinks = [
 
 const usefulLinks = [
   {
+    key: "erc223Explained",
+    href: "/erc-223",
+  },
+  {
     key: "lossesCalculator",
     href: "https://dexaran.github.io/erc20-losses/",
   },
@@ -137,15 +141,23 @@ export default function Footer({ className }: Props) {
                 {t("usefulLinks")}
               </div>
               {usefulLinks.map((link) => {
+                const linkClassName =
+                  "inline-flex items-center max-lg:min-h-11 font-medium hocus:text-green-hover duration-200 text-secondary-text";
                 return (
                   <div key={link.key}>
-                    <a
-                      {...linkTargetProps(link.href)}
-                      href={link.href}
-                      className="inline-flex items-center max-lg:min-h-11 font-medium hocus:text-green-hover duration-200 text-secondary-text"
-                    >
-                      {t(`links.${link.key}`)}
-                    </a>
+                    {link.href.startsWith("/") ? (
+                      <NextLink
+                        prefetch={false}
+                        href={getPathname({ href: link.href, locale: currentLocale })}
+                        className={linkClassName}
+                      >
+                        {t(`links.${link.key}`)}
+                      </NextLink>
+                    ) : (
+                      <a {...linkTargetProps(link.href)} href={link.href} className={linkClassName}>
+                        {t(`links.${link.key}`)}
+                      </a>
+                    )}
                   </div>
                 );
               })}
