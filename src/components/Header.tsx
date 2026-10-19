@@ -242,7 +242,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <LocaleSwitcher />
             <a
-              href={`https://app.dex223.io/${locale}/swap`}
+              href={`https://test-app.dex223.io/${locale}/swap`}
               className="sheen max-xl:hidden whitespace-nowrap group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-2 text-14 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover hocus:-translate-y-px"
             >
               {t("launchApp")}
@@ -339,7 +339,7 @@ export default function Header() {
 
             <div className="flex items-center gap-3 px-4 pb-6">
               <a
-                href={`https://app.dex223.io/${locale}/swap`}
+                href={`https://test-app.dex223.io/${locale}/swap`}
                 className="flex-grow inline-flex items-center justify-center gap-1.5 h-12 px-5 rounded-2 text-16 font-medium text-black bg-green shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-10px_rgba(125,164,145,0.8)] duration-200 hocus:bg-green-hover"
               >
                 {t("launchApp")}

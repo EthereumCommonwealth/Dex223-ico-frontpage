@@ -126,6 +126,8 @@ export default async function Erc223Page({ params }: { params: Promise<{ locale:
   const tSeo = await getTranslations("Erc223.seo");
 
   const appUrl = (path: string) => `https://app.dex223.io/${locale}/${path}`;
+  // Mainnet has no pools yet, so swaps go to the Sepolia app. Switch back to appUrl("swap") once it does.
+  const swapUrl = `https://test-app.dex223.io/${locale}/swap`;
   const url = pageUrl(locale, "erc-223");
 
   // TechArticle, FAQPage (from the six visible questions) and BreadcrumbList.
@@ -212,7 +214,7 @@ export default async function Erc223Page({ params }: { params: Promise<{ locale:
               <AppButton href={appUrl("converter")} primary>
                 {t("hero.convert")}
               </AppButton>
-              <AppButton href={appUrl("swap")}>{t("hero.trade")}</AppButton>
+              <AppButton href={swapUrl}>{t("hero.trade")}</AppButton>
             </div>
           </div>
 
@@ -397,7 +399,7 @@ export default async function Erc223Page({ params }: { params: Promise<{ locale:
           <FeatureCard icon="auto-listing" title={t("dex.card3Title")} body={t("dex.card3Body")} />
         </div>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-          <AppButton href={appUrl("swap")} primary>
+          <AppButton href={swapUrl} primary>
             {t("dex.launch")}
           </AppButton>
           <AppButton href={appUrl("converter")}>{t("dex.openConverter")}</AppButton>
