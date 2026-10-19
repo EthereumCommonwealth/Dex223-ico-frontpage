@@ -814,7 +814,7 @@
   "Roadmap": {
     "overline": "Calendrier de développement",
     "heading": "Feuille de route",
-    "intro": "Nous prévoyons d’annoncer notre calendrier de déploiement multichaîne une fois le déploiement sur BSC terminé. Rendez-vous sur notre <link>Github</link> pour les derniers détails et mises à jour.",
+    "intro": "Nous annoncerons notre calendrier multichaîne après l’audit du module de marge. Consultez notre <link>Github</link> pour les derniers détails et mises à jour.",
     "milestones": {
       "q1_2024": {
         "date": "T1 2024 (février-mars)",

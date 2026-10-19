@@ -814,7 +814,7 @@
   "Roadmap": {
     "overline": "Development timeline",
     "heading": "Roadmap",
-    "intro": "We plan to announce our multi-chain deployment timeline once BSC deployment is complete. Visit our <link>Github</link> for the latest details and updates.",
+    "intro": "We will announce our multi-chain timeline after the margin module audit. Visit our <link>Github</link> for the latest details and updates.",
     "milestones": {
       "q1_2024": {
         "date": "Q1 2024 (February-March)",

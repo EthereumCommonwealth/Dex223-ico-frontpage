@@ -814,7 +814,7 @@
   "Roadmap": {
     "overline": "Cronología del desarrollo",
     "heading": "Hoja de ruta",
-    "intro": "Tenemos previsto anunciar el calendario de despliegue multicadena una vez completado el despliegue en BSC. Visita nuestro <link>Github</link> para conocer los últimos detalles y novedades.",
+    "intro": "Anunciaremos nuestro calendario multicadena después de la auditoría del módulo de margen. Visita nuestro <link>Github</link> para conocer los últimos detalles y novedades.",
     "milestones": {
       "q1_2024": {
         "date": "T1 2024 (febrero-marzo)",

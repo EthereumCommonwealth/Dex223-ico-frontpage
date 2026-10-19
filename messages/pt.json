@@ -814,7 +814,7 @@
   "Roadmap": {
     "overline": "Cronograma de desenvolvimento",
     "heading": "Roadmap",
-    "intro": "Planejamos anunciar o cronograma de implantação multichain assim que a implantação na BSC for concluída. Acesse nosso <link>Github</link> para ver os detalhes e as novidades mais recentes.",
+    "intro": "Anunciaremos nosso cronograma multichain após a auditoria do módulo de margem. Visite nosso <link>Github</link> para os detalhes e atualizações mais recentes.",
     "milestones": {
       "q1_2024": {
         "date": "T1 2024 (fevereiro-março)",
