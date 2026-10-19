@@ -814,7 +814,7 @@
   "Roadmap": {
     "overline": "开发时间线",
     "heading": "路线图",
-    "intro": "我们计划在 BSC 部署完成后公布多链部署时间表。请访问我们的 <link>Github</link> 获取最新详情与动态。",
+    "intro": "我们将在保证金模块审计完成后公布多链时间表。请访问我们的 <link>Github</link> 获取最新详情与动态。",
     "milestones": {
       "q1_2024": {
         "date": "2024 年第一季度（2 月至 3 月）",
