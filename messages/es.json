@@ -2,7 +2,7 @@
   "Metadata": {
     "description": "Descubre análisis detallados, novedades y guías sobre Dex223, tu fuente de referencia sobre el desarrollo de exchanges descentralizados (DEX), estándares de tokens e innovación blockchain. ¡Mantente a la vanguardia del ecosistema Web3!",
     "ogTitle": "DEX223: ¡exchange descentralizado para tokens ERC-223 y ERC-20!",
-    "ogDescription": "Exchange descentralizado para tokens ERC-223 y ERC-20, activo en la mainnet de Ethereum. Swaps sin aprobaciones, hasta un 15% menos de gas y listados de tokens sin permisos. El trading con margen ya funciona en testnet."
+    "ogDescription": "Exchange descentralizado para tokens ERC-223 y ERC-20. Swaps sin aprobaciones, hasta un 15% menos de gas y listados de tokens sin permisos. Contratos en la mainnet de Ethereum; los swaps y el trading con margen ya funcionan en testnet."
   },
   "Seo": {
     "home": {
@@ -869,7 +869,7 @@
       "y2026": {
         "date": "2026 (en curso)",
         "items": {
-          "mainnetLive": "DEX223 activo en la mainnet de Ethereum",
+          "mainnetLive": "Contratos de DEX223 desplegados en la mainnet de Ethereum",
           "marginTestnet": "Trading con margen activo en la testnet Sepolia",
           "interactiveDemo": "Demo interactiva, sin necesidad de wallet"
         }
