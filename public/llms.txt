@@ -33,6 +33,7 @@ DEX223 is non-custodial: people trade from their own wallets and sign every tran
 ## Links
 
 - [Website](https://www.dex223.io): overview, ERC-20 vs ERC-223, tokenomics and roadmap
+- [What is ERC-223?](https://www.dex223.io/erc-223): how ERC-223 works, ERC-20 vs ERC-223, the EIP-7417 converter and FAQ
 - [DEX223 app](https://app.dex223.io): swap, pools, token converter, token listing, margin trading and lending
 - [Token converter](https://app.dex223.io/en/converter): convert between ERC-20 and ERC-223 at 1:1
 - [Token listing](https://app.dex223.io/en/token-listing): list a token without permission

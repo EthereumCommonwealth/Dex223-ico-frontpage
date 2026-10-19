@@ -22,8 +22,135 @@
       "description": "DEX223 커뮤니티를 위한 일회성 D223 토큰 배포입니다. 예정된 에어드롭과 지난 에어드롭을 확인하세요. 시드 문구나 개인 키는 절대 요청하지 않습니다."
     }
   },
+  "Erc223": {
+    "seo": {
+      "title": "ERC-223이란? ERC-20과 ERC-223 비교",
+      "description": "ERC-223은 잘못된 컨트랙트로 보낸 토큰이 사라지지 않고 승인도 필요 없는 이더리움 토큰 표준입니다. 작동 방식과 ERC-20과의 차이를 알아보세요."
+    },
+    "breadcrumb": {
+      "home": "DEX223",
+      "current": "ERC-223"
+    },
+    "hero": {
+      "overline": "토큰 표준",
+      "title": "ERC-223이란?",
+      "answer": "ERC-223은 2017년 Dexaran이 작성한 이더리움 및 기타 EVM 체인용 토큰 표준입니다. 토큰이 ether처럼 동작하게 해 줍니다. ERC-223 토큰을 스마트 컨트랙트로 보내면 컨트랙트가 알림을 받고 토큰을 받거나 거부할 수 있으므로, 잘못된 컨트랙트로 보낸 토큰이 사라지지 않습니다. 입금은 승인 단계 없이 한 번의 트랜잭션으로 끝납니다.",
+      "convert": "토큰을 ERC-223으로 변환",
+      "trade": "DEX223에서 거래하기"
+    },
+    "facts": {
+      "title": "핵심 정보",
+      "standardLabel": "표준",
+      "standardValue": "EIP-223: Token with transaction handling model",
+      "statusLabel": "상태",
+      "statusValue": "Final",
+      "proposedLabel": "제안일",
+      "proposedValue": "2017년 5월 3일",
+      "authorLabel": "작성자",
+      "authorValue": "Dexaran",
+      "erc20Label": "ERC-20 호환",
+      "erc20Value": "예, EIP-7417 변환기로 1:1 변환",
+      "approvalsLabel": "필요한 승인",
+      "approvalsValue": "없음"
+    },
+    "how": {
+      "overline": "작동 방식",
+      "title": "ether처럼 동작하는 토큰",
+      "lede": "ERC-223은 토큰 전송에 규칙 하나를 더합니다. 받는 쪽이 스마트 컨트랙트이면 토큰이 먼저 그 컨트랙트에 묻습니다. 지갑은 그대로 사용할 수 있습니다.",
+      "step1Title": "토큰을 보냅니다",
+      "step1Body": "ERC-20과 같은 함수 이름과 시그니처인 transfer(to, amount)를 호출하므로, 어떤 지갑으로도 ERC-223 토큰을 보낼 수 있습니다.",
+      "step2Title": "컨트랙트가 알림을 받습니다",
+      "step2Body": "받는 쪽이 스마트 컨트랙트이면 토큰이 그 컨트랙트의 tokenReceived 함수를 호출합니다. ether가 컨트랙트의 receive 함수를 실행하는 것과 같은 방식입니다.",
+      "step3Title": "받거나 거부합니다",
+      "step3Body": "해당 토큰을 지원하는 컨트랙트는 입금을 처리합니다. 지원하지 않는 컨트랙트는 트랜잭션을 되돌리고, 토큰은 지갑에 그대로 남습니다.",
+      "codeComment": "ERC-223(EIP-223) 수신 컨트랙트",
+      "codeNote": "구현되지 않았나요? 전송이 되돌려지고 토큰은 보낸 사람에게 남습니다."
+    },
+    "problem": {
+      "overline": "문제점",
+      "title": "ERC-20 토큰이 사라지는 이유",
+      "p1": "ERC-20은 2015년에 설계되었습니다. 전송 함수가 받는 쪽에 아무것도 알리지 않기 때문에, 지원하지 않는 토큰을 받은 컨트랙트는 이를 거부할 수 없습니다. 토큰은 그 컨트랙트에 묶이며, 대부분 영원히 꺼낼 수 없습니다.",
+      "p2": "dApp에 입금할 때 ERC-20은 approve와 transferFrom, 두 번의 트랜잭션이 필요합니다. 가스를 아끼려고 많은 거래소가 한 번에 무제한 승인을 요청합니다. 그러면 컨트랙트가 언제든 토큰을 옮길 수 있고, 컨트랙트가 해킹되면 승인된 토큰을 탈취당할 수 있습니다.",
+      "p3": "ERC-223은 두 문제를 모두 없앱니다. 받는 쪽에 항상 먼저 묻고, 입금은 한 번의 전송으로 끝납니다.",
+      "statText": "상당의 ERC-20 토큰이 이 설계 결함 때문에 이더리움 메인넷에서 사라졌습니다(2023년 8월 29일 기준).",
+      "statLink": "ERC-20 손실 계산기에서 오늘의 합계 보기"
+    },
+    "compare": {
+      "overline": "비교",
+      "title": "ERC-20과 ERC-223",
+      "feature": "항목",
+      "contractLabel": "컨트랙트로 전송",
+      "contractErc20": "컨트랙트가 알림을 받지 못합니다. 지원하지 않는 토큰은 묶입니다.",
+      "contractErc223": "컨트랙트가 알림을 받고, 처리할 수 없는 토큰은 거부합니다.",
+      "depositLabel": "dApp에 입금",
+      "depositErc20": "트랜잭션 두 번: approve 후 transferFrom",
+      "depositErc223": "트랜잭션 한 번: transfer",
+      "approvalsLabel": "승인",
+      "approvalsErc20": "필수입니다. 무제한 승인은 자금을 위험하게 만듭니다.",
+      "approvalsErc223": "필요 없음",
+      "gasLabel": "스왑 가스(예시)",
+      "gasErc20": "257K(승인 45K + 스왑 212K)",
+      "gasErc223": "220K, 승인 없음",
+      "etherLabel": "ether처럼 동작",
+      "etherErc20": "아니요",
+      "etherErc223": "예",
+      "statusLabel": "표준 상태",
+      "statusErc20": "Final(EIP-20, 2015)",
+      "statusErc223": "Final(EIP-223, 2017)",
+      "note": "가스 수치는 DEX223에서 같은 토큰으로 측정한 스왑 결과입니다. 실제 값은 토큰과 네트워크 상황에 따라 다릅니다."
+    },
+    "converter": {
+      "overline": "호환성",
+      "title": "ERC-20과 ERC-223을 함께 사용하세요",
+      "lede": "하나를 고를 필요가 없습니다. EIP-7417 토큰 변환기는 언제든 어떤 ERC-20 토큰이든 ERC-223 버전으로, 그리고 다시 원래대로 1:1 변환합니다. 두 버전은 같은 토큰입니다.",
+      "card1Title": "모든 토큰, 양방향",
+      "card1Body": "ERC-20 버전을 넣으면 ERC-223 버전을 받고, 반대도 가능합니다. 다시 변환하는 데 제한이 없습니다.",
+      "card2Title": "하나의 유동성 풀",
+      "card2Body": "DEX223의 모든 풀은 토큰의 두 버전을 모두 받습니다. 거래의 각 쪽마다 ERC-20 또는 ERC-223을 고를 수 있습니다.",
+      "card3Title": "프로토콜 수수료 없음",
+      "card3Body": "DEX223에서 ERC-20과 ERC-223 사이의 변환에는 네트워크 가스만 듭니다."
+    },
+    "dex": {
+      "overline": "지금 바로",
+      "title": "DEX223의 ERC-223",
+      "lede": "DEX223은 ERC-223을 지원한 최초의 탈중앙화 거래소입니다. 수탁형이 아니므로 자신의 지갑에서 직접 거래합니다.",
+      "card1Title": "승인 없는 스왑",
+      "card1Body": "ERC-223 토큰을 한 번의 트랜잭션으로 스왑하세요. 승인 단계가 없고 가스도 적게 듭니다.",
+      "card2Title": "앱에서 변환",
+      "card2Body": "내장 변환기로 어떤 토큰이든 ERC-20과 ERC-223 사이에서 1:1로 옮길 수 있습니다.",
+      "card3Title": "어떤 토큰이든 상장",
+      "card3Body": "자동 상장 컨트랙트를 통해 허가 없이 토큰을 상장하세요.",
+      "launch": "앱 열기",
+      "openConverter": "변환기 열기"
+    },
+    "faq": {
+      "overline": "자주 묻는 질문",
+      "title": "ERC-223 관련 질문",
+      "q1": "ERC-223은 ERC-20과 호환되나요?",
+      "a1": "예. ERC-223은 같은 transfer 함수를 유지하므로 지갑에서 보낼 수 있고, EIP-7417 변환기로 어떤 ERC-20 토큰이든 ERC-223 버전으로, 그리고 다시 원래대로 1:1 변환할 수 있습니다.",
+      "q2": "ERC-223은 이더리움 공식 표준인가요?",
+      "a2": "예. EIP-223 \"Token with transaction handling model\"은 이더리움 개선 제안(EIP)에서 Final 상태입니다.",
+      "q3": "ERC-223은 누가 만들었나요?",
+      "a3": "Dexaran이 2017년에 ERC-223을 제안했습니다. 해당 EIP는 2017년 5월 3일에 작성되었습니다.",
+      "q4": "ERC-223 토큰을 지원하지 않는 컨트랙트로 보내면 어떻게 되나요?",
+      "a4": "전송이 실패하고 토큰은 지갑에 그대로 남습니다. ERC-20에서는 같은 실수로 토큰이 대개 영원히 묶입니다.",
+      "q5": "ERC-223 토큰은 승인이 필요한가요?",
+      "a5": "아니요. 입금은 받는 컨트랙트가 처리하는 한 번의 전송이므로 approve 단계도, 취소해야 할 무제한 승인도 없습니다.",
+      "q6": "ERC-20 토큰을 ERC-223으로 어떻게 변환하나요?",
+      "a6": "DEX223 앱의 토큰 변환기를 사용하세요. 양방향으로 1:1 변환하며 프로토콜 수수료 없이 네트워크 가스만 듭니다."
+    },
+    "sources": {
+      "overline": "출처",
+      "title": "더 알아보기",
+      "eip223": "EIP-223: Token with transaction handling model",
+      "eip7417": "EIP-7417: Token Converter",
+      "losses": "ERC-20 손실 계산기",
+      "blog": "DEX223 블로그: 개발 보고서와 글"
+    }
+  },
   "Navigation": {
     "philosophy": "철학",
+    "erc223": "ERC-223",
     "marginTrading": "마진 거래",
     "tokenomics": "토크노믹스",
     "contactUs": "문의하기",
@@ -42,6 +169,7 @@
     "copyright": "Copyright © {year} DEX223",
     "rightsReserved": "All Rights Reserved",
     "links": {
+      "erc223Explained": "ERC-223이란?",
       "telegramDiscussions": "Telegram 토론방",
       "telegramAnnouncements": "Telegram 공지 채널",
       "dex223X": "Dex223 X 계정",
@@ -552,6 +680,7 @@
       "erc223": "이더와 ERC-223은 수신자가 외부 소유 주소인지 컨트랙트인지 자동으로 감지하여 알맞은 입금 방식을 선택합니다.",
       "erc20": "반면 ERC-20은 올바른 전송 방식을 선택하는 부담을 사용자에게 지웁니다. 잘못된 방식을 선택하면 토큰이 손실되는데, ERC-20 표준에는 적절한 트랜잭션 처리 모델이 없기 때문입니다."
     },
+    "explainer": "이 표준이 처음이신가요? <link>ERC-223이 무엇이고 ERC-20과 어떻게 다른지</link> 읽어 보세요.",
     "learnMore": "이 오랜 경쟁과 그것이 생태계 전반에 미친 영향에 대해 더 알아보려면 <link>ERC-223 프런트 페이지</link>를 방문하여 2017년부터의 전체 역사를 확인하세요.",
     "imageAlt": "ERC-20 vs ERC-223 대결",
     "lede": "2017년부터 이어진 질문, 어느 표준이 토큰을 안전하게 지킬까요?",

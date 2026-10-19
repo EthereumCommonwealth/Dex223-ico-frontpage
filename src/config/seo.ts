@@ -16,7 +16,7 @@ export const ogLocales: Record<Locale, string> = {
 };
 
 // Pages translated into every locale. Their titles and descriptions live under "Seo" in messages.
-export const LOCALIZED_PAGES = ["", "development", "upgrade", "airdrops"] as const;
+export const LOCALIZED_PAGES = ["", "erc-223", "development", "upgrade", "airdrops"] as const;
 export type LocalizedPage = (typeof LOCALIZED_PAGES)[number];
 
 // Documents published in English only. Every locale shows the same English text, so each

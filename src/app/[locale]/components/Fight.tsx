@@ -14,6 +14,7 @@ import TextLink from "@/components/atoms/TextLink";
 import GlyphPoint from "@/components/GlyphPoint";
 import NeonBlock from "@/components/organisms/NeonBlock";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { Link } from "@/i18n/routing";
 import FightImageSvg from "@/inlined-svgs/FightImageSvg";
 
 const problems = [
@@ -85,6 +86,19 @@ export default function Fight() {
                 <BulletListItem>{t("points.erc223")}</BulletListItem>
                 <BulletListItem>{t("points.erc20")}</BulletListItem>
               </ul>
+              <p>
+                {t.rich("explainer", {
+                  link: (chunks) => (
+                    <Link
+                      prefetch={false}
+                      href="/erc-223"
+                      className="text-green underline hover:text-green-hover duration-200"
+                    >
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </p>
               <p>
                 {t.rich("learnMore", {
                   link: (chunks) => (
