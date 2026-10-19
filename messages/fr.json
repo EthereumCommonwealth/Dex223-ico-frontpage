@@ -2,7 +2,7 @@
   "Metadata": {
     "description": "Découvrez des analyses approfondies, des actualités et des guides sur Dex223, votre source de référence sur le développement des plateformes d’échange décentralisées (DEX), les standards de jetons et les innovations blockchain. Gardez une longueur d’avance dans l’écosystème Web3 !",
     "ogTitle": "DEX223 : la plateforme d’échange décentralisée pour les jetons ERC-223 et ERC-20 !",
-    "ogDescription": "Exchange décentralisé pour les tokens ERC-223 et ERC-20, en ligne sur le mainnet Ethereum. Des swaps sans approbation, jusqu’à 15 % de gas en moins et des listings de tokens sans permission. Le trading sur marge est en ligne sur le testnet."
+    "ogDescription": "Exchange décentralisé pour les tokens ERC-223 et ERC-20. Des swaps sans approbation, jusqu’à 15 % de gas en moins et des listings de tokens sans permission. Contrats sur le mainnet Ethereum ; les swaps et le trading sur marge sont en ligne sur le testnet."
   },
   "Seo": {
     "home": {
@@ -869,7 +869,7 @@
       "y2026": {
         "date": "2026 (en cours)",
         "items": {
-          "mainnetLive": "DEX223 en ligne sur le mainnet Ethereum",
+          "mainnetLive": "Contrats DEX223 déployés sur le mainnet Ethereum",
           "marginTestnet": "Trading sur marge en ligne sur le testnet Sepolia",
           "interactiveDemo": "Démo interactive, sans wallet"
         }

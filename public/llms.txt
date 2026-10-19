@@ -1,6 +1,6 @@
 # DEX223
 
-> DEX223 is a decentralized exchange (DEX) for ERC-223 and ERC-20 tokens. It was the first exchange to support the ERC-223 token standard. Every pool accepts both standards, a built-in converter moves tokens between ERC-20 and ERC-223 at 1:1 (EIP-7417), and anyone can list a token without permission through on-chain auto-listing contracts. DEX223 is live on Ethereum mainnet. Margin trading is live on the Sepolia testnet.
+> DEX223 is a decentralized exchange (DEX) for ERC-223 and ERC-20 tokens. It was the first exchange to support the ERC-223 token standard. Every pool accepts both standards, a built-in converter moves tokens between ERC-20 and ERC-223 at 1:1 (EIP-7417), and anyone can list a token without permission through on-chain auto-listing contracts. DEX223's contracts are deployed on Ethereum mainnet, where the first liquidity pools have not been created yet. Swaps and margin trading are live on the Sepolia testnet.
 
 DEX223 is non-custodial: people trade from their own wallets and sign every transaction themselves. The project is run by DEX223 DAO LLC. Its utility and governance token is D223.
 
@@ -13,7 +13,7 @@ DEX223 is non-custodial: people trade from their own wallets and sign every tran
 - Listing: permissionless. A token is listed by paying an anti-spam fee to an auto-listing contract, or by importing a token list. No application to the team is needed.
 - Margin trading: "Encapsulated Margin Trading". Lenders set their own terms, and borrowers can trade the borrowed tokens but cannot withdraw them. Live on Sepolia testnet; Ethereum mainnet is planned after a security audit.
 - ERC-20 losses: about $201,690,000 worth of ERC-20 tokens had been lost to the standard's design flaw on Ethereum mainnet as of 29 August 2023. ERC-223 is designed to prevent these losses.
-- Chains: live on Ethereum mainnet. Confirmed for future deployment: Avalanche, BSC, EOS EVM, CELO, Base, Optimism and Arbitrum.
+- Chains: contracts deployed on Ethereum mainnet (no liquidity pools yet; trading is live on Sepolia testnet). Confirmed for future deployment: Avalanche, BSC, EOS EVM, CELO, Base, Optimism and Arbitrum.
 
 ## D223 token
 
